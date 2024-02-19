@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import { Routes, Route} from 'react-router-dom'
+
+import Homepage from './pages/Homepage';
 import './App.css';
 
 function App() {
@@ -11,6 +13,7 @@ function App() {
         </p>
         <div>
           <Routes>
+            <Route exact path='/' Component={Homepage} />
           </Routes>
         </div>
       </header>
