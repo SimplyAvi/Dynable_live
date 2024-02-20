@@ -1,4 +1,5 @@
 import React from 'react'
+import Searchbar from '../components/Searchbar'
 
 const Homepage = () => {
 
@@ -16,6 +17,7 @@ const Homepage = () => {
             </div>
             <div className='search-results'>
                 <p>Search Results</p>
+                <Searchbar/>
             </div>
         </div>
     )
