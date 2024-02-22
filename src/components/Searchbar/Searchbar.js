@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 
-import FormInput from './FormInput'
+import FormInput from '../FormInput'
 import './Searchbar.css'
 
 const Searchbar = ({setSearchResults}) => {
