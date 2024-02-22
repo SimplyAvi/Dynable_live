@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import FoodCard from './FoodCard'
+import FoodCard from './FoodCard/FoodCard'
 
 const ShowResults = ({searchResults}) =>{
 
