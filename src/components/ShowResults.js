@@ -3,7 +3,6 @@ import FoodCard from './FoodCard'
 
 const ShowResults = ({searchResults}) =>{
 
-    console.log(searchResults)
     if (Object.values(searchResults).length>0){
 
         return(
