@@ -4,7 +4,6 @@ import './FoodCard.css'
 const FoodCard = ({foodItem}) =>{
 
     const {label, image}= foodItem.food
-    console.log('foodItem:', foodItem)
     return(
         <div className='card-wrapper'>
             <img className='card-img' src={image}/>
