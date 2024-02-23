@@ -4,13 +4,20 @@ import {useCookies} from 'react-cookie'
 import allergensList from '../../allergensList'
 import './AllergyFilter.css'
 
-const AllergyFilter = ({allergenFilters, setAllergenFilters}) =>{
+const AllergyFilter = ({allergenFilters, setAllergenFilters, setCurAllergen}) =>{
 
     const [filters, setFilters] = useCookies([['allergens']])
     
     useEffect(()=>{
         if(Object.keys(filters).length>0){
+            console.log('allergens exist')
             setAllergenFilters(filters.allergens)
+            Object.keys(filters.allergens).map(filter=>{
+                if(filters.allergens[filter]){
+                    console.log('filter:', filter)
+                    setCurAllergen(filter)
+                }
+            })
         } else {
             let filterMap = {}
             Object.keys(allergensList).map(filter=>{
@@ -24,6 +31,7 @@ const AllergyFilter = ({allergenFilters, setAllergenFilters}) =>{
     const handleClick=(event) =>{
         const curVal = event.target.value
         const flippedCurVal = !allergenFilters[curVal]
+        flippedCurVal?setCurAllergen(curVal): setCurAllergen('')
         console.log('flipped val:', curVal, flippedCurVal)
         setAllergenFilters({...allergenFilters, [curVal]:flippedCurVal})
         setFilters('allergens', {...allergenFilters, [curVal]:flippedCurVal})
