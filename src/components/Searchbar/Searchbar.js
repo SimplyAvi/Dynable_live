@@ -4,7 +4,7 @@ import axios from 'axios'
 import FormInput from '../FormInput'
 import './Searchbar.css'
 
-const Searchbar = ({setSearchResults}) => {
+const Searchbar = ({setSearchResults, curAllergen, setCurAllergen}) => {
 
     const [searchVal, setSearchVal] = useState('')
 
@@ -15,8 +15,13 @@ const Searchbar = ({setSearchResults}) => {
     const handleSubmit = async (event) =>{
         event.preventDefault()
         console.log('submitting:', searchVal)
+        let allergenText = ``
+        if (curAllergen){
+            allergenText=`health=${curAllergen}`
+        }
+        console.log(`https://api.edamam.com/api/food-database/v2/parser?app_id=3b4e6a49&app_key=8d49f61369d7dda4935235b21c07a612&ingr=${searchVal}&nutrition-type=cooking${allergenText}`)
         try {
-            const response = await axios.get(`https://api.edamam.com/api/food-database/v2/parser?app_id=3b4e6a49&app_key=8d49f61369d7dda4935235b21c07a612&ingr=${searchVal}&nutrition-type=cooking`);
+            const response = await axios.get(`https://api.edamam.com/api/food-database/v2/parser?app_id=3b4e6a49&app_key=8d49f61369d7dda4935235b21c07a612&ingr=${searchVal}&nutrition-type=cooking${allergenText}`);
             setSearchResults(response.data)
         } catch (error) {
             console.error(error);
