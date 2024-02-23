@@ -1,14 +1,14 @@
 import React, {useState} from 'react'
 import FoodCard from './FoodCard/FoodCard'
 
-const ShowResults = ({searchResults}) =>{
+const ShowResults = ({foodResults}) =>{
 
-    if (Object.values(searchResults).length>0){
+    if (Object.values(foodResults).length>0){
 
         return(
             <div>
-            Showing results for : {searchResults.text}
-            {searchResults.hints.map((foodItem, key) =>{
+            Showing results for : {foodResults.text}
+            {foodResults.hints.map((foodItem, key) =>{
                 return <FoodCard key={key} foodItem={foodItem}/>
             })}
             </div>
