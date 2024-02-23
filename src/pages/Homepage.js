@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
 import Searchbar from '../components/Searchbar/Searchbar'
 import ShowResults from '../components/ShowResults'
+import AllergyFilter from '../components/AllergyFilter/AllergyFilter'
 
 const Homepage = () => {
 
     const [searchResults, setSearchResults] = useState({})
+    const [allergenFilters, setAllergenFilters] = useState({})
 
     return (
         <div>
@@ -17,6 +19,7 @@ const Homepage = () => {
             </div>
             <div className='Filters'>
                 <p>Filters</p>
+                <AllergyFilter allergenFilters={allergenFilters} setAllergenFilters={setAllergenFilters}/>
             </div>
             <div className='search-results'>
                 <p>Search Results</p>
