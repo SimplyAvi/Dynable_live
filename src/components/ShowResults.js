@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
 import FoodCard from './FoodCard/FoodCard'
 
-const ShowResults = ({foodResults}) =>{
+const ShowResults = ({foodResults, recipeResults}) =>{
+
+    console.log('recipe data:', recipeResults)
 
     if (Object.values(foodResults).length>0){
-
         return(
             <div>
             Showing results for : {foodResults.text}
