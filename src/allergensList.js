@@ -1,5 +1,5 @@
 const allergenList = {
-    alcohol : 'alcohol-free',
+    Alcohol : 'alcohol-free',
     Immune : 'immuno-supportive',
     Celery : 'celery-free',
     Crustacean: 'crustacean-free',
@@ -32,3 +32,5 @@ const allergenList = {
     Vegetarian: 'Vegetarian',
     Wheat_free : 'Wheat-free'
 }
+
+export default allergenList

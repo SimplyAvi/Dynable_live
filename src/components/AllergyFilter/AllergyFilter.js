@@ -1,0 +1,46 @@
+import React, {useEffect} from 'react'
+import {useCookies} from 'react-cookie'
+
+import allergensList from '../../allergensList'
+import './AllergyFilter.css'
+
+const AllergyFilter = ({allergenFilters, setAllergenFilters}) =>{
+
+    const [filters, setFilters] = useCookies([['allergens']])
+    
+    useEffect(()=>{
+        if(Object.keys(filters).length>0){
+            setAllergenFilters(filters.allergens)
+        } else {
+            let filterMap = {}
+            Object.keys(allergensList).map(filter=>{
+                filterMap[filter] = false
+            })
+            setAllergenFilters(filterMap)
+            setFilters('allergens', filterMap)
+        }
+    },[])
+    
+    const handleClick=(event) =>{
+        const curVal = event.target.value
+        const flippedCurVal = !allergenFilters[curVal]
+        console.log('flipped val:', curVal, flippedCurVal)
+        setAllergenFilters({...allergenFilters, [curVal]:flippedCurVal})
+        setFilters('allergens', {...allergenFilters, [curVal]:flippedCurVal})
+    }
+
+    return(
+        <div>
+            AllergyFilter
+            {Object.keys(allergenFilters).map((filter, key)=>{
+                return (
+                <div key={key}>
+                    <button className={allergenFilters[filter]? 'filter-false': 'filter-true'} value={filter} onClick={handleClick}>{filter}</button>
+                </div>
+                )
+            })}
+        </div>
+    )
+}
+
+export default AllergyFilter
