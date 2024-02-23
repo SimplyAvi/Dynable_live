@@ -4,7 +4,7 @@ import axios from 'axios'
 import FormInput from '../FormInput'
 import './Searchbar.css'
 
-const Searchbar = ({setFoodResults, curAllergen, setCurAllergen}) => {
+const Searchbar = ({setFoodResults, setRecipeResults, curAllergen, setCurAllergen}) => {
 
     const [searchVal, setSearchVal] = useState('')
 
@@ -19,10 +19,11 @@ const Searchbar = ({setFoodResults, curAllergen, setCurAllergen}) => {
         if (curAllergen){
             allergenText=`health=${curAllergen}`
         }
-        console.log(`https://api.edamam.com/api/food-database/v2/parser?app_id=3b4e6a49&app_key=8d49f61369d7dda4935235b21c07a612&ingr=${searchVal}&nutrition-type=cooking${allergenText}`)
         try {
-            const response = await axios.get(`https://api.edamam.com/api/food-database/v2/parser?app_id=3b4e6a49&app_key=8d49f61369d7dda4935235b21c07a612&ingr=${searchVal}&nutrition-type=cooking${allergenText}`);
-            setFoodResults(response.data)
+            const foodResponse = await axios.get(`https://api.edamam.com/api/food-database/v2/parser?app_id=3b4e6a49&app_key=8d49f61369d7dda4935235b21c07a612&ingr=${searchVal}&nutrition-type=cooking${allergenText}`);
+            const recipeResponse = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${searchVal}&app_id=b5bdebe7&app_key=%2020298931767c31f1e76a6473d8cdd7bc&${allergenText}`)
+            setFoodResults(foodResponse.data)
+            setRecipeResults(recipeResponse.data)
         } catch (error) {
             console.error(error);
         }
