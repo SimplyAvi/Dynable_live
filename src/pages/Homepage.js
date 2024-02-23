@@ -7,6 +7,7 @@ const Homepage = () => {
 
     const [searchResults, setSearchResults] = useState({})
     const [allergenFilters, setAllergenFilters] = useState({})
+    const [curAllergen, setCurAllergen] = useState('')
 
     return (
         <div>
@@ -15,11 +16,19 @@ const Homepage = () => {
             </div>
             <div className='searchbar'>
                 <p>Searchbar</p>
-                <Searchbar setSearchResults={setSearchResults}/>
+                <Searchbar 
+                    setSearchResults={setSearchResults} 
+                    curAllergen={curAllergen} 
+                    setCurAllergen={setCurAllergen}
+                    />
             </div>
             <div className='Filters'>
                 <p>Filters</p>
-                <AllergyFilter allergenFilters={allergenFilters} setAllergenFilters={setAllergenFilters}/>
+                <AllergyFilter 
+                    allergenFilters={allergenFilters} 
+                    setAllergenFilters={setAllergenFilters} 
+                    setCurAllergen={setCurAllergen}
+                    />
             </div>
             <div className='search-results'>
                 <p>Search Results</p>
