@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 
 const ShowResults = () =>{
 
-    const [renderItems, setRenderItems] = useState('food')
+    const [renderItems, setRenderItems] = useState('products')
 
     const products = useSelector((state)=>state.products.productsResults)
     const recipes = useSelector((state)=>state.recipes.recipesResults)
@@ -20,7 +20,7 @@ const ShowResults = () =>{
             <div>
             Showing results for : {products.text}
             <div>
-                <button value='food' onClick={onSelection} >Food</button>
+                <button value='products' onClick={onSelection}>Products</button>
                 <button value='recipe' onClick={onSelection}>Recipe</button>
             </div>
             {renderItems==='recipe'?
@@ -28,7 +28,7 @@ const ShowResults = () =>{
                     return <RecipeCard key={key} recipe={recipe} />
                 }):null
             }
-            {renderItems==='food'?
+            {renderItems==='products'?
                 products[0].hints.map((foodItem, key) =>{
                     return <FoodCard key={key} foodItem={foodItem}/>
                 }):null
