@@ -5,8 +5,6 @@ import AllergyFilter from '../components/AllergyFilter/AllergyFilter'
 
 const Homepage = () => {
 
-    const [foodResults, setFoodResults] = useState({})
-    const [recipeResults, setRecipeResults] = useState({})
     const [allergenFilters, setAllergenFilters] = useState({})
     const [curAllergen, setCurAllergen] = useState('')
 
@@ -18,8 +16,6 @@ const Homepage = () => {
             <div className='searchbar'>
                 <p>Searchbar</p>
                 <Searchbar 
-                    setFoodResults={setFoodResults} 
-                    setRecipeResults={setRecipeResults}
                     curAllergen={curAllergen} 
                     setCurAllergen={setCurAllergen}
                     />
@@ -34,7 +30,7 @@ const Homepage = () => {
             </div>
             <div className='search-results'>
                 <p>Search Results</p>
-                <ShowResults foodResults={foodResults} recipeResults={recipeResults}/>
+                <ShowResults />
             </div>
         </div>
     )
