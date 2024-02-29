@@ -2,13 +2,14 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import './FoodCard.css'
 
-const FoodCard = ({foodItem}) =>{
+const FoodCard = ({foodItem, id}) =>{
+
+    const navigate = useNavigate();
 
     const {label, image}= foodItem.food
-    let navigate = useNavigate();
 
     const handleClick  = () => {
-        navigate(`/product/${'12'}`)
+        navigate(`/product/${id}`)
     }
 
     return(

@@ -25,12 +25,12 @@ const ShowResults = () =>{
             </div>
             {renderItems==='recipe'?
                 recipes[0].hits.map((recipe,key)=>{
-                    return <RecipeCard key={key} recipe={recipe} />
+                    return <RecipeCard key={key} recipe={recipe} id={key}/>
                 }):null
             }
             {renderItems==='products'?
                 products[0].hints.map((foodItem, key) =>{
-                    return <FoodCard key={key} foodItem={foodItem}/>
+                    return <FoodCard key={key} foodItem={foodItem} id={key}/>
                 }):null
             }
             </div>
