@@ -1,8 +1,12 @@
 import React, {useState} from 'react'
+import { useParams } from 'react-router-dom';
 
 import './ProductPage.css'
 
 const ProductPage = () =>{
+    
+    const { id } = useParams();
+    console.log('PRODUCT PAGE PROPS:', id)
 
     return(
         <div>

@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import { Routes, Route} from 'react-router-dom'
 
 import Homepage from './pages/Homepage';
@@ -15,7 +14,7 @@ function App() {
         <div>
           <Routes>
             <Route exact path='/' Component={Homepage} />
-            <Route path='product/' Component={ProductPage} />
+            <Route path='product/:id' Component={ProductPage} />
           </Routes>
         </div>
       </header>
