@@ -4,9 +4,9 @@ import {useCookies} from 'react-cookie'
 import allergensList from '../../allergensList'
 import './AllergyFilter.css'
 
-const AllergyFilter = ({allergenFilters, setAllergenFilters, setCurAllergen}) =>{
+const AllergyFilter = ({allergenFilters, setAllergenFilters, setCurAllergen, curAllergen}) =>{
 
-    const [filters, setFilters] = useCookies([['allergens']])
+    const [filters, setFilters] = useCookies(['allergens'])
     
     useEffect(()=>{
         if(Object.keys(filters.allergens).length>0){
@@ -25,6 +25,7 @@ const AllergyFilter = ({allergenFilters, setAllergenFilters, setCurAllergen}) =>
             setAllergenFilters(filterMap)
             setFilters('allergens', filterMap)
         }
+        console.log('cur allergen:', curAllergen)
     },[])
     
     const handleClick=(event) =>{

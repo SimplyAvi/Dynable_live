@@ -21,7 +21,7 @@ const Searchbar = ({ curAllergen, setCurAllergen}) => {
         console.log('submitting:', searchVal)
         let allergenText = ``
         if (curAllergen){
-            allergenText=`health=${curAllergen}`
+            allergenText=`&health=${curAllergen}`
         }
         try {
             const foodResponse = await axios.get(`https://api.edamam.com/api/food-database/v2/parser?app_id=3b4e6a49&app_key=8d49f61369d7dda4935235b21c07a612&ingr=${searchVal}&nutrition-type=cooking${allergenText}`);

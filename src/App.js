@@ -14,7 +14,7 @@ function App() {
         <div>
           <Routes>
             <Route exact path='/' Component={Homepage} />
-            <Route path='product/:id' Component={ProductPage} />
+            <Route path='/product/:id' Component={ProductPage} />
           </Routes>
         </div>
       </header>
