@@ -3,23 +3,31 @@ import { useParams } from 'react-router-dom';
 
 import './ProductPage.css'
 import SearchAndFilter from '../../components/SearchAndFilter/SearchAndFilter';
+import { useSelector } from 'react-redux';
 
 const ProductPage = () =>{
     
     const { id } = useParams();
-    console.log('PRODUCT PAGE PROPS:', id)
+
+    const product = useSelector((state)=> state.products.productsResults.hints[id])
+    console.log('single product info:', product)
+    const {image, label, nutrients} = product.food
 
     return(
         <div>
             <SearchAndFilter />
             <div>
-                Image
+                <img src={image}/>
             </div>
             <div>
-                Title
+                <p>{label}</p>
             </div>
             <div>
-                description
+                {Object.keys(nutrients).map((nutrient,key)=>{
+                    return(
+                        <p key={key}>{nutrient}:{nutrients[nutrient]}</p>
+                    )
+                })}
             </div>
             <div>
                 suggestions section
