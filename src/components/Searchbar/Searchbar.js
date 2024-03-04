@@ -18,7 +18,6 @@ const Searchbar = ({ curAllergen }) => {
     const {saveToCookies} = useSearchCookieHandler();
 
     useEffect(()=>{
-        console.log('searchbar in effect:', searchbar)
         if (searchbar.searchbar.length>0){
             saveToCookies(searchbar.searchbar)
             getResponse(searchbar.searchbar)
@@ -31,7 +30,6 @@ const Searchbar = ({ curAllergen }) => {
     
     const handleSubmit = async (event) =>{
         event.preventDefault()
-        let allergenText = ``
         getResponse()
         navigate('/')
     }

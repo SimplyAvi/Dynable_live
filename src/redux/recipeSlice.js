@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   // Your initial state here
-  recipesResults: []
+  recipesResults: {}
 };
 
 const recipesSlice = createSlice({
@@ -12,7 +12,7 @@ const recipesSlice = createSlice({
   reducers: {
     // Define your actions and corresponding state changes here
     addRecipes: (state,action)=>{
-        state.recipesResults.push(action.payload)
+        state.recipesResults = action.payload
     }
   },
 });
