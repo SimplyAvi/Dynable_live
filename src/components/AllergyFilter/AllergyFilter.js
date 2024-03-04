@@ -25,7 +25,6 @@ const AllergyFilter = ({allergenFilters, setAllergenFilters, setCurAllergen, cur
             setAllergenFilters(filterMap)
             setFilters('allergens', filterMap)
         }
-        console.log('cur allergen:', curAllergen)
     },[])
     
     const handleClick=(event) =>{

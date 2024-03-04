@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { useParams } from 'react-router-dom';
 
 import './ProductPage.css'
+import SearchAndFilter from '../../components/SearchAndFilter/SearchAndFilter';
 
 const ProductPage = () =>{
     
@@ -10,6 +11,7 @@ const ProductPage = () =>{
 
     return(
         <div>
+            <SearchAndFilter />
             <div>
                 Image
             </div>
