@@ -3,11 +3,11 @@ const express = require('express');
 const sequelize = require('./db/database'); // Make sure this path is correct
 const Food = require('./db/models/Food');
 const FoodNutrient = require('./db/models/FoodNutrient');
-const Nutrient = require('./db/models/Nutrient');
-const FoodNutrientDerivation = require('./db/models/FoodNutrientDerivation');
-const FoodNutrientSource = require('./db/models/FoodNutrientSource');
-const FoodAttribute = require('./db/models/FoodAttribute');
-const FoodAttributeType = require('./db/models/FoodAttributeType');
+// const Nutrient = require('./db/models/Nutrient');
+// const FoodNutrientDerivation = require('./db/models/FoodNutrientDerivation');
+// const FoodNutrientSource = require('./db/models/FoodNutrientSource');
+// const FoodAttribute = require('./db/models/FoodAttribute');
+// const FoodAttributeType = require('./db/models/FoodAttributeType');
 
 const app = express();
 const PORT = 5000;
