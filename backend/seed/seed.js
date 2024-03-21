@@ -16,19 +16,19 @@ async function seed(){
         // }
         for (let i=1; i<=16; i++){
           console.log('trying to seed food')
-          const foodArr = require(`./splitFiles2/split_${i}.js`)
+          const foodArr = require(`./seeding/splitFiles2/split_${i}.js`)
           foods = await Food.bulkCreate(foodArr, { validate: true , logging: false });
           console.log(`completed bulkcreate${i}`, foods.length)
         }
         for (let i=17; i<=32; i++){
           console.log('trying to seed food')
-          const foodArr = require(`./splitFiles3/split_${i}.js`)
+          const foodArr = require(`./seeding/splitFiles3/split_${i}.js`)
           foods = await Food.bulkCreate(foodArr, { validate: true , logging: false });
           console.log(`completed bulkcreate for splitFiles3/split_${i}`, foods.length)
         }
         for (let i=33; i<=47; i++){
           console.log('trying to seed food')
-          const foodArr = require(`./splitFiles4/split_${i}.js`)
+          const foodArr = require(`./seeding/splitFiles4/split_${i}.js`)
           foods = await Food.bulkCreate(foodArr, { validate: true , logging: false });
           console.log(`completed bulkcreate for splitFiles4/split_${i}`, foods.length)
         }
