@@ -9,25 +9,29 @@ const ProductPage = () =>{
     
     const { id } = useParams();
 
-    const product = useSelector((state)=> state.products.productsResults.hints[id])
-    console.log('single product info:', product)
-    const {image, label, nutrients} = product.food
+    const product = useSelector((state)=> state.products.productsResults.foods[id])
+    // console.log('single product info:', product)
+    const {description, ingredients, brandName } = product
 
     return(
         <div>
             <SearchAndFilter />
             <div>
-                <img src={image}/>
+                <img src={'https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=996'}/>
             </div>
             <div>
-                <p>{label}</p>
+                <p>{brandName}</p>
+                <p>{description}</p>
             </div>
             <div>
-                {Object.keys(nutrients).map((nutrient,key)=>{
+                <p>{ingredients}</p>
+            </div>
+            <div>
+                {/* {Object.keys(nutrients).map((nutrient,key)=>{
                     return(
                         <p key={key}>{nutrient}:{nutrients[nutrient]}</p>
                     )
-                })}
+                })} */}
             </div>
             <div>
                 suggestions section
