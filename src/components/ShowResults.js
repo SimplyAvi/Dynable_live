@@ -16,7 +16,7 @@ const ShowResults = () =>{
     }
 
     if (Object.values(products).length>0){
-        console.log(recipes)
+        console.log('foods:',products.foods[0])
         return(
             <div>
             Showing results for : {products.text}
@@ -30,7 +30,7 @@ const ShowResults = () =>{
                 }):null
             }
             {renderItems==='products'?
-                products.hints.map((foodItem, key) =>{
+                products.foods.map((foodItem, key) =>{
                     return <FoodCard key={key} foodItem={foodItem} id={key}/>
                 }):null
             }
