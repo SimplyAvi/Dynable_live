@@ -31,7 +31,7 @@ const ShowResults = () =>{
             }
             {renderItems==='products'?
                 products.foods.map((foodItem, key) =>{
-                    return <FoodCard key={key} foodItem={foodItem} id={key}/>
+                    return <FoodCard key={key} foodItem={foodItem} id={foodItem.id}/>
                 }):null
             }
             </div>

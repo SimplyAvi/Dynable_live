@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom';
-
+import axios from 'axios'
 import './ProductPage.css'
 import SearchAndFilter from '../../components/SearchAndFilter/SearchAndFilter';
 import { useSelector } from 'react-redux';
@@ -8,10 +8,26 @@ import { useSelector } from 'react-redux';
 const ProductPage = () =>{
     
     const { id } = useParams();
+    const [item, setItem] = useState({})
 
-    const product = useSelector((state)=> state.products.productsResults.foods[id])
+    useEffect(()=>{
+        //get product info via ID
+        getProduct()
+    },[])
+
+    const getProduct = async () =>{
+        try{
+            const productResponse = await axios.get(`http://localhost:5000/api/product/?id=${id}`)
+            console.log(productResponse.data)
+            setItem(productResponse.data)
+        } catch(err){
+            console.log(err)
+        }
+    }
+
+    // const product = useSelector((state)=> state.products.productsResults.foods[id])
     // console.log('single product info:', product)
-    const {description, ingredients, brandName } = product
+    const {description, ingredients, brandName } = item
 
     return(
         <div>
