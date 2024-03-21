@@ -13,8 +13,8 @@ import './Searchbar.css'
 const Searchbar = ({ curAllergen }) => {
 
     const textbar = useSelector((state)=> state.searchbar.searchbar)
-    const [searchbar, setSearchbar] = useCookies(['searchbar']);
-    const [filters, setFilters] = useCookies(['allergens'])
+    const [searchbar] = useCookies(['searchbar']);
+    const [filters] = useCookies(['allergens'])
     const {allergens} = filters
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -26,6 +26,10 @@ const Searchbar = ({ curAllergen }) => {
             getResponse(searchbar.searchbar)
         }
     },[])
+
+    useEffect(()=>{
+        getResponse()
+    },[allergens])
 
     const handleTextChange = (input) =>{
         saveToCookies(input.target.value)
@@ -52,9 +56,9 @@ const Searchbar = ({ curAllergen }) => {
                 excludeIngredients: sendAllergens
             })
             // const foodResponse = await axios.get(`https://api.edamam.com/api/food-database/v2/parser?app_id=3b4e6a49&app_key=8d49f61369d7dda4935235b21c07a612&ingr=${initialInput}&nutrition-type=cooking${allergenText}`);
-            const recipeResponse = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${initialInput}&app_id=b5bdebe7&app_key=%2020298931767c31f1e76a6473d8cdd7bc&${allergenText}`)
+            // const recipeResponse = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${initialInput}&app_id=b5bdebe7&app_key=%2020298931767c31f1e76a6473d8cdd7bc&${allergenText}`)
             dispatch(addProducts(foodResponse.data))
-            dispatch(addRecipes(recipeResponse.data))
+            // dispatch(addRecipes(recipeResponse.data))
         } catch (error) {
             console.error(error);
         }
