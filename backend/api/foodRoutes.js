@@ -108,4 +108,23 @@ router.post('/api/foods', async (req, res) => {
   }
 });
 
+// GET /api/foods route for searching foods
+router.get('/api/product', async (req, res) => {
+  try {
+    const { id } = req.query;
+    console.log('looking for:', id)
+
+    const product = await Food.findByPk(id)
+
+    if (!product) {
+      return res.status(404).json({ error: 'Item not found' });
+    }
+    return res.json(product)
+
+  } catch (error) {
+    console.error('Error searching for foods:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 module.exports = router;
