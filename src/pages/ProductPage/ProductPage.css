@@ -1,0 +1,11 @@
+.img-wrapper{
+    width: 80%;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* text-align: center; */
+    margin: 0 auto;
+}
+
+.img{
+    width: 80%;
+}
