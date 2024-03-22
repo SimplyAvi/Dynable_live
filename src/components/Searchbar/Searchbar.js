@@ -28,7 +28,7 @@ const Searchbar = ({ curAllergen }) => {
     },[])
 
     useEffect(()=>{
-        getResponse()
+        getResponse(searchbar.searchbar)
     },[allergens])
 
     const handleTextChange = (input) =>{
@@ -55,6 +55,7 @@ const Searchbar = ({ curAllergen }) => {
                 name: initialInput, 
                 excludeIngredients: sendAllergens
             })
+            console.log('foodresponse:', foodResponse)
             // const foodResponse = await axios.get(`https://api.edamam.com/api/food-database/v2/parser?app_id=3b4e6a49&app_key=8d49f61369d7dda4935235b21c07a612&ingr=${initialInput}&nutrition-type=cooking${allergenText}`);
             // const recipeResponse = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${initialInput}&app_id=b5bdebe7&app_key=%2020298931767c31f1e76a6473d8cdd7bc&${allergenText}`)
             dispatch(addProducts(foodResponse.data))
