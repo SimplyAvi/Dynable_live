@@ -18,7 +18,6 @@ const ProductPage = () =>{
     const getProduct = async () =>{
         try{
             const productResponse = await axios.get(`http://localhost:5000/api/product/?id=${id}`)
-            console.log(productResponse.data)
             setItem(productResponse.data)
         } catch(err){
             console.log(err)
@@ -32,12 +31,12 @@ const ProductPage = () =>{
     return(
         <div>
             <SearchAndFilter />
-            <div>
-                <img src={'https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=996'}/>
+            <div className='img-wrapper'>
+                <img className='img' src={'https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=996'}/>
             </div>
             <div>
-                <p>{brandName}</p>
-                <p>{description}</p>
+                <h3>{brandName}</h3>
+                <h4>{description}</h4>
             </div>
             <div>
                 <p>{ingredients}</p>
@@ -50,7 +49,7 @@ const ProductPage = () =>{
                 })} */}
             </div>
             <div>
-                suggestions section
+                suggestions section (alt food cards can go here)
             </div>
         </div>
     )
