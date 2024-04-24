@@ -6,6 +6,7 @@ const FoodNutrientDerivation = require('./FoodNutrientDerivation');
 const FoodNutrientSource = require('./FoodNutrientSource');
 const FoodAttribute = require('./FoodAttribute');
 const FoodAttributeType = require('./FoodAttributeType');
+const Recipe = require('./Recipe/Recipe')
 
 Food.hasMany(FoodNutrient);
 Food.hasMany(FoodAttribute);
@@ -20,4 +21,5 @@ module.exports = {
   FoodNutrientSource,
   FoodAttribute,
   FoodAttributeType,
+  Recipe
 };

@@ -1,5 +1,6 @@
 const db = require('../db/database')
 const {Food} = require('../db/models')
+const seedRecipes = require('./seedRecipe')
 
 async function seed(){
     try {
@@ -44,6 +45,7 @@ async function runSeed() {
     console.log('seeding...')
     try {
       await seed()
+      await seedRecipes()
     } catch(err) {
       console.error(err)
       process.exitCode = 1
