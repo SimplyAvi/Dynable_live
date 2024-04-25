@@ -1,7 +1,7 @@
 const express = require('express')
 const {OP, Sequelize} = require('sequelize')
 const router = express.Router()
-const axios = require('axios')
+const Recipe = require('../db/models/Recipe/Recipe')
 
 // Post request to send allergens to be filtered during api call
 router.post('/api/recipe', async (req,res)=>{
@@ -11,8 +11,22 @@ router.post('/api/recipe', async (req,res)=>{
     
         console.log('search:', search, 'exclude:', excludeIngredients, req.body)
 
-         const recipeResponse = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${search}&app_id=b5bdebe7&app_key=%2020298931767c31f1e76a6473d8cdd7bc`)
+            // Define the search criteria
+    const whereClause = {};
+    if (search) {
+      whereClause.title = {
+        [Op.iLike]: `%${search}%`,
+      };
+    }
+
+        //  const recipeResponse = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${search}&app_id=b5bdebe7&app_key=%2020298931767c31f1e76a6473d8cdd7bc`)
         // console.log('recipeResponse:', recipeResponse.data)
+      const recipes = await Recipe.findAll({
+        where: whereClause,
+        limit: parseInt(limit, 10)
+      })
+
+
     
         res.json(recipeResponse.data)
 
