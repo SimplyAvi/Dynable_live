@@ -7,32 +7,15 @@ async function seed(){
         await db.sync({ force: true })
         console.log('db synced!')
 
-        // console.log('trying to seed food:', brandedFoodData[0])
+        let totalSeeded = 0
         let foods
-        // for (let i=1; i<4; i++){
-        //   console.log('trying to seed food')
-        //   const foodArr = require(`./splitFiles2/split_${i}.js`)
-        //   foods = await Food.bulkCreate(foodArr, { validate: true , logging: false });
+        for (let i=1; i<=47; i++){
+          const foodArr = require(`./Data/Products/split_${i}.js`)
+          foods = await Food.bulkCreate(foodArr, { validate: true , logging: false });
         //   console.log(`completed bulkcreate${i}`, foods.length)
-        // }
-        for (let i=1; i<=16; i++){
-          console.log('trying to seed food')
-          const foodArr = require(`./seeding/splitFiles2/split_${i}.js`)
-          foods = await Food.bulkCreate(foodArr, { validate: true , logging: false });
-          console.log(`completed bulkcreate${i}`, foods.length)
+          totalSeeded+=foods.length
         }
-        for (let i=17; i<=32; i++){
-          console.log('trying to seed food')
-          const foodArr = require(`./seeding/splitFiles3/split_${i}.js`)
-          foods = await Food.bulkCreate(foodArr, { validate: true , logging: false });
-          console.log(`completed bulkcreate for splitFiles3/split_${i}`, foods.length)
-        }
-        for (let i=33; i<=47; i++){
-          console.log('trying to seed food')
-          const foodArr = require(`./seeding/splitFiles4/split_${i}.js`)
-          foods = await Food.bulkCreate(foodArr, { validate: true , logging: false });
-          console.log(`completed bulkcreate for splitFiles4/split_${i}`, foods.length)
-        }
+        console.log(`seeded ${totalSeeded} products!`)
     } catch(err) {
         console.error(err)
     }
