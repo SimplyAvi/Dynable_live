@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node seed/seed.js",
-    "shrink": "node seed/shrinking/shrinkfile2.js"
+    "shrink": "node seed/shrinking/shrinkfile2.js",
+    "seedRecipe" : "node seed/seedRecipe.js"
   },
   "keywords": [],
   "author": "",

@@ -45,7 +45,7 @@ router.post('/api/foods', async (req, res) => {
     const { page = 1, limit = 10 } = req.query;
     const offset = (page - 1) * limit;
 
-    console.log('name:', name, 'exclude:', excludeIngredients, req.body)
+    // console.log('name:', name, 'exclude:', excludeIngredients, req.body)
 
     // Define the search criteria
     const whereClause = {};

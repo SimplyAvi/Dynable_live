@@ -4,7 +4,10 @@ const cors = require('cors')
 const sequelize = require('./db/database'); // Make sure this path is correct
 const Food = require('./db/models/Food');
 const FoodNutrient = require('./db/models/FoodNutrient');
+const Recipe = require('./db/models/Recipe/Recipe')
+const Ingredients = require('./db/models/Recipe/Ingredients')
 const foodRoutes = require('./api/foodRoutes')
+const recipeRoutes = require('./api/recipeRoutes')
 // const Nutrient = require('./db/models/Nutrient');
 // const FoodNutrientDerivation = require('./db/models/FoodNutrientDerivation');
 // const FoodNutrientSource = require('./db/models/FoodNutrientSource');
@@ -28,8 +31,7 @@ app.use(cors({
 }));
 
 app.use(foodRoutes);
-// app.use(cors())
-
+app.use(recipeRoutes);
 
 app.get('/api/data', (req, res) => {
   // Your backend logic here
@@ -50,6 +52,7 @@ app.get('/api/data', (req, res) => {
 
     // Step 4: Sync db/models with the database
     await sequelize.sync();
+    // await sequelize.sync({force:true}); //For clearing the table on connection
     console.log('All db/models were synchronized successfully.');
 
     // Start your express server
