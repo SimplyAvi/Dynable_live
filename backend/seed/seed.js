@@ -4,15 +4,15 @@ const seedRecipes = require('./seedRecipe')
 
 async function seed(){
     try {
-        await db.sync({ force: true })
+        await db.sync()
         console.log('db synced!')
 
         let totalSeeded = 0
         let foods
-        for (let i=1; i<=47; i++){
+        for (let i=27; i<=47; i++){
           const foodArr = require(`./Data/Products/split_${i}.js`)
           foods = await Food.bulkCreate(foodArr, { validate: true , logging: false });
-        //   console.log(`completed bulkcreate${i}`, foods.length)
+          console.log(`completed bulkcreate${i}`, foods.length)
           totalSeeded+=foods.length
         }
         console.log(`seeded ${totalSeeded} products!`)
@@ -28,7 +28,7 @@ async function runSeed() {
     console.log('seeding...')
     try {
       await seed()
-      await seedRecipes()
+      // await seedRecipes()
     } catch(err) {
       console.error(err)
       process.exitCode = 1

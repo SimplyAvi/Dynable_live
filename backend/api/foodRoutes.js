@@ -71,6 +71,8 @@ router.post('/api/foods', async (req, res) => {
           }),
         },
       });
+      // console.log('excluding:', excludeIngredients)
+      // console.log(excludedFoods.length)
       excludedFoodIds.push(...excludedFoods.map(food => food.id));
     }
 
