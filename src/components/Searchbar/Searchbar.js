@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import axios from 'axios'
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router'
@@ -9,6 +9,7 @@ import { useSearchCookieHandler } from '../../helperfunc/useCookieHandler';
 import allergenList from '../../allergensList';
 import FormInput from '../FormInput'
 import './Searchbar.css'
+import {debounce} from 'lodash'
 
 const Searchbar = ({ curAllergen }) => {
 
@@ -19,16 +20,23 @@ const Searchbar = ({ curAllergen }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {saveToCookies} = useSearchCookieHandler();
+    const debouncedGetResponse = useRef();
+
+    useEffect(() => {
+        debouncedGetResponse.current = debounce(getResponse, 3000); // Set debounce delay here
+    }, []);
 
     useEffect(()=>{
+        console.log('useEffect1')
         if (searchbar.searchbar.length>0){
             saveToCookies(searchbar.searchbar)
-            getResponse(searchbar.searchbar)
+            debouncedGetResponse.current(searchbar.searchbar)
         }
     },[])
 
     useEffect(()=>{
-        getResponse(searchbar.searchbar)
+        console.log('useEffect2')
+        debouncedGetResponse.current(searchbar.searchbar);
     },[allergens])
 
     const handleTextChange = (input) =>{
@@ -36,8 +44,9 @@ const Searchbar = ({ curAllergen }) => {
     }
     
     const handleSubmit = async (event) =>{
+        console.log('submitting')
         event.preventDefault()
-        getResponse()
+        debouncedGetResponse.current(textbar);
         navigate('/')
     }
 
@@ -57,7 +66,11 @@ const Searchbar = ({ curAllergen }) => {
             })
             console.log('foodresponse:', foodResponse)
             // const foodResponse = await axios.get(`https://api.edamam.com/api/food-database/v2/parser?app_id=3b4e6a49&app_key=8d49f61369d7dda4935235b21c07a612&ingr=${initialInput}&nutrition-type=cooking${allergenText}`);
-            // const recipeResponse = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${initialInput}&app_id=b5bdebe7&app_key=%2020298931767c31f1e76a6473d8cdd7bc&${allergenText}`)
+            // const recipeResponse = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${initialInput}&app_id=b5bdebe7&app_key=%2020298931767c31f1e76a6473d8cdd7bc`)
+            // const recipeResponse = await axios.post('http://localhost:5000/api/recipe?page=1', {
+            //     search: initialInput,
+            //     excludeIngredients: sendAllergens
+            // })
             dispatch(addProducts(foodResponse.data))
             // dispatch(addRecipes(recipeResponse.data))
         } catch (error) {
