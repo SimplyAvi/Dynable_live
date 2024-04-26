@@ -10,11 +10,12 @@ const Ingredients = require('../db/models/Recipe/Ingredients');
 
 // Function to read JSON files and seed data
 const seedRecipes = async () => {
-  const jsonDir = path.join(__dirname, './seeding/recipes/recipes-master/index'); // Assuming JSON files are stored in a directory named 'data' within the project
+  const jsonDir = path.join(__dirname, './Data/Recipes'); // Assuming JSON files are stored in a directory named 'data' within the project
   try {
     // Read all files in the directory
     const files = fs.readdirSync(jsonDir);
-
+    let totalRecipes = 0
+    let totalIngredients = 0
     // Loop through each file
     for (const file of files) {
       const innerFiles = fs.readdirSync(`${jsonDir}/${file}`)
@@ -32,7 +33,7 @@ const seedRecipes = async () => {
           tags: data.tags,
           url: data.url
         },{ validate: true , logging: false });
-
+        totalRecipes++
         // Create ingredient records and associate with recipe
         // ** FOR FUTURE ADD NEW ALGO TO REMOVE QUANTITY IF IT EXISTS**
         // USE QUANTITY 
@@ -46,14 +47,15 @@ const seedRecipes = async () => {
             RecipeId: recipe.id
           };
         });
-
+        totalIngredients+=ingredients.length
         await Ingredients.bulkCreate(ingredients, { validate: true , logging: false });
         // console.log('seeding Ingredients:', ingredients)
       }
       // console.log(`Data seeded from ${file}/${innerFile}`);
     }
-      console.log(`Data seeded from ${file}`);
+      // console.log(`Data seeded from ${file}`);
   }
+    console.log(`seeded ${totalRecipes}recipes and ${totalIngredients}ingredients`)
     console.log('All recipes seeded successfully');
   } catch (error) {
     console.error('Error seeding data:', error);
