@@ -14,7 +14,7 @@ import {debounce} from 'lodash'
 const Searchbar = ({ curAllergen }) => {
 
     const textbar = useSelector((state)=> state.searchbar.searchbar)
-    const [searchbar] = useCookies(['searchbar']);
+    const [searchbar, setSearchbar] = useCookies(['searchbar']);
     const [filters] = useCookies(['allergens'])
     const {allergens} = filters
     const dispatch = useDispatch();
@@ -28,6 +28,9 @@ const Searchbar = ({ curAllergen }) => {
 
     useEffect(()=>{
         console.log('useEffect1')
+        if (!searchbar.searchbar) {
+            setSearchbar('searchbar', )
+        }
         if (searchbar.searchbar.length>0){
             saveToCookies(searchbar.searchbar)
             debouncedGetResponse.current(searchbar.searchbar)
