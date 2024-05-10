@@ -1,5 +1,5 @@
 const express = require('express')
-const {OP, Sequelize} = require('sequelize')
+const { Op, Sequelize } = require('sequelize');
 const router = express.Router()
 const Recipe = require('../db/models/Recipe/Recipe')
 
@@ -19,16 +19,12 @@ router.post('/api/recipe', async (req,res)=>{
       };
     }
 
-        //  const recipeResponse = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${search}&app_id=b5bdebe7&app_key=%2020298931767c31f1e76a6473d8cdd7bc`)
-        // console.log('recipeResponse:', recipeResponse.data)
-      const recipes = await Recipe.findAll({
+      const recipeResponse = await Recipe.findAll({
         where: whereClause,
         limit: parseInt(limit, 10)
       })
-
-
     
-        res.json(recipeResponse.data)
+        res.json(recipeResponse)
 
         // return res.json({
         //   totalCount,
@@ -41,5 +37,24 @@ router.post('/api/recipe', async (req,res)=>{
         return res.status(500).json({ error: 'Internal server error' });
       }
 })
+
+// GET /api/recipe route for searching recipe
+router.get('/api/recipe', async (req, res) => {
+  try {
+    const { id } = req.query;
+    console.log('looking for:', id)
+
+    const recipe = await Recipe.findByPk(id)
+
+    if (!recipe) {
+      return res.status(404).json({ error: 'Recipe not found' });
+    }
+    return res.json(recipe)
+
+  } catch (error) {
+    console.error('Error searching for recipes:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 module.exports = router

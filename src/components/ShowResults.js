@@ -17,6 +17,7 @@ const ShowResults = () =>{
 
     if (Object.values(products).length>0){
         console.log('foods:',products.foods[0])
+        console.log('recipes', recipes)
         return(
             <div>
             Showing results for : {products.text}
@@ -25,8 +26,8 @@ const ShowResults = () =>{
                 <button value='recipe' onClick={onSelection}>Recipe</button>
             </div>
             {renderItems==='recipe'?
-                recipes.hits.map((recipe,key)=>{
-                    return <RecipeCard key={key} recipe={recipe} id={key}/>
+                recipes.map((recipe,key)=>{
+                    return <RecipeCard key={key} recipe={recipe} id={recipe.id}/>
                 }):null
             }
             {renderItems==='products'?
