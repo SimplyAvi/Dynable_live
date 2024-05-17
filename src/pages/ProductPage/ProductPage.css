@@ -9,3 +9,13 @@
 .img{
     width: 80%;
 }
+
+.ingredients{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ingredients-title{
+    margin:0;
+    
+}
