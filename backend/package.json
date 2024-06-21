@@ -7,13 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node seed/seed.js",
     "shrink": "node seed/shrinking/shrinkfile2.js",
-    "seedRecipe" : "node seed/seedRecipe.js"
+    "seedRecipe": "node seed/seedRecipe.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "csv-writer": "^1.6.0",
     "express": "^4.18.3",
     "jsonstream": "^1.0.3",
     "pg": "^8.11.3",

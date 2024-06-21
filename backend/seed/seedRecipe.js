@@ -40,7 +40,7 @@ const seedRecipes = async () => {
         const ingredients = data.ingredients.map(ingredient => {
           const splitI = ingredient.split(' ');
           const quantity = splitI[0]
-          const name = splitI.slice(1,splitI.length-1).join(' ')
+          const name = splitI.slice(1,splitI.length).join(' ')
           return {
             quantity,
             name,
