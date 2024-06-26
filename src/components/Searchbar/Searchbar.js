@@ -67,12 +67,13 @@ const Searchbar = ({ curAllergen }) => {
             console.log('foodresponse:', foodResponse)
             // const foodResponse = await axios.get(`https://api.edamam.com/api/food-database/v2/parser?app_id=3b4e6a49&app_key=8d49f61369d7dda4935235b21c07a612&ingr=${initialInput}&nutrition-type=cooking${allergenText}`);
             // const recipeResponse = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${initialInput}&app_id=b5bdebe7&app_key=%2020298931767c31f1e76a6473d8cdd7bc`)
-            // const recipeResponse = await axios.post('http://localhost:5000/api/recipe?page=1', {
-            //     search: initialInput,
-            //     excludeIngredients: sendAllergens
-            // })
+            const recipeResponse = await axios.post('http://localhost:5000/api/recipe?page=1', {
+                search: initialInput,
+                excludeIngredients: sendAllergens
+            })
+            console.log('Recipe response:', recipeResponse)
             dispatch(addProducts(foodResponse.data))
-            // dispatch(addRecipes(recipeResponse.data))
+            dispatch(addRecipes(recipeResponse.data))
         } catch (error) {
             console.error(error);
         }
