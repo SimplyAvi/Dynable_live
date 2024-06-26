@@ -7,45 +7,52 @@ import { useSelector } from 'react-redux';
 
 const RecipePage = () =>{
     
-    // const { id } = useParams();
-    // const [item, setItem] = useState({})
+    const { id } = useParams();
+    const [item, setItem] = useState({})
 
-    // useEffect(()=>{
-    //     //get product info via ID
-    //     getProduct()
-    // },[])
+    useEffect(()=>{
+        //get product info via ID
+        getProduct()
+    },[])
 
-    // const getProduct = async () =>{
-    //     try{
-    //         // const productResponse = await axios.get(`http://localhost:5000/api/product/?id=${id}`)
-    //         setItem(productResponse.data)
-    //     } catch(err){
-    //         console.log(err)
-    //     }
-    // }
+    const getProduct = async () =>{
+        try{
+            const recipeResponse = await axios.get(`http://localhost:5000/api/recipe/?id=${id}`)
+            console.log('p[rodduct response:', recipeResponse)
+            setItem(recipeResponse.data)
+        } catch(err){
+            console.log(err)
+        }
+    }
 
 
-    // const product = useSelector(( state)=> state.products.productsResults.foods[id])
+    // const recipe = useSelector(( state)=> state.recipe.recipeResults.foods[id])
     // console.log('single product info:', product)
-    const {description, ingredients, source, ingredientLines } = recipe
+    const {directions, ingredients, source, ingredientLines } = item
 
-    return(
-        <div>
-            <SearchAndFilter />
-            <div className='img-wrapper'>
-                <img className='img' src={'https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=996'}/>
-            </div>
+    if (!directions) return (<div></div>)
+    else {
+        return(
             <div>
-                <h3>Source: {source}</h3>
-                <h4>{description}</h4>
+                <SearchAndFilter />
+                <div className='img-wrapper'>
+                    <img className='img' src={'https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=996'}/>
+                </div>
+                <div>
+                    <h3>Source: {source}</h3>
+                    Directions:
+                    {directions.map((text,key)=>{
+                        return <h4 key={key}>Step {key+1}: {text}</h4>
+                    })}
+                </div>
+                <div>
+                    <p>Ingredients: {ingredients}</p>
+                </div>
+                <div>
+                </div>
             </div>
-            <div>
-                <p>{ingredients}</p>
-            </div>
-            <div>
-            </div>
-        </div>
     )
+}
 }
 
 export default RecipePage

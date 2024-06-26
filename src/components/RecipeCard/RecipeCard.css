@@ -1,0 +1,20 @@
+.card-wrapper{
+    height: 80px;
+    width: 80vw;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-img{
+    /* height: 45px; */
+    padding-right: 15vw;
+    width: 15vw;
+}
+
+.card-label{
+    display: flex;
+    width: 70vw;
+    justify-content: left;
+}
