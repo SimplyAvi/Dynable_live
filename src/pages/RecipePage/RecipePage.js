@@ -4,6 +4,7 @@ import axios from 'axios'
 import './RecipePage.css'
 import SearchAndFilter from '../../components/SearchAndFilter/SearchAndFilter';
 import { useSelector } from 'react-redux';
+import RecipeToProductCard from '../../components/RecipeToProductCards/RecipeToProductCard';
 
 const RecipePage = () =>{
     
@@ -18,7 +19,7 @@ const RecipePage = () =>{
     const getProduct = async () =>{
         try{
             const recipeResponse = await axios.get(`http://localhost:5000/api/recipe/?id=${id}`)
-            console.log('p[rodduct response:', recipeResponse)
+            console.log('product response:', recipeResponse)
             setItem(recipeResponse.data)
         } catch(err){
             console.log(err)
@@ -28,7 +29,7 @@ const RecipePage = () =>{
 
     // const recipe = useSelector(( state)=> state.recipe.recipeResults.foods[id])
     // console.log('single product info:', product)
-    const {directions, ingredients, source, ingredientLines } = item
+    const {directions, Ingredients, source, ingredientLines } = item
 
     if (!directions) return (<div></div>)
     else {
@@ -46,7 +47,10 @@ const RecipePage = () =>{
                     })}
                 </div>
                 <div>
-                    <p>Ingredients: {ingredients}</p>
+                    <p>Ingredients:</p>
+                    {Ingredients? Ingredients.map((ingredient,key)=>{
+                        return <RecipeToProductCard key={key} ingredient={ingredient} />
+                    }):null}
                 </div>
                 <div>
                 </div>
