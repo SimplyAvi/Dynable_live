@@ -2,11 +2,12 @@ const express = require('express')
 const { Op, Sequelize } = require('sequelize');
 const router = express.Router()
 const Recipe = require('../db/models/Recipe/Recipe')
+const Ingredient = require('../db/models/Recipe/Ingredient')
 
 // Post request to send allergens to be filtered during api call
 router.post('/api/recipe', async (req,res)=>{
     try {
-        const { search , excludeIngredients } = req.body || {};
+        const { search, excludeIngredients } = req.body || {};
         const { page = 1, limit = 10 } = req.query;
     
         console.log('search:', search, 'exclude:', excludeIngredients, req.body)
@@ -18,9 +19,20 @@ router.post('/api/recipe', async (req,res)=>{
         [Op.iLike]: `%${search}%`,
       };
     }
+    // if (ingredients){
+    //   includeClause.model = Ingredient
+    //   includeClause.where = {
+    //     RecipeId : 
+    //   }
+    // }
 
       const recipeResponse = await Recipe.findAll({
         where: whereClause,
+        include: [{
+          model: Ingredient,
+          attributes: ['id','name','SubcategoryID', 'quantity'],
+          required: true,
+        }],
         limit: parseInt(limit, 10)
       })
     
@@ -44,7 +56,12 @@ router.get('/api/recipe', async (req, res) => {
     const { id } = req.query;
     console.log('looking for:', id)
 
-    const recipe = await Recipe.findByPk(id)
+    const recipe = await Recipe.findByPk(id,{
+      include: [{
+        model: Ingredient,
+        required: false,
+      }],
+    })
 
     if (!recipe) {
       return res.status(404).json({ error: 'Recipe not found' });

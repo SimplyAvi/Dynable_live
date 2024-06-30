@@ -10,6 +10,7 @@ const sequelize = new Sequelize(database, username, password, {
   host: host,
   // port: port,
   dialect: dialect,
+  logging:false,
 });
 
 module.exports = sequelize;

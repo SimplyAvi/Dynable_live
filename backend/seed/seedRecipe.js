@@ -5,8 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const sequelize = require('../db/database');
 const Recipe = require('../db/models/Recipe/Recipe');
-
-const Ingredients = require('../db/models/Recipe/Ingredients');
+const Ingredient = require('../db/models/Recipe/Ingredient');
 
 // Function to read JSON files and seed data
 const seedRecipes = async () => {
@@ -48,8 +47,8 @@ const seedRecipes = async () => {
           };
         });
         totalIngredients+=ingredients.length
-        await Ingredients.bulkCreate(ingredients, { validate: true , logging: false });
-        // console.log('seeding Ingredients:', ingredients)
+        await Ingredient.bulkCreate(ingredients, { validate: true , logging: false });
+        // console.log('seeding Ingredient:', ingredients)
       }
       // console.log(`Data seeded from ${file}/${innerFile}`);
     }
