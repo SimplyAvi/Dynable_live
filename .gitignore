@@ -3,7 +3,10 @@
 # dependencies
 /node_modules
 /backend/node_modules
-/backend/seed/Data
+/backend/seed/Data/Products
+/backend/seed/Data/Recipes
+/backend/seed/categorized_ingredients.csv
+/backend/seed/other_ingredients.csv
 
 /.pnp
 .pnp.js
