@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../../database');
+const Category = require('./Category')
 
 // Define the Subcategory model
 const Subcategory = sequelize.define('Subcategory', {
@@ -19,8 +20,6 @@ const Subcategory = sequelize.define('Subcategory', {
         key: 'CategoryID'
       }
     }
-  }, {
-    tableName: 'subcategories'
-  });
+  })
 
 module.exports = Subcategory

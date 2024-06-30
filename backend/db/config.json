@@ -5,7 +5,8 @@
       "database": "Eatems",
       "host": "localhost",
       "port": "5432",
-      "dialect": "postgres"
+      "dialect": "postgres",
+      "logging": "false"
     }
   }
   
