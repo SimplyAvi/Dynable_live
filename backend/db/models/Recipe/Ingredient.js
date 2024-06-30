@@ -12,13 +12,13 @@ const Ingredient = sequelize.define('Ingredient', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  subcategoryID: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: 'Subcategory', // table name
-      key: 'SubcategoryID'
-    }
-  }
+  // subcategoryID: {
+  //   type: DataTypes.INTEGER,
+  //   references: {
+  //     model: 'Subcategory', // table name
+  //     key: 'SubcategoryID'
+  //   }
+  // }
 });
 
 module.exports = Ingredient;
