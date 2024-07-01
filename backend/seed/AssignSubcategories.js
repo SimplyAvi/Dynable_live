@@ -1,4 +1,4 @@
-const { Subcategory, Ingredient } = require('../db/models');
+const { Subcategory, Ingredient, Food } = require('../db/models');
 const detailedCategories = require('../seed/Data/DetailedCategories')
 
 async function categorizeIngredient(name) {
@@ -14,6 +14,7 @@ async function categorizeIngredient(name) {
 }
 
 async function assignSubcategories() {
+  console.time('assignSubcategoriesIngredients'); // Start the timer
   try{
     let counter = 0
     const ingredients = await Ingredient.findAll();
@@ -25,7 +26,25 @@ async function assignSubcategories() {
         counter++
       }
     }
+    console.timeEnd('assignSubcategoriesIngredients');
     console.log(`${counter} Subcategories assigned to ingredients.`);
+  } catch(error){
+    console.error(error)
+  }
+  try{
+    console.time('assignSubcategoriesProducts');
+    let counter = 0
+    const products = await Food.findAll();
+    for (const product of products){
+      const subcategoryID = await categorizeIngredient(product.description);
+      if (subcategoryID) {
+        product.SubcategoryID = subcategoryID;
+        await product.save({ logging: false });
+        counter++
+      }
+    }
+    console.timeEnd('assignSubcategoriesProducts');
+    console.log(`${counter} Subcategories assigned to products(Foods).`);
   } catch(error){
     console.error(error)
   }
