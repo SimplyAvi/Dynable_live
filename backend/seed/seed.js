@@ -28,6 +28,7 @@ async function seed(){
 // The `seed` function is concerned only with modifying the database.
 async function runSeed() {
     console.log('seeding...')
+    console.time('seed')
     try {
       await seed()
       await seedRecipes()
@@ -41,6 +42,7 @@ async function runSeed() {
       await db.close()
       console.log('db connection closed')
     }
+    console.timeEnd('seed')
   }
   
   // Execute the `seed` function, IF we ran this module directly (`node seed`).

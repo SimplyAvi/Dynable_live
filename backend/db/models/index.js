@@ -18,6 +18,8 @@ Category.hasMany(Subcategory, { foreignKey: 'CategoryID' });
 Subcategory.belongsTo(Category, { foreignKey: 'CategoryID' });
 Subcategory.hasMany(Ingredient, { foreignKey: 'SubcategoryID' });
 Ingredient.belongsTo(Subcategory, { foreignKey: 'SubcategoryID' });
+Subcategory.hasMany(Food, { foreignKey: 'SubcategoryID' });  
+Food.belongsTo(Subcategory, {foreignKey: 'SubcategoryID'})
 
 
 // Define other associations here
