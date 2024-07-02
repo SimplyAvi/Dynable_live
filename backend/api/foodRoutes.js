@@ -2,6 +2,7 @@ const express = require('express');
 const { Op, Sequelize } = require('sequelize');
 const router = express.Router();
 const Food = require('../db/models/Food');
+const { Subcategory } = require('../db/models');
 
 // GET /api/foods route for searching foods
 router.get('/api/foods', async (req, res) => {
@@ -126,5 +127,57 @@ router.get('/api/product', async (req, res) => {
     return res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+router.post('/api/product/subcat', async (req,res)=>{
+  try {
+    const {id, allergens} = req.body || {}
+    // Find one food item with the specified subcategoryId
+    const foodItem = await Food.findOne({
+        where: {
+            SubcategoryID: id,
+            allergens: {
+                [Sequelize.Op.notIn]: allergens
+            }
+        }
+    });
+
+    // If no food item found or it contains excluded allergens, return null
+    if (!foodItem) {
+        return null;
+    }
+    res.json(foodItem)
+} catch (err) {
+    console.error('Error finding food item:', err);
+    throw err;
+}
+})
+
+router.post('/api/product/nosubcat', async (req,res)=>{
+  try {
+    const {name, allergens} = req.body || {}
+    // Find one food item with a name similar to the given name
+    const foodItem = await Food.findOne({
+        where: {
+            description: {
+                [Op.like]: `%${name}%`
+            },
+            allergens: {
+                [Op.overlap]: [], // Ensure the allergens array is defined
+                [Op.notIn]: excludedAllergens
+            }
+        }
+    });
+
+    // If no food item found or it contains excluded allergens, return null
+    if (!foodItem) {
+        return null;
+    }
+
+    res.json(foodItem)
+} catch (err) {
+    console.error('Error finding food item:', err);
+    throw err;
+}
+})
 
 module.exports = router;
