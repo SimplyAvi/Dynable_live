@@ -29,7 +29,7 @@ const RecipePage = () =>{
 
     // const recipe = useSelector(( state)=> state.recipe.recipeResults.foods[id])
     // console.log('single product info:', product)
-    const {directions, Ingredients, source, ingredientLines } = item
+    const {directions, Ingredients, source, ingredientLines, title } = item
 
     if (!directions) return (<div></div>)
     else {
@@ -40,6 +40,7 @@ const RecipePage = () =>{
                     <img className='img' src={'https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=996'}/>
                 </div>
                 <div>
+                    <h1>{title}</h1>
                     <h3>Source: {source}</h3>
                     Directions:
                     {directions.map((text,key)=>{
@@ -48,6 +49,7 @@ const RecipePage = () =>{
                 </div>
                 <div>
                     <p>Ingredients:</p>
+                    {console.log('ingredients:', Ingredients)}
                     {Ingredients? Ingredients.map((ingredient,key)=>{
                         return <RecipeToProductCard key={key} ingredient={ingredient} />
                     }):null}

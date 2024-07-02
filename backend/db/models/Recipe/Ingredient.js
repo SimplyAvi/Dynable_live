@@ -12,7 +12,7 @@ const Ingredient = sequelize.define('Ingredient', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  // subcategoryID: {
+  // SubcategoryID: {
   //   type: DataTypes.INTEGER,
   //   references: {
   //     model: 'Subcategory', // table name
