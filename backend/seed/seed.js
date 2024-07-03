@@ -1,6 +1,8 @@
 const db = require('../db/database')
 const {Food} = require('../db/models')
 const seedRecipes = require('./seedRecipe')
+const seedCategories = require('./seedCategories')
+const assignSubcategories = require('./AssignSubcategories')
 
 async function seed(){
     try {
@@ -9,7 +11,7 @@ async function seed(){
 
         let totalSeeded = 0
         let foods
-        for (let i=27; i<=47; i++){
+        for (let i=38; i<=47; i++){
           const foodArr = require(`./Data/Products/split_${i}.js`)
           foods = await Food.bulkCreate(foodArr, { validate: true , logging: false });
           console.log(`completed bulkcreate${i}`, foods.length)
@@ -27,8 +29,10 @@ async function seed(){
 async function runSeed() {
     console.log('seeding...')
     try {
-      await seed()
-      // await seedRecipes()
+      // await seed()
+      await seedRecipes()
+      await seedCategories()
+      await assignSubcategories()
     } catch(err) {
       console.error(err)
       process.exitCode = 1

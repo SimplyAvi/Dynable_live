@@ -38,8 +38,9 @@ const ProductPage = () =>{
                 <h3>{brandName}</h3>
                 <h4>{description}</h4>
             </div>
-            <div>
-                <p>{ingredients}</p>
+            <div className='ingredients'>
+                <h3 className='ingredients-title'>Ingredients:</h3>
+                <p> {ingredients}</p>
             </div>
             <div>
                 {/* {Object.keys(nutrients).map((nutrient,key)=>{
