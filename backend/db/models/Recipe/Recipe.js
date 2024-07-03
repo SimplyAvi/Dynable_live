@@ -2,7 +2,7 @@
 
 const { DataTypes } = require('sequelize');
 const sequelize = require('../../database');
-const Ingredients = require('./Ingredients');
+const Ingredient = require('./Ingredient');
 
 const Recipe = sequelize.define('Recipe', {
   title: {
@@ -28,7 +28,7 @@ const Recipe = sequelize.define('Recipe', {
 });
 
 // Define one-to-many relationship
-Recipe.hasMany(Ingredients, { onDelete: 'CASCADE' });
-Ingredients.belongsTo(Recipe);
+Recipe.hasMany(Ingredient, { onDelete: 'CASCADE' });
+Ingredient.belongsTo(Recipe);
 
 module.exports = Recipe;
