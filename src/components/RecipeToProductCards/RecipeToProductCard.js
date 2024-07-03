@@ -45,10 +45,13 @@ const RecipeToProductCard = ({ingredient}) => {
     }
 
     return(
-        <div className='products-in-recipe-card'>
-            <img className='img' src={`https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=996`} />
-            <h3>{item.brandName}</h3>
-            <p>{item.description.slice(0,50)}</p>
+        <div className='ingredients-list'>
+            <div className='products-in-recipe-card'>
+                <img className='img' src={`${process.env.PUBLIC_URL}/default_img.png`} />
+                <h3>{item.brandName}</h3>
+                <p>{item.description? item.description.slice(0,50):''}</p>
+            </div>
+            <div className='ingredient'>{ingredient.name}</div>
         </div>
     )
 }
