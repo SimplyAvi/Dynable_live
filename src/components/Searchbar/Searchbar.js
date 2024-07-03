@@ -93,7 +93,7 @@ const Searchbar = ({ curAllergen }) => {
 
     return(
         <div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='search-form'>
                 <FormInput  
                     name='searchText' 
                     type='text' 

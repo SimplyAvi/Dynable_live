@@ -1,6 +1,12 @@
-.products-in-recipe-card{
-    width:30%;
+.products-in-recipe-card,
+.ingredient {
+  flex: 1; /* Each takes up 50% of the width */
+  padding: 10px; /* Add some padding for better presentation */
+  box-sizing: border-box; /* Ensure padding doesn't affect the width calculation */
 }
-.img{
-    width:80%;
+.img {
+  width: 80%;
+}
+.ingredients-list {
+  display: flex;
 }

@@ -7,7 +7,7 @@ const addAllergenTags = require('./AddAllergyTags')
 
 async function seed(){
     try {
-        await db.sync()
+      await db.sync({ force: true })
         console.log('db synced!')
 
         let totalSeeded = 0
@@ -31,7 +31,7 @@ async function runSeed() {
     console.log('seeding...')
     console.time('seed')
     try {
-      // await seed()
+      await seed()
       await seedRecipes()
       await seedCategories()
       await assignSubcategories()
