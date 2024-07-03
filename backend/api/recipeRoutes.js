@@ -2,7 +2,8 @@ const express = require('express')
 const { Op, Sequelize } = require('sequelize');
 const router = express.Router()
 const Recipe = require('../db/models/Recipe/Recipe')
-const Ingredient = require('../db/models/Recipe/Ingredient')
+const Ingredient = require('../db/models/Recipe/Ingredient');
+const { Subcategory } = require('../db/models');
 
 // Post request to send allergens to be filtered during api call
 router.post('/api/recipe', async (req,res)=>{
@@ -30,11 +31,14 @@ router.post('/api/recipe', async (req,res)=>{
         where: whereClause,
         include: [{
           model: Ingredient,
-          attributes: ['id','name','SubcategoryID', 'quantity'],
+          include: [{
+            model: Subcategory,
+          }],
           required: true,
         }],
         limit: parseInt(limit, 10)
       })
+      // console.log('recipe response:', recipeResponse)
     
         res.json(recipeResponse)
 

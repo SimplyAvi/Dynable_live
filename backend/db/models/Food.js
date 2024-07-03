@@ -21,6 +21,7 @@ const Food = sequelize.define('Food', {
   fdcId: { type: DataTypes.INTEGER },
   publicationDate: { type: DataTypes.DATE },
   packageWeight: { type: DataTypes.STRING },
+  allergens: {type:DataTypes.ARRAY(DataTypes.STRING)},
   // Add other properties as needed
 });
 
