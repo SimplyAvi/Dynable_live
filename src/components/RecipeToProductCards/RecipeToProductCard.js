@@ -24,12 +24,21 @@ const RecipeToProductCard = ({ingredient}) => {
 
     const getProduct = async () =>{
         try{
+            const subcat = ingredient.SubcategoryID
             const sendAllergens = filteredAllergens()
-            const productResponse = await axios.post(`http://localhost:5000/api/foods?page=1`, {
-                name: ingredient, 
-                excludeIngredients: sendAllergens
-            })
+            if (subcat){
+                const productResponse = await axios.post(`http://localhost:5000/api/product/subcat`, {
+                    id: subcat,
+                    allergens: sendAllergens
+                })
             setItem(productResponse.data)
+            } else {
+                const productResponse = await axios.post(`https://localhost:5000/api/product/nosubcat`, {
+                    name: ingredient.name,
+                    allergens: sendAllergens
+                })
+                setItem(productResponse)
+            }
         } catch(err){
             console.log(err)
         }
@@ -37,9 +46,9 @@ const RecipeToProductCard = ({ingredient}) => {
 
     return(
         <div className='products-in-recipe-card'>
-            <h3>Brand Name</h3>
-            <p>description</p>
             <img className='img' src={`https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=996`} />
+            <h3>{item.brandName}</h3>
+            <p>{item.description.slice(0,50)}</p>
         </div>
     )
 }

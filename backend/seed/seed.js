@@ -3,6 +3,7 @@ const {Food} = require('../db/models')
 const seedRecipes = require('./seedRecipe')
 const seedCategories = require('./seedCategories')
 const assignSubcategories = require('./AssignSubcategories')
+const addAllergenTags = require('./AddAllergyTags')
 
 async function seed(){
     try {
@@ -28,11 +29,13 @@ async function seed(){
 // The `seed` function is concerned only with modifying the database.
 async function runSeed() {
     console.log('seeding...')
+    console.time('seed')
     try {
       // await seed()
       await seedRecipes()
       await seedCategories()
       await assignSubcategories()
+      await addAllergenTags()
     } catch(err) {
       console.error(err)
       process.exitCode = 1
@@ -41,6 +44,7 @@ async function runSeed() {
       await db.close()
       console.log('db connection closed')
     }
+    console.timeEnd('seed')
   }
   
   // Execute the `seed` function, IF we ran this module directly (`node seed`).
