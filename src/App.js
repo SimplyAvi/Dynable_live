@@ -9,9 +9,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Dynable is now Eatems
-        </p>
         <div>
           <Routes>
             <Route exact path='/' Component={Homepage} />

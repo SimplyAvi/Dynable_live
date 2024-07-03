@@ -20,7 +20,7 @@ const ShowResults = () =>{
         console.log('recipes', recipes)
         return(
             <div>
-            Showing results for : {products.text}
+            {products.text}
             <div>
                 <button value='products' onClick={onSelection}>Products</button>
                 <button value='recipe' onClick={onSelection}>Recipe</button>

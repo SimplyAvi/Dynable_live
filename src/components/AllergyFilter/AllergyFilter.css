@@ -1,7 +1,12 @@
-.filter-false{
-    background-color: khaki;
+.filter-false {
+  background-color: rgb(54, 54, 54);
+  color: white;
+  border-radius: 6.5px;
+  border-color: rgba(0, 255, 55, 0.541);
 }
 
-.filter-true{
-    background-color: white;
+.filter-true {
+  background-color: white;
+  border-radius: 6.5px;
+  border-color: rgba(0, 0, 0, 0.945);
 }
