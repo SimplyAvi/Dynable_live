@@ -32,7 +32,7 @@ const ProductPage = () =>{
         <div>
             <SearchAndFilter />
             <div className='img-wrapper'>
-                <img className='img' src={'https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=996'}/>
+                <img className='img' src={`${process.env.PUBLIC_URL}/default_img.png`}/>
             </div>
             <div>
                 <h3>{brandName}</h3>
