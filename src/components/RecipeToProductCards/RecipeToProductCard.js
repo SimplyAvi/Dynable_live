@@ -27,13 +27,13 @@ const RecipeToProductCard = ({ingredient}) => {
             const subcat = ingredient.SubcategoryID
             const sendAllergens = filteredAllergens()
             if (subcat){
-                const productResponse = await axios.post(`http://localhost:5000/api/product/subcat`, {
+                const productResponse = await axios.post(`http://localhost:5001/api/product/subcat`, {
                     id: subcat,
                     allergens: sendAllergens
                 })
             setItem(productResponse.data)
             } else {
-                const productResponse = await axios.post(`https://localhost:5000/api/product/nosubcat`, {
+                const productResponse = await axios.post(`https://localhost:5001/api/product/nosubcat`, {
                     name: ingredient.name,
                     allergens: sendAllergens
                 })
