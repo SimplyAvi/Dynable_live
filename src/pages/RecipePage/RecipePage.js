@@ -37,14 +37,14 @@ const RecipePage = () =>{
             <div>
                 <SearchAndFilter />
                 <div className='img-wrapper'>
-                    <img className='img' src={'https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=996'}/>
+                    <img className='img' src={`${process.env.PUBLIC_URL}/default_img.png`}/>
                 </div>
                 <div>
                     <h1>{title}</h1>
                     <h3>Source: {source}</h3>
                     Directions:
                     {directions.map((text,key)=>{
-                        return <h4 key={key}>Step {key+1}: {text}</h4>
+                         <h4 key={key}>Step {key+1}: {text}</h4>
                     })}
                 </div>
                 <div>

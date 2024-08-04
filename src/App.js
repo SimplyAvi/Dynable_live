@@ -4,6 +4,7 @@ import Homepage from './pages/Homepage';
 import './App.css';
 import ProductPage from './pages/ProductPage/ProductPage';
 import RecipePage from './pages/RecipePage/RecipePage';
+import foodCategoryTable from './pages/Catagory_Testing/CatagoryPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Route exact path='/' Component={Homepage} />
             <Route path='/product/:id' Component={ProductPage} />
             <Route path='/recipe/:id' Component={RecipePage} />
+            <Route path='/catagories' Component={foodCategoryTable} />
           </Routes>
         </div>
       </header>
