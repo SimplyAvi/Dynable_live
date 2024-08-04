@@ -25,5 +25,13 @@
     "python": "^0.0.4",
     "sequelize": "^6.37.1"
   },
-  "description": ""
+  "description": "",
+
+  "babel": {
+    "presets": ["@babel/preset-env", "@babel/preset-react"],
+    "plugins": [
+      "@babel/plugin-proposal-private-methods",
+      "@babel/plugin-proposal-private-property-in-object"
+   ]
+  }
 }
