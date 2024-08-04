@@ -29,7 +29,7 @@ const Searchbar = ({ curAllergen }) => {
     useEffect(()=>{
         console.log('useEffect1')
         if (!searchbar.searchbar) {
-            setSearchbar('searchbar', )
+            setSearchbar('searchbar', '' )
         }
         if (searchbar.searchbar.length>0){
             saveToCookies(searchbar.searchbar)
