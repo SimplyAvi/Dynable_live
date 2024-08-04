@@ -27,17 +27,11 @@ const Searchbar = ({ curAllergen }) => {
     }, []);
 
     useEffect(()=>{
-<<<<<<< HEAD
-        console.log('useEffect1', searchbar)
-        if (!searchbar.searchbar) saveToCookies('')
-        else if (searchbar.searchbar.length>0){
-=======
         console.log('useEffect1')
         if (!searchbar.searchbar) {
             setSearchbar('searchbar', )
         }
         if (searchbar.searchbar.length>0){
->>>>>>> main
             saveToCookies(searchbar.searchbar)
             debouncedGetResponse.current(searchbar.searchbar)
         }
