@@ -7,15 +7,15 @@ const addAllergenTags = require('./AddAllergyTags')
 
 async function seed(){
     try {
-        await db.sync({ force: true })
+      await db.sync({ force: true })
         console.log('db synced!')
 
         let totalSeeded = 0
         let foods
-        for (let i=1; i<=47; i++){
+        for (let i=38; i<=47; i++){
           const foodArr = require(`./Data/Products/split_${i}.js`)
           foods = await Food.bulkCreate(foodArr, { validate: true , logging: false });
-        //   console.log(`completed bulkcreate${i}`, foods.length)
+          console.log(`completed bulkcreate${i}`, foods.length)
           totalSeeded+=foods.length
         }
         console.log(`seeded ${totalSeeded} products!`)
