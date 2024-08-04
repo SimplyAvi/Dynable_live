@@ -52,7 +52,7 @@ const seedRecipes = async () => {
       }
       // console.log(`Data seeded from ${file}/${innerFile}`);
     }
-      // console.log(`Data seeded from ${file}`);
+      console.log(`Data seeded from ${file}`);
   }
     console.log(`seeded ${totalRecipes}recipes and ${totalIngredients}ingredients`)
     console.log('All recipes seeded successfully');
