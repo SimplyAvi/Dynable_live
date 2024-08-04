@@ -10,7 +10,7 @@
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
-    "engines": {
+  "engines": {
     "node": "v22.5.1"
   },
   "keywords": [],
@@ -26,6 +26,4 @@
     "sequelize": "^6.37.1"
   },
   "description": ""
-
-
 }
