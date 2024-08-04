@@ -2,18 +2,18 @@
 
 # dependencies
 /node_modules
-/backend/node_modules
-/backend/seed/Data/Products
-/backend/seed/Data/Recipes
-/backend/seed/categorized_ingredients.csv
-/backend/seed/other_ingredients.csv
+/server/node_modules
+/server/seed/Data/Products
+/server/seed/Data/Recipes
+/server/seed/categorized_ingredients.csv
+/server/seed/other_ingredients.csv
 
 /.pnp
 .pnp.js
 
 # testing
 /coverage
-/backend/seed/seeding
+/server/seed/seeding
 
 # production
 /build
