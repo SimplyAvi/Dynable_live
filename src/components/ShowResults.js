@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import FoodCard from './FoodCard/FoodCard'
 import RecipeCard from './RecipeCard/RecipeCard'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const ShowResults = () =>{
 
@@ -9,17 +10,25 @@ const ShowResults = () =>{
 
     const products = useSelector((state)=>state.products.productsResults)
     const recipes = useSelector((state)=>state.recipes.recipesResults)
+    const navigate = useNavigate();
 
     const onSelection = (event) =>{
         console.log(event.target.value)
         setRenderItems(event.target.value)
     }
 
+    
+    const navToCatagories = () => {
+        console.log('Hello from nav button')
+        navigate('/catagories')
+    }
+
     if (Object.values(products).length>0){
         console.log('foods:',products.foods[0])
         console.log('recipes', recipes)
-        return(
+        return (
             <div>
+            <div onClick={navToCatagories}>'Hello world with monferd'</div>
             {products.text}
             <div>
                 <button value='products' onClick={onSelection}>Products</button>

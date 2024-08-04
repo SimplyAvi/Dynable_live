@@ -132,24 +132,30 @@ router.get('/api/product', async (req, res) => {
 
 router.post('/api/product/subcat', async (req,res)=>{
   try {
-    const {id, allergens} = req.body || {}
+    const { id, allergens } = req.body || {}
+    
+    // Check if id and allergens are provided
+   if (!id || !Array.isArray(allergens)) {
+     return res.status(400).json({ error: 'Invalid input data' });
+   }
     // Find one food item with the specified subcategoryId
+    
     const foodItem = await Food.findOne({
-        where: {
-            SubcategoryID: id,
-            allergens: {
-                [Sequelize.Op.notIn]: allergens
-            }
-        }
+        // where: {
+        //     SubcategoryID: id,
+        //     allergens: {
+        //         [Sequelize.Op.notIn]: allergens
+        //     }
+        // }
     });
 
     // If no food item found or it contains excluded allergens, return null
     if (!foodItem) {
-        return null;
+        return res.status(500).json({ error: 'Internal server error' });
     }
     res.json(foodItem)
 } catch (err) {
-    console.error('Error finding food item:', err);
+    console.error('Error finding food item: there', err);
     throw err;
 }
 })
@@ -165,19 +171,19 @@ router.post('/api/product/nosubcat', async (req,res)=>{
             },
             allergens: {
                 [Op.overlap]: [], // Ensure the allergens array is defined
-                [Op.notIn]: excludedAllergens
+                [Op.notIn]: allergens
             }
         }
     });
 
     // If no food item found or it contains excluded allergens, return null
     if (!foodItem) {
-        return null;
+        return res.status(500).json({ error: 'Internal server error' });
     }
 
     res.json(foodItem)
 } catch (err) {
-    console.error('Error finding food item:', err);
+    console.error('Error finding food item: here', err);
     throw err;
 }
 })
