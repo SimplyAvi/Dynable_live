@@ -11,7 +11,7 @@
     "dev": "nodemon server.js"
   },
   "engines": {
-    "node": "v22.5.1"
+    "node": "16.x"
   },
   "keywords": [],
   "author": "",
