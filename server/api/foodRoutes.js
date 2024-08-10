@@ -46,58 +46,53 @@ router.post('/api/foods', async (req, res) => {
     const { page = 1, limit = 10 } = req.query;
     const offset = (page - 1) * limit;
 
-    // console.log('name:', name, 'exclude:', excludeIngredients, req.body)
+    // Construct the base query
+    let baseQuery = `
+      SELECT * FROM "Food"
+      WHERE 1=1
+    `;
+    let countQuery = `
+      SELECT COUNT(*) FROM "Food"
+      WHERE 1=1
+    `;
+    const replacements = {};
 
-    // Define the search criteria
-    const whereClause = {};
+    // Add search criteria to the query
     if (name) {
-      whereClause.description = {
-        [Op.iLike]: `%${name}%`,
-      };
+      baseQuery += ` AND description ILIKE :name`;
+      countQuery += ` AND description ILIKE :name`;
+      replacements.name = `%${name}%`;
     }
 
-    // Define the exclusion criteria for foods containing certain ingredients
-    const excludedFoodIds = [];
+    // Handle exclusion criteria for foods containing certain ingredients
     if (excludeIngredients && Array.isArray(excludeIngredients) && excludeIngredients.length > 0) {
-      // Find the IDs of foods that contain excluded ingredients
-      const excludedFoods = await Food.findAll({
-        attributes: ['id'],
-        where: {
-          [Op.or]: excludeIngredients.map(excludedIngredient => {
-            return Sequelize.where(
-              Sequelize.col('ingredients'),
-              'ILIKE',
-              `%${excludedIngredient.toLowerCase()}%`
-            );
-          }),
-        },
-      });
-      // console.log('excluding:', excludeIngredients)
-      // console.log(excludedFoods.length)
-      excludedFoodIds.push(...excludedFoods.map(food => food.id));
+      baseQuery += ` AND "id" NOT IN (
+        SELECT "id" FROM "Food" WHERE ` + excludeIngredients.map((_, index) => {
+        replacements[`excludeIngredient${index}`] = `%${excludeIngredients[index].toLowerCase()}%`;
+        return `ingredients ILIKE :excludeIngredient${index}`;
+      }).join(' OR ') + `)`;
+      countQuery += ` AND "id" NOT IN (
+        SELECT "id" FROM "Food" WHERE ` + excludeIngredients.map((_, index) => {
+        return `ingredients ILIKE :excludeIngredient${index}`;
+      }).join(' OR ') + `)`;
     }
 
-   // Perform the query with pagination and exclusion criteria
-    const foods = await Food.findAll({
-      where: {
-        ...whereClause,
-        id: {
-          [Op.notIn]: excludedFoodIds,
-        },
-      },
-      offset,
-      limit: parseInt(limit, 10),
+    // Add pagination to the base query
+    baseQuery += ` LIMIT :limit OFFSET :offset`;
+    replacements.limit = parseInt(limit, 10);
+    replacements.offset = offset;
+
+    // Execute the queries
+    const foods = await Food.sequelize.query(baseQuery, {
+      replacements,
+      type: Sequelize.QueryTypes.SELECT,
+    });
+    const totalCountResult = await Food.sequelize.query(countQuery, {
+      replacements,
+      type: Sequelize.QueryTypes.SELECT,
     });
 
-    // Get the total count of foods for pagination
-    const totalCount = await Food.count({
-      where: {
-        ...whereClause,
-        id: {
-          [Op.notIn]: excludedFoodIds,
-        },
-      },
-    });
+    const totalCount = parseInt(totalCountResult[0].count, 10);
 
     return res.json({
       totalCount,
@@ -138,16 +133,22 @@ router.post('/api/product/subcat', async (req,res)=>{
    if (!id || !Array.isArray(allergens)) {
      return res.status(400).json({ error: 'Invalid input data' });
    }
+
+   // Ensure allergens is an array of strings
+   const validAllergens = allergens.map(String);
+
+   // Log the allergens for debugging purposes
+   console.log('Valid allergens:', validAllergens);
+
     // Find one food item with the specified subcategoryId
     
-    const foodItem = await Food.findOne({
-        // where: {
-        //     SubcategoryID: id,
-        //     allergens: {
-        //         [Sequelize.Op.notIn]: allergens
-        //     }
-        // }
-    });
+    const foodItem =  await Food.sequelize.query(
+      `SELECT * FROM "Food" WHERE "SubcategoryID" = :id AND NOT "allergens" && ARRAY[:allergens]::varchar[] LIMIT 1`,
+      {
+        replacements: { id, allergens: validAllergens },
+        type: Sequelize.QueryTypes.SELECT
+      }
+    );
 
     // If no food item found or it contains excluded allergens, return null
     if (!foodItem) {
