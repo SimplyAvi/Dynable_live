@@ -130,35 +130,42 @@ router.get('/api/product', async (req, res) => {
   }
 });
 
-router.post('/api/product/subcat', async (req,res)=>{
+router.post('/api/product/subcat', async (req, res) => {
   try {
-    const { id, allergens } = req.body || {}
+    const { id, allergens } = req.body || {};
     
-    // Check if id and allergens are provided
-   if (!id || !Array.isArray(allergens)) {
-     return res.status(400).json({ error: 'Invalid input data' });
-   }
-    // Find one food item with the specified subcategoryId
-    
-    const foodItem = await Food.findOne({
-        // where: {
-        //     SubcategoryID: id,
-        //     allergens: {
-        //         [Sequelize.Op.notIn]: allergens
-        //     }
-        // }
+    // Check if id is provided and allergens is an array
+    if (!id || !Array.isArray(allergens)) {
+      return res.status(400).json({ error: 'Invalid input data' });
+    }
+
+    // Ensure allergens is an array of strings
+    console.log('allergens', Array.isArray(allergens), typeof allergens[0])
+    const validAllergens = allergens.map(String);
+
+    // Find one food item with the specified SubcategoryID and excluding certain allergens
+    const foodItem = await Food.findAll({
+      where: {
+        SubcategoryID: id,
+        allergens: {
+          [Op.not]: {
+            [Op.overlap]: validAllergens
+          }
+        }
+      }
     });
 
-    // If no food item found or it contains excluded allergens, return null
+    // If no food item found, return an appropriate response
     if (!foodItem) {
-        return res.status(500).json({ error: 'Internal server error' });
+      return res.status(404).json({ error: 'No food item found' });
     }
-    res.json(foodItem)
-} catch (err) {
-    console.error('Error finding food item: there', err);
-    throw err;
-}
-})
+
+    res.json(foodItem);
+  } catch (err) {
+    console.error('Error finding food item:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 router.post('/api/product/nosubcat', async (req,res)=>{
   try {
