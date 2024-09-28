@@ -27,9 +27,7 @@ app.use(bodyParser.json());
 // Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(cors({
-  origin: 'http://localhost:3000'
-}));
+app.use(cors());
 
 app.use(foodRoutes);
 app.use(recipeRoutes);
