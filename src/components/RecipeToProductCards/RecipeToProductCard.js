@@ -28,14 +28,14 @@ const RecipeToProductCard = ({ingredient}) => {
             const sendAllergens = filteredAllergens()
             console.log('sending allergens:', sendAllergens)
             if (subcat){
-                const productResponse = await axios.post(`http://localhost:5001/api/product/subcat`, {
+                const productResponse = await axios.post(`https://dynable-backend-1514d5a9e35b.herokuapp.com//api/product/subcat`, {
                     id: subcat,
                     allergens: sendAllergens
                 })
                 setItem(productResponse.data)
                 console.log('product response is:', productResponse)
             } else {
-                const productResponse = await axios.post(`http://localhost:5001/api/product/nosubcat`, {
+                const productResponse = await axios.post(`https://dynable-backend-1514d5a9e35b.herokuapp.com//api/product/nosubcat`, {
                     name: ingredient.name,
                     allergens: sendAllergens
                 })

@@ -18,7 +18,7 @@ const RecipePage = () =>{
 
     const getProduct = async () =>{
         try{
-            const recipeResponse = await axios.get(`http://localhost:5001/api/recipe/?id=${id}`)
+            const recipeResponse = await axios.get(`https://dynable-backend-1514d5a9e35b.herokuapp.com//api/recipe/?id=${id}`)
             console.log('product response:', recipeResponse)
             setItem(recipeResponse.data)
         } catch(err){
