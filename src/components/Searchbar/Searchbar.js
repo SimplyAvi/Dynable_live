@@ -31,7 +31,7 @@ const Searchbar = ({ curAllergen }) => {
         if (!searchbar.searchbar) {
             setSearchbar('searchbar', '' )
         }
-        if (searchbar.searchbar.length>0){
+        if (searchbar.searchbar && searchbar.searchbar.length>0){
             saveToCookies(searchbar.searchbar)
             debouncedGetResponse.current(searchbar.searchbar)
         }
