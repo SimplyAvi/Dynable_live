@@ -9,7 +9,7 @@ const AllergyFilter = ({allergenFilters, setAllergenFilters, setCurAllergen, cur
     const [filters, setFilters] = useCookies(['allergens'])
     
     useEffect(()=>{
-        // setFilters('allergens',{})
+        setFilters('allergens',{})
         if(Object.keys(filters.allergens).length>0){
             setAllergenFilters(filters.allergens)
             Object.keys(filters.allergens).map(filter=>{

@@ -35,7 +35,7 @@ const RecipeToProductCard = ({ingredient}) => {
                 setItem(productResponse.data)
                 console.log('product response is:', productResponse)
             } else {
-                const productResponse = await axios.post(`http://localhost:5001/api/product/nosubcat`, {
+                const productResponse = await axios.post(`https://localhost:5001/api/product/nosubcat`, {
                     name: ingredient.name,
                     allergens: sendAllergens
                 })
