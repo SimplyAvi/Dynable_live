@@ -1,5 +1,5 @@
 const { Subcategory, Ingredient, Food } = require('../db/models');
-const detailedCategories = require('../seed/Data/DetailedCategories')
+const detailedCategories = require('./Data/DetailedCategories')
 
 async function categorizeIngredient(name) {
   for (const [category, subcategories] of Object.entries(detailedCategories)) {
