@@ -11,6 +11,7 @@
     "axios": "^1.6.7",
     "babel": "^5.8.38",
     "lodash.debounce": "^4.0.8",
+    "node": "^20.16.0",
     "react": "^18.2.0",
     "react-cookie": "^7.1.0",
     "react-dom": "^18.2.0",
@@ -52,7 +53,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/plugin-transform-private-property-in-object": "^7.24.7",
     "prettier": "3.2.5"
   },
   "babel": {

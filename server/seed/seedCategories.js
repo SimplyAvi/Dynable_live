@@ -1,5 +1,5 @@
 const { Category, Subcategory } = require('../db/models');
-const detailedCategories = require('../seed/Data/DetailedCategories');
+const detailedCategories = require('./Data/DetailedCategories');
 
 
 async function seedCategories() {
