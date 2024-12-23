@@ -1,4 +1,5 @@
 .filter-false {
+  
   background-color: rgb(54, 54, 54);
   color: white;
   border-radius: 6.5px;
@@ -9,4 +10,54 @@
   background-color: white;
   border-radius: 6.5px;
   border-color: rgba(0, 0, 0, 0.945);
+}
+
+/* Outer container to ensure it fits the page */
+.horizontal-scroll-container {
+  display: flex;
+  justify-content: flex-start; /* Align horizontally to the start */
+  align-items: flex-start; /* Align vertically to the top */
+  width: 100vw; /* Full width of the viewport */
+  height: auto; /* Full height of the viewport */
+  overflow: hidden; /* Prevents accidental overflow */
+
+  padding-top: 10px; /* Optional: Adds slight spacing from the top edge */
+}
+
+/* Scrollable content */
+.horizontal-scroll {
+  display: flex;
+  overflow-x: auto; /* Enables horizontal scrolling */
+  gap: 8px; /* Tight spacing between items */
+  padding: 10px;
+  scroll-behavior: smooth; /* Smooth scrolling */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #aaa transparent; /* For Firefox */
+  max-width: calc(100% - 20px); /* Fit inside the container with padding */
+}
+
+/* Custom scrollbar for WebKit browsers */
+.horizontal-scroll::-webkit-scrollbar {
+  height: 6px; /* Horizontal scrollbar height */
+}
+
+.horizontal-scroll::-webkit-scrollbar-thumb {
+  background-color: #aaa; /* Scroll thumb color */
+  border-radius: 10px; /* Rounded corners */
+}
+
+.horizontal-scroll::-webkit-scrollbar-track {
+  background-color: transparent; /* Scroll track color */
+}
+
+/* Scroll items */
+.scroll-item {
+  min-width: 1px; /* Reduced width for tighter fit */
+
+  border-radius: 8px;
+  padding: 1px; /* Reduced padding for compact design */
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0; /* Prevents items from shrinking */
+  user-select: none; /* Disables text selection for better UX */
 }

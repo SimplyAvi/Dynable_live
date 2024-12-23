@@ -28,7 +28,7 @@ const ShowResults = () =>{
         console.log('recipes', recipes)
         return (
             <div>
-            <div onClick={navToCatagories}>'Hello world with monferd'</div>
+            <div className="hello-world-from-monferd" onClick={navToCatagories}></div>
             {products.text}
             <div>
                 <button value='products' onClick={onSelection}>Products</button>

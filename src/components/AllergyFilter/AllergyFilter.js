@@ -38,15 +38,19 @@ const AllergyFilter = ({allergenFilters, setAllergenFilters, setCurAllergen, cur
     }
 
     return(
-        <div>
-            AllergyFilter
+        <div className='horizontal-scroll-container'> 
+         
+            <div className="horizontal-scroll">
+           
+            
             {Object.keys(allergenFilters).map((filter, key)=>{
                 return (
-                <div key={key}>
-                    <button className={allergenFilters[filter]? 'filter-false': 'filter-true'} value={filter} onClick={handleClick}>{filter}</button>
+                <div className="scroll-item" key={key}>
+                    <button class="avi3" className={allergenFilters[filter]? 'filter-false': 'filter-true'} value={filter} onClick={handleClick}>{filter}</button>
                 </div>
                 )
             })}
+             </div>
         </div>
     )
 }

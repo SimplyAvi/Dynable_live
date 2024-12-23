@@ -28,7 +28,7 @@ const SearchAndFilter = () => {
                     />
             </div>
             <div className='Filters'>
-                <p>Filters</p>
+                <p>Allergy Filters</p>
                 <AllergyFilter 
                     allergenFilters={allergenFilters} 
                     setAllergenFilters={setAllergenFilters} 
