@@ -1,24 +1,37 @@
-import React, {useState} from 'react'
-import ShowResults from '../components/ShowResults'
+import React from 'react'
 import SearchAndFilter from '../components/SearchAndFilter/SearchAndFilter'
-import './Homepage.css'
+import AllergyFilter from '../components/AllergyFilter/AllergyFilter'
+import ShowResults from '../components/ShowResults'
+import { useSelector } from 'react-redux'
+import './HomePage.css'
 
-const Homepage = () => {
-
-    const handleClick= () =>{
-        window.open('https://docs.google.com/forms/d/e/1FAIpQLSc3H_Siw2Og_W8EgYSQPB_iPUCV1-cpH4tFOsFsLNK4c5Zttg/viewform?usp=dialog','_blank',"noopener,noreferrer")
-    }
+const HomePage = () => {
+    const products = useSelector((state)=>state.products.productsResults)
 
     return (
-        <div>
-            <button className='feedback_button' onClick={handleClick}>Give us feedback</button>
-            <SearchAndFilter />
-            <div className='search-results'>
-                <p>Search Results</p>
-                <ShowResults />
-            </div>
+        <div className="homepage-container">
+            <header className="homepage-header">
+                <div className="dynable-button">
+                    {/* Your dynable home button */}
+                </div>
+                <SearchAndFilter />
+            </header>
+
+            <main className="homepage-main">
+               
+
+                <section className="results-section">
+                    <ShowResults />
+                </section>
+            </main>
+
+            <footer className="homepage-footer">
+                <div className="feedback-button">
+                    {/* Your feedback button */}
+                </div>
+            </footer>
         </div>
     )
 }
 
-export default Homepage
+export default HomePage

@@ -3,50 +3,55 @@ import FoodCard from './FoodCard/FoodCard'
 import RecipeCard from './RecipeCard/RecipeCard'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import './ShowResults.css'
 
 const ShowResults = () =>{
-
-    const [renderItems, setRenderItems] = useState('products')
-
     const products = useSelector((state)=>state.products.productsResults)
     const recipes = useSelector((state)=>state.recipes.recipesResults)
     const navigate = useNavigate();
 
-    const onSelection = (event) =>{
-        console.log(event.target.value)
-        setRenderItems(event.target.value)
-    }
-
-    
     const navToCatagories = () => {
         console.log('Hello from nav button')
         navigate('/catagories')
     }
 
     if (Object.values(products).length>0){
-        console.log('foods:',products.foods[0])
-        console.log('recipes', recipes)
         return (
-            <div>
-            <div className="hello-world-from-monferd" onClick={navToCatagories}></div>
-            {products.text}
-            <div>
-                <button value='products' onClick={onSelection}>Products</button>
-                <button value='recipe' onClick={onSelection}>Recipe</button>
-            </div>
-            {renderItems==='recipe'?
-                recipes.map((recipe,key)=>{
-                    return <RecipeCard key={key} recipe={recipe} id={recipe.id}/>
-                }):null
-            }
-            {renderItems==='products'?
-                products.foods.map((foodItem, key) =>{
-                    return <FoodCard key={key} foodItem={foodItem} id={foodItem.id}/>
-                }):null
-            }
+            <div className="results-container">
+                <div className="header">
+                    <div className="hello-world-from-monferd" onClick={navToCatagories}></div>
+                    <div className="search-text">{products.text}</div>
+                </div>
+                
+                <section className="results-section">
+                    <h3>Products</h3>
+                    <div className="horizontal-scroll-container">
+                        <div className="horizontal-scroll">
+                            {products.foods && products.foods.map((foodItem, key) => (
+                                <div className="scroll-item" key={key}>
+                                    <FoodCard foodItem={foodItem} id={foodItem.id}/>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <section className="results-section">
+                    <h3>Recipes</h3>
+                    <div className="horizontal-scroll-container">
+                        <div className="horizontal-scroll">
+                            {recipes && recipes.map((recipe, key) => (
+                                <div className="scroll-item" key={key}>
+                                    <RecipeCard recipe={recipe} id={recipe.id}/>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
             </div>
         )
     }
+    return null
 }
 
 export default ShowResults

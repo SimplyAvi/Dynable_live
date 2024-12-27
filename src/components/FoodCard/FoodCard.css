@@ -1,20 +1,56 @@
-.card-wrapper{
-    height: 80px;
-    width: 80vw;
-    display:flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.card-img{
-    /* height: 45px; */
-    padding-right: 15vw;
-    width: 15vw;
-}
-
-.card-label{
+.food-card {
+    width: 100%;
+    height: 100%;
     display: flex;
-    width: 70vw;
-    justify-content: left;
+    flex-direction: column;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.food-card:hover {
+    transform: scale(1.02);
+}
+
+.food-image {
+    width: 100%;
+    height: 45%; /* Adjusted to make room for description */
+    overflow: hidden;
+}
+
+.food-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.food-info {
+    flex: 1;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.food-title {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.food-description {
+    font-size: 12px;
+    line-height: 1.3;
+    color: #666;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
