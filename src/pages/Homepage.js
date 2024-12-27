@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../components/Header/Header'
 import SearchAndFilter from '../components/SearchAndFilter/SearchAndFilter'
 import ShowResults from '../components/ShowResults'
-import './HomePage.css'
+import './Homepage.css'
 
 const Homepage = () => {
     return (
