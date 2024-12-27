@@ -1,37 +1,23 @@
 import React from 'react'
+import Header from '../components/Header/Header'
 import SearchAndFilter from '../components/SearchAndFilter/SearchAndFilter'
-import AllergyFilter from '../components/AllergyFilter/AllergyFilter'
 import ShowResults from '../components/ShowResults'
-import { useSelector } from 'react-redux'
 import './HomePage.css'
 
-const HomePage = () => {
-    const products = useSelector((state)=>state.products.productsResults)
-
+const Homepage = () => {
     return (
-        <div className="homepage-container">
-            <header className="homepage-header">
-                <div className="dynable-button">
-                    {/* Your dynable home button */}
-                </div>
+        <div className="homepage">
+            <Header />
+            <div className="content-wrapper">
                 <SearchAndFilter />
-            </header>
-
-            <main className="homepage-main">
-               
-
-                <section className="results-section">
-                    <ShowResults />
-                </section>
-            </main>
-
+                <ShowResults />
+              
+            </div>
             <footer className="homepage-footer">
-                <div className="feedback-button">
-                    {/* Your feedback button */}
-                </div>
+                <span className="copyright">© 2025 Dynable. All rights reserved.</span>
             </footer>
         </div>
     )
 }
 
-export default HomePage
+export default Homepage

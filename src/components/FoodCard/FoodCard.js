@@ -6,7 +6,8 @@ const FoodCard = ({foodItem, id}) =>{
 
     const navigate = useNavigate();
 
-    const {description, brandName, image=`${process.env.PUBLIC_URL}/default_img.png`}= foodItem
+    const { description, brandName, image = `${process.env.PUBLIC_URL}/default_img.png` } = foodItem
+    
     const handleClick  = () => {
         navigate(`/product/${id}`)
     }

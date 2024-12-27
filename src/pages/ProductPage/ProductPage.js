@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom';
 import axios from 'axios'
 import './ProductPage.css'
+import Header from '../../components/Header/Header'
 import SearchAndFilter from '../../components/SearchAndFilter/SearchAndFilter';
 import { useSelector } from 'react-redux';
 
@@ -29,7 +30,8 @@ const ProductPage = () =>{
     const {description, ingredients, brandName } = item
 
     return(
-        <div>
+        <div >
+            <Header />
             <SearchAndFilter />
             <div className='img-wrapper'>
                 <img className='img' src={`${process.env.PUBLIC_URL}/default_img.png`}/>
