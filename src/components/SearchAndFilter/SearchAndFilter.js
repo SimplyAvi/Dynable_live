@@ -4,6 +4,7 @@ import './SearchAndFilter.css'
 import Searchbar from '../Searchbar/Searchbar'
 import AllergyFilter from '../AllergyFilter/AllergyFilter'
 import { useNavigate } from 'react-router'
+import Homepage from '../../pages/Homepage'
 
 const SearchAndFilter = () => {
 
