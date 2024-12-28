@@ -1,17 +1,3 @@
-.filter-false {
-  
-  background-color: rgb(54, 54, 54);
-  color: white;
-  border-radius: 6.5px;
-  border-color: rgba(0, 255, 55, 0.541);
-}
-
-.filter-true {
-  background-color: white;
-  border-radius: 6.5px;
-  border-color: rgba(0, 0, 0, 0.945);
-}
-
 /* Outer container to ensure it fits the page */
 .horizontal-scroll-container {
   display: flex;
@@ -52,12 +38,21 @@
 
 /* Scroll items */
 .scroll-item {
-  min-width: 1px; /* Reduced width for tighter fit */
-
+  min-width: 1px;
   border-radius: 8px;
-  padding: 1px; /* Reduced padding for compact design */
+  padding: 1px;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  flex-shrink: 0; /* Prevents items from shrinking */
-  user-select: none; /* Disables text selection for better UX */
+  flex-shrink: 0;
+  user-select: none;
+  background-color: white; /* Changed to white background */
+  color: black; /* Changed to black text */
+  transition: all 0.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.945); /* Added border for unselected state */
+}
+
+.scroll-item.selected {
+  background-color: rgb(54, 54, 54); /* Changed to dark background */
+  color: white; /* Changed to white text */
+  border: none; /* Remove border when selected */
 }
