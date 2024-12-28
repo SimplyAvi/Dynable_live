@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import './AllergyFilter.css'
 import { useSearchCookieHandler } from '../../helperfunc/useCookieHandler'
+import allergenList from '../../allergensList'
 
 const AllergyFilter = () => {
 
@@ -31,7 +32,7 @@ const AllergyFilter = () => {
         saveAllergensToCookies(updatedAllergies)
     }
 
-    const allergyKeys = Object.keys(allergies || {})
+    const allergyKeys = Object.keys(allergies || allergenList)
 
     return (
         <div className="horizontal-scroll-container">

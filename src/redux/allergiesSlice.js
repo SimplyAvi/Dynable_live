@@ -1,44 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
+import allergenList from '../allergensList'
 
 const initialState = {
     allergies: {
-        // Common Allergens
-        milk: false,
-        eggs: false,
-        fish: false,
-        shellfish: false,
-        treeNuts: false,
-        peanuts: false,
-        wheat: false,
-        soy: false,
-        sesame: false,
-
-        // Additional Common Allergens
-        gluten: false,
-        lactose: false,
-        mustard: false,
-        celery: false,
-        lupin: false,
-        molluscs: false,
-        sulphites: false,
-
-        // Specific Tree Nuts
-        almonds: false,
-        cashews: false,
-        walnuts: false,
-        pecans: false,
-        pistachios: false,
-        macadamia: false,
-
-        // Specific Seafood
-        crab: false,
-        lobster: false,
-        shrimp: false,
-        oysters: false,
-        mussels: false,
-        clams: false,
-
-        // Add your complete list here...
+        ...allergenList
     }
 }
 

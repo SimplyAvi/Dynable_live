@@ -3,6 +3,7 @@ import { useCookies } from 'react-cookie';
 import { setSearchbarValue } from '../redux/searchbarSlice';
 import {setAllergies} from '../redux/allergiesSlice';
 import { useDispatch } from 'react-redux';
+import allergenList from '../allergensList';
 
 export const useSearchCookieHandler = () => {
   const [searchbar, setSearchbar] = useCookies(['searchbar']);
@@ -26,7 +27,7 @@ export const useSearchCookieHandler = () => {
   }
 
   const initializeAllergensFromCookies = () => {
-    const cookieAllergies = allergens.allergens || {}
+    const cookieAllergies = allergens.allergens || allergenList
     dispatch(setAllergies(cookieAllergies))
   }
 

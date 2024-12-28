@@ -34,33 +34,40 @@
 // }
 
 const allergenList = {
-    milk: "Milk",
-    eggs: "Eggs",
-    fish: "Fish",
-    shellfish: "Shellfish",
-    treeNuts: "Tree Nuts",
-    peanuts: "Peanuts",
-    wheat: "Wheat",
-    soy: "Soy",
-    sesame: "Sesame",
-    gluten: "Gluten",
-    corn: "Corn",
-    citrusFruits: "Citrus Fruits",
-    strawberries: "Strawberries",
-    tomatoes: "Tomatoes",
-    chocolate: "Chocolate",
-    mustard: "Mustard",
-    celery: "Celery",
-    garlic: "Garlic",
-    onions: "Onions",
-    pork: "Pork",
-    beef: "Beef",
-    chicken: "Chicken",
-    apples: "Apples",
-    peaches: "Peaches",
-    bananas: "Bananas",
-    avocados: "Avocados",
-    kiwi: "Kiwi"
+    milk: false,
+    eggs: false,
+    fish: false,
+    shellfish: false,
+    treeNuts: false,
+    peanuts: false,
+    wheat: false,
+    soy: false,
+    sesame: false,
+
+    // Additional Common Allergens
+    gluten: false,
+    lactose: false,
+    mustard: false,
+    celery: false,
+    lupin: false,
+    molluscs: false,
+    sulphites: false,
+
+    // Specific Tree Nuts
+    almonds: false,
+    cashews: false,
+    walnuts: false,
+    pecans: false,
+    pistachios: false,
+    macadamia: false,
+
+    // Specific Seafood
+    crab: false,
+    lobster: false,
+    shrimp: false,
+    oysters: false,
+    mussels: false,
+    clams: false,
 };
 
 export default allergenList
