@@ -19,8 +19,12 @@ const Searchbar = ({ curAllergen }) => {
     const {allergens} = filters
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {saveToCookies} = useSearchCookieHandler();
+    const { saveToCookies, initializeSearchFromCookies } = useSearchCookieHandler();
     const debouncedGetResponse = useRef();
+
+    useEffect(() => {
+        initializeSearchFromCookies()
+    }, [])
 
     useEffect(() => {
         debouncedGetResponse.current = debounce(getResponse, 3000); // Set debounce delay here

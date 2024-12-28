@@ -1,11 +1,16 @@
-import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { setAllergies } from '../../redux/allergiesSlice'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import './AllergyFilter.css'
+import { useSearchCookieHandler } from '../../helperfunc/useCookieHandler'
 
 const AllergyFilter = () => {
-    const dispatch = useDispatch()
+
+    const { saveAllergensToCookies, initializeAllergensFromCookies } = useSearchCookieHandler()
     
+    useEffect(() => {
+        initializeAllergensFromCookies()
+    }, [])
+
     // Add console.log to check Redux state
     const allergies = useSelector((state) => {
         console.log('Redux State:', state); // Debug entire state
@@ -23,7 +28,7 @@ const AllergyFilter = () => {
             [allergyKey]: !allergies[allergyKey]
         }
         console.log('Updated Allergies:', updatedAllergies); // Debug updates
-        dispatch(setAllergies(updatedAllergies))
+        saveAllergensToCookies(updatedAllergies)
     }
 
     const allergyKeys = Object.keys(allergies || {})
