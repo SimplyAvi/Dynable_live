@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react'
 import axios from 'axios'
-import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux';
 import { addProducts } from '../../redux/productSlice';
@@ -12,11 +11,8 @@ import './Searchbar.css'
 import {debounce} from 'lodash'
 
 const Searchbar = ({ curAllergen }) => {
-
-    const textbar = useSelector((state)=> state.searchbar.searchbar)
-    const [searchbar, setSearchbar] = useCookies(['searchbar']);
-    const [filters] = useCookies(['allergens'])
-    const {allergens} = filters
+    const textbar = useSelector((state) => state.searchbar.searchbar);
+    const allergies = useSelector((state) => state.allergies.allergies);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { saveToCookies, initializeSearchFromCookies } = useSearchCookieHandler();
@@ -30,27 +26,23 @@ const Searchbar = ({ curAllergen }) => {
         debouncedGetResponse.current = debounce(getResponse, 3000); // Set debounce delay here
     }, []);
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log('useEffect1')
-        if (!searchbar.searchbar) {
-            setSearchbar('searchbar', '' )
+        if (textbar && textbar.length > 0) {
+            debouncedGetResponse.current(textbar)
         }
-        if (searchbar.searchbar && searchbar.searchbar.length>0){
-            saveToCookies(searchbar.searchbar)
-            debouncedGetResponse.current(searchbar.searchbar)
-        }
-    },[])
+    }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log('useEffect2')
-        debouncedGetResponse.current(searchbar.searchbar);
-    },[allergens])
+        debouncedGetResponse.current(textbar);
+    }, [allergies])
 
-    const handleTextChange = (input) =>{
+    const handleTextChange = (input) => {
         saveToCookies(input.target.value)
     }
     
-    const handleSubmit = async (event) =>{
+    const handleSubmit = async (event) => {
         console.log('submitting')
         event.preventDefault()
         debouncedGetResponse.current(textbar);
@@ -60,7 +52,7 @@ const Searchbar = ({ curAllergen }) => {
     const getResponse = async(initialInput=textbar) => {
         console.log('initialInput in getresponse:', initialInput)
         let allergenText = ``
-        if (curAllergen){
+        if (curAllergen) {
             allergenText=`&health=${allergenList[curAllergen]}`
         }
         try {
@@ -88,9 +80,9 @@ const Searchbar = ({ curAllergen }) => {
 
     const filteredAllergens = () => {
         let allergensArr = []
-        Object.keys(allergens).map((key)=>{
+        Object.keys(allergies).map((key)=>{
             const lowerKey = key.toLowerCase()
-            if (allergens[key]) allergensArr.push(lowerKey)
+            if (allergies[key]) allergensArr.push(lowerKey)
         })
         return allergensArr
     }
