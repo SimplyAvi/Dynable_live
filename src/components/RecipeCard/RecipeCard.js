@@ -15,11 +15,23 @@ const RecipeCard = ({recipe, id}) =>{
         navigate(`/recipe/${id}`)
     }
 
-    return(
-        <div className='card-wrapper' onClick={handleClick}>
-            <img className='card-img' src={image} alt={`${process.env.PUBLIC_URL}/default_img.png`}/>
-            <p className='card-label' >{shortenedTitle}</p>
+    return (
+        
+            <div className="recipe-card" onClick={handleClick}>
+            <div className="recipe-image">
+                <img 
+                    src={image} 
+                    alt={`${process.env.PUBLIC_URL}/default_img.png`} 
+                />
+            </div>
+            <div className="recipe-title">
+                {shortenedTitle.length > 20 
+                    ? shortenedTitle.substring(0, 20) + '...' 
+                    : shortenedTitle
+                }
+            </div>
         </div>
+       
     )
 }
 

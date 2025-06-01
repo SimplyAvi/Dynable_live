@@ -1,52 +1,52 @@
-import React, {useEffect} from 'react'
-import {useCookies} from 'react-cookie'
-
-import allergensList from '../../allergensList'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import './AllergyFilter.css'
+import { useSearchCookieHandler } from '../../helperfunc/useCookieHandler'
+import allergenList from '../../allergensList'
 
-const AllergyFilter = ({allergenFilters, setAllergenFilters, setCurAllergen, curAllergen}) =>{
+const AllergyFilter = () => {
 
-    const [filters, setFilters] = useCookies(['allergens'])
+    const { saveAllergensToCookies, initializeAllergensFromCookies } = useSearchCookieHandler()
     
-    useEffect(()=>{
-        // setFilters('allergens',{})
-        if(Object.keys(filters.allergens).length>0){
-            setAllergenFilters(filters.allergens)
-            Object.keys(filters.allergens).map(filter=>{
-                if(filters.allergens[filter]){
-                    console.log('filter:', filter)
-                    setCurAllergen(filter)
-                }
-            })
-        } else {
-            let filterMap = {}
-            Object.values(allergensList).map(filter=>{
-                filterMap[filter] = false
-            })
-            setAllergenFilters(filterMap)
-            setFilters('allergens', filterMap)
+    useEffect(() => {
+        initializeAllergensFromCookies()
+    }, [])
+
+    // Add console.log to check Redux state
+    const allergies = useSelector((state) => {
+        console.log('Redux State:', state); // Debug entire state
+        console.log('Allergies State:', state.allergies); // Debug allergies slice
+        return state.allergies?.allergies || {}; // Add fallback empty object
+    })
+
+    // Debug current allergies value
+    console.log('Current Allergies:', allergies);
+
+    const handleAllergyClick = (allergyKey) => {
+        console.log('Clicking allergyKey:', allergyKey); // Debug click handler
+        const updatedAllergies = {
+            ...allergies,
+            [allergyKey]: !allergies[allergyKey]
         }
-    },[])
-    
-    const handleClick=(event) =>{
-        const curVal = event.target.value
-        const flippedCurVal = !allergenFilters[curVal]
-        flippedCurVal?setCurAllergen(curVal): setCurAllergen('')
-        console.log('flipped val:', curVal, flippedCurVal)
-        setAllergenFilters({...allergenFilters, [curVal]:flippedCurVal})
-        setFilters('allergens', {...allergenFilters, [curVal]:flippedCurVal})
+        console.log('Updated Allergies:', updatedAllergies); // Debug updates
+        saveAllergensToCookies(updatedAllergies)
     }
 
-    return(
-        <div>
-            AllergyFilter
-            {Object.keys(allergenFilters).map((filter, key)=>{
-                return (
-                <div key={key}>
-                    <button className={allergenFilters[filter]? 'filter-false': 'filter-true'} value={filter} onClick={handleClick}>{filter}</button>
-                </div>
-                )
-            })}
+    const allergyKeys = Object.keys(allergies || allergenList)
+
+    return (
+        <div className="horizontal-scroll-container">
+            <div className="horizontal-scroll">
+                {allergyKeys.map((allergyKey) => (
+                    <div 
+                        key={allergyKey}
+                        className={`scroll-item ${allergies[allergyKey] ? 'selected' : ''}`}
+                        onClick={() => handleAllergyClick(allergyKey)}
+                    >
+                        {allergyKey}
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }

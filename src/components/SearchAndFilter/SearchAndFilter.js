@@ -4,6 +4,7 @@ import './SearchAndFilter.css'
 import Searchbar from '../Searchbar/Searchbar'
 import AllergyFilter from '../AllergyFilter/AllergyFilter'
 import { useNavigate } from 'react-router'
+import Homepage from '../../pages/Homepage'
 
 const SearchAndFilter = () => {
 
@@ -17,18 +18,17 @@ const SearchAndFilter = () => {
 
     return (
         <div>
-            <div className='navbar' onClick={onClickToHomepage}>
-                <p>Dynable</p>
-            </div>
-            <div className='searchbar'>
-                <p>Searchbar</p>
+          
+            <div className='search-and-filter'>
+                
                 <Searchbar 
                     curAllergen={curAllergen} 
                     setCurAllergen={setCurAllergen}
                     />
             </div>
-            <div className='Filters'>
-                <p>Filters</p>
+            <div className='filter-section"'>
+                <h3 className="filter-header">Scroll to select allergies to avoid →</h3>
+
                 <AllergyFilter 
                     allergenFilters={allergenFilters} 
                     setAllergenFilters={setAllergenFilters} 

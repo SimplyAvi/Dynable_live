@@ -5,7 +5,7 @@ import './RecipePage.css'
 import SearchAndFilter from '../../components/SearchAndFilter/SearchAndFilter';
 import { useSelector } from 'react-redux';
 import RecipeToProductCard from '../../components/RecipeToProductCards/RecipeToProductCard';
-
+import Header from '../../components/Header/Header'
 const RecipePage = () =>{
     
     const { id } = useParams();
@@ -18,7 +18,7 @@ const RecipePage = () =>{
 
     const getProduct = async () =>{
         try{
-            const recipeResponse = await axios.get(`http://localhost:5001//api/recipe/?id=${id}`)
+            const recipeResponse = await axios.get(`https://dynable-backend-1514d5a9e35b.herokuapp.com/api/recipe/?id=${id}`)
             console.log('product response:', recipeResponse)
             setItem(recipeResponse.data)
         } catch(err){
@@ -35,6 +35,7 @@ const RecipePage = () =>{
     else {
         return(
             <div>
+                <Header />
                 <SearchAndFilter />
                 <div className='img-wrapper'>
                     <img className='img' src={`${process.env.PUBLIC_URL}/default_img.png`}/>
