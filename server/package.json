@@ -1,0 +1,29 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node seed/seed.js",
+    "shrink": "node seed/shrinking/shrinkfile2.js",
+    "seedRecipe": "node seed/seedRecipe.js",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "engines": {
+    "node": "16.20.2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "csv-writer": "^1.6.0",
+    "express": "^4.19.2",
+    "jsonstream": "^1.0.3",
+    "pg": "^8.11.3",
+    "python": "^0.0.4",
+    "sequelize": "^6.37.1"
+  },
+  "description": ""
+}

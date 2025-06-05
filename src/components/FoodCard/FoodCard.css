@@ -1,0 +1,63 @@
+.food-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.food-image {
+    width: 100%;
+    height: 55%;
+    overflow: hidden;
+}
+
+.food-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.food-info {
+    flex: 1;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.food-title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.title-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    line-height: 1.3;
+    margin-bottom: 4px;
+    /* Removed -webkit-line-clamp to allow full text */
+    word-wrap: break-word; /* Ensures long words break */
+    overflow-wrap: break-word;
+}
+
+.description-text {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.food-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}

@@ -1,0 +1,49 @@
+.homepage {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+.content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding-bottom: 55px;
+    padding-top: 60px;
+}
+
+.feedback-link {
+    position: fixed;
+    bottom: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: white;
+    text-decoration: none;
+    padding: 4px 8px;
+    opacity: 0.8;
+    z-index: 999;
+}
+
+.homepage-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    background: none;
+}
+
+.copyright {
+    color: white;
+    font-size: 12px;
+    opacity: 0.8;
+    text-align: center;
+}
