@@ -1,4 +1,5 @@
 // server.js
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors')
 const sequelize = require('./db/database'); // Make sure this path is correct
@@ -9,6 +10,7 @@ const Ingredient = require('./db/models/Recipe/Ingredient')
 const foodRoutes = require('./api/foodRoutes')
 const recipeRoutes = require('./api/recipeRoutes')
 const foodCategoryRoutes = require('./api/catagoriesRoutes')
+const authRoutes = require('./api/authRoutes')
 // const Nutrient = require('./db/models/Nutrient');
 // const FoodNutrientDerivation = require('./db/models/FoodNutrientDerivation');
 // const FoodNutrientSource = require('./db/models/FoodNutrientSource');
@@ -16,7 +18,7 @@ const foodCategoryRoutes = require('./api/catagoriesRoutes')
 // const FoodAttributeType = require('./db/models/FoodAttributeType');
 
 const bodyParser = require('body-parser');
-
+require('dotenv').config();
 
 const app = express();
 const PORT = 5001;
@@ -27,17 +29,21 @@ app.use(bodyParser.json());
 // Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(cors());
+// Enable CORS
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+}));
 
 app.use(foodRoutes);
 app.use(recipeRoutes);
 app.use(foodCategoryRoutes);
+app.use(authRoutes);
 
 app.get('/api/data', (req, res) => {
   // Your backend logic here
   res.json({ message: 'Hello from the server!' });
 });
-
 
 (async () => {
   try {
