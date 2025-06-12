@@ -161,23 +161,45 @@ router.post('/api/product/subcat', async (req,res)=>{
 }
 })
 
+/**
+ * POST /api/product/nosubcat
+ * 
+ * Changes made to fix allergen array handling:
+ * 1. Added input validation to ensure allergens is an array
+ * 2. Modified the allergens query to use Sequelize.literal for PostgreSQL array operations
+ *    - Original approach using Op.overlap and Op.notIn was causing "values.map is not a function" error
+ *    - New approach uses PostgreSQL's native array overlap operator (&&) through Sequelize.literal
+ * 3. Added limit: 1 to ensure single result
+ * 4. Changed Op.like to Op.iLike for case-insensitive search
+ * 
+ * The changes maintain the original Sequelize ORM approach while fixing the array operation issue.
+ * This is preferred over using raw SQL queries to maintain consistency with the rest of the codebase.
+ */
 router.post('/api/product/nosubcat', async (req,res)=>{
   try {
     const {name, allergens} = req.body || {}
+    
+    // Ensure allergens is an array
+    if (!Array.isArray(allergens)) {
+      return res.status(400).json({ error: 'Invalid allergens data' });
+    }
+
     // Find one food item with a name similar to the given name
     const foodItem = await Food.findOne({
         where: {
             description: {
-                [Op.like]: `%${name}%`
+                [Op.iLike]: `%${name}%`  // Using iLike for case-insensitive search
             },
-            allergens: {
-                [Op.overlap]: [], // Ensure the allergens array is defined
-                [Op.notIn]: allergens
-            }
-        }
+            [Op.and]: [
+                Sequelize.literal('"allergens" IS NOT NULL'),  // Ensure allergens field exists
+                Sequelize.literal(`NOT ("allergens" && ARRAY[:allergens]::varchar[])`)  // Check for allergen overlap
+            ]
+        },
+        replacements: { allergens },
+        limit: 1
     });
 
-    // If no food item found or it contains excluded allergens, return null
+    // If no food item found or it contains excluded allergens, return error
     if (!foodItem) {
         return res.status(500).json({ error: 'Internal server error' });
     }

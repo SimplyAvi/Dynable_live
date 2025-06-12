@@ -5,7 +5,7 @@ import './RecipePage.css'
 import SearchAndFilter from '../../components/SearchAndFilter/SearchAndFilter';
 import { useSelector } from 'react-redux';
 import RecipeToProductCard from '../../components/RecipeToProductCards/RecipeToProductCard';
-import Header from '../../components/Header/Header'
+
 const RecipePage = () =>{
     
     const { id } = useParams();
@@ -35,7 +35,6 @@ const RecipePage = () =>{
     else {
         return(
             <div>
-                <Header />
                 <SearchAndFilter />
                 <div className='img-wrapper'>
                     <img className='img' src={`${process.env.PUBLIC_URL}/default_img.png`}/>

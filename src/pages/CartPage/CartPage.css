@@ -1,0 +1,202 @@
+/**
+ * Cart Page Styling
+ * Author: Justin Linzan
+ * Date: June 2025
+ * 
+ * Amazon-style cart page styling:
+ * - Clean, modern layout
+ * - Responsive design
+ * - Interactive elements
+ * - Clear visual hierarchy
+ */
+
+.cart-page {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cart-page h1 {
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.cart-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.cart-items {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.item-image {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+}
+
+.item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.item-details h3 {
+    margin: 0;
+    color: #333;
+}
+
+.item-price {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.quantity-controls button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.quantity-controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.quantity-controls span {
+    min-width: 40px;
+    text-align: center;
+}
+
+.remove-item {
+    color: #007185;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.remove-item:hover {
+    text-decoration: underline;
+}
+
+.item-total {
+    font-weight: bold;
+    color: #333;
+}
+
+.cart-summary {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    height: fit-content;
+}
+
+.cart-summary h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+.summary-row.total {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1rem;
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+    margin-top: 1rem;
+}
+
+.checkout-button {
+    width: 100%;
+    padding: 0.8rem;
+    background: #ffd814;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.checkout-button:hover {
+    background: #f7ca00;
+}
+
+.cart-page.empty {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.cart-page.empty h2 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.cart-page.empty p {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.continue-shopping {
+    padding: 0.8rem 1.5rem;
+    background: #ffd814;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.continue-shopping:hover {
+    background: #f7ca00;
+}
+
+@media (max-width: 768px) {
+    .cart-container {
+        grid-template-columns: 1fr;
+    }
+
+    .cart-item {
+        grid-template-columns: 100px 1fr;
+    }
+
+    .item-total {
+        grid-column: 1 / -1;
+        text-align: right;
+    }
+} 

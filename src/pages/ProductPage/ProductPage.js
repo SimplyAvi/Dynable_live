@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom';
 import axios from 'axios'
 import './ProductPage.css'
-import Header from '../../components/Header/Header'
 import SearchAndFilter from '../../components/SearchAndFilter/SearchAndFilter';
 
 const ProductPage = () =>{
@@ -26,7 +25,6 @@ const ProductPage = () =>{
 
     return(
         <div >
-            <Header />
             <SearchAndFilter />
             <div className='img-wrapper'>
                 <img className='img' src={`${process.env.PUBLIC_URL}/default_img.png`} alt="Product"/>

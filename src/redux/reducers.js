@@ -5,6 +5,7 @@ import searchbarSlice from './searchbarSlice'
 import foodCategoryReducer from './foodCatagorySlice';
 import allergiesReducer from './allergiesSlice'
 import authReducer from './authSlice';
+import cartReducer from './cartSlice';
 
 // Import other reducers as needed
 
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   foodCategory: foodCategoryReducer,
   allergies: allergiesReducer,
   auth: authReducer,
+  cart: cartReducer,
   // Add other slices/reducers here
 });
 

@@ -44,15 +44,15 @@ const Searchbar = ({ curAllergen }) => {
     }, []);
 
     useEffect(() => {
-        console.log('useEffect1')
         if (textbar && textbar.length > 0) {
             debouncedGetResponse.current(textbar)
         }
-    }, [])
+    }, [textbar]) // Add textbar as dependency
 
     useEffect(() => {
-        console.log('useEffect2')
-        debouncedGetResponse.current(textbar);
+        if (textbar) {
+            debouncedGetResponse.current(textbar);
+        }
     }, [allergies])
 
     const handleTextChange = (input) => {
@@ -60,35 +60,43 @@ const Searchbar = ({ curAllergen }) => {
     }
     
     const handleSubmit = async (event) => {
-        console.log('submitting')
         event.preventDefault()
-        debouncedGetResponse.current(textbar);
-        navigate('/')
+        if (textbar) {
+            await getResponse(textbar);
+            navigate('/')
+        }
     }
 
     const getResponse = async(initialInput=textbar) => {
-        console.log('initialInput in getresponse:', initialInput)
-        let allergenText = ``
-        if (curAllergen) {
-            allergenText=`&health=${allergenList[curAllergen]}`
-        }
+        if (!initialInput) return;
+        
+        console.log('Searching for:', initialInput)
         try {
-            let foodResponse
             const sendAllergens = filteredAllergens()
-            foodResponse = await axios.post(`http://localhost:5001/api/foods?page=1`, {
-                name: initialInput, 
+            const params = new URLSearchParams({
+                name: initialInput,
+                page: 1,
+                limit: 10
+            });
+
+            // Use POST request for foods to handle excludeIngredients in body
+            const foodResponse = await axios.post(`http://localhost:5001/api/foods?${params}`, {
+                name: initialInput,
                 excludeIngredients: sendAllergens
-            })
-            console.log('foodresponse:', foodResponse)
+            });
+            console.log('Food response:', foodResponse.data)
+            
+            // Use POST request for recipes to handle excludeIngredients in body
             const recipeResponse = await axios.post('http://localhost:5001/api/recipe?page=1', {
                 search: initialInput,
                 excludeIngredients: sendAllergens
-            })
-            console.log('Recipe response:', recipeResponse)
+            });
+            console.log('Recipe response:', recipeResponse.data)
+            
             dispatch(addProducts(foodResponse.data))
             dispatch(addRecipes(recipeResponse.data))
         } catch (error) {
-            console.error(error);
+            console.error('Search error:', error);
         }
     }
 
@@ -111,7 +119,7 @@ const Searchbar = ({ curAllergen }) => {
                     label='Search Here' 
                     placeholder ='search here'
                     handleChange={handleTextChange}/>
-                <button className='custom-button' type='button' onClick={handleSubmit}>SUBMIT</button>
+                <button className='custom-button' type='submit'>SUBMIT</button>
             </form>
         </div>
     )

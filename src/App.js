@@ -34,6 +34,7 @@ import Signup from './components/Auth/Signup';
 import Profile from './components/Profile/Profile';
 import GoogleCallback from './components/Auth/GoogleCallback';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
+import CartPage from './pages/CartPage/CartPage';
 import './App.css';
 
 // Protected Route wrapper component
@@ -66,6 +67,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Profile />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/cart"
+              element={
+                <ProtectedRoute>
+                  <CartPage />
                 </ProtectedRoute>
               }
             />

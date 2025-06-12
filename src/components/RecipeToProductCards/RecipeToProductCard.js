@@ -37,7 +37,7 @@ const RecipeToProductCard = ({ingredient}) => {
                     name: ingredient.name,
                     allergens: sendAllergens
                 })
-                setItem(productResponse)
+                setItem(productResponse.data)  // Extract only the data from axios response, not the entire response object which includes headers, status, etc.
                 console.log('product response is:', productResponse)
             }
         } catch(err) {
