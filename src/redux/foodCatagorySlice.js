@@ -6,7 +6,7 @@ export const getFoodCategories = createAsyncThunk(
   'foodCategory/getFoodCategories',
     async () => {
       console.log('hello from foodcatagoryslice call before')
-      const response = await axios.get('https://dynable-backend-1514d5a9e35b.herokuapp.com/api/foodCategories');
+      const response = await axios.get('http://localhost:5001/api/foodCategories');
       console.log('hello from foodcatagoryslice call after')
     return response.data;
   }
