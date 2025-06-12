@@ -1,0 +1,200 @@
+/**
+ * Authentication Component Styling
+ * Author: Justin Linzan
+ * Date: June 2025
+ * 
+ * Styling for authentication components:
+ * - Login and signup form layouts
+ * - Google OAuth button styling
+ * - Form input field styling
+ * - Button states and hover effects
+ * - Error message formatting
+ * - Responsive design adjustments
+ */
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 64px);
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.auth-box {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+}
+
+.auth-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #acc5ce;
+    border-radius: 12px 12px 0 0;
+}
+
+.auth-box h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #acc5ce;
+    font-size: 2rem;
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.auth-box h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: #acc5ce;
+    border-radius: 2px;
+}
+
+.auth-button {
+    width: 100%;
+    padding: 0.875rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 1.5rem;
+    transition: all 0.2s ease;
+}
+
+.auth-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.auth-button:active {
+    transform: translateY(0);
+}
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 1.75rem 0;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.auth-divider span {
+    padding: 0 1rem;
+    color: #757575;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.google-login-button {
+    width: 100%;
+    padding: 0.875rem;
+    background-color: white;
+    color: #3c4043;
+    border: 1px solid #dadce0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.google-login-button:hover {
+    background-color: #f8f9fa;
+    border-color: #acc5ce;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.google-login-button:active {
+    background-color: #f1f3f4;
+    transform: translateY(0);
+}
+
+.google-login-button img {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 1rem;
+}
+
+.auth-switch {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #5f6368;
+    font-size: 0.875rem;
+}
+
+.auth-link {
+    color: #007bff;
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.auth-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.form-input-container {
+    margin-bottom: 1.25rem;
+}
+
+.form-input-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #3c4043;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 1px solid #dadce0;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    background-color: white;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+}
+
+.form-input::placeholder {
+    color: #5f6368;
+    opacity: 0.7;
+} 
