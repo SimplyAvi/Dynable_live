@@ -1,3 +1,20 @@
+/**
+ * Application Entry Point
+ * Author: Justin Linzan
+ * Date: June 2025
+ * 
+ * Main application setup:
+ * - Redux store configuration
+ * - React Router setup
+ * - Cookie provider for auth
+ * - Performance monitoring
+ * 
+ * Dependencies:
+ * - Redux for state management
+ * - React Router for navigation
+ * - React Cookie for auth tokens
+ */
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -5,7 +22,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/store'
 import { Provider } from 'react-redux'
-import { BrowserRouter } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -13,9 +29,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <CookiesProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <App />
       </CookiesProvider>
     </Provider>
   </React.StrictMode>

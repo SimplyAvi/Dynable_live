@@ -1,31 +1,40 @@
 .search-form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex;  /* Use flexbox for layout */
+  align-items: center;  /* Center items vertically */
+  justify-content: center;  /* Center items horizontally */
+  gap: 10px;  /* Space between elements */
+  width: 100%;  /* Full width */
+  max-width: 600px;  /* Maximum width */
+  margin: 0 auto;  /* Center the form */
 }
 
+/* Search input field styling */
 .search-form input[type="text"] {
-  flex: 1; /* Allows the input to take up available space */
-  margin-right: 10px; /* Add some space between input and button */
-  height: 40px; /* Adjust this height as necessary */
-  text-align: center; /* Center the text */
-  padding: 0 10px; /* Add padding for better alignment */
-  box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+  flex: 1;  /* Take up remaining space */
+  height: 40px;  /* Fixed height */
+  text-align: center;  /* Center text */
+  padding: 0 10px;  /* Horizontal padding */
+  box-sizing: border-box;  /* Include padding in width */
+  border: 1px solid #ccc;  /* Light gray border */
+  border-radius: 5px;  /* Rounded corners */
 }
 
+/* Search button styling */
 .custom-button {
-  padding: 0 15px; /* Adjust padding for width */
-  height: 40px; /* Same height as the input */
-  cursor: pointer; /* Change cursor to pointer on hover */
-  border-radius: 5px; /* Slightly rounded edges */
-  border: 1px solid #ccc; /* Optional: Add a border */
-  background-color: #f0f0f0; /* Optional: Button background color */
-  font-weight: bold; /* Make the font bolder */
-  font-size: 16px; /* Adjust the font size as needed */
-  transition: background-color 0.3s ease; /* Optional: Smooth transition on hover */
+  height: 40px;  /* Match input height */
+  padding: 0 20px;  /* Horizontal padding */
+  cursor: pointer;  /* Show pointer on hover */
+  border-radius: 5px;  /* Rounded corners */
+  border: 1px solid #ccc;  /* Light gray border */
+  background-color: #f0f0f0;  /* Light gray background */
+  font-weight: bold;  /* Bold text */
+  font-size: 14px;  /* Text size */
+  transition: background-color 0.2s;  /* Smooth color change */
+  white-space: nowrap;  /* Prevent text wrapping */
+  margin-top: 0;  /* No top margin */
 }
 
+/* Button hover effect */
 .custom-button:hover {
-  /* Optional: Add hover effects */
-  background-color: #ddd; /* Example hover color */
+  background-color: #ddd;  /* Darker gray on hover */
 }

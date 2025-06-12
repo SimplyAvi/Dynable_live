@@ -4,29 +4,24 @@ import axios from 'axios'
 import './ProductPage.css'
 import Header from '../../components/Header/Header'
 import SearchAndFilter from '../../components/SearchAndFilter/SearchAndFilter';
-import { useSelector } from 'react-redux';
 
 const ProductPage = () =>{
-    
     const { id } = useParams();
     const [item, setItem] = useState({})
 
     useEffect(()=>{
+        const getProduct = async () =>{
+            try{
+                const productResponse = await axios.get(`http://localhost:5001/api/product/?id=${id}`)
+                setItem(productResponse.data)
+            } catch(err){
+                console.log(err)
+            }
+        }
         //get product info via ID
         getProduct()
-    },[])
+    },[id])
 
-    const getProduct = async () =>{
-        try{
-            const productResponse = await axios.get(`https://dynable-backend-1514d5a9e35b.herokuapp.com/api/product/?id=${id}`)
-            setItem(productResponse.data)
-        } catch(err){
-            console.log(err)
-        }
-    }
-
-    // const product = useSelector((state)=> state.products.productsResults.foods[id])
-    // console.log('single product info:', product)
     const {description, ingredients, brandName } = item
 
     return(
@@ -34,7 +29,7 @@ const ProductPage = () =>{
             <Header />
             <SearchAndFilter />
             <div className='img-wrapper'>
-                <img className='img' src={`${process.env.PUBLIC_URL}/default_img.png`}/>
+                <img className='img' src={`${process.env.PUBLIC_URL}/default_img.png`} alt="Product"/>
             </div>
             <div>
                 <h3>{brandName}</h3>

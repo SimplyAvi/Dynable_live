@@ -1,28 +1,64 @@
+/**
+ * Google Authentication Implementation
+ * Author: Justin Linzan
+ * Date: June 2025
+ * 
+ * Header styling for authentication-aware navigation:
+ * - Dynable branding colors (#acc5ce, #007bff)
+ * - Responsive layout with flexbox
+ * - Interactive elements (buttons, logo)
+ * - Consistent spacing and alignment
+ * - Smooth transitions for user interactions
+ */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #acc5ce;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .dynable-logo {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1001;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
 }
 
 .logo-text {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: bold;
     color: white;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: 1px;
-    font-family: 'Arial', sans-serif;
 }
 
-.dynable-logo:hover {
-    transform: scale(1.05);
+.nav-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
 }
 
-.dynable-logo:active {
-    transform: scale(0.95);
+.nav-button:hover {
+    background-color: #0056b3;
+}
+
+.welcome-text {
+    color: white;
+    margin-right: 1rem;
 }

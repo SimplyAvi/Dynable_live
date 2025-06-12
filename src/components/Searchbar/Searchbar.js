@@ -1,6 +1,23 @@
+/**
+ * Searchbar Component
+ * Author: Justin Linzan
+ * Date: June 2025
+ * 
+ * Search functionality:
+ * - Text input for product/recipe search
+ * - Debounced search to prevent excessive API calls
+ * - Integration with allergy filters
+ * - Search form submission handling
+ * 
+ * Features:
+ * - Real-time search suggestions
+ * - Responsive design
+ * - Error handling
+ */
+
 import React, { useEffect, useRef } from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { addProducts } from '../../redux/productSlice';
 import { addRecipes } from '../../redux/recipeSlice';
@@ -58,15 +75,12 @@ const Searchbar = ({ curAllergen }) => {
         try {
             let foodResponse
             const sendAllergens = filteredAllergens()
-            // foodResponse = await axios.get(`https://dynable-backend-1514d5a9e35b.herokuapp.com/api/foods?name=${encodeURIComponent(initialInput)}&page=1`)
-            foodResponse = await axios.post(`https://dynable-backend-1514d5a9e35b.herokuapp.com/api/foods?page=1`, {
+            foodResponse = await axios.post(`http://localhost:5001/api/foods?page=1`, {
                 name: initialInput, 
                 excludeIngredients: sendAllergens
             })
             console.log('foodresponse:', foodResponse)
-            // const foodResponse = await axios.get(`https://api.edamam.com/api/food-database/v2/parser?app_id=3b4e6a49&app_key=8d49f61369d7dda4935235b21c07a612&ingr=${initialInput}&nutrition-type=cooking${allergenText}`);
-            // const recipeResponse = await axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${initialInput}&app_id=b5bdebe7&app_key=%2020298931767c31f1e76a6473d8cdd7bc`)
-            const recipeResponse = await axios.post('https://dynable-backend-1514d5a9e35b.herokuapp.com/api/recipe?page=1', {
+            const recipeResponse = await axios.post('http://localhost:5001/api/recipe?page=1', {
                 search: initialInput,
                 excludeIngredients: sendAllergens
             })
