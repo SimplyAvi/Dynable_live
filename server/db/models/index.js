@@ -10,6 +10,9 @@ const Recipe = require('./Recipe/Recipe')
 const Ingredient =  require('./Recipe/Ingredient')
 const Category = require('./Categories/Category')
 const Subcategory = require('./Categories/Subcategory')
+const User = require('./User');
+const Cart = require('./Cart');
+const Order = require('./Order');
 
 // Define associations
 Food.hasMany(FoodNutrient);
@@ -35,5 +38,8 @@ module.exports = {
   Recipe,
   Ingredient,
   Category,
-  Subcategory
+  Subcategory,
+  User,
+  Cart,
+  Order
 };

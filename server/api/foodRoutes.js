@@ -5,7 +5,7 @@ const Food = require('../db/models/Food');
 const { Subcategory } = require('../db/models');
 
 // GET /api/foods route for searching foods
-router.get('/api/foods', async (req, res) => {
+router.get('/foods', async (req, res) => {
   try {
     const { name, page = 1, limit = 10, } = req.query;
     const offset = (page - 1) * limit; // Assuming you'll send the search query as a query parameter
@@ -40,7 +40,7 @@ router.get('/api/foods', async (req, res) => {
   }
 });
 
-router.post('/api/foods', async (req, res) => {
+router.post('/foods', async (req, res) => {
   try {
     const { name, excludeIngredients } = req.body || {};
     const { page = 1, limit = 10 } = req.query;
@@ -107,7 +107,7 @@ router.post('/api/foods', async (req, res) => {
 });
 
 // GET /api/foods route for searching foods
-router.get('/api/product', async (req, res) => {
+router.get('/product', async (req, res) => {
   try {
     const { id } = req.query;
     console.log('looking for:', id)
@@ -125,7 +125,7 @@ router.get('/api/product', async (req, res) => {
   }
 });
 
-router.post('/api/product/subcat', async (req,res)=>{
+router.post('/product/subcat', async (req,res)=>{
   try {
     const { id, allergens } = req.body || {}
     
@@ -175,7 +175,7 @@ router.post('/api/product/subcat', async (req,res)=>{
  * The changes maintain the original Sequelize ORM approach while fixing the array operation issue.
  * This is preferred over using raw SQL queries to maintain consistency with the rest of the codebase.
  */
-router.post('/api/product/nosubcat', async (req,res)=>{
+router.post('/product/nosubcat', async (req,res)=>{
   try {
     const {name, allergens} = req.body || {}
     

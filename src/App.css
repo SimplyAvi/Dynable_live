@@ -1,12 +1,15 @@
 .App {
+  text-align: center;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #acc5ce;
 }
 
 .App-main {
   flex: 1;
-  padding: 2rem;
+  padding: 0.5rem 2rem;
+  margin-top: 0.25rem;
   background-color: #acc5ce;
 }
 

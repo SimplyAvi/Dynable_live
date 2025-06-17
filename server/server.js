@@ -1,5 +1,5 @@
-// server.js
 require('dotenv').config();
+// server.js
 const express = require('express');
 const cors = require('cors')
 const sequelize = require('./db/database'); // Make sure this path is correct
@@ -11,6 +11,7 @@ const foodRoutes = require('./api/foodRoutes')
 const recipeRoutes = require('./api/recipeRoutes')
 const foodCategoryRoutes = require('./api/catagoriesRoutes')
 const authRoutes = require('./api/authRoutes')
+const cartRoutes = require('./api/cartRoutes')
 // const Nutrient = require('./db/models/Nutrient');
 // const FoodNutrientDerivation = require('./db/models/FoodNutrientDerivation');
 // const FoodNutrientSource = require('./db/models/FoodNutrientSource');
@@ -18,7 +19,6 @@ const authRoutes = require('./api/authRoutes')
 // const FoodAttributeType = require('./db/models/FoodAttributeType');
 
 const bodyParser = require('body-parser');
-require('dotenv').config();
 
 const app = express();
 const PORT = 5001;
@@ -35,10 +35,11 @@ app.use(cors({
     credentials: true,
 }));
 
-app.use(foodRoutes);
-app.use(recipeRoutes);
-app.use(foodCategoryRoutes);
-app.use(authRoutes);
+app.use('/api', foodRoutes);
+app.use('/api', recipeRoutes);
+app.use('/api', foodCategoryRoutes);
+app.use('/api', authRoutes);
+app.use('/api/cart', cartRoutes);
 
 app.get('/api/data', (req, res) => {
   // Your backend logic here

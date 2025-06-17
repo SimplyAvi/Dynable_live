@@ -45,7 +45,6 @@
 
 .nav-button {
     padding: 0.5rem 1rem;
-    border: none;
     border-radius: 4px;
     background-color: #007bff;
     color: white;
@@ -70,11 +69,6 @@
 
 .nav-button.logout:hover {
     background-color: #cc0000;
-}
-
-.welcome-text {
-    color: white;
-    margin-right: 1rem;
 }
 
 .cart-icon {

@@ -6,7 +6,7 @@ const Ingredient = require('../db/models/Recipe/Ingredient');
 const { Subcategory } = require('../db/models');
 
 // Post request to send allergens to be filtered during api call
-router.post('/api/recipe', async (req,res)=>{
+router.post('/recipe', async (req,res)=>{
     try {
         const { search, excludeIngredients } = req.body || {};
         const { page = 1, limit = 10 } = req.query;
@@ -55,7 +55,7 @@ router.post('/api/recipe', async (req,res)=>{
 })
 
 // GET /api/recipe route for searching recipe
-router.get('/api/recipe', async (req, res) => {
+router.get('/recipe', async (req, res) => {
   try {
     const { id } = req.query;
     console.log('looking for:', id)

@@ -20,10 +20,10 @@
  * - /profile: Protected user profile
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectIsAuthenticated } from './redux/authSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectIsAuthenticated, setCredentials } from './redux/authSlice';
 import Header from './components/Header/Header';
 import Homepage from './pages/Homepage';
 import ProductPage from './pages/ProductPage/ProductPage';
@@ -49,6 +49,29 @@ const ProtectedRouteComponent = ({ children }) => {
 };
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // Load token from localStorage on app start
+    const token = localStorage.getItem('token');
+    if (token) {
+      // Fetch user profile to get user data
+      fetch('http://localhost:5001/api/auth/profile', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      .then(response => response.json())
+      .then(userData => {
+        dispatch(setCredentials({ user: userData, token }));
+      })
+      .catch(error => {
+        console.error('Error loading user profile:', error);
+        localStorage.removeItem('token');
+      });
+    }
+  }, [dispatch]);
+
   return (
     <Router>
       <div className="App">
