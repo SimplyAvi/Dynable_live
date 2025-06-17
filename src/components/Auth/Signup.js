@@ -11,6 +11,8 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setCredentials } from '../../redux/authSlice';
 import FormInput from '../FormInput';
 import './Auth.css';
 
@@ -19,6 +21,7 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -39,7 +42,6 @@ const Signup = () => {
 
             if (response.ok) {
                 const data = await response.json();
-                // TODO: Store auth token and user data in Redux
                 navigate('/profile');
             } else {
                 alert('Signup failed. Please try again.');
@@ -51,7 +53,25 @@ const Signup = () => {
     };
 
     const handleGoogleSignup = () => {
-        const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.REACT_APP_GOOGLE_CLIENT_ID}&redirect_uri=http://localhost:5001/api/auth/google/callback&response_type=code&scope=email profile&access_type=offline&prompt=consent`;
+        const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+        const redirectUri = 'http://localhost:5001/api/auth/google/callback';
+        const scopes = [
+            'email',
+            'profile',
+            'https://www.googleapis.com/auth/userinfo.profile',
+            'https://www.googleapis.com/auth/userinfo.email',
+            'openid'
+        ].join(' ');
+
+        const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?` +
+            `client_id=${clientId}` +
+            `&redirect_uri=${encodeURIComponent(redirectUri)}` +
+            `&response_type=code` +
+            `&scope=${encodeURIComponent(scopes)}` +
+            `&access_type=offline` +
+            `&prompt=consent` +
+            `&state=signup`;  // Add state parameter to indicate this is a signup attempt
+
         window.location.href = googleAuthUrl;
     };
 

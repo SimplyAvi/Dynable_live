@@ -37,7 +37,7 @@ const Login = () => {
                 const data = await response.json();
                 // Store auth token and user data in Redux
                 dispatch(setCredentials(data));
-                navigate('/profile');
+                navigate('/');
             } else {
                 alert('Login failed. Please check your credentials.');
             }
@@ -64,7 +64,8 @@ const Login = () => {
             `&response_type=code` +
             `&scope=${encodeURIComponent(scopes)}` +
             `&access_type=offline` +
-            `&prompt=consent`;
+            `&prompt=consent` +
+            `&state=login`;
 
         window.location.href = googleAuthUrl;
     };

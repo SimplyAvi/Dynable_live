@@ -24,6 +24,14 @@ const jwt = require('jsonwebtoken');
 const { OAuth2Client } = require('google-auth-library');
 const User = require('../db/models/User');
 
+// Debug log to verify environment variables
+console.log('OAuth Configuration:', {
+    clientId: process.env.GOOGLE_CLIENT_ID,
+    hasClientSecret: !!process.env.GOOGLE_CLIENT_SECRET,
+    redirectUri: 'http://localhost:5001/api/auth/google/callback',
+    envKeys: Object.keys(process.env).filter(key => key.includes('GOOGLE'))
+});
+
 // Google OAuth client
 const client = new OAuth2Client(
     process.env.GOOGLE_CLIENT_ID,
@@ -31,15 +39,8 @@ const client = new OAuth2Client(
     'http://localhost:5001/api/auth/google/callback'
 );
 
-// Debug log to verify environment variables
-console.log('OAuth Configuration:', {
-    clientId: process.env.GOOGLE_CLIENT_ID,
-    hasClientSecret: !!process.env.GOOGLE_CLIENT_SECRET,
-    redirectUri: 'http://localhost:5001/api/auth/google/callback'
-});
-
 // Register new user
-router.post('/api/auth/signup', async (req, res) => {
+router.post('/auth/signup', async (req, res) => {
     try {
         const { email, password } = req.body;
 
@@ -80,7 +81,7 @@ router.post('/api/auth/signup', async (req, res) => {
 });
 
 // Login user
-router.post('/api/auth/login', async (req, res) => {
+router.post('/auth/login', async (req, res) => {
     try {
         const { email, password } = req.body;
 
@@ -117,9 +118,9 @@ router.post('/api/auth/login', async (req, res) => {
 });
 
 // Google OAuth callback route
-router.get('/api/auth/google/callback', async (req, res) => {
+router.get('/auth/google/callback', async (req, res) => {
     try {
-        const { code } = req.query;
+        const { code, state } = req.query;
         if (!code) {
             return res.status(400).json({ error: 'No code provided' });
         }
@@ -129,17 +130,9 @@ router.get('/api/auth/google/callback', async (req, res) => {
         // Exchange the code for tokens
         let tokens;
         try {
-            const tokenResponse = await client.getToken({
-                code,
-                client_id: process.env.GOOGLE_CLIENT_ID,
-                client_secret: process.env.GOOGLE_CLIENT_SECRET,
-                redirect_uri: 'http://localhost:5001/api/auth/google/callback',
-            });
+            const tokenResponse = await client.getToken(code);
             tokens = tokenResponse.tokens;
             console.log('Step 2: Successfully exchanged code for tokens');
-            console.log('Access Token received:', tokens.access_token ? 'Yes' : 'No');
-            console.log('Token type:', tokens.token_type);
-            console.log('Token expiry:', tokens.expiry_date);
         } catch (tokenError) {
             console.error('Token exchange error:', tokenError);
             throw new Error(`Token exchange failed: ${tokenError.message}`);
@@ -156,8 +149,6 @@ router.get('/api/auth/google/callback', async (req, res) => {
             });
 
             if (!userInfoResponse.ok) {
-                const errorText = await userInfoResponse.text();
-                console.error('People API response:', errorText);
                 throw new Error(`People API error: ${userInfoResponse.statusText}`);
             }
 
@@ -170,13 +161,6 @@ router.get('/api/auth/google/callback', async (req, res) => {
             const picture = userInfo.photos?.[0]?.url;
             const googleId = userInfo.resourceName?.split('/')?.[1];
 
-            console.log('User info extracted:', {
-                hasEmail: !!email,
-                hasName: !!name,
-                hasPicture: !!picture,
-                hasGoogleId: !!googleId
-            });
-
             if (!email) {
                 throw new Error('Invalid Google token or missing email');
             }
@@ -184,8 +168,8 @@ router.get('/api/auth/google/callback', async (req, res) => {
             // Check if user exists
             let user = await User.findOne({ where: { email } });
 
+            // If user doesn't exist, create new user
             if (!user) {
-                // Create new user if doesn't exist
                 user = await User.create({
                     email,
                     name,
@@ -193,14 +177,16 @@ router.get('/api/auth/google/callback', async (req, res) => {
                     googleId,
                 });
                 console.log('Step 5: Created new user:', email);
-            } else if (!user.googleId) {
-                // Update existing user with Google info if they haven't connected Google before
-                await user.update({
-                    name: name || user.name,
-                    picture: picture || user.picture,
-                    googleId,
-                });
-                console.log('Step 5: Updated existing user:', email);
+            } else {
+                // Update user's Google info if it's not already set
+                if (!user.googleId) {
+                    await user.update({
+                        name: name || user.name,
+                        picture: picture || user.picture,
+                        googleId,
+                    });
+                    console.log('Step 5: Updated existing user with Google info:', email);
+                }
             }
 
             // Generate JWT token
@@ -233,7 +219,7 @@ router.get('/api/auth/google/callback', async (req, res) => {
 });
 
 // Get user profile
-router.get('/api/auth/profile', async (req, res) => {
+router.get('/auth/profile', async (req, res) => {
     try {
         const token = req.headers.authorization?.split(' ')[1];
         if (!token) {
@@ -260,7 +246,7 @@ router.get('/api/auth/profile', async (req, res) => {
 });
 
 // Update user profile
-router.put('/api/auth/profile', async (req, res) => {
+router.put('/auth/profile', async (req, res) => {
     try {
         const token = req.headers.authorization?.split(' ')[1];
         if (!token) {
@@ -290,7 +276,7 @@ router.put('/api/auth/profile', async (req, res) => {
 });
 
 // Logout
-router.post('/api/auth/logout', (req, res) => {
+router.post('/auth/logout', (req, res) => {
     res.json({ message: 'Logged out successfully' });
 });
 

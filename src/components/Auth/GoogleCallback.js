@@ -50,7 +50,13 @@ const GoogleCallback = () => {
                 });
 
                 if (!response.ok) {
-                    throw new Error('Failed to fetch profile');
+                    const errorData = await response.json().catch(() => ({}));
+                    console.error('Profile fetch error:', {
+                        status: response.status,
+                        statusText: response.statusText,
+                        errorData
+                    });
+                    throw new Error(`Failed to fetch profile: ${response.statusText}`);
                 }
 
                 const userData = await response.json();
@@ -68,9 +74,9 @@ const GoogleCallback = () => {
                 }));
                 console.log('Step 5: Updated Redux store with user data');
 
-                // Redirect to profile page
-                console.log('Step 6: Redirecting to profile page');
-                navigate('/profile');
+                // Redirect to homepage
+                console.log('Step 6: Redirecting to homepage');
+                navigate('/');
             } catch (error) {
                 console.error('Authentication error:', error);
                 setError(error.message);

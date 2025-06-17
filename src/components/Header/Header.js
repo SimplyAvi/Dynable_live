@@ -15,21 +15,19 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { selectIsAuthenticated, selectCurrentUser, logout } from '../../redux/authSlice'
-import { selectCartItemCount } from '../../redux/cartSlice'
+import { logout } from '../../redux/authSlice'
 import './Header.css'
 
 const Header = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const isAuthenticated = useSelector((state) => selectIsAuthenticated(state))
-    const user = useSelector((state) => selectCurrentUser(state))
-    const cartItemCount = useSelector(selectCartItemCount)
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+    const cartItemCount = useSelector(state => state.cart.items.length)
 
     const handleLogout = () => {
-        // Clear local storage
+        // Clear token from localStorage
         localStorage.removeItem('token')
-        // Dispatch logout action
+        // Clear auth state from Redux
         dispatch(logout())
         // Navigate to home page
         navigate('/')
@@ -39,9 +37,9 @@ const Header = () => {
         if (!isAuthenticated) {
             alert('Please log in to view your cart')
             navigate('/login')
-        } else {
-            navigate('/cart')
+            return
         }
+        navigate('/cart')
     }
 
     return (
@@ -74,10 +72,6 @@ const Header = () => {
                 </div>
                 {isAuthenticated ? (
                     <>
-                        <span className="welcome-text">Welcome, {user?.name || user?.email}</span>
-                        <button className="nav-button" onClick={() => navigate('/profile')}>
-                            Profile
-                        </button>
                         <button className="nav-button logout" onClick={handleLogout}>
                             Logout
                         </button>
@@ -86,9 +80,6 @@ const Header = () => {
                     <>
                         <button className="nav-button" onClick={() => navigate('/login')}>
                             Login
-                        </button>
-                        <button className="nav-button" onClick={() => navigate('/signup')}>
-                            Sign Up
                         </button>
                     </>
                 )}
