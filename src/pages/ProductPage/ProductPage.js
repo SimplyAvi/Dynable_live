@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios'
-import { addItemToCart, updateCart, fetchCart } from '../../redux/cartSlice';
+import { addItemToCart, updateCart, fetchCart, addToCartAnonymous } from '../../redux/cartSlice';
 import './ProductPage.css'
 import SearchAndFilter from '../../components/SearchAndFilter/SearchAndFilter';
 
@@ -37,19 +37,6 @@ const ProductPage = () =>{
     }, [dispatch, isAuthenticated]);
 
     const handleAddToCart = async () => {
-        // Check if user is authenticated before allowing cart operations
-        if (!isAuthenticated) {
-            alert('Please log in to add items to your cart')
-            navigate('/login')
-            return
-        }
-
-        console.log('Adding to cart - Auth state:', {
-            isAuthenticated,
-            token: token ? 'Present' : 'Missing',
-            userId: item.id
-        });
-
         // Create cart item object with product details
         const cartItem = {
             id: item.id,
@@ -60,12 +47,15 @@ const ProductPage = () =>{
             quantity: quantity
         }
 
-        console.log('Cart item to add:', cartItem);
+        if (!isAuthenticated) {
+            // Anonymous: add to cart in localStorage/Redux
+            dispatch(addToCartAnonymous(cartItem));
+            return;
+        }
 
         try {
-            // Update cart in database and Redux state
+            // Authenticated: update cart in database and Redux state
             await dispatch(addItemToCart(cartItem)).unwrap();
-            alert('Item added to cart!')
         } catch (error) {
             console.error('Failed to update cart:', error)
             alert('Failed to add item to cart. Please try again.')

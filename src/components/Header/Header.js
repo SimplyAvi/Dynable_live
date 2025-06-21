@@ -13,13 +13,15 @@
  */
 
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../../redux/authSlice'
+import { clearOrders } from '../../redux/cartSlice'
 import './Header.css'
 
 const Header = () => {
     const navigate = useNavigate()
+    const location = useLocation()
     const dispatch = useDispatch()
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
     const cartItemCount = useSelector(state => state.cart.items.length)
@@ -29,16 +31,21 @@ const Header = () => {
         localStorage.removeItem('token')
         // Clear auth state from Redux
         dispatch(logout())
+        // Clear purchase history from Redux
+        dispatch(clearOrders())
         // Navigate to home page
         navigate('/')
     }
 
-    const handleCartClick = () => {
-        if (!isAuthenticated) {
-            alert('Please log in to view your cart')
-            navigate('/login')
-            return
+    const handleLoginClick = () => {
+        // If user is on cart page, redirect back to cart after login
+        if (location.pathname === '/cart') {
+            localStorage.setItem('postLoginRedirect', '/cart');
         }
+        navigate('/login')
+    }
+
+    const handleCartClick = () => {
         navigate('/cart')
     }
 
@@ -78,8 +85,8 @@ const Header = () => {
                     </>
                 ) : (
                     <>
-                        <button className="nav-button" onClick={() => navigate('/login')}>
-                            Login
+                        <button className="nav-button" onClick={handleLoginClick}>
+                            Login/Signup
                         </button>
                     </>
                 )}
