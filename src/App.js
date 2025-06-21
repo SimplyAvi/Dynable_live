@@ -24,6 +24,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectIsAuthenticated, setCredentials } from './redux/authSlice';
+import { initializeAnonymousCart, fetchCart } from './redux/cartSlice';
 import Header from './components/Header/Header';
 import Homepage from './pages/Homepage';
 import ProductPage from './pages/ProductPage/ProductPage';
@@ -50,6 +51,7 @@ const ProtectedRouteComponent = ({ children }) => {
 
 function App() {
   const dispatch = useDispatch();
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
   useEffect(() => {
     // Load token from localStorage on app start
@@ -64,13 +66,29 @@ function App() {
       .then(response => response.json())
       .then(userData => {
         dispatch(setCredentials({ user: userData, token }));
+        // Always hydrate cart from backend after login
+        dispatch(fetchCart());
       })
       .catch(error => {
         console.error('Error loading user profile:', error);
         localStorage.removeItem('token');
+        // Do NOT call initializeAnonymousCart here!
+        // Let the next effect run (with no token) and handle it.
       });
+    } else if (!isAuthenticated) {
+      // No token and not authenticated: treat as anonymous
+      dispatch(initializeAnonymousCart());
     }
-  }, [dispatch]);
+  }, [dispatch, isAuthenticated]);
+
+  // Always fetch cart from backend when authenticated
+  useEffect(() => {
+    if (isAuthenticated) {
+      console.log('[APP] User authenticated, fetching cart from backend');
+      console.log('[APP] Current location:', window.location.pathname);
+      dispatch(fetchCart());
+    }
+  }, [dispatch, isAuthenticated]);
 
   return (
     <Router>
@@ -95,11 +113,7 @@ function App() {
             />
             <Route
               path="/cart"
-              element={
-                <ProtectedRoute>
-                  <CartPage />
-                </ProtectedRoute>
-              }
+              element={<CartPage />}
             />
           </Routes>
         </main>

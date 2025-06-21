@@ -20,6 +20,8 @@
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+console.log('[CARTSLICE] cartSlice.js loaded');
+
 // Async thunks for API calls
 export const fetchCart = createAsyncThunk(
     'cart/fetchCart',
@@ -41,8 +43,10 @@ export const fetchCart = createAsyncThunk(
 export const updateCart = createAsyncThunk(
     'cart/updateCart',
     async (items, { getState }) => {
+        console.log('[UPDATECART] updateCart thunk called with items:', items);
         // Get the auth token from Redux state
         const token = getState().auth.token;
+        console.log('[UPDATECART] Using token:', token ? 'Yes' : 'No');
         // Update cart data on the server
         const response = await fetch('http://localhost:5001/api/cart', {
             method: 'PUT',
@@ -52,8 +56,15 @@ export const updateCart = createAsyncThunk(
             },
             body: JSON.stringify({ items })
         });
-        if (!response.ok) throw new Error('Failed to update cart');
-        return response.json();
+        console.log('[UPDATECART] Response status:', response.status);
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('[UPDATECART] Error response:', errorText);
+            throw new Error('Failed to update cart');
+        }
+        const result = await response.json();
+        console.log('[UPDATECART] Success, backend returned:', result);
+        return result;
     }
 );
 
@@ -104,6 +115,44 @@ export const addItemToCart = createAsyncThunk(
     }
 );
 
+// Utility functions for localStorage cart persistence
+const LOCAL_CART_KEY = 'anonymous_cart';
+
+function loadLocalCart() {
+    try {
+        const data = localStorage.getItem(LOCAL_CART_KEY);
+        return data ? JSON.parse(data) : [];
+    } catch {
+        return [];
+    }
+}
+
+function saveLocalCart(items) {
+    try {
+        localStorage.setItem(LOCAL_CART_KEY, JSON.stringify(items));
+    } catch {}
+}
+
+function clearLocalCart() {
+    try {
+        localStorage.removeItem(LOCAL_CART_KEY);
+    } catch {}
+}
+
+// Helper to merge two carts (by item id, summing quantities)
+export function mergeCarts(localItems, serverItems) {
+    const map = new Map();
+    serverItems.forEach(item => map.set(item.id, { ...item }));
+    localItems.forEach(item => {
+        if (map.has(item.id)) {
+            map.get(item.id).quantity += item.quantity;
+        } else {
+            map.set(item.id, { ...item });
+        }
+    });
+    return Array.from(map.values());
+}
+
 const initialState = {
     items: [],
     history: [],
@@ -128,9 +177,20 @@ const cartSlice = createSlice({
         clearCart: (state) => {
             state.items = [];
         },
+        clearOrders: (state) => {
+            state.history = [];
+        },
         setError: (state, action) => {
             state.error = action.payload;
-        }
+        },
+        // New: initialize cart from localStorage for anonymous users
+        initializeAnonymousCart: (state) => {
+            state.items = loadLocalCart();
+        },
+        // New: handle itemsUpdated for anonymous cart actions
+        itemsUpdated: (state, action) => {
+            state.items = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -139,6 +199,8 @@ const cartSlice = createSlice({
                 state.loading = true;
             })
             .addCase(fetchCart.fulfilled, (state, action) => {
+                console.log('[CARTSLICE] fetchCart.fulfilled case running! payload:', action.payload);
+                console.log('[CARTSLICE] Setting Redux cart to:', action.payload || []);
                 state.loading = false;
                 state.items = action.payload || [];
             })
@@ -148,13 +210,19 @@ const cartSlice = createSlice({
             })
             // Update Cart
             .addCase(updateCart.pending, (state) => {
+                console.log('[CARTSLICE] updateCart.pending case running!');
                 state.loading = true;
             })
             .addCase(updateCart.fulfilled, (state, action) => {
+                console.log('[CARTSLICE] updateCart.fulfilled case running! payload:', action.payload);
+                console.log('[CARTSLICE] Setting Redux cart to:', action.payload || []);
+                console.log('[CARTSLICE] Previous state items:', state.items);
                 state.loading = false;
                 state.items = action.payload || [];
+                console.log('[CARTSLICE] New state items:', state.items);
             })
             .addCase(updateCart.rejected, (state, action) => {
+                console.log('[CARTSLICE] updateCart.rejected case running! error:', action.error);
                 state.loading = false;
                 state.error = action.error.message;
             })
@@ -175,6 +243,7 @@ const cartSlice = createSlice({
                 state.loading = true;
             })
             .addCase(checkout.fulfilled, (state, action) => {
+                console.log('[CARTSLICE] checkout.fulfilled case running! payload:', action.payload);
                 state.loading = false;
                 state.items = [];
                 state.history.push(action.payload);
@@ -188,6 +257,7 @@ const cartSlice = createSlice({
                 state.loading = true;
             })
             .addCase(fetchOrders.fulfilled, (state, action) => {
+                console.log('[CARTSLICE] fetchOrders.fulfilled case running! payload:', action.payload);
                 state.loading = false;
                 state.history = action.payload;
             })
@@ -198,11 +268,50 @@ const cartSlice = createSlice({
     }
 });
 
+// Middleware-like thunk for anonymous cart actions
+export const addToCartAnonymous = (item) => (dispatch, getState) => {
+    const { isAuthenticated } = getState().auth;
+    if (!isAuthenticated) {
+        const items = [...getState().cart.items];
+        const existing = items.find(i => i.id === item.id);
+        if (existing) {
+            existing.quantity += item.quantity;
+        } else {
+            items.push({ ...item });
+        }
+        saveLocalCart(items);
+        dispatch(itemsUpdated(items));
+    }
+};
+
+export const removeFromCartAnonymous = (id) => (dispatch, getState) => {
+    const { isAuthenticated } = getState().auth;
+    if (!isAuthenticated) {
+        const items = getState().cart.items.filter(item => item.id !== id);
+        saveLocalCart(items);
+        dispatch(itemsUpdated(items));
+    }
+};
+
+export const updateQuantityAnonymous = (id, quantity) => (dispatch, getState) => {
+    const { isAuthenticated } = getState().auth;
+    if (!isAuthenticated) {
+        const items = getState().cart.items.map(item =>
+            item.id === id ? { ...item, quantity } : item
+        );
+        saveLocalCart(items);
+        dispatch(itemsUpdated(items));
+    }
+};
+
 export const {
     removeFromCart,
     updateQuantity,
     clearCart,
-    setError
+    clearOrders,
+    setError,
+    initializeAnonymousCart,
+    itemsUpdated
 } = cartSlice.actions;
 
 // Selectors

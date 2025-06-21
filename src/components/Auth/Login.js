@@ -10,16 +10,20 @@
  */
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setCredentials } from '../../redux/authSlice';
+import { mergeCarts, updateCart, fetchCart } from '../../redux/cartSlice';
+import { persistor } from '../../redux/store';
 import FormInput from '../FormInput';
 import './Auth.css';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [hasNavigated, setHasNavigated] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
     const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
@@ -37,7 +41,45 @@ const Login = () => {
                 const data = await response.json();
                 // Store auth token and user data in Redux
                 dispatch(setCredentials(data));
-                navigate('/');
+
+                // Purge persisted state after login to avoid stale cart
+                await persistor.purge();
+
+                // --- Merge anonymous cart with server cart after login ---
+                const localCart = JSON.parse(localStorage.getItem('anonymous_cart') || '[]');
+                if (localCart.length > 0) {
+                    // Fetch server cart (if any)
+                    const serverCartRes = await fetch('http://localhost:5001/api/cart', {
+                        headers: { 'Authorization': `Bearer ${data.token}` }
+                    });
+                    let serverCart = [];
+                    if (serverCartRes.ok) {
+                        serverCart = await serverCartRes.json();
+                    }
+                    // Merge carts and update server
+                    const merged = mergeCarts(localCart, serverCart);
+                    console.log('[LOGIN] Merging carts:', { localCart, serverCart, merged });
+                    const updateResult = await dispatch(updateCart(merged)).unwrap();
+                    console.log('[LOGIN] updateCart completed with result:', updateResult);
+                    localStorage.removeItem('anonymous_cart');
+                }
+                // Always fetch the latest cart from backend to update Redux
+                const fetchRes = await dispatch(fetchCart()).unwrap();
+                console.log('[LOGIN] fetchCart response:', fetchRes);
+                // --- End merge logic ---
+
+                // Redirect to intended page after login (e.g., /cart), or home
+                const redirectTo = localStorage.getItem('postLoginRedirect') || '/';
+                console.log('[LOGIN] postLoginRedirect value:', localStorage.getItem('postLoginRedirect'));
+                console.log('[LOGIN] redirectTo:', redirectTo);
+                console.log('[LOGIN] hasNavigated:', hasNavigated);
+                
+                if (!hasNavigated) {
+                    setHasNavigated(true);
+                    navigate(redirectTo, { replace: true });
+                    // Clear the redirect after navigation to prevent issues with React StrictMode
+                    if (redirectTo !== '/') localStorage.removeItem('postLoginRedirect');
+                }
             } else {
                 alert('Login failed. Please check your credentials.');
             }

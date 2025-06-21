@@ -32,8 +32,12 @@ import {
     updateCart,
     checkout,
     fetchOrders,
-    clearCart
+    clearCart,
+    addToCartAnonymous,
+    removeFromCartAnonymous,
+    updateQuantityAnonymous
 } from '../../redux/cartSlice';
+import { selectIsAuthenticated } from '../../redux/authSlice';
 import './CartPage.css';
 
 const CartPage = () => {
@@ -42,14 +46,21 @@ const CartPage = () => {
     const cartItems = useSelector(selectCartItems);
     const total = useSelector(selectCartTotal);
     const history = useSelector(selectCartHistory);
+    const isAuthenticated = useSelector(selectIsAuthenticated);
     const [activeTab, setActiveTab] = useState('cart');
 
     useEffect(() => {
-        console.log('CartPage mounted, fetching cart and orders');
-        // Load cart and orders from database when component mounts
-        dispatch(fetchCart());
-        dispatch(fetchOrders());
-    }, [dispatch]);
+        if (isAuthenticated) {
+            // Authenticated: load cart and orders from database
+            console.log('[CART_PAGE] Fetching cart and orders for authenticated user');
+            dispatch(fetchCart());
+            dispatch(fetchOrders()); // Always fetch purchase history for logged-in users
+        } else {
+            // Reset to cart tab when user becomes anonymous
+            setActiveTab('cart');
+        }
+        // For anonymous users, cart is already loaded from localStorage on app load
+    }, [dispatch, isAuthenticated]);
 
     useEffect(() => {
         console.log('Cart items updated:', cartItems);
@@ -67,34 +78,54 @@ const CartPage = () => {
 
     const handleQuantityChange = async (itemId, newQuantity) => {
         if (newQuantity < 1) return;
-        
-        // Update local state for immediate UI feedback
-        dispatch(updateQuantity({ id: itemId, quantity: newQuantity }));
-        
-        // Sync the change with the database
-        const updatedItems = cartItems.map(item => 
-            item.id === itemId ? { ...item, quantity: newQuantity } : item
-        );
-        dispatch(updateCart(updatedItems));
+        if (isAuthenticated) {
+            // Authenticated: update in backend
+            dispatch(updateQuantity({ id: itemId, quantity: newQuantity }));
+            const updatedItems = cartItems.map(item => 
+                item.id === itemId ? { ...item, quantity: newQuantity } : item
+            );
+            dispatch(updateCart(updatedItems));
+        } else {
+            // Anonymous: update in localStorage/Redux
+            dispatch(updateQuantityAnonymous(itemId, newQuantity));
+        }
     };
 
     const handleRemoveItem = async (itemId) => {
-        // Update local state for immediate UI feedback
-        dispatch(removeFromCart(itemId));
-        
-        // Sync the change with the database
-        const updatedItems = cartItems.filter(item => item.id !== itemId);
-        dispatch(updateCart(updatedItems));
+        if (isAuthenticated) {
+            dispatch(removeFromCart(itemId));
+            const updatedItems = cartItems.filter(item => item.id !== itemId);
+            dispatch(updateCart(updatedItems));
+        } else {
+            dispatch(removeFromCartAnonymous(itemId));
+        }
     };
 
     const handleCheckout = async () => {
+        if (!isAuthenticated) {
+            // Anonymous: set post-login redirect and go to login
+            console.log('[CHECKOUT] Setting postLoginRedirect to /cart');
+            localStorage.setItem('postLoginRedirect', '/cart');
+            console.log('[CHECKOUT] postLoginRedirect set to:', localStorage.getItem('postLoginRedirect'));
+            navigate('/login');
+            return;
+        }
+        console.log('[CHECKOUT] Cart items at checkout:', cartItems);
         try {
-            // Process checkout and create order in database
+            // Authenticated: process checkout
             await dispatch(checkout()).unwrap();
+            // Refresh order history and cart after successful checkout
+            await dispatch(fetchOrders());
+            await dispatch(fetchCart());
+            // Clear anonymous cart from localStorage just in case
+            localStorage.removeItem('anonymous_cart');
             alert('Thank you for your purchase!');
             navigate('/');
         } catch (error) {
+            console.error('[CHECKOUT] Checkout failed:', error);
             alert('Checkout failed. Please try again.');
+            // Optionally, sync cart state after failure
+            await dispatch(fetchCart());
         }
     };
 
@@ -107,12 +138,14 @@ const CartPage = () => {
                 >
                     Current Cart
                 </button>
-                <button 
-                    className={`tab-button ${activeTab === 'history' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('history')}
-                >
-                    Purchase History
-                </button>
+                {isAuthenticated && (
+                    <button 
+                        className={`tab-button ${activeTab === 'history' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('history')}
+                    >
+                        Purchase History
+                    </button>
+                )}
             </div>
 
             {activeTab === 'cart' ? (
@@ -180,6 +213,7 @@ const CartPage = () => {
                             <button 
                                 className="checkout-button"
                                 onClick={handleCheckout}
+                                disabled={cartItems.length === 0}
                             >
                                 Proceed to Checkout
                             </button>
@@ -188,7 +222,9 @@ const CartPage = () => {
                 </div>
             ) : (
                 <div className="purchase-history">
-                    {history.length === 0 ? (
+                    {!isAuthenticated ? (
+                        <p>Please log in to view your purchase history.</p>
+                    ) : history.length === 0 ? (
                         <p>No purchase history available.</p>
                     ) : (
                         history.map((purchase, index) => (

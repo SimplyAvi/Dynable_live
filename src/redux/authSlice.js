@@ -12,6 +12,7 @@
  */
 
 import { createSlice } from '@reduxjs/toolkit';
+import { clearOrders } from './cartSlice';
 
 const initialState = {
     user: null,
