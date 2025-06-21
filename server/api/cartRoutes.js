@@ -260,12 +260,12 @@ router.post('/checkout', authenticateToken, async (req, res, next) => {
             paymentMethod: 'credit_card'
         });
 
-        console.log('Order created:', order.id);
+        console.log('Order created:', order.id, 'Order:', JSON.stringify(order, null, 2));
 
         // Clear cart
         cart.items = [];
         await cart.save();
-        console.log('Cart cleared after checkout');
+        console.log('Cart cleared after checkout. Cart now:', JSON.stringify(cart, null, 2));
 
         res.json(order);
     } catch (error) {
@@ -281,6 +281,7 @@ router.get('/orders', authenticateToken, async (req, res) => {
             where: { userId: req.user.id },
             order: [['createdAt', 'DESC']]
         });
+        console.log('[ORDERS] Returning orders for user', req.user.id, ':', JSON.stringify(orders, null, 2));
         res.json(orders);
     } catch (error) {
         console.error('Error fetching orders:', error);
