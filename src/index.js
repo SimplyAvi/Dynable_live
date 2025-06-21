@@ -20,17 +20,20 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import store from './redux/store'
+import store, { persistor } from './redux/store'
 import { Provider } from 'react-redux'
 import { CookiesProvider } from 'react-cookie';
+import { PersistGate } from 'redux-persist/integration/react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <CookiesProvider>
-        <App />
-      </CookiesProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <CookiesProvider>
+          <App />
+        </CookiesProvider>
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );
