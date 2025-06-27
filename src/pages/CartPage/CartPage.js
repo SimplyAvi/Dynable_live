@@ -119,8 +119,8 @@ const CartPage = () => {
             await dispatch(fetchCart());
             // Clear anonymous cart from localStorage just in case
             localStorage.removeItem('anonymous_cart');
-            alert('Thank you for your purchase!');
-            navigate('/');
+            alert('Thank you for your purchase! You can view your order in your purchase history tab below.');
+            navigate('/cart');
         } catch (error) {
             console.error('[CHECKOUT] Checkout failed:', error);
             alert('Checkout failed. Please try again.');

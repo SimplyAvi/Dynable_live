@@ -1,45 +1,63 @@
 // components/FoodCategoryTable.js
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getFoodCategories } from '../../redux/foodCatagorySlice';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import Tree from 'react-d3-tree';
+import './CatagoryPage.css';
 
-const FoodCategoryTable = () => {
-    console.log('Hello from catagory page')
-  const dispatch = useDispatch();
-  const { categories, status } = useSelector(state => state.foodCategory);
+const CatagoryPage = () => {
+    const [hierarchy, setHierarchy] = useState(null);
+    const [translate, setTranslate] = useState({ x: 0, y: 0 });
 
-  useEffect(() => {
-    dispatch(getFoodCategories());
-  }, [dispatch]);
+    useEffect(() => {
+        const fetchHierarchy = async () => {
+            try {
+                const response = await axios.get('http://localhost:5001/api/foodCategories');
+                // The root of the tree needs to be a single object.
+                // We'll create a dummy root to hold all our categories.
+                const root = {
+                    name: 'Categories',
+                    children: response.data.map(category => ({
+                        name: category.CategoryName,
+                        children: category.children.map(sub => ({ name: sub.SubCategoryName }))
+                    }))
+                };
+                setHierarchy(root);
+            } catch (error) {
+                console.error('Error fetching category hierarchy:', error);
+            }
+        };
 
-  if (status === 'loading') {
-    return <div>Loading...</div>;
-  }
+        fetchHierarchy();
+    }, []);
 
-  if (status === 'failed') {
-    return <div>Error fetching categories</div>;
-  }
-console.log(categories)
-  return (
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-        </tr>
-      </thead>
-      <tbody>
-        {categories.map(category => (
-          <tr key={category.id}>
-            <td>{category.id}</td>
-            <td>{category.CategoryName}</td>
-            <td>{category.name}</td>
-            
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
+    useEffect(() => {
+        // Center the tree on initial render
+        const dimensions = document.getElementById('tree-wrapper');
+        if (dimensions) {
+            setTranslate({
+                x: dimensions.offsetWidth / 2,
+                y: dimensions.offsetHeight / 5,
+            });
+        }
+    }, []);
+
+    if (!hierarchy) {
+        return <div>Loading hierarchy...</div>;
+    }
+
+    return (
+        <div id="tree-wrapper" style={{ width: '100vw', height: '100vh' }}>
+            <Tree 
+                data={hierarchy}
+                orientation="vertical"
+                translate={translate}
+                pathFunc="step"
+                rootNodeClassName="node__root"
+                branchNodeClassName="node__branch"
+                leafNodeClassName="node__leaf"
+            />
+        </div>
+    );
 };
 
-export default FoodCategoryTable;
+export default CatagoryPage;

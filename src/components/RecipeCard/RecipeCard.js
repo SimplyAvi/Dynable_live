@@ -35,4 +35,4 @@ const RecipeCard = ({recipe, id}) =>{
     )
 }
 
-export default RecipeCard
+export default React.memo(RecipeCard);

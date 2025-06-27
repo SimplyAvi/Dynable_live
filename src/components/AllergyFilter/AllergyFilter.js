@@ -1,36 +1,31 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import './AllergyFilter.css'
 import { useSearchCookieHandler } from '../../helperfunc/useCookieHandler'
 import allergenList from '../../allergensList'
+import { setAllergies } from '../../redux/allergiesSlice'
 
 const AllergyFilter = () => {
-
     const { saveAllergensToCookies, initializeAllergensFromCookies } = useSearchCookieHandler()
-    
+    const dispatch = useDispatch();
+
+    const allergies = useSelector((state) => state.allergies?.allergies || {});
+
+    // Only initialize Redux from cookies if Redux state is empty
     useEffect(() => {
-        initializeAllergensFromCookies()
-    }, [])
-
-    // Add console.log to check Redux state
-    const allergies = useSelector((state) => {
-        console.log('Redux State:', state); // Debug entire state
-        console.log('Allergies State:', state.allergies); // Debug allergies slice
-        return state.allergies?.allergies || {}; // Add fallback empty object
-    })
-
-    // Debug current allergies value
-    console.log('Current Allergies:', allergies);
+        if (!Object.keys(allergies).length) {
+            initializeAllergensFromCookies();
+        }
+    }, []); // Only run on mount
 
     const handleAllergyClick = (allergyKey) => {
-        console.log('Clicking allergyKey:', allergyKey); // Debug click handler
         const updatedAllergies = {
             ...allergies,
             [allergyKey]: !allergies[allergyKey]
-        }
-        console.log('Updated Allergies:', updatedAllergies); // Debug updates
-        saveAllergensToCookies(updatedAllergies)
-    }
+        };
+        dispatch(setAllergies(updatedAllergies)); // Update Redux first
+        saveAllergensToCookies(updatedAllergies);  // Then update cookies
+    };
 
     const allergyKeys = Object.keys(allergies || allergenList)
 

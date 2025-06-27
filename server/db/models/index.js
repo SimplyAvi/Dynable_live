@@ -13,6 +13,7 @@ const Subcategory = require('./Categories/Subcategory')
 const User = require('./User');
 const Cart = require('./Cart');
 const Order = require('./Order');
+const AllergenDerivative = require('./AllergenDerivative');
 
 // Define associations
 Food.hasMany(FoodNutrient);
@@ -41,5 +42,6 @@ module.exports = {
   Subcategory,
   User,
   Cart,
-  Order
+  Order,
+  AllergenDerivative
 };

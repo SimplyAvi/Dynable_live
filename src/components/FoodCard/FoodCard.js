@@ -32,4 +32,4 @@ const FoodCard = ({foodItem, id}) =>{
     )
 }
 
-export default FoodCard
+export default React.memo(FoodCard);

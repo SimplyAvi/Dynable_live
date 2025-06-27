@@ -1,0 +1,62 @@
+/* CatagoryPage.css */
+
+#tree-wrapper {
+    width: 100%;
+    height: 100vh;
+    background-color: #f8f8f8; /* Light grey background for better contrast */
+}
+
+/* Style for the links (paths) between nodes */
+.rd3t-link {
+    stroke: #d9d9d9;
+    stroke-width: 2px;
+}
+
+/* Base style for all nodes */
+.rd3t-node {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.rd3t-node:hover {
+    transform: scale(1.1);
+}
+
+/* Style for the node circles */
+.rd3t-node circle {
+    stroke-width: 2px;
+    filter: url(#shadow);
+}
+
+.node__root > circle {
+    fill: #2a3a89; /* A deep blue for the root */
+    stroke: #1e2a63;
+}
+
+.node__branch > circle {
+    fill: #4e7ac7; /* A lighter, friendly blue for categories */
+    stroke: #3a5a9a;
+}
+
+.node__leaf > circle {
+    fill: #8ab1e2; /* A soft, light blue for sub-categories */
+    stroke: #6a8bb8;
+}
+
+/* Style for the text within nodes */
+.rd3t-label {
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+
+.rd3t-label__title {
+    font-size: 14px;
+    font-weight: bold;
+    fill: #ffffff; /* White text for better readability on colored nodes */
+    stroke: none;
+}
+
+.rd3t-label__attributes {
+    font-size: 12px;
+    fill: #555;
+}

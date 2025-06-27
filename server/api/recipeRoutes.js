@@ -3,69 +3,66 @@ const { Op, Sequelize } = require('sequelize');
 const router = express.Router()
 const Recipe = require('../db/models/Recipe/Recipe')
 const Ingredient = require('../db/models/Recipe/Ingredient');
-const { Subcategory } = require('../db/models');
 
 // Post request to send allergens to be filtered during api call
-router.post('/recipe', async (req,res)=>{
-    try {
-        const { search, excludeIngredients } = req.body || {};
-        const { page = 1, limit = 10 } = req.query;
-    
-        console.log('search:', search, 'exclude:', excludeIngredients, req.body)
+router.post('/', async (req, res) => {
+  try {
+    const { search, excludeIngredients } = req.body || {};
+    const { page = 1, limit = 10 } = req.query;
+    const offset = (page - 1) * limit;
 
-            // Define the search criteria
-    const whereClause = {};
+    // Map frontend keys to backend format if needed
+    const mappedAllergens = (excludeIngredients || []).map(a =>
+      a.replace(/([A-Z])/g, ' $1').toLowerCase().replace(/_/g, ' ')
+    );
+
+    // Build the base query
+    let where = '';
+    let replacements = { limit: parseInt(limit, 10), offset };
+
     if (search) {
-      whereClause.title = {
-        [Op.iLike]: `%${search}%`,
-      };
+      where += `"title" ILIKE :search`;
+      replacements.search = `%${search}%`;
+    } else {
+      where += '1=1';
     }
-    // if (ingredients){
-    //   includeClause.model = Ingredient
-    //   includeClause.where = {
-    //     RecipeId : 
-    //   }
-    // }
 
-      const recipeResponse = await Recipe.findAll({
-        where: whereClause,
-        include: [{
-          model: Ingredient,
-          include: [{
-            model: Subcategory,
-          }],
-          required: true,
-        }],
-        limit: parseInt(limit, 10)
-      })
-      // console.log('recipe response:', recipeResponse)
-    
-        res.json(recipeResponse)
+    // Add NOT EXISTS for each allergen
+    mappedAllergens.forEach((allergen, idx) => {
+      where += ` AND NOT EXISTS (
+        SELECT 1 FROM "Ingredients" i
+        WHERE i."RecipeId" = "Recipe"."id"
+        AND i."name" ILIKE :allergen${idx}
+      )`;
+      replacements[`allergen${idx}`] = `%${allergen}%`;
+    });
 
-        // return res.json({
-        //   totalCount,
-        //   totalPages: Math.ceil(totalCount / limit),
-        //   currentPage: parseInt(page, 10),
-        //   foods,
-        // });
-      } catch (error) {
-        console.error('Error searching for foods:', error);
-        return res.status(500).json({ error: 'Internal server error' });
-      }
-})
+    const sql = `
+      SELECT * FROM "Recipes" AS "Recipe"
+      WHERE ${where}
+      LIMIT :limit OFFSET :offset
+    `;
+
+    const recipes = await Recipe.sequelize.query(sql, {
+      replacements,
+      model: Recipe,
+      mapToModel: true,
+    });
+
+    res.json(recipes);
+  } catch (error) {
+    console.error('Error searching for recipes:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 // GET /api/recipe route for searching recipe
-router.get('/recipe', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const { id } = req.query;
     console.log('looking for:', id)
 
-    const recipe = await Recipe.findByPk(id,{
-      include: [{
-        model: Ingredient,
-        required: false,
-      }],
-    })
+    const recipe = await Recipe.findByPk(id)
 
     if (!recipe) {
       return res.status(404).json({ error: 'Recipe not found' });

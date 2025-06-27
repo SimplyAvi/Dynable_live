@@ -36,7 +36,7 @@ app.use(cors({
 }));
 
 app.use('/api', foodRoutes);
-app.use('/api', recipeRoutes);
+app.use('/api/recipe', recipeRoutes);
 app.use('/api', foodCategoryRoutes);
 app.use('/api', authRoutes);
 app.use('/api/cart', cartRoutes);

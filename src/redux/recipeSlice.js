@@ -6,16 +6,19 @@ const initialState = {
   recipesResults: {}
 };
 
-const recipesSlice = createSlice({
+const recipeSlice = createSlice({
   name: 'recipes',
   initialState,
   reducers: {
     // Define your actions and corresponding state changes here
     addRecipes: (state,action)=>{
         state.recipesResults = action.payload
+    },
+    appendRecipes: (state, action) => {
+        state.recipesResults.push(...action.payload);
     }
   },
 });
 
-export const { addRecipes } = recipesSlice.actions;
-export default recipesSlice.reducer;
+export const { addRecipes, appendRecipes } = recipeSlice.actions;
+export default recipeSlice.reducer;

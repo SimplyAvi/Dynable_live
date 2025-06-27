@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import axios from 'axios'
 import SearchAndFilter from '../components/SearchAndFilter/SearchAndFilter'
 import ShowResults from '../components/ShowResults'
-import { addProducts } from '../redux/productSlice'
+import { setProducts } from '../redux/productSlice'
 import { addRecipes } from '../redux/recipeSlice'
 import './Homepage.css'
 
@@ -20,12 +20,12 @@ const Homepage = () => {
                 });
                 
                 // Load initial recipes
-                const recipeResponse = await axios.post('http://localhost:5001/api/recipe?page=1', {
+                const recipeResponse = await axios.post('http://localhost:5001/api/recipe/?page=1', {
                     search: '',
                     excludeIngredients: []
                 });
                 
-                dispatch(addProducts(foodResponse.data))
+                dispatch(setProducts(foodResponse.data))
                 dispatch(addRecipes(recipeResponse.data))
             } catch (error) {
                 console.error('Error loading initial data:', error);

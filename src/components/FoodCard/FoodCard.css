@@ -33,6 +33,11 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    line-clamp: 2; /* Standard property for compatibility */
 }
 
 .title-text {
@@ -58,6 +63,6 @@
 }
 
 .food-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-5px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
