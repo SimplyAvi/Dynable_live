@@ -45,3 +45,12 @@ Thumbs.db
 
 yarn-debug.log*
 yarn-error.log*
+
+# Large data files
+data/*.txt
+data/*.json
+data/*.csv
+
+# Database files
+*.sqlite
+*.db
