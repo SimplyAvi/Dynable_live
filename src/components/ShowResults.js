@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import FoodCard from './FoodCard/FoodCard'
 import RecipeCard from './RecipeCard/RecipeCard'
 import { useSelector, useDispatch } from 'react-redux'
@@ -26,9 +26,14 @@ const ShowResults = () => {
     const handleProductPageChange = async (newPage) => {
         try {
             const sendAllergens = Object.keys(allergies).filter(key => allergies[key]).map(key => key.toLowerCase())
-            const response = await axios.post(`http://localhost:5001/api/foods?name=${textbar}&page=${newPage}&limit=10`, {
-                excludeIngredients: sendAllergens
-            })
+            const params = new URLSearchParams({
+                name: textbar || '',
+                page: newPage,
+                limit: 10,
+                allergens: sendAllergens.join(',')
+            });
+            // Use GET request for product search
+            const response = await axios.get(`http://localhost:5001/api/product/search?${params}`)
             dispatch(setProducts(response.data))
             setProductPage(newPage)
         } catch (error) {
@@ -54,14 +59,15 @@ const ShowResults = () => {
         navigate('/catagories')
     }
 
-    const recipeList = Array.isArray(recipes) ? recipes : [];
-    const productList = products && Array.isArray(products.foods) ? products.foods : [];
+    // Memoize recipeList and productList to avoid unnecessary recalculation
+    const recipeList = useMemo(() => Array.isArray(recipes) ? recipes : [], [recipes]);
+    const productList = useMemo(() => (products && Array.isArray(products.foods) ? products.foods : []), [products]);
 
     const hasProducts = productList.length > 0;
     const hasRecipes = recipeList.length > 0;
 
-    // Debug log for recipes
-    console.log('recipes:', recipes);
+    // Debug log for recipes (only log if changed)
+    // console.log('recipes:', recipes);
 
     // Calculate product range for display
     const startIdx = (productPage - 1) * 10 + 1;
@@ -111,8 +117,8 @@ const ShowResults = () => {
                     <section className="results-section">
                         <div className="horizontal-scroll-container">
                             <div className="horizontal-scroll">
-                                {productList.map((foodItem, key) => (
-                                    <div className="scroll-item" key={key}>
+                                {productList.map((foodItem) => (
+                                    <div className="scroll-item" key={foodItem.id}>
                                         <FoodCard foodItem={foodItem} id={foodItem.id} />
                                     </div>
                                 ))}
@@ -149,9 +155,9 @@ const ShowResults = () => {
                     <section className="results-section">
                         <div className="horizontal-scroll-container">
                             <div className="horizontal-scroll">
-                                {recipeList.map((recipe, key) => (
-                                    <div className="scroll-item" key={key}>
-                                        <RecipeCard recipe={recipe} id={recipe.id} />
+                                {recipeList.map((recipe) => (
+                                    <div className="scroll-item" key={recipe.id}>
+                                        <RecipeCard recipe={recipe} id={recipe.id} allergies={allergies} />
                                     </div>
                                 ))}
                             </div>

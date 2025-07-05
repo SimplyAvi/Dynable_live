@@ -55,14 +55,12 @@ const Searchbar = ({ curAllergen }) => {
             const params = new URLSearchParams({
                 name: searchInput || '',
                 page: 1,
-                limit: 10
+                limit: 10,
+                allergens: sendAllergens.join(',')
             });
 
-            // Use POST request for foods to handle excludeIngredients in body
-            const foodResponse = await axios.post(`http://localhost:5001/api/foods?${params}`, {
-                name: searchInput || '',
-                excludeIngredients: sendAllergens
-            });
+            // Use GET request for product search
+            const foodResponse = await axios.get(`http://localhost:5001/api/product/search?${params}`);
             console.log('Food response:', foodResponse.data)
             
             // Use POST request for recipes to handle excludeIngredients in body
