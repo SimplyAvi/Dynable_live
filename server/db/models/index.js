@@ -14,6 +14,11 @@ const User = require('./User');
 const Cart = require('./Cart');
 const Order = require('./Order');
 const AllergenDerivative = require('./AllergenDerivative');
+const CanonicalIngredient = require('./CanonicalIngredient');
+const IngredientToCanonical = require('./IngredientToCanonical');
+const Substitution = require('./Substitution');
+const IngredientMatchingRule = require('./IngredientMatchingRule');
+const SubstituteMapping = require('./SubstituteMapping');
 
 // Define associations
 Food.hasMany(FoodNutrient);
@@ -25,10 +30,17 @@ Ingredient.belongsTo(Subcategory, { foreignKey: 'SubcategoryID' });
 Subcategory.hasMany(Food, { foreignKey: 'SubcategoryID' });  
 Food.belongsTo(Subcategory, {foreignKey: 'SubcategoryID'})
 
+// Associations
+CanonicalIngredient.hasMany(IngredientToCanonical, { foreignKey: 'CanonicalIngredientId' });
+IngredientToCanonical.belongsTo(CanonicalIngredient, { foreignKey: 'CanonicalIngredientId' });
+
+CanonicalIngredient.hasMany(Substitution, { foreignKey: 'CanonicalIngredientId' });
+Substitution.belongsTo(CanonicalIngredient, { foreignKey: 'CanonicalIngredientId' });
 
 // Define other associations here
 
 module.exports = {
+  sequelize,
   Food,
   FoodNutrient,
   Nutrient,
@@ -43,5 +55,10 @@ module.exports = {
   User,
   Cart,
   Order,
-  AllergenDerivative
+  AllergenDerivative,
+  CanonicalIngredient,
+  IngredientToCanonical,
+  Substitution,
+  IngredientMatchingRule,
+  SubstituteMapping
 };
