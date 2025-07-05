@@ -5,6 +5,7 @@ import SearchAndFilter from '../components/SearchAndFilter/SearchAndFilter'
 import ShowResults from '../components/ShowResults'
 import { setProducts } from '../redux/productSlice'
 import { addRecipes } from '../redux/recipeSlice'
+import { buildApiUrl, products, recipes } from '../config/api'
 import './Homepage.css'
 
 const Homepage = () => {
@@ -21,10 +22,10 @@ const Homepage = () => {
                     limit: 10,
                     allergens: [].join(',')
                 });
-                const foodResponse = await axios.get(`http://localhost:5001/api/product/search?${params}`);
+                const foodResponse = await axios.get(`${buildApiUrl(products)}/search?${params}`);
                 
                 // Load initial recipes
-                const recipeResponse = await axios.post('http://localhost:5001/api/recipe/?page=1', {
+                const recipeResponse = await axios.post(buildApiUrl(recipes), {
                     search: '',
                     excludeIngredients: []
                 });
