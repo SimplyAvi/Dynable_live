@@ -12,6 +12,7 @@ const recipeRoutes = require('./api/recipeRoutes')
 const foodCategoryRoutes = require('./api/catagoriesRoutes')
 const authRoutes = require('./api/authRoutes')
 const cartRoutes = require('./api/cartRoutes')
+const allergenRoutes = require('./api/allergenRoutes')
 // const Nutrient = require('./db/models/Nutrient');
 // const FoodNutrientDerivation = require('./db/models/FoodNutrientDerivation');
 // const FoodNutrientSource = require('./db/models/FoodNutrientSource');
@@ -35,11 +36,12 @@ app.use(cors({
     credentials: true,
 }));
 
-app.use('/api', foodRoutes);
+app.use('/api/product', foodRoutes);
 app.use('/api/recipe', recipeRoutes);
 app.use('/api', foodCategoryRoutes);
 app.use('/api', authRoutes);
 app.use('/api/cart', cartRoutes);
+app.use('/api', allergenRoutes);
 
 app.get('/api/data', (req, res) => {
   // Your backend logic here

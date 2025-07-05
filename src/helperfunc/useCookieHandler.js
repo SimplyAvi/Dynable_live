@@ -2,13 +2,13 @@
 import { useCookies } from 'react-cookie';
 import { setSearchbarValue } from '../redux/searchbarSlice';
 import {setAllergies} from '../redux/allergiesSlice';
-import { useDispatch } from 'react-redux';
-import allergenList from '../allergensList';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const useSearchCookieHandler = () => {
   const [searchbar, setSearchbar] = useCookies(['searchbar']);
   const [allergens, setAllergens] = useCookies(['allergens'])
   const dispatch = useDispatch()
+  const reduxAllergies = useSelector((state) => state.allergies?.allergies || {});
 
   const saveToCookies = (value) => {
     // console.log('saving to cookies:', value)
@@ -27,7 +27,8 @@ export const useSearchCookieHandler = () => {
   }
 
   const initializeAllergensFromCookies = () => {
-    const cookieAllergies = allergens.allergens || allergenList
+    // Use Redux state if available, otherwise use cookies, otherwise use empty object
+    const cookieAllergies = allergens.allergens || reduxAllergies || {}
     dispatch(setAllergies(cookieAllergies))
   }
 

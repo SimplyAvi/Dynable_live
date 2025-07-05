@@ -25,6 +25,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { useSelector, useDispatch } from 'react-redux';
 import { selectIsAuthenticated, setCredentials } from './redux/authSlice';
 import { initializeAnonymousCart, fetchCart } from './redux/cartSlice';
+import { fetchAllergens } from './redux/allergiesSlice';
 import Header from './components/Header/Header';
 import Homepage from './pages/Homepage';
 import ProductPage from './pages/ProductPage/ProductPage';
@@ -52,6 +53,11 @@ const ProtectedRouteComponent = ({ children }) => {
 function App() {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+
+  useEffect(() => {
+    // Fetch allergens from database on app start
+    dispatch(fetchAllergens());
+  }, [dispatch]);
 
   useEffect(() => {
     // Load token from localStorage on app start

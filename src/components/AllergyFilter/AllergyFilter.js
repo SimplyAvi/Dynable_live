@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import './AllergyFilter.css'
 import { useSearchCookieHandler } from '../../helperfunc/useCookieHandler'
-import allergenList from '../../allergensList'
 import { setAllergies } from '../../redux/allergiesSlice'
 
 const AllergyFilter = () => {
@@ -10,6 +9,7 @@ const AllergyFilter = () => {
     const dispatch = useDispatch();
 
     const allergies = useSelector((state) => state.allergies?.allergies || {});
+    const loading = useSelector((state) => state.allergies?.loading || false);
 
     // Only initialize Redux from cookies if Redux state is empty
     useEffect(() => {
@@ -27,7 +27,18 @@ const AllergyFilter = () => {
         saveAllergensToCookies(updatedAllergies);  // Then update cookies
     };
 
-    const allergyKeys = Object.keys(allergies || allergenList)
+    // Show loading state if allergens are still being fetched
+    if (loading) {
+        return (
+            <div className="horizontal-scroll-container">
+                <div className="horizontal-scroll">
+                    <div className="scroll-item">Loading allergens...</div>
+                </div>
+            </div>
+        );
+    }
+
+    const allergyKeys = Object.keys(allergies);
 
     return (
         <div className="horizontal-scroll-container">
