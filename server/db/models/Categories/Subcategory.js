@@ -19,6 +19,26 @@ const Subcategory = sequelize.define('Subcategory', {
         model: Category,
         key: 'CategoryID'
       }
+    },
+    pure_ingredient: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false
+    },
+    is_basic_ingredient: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false
+    },
+    is_fresh_produce: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false
+    },
+    is_processed_food: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false
     }
   })
 
