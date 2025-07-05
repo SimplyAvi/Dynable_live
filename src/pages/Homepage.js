@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import SearchAndFilter from '../components/SearchAndFilter/SearchAndFilter'
 import ShowResults from '../components/ShowResults'
@@ -9,15 +9,19 @@ import './Homepage.css'
 
 const Homepage = () => {
     const dispatch = useDispatch()
+    const allergies = useSelector((state) => state.allergies.allergies)
 
     useEffect(() => {
         const loadInitialData = async () => {
             try {
                 // Load initial products
-                const foodResponse = await axios.post('http://localhost:5001/api/foods?page=1&limit=10', {
+                const params = new URLSearchParams({
                     name: '',
-                    excludeIngredients: []
+                    page: 1,
+                    limit: 10,
+                    allergens: [].join(',')
                 });
+                const foodResponse = await axios.get(`http://localhost:5001/api/product/search?${params}`);
                 
                 // Load initial recipes
                 const recipeResponse = await axios.post('http://localhost:5001/api/recipe/?page=1', {
