@@ -15,6 +15,7 @@ const RecipePage = () =>{
     const userAllergens = Object.keys(allergies).filter(key => allergies[key]).map(a => a.toLowerCase());
     const [productOptions, setProductOptions] = useState({});
     const [selectedProducts, setSelectedProducts] = useState({});
+    const [expandedIngredients, setExpandedIngredients] = useState({});
 
     useEffect(()=>{
         getProduct()
@@ -204,6 +205,14 @@ const RecipePage = () =>{
         return groups;
     }
 
+    // Add a toggle function for expand/collapse
+    const toggleExpand = (ingredientId) => {
+        setExpandedIngredients(prev => ({
+            ...prev,
+            [ingredientId]: !prev[ingredientId]
+        }));
+    };
+
     if (!directions) return (<div></div>)
     else {
         return(
@@ -265,12 +274,11 @@ const RecipePage = () =>{
                                                 ))}
                                         </select>
                                     )}
+                                    {/* Expand/Collapse Products Available header */}
                                     {(() => {
                                         const name = ingredient.displayName || ingredient.name;
                                         const isHeader = name?.trim().endsWith(':');
                                         const isEmpty = !name || name.trim() === '';
-                                        
-                                        // Only show ProductSelector for non-empty, non-header ingredients
                                         if (!isEmpty && !isHeader) {
                                             return (
                                                 <ProductSelector
@@ -279,6 +287,8 @@ const RecipePage = () =>{
                                                     onProductSelect={(productId) => handleProductSelect(ingredient.id, productId)}
                                                     ingredientName={(productOptions[ingredient.id] && productOptions[ingredient.id].displayName) || (ingredient.displayName || ingredient.canonical || ingredient.name)}
                                                     ingredientFlagged={ingredient.flagged}
+                                                    expanded={!!expandedIngredients[ingredient.id]}
+                                                    onToggleExpand={() => toggleExpand(ingredient.id)}
                                                 />
                                             );
                                         }

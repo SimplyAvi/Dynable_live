@@ -4,7 +4,7 @@ import { addItemToCart, addToCartAnonymous } from '../../redux/cartSlice';
 import FoodCard from '../FoodCard/FoodCard';
 import './ProductSelector.css';
 
-const ProductSelector = ({ products, selectedProductId, onProductSelect, ingredientName, ingredientFlagged }) => {
+const ProductSelector = ({ products, selectedProductId, onProductSelect, ingredientName, ingredientFlagged, expanded, onToggleExpand }) => {
     const dispatch = useDispatch();
     const [addingToCart, setAddingToCart] = useState({});
     
@@ -14,12 +14,14 @@ const ProductSelector = ({ products, selectedProductId, onProductSelect, ingredi
     if (!products || products.length === 0) {
         return (
             <div className="product-selector">
-                <div className="product-selector-header">
-                    <span className="product-selector-title">Products for {ingredientName}</span>
+                <div className="product-selector-header" onClick={onToggleExpand} style={{cursor: 'pointer', color: '#007bff', fontWeight: 'bold'}}>
+                    Products available: 0
                 </div>
-                <div className="no-products-message">
-                    No products found for this ingredient.
-                </div>
+                {expanded && (
+                    <div className="no-products-message">
+                        No products found for this ingredient.
+                    </div>
+                )}
             </div>
         );
     }
@@ -54,57 +56,55 @@ const ProductSelector = ({ products, selectedProductId, onProductSelect, ingredi
 
     return (
         <div className="product-selector">
-            <div className="product-selector-header">
-                <span className="product-selector-title">
-                    {isSubstituteProducts ? `Substitute Products for ${ingredientName}` : `Products for ${ingredientName}`}
-                </span>
-                <span className="product-count">{products.length} products</span>
+            <div className="product-selector-header" onClick={onToggleExpand} style={{cursor: 'pointer', color: '#007bff', fontWeight: 'bold'}}>
+                Products available: {products.length}
             </div>
-            <div className="product-selector-scroll-container">
-                <div className="product-selector-scroll">
-                    {products.map((product) => {
-                        const isAddingToCart = addingToCart[product.id];
-                        const isSelected = selectedProductId === product.id;
-                        
-                        return (
-                            <div 
-                                key={product.id} 
-                                className={`product-selector-item ${isSelected ? 'selected' : ''}`}
-                                onClick={() => onProductSelect(product.id)}
-                            >
-                                <FoodCard 
-                                    foodItem={product} 
-                                    id={product.id}
-                                    showAddToCart={true}
-                                    ingredientFlagged={ingredientFlagged}
-                                    onAddToCart={() => handleAddToCart(product)}
-                                />
-                                {isSubstituteProducts && product.substituteName && (
-                                    <div className="substitute-info">
-                                        <span className="substitute-name">{product.substituteName}</span>
-                                        {product.substituteNotes && (
-                                            <span className="substitute-notes"> - {product.substituteNotes}</span>
-                                        )}
-                                    </div>
-                                )}
-                                {isSelected && (
-                                    <div className="selected-indicator">✓ Selected</div>
-                                )}
-                            </div>
-                        );
-                    })}
-                </div>
-                {selectedProductId && (
-                    <div className="clear-selection">
-                        <button 
-                            onClick={() => onProductSelect(selectedProductId)}
-                            className="clear-selection-btn"
-                        >
-                            Clear Selection
-                        </button>
+            {expanded && (
+                <div className="product-selector-scroll-container">
+                    <div className="product-selector-scroll">
+                        {products.map((product) => {
+                            const isAddingToCart = addingToCart[product.id];
+                            const isSelected = selectedProductId === product.id;
+                            return (
+                                <div 
+                                    key={product.id} 
+                                    className={`product-selector-item ${isSelected ? 'selected' : ''}`}
+                                    onClick={() => onProductSelect(product.id)}
+                                >
+                                    <FoodCard 
+                                        foodItem={product} 
+                                        id={product.id}
+                                        showAddToCart={true}
+                                        ingredientFlagged={ingredientFlagged}
+                                        onAddToCart={() => handleAddToCart(product)}
+                                    />
+                                    {isSubstituteProducts && product.substituteName && (
+                                        <div className="substitute-info">
+                                            <span className="substitute-name">{product.substituteName}</span>
+                                            {product.substituteNotes && (
+                                                <span className="substitute-notes"> - {product.substituteNotes}</span>
+                                            )}
+                                        </div>
+                                    )}
+                                    {isSelected && (
+                                        <div className="selected-indicator">✓ Selected</div>
+                                    )}
+                                </div>
+                            );
+                        })}
                     </div>
-                )}
-            </div>
+                    {selectedProductId && (
+                        <div className="clear-selection">
+                            <button 
+                                onClick={() => onProductSelect(selectedProductId)}
+                                className="clear-selection-btn"
+                            >
+                                Clear Selection
+                            </button>
+                        </div>
+                    )}
+                </div>
+            )}
         </div>
     );
 };
