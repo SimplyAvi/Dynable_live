@@ -51,6 +51,7 @@ const Header = () => {
 
     return (
         <header className="header">
+          <div className="header-inner">
             <div className="header-left">
                 <div className="dynable-logo" onClick={() => navigate('/')}>
                     <span className="logo-text">Dynable</span>
@@ -91,6 +92,7 @@ const Header = () => {
                     </>
                 )}
             </div>
+          </div>
         </header>
     )
 }

@@ -12,12 +12,34 @@
  */
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #acc5ce;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1500;
+  background: #acc5ce;
+  box-shadow: 0 2px 12px rgba(58,123,213,0.08);
+  transition: box-shadow 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0 1rem 1.2rem;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin-left: 0;
+  margin-right: auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem 1rem 0.5rem;
+}
+
+/* Add top padding to App-main to prevent content from hiding behind header */
+.App-main {
+  padding-top: 72px;
 }
 
 .header-left {
@@ -28,7 +50,6 @@
 .header-right {
     display: flex;
     align-items: center;
-    gap: 1rem;
 }
 
 .dynable-logo {

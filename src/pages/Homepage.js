@@ -7,10 +7,12 @@ import { setProducts } from '../redux/productSlice'
 import { addRecipes } from '../redux/recipeSlice'
 import { buildApiUrl, products, recipes } from '../config/api'
 import './Homepage.css'
+import { useNavigate } from 'react-router-dom';
 
 const Homepage = () => {
     const dispatch = useDispatch()
     const allergies = useSelector((state) => state.allergies.allergies)
+    const navigate = useNavigate();
 
     useEffect(() => {
         const loadInitialData = async () => {
@@ -45,6 +47,26 @@ const Homepage = () => {
             <div className="content-wrapper">
                 <SearchAndFilter />
                 <ShowResults />
+            </div>
+            <hr style={{ margin: '64px 0 32px 0', border: 'none', borderTop: '4px solid #3a7bd5', width: '85%', marginLeft: 'auto', marginRight: 'auto', boxShadow: '0 2px 8px rgba(58,123,213,0.15)' }} />
+            <div className="homepage-bottom-section">
+                <div className="homepage-bottom-left">
+                    <button className="aboutus-continue-btn aboutus-btn-small" onClick={() => navigate('/about')}>
+                        About Us
+                    </button>
+                </div>
+                <div className="homepage-feedback-card subtle">
+                    <span className="demo-phase-label">Dynable is currently in its demo phase.</span>
+                    <span className="feedback-label">We value your feedback!</span>
+                    <button
+                        className="feedback-btn subtle"
+                        onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSei-0i45voDypmG7QO4X4FCaqKvX40gRg2j2heSUMz8IHtZyw/viewform', '_blank', 'noopener noreferrer')}
+                        style={{ marginTop: 6 }}
+                    >
+                        <span role="img" aria-label="feedback" style={{ marginRight: 4, fontSize: '1em' }}>💬</span>
+                        Give Feedback
+                    </button>
+                </div>
             </div>
             <footer className="homepage-footer">
                 <span className="copyright">© 2025 Dynable. All rights reserved.</span>
