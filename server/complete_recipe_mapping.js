@@ -1,4 +1,5 @@
 const db = require('./db/database.js');
+const cleanIngredientName = require('./scripts/data-processing/cleanIngredientName');
 
 async function completeRecipeMapping() {
   try {
@@ -193,24 +194,6 @@ async function completeRecipeMapping() {
   } finally {
     process.exit(0);
   }
-}
-
-function cleanIngredientName(name) {
-  // Remove leading measurements and units (e.g. '1/2 cups', '2 tablespoons', etc.)
-  let cleaned = name.toLowerCase().trim();
-  cleaned = cleaned.replace(/^(about |approx\.? |a |an )?/i, '');
-  cleaned = cleaned.replace(/^((\d+\s)?(\d+\/\d+\s)?(cup|cups|tablespoon|tablespoons|teaspoon|teaspoons|ounce|ounces|oz|pound|pounds|lb|lbs|gram|grams|g|kg|ml|l|quart|quarts|pinch|dash|package|packages|can|cans|slice|slices|stick|sticks|bunch|bunches|clove|cloves|head|heads|piece|pieces|container|containers|bag|bags|box|boxes|bottle|bottles|jar|jars|packet|packets|sheet|sheets|drop|drops|sprig|sprigs|leaf|leaves|ear|ears|filet|filets|fillet|fillets|strip|strips|block|blocks|bar|bars|sheet|sheets|quart|quarts|gallon|gallons|liter|liters|milliliter|milliliters|fluid ounce|fluid ounces|fl oz)\s*)+/, '');
-  // Remove parenthetical notes (e.g. '(optional)', '(chopped)')
-  cleaned = cleaned.replace(/\([^\)]*\)/g, '');
-  // Remove trailing 'to taste', 'as needed', etc.
-  cleaned = cleaned.replace(/\b(to taste|as needed|optional|divided|for garnish|for serving|for frying|for greasing|for dusting|for coating|for topping|for decoration|for drizzling|for brushing|for dipping|for the pan|for pan)\b/g, '');
-  // Remove extra punctuation
-  cleaned = cleaned.replace(/[^a-zA-Z0-9\s'-]/g, '');
-  // Collapse whitespace
-  cleaned = cleaned.replace(/\s+/g, ' ').trim();
-  // Remove leading/trailing dashes, apostrophes, or stray 's'
-  cleaned = cleaned.replace(/^[-'s\s]+|[-'\s]+$/g, '');
-  return cleaned;
 }
 
 completeRecipeMapping(); 

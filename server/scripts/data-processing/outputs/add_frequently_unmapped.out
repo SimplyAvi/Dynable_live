@@ -1,0 +1,245 @@
+🔧 Starting to add mappings for frequently unmapped ingredients...
+
+Processing 76 ingredients...
+
+  Found canonical: agave nectar (ID: 184356)
+  ✅ Mapped: agave nectar -> agave nectar
+    Updated 20 products
+  Found canonical: almond butter (ID: 150771)
+  ✅ Mapped: almond butter -> almond butter
+    Updated 20 products
+Database synchronized successfully
+  ✅ Created canonical: smoked paprika
+  ✅ Mapped: smoked paprika -> smoked paprika
+    Updated 20 products
+  ✅ Created canonical: salt ground pepper
+  ✅ Mapped: salt ground pepper -> salt ground pepper
+  ✅ Created canonical: fluid juice
+  ✅ Mapped: fluid juice -> fluid juice
+  ✅ Created canonical: cans tomatoes
+  ✅ Mapped: cans tomatoes -> cans tomatoes
+    Updated 10 products
+  Found canonical: almond paste (ID: 184979)
+  ✅ Mapped: almond paste -> almond paste
+    Updated 20 products
+  Found canonical: ground almonds (ID: 185646)
+  ✅ Mapped: ground almonds -> ground almonds
+    Updated 20 products
+  ✅ Created canonical: uncooked rice
+  ✅ Mapped: uncooked rice -> uncooked rice
+    Updated 9 products
+  Found canonical: elbow macaroni (ID: 183941)
+  ✅ Mapped: elbow macaroni -> elbow macaroni
+    Updated 20 products
+  Found canonical: bay leaves (ID: 1295)
+  ⚠️  Mapping already exists for: bay leaves
+    Updated 20 products
+  Found canonical: pine nuts (ID: 115)
+  ⚠️  Mapping already exists for: pine nuts
+    Updated 20 products
+  Found canonical: mirin (ID: 184423)
+  ✅ Mapped: mirin -> mirin
+    Updated 20 products
+  ✅ Created canonical: sake
+  ✅ Mapped: sake -> sake
+    Updated 20 products
+  Found canonical: clam juice (ID: 185516)
+  ✅ Mapped: clam juice -> clam juice
+    Updated 20 products
+  Found canonical: tomato paste (ID: 150484)
+  ⚠️  Mapping already exists for: tomato paste
+    Updated 20 products
+  Found canonical: confectioners sugar (ID: 3092)
+  ⚠️  Mapping already exists for: confectioners sugar
+    Updated 20 products
+  Found canonical: brown sugar (ID: 84)
+  ⚠️  Mapping already exists for: brown sugar
+    Updated 20 products
+  Found canonical: soy sauce (ID: 105)
+  ⚠️  Mapping already exists for: soy sauce
+    Updated 20 products
+  Found canonical: dijon mustard (ID: 61742)
+  ⚠️  Mapping already exists for: dijon mustard
+    Updated 20 products
+  ✅ Created canonical: lemon pepper seasoning
+  ✅ Mapped: lemon pepper seasoning -> lemon pepper seasoning
+    Updated 16 products
+  Found canonical: creole seasoning (ID: 184125)
+  ✅ Mapped: creole seasoning -> creole seasoning
+    Updated 20 products
+  ✅ Created canonical: cooked and shelled shrimp
+  ✅ Mapped: cooked and shelled shrimp -> cooked and shelled shrimp
+  ✅ Created canonical: cooked shelled shrimp
+  ✅ Mapped: cooked shelled shrimp -> cooked shelled shrimp
+  ✅ Created canonical: minced dill
+  ✅ Mapped: minced dill -> minced dill
+    Updated 8 products
+  ✅ Created canonical: heavy cream, whipped
+  ✅ Mapped: heavy cream, whipped -> heavy cream, whipped
+    Updated 11 products
+  ✅ Created canonical: softened cream cheese
+  ✅ Mapped: softened cream cheese -> softened cream cheese
+    Updated 9 products
+  ✅ Created canonical: canned pumpkin
+  ✅ Mapped: canned pumpkin -> canned pumpkin
+    Updated 20 products
+  Found canonical: coarse sea salt (ID: 186916)
+  ⚠️  Mapping already exists for: coarse sea salt
+    Updated 20 products
+  Found canonical: lemon, thinly sliced (ID: 9584)
+  ⚠️  Mapping already exists for: lemon, thinly sliced
+    Updated 13 products
+  Found canonical: olive oil, divided (ID: 150314)
+  ⚠️  Mapping already exists for: olive oil, divided
+    Updated 20 products
+  Found canonical: sweet onion, thinly sliced (ID: 10825)
+  ⚠️  Mapping already exists for: sweet onion, thinly sliced
+    Updated 8 products
+  Found canonical: red bell peppers (ID: 2029)
+  ⚠️  Mapping already exists for: red bell peppers
+    Updated 20 products
+  ✅ Created canonical: french bread, toasted
+  ✅ Mapped: french bread, toasted -> french bread, toasted
+    Updated 6 products
+  Found canonical: vine-ripened tomato (ID: 11600)
+  ⚠️  Mapping already exists for: vine-ripened tomato
+    Updated 20 products
+  Found canonical: fresh parsley leaves (ID: 49374)
+  ⚠️  Mapping already exists for: fresh parsley leaves
+    Updated 20 products
+  Found canonical: medium-large onion (ID: 38712)
+  ⚠️  Mapping already exists for: medium-large onion
+    Updated 7 products
+  Found canonical: eggplant (ID: 12293)
+  ⚠️  Mapping already exists for: eggplant
+    Updated 20 products
+  Found canonical: yellow squash (ID: 57781)
+  ⚠️  Mapping already exists for: yellow squash
+    Updated 20 products
+  Found canonical: zucchini (ID: 40682)
+  ⚠️  Mapping already exists for: zucchini
+    Updated 20 products
+  Found canonical: fresh thyme leaves (ID: 19827)
+  ⚠️  Mapping already exists for: fresh thyme leaves
+    Updated 20 products
+  Found canonical: baby spinach (ID: 185311)
+  ✅ Mapped: baby spinach -> baby spinach
+    Updated 20 products
+  Found canonical: radicchio (ID: 188968)
+  ⚠️  Mapping already exists for: radicchio
+    Updated 20 products
+  ✅ Created canonical: pine nuts, toasted
+  ✅ Mapped: pine nuts, toasted -> pine nuts, toasted
+    Updated 20 products
+  Found canonical: finely grated lemon peel (ID: 185875)
+  ✅ Mapped: finely grated lemon peel -> finely grated lemon peel
+    Updated 17 products
+  ✅ Created canonical: whole coriander seeds
+  ✅ Mapped: whole coriander seeds -> whole coriander seeds
+    Updated 15 products
+  Found canonical: romaine lettuce (ID: 163)
+  ⚠️  Mapping already exists for: romaine lettuce
+    Updated 20 products
+  ✅ Created canonical: frozen puff pastry
+  ✅ Mapped: frozen puff pastry -> frozen puff pastry
+    Updated 20 products
+  Found canonical: brie cheese (ID: 187509)
+  ✅ Mapped: brie cheese -> brie cheese
+    Updated 20 products
+  ✅ Created canonical: seedless raspberry jam
+  ✅ Mapped: seedless raspberry jam -> seedless raspberry jam
+    Updated 17 products
+  ✅ Created canonical: catfish fillets
+  ✅ Mapped: catfish fillets -> catfish fillets
+    Updated 20 products
+  ✅ Created canonical: garlic herb seasoning blend
+  ✅ Mapped: garlic herb seasoning blend -> garlic herb seasoning blend
+  ✅ Created canonical: shredded carrot
+  ✅ Mapped: shredded carrot -> shredded carrot
+    Updated 20 products
+  ✅ Created canonical: chinese cooking wine
+  ✅ Mapped: chinese cooking wine -> chinese cooking wine
+    Updated 6 products
+  ✅ Created canonical: grated fresh ginger
+  ✅ Mapped: grated fresh ginger -> grated fresh ginger
+    Updated 20 products
+  ✅ Created canonical: glutinous rice
+  ✅ Mapped: glutinous rice -> glutinous rice
+    Updated 13 products
+  ✅ Created canonical: chinese cabbage
+  ✅ Mapped: chinese cabbage -> chinese cabbage
+    Updated 9 products
+  ✅ Created canonical: ground pork
+  ✅ Mapped: ground pork -> ground pork
+    Updated 20 products
+  ✅ Created canonical: frozen cooked shrimp
+  ✅ Mapped: frozen cooked shrimp -> frozen cooked shrimp
+    Updated 6 products
+  ✅ Created canonical: oil and vinegar salad dressing
+  ✅ Mapped: oil and vinegar salad dressing -> oil and vinegar salad dressing
+    Updated 4 products
+  Found canonical: bottled clam juice (ID: 186970)
+  ✅ Mapped: bottled clam juice -> bottled clam juice
+    Updated 20 products
+  Found canonical: fresh crabmeat (ID: 55000)
+  ⚠️  Mapping already exists for: fresh crabmeat
+    Updated 20 products
+  ✅ Created canonical: old bay seasoning
+  ✅ Mapped: old bay seasoning -> old bay seasoning
+    Updated 20 products
+  ✅ Created canonical: clam-tomato juice
+  ✅ Mapped: clam-tomato juice -> clam-tomato juice
+    Updated 1 products
+  Found canonical: fresh basil (ID: 32205)
+  ⚠️  Mapping already exists for: fresh basil
+    Updated 20 products
+  ✅ Created canonical: asparagus, trimmed
+  ✅ Mapped: asparagus, trimmed -> asparagus, trimmed
+    Updated 20 products
+  ✅ Created canonical: spicy brown mustard
+  ✅ Mapped: spicy brown mustard -> spicy brown mustard
+    Updated 20 products
+  Found canonical: finely grated lemon peel (ID: 185875)
+  ⚠️  Mapping already exists for: finely grated lemon peel
+    Updated 17 products
+  ✅ Created canonical: whole side of salmon
+  ✅ Mapped: whole side of salmon -> whole side of salmon
+    Updated 2 products
+  ✅ Created canonical: bacon, crumbled
+  ✅ Mapped: bacon, crumbled -> bacon, crumbled
+    Updated 20 products
+  ✅ Created canonical: confectioners sugar, or as needed
+  ✅ Mapped: confectioners sugar, or as needed -> confectioners sugar, or as needed
+  ✅ Created canonical: white sugar, or to taste
+  ✅ Mapped: white sugar, or to taste -> white sugar, or to taste
+    Updated 18 products
+  Found canonical: bittersweet chocolate (ID: 32616)
+  ⚠️  Mapping already exists for: bittersweet chocolate
+    Updated 20 products
+  Found canonical: semisweet chocolate (ID: 81100)
+  ⚠️  Mapping already exists for: semisweet chocolate
+    Updated 20 products
+  Found canonical: tomato juice (ID: 188293)
+  ✅ Mapped: tomato juice -> tomato juice
+    Updated 20 products
+  ✅ Created canonical: garlic, crushed
+  ✅ Mapped: garlic, crushed -> garlic, crushed
+    Updated 20 products
+
+📊 Summary:
+  Canonical ingredients: 39 found, 37 created
+  Mappings: 50 created, 26 skipped
+  Products updated: 1157
+  Total ingredients processed: 76
+
+🔍 Verifying results...
+  Total mappings: 126743
+  Broken mappings: 0
+  Working mappings: 126743
+  ✅ agave nectar: 23 products found
+  ✅ almond butter: 22 products found
+  ✅ smoked paprika: 20 products found
+  ✅ bay leaves: 22 products found
+
+🎉 Frequently unmapped ingredients mapping completed!
+📝 Log saved to: server/scripts/data-processing/add_frequently_unmapped.log

@@ -1,0 +1,27 @@
+Recipe Audit Fixes Log
+======================
+
+For each recipe, list problematic ingredients and the type of issue. Mark as [FIXED] when resolved.
+
+---
+
+Example (fill in as we go):
+
+Recipe: Tropical Quinoa
+- uncooked quinoa, rinsed: ❌ No products found
+- regular mango chutney: ❌ No products found
+- sweetened coconut flakes: ❌ No products found
+- dry-roasted macadamia nuts: ❌ No products found
+- hot mango chutney: ❌ No products found
+
+Recipe: Zucchini Pasta with Pine Nuts
+- zucchini, thinly sliced into rounds: ❌ No products found
+- pine nuts: ❌ No products found
+- thin spaghetti: ❌ No products found
+
+Recipe: Savory Pumpkin Cornbread
+- all-purpose flour: ⚠️ Suspicious products (mostly pasta/cereal)
+- eggs: ⚠️ Suspicious products (eggplant, liquid egg whites, etc.)
+- salt: ⚠️ Suspicious products (processed foods)
+
+... (continue for each recipe in the audit) 

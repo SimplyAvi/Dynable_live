@@ -15,7 +15,7 @@ const FoodCard = ({foodItem, id, showAddToCart = false, ingredientFlagged = fals
     const { description, brandName, image = `${process.env.PUBLIC_URL}/default_img.png` } = foodItem
     
     const handleClick = (e) => {
-        // Don't navigate if clicking on the Add to Cart button
+        // Don't navigate if clicking on the Add to Cart button (original logic)
         if (e.target.closest('.add-to-cart-btn')) {
             return;
         }
@@ -57,7 +57,18 @@ const FoodCard = ({foodItem, id, showAddToCart = false, ingredientFlagged = fals
     };
 
     return (
-        <div className="food-card" onClick={handleClick}>
+        <div className="food-card" onClick={handleClick} style={{ position: 'relative' }}>
+            {/* Debug overlay - remove after issue is resolved */}
+            {/* <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                background: 'rgba(0, 200, 255, 0.08)',
+                pointerEvents: 'none',
+                zIndex: 10
+            }} /> */}
             <div className="food-image">
                 <img 
                     src={image} 
@@ -71,8 +82,7 @@ const FoodCard = ({foodItem, id, showAddToCart = false, ingredientFlagged = fals
                         : description
                     }
                 </div>
-                
-                {/* Add to Cart Button - only show if enabled and not flagged */}
+                {/* Add to Cart Button - show for homepage products as well */}
                 {showAddToCart && (
                     <div className="food-card-cart-section">
                         {!ingredientFlagged ? (

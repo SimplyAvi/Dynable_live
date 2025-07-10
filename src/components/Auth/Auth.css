@@ -16,9 +16,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 64px);
+    min-height: calc(100vh - 64px - 90px);
     padding: 20px;
     background-color: #f8f9fa;
+    margin-top: 90px;
 }
 
 .auth-box {

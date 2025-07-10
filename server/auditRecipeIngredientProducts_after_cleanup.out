@@ -1,0 +1,497 @@
+🚀 PHASE 3A: BATCH-OPTIMIZED AUDIT (ALL RECIPES)
+
+✅ Database connected
+
+⏳ Preloading all ingredient-to-canonical mappings...
+Database synchronized successfully
+⏳ Preloading real product counts...
+📊 Total recipes: 73322
+
+🔄 Processing batch: recipes 1-1000 (0% complete)
+   ⏱️  Batch completed in 0.5s (1ms per recipe)
+   📈 Current coverage: 7446/9285 (80.2%)
+   🏪 Real products: 5976/9285 (64.4%)
+   ⏳ Estimated time remaining: 0.7 minutes
+
+🔄 Processing batch: recipes 1001-2000 (1% complete)
+   ⏱️  Batch completed in 0.7s (1ms per recipe)
+   📈 Current coverage: 15502/19080 (81.2%)
+   🏪 Real products: 12414/19080 (65.1%)
+   ⏳ Estimated time remaining: 0.9 minutes
+
+🔄 Processing batch: recipes 2001-3000 (3% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 23313/29066 (80.2%)
+   🏪 Real products: 18412/29066 (63.3%)
+   ⏳ Estimated time remaining: 0.6 minutes
+
+🔄 Processing batch: recipes 3001-4000 (4% complete)
+   ⏱️  Batch completed in 0.4s (0ms per recipe)
+   📈 Current coverage: 29941/37608 (79.6%)
+   🏪 Real products: 23597/37608 (62.7%)
+   ⏳ Estimated time remaining: 0.5 minutes
+
+🔄 Processing batch: recipes 4001-5000 (5% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 37337/46683 (80.0%)
+   🏪 Real products: 29571/46683 (63.3%)
+   ⏳ Estimated time remaining: 0.5 minutes
+
+🔄 Processing batch: recipes 5001-6000 (7% complete)
+   ⏱️  Batch completed in 0.6s (1ms per recipe)
+   📈 Current coverage: 45067/56803 (79.3%)
+   🏪 Real products: 35496/56803 (62.5%)
+   ⏳ Estimated time remaining: 0.6 minutes
+
+🔄 Processing batch: recipes 6001-7000 (8% complete)
+   ⏱️  Batch completed in 0.5s (1ms per recipe)
+   📈 Current coverage: 52842/66485 (79.5%)
+   🏪 Real products: 41432/66485 (62.3%)
+   ⏳ Estimated time remaining: 0.6 minutes
+
+🔄 Processing batch: recipes 7001-8000 (10% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 60436/75902 (79.6%)
+   🏪 Real products: 47604/75902 (62.7%)
+   ⏳ Estimated time remaining: 0.5 minutes
+
+🔄 Processing batch: recipes 8001-9000 (11% complete)
+   ⏱️  Batch completed in 0.7s (1ms per recipe)
+   📈 Current coverage: 67736/85303 (79.4%)
+   🏪 Real products: 53324/85303 (62.5%)
+   ⏳ Estimated time remaining: 0.8 minutes
+
+🔄 Processing batch: recipes 9001-10000 (12% complete)
+   ⏱️  Batch completed in 0.4s (0ms per recipe)
+   📈 Current coverage: 74939/94287 (79.5%)
+   🏪 Real products: 59170/94287 (62.8%)
+   ⏳ Estimated time remaining: 0.5 minutes
+
+🔄 Processing batch: recipes 10001-11000 (14% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 82001/103174 (79.5%)
+   🏪 Real products: 64664/103174 (62.7%)
+   ⏳ Estimated time remaining: 0.5 minutes
+
+🔄 Processing batch: recipes 11001-12000 (15% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 89848/113070 (79.5%)
+   🏪 Real products: 70895/113070 (62.7%)
+   ⏳ Estimated time remaining: 0.5 minutes
+
+🔄 Processing batch: recipes 12001-13000 (16% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 97791/122952 (79.5%)
+   🏪 Real products: 77232/122952 (62.8%)
+   ⏳ Estimated time remaining: 0.5 minutes
+
+🔄 Processing batch: recipes 13001-14000 (18% complete)
+   ⏱️  Batch completed in 0.5s (1ms per recipe)
+   📈 Current coverage: 106424/133963 (79.4%)
+   🏪 Real products: 84012/133963 (62.7%)
+   ⏳ Estimated time remaining: 0.5 minutes
+
+🔄 Processing batch: recipes 14001-15000 (19% complete)
+   ⏱️  Batch completed in 0.5s (1ms per recipe)
+   📈 Current coverage: 114571/144482 (79.3%)
+   🏪 Real products: 90402/144482 (62.6%)
+   ⏳ Estimated time remaining: 0.5 minutes
+
+🔄 Processing batch: recipes 15001-16000 (20% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 122054/153823 (79.3%)
+   🏪 Real products: 96271/153823 (62.6%)
+   ⏳ Estimated time remaining: 0.4 minutes
+
+🔄 Processing batch: recipes 16001-17000 (22% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 129898/163318 (79.5%)
+   🏪 Real products: 102429/163318 (62.7%)
+   ⏳ Estimated time remaining: 0.4 minutes
+
+🔄 Processing batch: recipes 17001-18000 (23% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 137227/172697 (79.5%)
+   🏪 Real products: 107965/172697 (62.5%)
+   ⏳ Estimated time remaining: 0.4 minutes
+
+🔄 Processing batch: recipes 18001-19000 (25% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 144882/182467 (79.4%)
+   🏪 Real products: 113906/182467 (62.4%)
+   ⏳ Estimated time remaining: 0.4 minutes
+
+🔄 Processing batch: recipes 19001-20000 (26% complete)
+   ⏱️  Batch completed in 0.4s (0ms per recipe)
+   📈 Current coverage: 152329/191491 (79.5%)
+   🏪 Real products: 119648/191491 (62.5%)
+   ⏳ Estimated time remaining: 0.4 minutes
+
+🔄 Processing batch: recipes 20001-21000 (27% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 159473/200589 (79.5%)
+   🏪 Real products: 125188/200589 (62.4%)
+   ⏳ Estimated time remaining: 0.4 minutes
+
+🔄 Processing batch: recipes 21001-22000 (29% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 167152/210175 (79.5%)
+   🏪 Real products: 131031/210175 (62.3%)
+   ⏳ Estimated time remaining: 0.4 minutes
+
+🔄 Processing batch: recipes 22001-23000 (30% complete)
+   ⏱️  Batch completed in 0.4s (0ms per recipe)
+   📈 Current coverage: 174160/218966 (79.5%)
+   🏪 Real products: 136468/218966 (62.3%)
+   ⏳ Estimated time remaining: 0.4 minutes
+
+🔄 Processing batch: recipes 23001-24000 (31% complete)
+   ⏱️  Batch completed in 0.4s (0ms per recipe)
+   📈 Current coverage: 180399/226650 (79.6%)
+   🏪 Real products: 141434/226650 (62.4%)
+   ⏳ Estimated time remaining: 0.3 minutes
+
+🔄 Processing batch: recipes 24001-25000 (33% complete)
+   ⏱️  Batch completed in 0.4s (0ms per recipe)
+   📈 Current coverage: 187226/235205 (79.6%)
+   🏪 Real products: 146893/235205 (62.5%)
+   ⏳ Estimated time remaining: 0.3 minutes
+
+🔄 Processing batch: recipes 25001-26000 (34% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 194423/244500 (79.5%)
+   🏪 Real products: 152406/244500 (62.3%)
+   ⏳ Estimated time remaining: 0.4 minutes
+
+🔄 Processing batch: recipes 26001-27000 (35% complete)
+   ⏱️  Batch completed in 0.4s (0ms per recipe)
+   📈 Current coverage: 201503/253486 (79.5%)
+   🏪 Real products: 157883/253486 (62.3%)
+   ⏳ Estimated time remaining: 0.3 minutes
+
+🔄 Processing batch: recipes 27001-28000 (37% complete)
+   ⏱️  Batch completed in 0.4s (0ms per recipe)
+   📈 Current coverage: 208353/262311 (79.4%)
+   🏪 Real products: 163073/262311 (62.2%)
+   ⏳ Estimated time remaining: 0.3 minutes
+
+🔄 Processing batch: recipes 28001-29000 (38% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 215850/271585 (79.5%)
+   🏪 Real products: 169203/271585 (62.3%)
+   ⏳ Estimated time remaining: 0.3 minutes
+
+🔄 Processing batch: recipes 29001-30000 (40% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 223396/280931 (79.5%)
+   🏪 Real products: 175329/280931 (62.4%)
+   ⏳ Estimated time remaining: 0.3 minutes
+
+🔄 Processing batch: recipes 30001-31000 (41% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 230175/289858 (79.4%)
+   🏪 Real products: 180452/289858 (62.3%)
+   ⏳ Estimated time remaining: 0.3 minutes
+
+🔄 Processing batch: recipes 31001-32000 (42% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 237177/299453 (79.2%)
+   🏪 Real products: 185731/299453 (62.0%)
+   ⏳ Estimated time remaining: 0.3 minutes
+
+🔄 Processing batch: recipes 32001-33000 (44% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 244704/308948 (79.2%)
+   🏪 Real products: 191606/308948 (62.0%)
+   ⏳ Estimated time remaining: 0.3 minutes
+
+🔄 Processing batch: recipes 33001-34000 (45% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 252190/318342 (79.2%)
+   🏪 Real products: 197444/318342 (62.0%)
+   ⏳ Estimated time remaining: 0.3 minutes
+
+🔄 Processing batch: recipes 34001-35000 (46% complete)
+   ⏱️  Batch completed in 0.4s (0ms per recipe)
+   📈 Current coverage: 258958/326809 (79.2%)
+   🏪 Real products: 202874/326809 (62.1%)
+   ⏳ Estimated time remaining: 0.3 minutes
+
+🔄 Processing batch: recipes 35001-36000 (48% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 266973/336845 (79.3%)
+   🏪 Real products: 209236/336845 (62.1%)
+   ⏳ Estimated time remaining: 0.3 minutes
+
+🔄 Processing batch: recipes 36001-37000 (49% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 274716/346500 (79.3%)
+   🏪 Real products: 215342/346500 (62.1%)
+   ⏳ Estimated time remaining: 0.3 minutes
+
+🔄 Processing batch: recipes 37001-38000 (50% complete)
+   ⏱️  Batch completed in 0.5s (1ms per recipe)
+   📈 Current coverage: 282571/356611 (79.2%)
+   🏪 Real products: 221468/356611 (62.1%)
+   ⏳ Estimated time remaining: 0.3 minutes
+
+🔄 Processing batch: recipes 38001-39000 (52% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 290154/365943 (79.3%)
+   🏪 Real products: 227593/365943 (62.2%)
+   ⏳ Estimated time remaining: 0.3 minutes
+
+🔄 Processing batch: recipes 39001-40000 (53% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 297746/375860 (79.2%)
+   🏪 Real products: 233457/375860 (62.1%)
+   ⏳ Estimated time remaining: 0.3 minutes
+
+🔄 Processing batch: recipes 40001-41000 (55% complete)
+   ⏱️  Batch completed in 0.4s (0ms per recipe)
+   📈 Current coverage: 304682/384477 (79.2%)
+   🏪 Real products: 238689/384477 (62.1%)
+   ⏳ Estimated time remaining: 0.2 minutes
+
+🔄 Processing batch: recipes 41001-42000 (56% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 312457/394309 (79.2%)
+   🏪 Real products: 244668/394309 (62.0%)
+   ⏳ Estimated time remaining: 0.3 minutes
+
+🔄 Processing batch: recipes 42001-43000 (57% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 319946/403744 (79.2%)
+   🏪 Real products: 250396/403744 (62.0%)
+   ⏳ Estimated time remaining: 0.2 minutes
+
+🔄 Processing batch: recipes 43001-44000 (59% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 327913/413718 (79.3%)
+   🏪 Real products: 256564/413718 (62.0%)
+   ⏳ Estimated time remaining: 0.2 minutes
+
+🔄 Processing batch: recipes 44001-45000 (60% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 335498/423057 (79.3%)
+   🏪 Real products: 262559/423057 (62.1%)
+   ⏳ Estimated time remaining: 0.2 minutes
+
+🔄 Processing batch: recipes 45001-46000 (61% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 342877/432140 (79.3%)
+   🏪 Real products: 268594/432140 (62.2%)
+   ⏳ Estimated time remaining: 0.2 minutes
+
+🔄 Processing batch: recipes 46001-47000 (63% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 350352/441736 (79.3%)
+   🏪 Real products: 274360/441736 (62.1%)
+   ⏳ Estimated time remaining: 0.2 minutes
+
+🔄 Processing batch: recipes 47001-48000 (64% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 357377/450810 (79.3%)
+   🏪 Real products: 279775/450810 (62.1%)
+   ⏳ Estimated time remaining: 0.2 minutes
+
+🔄 Processing batch: recipes 48001-49000 (65% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 364722/460060 (79.3%)
+   🏪 Real products: 285641/460060 (62.1%)
+   ⏳ Estimated time remaining: 0.2 minutes
+
+🔄 Processing batch: recipes 49001-50000 (67% complete)
+   ⏱️  Batch completed in 0.4s (0ms per recipe)
+   📈 Current coverage: 371532/468795 (79.3%)
+   🏪 Real products: 290685/468795 (62.0%)
+   ⏳ Estimated time remaining: 0.2 minutes
+
+🔄 Processing batch: recipes 50001-51000 (68% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 379115/478632 (79.2%)
+   🏪 Real products: 296631/478632 (62.0%)
+   ⏳ Estimated time remaining: 0.2 minutes
+
+🔄 Processing batch: recipes 51001-52000 (70% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 386873/488426 (79.2%)
+   🏪 Real products: 302656/488426 (62.0%)
+   ⏳ Estimated time remaining: 0.2 minutes
+
+🔄 Processing batch: recipes 52001-53000 (71% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 394716/498001 (79.3%)
+   🏪 Real products: 308743/498001 (62.0%)
+   ⏳ Estimated time remaining: 0.2 minutes
+
+🔄 Processing batch: recipes 53001-54000 (72% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 401989/507352 (79.2%)
+   🏪 Real products: 314319/507352 (62.0%)
+   ⏳ Estimated time remaining: 0.2 minutes
+
+🔄 Processing batch: recipes 54001-55000 (74% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 409568/517241 (79.2%)
+   🏪 Real products: 320128/517241 (61.9%)
+   ⏳ Estimated time remaining: 0.1 minutes
+
+🔄 Processing batch: recipes 55001-56000 (75% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 416707/526670 (79.1%)
+   🏪 Real products: 325628/526670 (61.8%)
+   ⏳ Estimated time remaining: 0.1 minutes
+
+🔄 Processing batch: recipes 56001-57000 (76% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 423981/536006 (79.1%)
+   🏪 Real products: 331113/536006 (61.8%)
+   ⏳ Estimated time remaining: 0.1 minutes
+
+🔄 Processing batch: recipes 57001-58000 (78% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 431040/545287 (79.0%)
+   🏪 Real products: 336519/545287 (61.7%)
+   ⏳ Estimated time remaining: 0.1 minutes
+
+🔄 Processing batch: recipes 58001-59000 (79% complete)
+   ⏱️  Batch completed in 0.5s (1ms per recipe)
+   📈 Current coverage: 439201/556050 (79.0%)
+   🏪 Real products: 342550/556050 (61.6%)
+   ⏳ Estimated time remaining: 0.1 minutes
+
+🔄 Processing batch: recipes 59001-60000 (80% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 446403/565179 (79.0%)
+   🏪 Real products: 348111/565179 (61.6%)
+   ⏳ Estimated time remaining: 0.1 minutes
+
+🔄 Processing batch: recipes 60001-61000 (82% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 453771/574747 (79.0%)
+   🏪 Real products: 353856/574747 (61.6%)
+   ⏳ Estimated time remaining: 0.1 minutes
+
+🔄 Processing batch: recipes 61001-62000 (83% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 461817/584734 (79.0%)
+   🏪 Real products: 360268/584734 (61.6%)
+   ⏳ Estimated time remaining: 0.1 minutes
+
+🔄 Processing batch: recipes 62001-63000 (85% complete)
+   ⏱️  Batch completed in 0.5s (1ms per recipe)
+   📈 Current coverage: 470045/595257 (79.0%)
+   🏪 Real products: 366610/595257 (61.6%)
+   ⏳ Estimated time remaining: 0.1 minutes
+
+🔄 Processing batch: recipes 63001-64000 (86% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 477208/604795 (78.9%)
+   🏪 Real products: 372218/604795 (61.5%)
+   ⏳ Estimated time remaining: 0.1 minutes
+
+🔄 Processing batch: recipes 64001-65000 (87% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 484347/613972 (78.9%)
+   🏪 Real products: 377544/613972 (61.5%)
+   ⏳ Estimated time remaining: 0.1 minutes
+
+🔄 Processing batch: recipes 65001-66000 (89% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 491868/623201 (78.9%)
+   🏪 Real products: 383602/623201 (61.6%)
+   ⏳ Estimated time remaining: 0.1 minutes
+
+🔄 Processing batch: recipes 66001-67000 (90% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 499158/632397 (78.9%)
+   🏪 Real products: 389311/632397 (61.6%)
+   ⏳ Estimated time remaining: 0.0 minutes
+
+🔄 Processing batch: recipes 67001-68000 (91% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 506657/642163 (78.9%)
+   🏪 Real products: 395017/642163 (61.5%)
+   ⏳ Estimated time remaining: 0.0 minutes
+
+🔄 Processing batch: recipes 68001-69000 (93% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 513974/651697 (78.9%)
+   🏪 Real products: 400621/651697 (61.5%)
+   ⏳ Estimated time remaining: 0.0 minutes
+
+🔄 Processing batch: recipes 69001-70000 (94% complete)
+   ⏱️  Batch completed in 0.6s (1ms per recipe)
+   📈 Current coverage: 521755/661884 (78.8%)
+   🏪 Real products: 406698/661884 (61.4%)
+   ⏳ Estimated time remaining: 0.0 minutes
+
+🔄 Processing batch: recipes 70001-71000 (95% complete)
+   ⏱️  Batch completed in 0.5s (1ms per recipe)
+   📈 Current coverage: 529991/672419 (78.8%)
+   🏪 Real products: 413145/672419 (61.4%)
+   ⏳ Estimated time remaining: 0.0 minutes
+
+🔄 Processing batch: recipes 71001-72000 (97% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 536984/681414 (78.8%)
+   🏪 Real products: 418437/681414 (61.4%)
+   ⏳ Estimated time remaining: 0.0 minutes
+
+🔄 Processing batch: recipes 72001-73000 (98% complete)
+   ⏱️  Batch completed in 0.5s (0ms per recipe)
+   📈 Current coverage: 544369/690820 (78.8%)
+   🏪 Real products: 424241/690820 (61.4%)
+   ⏳ Estimated time remaining: 0.0 minutes
+
+🔄 Processing batch: recipes 73001-73322 (100% complete)
+   ⏱️  Batch completed in 0.2s (1ms per recipe)
+   📈 Current coverage: 547169/694104 (78.8%)
+   🏪 Real products: 426577/694104 (61.5%)
+   ⏳ Estimated time remaining: 0.0 minutes
+
+📝 Logged 5831 raw ingredients that cleaned to empty in empty_cleaned_ingredients.log
+
+🎯 PHASE 3A BATCH-OPTIMIZED FINAL RESULTS
+   📊 Total Ingredients: 694,104
+   🎯 Mapped Ingredients: 547,169 (78.8%)
+   🏪 Ingredients with Real Products: 426,577 (61.5%)
+   ❌ Unmapped Ingredients: 49353 unique types
+
+🔍 TOP UNMAPPED INGREDIENTS:
+   1. brown sugar (349 recipes)
+   2. vegetables (242 recipes)
+   3. cooking (199 recipes)
+   4. pie (179 recipes)
+   5. powder (175 recipes)
+   6. oats (166 recipes)
+   7. beef stew (149 recipes)
+   8. green olives (143 recipes)
+   9. low sodium soy sauce (143 recipes)
+   10. unsweetened coconut milk (142 recipes)
+   11. egg to blend (142 recipes)
+   12. wild rice (142 recipes)
+   13. % milk (141 recipes)
+   14. chocolate syrup (141 recipes)
+   15. chicken cubes (138 recipes)
+   16. processed cheese food (138 recipes)
+   17. butter bits (137 recipes)
+   18. instant chocolate pudding (137 recipes)
+   19. flax seeds (136 recipes)
+   20. sauerkraut (136 recipes)
+   21. cream corn (135 recipes)
+   22. chicken bite size (135 recipes)
+   23. tomatoes in juice (135 recipes)
+   24. cherry pie (134 recipes)
+   25. seasoning salt (134 recipes)
+   26. angel hair pasta (133 recipes)
+   27. reduced sodium chicken broth (131 recipes)
+   28. green chilies (131 recipes)
+   29. arborio rice (130 recipes)
+   30. linguine (129 recipes)
+
+⏱️  Total audit time: 0.6 minutes
+📈 Average time per recipe: 0ms
+
+💾 Results saved to phase3a_batch_optimized_results.json

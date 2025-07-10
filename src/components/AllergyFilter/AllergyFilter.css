@@ -5,6 +5,13 @@
   padding: 10px 0;
 }
 
+.horizontal-scroll-container.allergen-scroll-container {
+  background: transparent !important;
+  box-shadow: none;
+  border: none;
+  padding: 10px 0;
+}
+
 /* Scrollable content */
 .horizontal-scroll {
   display: flex;
@@ -54,4 +61,33 @@
   background: #f0f0f0;
   color: #222;
   border: 1px solid #888;
+}
+
+.allergy-scroll-item {
+  min-width: 40px;
+  border-radius: 16px;
+  padding: 4px 10px;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  flex-shrink: 0;
+  user-select: none;
+  background-color: #fff;
+  color: #222;
+  transition: all 0.2s ease;
+  border: 1.5px solid #bbb;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.allergy-scroll-item.selected {
+  background-color: #3a7bd5;
+  color: #fff;
+  border: 1.5px solid #3a7bd5;
+}
+
+.allergy-scroll-item:hover {
+  background: #e3f0ff;
+  color: #3a7bd5;
+  border: 1.5px solid #3a7bd5;
 }

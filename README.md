@@ -68,3 +68,132 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+---
+
+# Backend & API Documentation
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js (v14+)
+- PostgreSQL database
+- Environment variables configured (see `.env.example`)
+
+### Setup Backend
+```bash
+cd server
+npm install
+npm start
+```
+Backend runs on `http://localhost:5001`
+
+## 📡 API Endpoints
+
+### Authentication
+- `POST /api/auth/signup` - User registration
+- `POST /api/auth/login` - User login  
+- `GET /api/auth/profile` - Get user profile (requires auth)
+- `GET /api/auth/google/callback` - Google OAuth callback
+
+### Products & Ingredients
+- `GET /api/product/foods` - List all foods (paginated)
+- `GET /api/product/search?name=<query>` - Search products
+- `POST /api/product/by-ingredient` - Get products by ingredient name
+- `POST /api/product/subcat` - Get products by subcategory (with allergen filtering)
+- `POST /api/product/nosubcat` - Get products without subcategory
+
+### Recipes
+- `GET /api/recipe/?id=<id>` - Get recipe by ID
+- `POST /api/recipe/` - Search/filter recipes
+- `GET /api/recipe/substitute-products?canonicalIngredient=<name>` - Get substitutes for ingredient
+
+### Categories & Allergens
+- `GET /api/foodCategories` - Get category hierarchy with subcategories
+- `GET /api/allergens` - Get all available allergens
+- `GET /api/allergens/derivatives?allergen=<name>` - Get allergen derivatives
+
+### Cart (requires authentication)
+- `GET /api/cart/` - Get user's cart
+- `POST /api/cart/` - Add item to cart
+- `POST /api/cart/checkout` - Checkout cart
+- `GET /api/cart/orders` - Get user's order history
+
+## 🛠️ Data Processing Scripts
+
+### Location
+All data processing scripts are in `server/scripts/data-processing/`
+
+### Key Scripts
+- `cleanIngredientName.js` - Clean ingredient names (removes measurements, etc.)
+- `debug_product_matching.js` - Debug product matching logic
+- `comprehensive_recipe_audit.js` - Audit recipe ingredient mappings
+- `add_core_pure_products.js` - Add missing pure products for core ingredients
+
+### Run Health Check
+```bash
+cd server
+node test_api_endpoint.js
+```
+
+### Run Data Audit
+```bash
+cd server/scripts/data-processing
+node comprehensive_recipe_audit.js
+```
+
+## 📊 Current System Status
+
+### Mapping Coverage
+- **83.9%** of recipe ingredients successfully mapped
+- **43.5%** have real/branded products available
+- **15.2%** remain unmapped
+
+### Database Models
+- **Food** - Product database with allergen info
+- **Recipe/Ingredient** - Recipe ingredients and quantities
+- **Category/Subcategory** - Food categorization hierarchy
+- **CanonicalIngredient** - Standardized ingredient names
+- **IngredientToCanonical** - Mapping messy names to canonicals
+- **AllergenDerivative** - Allergen substitution logic
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+#### 1. 500 Error on `/api/foodCategories`
+**Cause**: Missing `as: 'subcategories'` in Category association
+**Fix**: Ensure `Category.hasMany(Subcategory, { foreignKey: 'CategoryID', as: 'subcategories' })` in `server/db/models/index.js`
+
+#### 2. 400 Error on `/api/recipe/substitute-products`
+**Cause**: Missing `canonicalIngredient` query parameter
+**Fix**: Always include `?canonicalIngredient=<ingredient_name>`
+
+#### 3. 401 Unauthorized on Cart/Auth endpoints
+**Cause**: Missing or invalid JWT token
+**Fix**: Include `Authorization: Bearer <token>` header
+
+#### 4. Empty product results
+**Cause**: Ingredient not mapped to canonical
+**Fix**: Run `add_core_pure_products.js` or check mapping in database
+
+### Database Issues
+- **Foreign key constraints**: Run `fix_subcategories_fk.js`
+- **Missing canonicals**: Run `add_missing_canonicals.js`
+- **Broken mappings**: Run `fix_broken_mappings.js`
+
+## 🎯 Development Workflow
+
+1. **Test endpoints**: `node test_api_endpoint.js`
+2. **Audit data quality**: `node comprehensive_recipe_audit.js`
+3. **Fix mappings**: Run appropriate data processing scripts
+4. **Verify changes**: Re-run health check
+
+## 📈 Performance Notes
+
+- **Caching**: Category hierarchy is cached for 1 hour
+- **Pagination**: Product/recipe endpoints support pagination
+- **Allergen filtering**: Real-time filtering based on user preferences
+- **Substitute logic**: Automatic allergen-based substitution suggestions
+
+For detailed data processing documentation, see `server/scripts/data-processing/README.md`

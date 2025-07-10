@@ -57,12 +57,12 @@ const AllergyFilter = () => {
     const displayAllergies = Object.keys(allergies).length > 0 ? allergies : fallbackAllergens;
 
     return (
-        <div className="horizontal-scroll-container">
+        <div className="horizontal-scroll-container allergen-scroll-container">
             <div className="horizontal-scroll">
                 {allergyKeys.map((allergyKey) => (
                     <div 
                         key={allergyKey}
-                        className={`scroll-item ${displayAllergies[allergyKey] ? 'selected' : ''}`}
+                        className={`allergy-scroll-item${displayAllergies[allergyKey] ? ' selected' : ''}`}
                         onClick={() => handleAllergyClick(allergyKey)}
                     >
                         {allergyKey}

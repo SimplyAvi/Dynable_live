@@ -37,6 +37,7 @@ import Profile from './components/Profile/Profile';
 import GoogleCallback from './components/Auth/GoogleCallback';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 import CartPage from './pages/CartPage/CartPage';
+import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
 import './App.css';
 
 // Protected Route wrapper component
@@ -102,6 +103,7 @@ function App() {
         <Header />
         <main className="App-main">
           <Routes>
+            <Route path="/about" element={<AboutUsPage />} />
             <Route path="/" element={<Homepage />} />
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/recipe/:id" element={<RecipePage />} />

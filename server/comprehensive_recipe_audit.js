@@ -1,6 +1,7 @@
 const { Sequelize } = require('sequelize');
 const db = require('./db/database');
 const { Food, CanonicalIngredient, Recipe, Ingredient } = require('./db/models');
+const cleanIngredientName = require('./scripts/data-processing/cleanIngredientName');
 
 async function comprehensiveRecipeAudit() {
   console.log('🔍 COMPREHENSIVE RECIPE AUDIT\n');
@@ -48,31 +49,31 @@ async function comprehensiveRecipeAudit() {
           
           // Check if ingredient has canonical mapping
           const mapping = await findCanonicalMapping(cleanedName);
-          
-          if (mapping) {
-            mappedIngredients++;
-            
-            // Check if canonical has real products
-            const realProducts = await db.query(`
-              SELECT COUNT(*) as count
-              FROM "Food"
-              WHERE "canonicalTag" = :canonicalName
-                AND "brandOwner" != 'Generic'
-            `, {
-              replacements: { canonicalName: mapping },
-              type: Sequelize.QueryTypes.SELECT
-            });
-            
-            if (realProducts[0].count > 0) {
-              ingredientsWithRealProducts++;
-            }
-          } else {
+
+          if (!mapping || !mapping.name) {
             unmappedIngredients.push({
               recipeId: recipe.id,
               recipeTitle: recipe.title,
               ingredient: ingredient.name,
               cleanedName
             });
+            continue; // Skip product lookup if mapping is missing
+          }
+          mappedIngredients++;
+          
+          // Check if canonical has real products
+          const realProducts = await db.query(`
+            SELECT COUNT(*) as count
+            FROM "Food"
+            WHERE "canonicalTag" = :canonicalName
+              AND "brandOwner" != 'Generic'
+          `, {
+            replacements: { canonicalName: mapping.name },
+            type: Sequelize.QueryTypes.SELECT
+          });
+          
+          if (realProducts[0].count > 0) {
+            ingredientsWithRealProducts++;
           }
         }
       }
@@ -336,23 +337,24 @@ async function comprehensiveRecipeAudit() {
         if (ingredient.name) {
           const cleanedName = cleanIngredientName(ingredient.name);
           const mapping = await findCanonicalMapping(cleanedName);
-          
-          if (mapping) {
-            finalMapped++;
-            
-            const realProducts = await db.query(`
-              SELECT COUNT(*) as count
-              FROM "Food"
-              WHERE "canonicalTag" = :canonicalName
-                AND "brandOwner" != 'Generic'
-            `, {
-              replacements: { canonicalName: mapping },
-              type: Sequelize.QueryTypes.SELECT
-            });
-            
-            if (realProducts[0].count > 0) {
-              finalWithRealProducts++;
-            }
+
+          if (!mapping || !mapping.name) {
+            continue; // Skip product lookup if mapping is missing
+          }
+          finalMapped++;
+
+          const realProducts = await db.query(`
+            SELECT COUNT(*) as count
+            FROM "Food"
+            WHERE "canonicalTag" = :canonicalName
+              AND "brandOwner" != 'Generic'
+          `, {
+            replacements: { canonicalName: mapping.name },
+            type: Sequelize.QueryTypes.SELECT
+          });
+
+          if (realProducts[0].count > 0) {
+            finalWithRealProducts++;
           }
         }
       }
@@ -381,18 +383,11 @@ async function comprehensiveRecipeAudit() {
   }
 }
 
-function cleanIngredientName(name) {
-  return name
-    .toLowerCase()
-    .replace(/[^\w\s]/g, '') // Remove punctuation
-    .replace(/\s+/g, ' ') // Normalize whitespace
-    .trim();
-}
-
+// Enhanced: Find canonical by name or alias, always resolve to core canonical
 async function findCanonicalMapping(cleanedName) {
-  // First try exact match
+  // First try exact match in IngredientToCanonical
   const exactMatch = await db.query(`
-    SELECT ci.name as canonicalName
+    SELECT ci.id, ci.name, ci.aliases
     FROM "IngredientToCanonicals" itc
     JOIN "CanonicalIngredients" ci ON itc."CanonicalIngredientId" = ci.id
     WHERE LOWER(itc."messyName") = :name
@@ -401,14 +396,12 @@ async function findCanonicalMapping(cleanedName) {
     replacements: { name: cleanedName },
     type: Sequelize.QueryTypes.SELECT
   });
-  
   if (exactMatch.length > 0) {
-    return exactMatch[0].canonicalName;
+    return { id: exactMatch[0].id, name: exactMatch[0].name };
   }
-  
   // Try partial match
   const partialMatch = await db.query(`
-    SELECT ci.name as canonicalName
+    SELECT ci.id, ci.name, ci.aliases
     FROM "IngredientToCanonicals" itc
     JOIN "CanonicalIngredients" ci ON itc."CanonicalIngredientId" = ci.id
     WHERE LOWER(itc."messyName") LIKE :name
@@ -417,26 +410,35 @@ async function findCanonicalMapping(cleanedName) {
     replacements: { name: `%${cleanedName}%` },
     type: Sequelize.QueryTypes.SELECT
   });
-  
   if (partialMatch.length > 0) {
-    return partialMatch[0].canonicalName;
+    return { id: partialMatch[0].id, name: partialMatch[0].name };
   }
-  
-  // Try canonical name match
+  // Try canonical name or alias match
   const canonicalMatch = await db.query(`
-    SELECT ci.name
+    SELECT ci.id, ci.name, ci.aliases
     FROM "CanonicalIngredients" ci
-    WHERE LOWER(ci.name) LIKE :name
+    WHERE LOWER(ci.name) = :name OR (ci.aliases IS NOT NULL AND EXISTS (SELECT 1 FROM unnest(ci.aliases) a WHERE LOWER(a) = :name))
+    LIMIT 1
+  `, {
+    replacements: { name: cleanedName },
+    type: Sequelize.QueryTypes.SELECT
+  });
+  if (canonicalMatch.length > 0) {
+    return { id: canonicalMatch[0].id, name: canonicalMatch[0].name };
+  }
+  // Try LIKE match for aliases (for partials)
+  const aliasLikeMatch = await db.query(`
+    SELECT ci.id, ci.name, ci.aliases
+    FROM "CanonicalIngredients" ci
+    WHERE EXISTS (SELECT 1 FROM unnest(ci.aliases) a WHERE LOWER(a) LIKE :name)
     LIMIT 1
   `, {
     replacements: { name: `%${cleanedName}%` },
     type: Sequelize.QueryTypes.SELECT
   });
-  
-  if (canonicalMatch.length > 0) {
-    return canonicalMatch[0].name;
+  if (aliasLikeMatch.length > 0) {
+    return { id: aliasLikeMatch[0].id, name: aliasLikeMatch[0].name };
   }
-  
   return null;
 }
 

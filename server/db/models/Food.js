@@ -37,6 +37,13 @@ const Food = sequelize.define('Food', {
     comment: 'Confidence level for canonicalTag assignment: confident, suggested, none'
   },
   // Add other properties as needed
+}, {
+  indexes: [
+    {
+      fields: ['canonicalTag'],
+      name: 'idx_food_canonicalTag'
+    }
+  ]
 });
 
 module.exports = Food;

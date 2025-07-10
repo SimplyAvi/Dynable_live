@@ -1,0 +1,139 @@
+🔧 Starting comprehensive mapping fix...
+
+Step 1: Removing broken mappings...
+Found 36 broken mappings to remove
+Database synchronized successfully
+✅ Removed all broken mappings
+
+Step 2: Finding/creating canonical ingredients...
+  Found canonical: sugar (ID: 24)
+  ⚠️  Mapping already exists for: sugar
+  Created canonical: vegetable juice
+  ✅ Mapped: vegetable juice -> vegetable juice
+  Created canonical: blueberry jam
+  ✅ Mapped: blueberry jam -> blueberry jam
+  Found canonical: golden raisins (ID: 187596)
+  ✅ Mapped: golden raisins -> golden raisins
+  Created canonical: dill pickle juice
+  ✅ Mapped: dill pickle juice -> dill pickle juice
+  Found canonical: white sugar (ID: 183784)
+  ✅ Mapped: white sugar -> white sugar
+  Found canonical: dark brown sugar (ID: 184126)
+  ✅ Mapped: dark brown sugar -> dark brown sugar
+  Found canonical: packed brown sugar (ID: 100)
+  ⚠️  Mapping already exists for: packed brown sugar
+  Created canonical: unsweetened pineapple juice
+  ✅ Mapped: unsweetened pineapple juice -> unsweetened pineapple juice
+  Found canonical: orange juice (ID: 112)
+  ⚠️  Mapping already exists for: orange juice
+  Created canonical: butter, melted
+  ✅ Mapped: butter, melted -> butter, melted
+  Found canonical: unsalted butter (ID: 76)
+  ⚠️  Mapping already exists for: unsalted butter
+  Created canonical: butter, softened
+  ✅ Mapped: butter, softened -> butter, softened
+  Found canonical: garlic salt (ID: 150363)
+  ⚠️  Mapping already exists for: garlic salt
+  Found canonical: dry wine (ID: 150269)
+  ⚠️  Mapping already exists for: dry wine
+  Found canonical: distilled vinegar (ID: 150494)
+  ⚠️  Mapping already exists for: distilled vinegar
+  Found canonical: ground cloves (ID: 93)
+  ⚠️  Mapping already exists for: ground cloves
+  Created canonical: greek seasoning
+  ✅ Mapped: greek seasoning -> greek seasoning
+  Found canonical: dark corn syrup (ID: 150542)
+  ⚠️  Mapping already exists for: dark corn syrup
+  Created canonical: cola
+  ✅ Mapped: cola -> cola
+  Found canonical: cream cheese (ID: 139820)
+  ⚠️  Mapping already exists for: cream cheese
+  Found canonical: evaporated milk (ID: 150579)
+  ⚠️  Mapping already exists for: evaporated milk
+  Found canonical: low-sodium chicken broth (ID: 150440)
+  ⚠️  Mapping already exists for: low-sodium chicken broth
+  Created canonical: vanilla-flavored candy coating
+  ✅ Mapped: vanilla-flavored candy coating -> vanilla-flavored candy coating
+  Created canonical: unsifted confectioners sugar
+  ✅ Mapped: unsifted confectioners sugar -> unsifted confectioners sugar
+  Found canonical: unsweetened applesauce (ID: 184772)
+  ✅ Mapped: unsweetened applesauce -> unsweetened applesauce
+  Found canonical: warm water (ID: 183865)
+  ⚠️  Mapping already exists for: warm water
+  Found canonical: vegetable oil (ID: 83)
+  ⚠️  Mapping already exists for: vegetable oil
+  Found canonical: kumquats (ID: 111585)
+  ⚠️  Mapping already exists for: kumquats
+  Found canonical: cubed beef stew meat (ID: 185181)
+  ✅ Mapped: cubed beef stew meat -> cubed beef stew meat
+  Created canonical: pancetta
+  ✅ Mapped: pancetta -> pancetta
+  Found canonical: rosemary (ID: 115628)
+  ⚠️  Mapping already exists for: rosemary
+  Found canonical: ginger (ID: 32029)
+  ⚠️  Mapping already exists for: ginger
+  Found canonical: sweet potatoes (ID: 15255)
+  ⚠️  Mapping already exists for: sweet potatoes
+  Found canonical: sourdough bread (ID: 51860)
+  ⚠️  Mapping already exists for: sourdough bread
+  Found canonical: chicken (ID: 150238)
+  ⚠️  Mapping already exists for: chicken
+  Created canonical: pecans, toasted
+  ✅ Mapped: pecans, toasted -> pecans, toasted
+  Found canonical: firmly packed brown sugar (ID: 184974)
+  ✅ Mapped: firmly packed brown sugar -> firmly packed brown sugar
+
+✅ Canonical ingredients: 26 found, 12 created
+
+Step 3: Updating product canonical tags...
+  Updated 20 products for: sugar
+  Updated 20 products for: vegetable juice
+  Updated 6 products for: blueberry jam
+  Updated 20 products for: golden raisins
+  Updated 11 products for: dill pickle juice
+  Updated 20 products for: white sugar
+  Updated 20 products for: dark brown sugar
+  Updated 20 products for: packed brown sugar
+  Updated 20 products for: unsweetened pineapple juice
+  Updated 20 products for: orange juice
+  Updated 20 products for: butter, melted
+  Updated 20 products for: unsalted butter
+  Updated 20 products for: butter, softened
+  Updated 20 products for: garlic salt
+  Updated 1 products for: dry wine
+  Updated 20 products for: distilled vinegar
+  Updated 20 products for: ground cloves
+  Updated 16 products for: greek seasoning
+  Updated 17 products for: dark corn syrup
+  Updated 20 products for: cola
+  Updated 20 products for: cream cheese
+  Updated 20 products for: evaporated milk
+  Updated 20 products for: low-sodium chicken broth
+  Updated 4 products for: vanilla-flavored candy coating
+  Updated 0 products for: unsifted confectioners sugar
+  Updated 20 products for: unsweetened applesauce
+  Updated 20 products for: warm water
+  Updated 20 products for: vegetable oil
+  Updated 20 products for: kumquats
+  Updated 10 products for: cubed beef stew meat
+  Updated 20 products for: pancetta
+  Updated 20 products for: rosemary
+  Updated 20 products for: ginger
+  Updated 20 products for: sweet potatoes
+  Updated 20 products for: sourdough bread
+  Updated 20 products for: chicken
+  Updated 20 products for: pecans, toasted
+  Updated 16 products for: firmly packed brown sugar
+
+✅ Updated 652 products with canonical tags
+
+Step 4: Verifying fixes...
+Total mappings: 126693
+Broken mappings: 0
+Working mappings: 126693
+  ✅ sugar: 0 products found
+  ✅ butter: 3306 products found
+  ✅ salt: 48215 products found
+  ✅ flour: 4 products found
+
+🎉 Mapping fix completed!

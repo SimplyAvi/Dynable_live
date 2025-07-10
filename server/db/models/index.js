@@ -23,7 +23,7 @@ const SubstituteMapping = require('./SubstituteMapping');
 // Define associations
 Food.hasMany(FoodNutrient);
 Food.hasMany(FoodAttribute);
-Category.hasMany(Subcategory, { foreignKey: 'CategoryID' });
+Category.hasMany(Subcategory, { foreignKey: 'CategoryID', as: 'subcategories' });
 Subcategory.belongsTo(Category, { foreignKey: 'CategoryID' });
 Subcategory.hasMany(Ingredient, { foreignKey: 'SubcategoryID' });
 Ingredient.belongsTo(Subcategory, { foreignKey: 'SubcategoryID' });

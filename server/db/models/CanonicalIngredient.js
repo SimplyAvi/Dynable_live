@@ -15,6 +15,13 @@ const CanonicalIngredient = sequelize.define('CanonicalIngredient', {
     type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: true
   }
+}, {
+  indexes: [
+    {
+      fields: ['name'],
+      name: 'idx_canonicalingredient_name'
+    }
+  ]
 });
 
 module.exports = CanonicalIngredient; 

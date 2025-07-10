@@ -1,0 +1,132 @@
+{
+  "totalIngredients": 694104,
+  "mappedIngredients": 547169,
+  "ingredientsWithRealProducts": 426577,
+  "unmappedCount": 49353,
+  "coverage": "78.8",
+  "realProductCoverage": "61.5",
+  "topUnmapped": [
+    [
+      "brown sugar",
+      349
+    ],
+    [
+      "vegetables",
+      242
+    ],
+    [
+      "cooking",
+      199
+    ],
+    [
+      "pie",
+      179
+    ],
+    [
+      "powder",
+      175
+    ],
+    [
+      "oats",
+      166
+    ],
+    [
+      "beef stew",
+      149
+    ],
+    [
+      "green olives",
+      143
+    ],
+    [
+      "low sodium soy sauce",
+      143
+    ],
+    [
+      "unsweetened coconut milk",
+      142
+    ],
+    [
+      "egg to blend",
+      142
+    ],
+    [
+      "wild rice",
+      142
+    ],
+    [
+      "% milk",
+      141
+    ],
+    [
+      "chocolate syrup",
+      141
+    ],
+    [
+      "chicken cubes",
+      138
+    ],
+    [
+      "processed cheese food",
+      138
+    ],
+    [
+      "butter bits",
+      137
+    ],
+    [
+      "instant chocolate pudding",
+      137
+    ],
+    [
+      "flax seeds",
+      136
+    ],
+    [
+      "sauerkraut",
+      136
+    ],
+    [
+      "cream corn",
+      135
+    ],
+    [
+      "chicken bite size",
+      135
+    ],
+    [
+      "tomatoes in juice",
+      135
+    ],
+    [
+      "cherry pie",
+      134
+    ],
+    [
+      "seasoning salt",
+      134
+    ],
+    [
+      "angel hair pasta",
+      133
+    ],
+    [
+      "reduced sodium chicken broth",
+      131
+    ],
+    [
+      "green chilies",
+      131
+    ],
+    [
+      "arborio rice",
+      130
+    ],
+    [
+      "linguine",
+      129
+    ]
+  ],
+  "auditTime": 35423,
+  "recipesProcessed": 73322
+}

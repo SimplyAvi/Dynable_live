@@ -17,7 +17,8 @@ const RecipeCard = ({recipe, id, allergies}) =>{
     let shortenedTitle = title
     if (title.length>50) shortenedTitle = title.slice(0,40) + '...'
 
-    const handleClick  = () => {
+    const handleClick  = (e) => {
+        console.log('RecipeCard clicked:', e.target, e.nativeEvent.composedPath ? e.nativeEvent.composedPath() : e.nativeEvent.path);
         navigate(`/recipe/${id}`)
     }
 
@@ -100,7 +101,18 @@ const RecipeCard = ({recipe, id, allergies}) =>{
         .join(', ');
 
     return (
-        <div className="recipe-card" onClick={handleClick}>
+        <div className="recipe-card" onClick={handleClick} style={{ position: 'relative' }}>
+            {/* Debug overlay - remove after issue is resolved */}
+            <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                background: 'rgba(0, 200, 255, 0.08)',
+                pointerEvents: 'none',
+                zIndex: 10
+            }} />
             <div className="recipe-image">
                 <img 
                     src={image} 

@@ -119,7 +119,7 @@ const ShowResults = () => {
                             <div className="horizontal-scroll">
                                 {productList.map((foodItem) => (
                                     <div className="scroll-item" key={foodItem.id}>
-                                        <FoodCard foodItem={foodItem} id={foodItem.id} />
+                                        <FoodCard foodItem={foodItem} id={foodItem.id} showAddToCart={true} />
                                     </div>
                                 ))}
                             </div>

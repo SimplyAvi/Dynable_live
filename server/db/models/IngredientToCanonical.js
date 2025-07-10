@@ -15,6 +15,17 @@ const IngredientToCanonical = sequelize.define('IngredientToCanonical', {
       key: 'id'
     }
   }
+}, {
+  indexes: [
+    {
+      fields: ['CanonicalIngredientId'],
+      name: 'idx_itc_CanonicalIngredientId'
+    },
+    {
+      fields: ['messyName'],
+      name: 'idx_itc_messyName'
+    }
+  ]
 });
 
 module.exports = IngredientToCanonical; 
