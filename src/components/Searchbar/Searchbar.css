@@ -17,6 +17,8 @@
   box-sizing: border-box;  /* Include padding in width */
   border: 1px solid #ccc;  /* Light gray border */
   border-radius: 5px;  /* Rounded corners */
+  font-size: 16px; /* Prevent zoom on iOS */
+  touch-action: manipulation; /* Optimize for touch */
 }
 
 /* Search button styling */
@@ -32,9 +34,73 @@
   transition: background-color 0.2s;  /* Smooth color change */
   white-space: nowrap;  /* Prevent text wrapping */
   margin-top: 0;  /* No top margin */
+  touch-action: manipulation; /* Optimize for touch */
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on iOS */
 }
 
 /* Button hover effect */
 .custom-button:hover {
   background-color: #ddd;  /* Darker gray on hover */
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  .search-form {
+    gap: 8px;
+    max-width: 95%;
+    padding: 0 10px;
+  }
+  
+  .search-form input[type="text"] {
+    height: 44px; /* Larger touch target */
+    font-size: 16px; /* Prevent zoom on iOS */
+    padding: 0 12px;
+  }
+  
+  .custom-button {
+    height: 44px; /* Match input height */
+    padding: 0 16px;
+    font-size: 14px;
+    min-width: 60px; /* Ensure minimum touch target */
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .search-form {
+    gap: 6px;
+    max-width: 98%;
+    padding: 0 5px;
+  }
+  
+  .search-form input[type="text"] {
+    height: 42px;
+    font-size: 16px;
+    padding: 0 10px;
+  }
+  
+  .custom-button {
+    height: 42px;
+    padding: 0 12px;
+    font-size: 13px;
+    min-width: 50px;
+  }
+}
+
+/* Tablet-specific improvements */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .search-form {
+    max-width: 80%;
+  }
+  
+  .search-form input[type="text"] {
+    height: 42px;
+    font-size: 16px;
+  }
+  
+  .custom-button {
+    height: 42px;
+    padding: 0 18px;
+    font-size: 14px;
+  }
 }

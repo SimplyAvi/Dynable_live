@@ -98,6 +98,7 @@ const Searchbar = ({ curAllergen }) => {
     // On submit, update Redux/global state and trigger search
     const handleSubmit = async (event) => {
         event.preventDefault();
+        console.log('Search form submitted:', inputValue);
         if (inputValue) {
             // Here you would update Redux/global state for searchbar
             // If you have an action like setSearchbar, dispatch it here

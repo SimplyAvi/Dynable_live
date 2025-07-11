@@ -3,6 +3,8 @@
   overflow-x: auto;
   white-space: nowrap;
   padding: 10px 0;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  touch-action: pan-x; /* Allow horizontal scrolling */
 }
 
 .horizontal-scroll-container.allergen-scroll-container {
@@ -18,6 +20,7 @@
   gap: 8px;
   padding: 10px;
   scroll-behavior: smooth;
+  touch-action: pan-x; /* Allow horizontal scrolling */
 }
 
 /* Custom scrollbar for WebKit browsers */
@@ -49,6 +52,7 @@
   border: 1px solid #bbb;
   cursor: pointer;
   font-weight: 500;
+  touch-action: manipulation; /* Optimize for touch */
 }
 
 .scroll-item.selected {
@@ -64,9 +68,9 @@
 }
 
 .allergy-scroll-item {
-  min-width: 40px;
+  min-width: 50px; /* Increased from 40px for better touch targets */
   border-radius: 16px;
-  padding: 4px 10px;
+  padding: 8px 12px; /* Increased padding for better touch targets */
   text-align: center;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
   flex-shrink: 0;
@@ -78,6 +82,12 @@
   cursor: pointer;
   font-weight: 500;
   font-size: 14px;
+  touch-action: manipulation; /* Optimize for touch */
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on iOS */
+  /* Ensure clicks work */
+  pointer-events: auto;
+  position: relative;
+  z-index: 1;
 }
 
 .allergy-scroll-item.selected {
@@ -90,4 +100,96 @@
   background: #e3f0ff;
   color: #3a7bd5;
   border: 1.5px solid #3a7bd5;
+}
+
+/* Tablet-specific improvements */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .allergy-scroll-item {
+    min-width: 55px;
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+  
+  .horizontal-scroll {
+    gap: 10px;
+    padding: 12px 10px;
+  }
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  .allergy-scroll-item {
+    min-width: 60px; /* Even larger on mobile */
+    padding: 10px 14px; /* More padding for easier tapping */
+    font-size: 13px; /* Slightly smaller font to fit better */
+    margin: 0 2px; /* Add some margin for better separation */
+  }
+  
+  .horizontal-scroll {
+    gap: 6px; /* Slightly reduced gap on mobile */
+    padding: 8px 10px;
+  }
+  
+  .horizontal-scroll-container {
+    padding: 8px 0;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .allergy-scroll-item {
+    min-width: 55px;
+    padding: 8px 10px;
+    font-size: 12px;
+    margin: 0 1px;
+  }
+  
+  .horizontal-scroll {
+    gap: 4px;
+    padding: 6px 8px;
+  }
+}
+
+/* Ensure proper touch behavior on iOS */
+@supports (-webkit-touch-callout: none) {
+  .allergy-scroll-item {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* Prevent text selection on iOS */
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Android-specific touch optimizations */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .allergy-scroll-item {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+}
+
+/* Additional mobile touch optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .allergy-scroll-item {
+    /* Ensure immediate touch response */
+    touch-action: manipulation;
+    /* Prevent any delays */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  .allergy-scroll-item:active {
+    /* Provide immediate visual feedback */
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
 }

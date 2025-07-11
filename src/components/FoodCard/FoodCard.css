@@ -12,6 +12,8 @@
     transition: transform 0.2s ease;
     background: #fff;
     min-height: 130px;
+    touch-action: manipulation; /* Optimize for touch */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on iOS */
 }
 
 .food-image {
@@ -81,4 +83,101 @@
 .food-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  .food-card {
+    max-width: 100%;
+    min-width: 160px;
+    min-height: 120px;
+    border-radius: 10px;
+  }
+  
+  .food-image {
+    height: 100px;
+  }
+  
+  .food-info {
+    padding: 12px 8px 10px 8px;
+    min-height: 32px;
+    font-size: 14px;
+  }
+  
+  .title-text {
+    font-size: 15px;
+    line-height: 1.1;
+  }
+  
+  .description-text {
+    font-size: 13px;
+    line-height: 1.2;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .food-card {
+    min-width: 140px;
+    min-height: 110px;
+    border-radius: 8px;
+  }
+  
+  .food-image {
+    height: 80px;
+  }
+  
+  .food-info {
+    padding: 10px 6px 8px 6px;
+    min-height: 30px;
+    font-size: 13px;
+  }
+  
+  .title-text {
+    font-size: 14px;
+    line-height: 1.1;
+  }
+  
+  .description-text {
+    font-size: 12px;
+    line-height: 1.2;
+  }
+}
+
+/* Tablet-specific improvements */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .food-card {
+    max-width: 220px;
+    min-width: 180px;
+    min-height: 125px;
+  }
+  
+  .food-image {
+    height: 120px;
+  }
+  
+  .food-info {
+    padding: 12px 10px 10px 10px;
+    font-size: 14px;
+  }
+  
+  .title-text {
+    font-size: 15px;
+  }
+  
+  .description-text {
+    font-size: 13px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .food-card:hover {
+    transform: none; /* Disable hover effects on touch devices */
+  }
+  
+  .food-card:active {
+    transform: scale(0.98); /* Add active state for touch feedback */
+    transition: transform 0.1s ease;
+  }
 }

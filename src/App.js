@@ -104,6 +104,8 @@ function App() {
         <main className="App-main">
           <Routes>
             <Route path="/about" element={<AboutUsPage />} />
+            <Route path="/about/team" element={<AboutUsPage />} />
+            <Route path="/about/experience" element={<AboutUsPage />} />
             <Route path="/" element={<Homepage />} />
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/recipe/:id" element={<RecipePage />} />

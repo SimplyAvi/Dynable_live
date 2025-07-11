@@ -91,11 +91,12 @@ const ShowResults = () => {
         <div className="results-container">
             {hasProducts && (
                 <div className="section-wrapper">
-                    <div className="section-header">
+                                    <div className="section-header">
+                    <h3>Products</h3>
+                    <div className="header-controls">
                         <span className="results-count">
                             {products.totalCount ? `Showing ${startIdx}-${endIdx} of ${products.totalCount}` : ''}
                         </span>
-                        <h3>Products</h3>
                         <div className="pagination-controls">
                             <button 
                                 onClick={() => handleProductPageChange(productPage - 1)} 
@@ -114,6 +115,7 @@ const ShowResults = () => {
                             </button>
                         </div>
                     </div>
+                </div>
                     <section className="results-section">
                         <div className="horizontal-scroll-container">
                             <div className="horizontal-scroll">
@@ -129,11 +131,12 @@ const ShowResults = () => {
             )}
             {hasRecipes && (
                 <div className="section-wrapper" style={{ marginTop: '2rem' }}>
-                    <div className="section-header">
+                                    <div className="section-header">
+                    <h3>Recipes</h3>
+                    <div className="header-controls">
                         <span className="results-count">
                             {recipeTotalCount ? `Showing ${recipeStartIdx}-${recipeEndIdx} of ${recipeTotalCount}` : ''}
                         </span>
-                        <h3>Recipes</h3>
                         <div className="pagination-controls">
                             <button 
                                 onClick={() => handleRecipePageChange(recipePage - 1)} 
@@ -152,6 +155,7 @@ const ShowResults = () => {
                             </button>
                         </div>
                     </div>
+                </div>
                     <section className="results-section">
                         <div className="horizontal-scroll-container">
                             <div className="horizontal-scroll">

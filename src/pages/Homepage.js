@@ -50,20 +50,26 @@ const Homepage = () => {
             </div>
             <hr style={{ margin: '64px 0 32px 0', border: 'none', borderTop: '4px solid #3a7bd5', width: '85%', marginLeft: 'auto', marginRight: 'auto', boxShadow: '0 2px 8px rgba(58,123,213,0.15)' }} />
             <div className="homepage-bottom-section">
-                <div className="homepage-bottom-left">
-                    <button className="aboutus-continue-btn aboutus-btn-small" onClick={() => navigate('/about')}>
+                <div className="homepage-nav-buttons">
+                    <button className="homepage-nav-btn" onClick={() => navigate('/about')}>
+                        <span className="homepage-nav-icon">🏢</span>
                         About Us
                     </button>
+                    <button className="homepage-nav-btn" onClick={() => navigate('/about/team')}>
+                        <span className="homepage-nav-icon">👥</span>
+                        Meet the Team
+                    </button>
+                    <button className="homepage-nav-btn" onClick={() => navigate('/about/experience')}>
+                        <span className="homepage-nav-icon">🎯</span>
+                        Your Experience
+                    </button>
                 </div>
-                <div className="homepage-feedback-card subtle">
-                    <span className="demo-phase-label">Dynable is currently in its demo phase.</span>
-                    <span className="feedback-label">We value your feedback!</span>
+                <div className="homepage-feedback-section">
                     <button
-                        className="feedback-btn subtle"
+                        className="homepage-feedback-btn"
                         onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSei-0i45voDypmG7QO4X4FCaqKvX40gRg2j2heSUMz8IHtZyw/viewform', '_blank', 'noopener noreferrer')}
-                        style={{ marginTop: 6 }}
                     >
-                        <span role="img" aria-label="feedback" style={{ marginRight: 4, fontSize: '1em' }}>💬</span>
+                        <span role="img" aria-label="feedback" style={{ marginRight: 6, fontSize: '1.1em' }}>💬</span>
                         Give Feedback
                     </button>
                 </div>

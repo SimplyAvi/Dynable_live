@@ -32,13 +32,24 @@ const AllergyFilter = () => {
         }
     }, []); // Only run on mount
 
-    const handleAllergyClick = (allergyKey) => {
+    // Simple click handler that works reliably on all devices
+    const handleAllergyClick = (allergyKey, event) => {
+        // Prevent any default behavior
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        
         const updatedAllergies = {
             ...allergies,
             [allergyKey]: !allergies[allergyKey]
         };
-        dispatch(setAllergies(updatedAllergies)); // Update Redux first
-        saveAllergensToCookies(updatedAllergies);  // Then update cookies
+        
+        // Update Redux first
+        dispatch(setAllergies(updatedAllergies));
+        
+        // Then update cookies
+        saveAllergensToCookies(updatedAllergies);
     };
 
     // Show loading state if allergens are still being fetched
@@ -59,15 +70,45 @@ const AllergyFilter = () => {
     return (
         <div className="horizontal-scroll-container allergen-scroll-container">
             <div className="horizontal-scroll">
-                {allergyKeys.map((allergyKey) => (
-                    <div 
-                        key={allergyKey}
-                        className={`allergy-scroll-item${displayAllergies[allergyKey] ? ' selected' : ''}`}
-                        onClick={() => handleAllergyClick(allergyKey)}
-                    >
-                        {allergyKey}
-                    </div>
-                ))}
+                {allergyKeys.map((allergyKey) => {
+                    const isSelected = displayAllergies[allergyKey];
+                    
+                    return (
+                        <div 
+                            key={allergyKey}
+                            className="allergy-scroll-item"
+                            onClick={(e) => handleAllergyClick(allergyKey, e)}
+                            role="button"
+                            tabIndex={0}
+                            aria-pressed={isSelected}
+                            aria-label={`Toggle ${allergyKey} allergen filter`}
+                            style={{ 
+                                cursor: 'pointer',
+                                userSelect: 'none',
+                                WebkitUserSelect: 'none',
+                                MozUserSelect: 'none',
+                                msUserSelect: 'none',
+                                backgroundColor: isSelected ? '#3a7bd5' : '#fff',
+                                color: isSelected ? '#fff' : '#222',
+                                border: isSelected ? '1.5px solid #3a7bd5' : '1.5px solid #bbb',
+                                minWidth: '50px',
+                                borderRadius: '16px',
+                                padding: '8px 12px',
+                                textAlign: 'center',
+                                boxShadow: '0 1px 2px rgba(0, 0, 0, 0.06)',
+                                flexShrink: 0,
+                                fontWeight: '500',
+                                fontSize: '14px',
+                                transition: 'all 0.2s ease',
+                                pointerEvents: 'auto',
+                                position: 'relative',
+                                zIndex: 1
+                            }}
+                        >
+                            {allergyKey}
+                        </div>
+                    );
+                })}
             </div>
         </div>
     )
