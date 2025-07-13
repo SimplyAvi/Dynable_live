@@ -26,17 +26,16 @@ export const fetchAllergensFromDatabase = async () => {
         
         if (response.ok) {
             const allergens = await response.json();
-            console.log(`[Allergens] Successfully loaded ${Object.keys(allergens).length} allergens from database`);
+            console.log(`[Allergens] Successfully loaded ${Object.keys(allergens).length} allergens from database:`, Object.keys(allergens));
             return allergens;
         } else {
             console.warn(`[Allergens] API returned ${response.status}: ${response.statusText}`);
+            throw new Error(`API returned ${response.status}`);
         }
     } catch (error) {
         console.warn('[Allergens] Failed to fetch allergens from database, using fallback:', error.message);
+        throw error; // Re-throw to trigger fallback
     }
-    
-    console.log('[Allergens] Using fallback allergen list');
-    return fallbackAllergenList;
 };
 
 // Default export for backward compatibility

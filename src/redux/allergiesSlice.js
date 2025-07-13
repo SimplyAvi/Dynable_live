@@ -16,7 +16,12 @@ const allergiesSlice = createSlice({
         },
         toggleAllergy: (state, action) => {
             const allergen = action.payload
-            state.allergies[allergen] = !state.allergies[allergen]
+            // Ensure the allergen exists in the state before toggling
+            if (allergen in state.allergies) {
+                state.allergies[allergen] = !state.allergies[allergen]
+            } else {
+                console.warn(`[Allergies] Attempted to toggle unknown allergen: ${allergen}`)
+            }
         },
         setLoading: (state, action) => {
             state.loading = action.payload
@@ -32,11 +37,13 @@ export const fetchAllergens = () => async (dispatch) => {
     dispatch(setLoading(true))
     try {
         const allergens = await fetchAllergensFromDatabase()
+        console.log('[Allergies] Setting allergens in Redux:', Object.keys(allergens))
         dispatch(setAllergies(allergens))
         dispatch(setError(null))
     } catch (error) {
         console.error('Failed to fetch allergens:', error)
         dispatch(setError('Failed to load allergens'))
+        // Don't set allergies on error - let component use fallback
     } finally {
         dispatch(setLoading(false))
     }

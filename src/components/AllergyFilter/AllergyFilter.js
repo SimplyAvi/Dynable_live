@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import './AllergyFilter.css'
 import { useSearchCookieHandler } from '../../helperfunc/useCookieHandler'
-import { setAllergies } from '../../redux/allergiesSlice'
+import { setAllergies, toggleAllergy } from '../../redux/allergiesSlice'
 
 const AllergyFilter = () => {
     const { saveAllergensToCookies, initializeAllergensFromCookies } = useSearchCookieHandler()
@@ -10,6 +10,7 @@ const AllergyFilter = () => {
 
     const allergies = useSelector((state) => state.allergies?.allergies || {});
     const loading = useSelector((state) => state.allergies?.loading || false);
+    const error = useSelector((state) => state.allergies?.error || null);
 
     // Fallback allergens in case API fails
     const fallbackAllergens = {
@@ -32,7 +33,7 @@ const AllergyFilter = () => {
         }
     }, []); // Only run on mount
 
-    // Simple click handler that works reliably on all devices
+    // Improved click handler that uses Redux toggleAllergy action
     const handleAllergyClick = (allergyKey, event) => {
         // Prevent any default behavior
         if (event) {
@@ -40,15 +41,16 @@ const AllergyFilter = () => {
             event.stopPropagation();
         }
         
+        console.log(`[AllergyFilter] Toggling allergen: ${allergyKey}`);
+        
+        // Use Redux action for toggling
+        dispatch(toggleAllergy(allergyKey));
+        
+        // Update cookies with new state (will be handled by useEffect)
         const updatedAllergies = {
             ...allergies,
             [allergyKey]: !allergies[allergyKey]
         };
-        
-        // Update Redux first
-        dispatch(setAllergies(updatedAllergies));
-        
-        // Then update cookies
         saveAllergensToCookies(updatedAllergies);
     };
 
@@ -63,9 +65,16 @@ const AllergyFilter = () => {
         );
     }
 
+    // Show error state if allergens failed to load
+    if (error) {
+        console.warn('[AllergyFilter] Using fallback allergens due to error:', error);
+    }
+
     // Use fallback allergens if no allergens are loaded
     const allergyKeys = Object.keys(allergies).length > 0 ? Object.keys(allergies) : Object.keys(fallbackAllergens);
     const displayAllergies = Object.keys(allergies).length > 0 ? allergies : fallbackAllergens;
+
+    console.log(`[AllergyFilter] Rendering ${allergyKeys.length} allergens:`, allergyKeys);
 
     return (
         <div className="horizontal-scroll-container allergen-scroll-container">
