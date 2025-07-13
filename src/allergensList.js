@@ -23,6 +23,7 @@ export const fetchAllergensFromDatabase = async () => {
         console.log(`[Allergens] Fetching from: ${apiUrl}`);
         
         const response = await fetch(apiUrl);
+        console.log(`[Allergens] API response status: ${response.status} ${response.statusText}`);
         
         if (response.ok) {
             const allergens = await response.json();
@@ -34,6 +35,7 @@ export const fetchAllergensFromDatabase = async () => {
         }
     } catch (error) {
         console.warn('[Allergens] Failed to fetch allergens from database, using fallback:', error.message);
+        console.error('[Allergens] Full error details:', error);
         throw error; // Re-throw to trigger fallback
     }
 };

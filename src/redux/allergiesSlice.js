@@ -34,18 +34,25 @@ const allergiesSlice = createSlice({
 
 // Thunk to fetch allergens from database
 export const fetchAllergens = () => async (dispatch) => {
+    console.log('[Allergies] Starting fetchAllergens thunk');
     dispatch(setLoading(true))
     try {
         const allergens = await fetchAllergensFromDatabase()
-        console.log('[Allergies] Setting allergens in Redux:', Object.keys(allergens))
+        console.log('[Allergies] Successfully fetched allergens from database:', {
+            count: Object.keys(allergens).length,
+            allergens: Object.keys(allergens)
+        });
         dispatch(setAllergies(allergens))
         dispatch(setError(null))
+        console.log('[Allergies] Allergens set in Redux state');
     } catch (error) {
-        console.error('Failed to fetch allergens:', error)
+        console.error('[Allergies] Failed to fetch allergens:', error)
         dispatch(setError('Failed to load allergens'))
         // Don't set allergies on error - let component use fallback
+        console.log('[Allergies] Using fallback allergens due to error');
     } finally {
         dispatch(setLoading(false))
+        console.log('[Allergies] fetchAllergens thunk completed');
     }
 }
 

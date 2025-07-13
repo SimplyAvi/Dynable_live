@@ -26,10 +26,24 @@ const AllergyFilter = () => {
         gluten: false,
     };
 
+    // Debug logging
+    useEffect(() => {
+        console.log('[AllergyFilter] Component mounted');
+        console.log('[AllergyFilter] Current Redux state:', {
+            allergies: Object.keys(allergies),
+            allergiesCount: Object.keys(allergies).length,
+            loading,
+            error
+        });
+    }, [allergies, loading, error]);
+
     // Only initialize Redux from cookies if Redux state is empty
     useEffect(() => {
         if (!Object.keys(allergies).length) {
+            console.log('[AllergyFilter] No allergies in Redux, initializing from cookies');
             initializeAllergensFromCookies();
+        } else {
+            console.log('[AllergyFilter] Allergies already in Redux:', Object.keys(allergies));
         }
     }, []); // Only run on mount
 
@@ -42,6 +56,7 @@ const AllergyFilter = () => {
         }
         
         console.log(`[AllergyFilter] Toggling allergen: ${allergyKey}`);
+        console.log(`[AllergyFilter] Current state for ${allergyKey}:`, allergies[allergyKey]);
         
         // Use Redux action for toggling
         dispatch(toggleAllergy(allergyKey));
@@ -56,6 +71,7 @@ const AllergyFilter = () => {
 
     // Show loading state if allergens are still being fetched
     if (loading) {
+        console.log('[AllergyFilter] Showing loading state');
         return (
             <div className="horizontal-scroll-container">
                 <div className="horizontal-scroll">
@@ -75,6 +91,7 @@ const AllergyFilter = () => {
     const displayAllergies = Object.keys(allergies).length > 0 ? allergies : fallbackAllergens;
 
     console.log(`[AllergyFilter] Rendering ${allergyKeys.length} allergens:`, allergyKeys);
+    console.log(`[AllergyFilter] Using ${Object.keys(allergies).length > 0 ? 'Redux state' : 'fallback'} allergens`);
 
     return (
         <div className="horizontal-scroll-container allergen-scroll-container">
