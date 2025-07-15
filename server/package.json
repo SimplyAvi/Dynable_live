@@ -21,6 +21,7 @@
     "p-limit": "^6.2.0",
     "pg": "^8.10.0",
     "pg-hstore": "^2.3.4",
+    "pluralize": "^8.0.0",
     "sequelize": "^6.31.0"
   },
   "devDependencies": {

@@ -274,7 +274,7 @@ router.get('/substitute-products', async (req, res) => {
         });
 
         return {
-          name: substituteName,
+          substituteName: substituteName, // <-- Fix: use 'substituteName' key
           notes: sub.notes,
           products: products.map(p => ({
             id: p.id,

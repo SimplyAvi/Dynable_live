@@ -11,7 +11,10 @@ const ProductSelector = ({ products, selectedProductId, onProductSelect, ingredi
     // Check if user is authenticated
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
-    if (!products || products.length === 0) {
+    // Defensive check for products array
+    const safeProducts = Array.isArray(products) ? products : [];
+
+    if (!safeProducts || safeProducts.length === 0) {
         return (
             <div className="product-selector">
                 <div className="product-selector-header" onClick={onToggleExpand} style={{cursor: 'pointer', color: '#007bff', fontWeight: 'bold'}}>
@@ -27,7 +30,7 @@ const ProductSelector = ({ products, selectedProductId, onProductSelect, ingredi
     }
 
     // Check if these are substitute products (have substituteName property)
-    const isSubstituteProducts = products.length > 0 && products[0].substituteName;
+    const isSubstituteProducts = safeProducts.length > 0 && safeProducts[0].substituteName;
 
     const handleAddToCart = async (product) => {
         setAddingToCart(prev => ({ ...prev, [product.id]: true }));
@@ -57,12 +60,12 @@ const ProductSelector = ({ products, selectedProductId, onProductSelect, ingredi
     return (
         <div className="product-selector">
             <div className="product-selector-header" onClick={onToggleExpand} style={{cursor: 'pointer', color: '#007bff', fontWeight: 'bold'}}>
-                Products available: {products.length}
+                Products available: {safeProducts.length}
             </div>
             {expanded && (
                 <div className="product-selector-scroll-container">
                     <div className="product-selector-scroll">
-                        {products.map((product) => {
+                        {safeProducts.map((product) => {
                             const isAddingToCart = addingToCart[product.id];
                             const isSelected = selectedProductId === product.id;
                             return (

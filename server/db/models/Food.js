@@ -36,6 +36,12 @@ const Food = sequelize.define('Food', {
     allowNull: true,
     comment: 'Confidence level for canonicalTag assignment: confident, suggested, none'
   },
+  canonicalTags: {
+    type: DataTypes.ARRAY(DataTypes.STRING),
+    allowNull: true,
+    defaultValue: null,
+    comment: 'Array of canonical ingredient tags for multi-tag system'
+  },
   // Add other properties as needed
 }, {
   indexes: [

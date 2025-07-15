@@ -134,8 +134,16 @@ const RecipePage = () =>{
                     allergens: userAllergensArr,
                     substituteName: substituteName // Pass substitute name if user selected one
                 });
-                console.log('Products found for', name, ':', res.data.length);
-                newOptions[ing.id] = { products: res.data, displayName: ing.canonical || ing.name };
+                // Use new response structure
+                const { products = [], mappingStatus, coverageStats, brandPriority, canonicalIngredient } = res.data;
+                newOptions[ing.id] = {
+                  products,
+                  displayName: ing.canonical || ing.name,
+                  mappingStatus,
+                  coverageStats,
+                  brandPriority,
+                  canonicalIngredient
+                };
             } catch (e) {
                 console.error('Error fetching products for', name, ':', e);
                 newOptions[ing.id] = { products: [], displayName: ing.canonical || ing.name };

@@ -58,7 +58,15 @@ const RecipeToProductCard = ({ recipe, allergies }) => {
                     allergens: userAllergensArr,
                     substituteName: substituteName // Pass substitute name if user selected one
                 });
-                newOptions[ing.id] = res.data;
+                // Use new response structure
+                const { products = [], mappingStatus, coverageStats, brandPriority, canonicalIngredient } = res.data;
+                newOptions[ing.id] = {
+                  products,
+                  mappingStatus,
+                  coverageStats,
+                  brandPriority,
+                  canonicalIngredient
+                };
             } catch (e) {
                 newOptions[ing.id] = [];
             }

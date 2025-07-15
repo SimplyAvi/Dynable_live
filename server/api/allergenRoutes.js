@@ -4,6 +4,8 @@ const { AllergenDerivative } = require('../db/models');
 
 // GET /api/allergens - Get all available allergens from database
 router.get('/allergens', async (req, res) => {
+  console.log('[AllergenRoutes] GET /api/allergens request received');
+  console.log('[AllergenRoutes] Request headers:', req.headers);
   try {
     // Get unique allergens from AllergenDerivative table
     const allergens = await AllergenDerivative.findAll({
@@ -19,9 +21,10 @@ router.get('/allergens', async (req, res) => {
       allergenList[allergenKey] = false; // Default to false for frontend state
     });
 
+    console.log(`[AllergenRoutes] Returning ${Object.keys(allergenList).length} allergens`);
     res.json(allergenList);
   } catch (error) {
-    console.error('Error fetching allergens:', error);
+    console.error('[AllergenRoutes] Error fetching allergens:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });

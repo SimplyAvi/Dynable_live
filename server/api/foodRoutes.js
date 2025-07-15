@@ -230,129 +230,128 @@ function buildPureIngredientPatterns(ingredient) {
   return patterns;
 }
 
-// POST /api/product/by-ingredient
+// Helper: identify processed food descriptions
+function isProcessedFood(description) {
+  const processedKeywords = [
+    'cookies', 'cookie', 'crackers', 'cracker', 'chips', 'popcorn', 
+    'candy', 'gum', 'chocolate', 'cake', 'pie', 'bars', 'snack',
+    'cereal', 'granola', 'trail mix', 'energy bar', 'protein bar',
+    'frozen dinner', 'meal', 'soup', 'sauce', 'dressing', 'marinade',
+    'seasoning mix', 'spice blend', 'flavored', 'sweetened'
+  ];
+  const desc = description.toLowerCase();
+  return processedKeywords.some(keyword => desc.includes(keyword));
+}
+
+// Replace the /by-ingredient route with a clean, simple version
 router.post('/by-ingredient', async (req, res) => {
+  // === ALLERGEN DEBUG ===
+  console.log('=== ALLERGEN DEBUG ===');
+  console.log('Request body:', req.body);
+  const { ingredientName, allergens, substituteName } = req.body;
+  console.log('ingredientName:', ingredientName);
+  console.log('allergens:', allergens);
+  console.log('allergens type:', typeof allergens);
+  console.log('allergens array check:', Array.isArray(allergens));
+
   try {
-    const { ingredientName, allergens, substituteName } = req.body;
     if (!ingredientName) {
       return res.status(400).json({ error: 'ingredientName is required' });
     }
-    
-    // Clean the ingredient name (same logic as recipe processing)
+
+    // Clean the ingredient name
     const cleanedName = cleanIngredientName(ingredientName);
-    
+
     // Try to map to canonical ingredient
-    let canonical = null;
-    let aliases = [];
-    const mapping = await IngredientToCanonical.findOne({ where: { messyName: cleanedName.toLowerCase() } });
-    if (mapping) {
-      const canonicalObj = await CanonicalIngredient.findByPk(mapping.CanonicalIngredientId);
+    let canonical = cleanedName;
+    const mappingObj = await IngredientToCanonical.findOne({ 
+      where: { messyName: cleanedName.toLowerCase() } 
+    });
+    if (mappingObj) {
+      const canonicalObj = await CanonicalIngredient.findByPk(mappingObj.CanonicalIngredientId);
       if (canonicalObj) {
         canonical = canonicalObj.name;
-        aliases = canonicalObj.aliases || [];
       }
     }
-
-    // Build canonicalTag search set
-    let canonicalTags = [];
-    if (canonical) canonicalTags.push(canonical.toLowerCase());
-    if (aliases && aliases.length > 0) canonicalTags = canonicalTags.concat(aliases.map(a => a.toLowerCase()));
-    canonicalTags = [...new Set(canonicalTags.filter(Boolean))];
-
-    // If no canonical mapping, fallback to cleanedName
-    if (canonicalTags.length === 0) canonicalTags = [cleanedName.toLowerCase()];
-
-    // If a substitute is picked, use its canonical mapping instead
-    if (substituteName) {
-      const cleanedSubstitute = cleanIngredientName(substituteName);
-      const subMapping = await IngredientToCanonical.findOne({ where: { messyName: cleanedSubstitute.toLowerCase() } });
-      if (subMapping) {
-        const subCanonicalObj = await CanonicalIngredient.findByPk(subMapping.CanonicalIngredientId);
-        if (subCanonicalObj) {
-          canonicalTags = [subCanonicalObj.name.toLowerCase()];
-          if (subCanonicalObj.aliases && subCanonicalObj.aliases.length > 0) {
-            canonicalTags = canonicalTags.concat(subCanonicalObj.aliases.map(a => a.toLowerCase()));
-          }
-          canonicalTags = [...new Set(canonicalTags.filter(Boolean))];
-        }
-      } else {
-        canonicalTags = [cleanedSubstitute.toLowerCase()];
-      }
+    if (canonical.toLowerCase() === 'egg') {
+      canonical = 'eggs'; // Use plural to match database
     }
 
-    // ENHANCED filtering logic - prioritize confident canonical tags and filter out false positives
     let where = {
-      [Sequelize.Op.or]: [
-        // First priority: confident canonical tag matches (actual ingredients)
-        {
-          canonicalTag: { [Sequelize.Op.in]: canonicalTags },
-          canonicalTagConfidence: 'confident'
-        },
-        // Second priority: suggested canonical tag matches (likely ingredients)
-        {
-          canonicalTag: { [Sequelize.Op.in]: canonicalTags },
-          canonicalTagConfidence: 'suggested'
-        },
-        // Third priority: low confidence matches (include these for now)
-        {
-          canonicalTag: { [Sequelize.Op.in]: canonicalTags },
-          canonicalTagConfidence: 'low'
-        }
+      [Sequelize.Op.and]: [
+        Sequelize.literal('array_length("canonicalTags", 1) = 1'),
+        Sequelize.literal(`"canonicalTags"[1] = '${canonical.toLowerCase()}'`),
+        { brandName: { [Sequelize.Op.ne]: 'Generic' } }
       ]
     };
 
-    // For basic ingredients, be very strict about what we consider an actual ingredient
-    const basicIngredients = ['sugar', 'salt', 'flour', 'milk', 'butter', 'oil', 'yeast', 'egg', 'cheese'];
-    const isBasicIngredient = basicIngredients.some(basic => 
-      canonicalTags.some(tag => tag.includes(basic.toLowerCase()))
-    );
+    // === API DEBUG ===
+    console.log('=== API DEBUG ===');
+    console.log('canonical:', canonical);
+    console.log('where clause:', JSON.stringify(where, null, 2));
 
-    // For flour substitutes, be very strict about what we consider pure flour
-    const flourSubstitutes = ['rice flour', 'almond flour', 'coconut flour', 'oat flour', 'gluten-free flour blend'];
-    const isFlourSubstitute = flourSubstitutes.some(flour => 
-      canonicalTags.some(tag => tag.includes(flour.toLowerCase()))
-    );
+    // === ALLERGEN CONDITION CHECK ===
+    console.log('=== ALLERGEN CONDITION CHECK ===');
+    console.log('substituteName:', substituteName);
+    console.log('allergens:', allergens);
+    console.log('allergens isArray:', Array.isArray(allergens));
+    console.log('allergens length:', allergens?.length);
+    console.log('Condition result:', (!substituteName && allergens && Array.isArray(allergens) && allergens.length > 0));
 
-    if (isBasicIngredient || isFlourSubstitute) {
-      // For basic ingredients and flour substitutes, only include pure ingredients
+    // Fix allergen filtering to be case-insensitive
+    if (!substituteName && allergens && Array.isArray(allergens) && allergens.length > 0) {
+      // === ADDING ALLERGEN FILTER ===
+      console.log('=== ADDING ALLERGEN FILTER ===');
+      console.log('where before:', where);
+      const allergenLiteral = Sequelize.literal(`("allergens" IS NULL OR NOT EXISTS (
+        SELECT 1 FROM unnest("allergens") a WHERE UPPER(a) = ANY(ARRAY[${allergens.map(a => `'${a.toUpperCase()}'`).join(',')}])
+      ))`);
+      console.log('allergen literal:', allergenLiteral);
       where[Sequelize.Op.and] = where[Sequelize.Op.and] || [];
-      where[Sequelize.Op.and].push(
-        Sequelize.literal('"SubcategoryID" IS NOT NULL AND EXISTS (SELECT 1 FROM "Subcategories" s WHERE s."SubcategoryID" = "Food"."SubcategoryID" AND s."is_basic_ingredient" = true)')
-      );
+      where[Sequelize.Op.and].push(allergenLiteral);
+      console.log('where after:', where);
     }
 
-    // Allergen filtering - only apply when a substitute is selected (for recipe ingredients)
-    // BUT don't filter out the substitute itself if it contains allergens
-    if (substituteName && allergens && Array.isArray(allergens) && allergens.length > 0) {
-      // Don't apply allergen filtering when a substitute is selected
-      // The user is explicitly choosing this substitute, so they know it contains allergens
-      console.log('Substitute selected, skipping allergen filtering for:', substituteName);
-    } else if (allergens && Array.isArray(allergens) && allergens.length > 0) {
-      // Apply allergen filtering only when no substitute is selected
-      where[Sequelize.Op.and] = where[Sequelize.Op.and] || [];
-      where[Sequelize.Op.and].push(
-        Sequelize.literal(`("allergens" IS NULL OR NOT EXISTS (
-          SELECT 1 FROM unnest("allergens") a WHERE LOWER(a) = ANY(ARRAY[${allergens.map(a => `'${a.toLowerCase()}'`).join(',')}])
-        ))`)
-      );
-    }
-
-    // Query for matching products with a reasonable limit
+    // Query for products with SQL logging
     const products = await Food.findAll({
       where,
-      order: [
-        // Prioritize real products (non-Generic) over generic ones
-        [Sequelize.literal('CASE WHEN "brandName" != \'Generic\' THEN 0 ELSE 1 END'), 'ASC'],
-        // Then prioritize products with confident canonical tags
-        [Sequelize.literal('CASE WHEN "canonicalTagConfidence" = \'confident\' THEN 0 WHEN "canonicalTagConfidence" = \'suggested\' THEN 1 ELSE 2 END'), 'ASC'],
-        ['description', 'ASC']
-      ],
-      limit: 20 // Limit results to avoid overwhelming the frontend
+      include: [{
+        model: Subcategory,
+        where: { pure_ingredient: true },
+        required: true
+      }],
+      logging: console.log, // Show SQL
+      order: [['description', 'ASC']],
+      limit: 100
     });
 
-    res.json(products);
+    console.log('Products found:', products.length);
+
+    // Prepare response metadata
+    const mappingStatus = 'mapped'; // Placeholder, set real logic if available
+    const mappingConfidence = 'confident'; // Placeholder, set real logic if available
+    const brandPriority = undefined; // Placeholder, set real logic if available
+    const fallbackPath = [];
+    const mappingReason = undefined;
+    const totalFound = products.length;
+    const realBrandCount = undefined; // Placeholder, set real logic if available
+    const topBrands = undefined; // Placeholder, set real logic if available
+    const formattedProducts = products.map(p => p.toJSON());
+
+    // Enhanced API response with metadata
+    res.json({
+      ingredient: ingredientName,
+      mappingStatus,
+      confidence: mappingConfidence,
+      canonicalIngredient: canonical,
+      brandPriority,
+      products: formattedProducts,
+      fallbackPath,
+      mappingReason,
+      coverageStats: { totalFound, realBrandCount, topBrands }
+    });
   } catch (error) {
-    console.error('Error in /api/product/by-ingredient:', error);
+    console.error('Error in /by-ingredient:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });

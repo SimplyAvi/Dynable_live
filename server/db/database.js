@@ -7,20 +7,53 @@
  */
 
 const { Sequelize } = require('sequelize');
-const config = require('./config.json'); // Assuming config.json is in the same directory
+const allConfig = require('./config.json');
+const config = allConfig[process.env.NODE_ENV || 'development'];
+require('dotenv').config({ path: require('path').resolve(process.cwd(), '.env') });
 
-// Extract database configuration from config.json
-// This separation allows different configurations for development, testing, and production
-const { username, password, database, host, port, dialect } = config.development;
+// ADD DEBUG LOGGING
+console.log('DEBUG: NODE_ENV:', process.env.NODE_ENV);
+console.log('DEBUG: config.use_env_variable:', config.use_env_variable);
+console.log('DEBUG: process.env[config.use_env_variable]:', process.env[config.use_env_variable]);
+console.log('DEBUG: Full config:', config);
 
-// Initialize Sequelize with the configuration
-// This creates the connection to the PostgreSQL database
-const sequelize = new Sequelize(database, username, password, {
-  host: host,
-  // port: port, // Port is commented out as it's typically the default 5432
-  dialect: dialect, // Specifies we're using PostgreSQL
-  logging: false, // Disables SQL query logging in console for cleaner output
-});
+// Determine environment
+const env = process.env.NODE_ENV || 'development';
+const dbConfig = config;
+
+// Allow override with DB_URL (for Supabase or cloud)
+let DB_URL = process.env.SUPABASE_DB_URL || process.env.DB_URL;
+
+// Helper: ensure ?sslmode=require is present in connection string
+function ensureSSLMode(url) {
+  if (!url) return url;
+  if (url.includes('sslmode=')) return url;
+  return url.includes('?') ? url + '&sslmode=require' : url + '?sslmode=require';
+}
+
+console.log('[DB INIT] NODE_ENV:', env);
+console.log('[DB INIT] DB_URL:', DB_URL ? DB_URL.replace(/:[^:]*@/, ':****@') : 'none');
+console.log('[DB INIT] dbConfig:', dbConfig);
+
+let sequelize;
+if (config.use_env_variable) {
+  sequelize = new Sequelize(process.env[config.use_env_variable], {
+    dialect: config.dialect,
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
+    }
+  });
+} else {
+  sequelize = new Sequelize(
+    config.database,
+    config.username,
+    config.password,
+    config
+  );
+}
 
 /**
  * Database Synchronization
@@ -35,9 +68,18 @@ const sequelize = new Sequelize(database, username, password, {
  * while ensuring the schema matches our models.
  */
 sequelize.sync({ alter: true }).then(() => {
-  console.log('Database synchronized successfully');
+  console.log(`Database synchronized successfully [${env}]`);
 }).catch(err => {
   console.error('Error synchronizing database:', err);
 });
+
+// Health check endpoint for deployment
+if (require.main === module) {
+  const express = require('express');
+  const app = express();
+  app.get('/health', (req, res) => res.status(200).send('OK'));
+  const port = process.env.PORT || 5001;
+  app.listen(port, () => console.log(`[HealthCheck] Listening on port ${port}`));
+}
 
 module.exports = sequelize;

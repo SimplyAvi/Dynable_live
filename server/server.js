@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Enable CORS
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: '*', // Allow all origins for development
     credentials: true,
 }));
 

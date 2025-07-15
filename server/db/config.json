@@ -1,12 +1,40 @@
 {
-    "development": {
-      "username": "postgres",
-      "password": "1",
-      "database": "eatems",
-      "host": "localhost",
-      "port": "5432",
-      "dialect": "postgres",
-      "logging": "false"
+  "development": {
+    "username": "postgres",
+    "password": "1",
+    "database": "eatems",
+    "host": "localhost",
+    "port": "5432",
+    "dialect": "postgres",
+    "logging": false
+  },
+  "acceptance": {
+    "use_env_variable": "SUPABASE_DB_URL",
+    "dialect": "postgres",
+    "logging": false,
+    "ssl": {
+      "require": true,
+      "rejectUnauthorized": false
+    }
+  },
+  "production": {
+    "username": "SUPABASE_PROD_USER",
+    "password": "SUPABASE_PROD_PASSWORD",
+    "database": "SUPABASE_PROD_DB",
+    "host": "SUPABASE_PROD_HOST",
+    "port": "5432",
+    "dialect": "postgres",
+    "logging": false,
+    "ssl": {
+      "require": true,
+      "rejectUnauthorized": false
+    },
+    "pool": {
+      "max": 10,
+      "min": 0,
+      "acquire": 30000,
+      "idle": 10000
     }
   }
+}
   

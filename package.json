@@ -10,9 +10,11 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.7",
+    "fuzzball": "^2.2.2",
     "lodash.debounce": "^4.0.8",
     "node": "^20.16.0",
     "p-limit": "^6.2.0",
+    "pg": "^8.16.3",
     "react": "^18.2.0",
     "react-cookie": "^7.1.0",
     "react-d3-tree": "^3.6.2",
@@ -22,21 +24,19 @@
     "react-scripts": "^5.0.1",
     "redux-persist": "^6.0.0",
     "resolve-url-loader": "^5.0.0",
+    "sequelize": "^6.37.7",
+    "sequelize-cli": "^6.6.3",
     "web-vitals": "^2.1.4",
     "webpack": "^5.93.0",
     "webpack-cli": "^5.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "test:unit": "react-scripts test src/tests/unit/",
-    "test:integration": "react-scripts test src/tests/integration/",
-    "test:e2e": "react-scripts test src/tests/e2e/",
-    "test:coverage": "react-scripts test --coverage --watchAll=false",
-    "eject": "react-scripts eject",
-    "start:legacy": "node --openssl-legacy-provider node_modules/.bin/react-scripts start",
-    "build:legacy": "node --openssl-legacy-provider node_modules/.bin/react-scripts build"
+    "dev": "react-scripts start",
+    "server": "node server/server.js",
+    "acceptance": "NODE_ENV=acceptance node server/server.js",
+    "prod": "NODE_ENV=production node server/server.js",
+    "healthcheck": "curl -f http://localhost:5001/health || exit 1"
   },
   "engines": {
     "node": "16.20.2"
