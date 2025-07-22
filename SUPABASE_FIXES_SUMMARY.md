@@ -100,7 +100,7 @@ export default anonymousUserManager;
    ```bash
    GOTRUE_SECURITY_MANUAL_LINKING_ENABLED=true
    REACT_APP_SUPABASE_URL=https://fdojimqdhuqhimgjpdai.supabase.co
-   REACT_APP_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZkb2ppbXFkaHVxaGltZ2pwZGFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0NTgwNzksImV4cCI6MjA2NjAzNDA3OX0.thlmaThwEBFvRUsWjQGr9JnKa-X5cdZEVm_Luz_GsXc
+   REACT_APP_SUPABASE_ANON_KEY=your_supabase_anon_key_here
    ```
 
 2. **Test anonymous user flow:**

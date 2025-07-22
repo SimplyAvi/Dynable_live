@@ -32,7 +32,7 @@ GOTRUE_SECURITY_MANUAL_LINKING_ENABLED=true
 # FRONTEND SUPABASE VARIABLES (ADD THESE)
 # =============================================================================
 REACT_APP_SUPABASE_URL=https://fdojimqdhuqhimgjpdai.supabase.co
-REACT_APP_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZkb2ppbXFkaHVxaGltZ2pwZGFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0NTgwNzksImV4cCI6MjA2NjAzNDA3OX0.thlmaThwEBFvRUsWjQGr9JnKa-X5cdZEVm_Luz_GsXc
+REACT_APP_SUPABASE_ANON_KEY=your_supabase_anon_key_here
 ```
 
 ### **Your complete `.env` should look like:**
@@ -47,13 +47,13 @@ SUPABASE_DB_URL=postgresql://postgres:JustinAndAvi123!@db.fdojimqdhuqhimgjpdai.s
 # =============================================================================
 # NEW RBAC VARIABLES (ADDED THESE)
 # =============================================================================
-JWT_SECRET=2a1c01855386366093610d2c086a0b2ddbb2a5328e948c14760fa7c1c30526326d90163aad5329f47350c4df589be93046907f2fff58b32f90667f1513394ef4
-REACT_APP_GOOGLE_CLIENT_ID=609734179064-c6aiebske9t035optq52j546cn21kj64.apps.googleusercontent.com
-REACT_APP_GOOGLE_CLIENT_SECRET=GOCSPX-0cbZca37iCya6v43CwKaz6Wzk__
-SUPABASE_JWT_SECRET=lTLzW/zgTIDEtMIozEPbDYvXNP2+31Io7axJHLeRpNuqooRDZYcgKgeZHBgCWuEaAYM8zUIRYPuRCJlYE6XJ9Q==
+JWT_SECRET=your_jwt_secret_here
+REACT_APP_GOOGLE_CLIENT_ID=your_google_client_id_here
+REACT_APP_GOOGLE_CLIENT_SECRET=your_google_client_secret_here
+SUPABASE_JWT_SECRET=your_supabase_jwt_secret_here
 SUPABASE_URL=https://fdojimqdhuqhimgjpdai.supabase.co
-SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZkb2ppbXFkaHVxaGltZ2pwZGFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0NTgwNzksImV4cCI6MjA2NjAzNDA3OX0.thlmaThwEBFvRUsWjQGr9JnKa-X5cdZEVm_Luz_GsXc
-SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZkb2ppbXFkaHVxaGltZ2pwZGFpIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1MDQ1ODA3OSwiZXhwIjoyMDY2MDM0MDc5fQ._OjdcVsF7ECt_8m--jT99A1MftC7OG-kPmRzI92iQoI
+SUPABASE_ANON_KEY=your_supabase_anon_key_here
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key_here
 SUPABASE_IDENTITY_LINKING_ENABLED=true
 
 # =============================================================================
@@ -65,7 +65,7 @@ GOTRUE_SECURITY_MANUAL_LINKING_ENABLED=true
 # FRONTEND SUPABASE VARIABLES (ADD THESE)
 # =============================================================================
 REACT_APP_SUPABASE_URL=https://fdojimqdhuqhimgjpdai.supabase.co
-REACT_APP_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZkb2ppbXFkaHVxaGltZ2pwZGFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0NTgwNzksImV4cCI6MjA2NjAzNDA3OX0.thlmaThwEBFvRUsWjQGr9JnKa-X5cdZEVm_Luz_GsXc
+REACT_APP_SUPABASE_ANON_KEY=your_supabase_anon_key_here
 ```
 
 ---
@@ -117,7 +117,7 @@ REACT_APP_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXB
 # Add these to your .env file
 GOTRUE_SECURITY_MANUAL_LINKING_ENABLED=true
 REACT_APP_SUPABASE_URL=https://fdojimqdhuqhimgjpdai.supabase.co
-REACT_APP_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZkb2ppbXFkaHVxaGltZ2pwZGFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0NTgwNzksImV4cCI6MjA2NjAzNDA3OX0.thlmaThwEBFvRUsWjQGr9JnKa-X5cdZEVm_Luz_GsXc
+REACT_APP_SUPABASE_ANON_KEY=your_supabase_anon_key_here
 ```
 
 ### **Step 2: Install Supabase Client (if not already installed)**
