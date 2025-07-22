@@ -1,34 +1,39 @@
 /**
- * Google Authentication Implementation
+ * Enhanced Google Authentication Callback with Role-Based Support
  * Author: Justin Linzan
  * Date: June 2025
  * 
- * This component handles the Google OAuth callback:
- * - Processes the OAuth response with enhanced error handling
- * - Stores the authentication token in localStorage
- * - Updates Redux state with user data
- * - Redirects to profile page or login on error
+ * This component handles the Google OAuth callback with enhanced features:
+ * - Processes the OAuth response with role information
+ * - Handles identity linking for anonymous users
+ * - Supports both standard and Supabase tokens
+ * - Maintains cart merging functionality
+ * - Updates Redux state with role information
+ * - Backward compatibility with old token formats
  * 
  * Recent Changes:
- * - Added async/await pattern for better error handling
- * - Implemented error state management
- * - Added user-friendly error display
- * - Improved token validation
- * - Added delayed redirect on error
+ * - Added role-based authentication support
+ * - Enhanced identity linking for anonymous users
+ * - Support for Supabase tokens
+ * - Improved error handling and user feedback
+ * - Better cart merging with role-aware state
  */
 
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setCredentials } from '../../redux/authSlice';
+import { setCredentials, setLegacyCredentials } from '../../redux/authSlice';
 import { mergeCarts, updateCart, fetchCart } from '../../redux/cartSlice';
 import { persistor } from '../../redux/store';
+import { linkIdentity, cleanupAnonymousData } from '../../utils/supabaseClient';
+import { prepareForIdentityLinking } from '../../utils/anonymousUserManager';
 
 const GoogleCallback = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const dispatch = useDispatch();
     const [error, setError] = useState(null);
+    const [isProcessing, setIsProcessing] = useState(true);
     const hasNavigatedRef = useRef(false);
 
     useEffect(() => {
@@ -40,19 +45,35 @@ const GoogleCallback = () => {
                     return;
                 }
 
-                const token = new URLSearchParams(window.location.search).get('token');
-                console.log('Step 1: Received token from URL:', token ? 'Yes' : 'No');
+                // Extract tokens and role information from URL parameters
+                const urlParams = new URLSearchParams(window.location.search);
+                const token = urlParams.get('token');
+                const supabaseToken = urlParams.get('supabaseToken');
+                const role = urlParams.get('role');
+                const isVerifiedSeller = urlParams.get('isVerifiedSeller') === 'true';
+                const convertedFromAnonymous = urlParams.get('convertedFromAnonymous') === 'true';
+                
+                console.log('[GOOGLE CALLBACK] URL Parameters:', {
+                    hasToken: !!token,
+                    hasSupabaseToken: !!supabaseToken,
+                    role: role,
+                    isVerifiedSeller: isVerifiedSeller,
+                    convertedFromAnonymous: convertedFromAnonymous
+                });
                 
                 if (!token) {
-                    throw new Error('No token received');
+                    throw new Error('No authentication token received');
                 }
 
-                // Store the token in localStorage
+                // Store tokens in localStorage
                 localStorage.setItem('token', token);
-                console.log('Step 2: Stored token in localStorage');
+                if (supabaseToken) {
+                    localStorage.setItem('supabaseToken', supabaseToken);
+                }
+                console.log('[GOOGLE CALLBACK] Step 1: Stored tokens in localStorage');
                 
-                // Fetch user profile
-                console.log('Step 3: Fetching user profile');
+                // Fetch user profile with enhanced role information
+                console.log('[GOOGLE CALLBACK] Step 2: Fetching user profile');
                 const response = await fetch('http://localhost:5001/api/auth/profile', {
                     headers: {
                         'Authorization': `Bearer ${token}`
@@ -61,7 +82,7 @@ const GoogleCallback = () => {
 
                 if (!response.ok) {
                     const errorData = await response.json().catch(() => ({}));
-                    console.error('Profile fetch error:', {
+                    console.error('[GOOGLE CALLBACK] Profile fetch error:', {
                         status: response.status,
                         statusText: response.statusText,
                         errorData
@@ -70,54 +91,129 @@ const GoogleCallback = () => {
                 }
 
                 const userData = await response.json();
-                console.log('Step 4: Received user data:', {
+                console.log('[GOOGLE CALLBACK] Step 3: Received user data:', {
                     hasId: !!userData.id,
                     hasEmail: !!userData.email,
                     hasName: !!userData.name,
-                    hasPicture: !!userData.picture
+                    hasRole: !!userData.role,
+                    role: userData.role,
+                    isVerifiedSeller: userData.is_verified_seller,
+                    convertedFromAnonymous: userData.converted_from_anonymous
                 });
                 
-                // Update Redux store with user data
-                dispatch(setCredentials({ 
-                    user: userData, 
-                    token 
-                }));
-                console.log('Step 5: Updated Redux store with user data');
+                // Determine if this is new format (with role) or legacy format
+                const isNewFormat = userData.role;
+                
+                if (isNewFormat) {
+                    // New format with role information
+                    console.log('[GOOGLE CALLBACK] Using new format with role information');
+                    dispatch(setCredentials({
+                        user: userData,
+                        token: token,
+                        supabaseToken: supabaseToken || null
+                    }));
+                } else {
+                    // Legacy format - use backward compatibility
+                    console.log('[GOOGLE CALLBACK] Using legacy format - backward compatibility');
+                    dispatch(setLegacyCredentials({
+                        user: userData,
+                        token: token
+                    }));
+                }
+                
+                console.log('[GOOGLE CALLBACK] Step 4: Updated Redux store with user data');
 
                 // Purge persisted state after login to avoid stale cart
                 await persistor.purge();
 
-                // --- Merge anonymous cart with server cart after Google login ---
-                const localCart = JSON.parse(localStorage.getItem('anonymous_cart') || '[]');
-                if (localCart.length > 0) {
-                    // Fetch server cart (if any)
-                    const serverCartRes = await fetch('http://localhost:5001/api/cart', {
-                        headers: { 'Authorization': `Bearer ${token}` }
+                // --- Enhanced cart merging with Supabase identity linking support ---
+                console.log('[GOOGLE CALLBACK] Preparing for identity linking...');
+                
+                // Prepare anonymous user data for identity linking
+                const anonymousData = await prepareForIdentityLinking();
+                
+                if (anonymousData.success) {
+                    console.log('[GOOGLE CALLBACK] Anonymous data prepared:', {
+                        anonymousId: anonymousData.anonymousId,
+                        cartItems: anonymousData.cartItems.length,
+                        convertedFromAnonymous: convertedFromAnonymous
                     });
-                    let serverCart = [];
-                    if (serverCartRes.ok) {
-                        serverCart = await serverCartRes.json();
+                    
+                    // Attempt Supabase identity linking
+                    const linkResult = await linkIdentity('google');
+                    
+                    if (linkResult.success) {
+                        console.log('[GOOGLE CALLBACK] Identity linking successful');
+                        
+                        // Fetch server cart (if any)
+                        const serverCartRes = await fetch('http://localhost:5001/api/cart', {
+                            headers: { 'Authorization': `Bearer ${token}` }
+                        });
+                        let serverCart = [];
+                        if (serverCartRes.ok) {
+                            serverCart = await serverCartRes.json();
+                        }
+                        
+                        // Merge carts and update server
+                        const merged = mergeCarts(anonymousData.cartItems, serverCart);
+                        console.log('[GOOGLE CALLBACK] Merging carts:', { 
+                            anonymousCart: anonymousData.cartItems, 
+                            serverCart, 
+                            merged
+                        });
+                        
+                        const updateResult = await dispatch(updateCart(merged)).unwrap();
+                        console.log('[GOOGLE CALLBACK] updateCart completed with result:', updateResult);
+                        
+                        // Clean up anonymous data after successful linking
+                        cleanupAnonymousData();
+                    } else {
+                        console.warn('[GOOGLE CALLBACK] Identity linking failed:', linkResult.error);
+                        // Fallback to regular cart merging
+                        const localCart = JSON.parse(localStorage.getItem('anonymous_cart') || '[]');
+                        if (localCart.length > 0) {
+                            const serverCartRes = await fetch('http://localhost:5001/api/cart', {
+                                headers: { 'Authorization': `Bearer ${token}` }
+                            });
+                            let serverCart = [];
+                            if (serverCartRes.ok) {
+                                serverCart = await serverCartRes.json();
+                            }
+                            
+                            const merged = mergeCarts(localCart, serverCart);
+                            await dispatch(updateCart(merged)).unwrap();
+                            localStorage.removeItem('anonymous_cart');
+                        }
                     }
-                    // Merge carts and update server
-                    const merged = mergeCarts(localCart, serverCart);
-                    console.log('[GOOGLE LOGIN] Merging carts:', { localCart, serverCart, merged });
-                    console.log('[GOOGLE LOGIN] About to dispatch updateCart with:', merged);
-                    const updateResult = await dispatch(updateCart(merged)).unwrap();
-                    console.log('[GOOGLE LOGIN] updateCart completed with result:', updateResult);
-                    console.log('[GOOGLE LOGIN] updateCart promise resolved successfully');
-                    localStorage.removeItem('anonymous_cart');
+                } else {
+                    console.log('[GOOGLE CALLBACK] No anonymous data to link');
                 }
+                
                 // Always fetch the latest cart from backend to update Redux
                 const fetchRes = await dispatch(fetchCart()).unwrap();
-                console.log('[GOOGLE LOGIN] fetchCart response:', fetchRes);
-                // --- End merge logic ---
+                console.log('[GOOGLE CALLBACK] fetchCart response:', fetchRes);
+                // --- End enhanced merge logic ---
 
-                // Redirect to intended page after login (e.g., /cart), or home
-                const redirectTo = localStorage.getItem('postLoginRedirect') || '/';
-                console.log('[GOOGLE CALLBACK] postLoginRedirect value:', localStorage.getItem('postLoginRedirect'));
-                console.log('[GOOGLE CALLBACK] redirectTo:', redirectTo);
-                console.log('[GOOGLE CALLBACK] hasNavigatedRef.current:', hasNavigatedRef.current);
-                console.log('[GOOGLE CALLBACK] Current location:', location.pathname);
+                // Handle role-specific redirects
+                let redirectTo = localStorage.getItem('postLoginRedirect') || '/';
+                
+                // Role-specific default redirects
+                if (!localStorage.getItem('postLoginRedirect')) {
+                    if (userData.role === 'admin') {
+                        redirectTo = '/admin/dashboard';
+                    } else if (userData.role === 'seller') {
+                        redirectTo = '/seller/dashboard';
+                    } else if (convertedFromAnonymous) {
+                        redirectTo = '/profile'; // Show profile for converted users
+                    }
+                }
+                
+                console.log('[GOOGLE CALLBACK] Redirect info:', {
+                    postLoginRedirect: localStorage.getItem('postLoginRedirect'),
+                    userRole: userData.role,
+                    convertedFromAnonymous: convertedFromAnonymous,
+                    finalRedirectTo: redirectTo
+                });
                 
                 if (!hasNavigatedRef.current && location.pathname === '/auth/callback') {
                     hasNavigatedRef.current = true;
@@ -128,9 +224,13 @@ const GoogleCallback = () => {
                 } else {
                     console.log('[GOOGLE CALLBACK] Skipping navigation - already navigated or not on /auth/callback');
                 }
+                
+                setIsProcessing(false);
+                
             } catch (error) {
-                console.error('Authentication error:', error);
+                console.error('[GOOGLE CALLBACK] Authentication error:', error);
                 setError(error.message);
+                setIsProcessing(false);
                 // Redirect to login page after a short delay
                 setTimeout(() => navigate('/login'), 3000);
             }
@@ -156,6 +256,11 @@ const GoogleCallback = () => {
             <div className="auth-box">
                 <h2>Processing login...</h2>
                 <p>Please wait while we complete your authentication.</p>
+                {isProcessing && (
+                    <div className="processing-indicator">
+                        <p>Setting up your account...</p>
+                    </div>
+                )}
             </div>
         </div>
     );

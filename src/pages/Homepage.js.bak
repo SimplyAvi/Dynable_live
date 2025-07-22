@@ -50,22 +50,25 @@ const Homepage = () => {
             </div>
             <hr style={{ margin: '64px 0 32px 0', border: 'none', borderTop: '4px solid #3a7bd5', width: '85%', marginLeft: 'auto', marginRight: 'auto', boxShadow: '0 2px 8px rgba(58,123,213,0.15)' }} />
             <div className="homepage-bottom-section">
-                <div className="homepage-footer-nav-container">
-                    <button id="footer-btn-about" className="homepage-footer-nav-button" onClick={() => navigate('/about')}>
-                        <span id="footer-icon-about" className="homepage-footer-nav-icon">🏢</span>
-                        <span id="footer-text-about" className="homepage-footer-nav-text">About Us</span>
+                <div className="homepage-nav-buttons">
+                    <button className="homepage-nav-btn" onClick={() => navigate('/about')}>
+                        <span className="homepage-nav-icon">🏢</span>
+                        <span className="homepage-nav-label">About Us</span>
                     </button>
-                    <button id="footer-btn-team" className="homepage-footer-nav-button" onClick={() => navigate('/about/team')}>
-                        <span id="footer-icon-team" className="homepage-footer-nav-icon">👥</span>
-                        <span id="footer-text-team" className="homepage-footer-nav-text">Meet the Team</span>
+                    <button className="homepage-nav-btn" onClick={() => navigate('/about/team')}>
+                        <span className="homepage-nav-icon">👥</span>
+                        <span className="homepage-nav-label">Meet the Team</span>
                     </button>
-                    <button id="footer-btn-experience" className="homepage-footer-nav-button" onClick={() => navigate('/about/experience')}>
-                        <span id="footer-icon-experience" className="homepage-footer-nav-icon">🎯</span>
-                        <span id="footer-text-experience" className="homepage-footer-nav-text">Your Experience</span>
+                    <button className="homepage-nav-btn" onClick={() => navigate('/about/experience')}>
+                        <span className="homepage-nav-icon">🎯</span>
+                        <span className="homepage-nav-label">Your Experience</span>
                     </button>
-                    <button id="footer-btn-feedback" className="homepage-footer-nav-button" onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSei-0i45voDypmG7QO4X4FCaqKvX40gRg2j2heSUMz8IHtZyw/viewform', '_blank')}>
-                        <span id="footer-icon-feedback" className="homepage-footer-nav-icon">💬</span>
-                        <span id="footer-text-feedback" className="homepage-footer-nav-text">Give Feedback</span>
+                    <button
+                        className="homepage-nav-btn"
+                        onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLSei-0i45voDypmG7QO4X4FCaqKvX40gRg2j2heSUMz8IHtZyw/viewform', '_blank', 'noopener noreferrer')}
+                    >
+                        <span className="homepage-nav-icon" role="img" aria-label="feedback">💬</span>
+                        <span className="homepage-nav-label">Give Feedback</span>
                     </button>
                 </div>
             </div>

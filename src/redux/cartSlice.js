@@ -19,6 +19,12 @@
  */
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+// Import Supabase anonymous user management
+import { 
+    getAnonymousCartData, 
+    saveAnonymousCartData,
+    isCurrentUserAnonymous 
+} from '../utils/anonymousUserManager';
 
 console.log('[CARTSLICE] cartSlice.js loaded');
 
@@ -115,11 +121,20 @@ export const addItemToCart = createAsyncThunk(
     }
 );
 
-// Utility functions for localStorage cart persistence
+// Utility functions for Supabase-enhanced cart persistence
 const LOCAL_CART_KEY = 'anonymous_cart';
 
-function loadLocalCart() {
+async function loadLocalCart() {
     try {
+        // Check if we have an anonymous Supabase session
+        if (isCurrentUserAnonymous()) {
+            const cartResult = await getAnonymousCartData();
+            if (cartResult.success) {
+                return cartResult.cartItems;
+            }
+        }
+        
+        // Fallback to localStorage
         const data = localStorage.getItem(LOCAL_CART_KEY);
         return data ? JSON.parse(data) : [];
     } catch {
@@ -127,17 +142,21 @@ function loadLocalCart() {
     }
 }
 
-function saveLocalCart(items) {
+async function saveLocalCart(items) {
     try {
-        localStorage.setItem(LOCAL_CART_KEY, JSON.stringify(items));
-    } catch {}
+        // Save to Supabase if we have an anonymous session
+        if (isCurrentUserAnonymous()) {
+            await saveAnonymousCartData(items);
+        } else {
+            // Fallback to localStorage
+            localStorage.setItem(LOCAL_CART_KEY, JSON.stringify(items));
+        }
+    } catch (error) {
+        console.error('[CARTSLICE] Failed to save cart data:', error);
+    }
 }
 
-function clearLocalCart() {
-    try {
-        localStorage.removeItem(LOCAL_CART_KEY);
-    } catch {}
-}
+// Note: clearLocalCart function removed as it's not used in the current implementation
 
 // Helper to merge two carts (by item id, summing quantities)
 export function mergeCarts(localItems, serverItems) {
@@ -183,9 +202,10 @@ const cartSlice = createSlice({
         setError: (state, action) => {
             state.error = action.payload;
         },
-        // New: initialize cart from localStorage for anonymous users
-        initializeAnonymousCart: (state) => {
-            state.items = loadLocalCart();
+        // New: initialize cart from Supabase/localStorage for anonymous users
+        initializeAnonymousCart: (state, action) => {
+            // This will be handled by the async thunk below
+            state.loading = true;
         },
         // New: handle itemsUpdated for anonymous cart actions
         itemsUpdated: (state, action) => {
@@ -264,12 +284,33 @@ const cartSlice = createSlice({
             .addCase(fetchOrders.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message;
+            })
+            // Anonymous cart initialization
+            .addCase(initializeAnonymousCartAsync.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(initializeAnonymousCartAsync.fulfilled, (state, action) => {
+                state.loading = false;
+                state.items = action.payload;
+            })
+            .addCase(initializeAnonymousCartAsync.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message;
             });
     }
 });
 
+// Async thunk for initializing anonymous cart
+export const initializeAnonymousCartAsync = createAsyncThunk(
+    'cart/initializeAnonymousCart',
+    async () => {
+        const items = await loadLocalCart();
+        return items;
+    }
+);
+
 // Middleware-like thunk for anonymous cart actions
-export const addToCartAnonymous = (item) => (dispatch, getState) => {
+export const addToCartAnonymous = (item) => async (dispatch, getState) => {
     const { isAuthenticated } = getState().auth;
     if (!isAuthenticated) {
         const items = [...getState().cart.items];
@@ -279,27 +320,27 @@ export const addToCartAnonymous = (item) => (dispatch, getState) => {
         } else {
             items.push({ ...item });
         }
-        saveLocalCart(items);
+        await saveLocalCart(items);
         dispatch(itemsUpdated(items));
     }
 };
 
-export const removeFromCartAnonymous = (id) => (dispatch, getState) => {
+export const removeFromCartAnonymous = (id) => async (dispatch, getState) => {
     const { isAuthenticated } = getState().auth;
     if (!isAuthenticated) {
         const items = getState().cart.items.filter(item => item.id !== id);
-        saveLocalCart(items);
+        await saveLocalCart(items);
         dispatch(itemsUpdated(items));
     }
 };
 
-export const updateQuantityAnonymous = (id, quantity) => (dispatch, getState) => {
+export const updateQuantityAnonymous = (id, quantity) => async (dispatch, getState) => {
     const { isAuthenticated } = getState().auth;
     if (!isAuthenticated) {
         const items = getState().cart.items.map(item =>
             item.id === id ? { ...item, quantity } : item
         );
-        saveLocalCart(items);
+        await saveLocalCart(items);
         dispatch(itemsUpdated(items));
     }
 };

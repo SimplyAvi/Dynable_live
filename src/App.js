@@ -24,7 +24,8 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectIsAuthenticated, setCredentials } from './redux/authSlice';
-import { initializeAnonymousCart, fetchCart } from './redux/cartSlice';
+import { initializeAnonymousCartAsync, fetchCart } from './redux/cartSlice';
+import { initializeAnonymousUser } from './utils/anonymousUserManager';
 import { fetchAllergens } from './redux/allergiesSlice';
 import Header from './components/Header/Header';
 import Homepage from './pages/Homepage';
@@ -40,16 +41,8 @@ import CartPage from './pages/CartPage/CartPage';
 import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
 import './App.css';
 
-// Protected Route wrapper component
-const ProtectedRouteComponent = ({ children }) => {
-  const isAuthenticated = useSelector(selectIsAuthenticated);
-  
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
-
-  return children;
-};
+// Note: ProtectedRouteComponent is now handled by the ProtectedRoute component
+// This wrapper is no longer needed as we use the imported ProtectedRoute component
 
 function App() {
   const dispatch = useDispatch();
@@ -83,8 +76,21 @@ function App() {
         // Let the next effect run (with no token) and handle it.
       });
     } else if (!isAuthenticated) {
-      // No token and not authenticated: treat as anonymous
-      dispatch(initializeAnonymousCart());
+      // No token and not authenticated: initialize Supabase anonymous user
+      console.log('[APP] No token found, initializing anonymous user...');
+      
+      // Initialize Supabase anonymous user first (with fallback support)
+      initializeAnonymousUser().then(result => {
+        if (result.success) {
+          console.log('[APP] Anonymous user initialized:', result.anonymousId, 'Fallback:', result.fallback);
+          // Then initialize cart with session
+          dispatch(initializeAnonymousCartAsync());
+        } else {
+          console.error('[APP] Failed to initialize anonymous user:', result.error);
+          // Fallback to regular anonymous cart
+          dispatch(initializeAnonymousCartAsync());
+        }
+      });
     }
   }, [dispatch, isAuthenticated]);
 
