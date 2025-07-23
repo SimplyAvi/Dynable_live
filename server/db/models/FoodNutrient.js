@@ -2,15 +2,18 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../database');
 
 const FoodNutrient = sequelize.define('FoodNutrient', {
-  type: { type: DataTypes.STRING },
   id: { type: DataTypes.INTEGER, primaryKey: true },
-  nutrientId: { type: DataTypes.INTEGER },
-  foodNutrientDerivationId: { type: DataTypes.INTEGER },
-  foodNutrientSourceId: { type: DataTypes.INTEGER },
-  amount: { type: DataTypes.FLOAT },
-
-  // Foreign Keys
-  foodId: { type: DataTypes.INTEGER },
+  type: DataTypes.STRING,
+  nutrientId: DataTypes.INTEGER,
+  foodNutrientDerivationId: DataTypes.INTEGER,
+  foodNutrientSourceId: DataTypes.INTEGER,
+  amount: DataTypes.DOUBLE,
+  FoodId: DataTypes.INTEGER,   // Only keep FoodId as the foreign key
+  createdAt: { type: DataTypes.DATE, allowNull: false },
+  updatedAt: { type: DataTypes.DATE, allowNull: false }
+}, {
+  tableName: 'FoodNutrients',
+  timestamps: true
 });
 
 module.exports = FoodNutrient;

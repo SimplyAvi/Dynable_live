@@ -1,0 +1,506 @@
+[
+  {
+    "id": 320,
+    "oldTag": "watermelon",
+    "newTag": "gum",
+    "description": "SWEET WATERMELON SUGARFREE GUM, SWEET WATERMELON"
+  },
+  {
+    "id": 185,
+    "oldTag": "cherry",
+    "newTag": "gum",
+    "description": "CHERRY SUGARFREE GUM, CHERRY"
+  },
+  {
+    "id": 141,
+    "oldTag": "cinnamon",
+    "newTag": "gum",
+    "description": "CINNAMON ROLL DESSERT DELIGHTS SUGARFREE GUM, CINNAMON ROLL"
+  },
+  {
+    "id": 356,
+    "oldTag": "gin",
+    "newTag": "gum",
+    "description": "ORIGINAL BUBBLE GUM, ORIGINAL"
+  },
+  {
+    "id": 478,
+    "oldTag": "gin",
+    "newTag": "gum",
+    "description": "ORIGINAL GUM, ORIGINAL"
+  },
+  {
+    "id": 3391,
+    "oldTag": "sugar",
+    "newTag": "gum",
+    "description": "MINT WITH HERBAL ACCENTS SUGAR FREE GUM, MINT WITH HERBAL ACCENTS"
+  },
+  {
+    "id": 368,
+    "oldTag": "cherry",
+    "newTag": "gum",
+    "description": "CHERRY SUGARFREE GUM, CHERRY"
+  },
+  {
+    "id": 88821,
+    "oldTag": "cinnamon",
+    "newTag": "gum",
+    "description": "CINNAMON ICE CUBES SUGAR FREE GUM, CINNAMON"
+  },
+  {
+    "id": 11963,
+    "oldTag": "watermelon",
+    "newTag": "gum",
+    "description": "STRAWBERRY WATERMELON COLLISIONS SUGARFREE GUM, STRAWBERRY WATERMELON"
+  },
+  {
+    "id": 135,
+    "oldTag": "apple",
+    "newTag": "gum",
+    "description": "SOUR GREEN APPLE GUM, SOUR GREEN APPLE"
+  },
+  {
+    "id": 209,
+    "oldTag": "cinnamon",
+    "newTag": "gum",
+    "description": "CINNAMON SUGARFREE GUM, CINNAMON"
+  },
+  {
+    "id": 301,
+    "oldTag": "fruit",
+    "newTag": "gum",
+    "description": "GRAPE FRUITY CHEWS GUM, GRAPE"
+  },
+  {
+    "id": 25560,
+    "oldTag": "cinnamon",
+    "newTag": "gum",
+    "description": "SPICY CINNAMON SUGAR FREE GUM, SPICY CINNAMON"
+  },
+  {
+    "id": 5705,
+    "oldTag": "cinnamon",
+    "newTag": "gum",
+    "description": "CINNAMON SUGAR-FREE XYLITOL GUM, CINNAMON"
+  },
+  {
+    "id": 88290,
+    "oldTag": "sugar",
+    "newTag": "gum",
+    "description": "CINNAMON SUGAR FREE GUM WITH XYLITOL, CINNAMON"
+  },
+  {
+    "id": 305,
+    "oldTag": "gum*",
+    "newTag": "gum",
+    "description": "GUM"
+  },
+  {
+    "id": 11715,
+    "oldTag": "sugar",
+    "newTag": "gum",
+    "description": "TROPICAL TWIST UNWRAPPED SUGAR FREE GUM, TROPICAL TWIST"
+  },
+  {
+    "id": 11716,
+    "oldTag": "sugar",
+    "newTag": "gum",
+    "description": "PEPPERMINT PURELY SUGAR FREE GUM WITH XYLITOL, PEPPERMINT"
+  },
+  {
+    "id": 11717,
+    "oldTag": "sugar",
+    "newTag": "gum",
+    "description": "SPEARMINT PURELY SUGAR FREE GUM WITH XYLITOL, SPEARMINT"
+  },
+  {
+    "id": 44416,
+    "oldTag": "sugar",
+    "newTag": "gum",
+    "description": "COLA FLAVORED SUGAR FREE CHEWING GUM CUBES, COLA"
+  },
+  {
+    "id": 65626,
+    "oldTag": "eggs",
+    "newTag": "gum",
+    "description": "TROPICAL EGGS GUMMI"
+  },
+  {
+    "id": 6862,
+    "oldTag": "cherry",
+    "newTag": "gum",
+    "description": "ORIGINAL CHERRY, LEMON, STRAWBERRY, ORANGE AIRS GUMMIES, ORIGINAL"
+  },
+  {
+    "id": 345,
+    "oldTag": "eggs",
+    "newTag": "gum",
+    "description": "BUNNIES & EGGS GUMMIES CANDY, WATERMELON, ORANGE, STRAWBERRY, CHERRY, GREEN APPLE"
+  },
+  {
+    "id": 261,
+    "oldTag": "cherry",
+    "newTag": "gum",
+    "description": "CHERRY LEMONADE, DOUBLE BERRY & ORANGE GREEN APPLE DUOS GUMMIES, CHERRY LEMONADE, DOUBLE BERRY & ORANGE GREEN APPLE"
+  },
+  {
+    "id": 28486,
+    "oldTag": "egg",
+    "newTag": "eggplant",
+    "description": "PEPPER, EGGPLANT AND TOMATO TOPPING BRUSCHETTA"
+  },
+  {
+    "id": 37274,
+    "oldTag": "egg",
+    "newTag": "eggplant",
+    "description": "EGGPLANT PARMIGIANA"
+  },
+  {
+    "id": 60390,
+    "oldTag": "egg",
+    "newTag": "eggplant",
+    "description": "SCARDIGNO'S EGGPLANT ROLL-UPS, 16 OZ"
+  },
+  {
+    "id": 43117,
+    "oldTag": "egg",
+    "newTag": "eggplant",
+    "description": "MEDITERRANEAN STYLE SALAD SPANISH EGGPLANT, EGGPLANT"
+  },
+  {
+    "id": 51263,
+    "oldTag": "egg",
+    "newTag": "eggplant",
+    "description": "HEAVENLY EGGPLANT"
+  },
+  {
+    "id": 63430,
+    "oldTag": "egg",
+    "newTag": "eggplant",
+    "description": "EGGPLANTS"
+  },
+  {
+    "id": 64163,
+    "oldTag": "egg",
+    "newTag": "eggplant",
+    "description": "EGGPLANT ROLL-UPS, EGGPLANT"
+  },
+  {
+    "id": 78179,
+    "oldTag": "egg",
+    "newTag": "eggplant",
+    "description": "ROASTED EGGPLANT HOMMUS, ROASTED EGGPLANT"
+  },
+  {
+    "id": 67851,
+    "oldTag": "egg",
+    "newTag": "eggplant",
+    "description": "FIRE ROASTED RED PEPPER & EGGPLANT ORGANIC AJVAR, FIRE ROASTED RED PEPPER & EGGPLANT"
+  },
+  {
+    "id": 29430,
+    "oldTag": "bread",
+    "newTag": "eggplant",
+    "description": "ITALIAN STYLE BREADING EGGPLANT CUTLETS"
+  },
+  {
+    "id": 73212,
+    "oldTag": "egg",
+    "newTag": "eggplant",
+    "description": " EGGPLANT"
+  },
+  {
+    "id": 35572,
+    "oldTag": "egg",
+    "newTag": "eggplant",
+    "description": "MELITZANA GREEK BAKED EGGPLANT STUFFED WITH VEGETABLES & HERBS, MELITZANA"
+  },
+  {
+    "id": 32991,
+    "oldTag": "egg",
+    "newTag": "eggplant",
+    "description": "EGGPLANT PARMESAN MEAL, PARMESAN"
+  },
+  {
+    "id": 65047,
+    "oldTag": "egg",
+    "newTag": "eggplant",
+    "description": "EGGPLANT DIP, EGGPLANT"
+  },
+  {
+    "id": 79322,
+    "oldTag": "egg",
+    "newTag": "eggplant",
+    "description": "EGGPLANT THYME WITH BLACKCURRANT WHOLE BULGUR PILAF, EGGPLANT THYME WITH BLACKCURRANT"
+  },
+  {
+    "id": 61403,
+    "oldTag": "egg",
+    "newTag": "eggplant",
+    "description": "HOMEMADE STYLE STUFFED EGGPLANT"
+  },
+  {
+    "id": 34887,
+    "oldTag": "egg",
+    "newTag": "eggplant",
+    "description": "ROASTED EGGPLANTS"
+  },
+  {
+    "id": 43111,
+    "oldTag": "egg",
+    "newTag": "eggplant",
+    "description": "TUV TAAM EGGPLANT BABAGANUSH, 7 OZ"
+  },
+  {
+    "id": 54831,
+    "oldTag": "egg",
+    "newTag": "eggplant",
+    "description": "ROASTED EGGPLANT WITH PARMESAN & PASTA IN A TOMATO BASIL SAUCE BALANCE BOWLS, ROASTED EGGPLANT WITH PARMESAN & PASTA"
+  },
+  {
+    "id": 47420,
+    "oldTag": "egg",
+    "newTag": "eggplant",
+    "description": "EGGPLANT PARMESAN WITH MARINARA SAUCE, MARINARA SAUCE"
+  },
+  {
+    "id": 40412,
+    "oldTag": "cheddar cheese",
+    "newTag": "pasta",
+    "description": "MACARONI & CHEESE FRESHLY MADE PASTA IN A REAL CHEDDAR CHEESE SAUCE, MACARONI & CHEESE"
+  },
+  {
+    "id": 15280,
+    "oldTag": "sauce",
+    "newTag": "pasta",
+    "description": "MEAT BOLOGNESE TRUE SICILIAN PASTA SAUCE, MEAT BOLOGNESE"
+  },
+  {
+    "id": 19085,
+    "oldTag": "sauce",
+    "newTag": "pasta",
+    "description": "MARINARA PASTA SAUCE"
+  },
+  {
+    "id": 13716,
+    "oldTag": "cheese",
+    "newTag": "pasta",
+    "description": "VEGETABLE 3 LAYER PASTA STUFFED WITH RICOTTA CHEESE AND VEGETABLES TOPPED WITH MOZZARELLA AND PARMESAN CHEESE LASAGNA, VEGETABLE"
+  },
+  {
+    "id": 66179,
+    "oldTag": "egg",
+    "newTag": "pasta",
+    "description": "MODERN TABLE, BEAN PASTA & VEGGIE KIT, HOMESTYLE MAC & CHEESE, HOMESTYLE MAC & CHEESE"
+  },
+  {
+    "id": 12542,
+    "oldTag": "rice",
+    "newTag": "pasta",
+    "description": "ORGANIC WHOLE GRAIN BROWN RICE PASTA, FUSILLI"
+  },
+  {
+    "id": 43181,
+    "oldTag": "wheat flour",
+    "newTag": "pasta",
+    "description": "ORGANIC WHOLE DURUM WHEAT FLOUR PASTA, ELBOWS NO. 52"
+  },
+  {
+    "id": 36112,
+    "oldTag": "butter",
+    "newTag": "pasta",
+    "description": "BUTTER & GARLIC FLAVOR PASTA, BUTTER; GARLIC"
+  },
+  {
+    "id": 53908,
+    "oldTag": "egg",
+    "newTag": "pasta",
+    "description": " VEGGIE TRICOLOR ROTINI PASTA"
+  },
+  {
+    "id": 73645,
+    "oldTag": "egg",
+    "newTag": "pasta",
+    "description": "ENRICHED MACARONI PRODUCT, EXTRA WIDE EGG FREE NOODLE STYLE PASTA"
+  },
+  {
+    "id": 48985,
+    "oldTag": "cheddar cheese",
+    "newTag": "pasta",
+    "description": "UNCURED BACON MAC & CHEESE GLUTEN FREE ELBOW PASTA AND UNCURED BACON - ALL COMBINED WITH AN INSANELY TASTY CHEDDAR CHEESE SAUCE, UNCURED BACON MAC & CHEESE"
+  },
+  {
+    "id": 74776,
+    "oldTag": "egg",
+    "newTag": "pasta",
+    "description": "HIDDEN VEGGIE SWEET CORN, CARROT & SQUASH PASTA BLEND, SMALL PENNE RIGATE"
+  },
+  {
+    "id": 74774,
+    "oldTag": "egg",
+    "newTag": "pasta",
+    "description": "HIDDEN VEGGIE SWEET CORN, CARROT & SQUASH PASTA BLEND, THIN SPAGHETTI"
+  },
+  {
+    "id": 9705,
+    "oldTag": "egg",
+    "newTag": "pasta",
+    "description": "PARMESAN GARLIC GREEN PEA PASTA, RICED BROCCOLI, RICED CAULIFLOWER, GRILLED ZUCCHINI, TOMATOES & SEASONING RICED VEGGIE BLENDS, PARMESAN GARLIC"
+  },
+  {
+    "id": 59922,
+    "oldTag": "butter",
+    "newTag": "pasta",
+    "description": "PASTA IN BUTTER SAUCE, BUTTER SAUCE"
+  },
+  {
+    "id": 62806,
+    "oldTag": "shrimp",
+    "newTag": "pasta",
+    "description": "SHRIMP SCAMPI & LINGUINE PRECOOKED PASTA, SHRIMP SCAMPI & LINGUINE"
+  },
+  {
+    "id": 15769,
+    "oldTag": "sauce",
+    "newTag": "pasta",
+    "description": "PASTA SAUCE"
+  },
+  {
+    "id": 17651,
+    "oldTag": "egg",
+    "newTag": "pasta",
+    "description": "Campbell's Condensed Veggie Safari Shaped Pasta and Vegetable Soup, 10.5 oz Can (4 Pack)"
+  },
+  {
+    "id": 48024,
+    "oldTag": "egg",
+    "newTag": "pasta",
+    "description": "GLUTEN FREE ORGANIC BROWN RICE PASTA, EGG TAGLIATELLE"
+  },
+  {
+    "id": 1669,
+    "oldTag": "spinach",
+    "newTag": "pasta",
+    "description": "VEGETABLE FRESH-MADE LASAGNA PASTA LAYERED WITH CREAMY SAUCE, SPINACH, CARROTS, & CORN TOPPED WITH MOZZARELLA CHEESE LASAGNA, VEGETABLE"
+  },
+  {
+    "id": 87157,
+    "oldTag": "egg",
+    "newTag": "noodles",
+    "description": "ENRICHED NOODLE PRODUCT, MEDIUM EGG NOODLES"
+  },
+  {
+    "id": 36106,
+    "oldTag": "eggs",
+    "newTag": "noodles",
+    "description": "MEDIUM EGG NOODLES"
+  },
+  {
+    "id": 58857,
+    "oldTag": "egg",
+    "newTag": "noodles",
+    "description": "ENRICHED NOODLE PRODUCT, EXTRA WIDE EGG NOODLES"
+  },
+  {
+    "id": 12937,
+    "oldTag": "egg",
+    "newTag": "noodles",
+    "description": "HOMESTYLE PASTA, WIDE EGG NOODLES"
+  },
+  {
+    "id": 12115,
+    "oldTag": "egg",
+    "newTag": "noodles",
+    "description": "ENRICHED EGG NOODLES"
+  },
+  {
+    "id": 81464,
+    "oldTag": "egg",
+    "newTag": "noodles",
+    "description": "Campbell's Culinary Reserve Frozen Condensed Healthy Request Chicken with Egg Noodles Soup, 4 Pound Trays, 3-Pack"
+  },
+  {
+    "id": 2597,
+    "oldTag": "egg",
+    "newTag": "noodles",
+    "description": "COLUMBIA FINE EGG NOODLES"
+  },
+  {
+    "id": 9604,
+    "oldTag": "soy",
+    "newTag": "noodles",
+    "description": "ASIAN STYLE SOY GARLIC NOODLES WITH CARROT & CABBAGE, ASIAN STYLE SOY GARLIC"
+  },
+  {
+    "id": 35896,
+    "oldTag": "egg",
+    "newTag": "noodles",
+    "description": "LO MEIN EGG NOODLES"
+  },
+  {
+    "id": 38720,
+    "oldTag": "egg",
+    "newTag": "noodles",
+    "description": "ENRICHED KLUSKI EGG NOODLES"
+  },
+  {
+    "id": 41937,
+    "oldTag": "egg",
+    "newTag": "noodles",
+    "description": "ENRICHED NOODLE PRODUCT, FINE EGG NOODLES"
+  },
+  {
+    "id": 41348,
+    "oldTag": "egg",
+    "newTag": "noodles",
+    "description": "FETTUCCINE ALFREDO COOKED EGG NOODLES IN A CREAMY ALFREDO SAUCE SIDES, FETTUCCINE ALFREDO"
+  },
+  {
+    "id": 72497,
+    "oldTag": "egg",
+    "newTag": "noodles",
+    "description": "ENRICHED NOODLE PRODUCT, WIDE EGG NOODLES"
+  },
+  {
+    "id": 42944,
+    "oldTag": "rice",
+    "newTag": "noodles",
+    "description": "ORGANIC BLACK RICE NOODLES, PAD THAI"
+  },
+  {
+    "id": 26393,
+    "oldTag": "egg",
+    "newTag": "noodles",
+    "description": "VEGGIE SHOYU RAMEN NOODLES WITH CHINESE BROCCOLI, CABBAGE, MUSHROOMS AND SCALLIONS IN BROTH, VEGGIE SHOYU"
+  },
+  {
+    "id": 42842,
+    "oldTag": "egg",
+    "newTag": "noodles",
+    "description": "HOMESTYLE EXTRA WIDE EGG NOODLES"
+  },
+  {
+    "id": 13705,
+    "oldTag": "egg",
+    "newTag": "noodles",
+    "description": "ENRICHED NOODLE PRODUCT, EXTRA WIDE EGG NOODLES"
+  },
+  {
+    "id": 26381,
+    "oldTag": "egg",
+    "newTag": "noodles",
+    "description": "CHICKEN PAD THAI CHICKEN BREAST AND RICE NOODLES WITH GREEN ONIONS, CARROTS AND SCRAMBLED EGG IN A MADE FROM SCRATCH THAI INSPIRED TAMARIND SAUCE, CHICKEN PAD THAI"
+  },
+  {
+    "id": 84246,
+    "oldTag": "egg",
+    "newTag": "noodles",
+    "description": "FINE ENRICHED EGG NOODLES"
+  },
+  {
+    "id": 69747,
+    "oldTag": "egg",
+    "newTag": "noodles",
+    "description": "ENRICHED NOODLE PRODUCT, WIDE EGG NOODLES"
+  }
+]

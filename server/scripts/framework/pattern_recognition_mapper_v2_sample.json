@@ -1,0 +1,352 @@
+[
+  {
+    "id": 687,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 1264,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MILK CHOCOLATE BARS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 1508,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MILK CHOCOLATE HOT COCOA MIX, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 1576,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SUGAR COOKIES, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 1734,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MILK CHOCOLATE MELTING WAFERS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 1761,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "BEEF STREET KOREAN INSPIRED TACO KIT, BEEF STREET",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 1803,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MILK CHOCOLATE HOT COCOA MIX, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 2351,
+    "brandOwner": "Barash Cosmetics LLC.",
+    "description": "MILK CHOCOLATE WAFFLE CONE SNACKS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 3401,
+    "brandOwner": "Essenhaus, Inc.",
+    "description": "BEEF",
+    "suggestedCanonical": "beef",
+    "score": 7
+  },
+  {
+    "id": 3460,
+    "brandOwner": "Rosalind Candy Castle",
+    "description": "MILK CHOCOLATE, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 3495,
+    "brandOwner": "Hempler Foods Group LLC",
+    "description": "BEEF WIENERS",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 3759,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 3762,
+    "brandOwner": "Associated Brands Limited",
+    "description": "MILK CHOCOLATE WITH RUM AND RAISINS, RUM & RAISIN",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 3821,
+    "brandOwner": "Frankford Candy, LLC",
+    "description": "MILK CHOCOLATE, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 4223,
+    "brandOwner": "Supreme Meats Inc",
+    "description": "BEEF PIZZA PATTIES, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 4302,
+    "brandOwner": "Land O'Frost, Inc.",
+    "description": "BEEF HOT DOGS, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 4345,
+    "brandOwner": "Independent Meat Company",
+    "description": "BEEF WIENERS, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 4718,
+    "brandOwner": "Walgreens Co.",
+    "description": "CARROT GUMMY CANDY, CARROT",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 4953,
+    "brandOwner": "Diana's Bananas Inc.",
+    "description": "MILK CHOCOLATE REAL BANANA HALVES, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 5021,
+    "brandOwner": "Ross Acquisition Inc.",
+    "description": "MILK CHOCOLATE & SURPRISE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 5107,
+    "brandOwner": "Mozian & Associates, Inc.",
+    "description": "BEEF & PORK SLICED SUMMER SAUSAGE, BEEF & PORK",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 5102,
+    "brandOwner": "SweetWorks Confections, LLC",
+    "description": "MILK CHOCOLATE BUNNY, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 5540,
+    "brandOwner": "Creative Snacks Co., LLC",
+    "description": "MILK CHOCOLATE RAISINS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 5621,
+    "brandOwner": "Glo's Gumbo, LLC",
+    "description": "MILK CHOCOLATE WAFFLE CONE SNACKS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 6387,
+    "brandOwner": "Freak Flag Foods",
+    "description": "CARROT PESTO, CARROT",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 6820,
+    "brandOwner": "Associated Brands Limited",
+    "description": "MILK CHOCOLATE WITH FRUIT AND NUT, FRUIT AND NUT",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 7030,
+    "brandOwner": "Mars, Inc.",
+    "description": "BUTTER RUM CANDY CANES, BUTTER RUM",
+    "suggestedCanonical": "butter",
+    "score": 4
+  },
+  {
+    "id": 7159,
+    "brandOwner": "Mars, Inc.",
+    "description": "BUTTER RUM HARD CANDY, BUTTER RUM",
+    "suggestedCanonical": "butter",
+    "score": 4
+  },
+  {
+    "id": 7427,
+    "brandOwner": "Giant Eagle, Inc.",
+    "description": "BEEF FRANKS, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 7607,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 7731,
+    "brandOwner": "Ross Acquisition Inc.",
+    "description": "MILK CHOCOLATE ROSE, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 8003,
+    "brandOwner": "Miller Packing Company",
+    "description": "BEEF FRANKFURTERS, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 8148,
+    "brandOwner": "Food Markets Northwest, Inc.",
+    "description": "BEEF RUB, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 8733,
+    "brandOwner": "Ross Acquisition Inc.",
+    "description": "MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 8874,
+    "brandOwner": "Nestle USA Inc.",
+    "description": "MILK CHOCOLATE MORSELS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 9145,
+    "brandOwner": "Nestle USA Inc.",
+    "description": "MILK CHOCOLATE MORSELS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 9796,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SUGAR COOKIES, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 9913,
+    "brandOwner": "Ghirardelli Chocolate Company",
+    "description": "MILK CHOCOLATE DUET HEARTS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 10212,
+    "brandOwner": "Ingles Markets Inc.",
+    "description": "BEEF STEW, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 10904,
+    "brandOwner": "McCormick & Company, Inc.",
+    "description": "BEEF STEW MIX, BEEF STEW",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 11214,
+    "brandOwner": "Agri Star Meat & Poultry LLC",
+    "description": "BEEF FRANKS",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 11305,
+    "brandOwner": "Frankford Candy, LLC",
+    "description": "MILK CHOCOLATE WITH CANDY, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 12337,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 13843,
+    "brandOwner": "Candyrific, LLC",
+    "description": "MILK CHOCOLATE CHARACTER DISPENSER, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 14844,
+    "brandOwner": "Frankford Candy, LLC",
+    "description": "MILK CHOCOLATE BUNNY BUCKS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 15437,
+    "brandOwner": "Wegmans Food Markets, Inc. ",
+    "description": "BEEF CULINARY STOCK, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 15476,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MILK CHOCOLATE CHIPS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 18695,
+    "brandOwner": "JTM Food Group",
+    "description": "Beef Cincy Style Chili 6/5# 30#",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 18707,
+    "brandOwner": "JTM Food Group",
+    "description": "Beef Taco Filling 6/5# 30#",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 18995,
+    "brandOwner": "JTM Food Group",
+    "description": "Beef Crumble 6/5# 30#",
+    "suggestedCanonical": "beef",
+    "score": 4
+  }
+]

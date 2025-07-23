@@ -1,0 +1,1216 @@
+{
+  "egg": {
+    "processed_food": [
+      {
+        "id": 23851,
+        "description": "HOLIDAY FAVORITES JELLY BEANS, EGG NOG; CANDY CANE; PUMPKIN PIE; CRANBERRY SAUCE; HOT CHOCOLATE",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 51973,
+        "description": "HAZELNUT FILLING CHOCOLATE COVERED CRISPY EGGS, HAZELNUT",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 25004,
+        "description": "COVERED IN DARK CHOCOLATE MARSHMALLOW EGG ",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 33721,
+        "description": "SAUSAGE EGG & CHEESE BISCUIT SANDWICHES, SAUSAGE EGG & CHEESE",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 65882,
+        "description": "ROSA ALFREDO WITH PARMIGIANO-REGGIANO CHEESE, ROSA ALFREDO",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 15177,
+        "description": "SPINACH & CHEESE RAVIOLI GARDEN FRESH SPINACH MIXED WITH CREAMY RICOTTA CHEESE WRAPPED IN DELICATE EGG PASTA WITH SPINACH STRIPES, SPINACH & CHEESE",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 29965,
+        "description": "SAUSAGE, EGG & CHEESE BISCUIT SANDWICHES, SAUSAGE, EGG & CHEESE",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 67324,
+        "description": "SAUSAGE EGG, SAUSAGE & CHEESE BREAKFAST BURRITOS, SAUSAGE EGG, SAUSAGE & CHEESE",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 18885,
+        "description": "Cheese & Egg Green Chili Brkfst Burrito 120/3.75 IW",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 29975,
+        "description": "SAUSAGE, EGG & CHEESE CROISSANT SANDWICHES, SAUSAGE, EGG & CHEESE",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      }
+    ],
+    "excluded": [
+      {
+        "id": 29598,
+        "description": "SQUARES HOLIDAY CHOCOLATE ASSORTMENT, EGGNOG; PEPPERMINT BARK; PUMPKIN SPICE CARAMEL",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 44047,
+        "description": "CHEESE & VEGGIES BREAKFAST BURRITO, CHEESE & VEGGIES",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 89964,
+        "description": "ROASTED VEGETABLE LASAGNA YELLOW LENTIL & BROWN RICE PASTA WITH RED SAUCE, ROASTED ZUCCHINI, EGGPLANT, ITALIAN RICOTTA CHEESE, MOZZARELLA & PARMIGIANO REGGIANO CHEESE, ROASTED VEGETABLE",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 13939,
+        "description": "PORTABELLA MUSHROOM & CHEESE VEGGIE BURGERS, PORTABELLA MUSHROOM & CHEESE",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 14781,
+        "description": "EGG WHITE, CHEESE & VEGGIE KETO OVEN-BAKED OMELET CUPS, EGG WHITE, CHEESE & VEGGIE",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 60389,
+        "description": "SCARDIGNO'S EGGPLANT PARMIGIANA, 20 OZ",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 67077,
+        "description": "DRAGON FRUIT, PINEAPPLES, MANGOS, CAULIFLOWER RICE EXOTIC INDULGENCE FRUIT & VEGGIE BLENDERS, DRAGON FRUIT, PINEAPPLES, MANGOS, CAULIFLOWER RICE",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 77050,
+        "description": "PUMPKIN SPICE EGGNOG, PUMPKIN SPICE",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 80837,
+        "description": "Morningstar Farms Veggie Burgers Grillers 9oz",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 60673,
+        "description": "ITALIAN HERB EGGPLANT FRIES",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      }
+    ],
+    "pure_ingredient": [
+      {
+        "id": 75493,
+        "description": "100% LIQUID EGG WHITES",
+        "analysis": {
+          "classification": "pure_ingredient",
+          "reason": "verified_pure"
+        }
+      },
+      {
+        "id": 68780,
+        "description": "LIQUID EGG WHITES",
+        "analysis": {
+          "classification": "pure_ingredient",
+          "reason": "verified_pure"
+        }
+      },
+      {
+        "id": 7473,
+        "description": "100% LIQUID EGG WHITE",
+        "analysis": {
+          "classification": "pure_ingredient",
+          "reason": "verified_pure"
+        }
+      }
+    ],
+    "primary_ingredient": [
+      {
+        "id": 44919,
+        "description": "KETO CHICKEN APPLE SAUSAGE EGG'WICH",
+        "analysis": {
+          "classification": "primary_ingredient",
+          "reason": "first_ingredient"
+        }
+      },
+      {
+        "id": 13586,
+        "description": "CAGE FREE 100% LIQUID EGG WHITES",
+        "analysis": {
+          "classification": "primary_ingredient",
+          "reason": "first_ingredient"
+        }
+      },
+      {
+        "id": 44753,
+        "description": "CHICKEN CHORIZO EGG'WICH",
+        "analysis": {
+          "classification": "primary_ingredient",
+          "reason": "first_ingredient"
+        }
+      },
+      {
+        "id": 57843,
+        "description": "EGG UNCURED HAM, PEPPER & CHEDDAR BITES, EGG",
+        "analysis": {
+          "classification": "primary_ingredient",
+          "reason": "first_ingredient"
+        }
+      },
+      {
+        "id": 68777,
+        "description": "LIQUID EGG PRODUCT",
+        "analysis": {
+          "classification": "primary_ingredient",
+          "reason": "first_ingredient"
+        }
+      },
+      {
+        "id": 68782,
+        "description": "CAGE FREE LIQUID EGG PRODUCT",
+        "analysis": {
+          "classification": "primary_ingredient",
+          "reason": "first_ingredient"
+        }
+      },
+      {
+        "id": 34417,
+        "description": "EGG PATTIES MADE WITH EGG WHITES, EGG WHITES",
+        "analysis": {
+          "classification": "primary_ingredient",
+          "reason": "first_ingredient"
+        }
+      },
+      {
+        "id": 29735,
+        "description": "CAGE-FREE 100% LIQUID EGG WHITES",
+        "analysis": {
+          "classification": "primary_ingredient",
+          "reason": "first_ingredient"
+        }
+      },
+      {
+        "id": 43066,
+        "description": "ORGANIC 100% LIQUID EGG WHITES",
+        "analysis": {
+          "classification": "primary_ingredient",
+          "reason": "first_ingredient"
+        }
+      },
+      {
+        "id": 39273,
+        "description": "CAGE FREE LIQUID EGG WHITES",
+        "analysis": {
+          "classification": "primary_ingredient",
+          "reason": "first_ingredient"
+        }
+      }
+    ],
+    "secondary_ingredient": [
+      {
+        "id": 88758,
+        "description": "SHOPRITE, EGG PASTINA NO 119, ENRICHED MACARONI PRODUCT",
+        "analysis": {
+          "classification": "secondary_ingredient",
+          "reason": "early_ingredient"
+        }
+      },
+      {
+        "id": 65370,
+        "description": "10\" EGG CUSTARD PIE",
+        "analysis": {
+          "classification": "secondary_ingredient",
+          "reason": "early_ingredient"
+        }
+      },
+      {
+        "id": 2601,
+        "description": "COLUMBIA MIDGET EGG BOWS",
+        "analysis": {
+          "classification": "secondary_ingredient",
+          "reason": "early_ingredient"
+        }
+      },
+      {
+        "id": 38509,
+        "description": "EGG BOWS NOODLE PRODUCT",
+        "analysis": {
+          "classification": "secondary_ingredient",
+          "reason": "early_ingredient"
+        }
+      },
+      {
+        "id": 60239,
+        "description": "TRADITIONAL EGG FRIED RICE, TRADITIONAL EGG",
+        "analysis": {
+          "classification": "secondary_ingredient",
+          "reason": "early_ingredient"
+        }
+      },
+      {
+        "id": 89272,
+        "description": "TORTELLONI WITH PARMIGIANO REGGIANO, PARMIGIANO REGGIANO",
+        "analysis": {
+          "classification": "secondary_ingredient",
+          "reason": "early_ingredient"
+        }
+      },
+      {
+        "id": 25425,
+        "description": "EGG MATZOS",
+        "analysis": {
+          "classification": "secondary_ingredient",
+          "reason": "early_ingredient"
+        }
+      },
+      {
+        "id": 2598,
+        "description": "COLUMBIA MEDIUM EGG NOODLE",
+        "analysis": {
+          "classification": "secondary_ingredient",
+          "reason": "early_ingredient"
+        }
+      },
+      {
+        "id": 2595,
+        "description": "LG EGG BOWS",
+        "analysis": {
+          "classification": "secondary_ingredient",
+          "reason": "early_ingredient"
+        }
+      },
+      {
+        "id": 2599,
+        "description": "COLUMBIA WIDE EGG NOODLE 12 X 12 OZ",
+        "analysis": {
+          "classification": "secondary_ingredient",
+          "reason": "early_ingredient"
+        }
+      }
+    ],
+    "uncertain": [
+      {
+        "id": 76599,
+        "description": "GRATED PARMIGIANO REGGIANO",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 33379,
+        "description": "Round Scrambled Egg Patty",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 13181,
+        "description": "ENRICHED MACARONI PRODUCT, WIDE EGG-FREE RIBBONS",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 34669,
+        "description": "TOASTED COCONUT MELTAWAY EGG, TOASTED COCONUT",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 38194,
+        "description": "SOUS VIDE UNCURED BACON & SWISS EGG BITES",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 47142,
+        "description": "VEGAN & GLUTEN FREE EGG SUBSTITUTE",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 38523,
+        "description": "PASSOVER EGG MATZOS",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 38507,
+        "description": "EGG & ONION MATZOS, EGG; ONION",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 5812,
+        "description": "Kellogg's Eggo French Toast Original French Toaster Sticks 12.7oz",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 51703,
+        "description": "SFS TONY'S 51% WG BREAKFAST BAGEL WITH EGGS AND TURKEY BREAKFAST SAUSAGE - IW NET WT 16.98 LBS 96CT",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      }
+    ],
+    "contains_ingredient": [
+      {
+        "id": 42177,
+        "description": "SPINACH FLAKY CRUST QUICHE MADE WITH WHOLE EGGS, SPINACH",
+        "analysis": {
+          "classification": "contains_ingredient",
+          "reason": "minor_ingredient"
+        }
+      },
+      {
+        "id": 2278,
+        "description": "TURKEY SAUSAGE & EGG WHITE WAFFLE SLIDERS, TURKEY SAUSAGE & EGG WHITE",
+        "analysis": {
+          "classification": "contains_ingredient",
+          "reason": "minor_ingredient"
+        }
+      },
+      {
+        "id": 8758,
+        "description": "GARLIC PORK RAMEN WITH SOFT BOILED EGG & GREEN ONIONS MEAL KIT, GARLIC PORK RAMEN WITH SOFT BOILED EGG & GREEN ONIONS",
+        "analysis": {
+          "classification": "contains_ingredient",
+          "reason": "minor_ingredient"
+        }
+      },
+      {
+        "id": 69024,
+        "description": "VEGETABLE FRIED RICE SEASONED WHITE RICE AND SCRAMBLED EGG WITH RED BELL PEPPERS, CARROTS, PEAS, AND ONIONS, VEGETABLE FRIED RICE",
+        "analysis": {
+          "classification": "contains_ingredient",
+          "reason": "minor_ingredient"
+        }
+      },
+      {
+        "id": 80622,
+        "description": "Cage Free Grilled Scrambled Egg Patty, 369/1.25 oz., Frozen, Bulk",
+        "analysis": {
+          "classification": "contains_ingredient",
+          "reason": "minor_ingredient"
+        }
+      },
+      {
+        "id": 2279,
+        "description": "SAUSAGE & EGG WAFFLE SLIDERS, SAUSAGE & EGG",
+        "analysis": {
+          "classification": "contains_ingredient",
+          "reason": "minor_ingredient"
+        }
+      },
+      {
+        "id": 80649,
+        "description": "Grilled Scrambled Egg Patty, 300/1.25 oz., Frozen, Bulk",
+        "analysis": {
+          "classification": "contains_ingredient",
+          "reason": "minor_ingredient"
+        }
+      },
+      {
+        "id": 14468,
+        "description": "BACON & WHITE CHEDDAR EGG BITES, BACON & WHITE CHEDDAR",
+        "analysis": {
+          "classification": "contains_ingredient",
+          "reason": "minor_ingredient"
+        }
+      },
+      {
+        "id": 5814,
+        "description": "Kellogg's Eggo Waffles Maple 2.64oz",
+        "analysis": {
+          "classification": "contains_ingredient",
+          "reason": "minor_ingredient"
+        }
+      },
+      {
+        "id": 78882,
+        "description": "SAUSAGE, EGG & CH STACKER, SAUSAGE, EGG & CH",
+        "analysis": {
+          "classification": "contains_ingredient",
+          "reason": "minor_ingredient"
+        }
+      }
+    ]
+  },
+  "milk": {
+    "pure_ingredient": [
+      {
+        "id": 46221,
+        "description": "WHOLE MILK",
+        "analysis": {
+          "classification": "pure_ingredient",
+          "reason": "verified_pure"
+        }
+      },
+      {
+        "id": 60284,
+        "description": "2% MILK",
+        "analysis": {
+          "classification": "pure_ingredient",
+          "reason": "verified_pure"
+        }
+      },
+      {
+        "id": 62790,
+        "description": "SKIM MILK",
+        "analysis": {
+          "classification": "pure_ingredient",
+          "reason": "verified_pure"
+        }
+      }
+    ],
+    "processed_food": [
+      {
+        "id": 24987,
+        "description": "THANK YOU ASSORTED MILK & DARK CHOCOLATES, CARAMEL; NUT CARAMEL; PECAN DELIGHT; TRUFFLE; STRAWBERRY CREAM",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 24998,
+        "description": "ASSORTED MILK & DARK CHOCOLATES, CARAMEL; PEANUT CLUSTER; TOFFEE; TRUFFLE; RASPBERRY CRME; NUT CARAMEL; PECAN DELIGHT; VANILLA CRME; STRAWBERRY CRME",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 633,
+        "description": "RASPBERRY POMEGRANATE DAIRY-FREE ALMONDMILK YOGURT ALTERNATIVE, RASPBERRY POMEGRANATE",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 55484,
+        "description": "ALMONDMILK YOGURT ALTERNATIVE, PLAIN",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 21481,
+        "description": "DAIRY-FREE RASPBERRY POMEGRANATE ALMONDMILK YOGURT ALTERNATIVE, RASPBERRY; POMEGRANATE",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 35279,
+        "description": "SYNTHA-6 PROTEIN 22 G POWDER DRINK MIX, STRAWBERRY MILKSHAKE, STRAWBERRY MILKSHAKE",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 4601,
+        "description": "BLUEBERRY POMEGRANATE MILK YOGURT",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 15545,
+        "description": "PEACH MANGO MILK YOGURT",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 55447,
+        "description": "GREEN MINT CHIP ICE CREAM MILKSHAKE, GREEN MINT CHIP ICE CREAM",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 48054,
+        "description": "HONEY & CREAM BLENDED WHOLE MILK GREEK YOGURT, HONEY & CREAM",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      }
+    ],
+    "primary_ingredient": [
+      {
+        "id": 54821,
+        "description": "FAT FREE SKIM MILK",
+        "analysis": {
+          "classification": "primary_ingredient",
+          "reason": "first_ingredient"
+        }
+      },
+      {
+        "id": 12708,
+        "description": "EVAPORATED MILK",
+        "analysis": {
+          "classification": "primary_ingredient",
+          "reason": "first_ingredient"
+        }
+      },
+      {
+        "id": 11560,
+        "description": "STRAWBERRY FLAVORED WHOLE MILK, STRAWBERRY",
+        "analysis": {
+          "classification": "primary_ingredient",
+          "reason": "first_ingredient"
+        }
+      },
+      {
+        "id": 5995,
+        "description": "MINT VANILLA FLAVORED MILK, MINT VANILLA",
+        "analysis": {
+          "classification": "primary_ingredient",
+          "reason": "first_ingredient"
+        }
+      },
+      {
+        "id": 52489,
+        "description": "INSTANT DRY WHOLE MILK",
+        "analysis": {
+          "classification": "primary_ingredient",
+          "reason": "first_ingredient"
+        }
+      },
+      {
+        "id": 58015,
+        "description": "ORGANIC, DHA OMEGA-3 WHOLE MILK",
+        "analysis": {
+          "classification": "primary_ingredient",
+          "reason": "first_ingredient"
+        }
+      },
+      {
+        "id": 66173,
+        "description": "ORGANIC WHOLE MILK",
+        "analysis": {
+          "classification": "primary_ingredient",
+          "reason": "first_ingredient"
+        }
+      },
+      {
+        "id": 63039,
+        "description": "PLAIN WHOLE MILK PROBIOTIC SKYR",
+        "analysis": {
+          "classification": "primary_ingredient",
+          "reason": "first_ingredient"
+        }
+      },
+      {
+        "id": 26679,
+        "description": "GRILLED STICKIES A LA MODE VITAMIN D WHOLE MILK, GRILLED STICKIES A LA MODE",
+        "analysis": {
+          "classification": "primary_ingredient",
+          "reason": "first_ingredient"
+        }
+      },
+      {
+        "id": 16095,
+        "description": "GRASS FED WHOLE MILK",
+        "analysis": {
+          "classification": "primary_ingredient",
+          "reason": "first_ingredient"
+        }
+      }
+    ],
+    "uncertain": [
+      {
+        "id": 55470,
+        "description": "SILK, ALMONDMILK, UNSWEETENED VANILLA, UNSWEETENED VANILLA",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 243125,
+        "description": "Stonyfield Organic Whole Milk",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 82896,
+        "description": "ORIGINAL PECANMILK CREAMER, ORIGINAL",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 83129,
+        "description": "PUMPKIN SPICE NON-DAIRY OATMILK, PUMPKIN SPICE",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 82195,
+        "description": "VANILLA ALMONDMILK, VANILLA",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 56787,
+        "description": "UNSWEETENED VANILLA ALMONDMILK, UNSWEETENED VANILLA",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 8905,
+        "description": "VANILLA RICEMILK, VANILLA",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 1943,
+        "description": "PEPPERMINT MOCHA NON-DAIRY OATMILK CREAMER, PEPPERMINT MOCHA",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 30513,
+        "description": "FRENCH VANILLA ALMONDMILK CREAMER, FRENCH VANILLA",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 65444,
+        "description": "STRAWBERRY ANIMAL-FREE DAIRY MILK, STRAWBERRY",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      }
+    ],
+    "excluded": [
+      {
+        "id": 26752,
+        "description": "BUTTERMILK FLAVORED JUMBO BISCUITS, BUTTERMILK",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 67110,
+        "description": "BUTTERMILK RANCH FRESH BUTTERMILK DRESSING & DIP, BUTTERMILK RANCH",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 898,
+        "description": "BUTTERMILK WAFFLES, BUTTERMILK",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 51277,
+        "description": "SAUSAGE & BUTTERMILK BISCUITS SANDWICHES, SAUSAGE&BUTTERMILK BISCUITS",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 3125,
+        "description": "BUTTERMILK PANCAKE MIX",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 56467,
+        "description": "FAT FREE CULTURED BUTTERMILK",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 90947,
+        "description": "MINI PANCAKES BUTTERMILK WITH CANDY BITS, CANDY BITS",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 3066,
+        "description": "BUTTERMILK ENGLISH MUFFINS",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 3596,
+        "description": "BUTTERMILK PANCAKE & WAFFLE MIX, BUTTERMILK",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 41663,
+        "description": "WHOLE CULTURED BUTTERMILK",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      }
+    ],
+    "secondary_ingredient": [
+      {
+        "id": 64766,
+        "description": "COMPLETE PROTEIN 30G SHAKE, STRAWBERRY MILKSHAKE, STRAWBERRY MILKSHAKE",
+        "analysis": {
+          "classification": "secondary_ingredient",
+          "reason": "early_ingredient"
+        }
+      },
+      {
+        "id": 84069,
+        "description": "UNSALTED PLANT MILK BUTTER, UNSALTED",
+        "analysis": {
+          "classification": "secondary_ingredient",
+          "reason": "early_ingredient"
+        }
+      },
+      {
+        "id": 84071,
+        "description": "SALTED PLANT MILK BUTTER, SALTED",
+        "analysis": {
+          "classification": "secondary_ingredient",
+          "reason": "early_ingredient"
+        }
+      },
+      {
+        "id": 76976,
+        "description": "CLEAN GRASS-FED PROTEIN 20 G, CALORIES 130, SUGAR 3G MILK PROTEIN SHAKE, VANILLA BEAN, VANILLA BEAN",
+        "analysis": {
+          "classification": "secondary_ingredient",
+          "reason": "early_ingredient"
+        }
+      },
+      {
+        "id": 9666,
+        "description": "SPRING TRUFFLES, STRAWBERRY MILKSHAKE,ORANGE,RASPBERRY,CHERRY",
+        "analysis": {
+          "classification": "secondary_ingredient",
+          "reason": "early_ingredient"
+        }
+      },
+      {
+        "id": 84362,
+        "description": " ORIGINAL ICED W/ MILK CAPPUCCINO",
+        "analysis": {
+          "classification": "secondary_ingredient",
+          "reason": "early_ingredient"
+        }
+      }
+    ],
+    "contains_ingredient": [
+      {
+        "id": 30867,
+        "description": "MILK FINE COCOA WITH HAZELNUTS TRUFFLE",
+        "analysis": {
+          "classification": "contains_ingredient",
+          "reason": "minor_ingredient"
+        }
+      }
+    ]
+  },
+  "sugar": {
+    "excluded": [
+      {
+        "id": 41751,
+        "description": "SUGAR FREE DRY MOUTH MOISTURIZING GUM WITH XYLITOL, SOOTHING MINT, SOOTHING MINT",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 89830,
+        "description": "SNAP PEAS, CARROTS, SUGAR SNAP PEAS, PEPPERS & ONIONS STIR-FRY VEGETABLE BLEND, SNAP PEA",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 11961,
+        "description": "STRAWBERRY, WATERMELON, ORIGINAL, GRAPE MIXIES SUGARFREE GUM, STRAWBERRY, WATERMELON, ORIGINAL, GRAPE",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 92054,
+        "description": "LEMONADE SUGAR FREE DRINK MIX, LEMONADE",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 92055,
+        "description": "RASPBERRY TEA SUGAR FREE DRINK MIX, RASPBERRY TEA",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 91903,
+        "description": "LEMON TEA SUGAR FREE DRINK MIX, LEMON TEA",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 86953,
+        "description": "MIXED FRUIT CHERRY, LEMON, ORANGE, GRAPE, LIME SUGAR FREE HARD CANDY, MIXED FRUIT",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 91593,
+        "description": "STIR-FRY BROCCOLI, CARROTS, SUGAR SNAP PEAS, RED PEPPERS & WATER CHESTNUTS BLEND, STIR-FRY",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 48698,
+        "description": "ASIAN STIR FRY CARROTS, BROCCOLI, RED PEPPERS, SUGAR SNAP PEAS, WATER CHESTNUTS, MUSHROOMS AND CUT BABY COB CORN VEGETABLES, ASIAN STIR FRY",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      },
+      {
+        "id": 6955,
+        "description": "VANILLA FLAVORED SUGAR-FREE SYRUP, VANILLA",
+        "analysis": {
+          "classification": "excluded",
+          "reason": "false_match_excluded"
+        }
+      }
+    ],
+    "processed_food": [
+      {
+        "id": 7391,
+        "description": "BLOOD ORANGE FLAVORED ENERGY ZERO SUGAR DRINK MIX STICK PACKS, BLOOD ORANGE",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 58256,
+        "description": "LEMON ICED TEA SWEETENED WITH CANE SUGAR, LEMON",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 38281,
+        "description": "ZERO SUGAR VANILLA WITH COFFEE COLA, VANILLA",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 37179,
+        "description": "CARB & SUGAR CONTROL STRAWBERRIES & CREAM CULTURED DAIRY SNACK, STRAWBERRIES; CREAM",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 44674,
+        "description": "HYDRATING KIWI STAR FRUIT ZERO SUGAR LEMON-POWERED BEVERAGE, KIWI; STAR FRUIT",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 55209,
+        "description": "VANILLA BEAN FLAVORED NO SUGAR ADDED ICE CREAM, VANILLA BEAN",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 25647,
+        "description": "APPLE NO SUGAR ADDED APPLESAUCE, APPLE",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 38038,
+        "description": "ZERO SUGAR RASPBERRY LEMONADE LOW CALORIE DRINK MIX, RASPBERRY; LEMONADE",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 36096,
+        "description": "NO SUGAR ADDED HONEYCRISP APPLE FLAVORED APPLESAUCE & FIBER, HONEY; APPLE",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      },
+      {
+        "id": 15874,
+        "description": "FIRE ROASTED TOMATO ORGANIC NO SUGAR ADDED PASTA SAUCE, FIRE ROASTED TOMATO",
+        "analysis": {
+          "classification": "processed_food",
+          "reason": "processed_detected"
+        }
+      }
+    ],
+    "contains_ingredient": [
+      {
+        "id": 44880,
+        "description": "ZERO SUGAR BLOOD ORANGE FLAVORED PROBIOTIC KOMBUCHA, BLOOD ORANGE",
+        "analysis": {
+          "classification": "contains_ingredient",
+          "reason": "minor_ingredient"
+        }
+      },
+      {
+        "id": 5867,
+        "description": "TANGERINE JUST FRUIT, WATER, AND A TOUCH OF CANE SUGAR POPS, TANGERINE",
+        "analysis": {
+          "classification": "contains_ingredient",
+          "reason": "minor_ingredient"
+        }
+      },
+      {
+        "id": 6577,
+        "description": "OLD FASHIONED SYRUP MADE WITH MOLASSES + BROWN SUGAR, OLD FASHIONED",
+        "analysis": {
+          "classification": "contains_ingredient",
+          "reason": "minor_ingredient"
+        }
+      },
+      {
+        "id": 86320,
+        "description": "CINNAMON BROWN SUGAR CRUNCHY BREAKFAST BISCUITS, CINNAMON BROWN SUGAR",
+        "analysis": {
+          "classification": "contains_ingredient",
+          "reason": "minor_ingredient"
+        }
+      }
+    ],
+    "uncertain": [
+      {
+        "id": 56696,
+        "description": "SUGAR SUBSTITUTE WITH ASPARTAME",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 26844,
+        "description": "PINEAPPLE IN STRAWBERRY FLAVORED NO SUGAR ADDED GEL, STRAWBERRY",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 70043,
+        "description": "ORANGE GLUCOSE TABLETS RAISES LOW BLOOD SUGAR AND BOOSTS ENERGY CHEWABLE TABLETS, ORANGE",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 72879,
+        "description": "RAISES LOW BLOOD SUGAR FAST AND BOOSTS ENERGY FAST-ACTING GLUCOSE CHEWABLE TABLETS, ORANGE, ORANGE",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 26807,
+        "description": "NO SUGAR ADDED YELLOW CLING DICED PEACHES IN WATER SWEETENED WITH STEVIA EXTRACT, WATER",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 43107,
+        "description": "BLUEBERRY FLAVORED ZERO SUGAR STEVIA SYRUP, BLUEBERRY",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      },
+      {
+        "id": 35934,
+        "description": "MTN DEW ZERO SUGAR FROST BITE NATURALLY & ARTIFICIALLY FLAVORED 12 FL OZ 12 COUNT CAN",
+        "analysis": {
+          "classification": "uncertain",
+          "reason": "insufficient_data"
+        }
+      }
+    ],
+    "secondary_ingredient": [
+      {
+        "id": 86180,
+        "description": "SEASON & SAVOR BROWN SUGAR CINNAMON MINI SWEET POTATOES, CINNAMON",
+        "analysis": {
+          "classification": "secondary_ingredient",
+          "reason": "early_ingredient"
+        }
+      }
+    ],
+    "primary_ingredient": [
+      {
+        "id": 55419,
+        "description": "LEILA BAY TRADING COMPANY, ALL NATURAL FLAVORED CANE SUGAR, HUCKLEBERRY, HUCKLEBERRY",
+        "analysis": {
+          "classification": "primary_ingredient",
+          "reason": "first_ingredient"
+        }
+      }
+    ]
+  }
+}

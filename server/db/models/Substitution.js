@@ -1,12 +1,12 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database');
-const CanonicalIngredient = require('./CanonicalIngredient');
+const Ingredient = require('./Ingredient');
 
 const Substitution = sequelize.define('Substitution', {
-  CanonicalIngredientId: {
+  IngredientId: {
     type: DataTypes.INTEGER,
     references: {
-      model: CanonicalIngredient,
+      model: Ingredient,
       key: 'id'
     }
   },

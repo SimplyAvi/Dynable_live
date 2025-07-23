@@ -2,18 +2,18 @@ const express = require('express')
 const { Op, Sequelize } = require('sequelize');
 const router = express.Router()
 const Recipe = require('../db/models/Recipe/Recipe')
-const Ingredient = require('../db/models/Recipe/Ingredient');
-const { IngredientToCanonical, CanonicalIngredient, AllergenDerivative, Substitution } = require('../db/models');
+const RecipeIngredient = require('../db/models/Recipe/RecipeIngredient');
+const { IngredientToCanonical, Ingredient, AllergenDerivative, Substitution } = require('../db/models');
 
 // Post request to send allergens to be filtered during api call
 router.post('/', async (req, res) => {
   try {
-    const { search, excludeIngredients } = req.body || {};
+    const { search, excludeRecipeIngredients } = req.body || {};
     const { page = 1, limit = 10 } = req.query;
     const offset = (page - 1) * limit;
 
     // Map frontend keys to backend format if needed
-    const mappedAllergens = (excludeIngredients || []).map(a =>
+    const mappedAllergens = (excludeRecipeIngredients || []).map(a =>
       a.replace(/([A-Z])/g, ' $1').toLowerCase().replace(/_/g, ' ')
     );
 
@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
     // Add NOT EXISTS for each allergen
     mappedAllergens.forEach((allergen, idx) => {
       where += ` AND NOT EXISTS (
-        SELECT 1 FROM "Ingredients" i
+        SELECT 1 FROM "RecipeIngredients" i
         WHERE i."RecipeId" = r.id
         AND i."name" ILIKE :allergen${idx}
       )`;
@@ -44,7 +44,7 @@ router.post('/', async (req, res) => {
              i.name as "ingredient_name", 
              i.quantity as "ingredient_quantity"
       FROM "Recipes" AS r
-      LEFT JOIN "Ingredients" AS i ON r.id = i."RecipeId"
+      LEFT JOIN "RecipeIngredients" AS i ON r.id = i."RecipeId"
       WHERE ${where}
       ORDER BY r.id, i.id
       LIMIT :limit OFFSET :offset
@@ -107,7 +107,7 @@ router.get('/', async (req, res) => {
              i.name as "ingredient_name", 
              i.quantity as "ingredient_quantity"
       FROM "Recipes" AS r
-      LEFT JOIN "Ingredients" AS i ON r.id = i."RecipeId"
+      LEFT JOIN "RecipeIngredients" AS i ON r.id = i."RecipeId"
       WHERE r.id = :id
       ORDER BY i.id
     `;
@@ -134,7 +134,7 @@ router.get('/', async (req, res) => {
     }
 
     // Get all canonical ingredients and allergens for fallback
-    const allCanonicals = await CanonicalIngredient.findAll();
+    const allCanonicals = await Ingredient.findAll();
     const canonicalNames = allCanonicals.map(c => c.name.toLowerCase());
     const canonicalAllergenMap = {};
     allCanonicals.forEach(c => {
@@ -165,11 +165,11 @@ router.get('/', async (req, res) => {
         let mapping = await IngredientToCanonical.findOne({ where: { messyName: cleanedName.toLowerCase() } });
         let canonical = null;
         if (mapping) {
-          canonical = await CanonicalIngredient.findByPk(mapping.CanonicalIngredientId);
+          canonical = await Ingredient.findByPk(mapping.IngredientId);
           canonicalName = canonical ? canonical.name : null;
           if (canonical && expandedAllergens.length > 0 && canonical.allergens && canonical.allergens.some(a => expandedAllergens.includes(a.toLowerCase()))) {
             flagged = true;
-            const subs = await Substitution.findAll({ where: { CanonicalIngredientId: canonical.id } });
+            const subs = await Substitution.findAll({ where: { IngredientId: canonical.id } });
             substitutions = subs.map(s => ({ substituteName: s.substituteName, notes: s.notes }));
           }
         } else {
@@ -188,7 +188,7 @@ router.get('/', async (req, res) => {
               flagged = true;
               const fallbackCanonical = allCanonicals.find(c => c.name.toLowerCase() === foundCanonical);
               if (fallbackCanonical) {
-                const subs = await Substitution.findAll({ where: { CanonicalIngredientId: fallbackCanonical.id } });
+                const subs = await Substitution.findAll({ where: { IngredientId: fallbackCanonical.id } });
                 substitutions = subs.map(s => ({ substituteName: s.substituteName, notes: s.notes }));
               }
             }
@@ -227,7 +227,7 @@ router.get('/', async (req, res) => {
 router.get('/substitute-products', async (req, res) => {
   try {
     const { canonicalIngredient } = req.query;
-    const { Food } = require('../db/models');
+    const { IngredientCategorized } = require('../db/models');
 
     if (!canonicalIngredient) {
       return res.status(400).json({ error: 'Canonical ingredient name is required' });
@@ -236,7 +236,7 @@ router.get('/substitute-products', async (req, res) => {
     console.log(`🔍 Looking for substitutes for: ${canonicalIngredient}`);
 
     // Find the canonical ingredient
-    const canonical = await CanonicalIngredient.findOne({
+    const canonical = await Ingredient.findOne({
       where: { name: canonicalIngredient }
     });
 
@@ -248,7 +248,7 @@ router.get('/substitute-products', async (req, res) => {
 
     // Get all substitutions for this ingredient
     const substitutions = await Substitution.findAll({
-      where: { CanonicalIngredientId: canonical.id }
+      where: { IngredientId: canonical.id }
     });
 
     if (substitutions.length === 0) {
@@ -264,7 +264,7 @@ router.get('/substitute-products', async (req, res) => {
         const substituteName = sub.substituteName;
         
         // Find products that match this substitute
-        const products = await Food.findAll({
+        const products = await IngredientCategorized.findAll({
           where: {
             canonicalTag: substituteName.toLowerCase(),
             canonicalTagConfidence: 'confident'

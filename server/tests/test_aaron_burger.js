@@ -4,7 +4,7 @@ const db = require('./db/database.js');
 async function testAaronBurger() {
   try {
     await db.authenticate();
-    const Food = require('./db/models/Food.js');
+    const IngredientCategorized = require('./db/models/IngredientCategorized.js');
     const IngredientToCanonical = require('./db/models/IngredientToCanonical.js');
     
     console.log('🍔 Testing Aaron\'s Missouri Burger ingredient: "1 pound lean ground beef"');
@@ -31,7 +31,7 @@ async function testAaronBurger() {
     }
     
     // Check for products with canonical tag "beef, ground"
-    const groundBeefProducts = await Food.findAll({
+    const groundBeefProducts = await IngredientCategorized.findAll({
       where: {
         canonicalTag: 'beef, ground',
         brandName: { [Sequelize.Op.ne]: 'Generic' }
@@ -46,7 +46,7 @@ async function testAaronBurger() {
     });
     
     // Check for lean ground beef specifically
-    const leanGroundBeef = await Food.findAll({
+    const leanGroundBeef = await IngredientCategorized.findAll({
       where: {
         description: { [Sequelize.Op.iLike]: '%lean%ground beef%' },
         brandName: { [Sequelize.Op.ne]: 'Generic' }

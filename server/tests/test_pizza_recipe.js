@@ -1,5 +1,5 @@
 const Recipe = require('./db/models/Recipe/Recipe');
-const { Food, Ingredient, IngredientToCanonical, CanonicalIngredient } = require('./db/models');
+const { IngredientCategorized, Ingredient, IngredientToCanonical, Ingredient } = require('./db/models');
 const { Op, Sequelize } = require('sequelize');
 
 // Copy of the cleaning function from foodRoutes.js
@@ -36,9 +36,9 @@ async function testPizzaRecipe() {
     }
 
     console.log(`✅ Found recipe: "${pizzaRecipe.title}"`);
-    console.log(`📝 Ingredients: ${pizzaRecipe.Ingredients.length}\n`);
+    console.log(`📝 RecipeIngredients: ${pizzaRecipe.RecipeIngredients.length}\n`);
 
-    for (const ingredientObj of pizzaRecipe.Ingredients) {
+    for (const ingredientObj of pizzaRecipe.RecipeIngredients) {
       const ingredientRaw = ingredientObj.name;
       const ingredientName = cleanIngredientName(ingredientRaw);
       
@@ -55,7 +55,7 @@ async function testPizzaRecipe() {
       let aliases = [];
       const mapping = await IngredientToCanonical.findOne({ where: { messyName: ingredientName.toLowerCase() } });
       if (mapping) {
-        const canonicalObj = await CanonicalIngredient.findByPk(mapping.CanonicalIngredientId);
+        const canonicalObj = await Ingredient.findByPk(mapping.IngredientId);
         if (canonicalObj) {
           canonical = canonicalObj.name;
           aliases = canonicalObj.aliases || [];
@@ -72,7 +72,7 @@ async function testPizzaRecipe() {
       console.log(`   Tags to search: [${canonicalTags.join(', ')}]`);
 
       // Query for matching products
-      const products = await Food.findAll({
+      const products = await IngredientCategorized.findAll({
         where: { 
           canonicalTag: { [Op.in]: canonicalTags },
           canonicalTagConfidence: 'confident'

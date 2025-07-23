@@ -1,0 +1,1631 @@
+{
+  "foodSample": [
+    {
+      "id": 15763,
+      "description": "CAJUN BAYOU SEASONING, CAJUN BAYOU",
+      "canonicalTag": null,
+      "brandOwner": "Blues Hog, LLC",
+      "shortDescription": ""
+    },
+    {
+      "id": 45431,
+      "description": "GARLIC EXTRA VIRGIN OLIVE OIL, GARLIC",
+      "canonicalTag": "olive oil",
+      "brandOwner": "Target Stores",
+      "shortDescription": ""
+    },
+    {
+      "id": 111370,
+      "description": "Pure bottle (750ml) pinot noir",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 212583,
+      "description": "Pure 1/2 ounces rum",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 112981,
+      "description": "Pure cups loosely packed beet greens, stems trimmed",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 237028,
+      "description": "Pure cups lemon sherbet",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 120491,
+      "description": "Pure to 2 tablespoon coarsely chopped oregano",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 25595,
+      "description": "STUFFED PEPPERS GREEN BELL PEPPERS HAND-FILLED WITH BEEF & RICE IN A ZESTY TOMATO SAUCE, STUFFED PEPPERS",
+      "canonicalTag": null,
+      "brandOwner": "Nestle Usa-Frozen Food Division",
+      "shortDescription": ""
+    },
+    {
+      "id": 199214,
+      "description": "Pure cups frosting for petits fours",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 170493,
+      "description": "Pure (3-inch long by 1-inch wide) strips orange zest, any white pith removed",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 61607,
+      "description": "PROBIOTICS SOURSOP YOGURT SMOOTHIE , SOURSOP ",
+      "canonicalTag": "yogurt",
+      "brandOwner": "Lala U.S., Inc. ",
+      "shortDescription": ""
+    },
+    {
+      "id": 155713,
+      "description": "Pure tablespoons freshly grated parmesan plus additional for serving",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 116472,
+      "description": "Pure medium navel orange (preferably cara cara)",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 125988,
+      "description": "Pure pound savoy cabbage, thinly sliced (about 6 cups)",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 65396,
+      "description": "ORIGINAL CINNAMON BEYOND CHURROS, ORIGINAL CINNAMON",
+      "canonicalTag": "cinnamon",
+      "brandOwner": "Natural Intentions, Inc.",
+      "shortDescription": ""
+    },
+    {
+      "id": 158010,
+      "description": "Pure to 1/2 cup canola or grapeseed oil",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 166225,
+      "description": "Pure large red onions, halved, thinly sliced crosswise (about 6 cups)",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 192216,
+      "description": "Pure 3/4 fluid ounces liquid smoke flavoring",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 12608,
+      "description": "STRAWBERRY ORGANIC FRUIT TWISTS, STRAWBERRY",
+      "canonicalTag": null,
+      "brandOwner": "United Natural Foods, Inc.",
+      "shortDescription": ""
+    },
+    {
+      "id": 142172,
+      "description": "Pure cups baby collard greens - stems removed and discarded; leaves chopped",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 198823,
+      "description": "Pure baby carrots, cut into 1/4-inch pieces",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 58689,
+      "description": "ITALIAN SALAD, ITALIAN",
+      "canonicalTag": null,
+      "brandOwner": "H E Butt Grocery Company",
+      "shortDescription": ""
+    },
+    {
+      "id": 96838,
+      "description": "Pure pastry for a 9-inch double crust pie",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 25803,
+      "description": "CHEESE PAIRING PLATE CHEDDAR JACK CHEESE, CHEESE PAIRING",
+      "canonicalTag": null,
+      "brandOwner": "Kraft Heinz Foods Company",
+      "shortDescription": ""
+    },
+    {
+      "id": 107200,
+      "description": "Pure 9-pound fully cooked bone-in ham (shank or butt end)",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 172407,
+      "description": "Pure tablespoon dried minced onion, or more to taste",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 89899,
+      "description": "HOT CHUNKY SALSA, HOT CHUNKY",
+      "canonicalTag": null,
+      "brandOwner": "Target Stores",
+      "shortDescription": ""
+    },
+    {
+      "id": 78067,
+      "description": "MILK CHOCOLATE & PEANUT BUTTER CUPS MINIATURES, MILK CHOCOLATE & PEANUT BUTTER",
+      "canonicalTag": null,
+      "brandOwner": "The Hershey Company",
+      "shortDescription": ""
+    },
+    {
+      "id": 7503,
+      "description": "PEELED, DEVEINED, TAIL-ON JUMBO RAW SHRIMP",
+      "canonicalTag": null,
+      "brandOwner": "Sunnyvale Seafood Corp.",
+      "shortDescription": ""
+    },
+    {
+      "id": 224121,
+      "description": "Pure pound swiss cheese",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 22502,
+      "description": "CHERRY SOFT DRINK, CHERRY",
+      "canonicalTag": null,
+      "brandOwner": "Kraft Heinz Foods Company",
+      "shortDescription": ""
+    },
+    {
+      "id": 110630,
+      "description": "Pure (14.5 ounce) can black beans",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 49249,
+      "description": "Flame Grilled Hamburger Beef Patty On A Bun",
+      "canonicalTag": null,
+      "brandOwner": "Tyson Foods Inc.",
+      "shortDescription": "BLPK FGLD HAMB BF PAT ON BUN 12/3.8"
+    },
+    {
+      "id": 185705,
+      "description": "Pure ribs celery, very finely chopped",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 89430,
+      "description": "COCONUT WATER WITH PINEAPPLE, PINEAPPLE",
+      "canonicalTag": "coconut",
+      "brandOwner": "Target Stores",
+      "shortDescription": ""
+    },
+    {
+      "id": 156723,
+      "description": "Pure tablespoons natural almonds, toasted and chopped",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 224853,
+      "description": "Pure 1/2 teaspoons diced fresh ginger",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 3064,
+      "description": "SALMON SEASONING",
+      "canonicalTag": null,
+      "brandOwner": "",
+      "shortDescription": ""
+    },
+    {
+      "id": 172847,
+      "description": "Pure tablespoons goya capers",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 196507,
+      "description": "Pure ounces",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 153976,
+      "description": "Pure cups cubed day-old bread, or as needed to fill a 9x12-inch baking dish",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 155085,
+      "description": "Pure large heads escarole",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 116290,
+      "description": "Pure fresh mango - peeled, pitted, and chopped",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 62065,
+      "description": "FREEZE-DRIED BLUEBERRIES",
+      "canonicalTag": null,
+      "brandOwner": "Target Stores",
+      "shortDescription": ""
+    },
+    {
+      "id": 190298,
+      "description": "Pure tablespoons anise-flavored liqueur",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 70073,
+      "description": "ASSORTED FLAVORS CANDY TWISTS, GHOSTLY GREEN APPLE, GHOULISH GRAPE, OOZING ORANGE",
+      "canonicalTag": null,
+      "brandOwner": "American Licorice Company",
+      "shortDescription": ""
+    },
+    {
+      "id": 27985,
+      "description": "FIELD DAY, BLUEBERRY FRUIT SPREAD",
+      "canonicalTag": null,
+      "brandOwner": "United Natural Foods, Inc.",
+      "shortDescription": ""
+    },
+    {
+      "id": 51846,
+      "description": "12/12ct Ultra Loco Bread Squared",
+      "canonicalTag": "bread",
+      "brandOwner": "The Father's Table",
+      "shortDescription": "Loco Bread Squared"
+    },
+    {
+      "id": 97223,
+      "description": "Pure bunch cilantro, chopped, or more to taste",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    },
+    {
+      "id": 129439,
+      "description": "Pure ounces cold lard",
+      "canonicalTag": null,
+      "brandOwner": "Generic",
+      "shortDescription": null
+    }
+  ],
+  "canonicalTagPatterns": {
+    "": 45,
+    "olive oil": 1,
+    "yogurt": 1,
+    "cinnamon": 1,
+    "coconut": 1,
+    "bread": 1
+  },
+  "fieldTypes": {
+    "id": "number",
+    "description": "string",
+    "canonicalTag": "object",
+    "brandOwner": "string",
+    "shortDescription": "string"
+  },
+  "fieldLengths": {
+    "description": 104,
+    "canonicalTag": 9,
+    "brandOwner": 31,
+    "shortDescription": 35
+  },
+  "canonicalTagCoverage": {
+    "total": "243108",
+    "percentWithCanonical": "NaN",
+    "percentWithoutCanonical": "NaN"
+  },
+  "brandDistribution": {
+    "totalBrands": 6774,
+    "genericCount": "150074",
+    "realBrandCount": 89554,
+    "top20RealBrands": [
+      {
+        "brandOwner": "Target Stores",
+        "count": "7636"
+      },
+      {
+        "brandOwner": "Meijer, Inc.",
+        "count": "4644"
+      },
+      {
+        "brandOwner": "Wal-Mart Stores, Inc.",
+        "count": "2323"
+      },
+      {
+        "brandOwner": "Wakefern Food Corporation",
+        "count": "2105"
+      },
+      {
+        "brandOwner": "Kraft Heinz Foods Company",
+        "count": "1400"
+      },
+      {
+        "brandOwner": "Tyson Foods Inc.",
+        "count": "1248"
+      },
+      {
+        "brandOwner": "Safeway, Inc.",
+        "count": "1245"
+      },
+      {
+        "brandOwner": "The Hershey Company",
+        "count": "1162"
+      },
+      {
+        "brandOwner": "Mars Chocolate North America LLC",
+        "count": "893"
+      },
+      {
+        "brandOwner": "H E Butt Grocery Company",
+        "count": "890"
+      },
+      {
+        "brandOwner": "GENERAL MILLS SALES INC.",
+        "count": "875"
+      },
+      {
+        "brandOwner": "BJ's Wholesale Club / Corporate Brands",
+        "count": "661"
+      },
+      {
+        "brandOwner": "CAMPBELL SOUP COMPANY",
+        "count": "641"
+      },
+      {
+        "brandOwner": "Frito-Lay Company",
+        "count": "619"
+      },
+      {
+        "brandOwner": "Kellogg Company US",
+        "count": "585"
+      },
+      {
+        "brandOwner": "Ferrara Candy Company",
+        "count": "560"
+      },
+      {
+        "brandOwner": "Danone US, LLC",
+        "count": "551"
+      },
+      {
+        "brandOwner": "Mars, Inc.",
+        "count": "548"
+      },
+      {
+        "brandOwner": "General Mills, Inc.",
+        "count": "521"
+      },
+      {
+        "brandOwner": "The Kellogg Company ",
+        "count": "510"
+      }
+    ]
+  },
+  "brandSamples": {
+    "genericSample": [
+      {
+        "id": 116847,
+        "description": "Pure large shallot, peeled and thinly sliced",
+        "brandOwner": "Generic",
+        "canonicalTag": "ice"
+      },
+      {
+        "id": 116848,
+        "description": "Pure few fresh grinds black pepper",
+        "brandOwner": "Generic",
+        "canonicalTag": "black pepper"
+      },
+      {
+        "id": 116849,
+        "description": "Pure teaspoon salt or more to taste",
+        "brandOwner": "Generic",
+        "canonicalTag": "to taste"
+      },
+      {
+        "id": 116850,
+        "description": "Pure cup crumbled maytag or other blue cheese (about 3 ounces), divided",
+        "brandOwner": "Generic",
+        "canonicalTag": "up"
+      },
+      {
+        "id": 116852,
+        "description": "Pure (16 ounce) package fettuccine",
+        "brandOwner": "Generic",
+        "canonicalTag": "fettuccine"
+      }
+    ],
+    "realSample": [
+      {
+        "id": 3,
+        "description": "DIET COLA",
+        "brandOwner": "Pepsi-Cola North America Inc.",
+        "canonicalTag": "1/2 cups diet cola-flavored carbonated beverage"
+      },
+      {
+        "id": 15,
+        "description": "MYSTERY VOO DEW SODA, MYSTERY",
+        "brandOwner": "Pepsi-Cola North America Inc.",
+        "canonicalTag": null
+      },
+      {
+        "id": 39665,
+        "description": "RICOTTA  CHEESE ",
+        "brandOwner": "Lactalis American Group, Inc. ",
+        "canonicalTag": "ricotta"
+      },
+      {
+        "id": 21996,
+        "description": "PLAIN BREAD CRUMBS",
+        "brandOwner": "4C Foods Corp.",
+        "canonicalTag": "bread"
+      },
+      {
+        "id": 8,
+        "description": "SODA",
+        "brandOwner": "Pepsi-Cola North America Inc.",
+        "canonicalTag": "baking soda"
+      }
+    ]
+  },
+  "keywordMatches": {
+    "tomato": [
+      {
+        "id": 127,
+        "description": "SRIRACHA TOMATO KETCHUP, SRIRACHA TOMATO",
+        "brandOwner": "Safeway, Inc.",
+        "canonicalTag": "up"
+      },
+      {
+        "id": 164778,
+        "description": "Pure cup cherry or grape tomatoes, halved",
+        "brandOwner": "Generic",
+        "canonicalTag": "up"
+      },
+      {
+        "id": 164907,
+        "description": "Pure green tomatoes, chopped",
+        "brandOwner": "Generic",
+        "canonicalTag": "chopped"
+      },
+      {
+        "id": 165017,
+        "description": "Pure 10 3/4-ounce can condensed cream of tomato soup",
+        "brandOwner": "Generic",
+        "canonicalTag": "up"
+      },
+      {
+        "id": 165123,
+        "description": "Pure cups cherry tomatoes (about 14 ounces), halved",
+        "brandOwner": "Generic",
+        "canonicalTag": "up"
+      },
+      {
+        "id": 165130,
+        "description": "Pure 28-ounce can italian-style tomatoes, drained, juices reserved, tomatoes chopped",
+        "brandOwner": "Generic",
+        "canonicalTag": "ice"
+      },
+      {
+        "id": 166218,
+        "description": "Pure tomato slices, seeds removed, slices drained on paper towels",
+        "brandOwner": "Generic",
+        "canonicalTag": "ice"
+      },
+      {
+        "id": 166231,
+        "description": "Pure ripe medium tomatoes, cored, halved, cut into 1/4-inch-thick slices",
+        "brandOwner": "Generic",
+        "canonicalTag": "ice"
+      },
+      {
+        "id": 188528,
+        "description": "Pure 3/4 cups diced tomatoes",
+        "brandOwner": "Generic",
+        "canonicalTag": "up"
+      },
+      {
+        "id": 166474,
+        "description": "Pure pound fresh tomatoes, diced",
+        "brandOwner": "Generic",
+        "canonicalTag": "ice"
+      }
+    ],
+    "chicken": [
+      {
+        "id": 166477,
+        "description": "Pure 3 1/2- to 3 3/4-pound chickens, each cut in half, backbones removed",
+        "brandOwner": "Generic",
+        "canonicalTag": "chicken"
+      },
+      {
+        "id": 166521,
+        "description": "Pure 3 1/2- to 4-pound chicken, cut into 8 pieces",
+        "brandOwner": "Generic",
+        "canonicalTag": "pie"
+      },
+      {
+        "id": 189338,
+        "description": "Pure large chicken thighs",
+        "brandOwner": "Generic",
+        "canonicalTag": "chicken"
+      },
+      {
+        "id": 167029,
+        "description": "Pure whole organic chicken, cut into 10 pieces",
+        "brandOwner": "Generic",
+        "canonicalTag": "pie"
+      },
+      {
+        "id": 167224,
+        "description": "Pure whole skinless boneless chicken breasts (about 1/2 pound each)",
+        "brandOwner": "Generic",
+        "canonicalTag": "chicken"
+      },
+      {
+        "id": 167235,
+        "description": "Pure large skinless boneless chicken breast halves, pounded to 1/3-inch thickness",
+        "brandOwner": "Generic",
+        "canonicalTag": "chicken"
+      },
+      {
+        "id": 167244,
+        "description": "Pure (3- to 3 1/2-lb) chicken, rinsed and patted dry",
+        "brandOwner": "Generic",
+        "canonicalTag": "chicken"
+      },
+      {
+        "id": 167248,
+        "description": "Pure poussins (young chickens) or small cornish hens (3/4 to 1 lb each; preferably organic)",
+        "brandOwner": "Generic",
+        "canonicalTag": "corn"
+      },
+      {
+        "id": 167251,
+        "description": "Pure whole chicken legs (about 4 pounds)",
+        "brandOwner": "Generic",
+        "canonicalTag": "chicken"
+      },
+      {
+        "id": 167284,
+        "description": "Pure (8 ounce) skinless, boneless chicken breasts",
+        "brandOwner": "Generic",
+        "canonicalTag": "chicken"
+      }
+    ],
+    "cheese": [
+      {
+        "id": 166660,
+        "description": "Pure 1/3 cups shredded four-cheese mix or pizza cheese",
+        "brandOwner": "Generic",
+        "canonicalTag": "up"
+      },
+      {
+        "id": 166695,
+        "description": "Pure (4 ounce) package garlic and herb feta cheese, crumbled",
+        "brandOwner": "Generic",
+        "canonicalTag": "cheese"
+      },
+      {
+        "id": 166970,
+        "description": "Pure la bière\" cheese or german temptin cheese, thinly sliced",
+        "brandOwner": "Generic",
+        "canonicalTag": "ice"
+      },
+      {
+        "id": 166975,
+        "description": "Pure ounces gouda cheese, thinly sliced, divided",
+        "brandOwner": "Generic",
+        "canonicalTag": "ice"
+      },
+      {
+        "id": 166979,
+        "description": "Pure ounces thinly sliced swiss cheese",
+        "brandOwner": "Generic",
+        "canonicalTag": "ice"
+      },
+      {
+        "id": 167028,
+        "description": "Pure cup crumbled queso fresco cheese, or to taste",
+        "brandOwner": "Generic",
+        "canonicalTag": "to taste"
+      },
+      {
+        "id": 167254,
+        "description": "Pure cup grated parmesan cheese, plus extra for topping",
+        "brandOwner": "Generic",
+        "canonicalTag": "up"
+      },
+      {
+        "id": 167339,
+        "description": "Pure ounces sliced aged provolone cheese",
+        "brandOwner": "Generic",
+        "canonicalTag": "provolone cheese"
+      },
+      {
+        "id": 167340,
+        "description": "Pure oz. parmigiano-reggiano cheese, grated",
+        "brandOwner": "Generic",
+        "canonicalTag": "egg"
+      },
+      {
+        "id": 167378,
+        "description": "Pure slices provolone cheese, each 1 oz., cut into 1-inch strips",
+        "brandOwner": "Generic",
+        "canonicalTag": "provolone cheese"
+      }
+    ],
+    "milk": [
+      {
+        "id": 167548,
+        "description": "Pure cup sheep's-milk (or cow's-milk) ricotta",
+        "brandOwner": "Generic",
+        "canonicalTag": "up"
+      },
+      {
+        "id": 167640,
+        "description": "Pure 1/4 cups (5 oz./155 g) whole-milk mozzarella cheese,",
+        "brandOwner": "Generic",
+        "canonicalTag": "up"
+      },
+      {
+        "id": 179829,
+        "description": "Pure (14 ounce) can eagle brand® sweetened condensed milk, divided",
+        "brandOwner": "Generic",
+        "canonicalTag": "milk"
+      },
+      {
+        "id": 101,
+        "description": "MILK CHOCOLATE WITH CARAMEL, MILK WITH CARAMEL",
+        "brandOwner": "Rafael Padilla & Cia S. En C.",
+        "canonicalTag": "chocolate"
+      },
+      {
+        "id": 614,
+        "description": "MILK CHOCOLATE & PEANUT BUTTER TREES, MILK CHOCOLATE & PEANUT BUTTER",
+        "brandOwner": "The Hershey Company",
+        "canonicalTag": null
+      },
+      {
+        "id": 613,
+        "description": "MILK CHOCOLATE & PEANUT BUTTER CREME EGGS, MILK CHOCOLATE & PEANUT BUTTER CREME",
+        "brandOwner": "The Hershey Company",
+        "canonicalTag": null
+      },
+      {
+        "id": 633,
+        "description": "RASPBERRY POMEGRANATE DAIRY-FREE ALMONDMILK YOGURT ALTERNATIVE, RASPBERRY POMEGRANATE",
+        "brandOwner": "Danone US, LLC",
+        "canonicalTag": null
+      },
+      {
+        "id": 644,
+        "description": "50% COCOA OAT MILK + DARK CHOCOLATE",
+        "brandOwner": "The Endangered Species Chocolate Co",
+        "canonicalTag": null
+      },
+      {
+        "id": 656,
+        "description": "CHOCOLATE NUT PEANUTS, RAISINS, MILK CHOCOLATE CANDIES, GOLDEN RAISINS & CASHEWS TRAIL MIX, CHOCOLATE NUT",
+        "brandOwner": "Bay Valley Foods, LLC",
+        "canonicalTag": null
+      },
+      {
+        "id": 684,
+        "description": "ALMOND, MILK CHOCOLATE, CARAMEL, NOUGAT BARS, ALMOND",
+        "brandOwner": "Mars Chocolate North America LLC",
+        "canonicalTag": "almond"
+      }
+    ],
+    "egg": [
+      {
+        "id": 711,
+        "description": "EASTER EGGS CHOCOLATES",
+        "brandOwner": "Mars Chocolate North America LLC",
+        "canonicalTag": "eggs"
+      },
+      {
+        "id": 168355,
+        "description": "Pure (12 ounce) package dole® very veggie™",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 168587,
+        "description": "Pure hard-boiled eggs, peeled, sliced",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 168704,
+        "description": "Pure hard boiled large egg, minced",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 168727,
+        "description": "Pure 7 1/2-ounce can caponata (eggplant appetizer)",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 168889,
+        "description": "Pure eggplant (about 1 pound), cut lengthwise into 3/4-inch-thick slices",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 169003,
+        "description": "Pure eggplants, cut into 1/3-inch slices",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 169030,
+        "description": "Pure large japanese eggplants, trimmed, quartered lengthwise",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 169089,
+        "description": "Pure small eggplant (about 1 pound), cut crosswise into 1/2-inch-thick rounds",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 169252,
+        "description": "Pure cup grated parmigiano-reggiano cheese (about 3 ounces)",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      }
+    ],
+    "beef": [
+      {
+        "id": 169004,
+        "description": "Pure beefsteak or heirloom tomatoes, cut into 1/4-inch slices",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 999,
+        "description": "TERIYAKI BEEF JERKY, TERIYAKI",
+        "brandOwner": "Associated Wholesale Grocers, Inc.",
+        "canonicalTag": null
+      },
+      {
+        "id": 169567,
+        "description": "Pure pound beef ribeye steak, thinly sliced",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 169671,
+        "description": "Pure tablespoon beef broth",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 169685,
+        "description": "Pure pound 93% lean ground beef",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 170364,
+        "description": "Pure (1/2-lb) piece boneless beef sirloin steak or tenderloin",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 171312,
+        "description": "Pure (10 ounce) cans beef broth",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 171383,
+        "description": "Pure pounds beef bottom round, cut into cubes",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 171384,
+        "description": "Pure pound beef soup bones, trimmed of excess fat",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 171385,
+        "description": "Pure (14 ounce) can msg-free beef broth (such as swanson®)",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      }
+    ],
+    "onion": [
+      {
+        "id": 171309,
+        "description": "Pure tablespoon chopped onions",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 171817,
+        "description": "Pure small (golf-ball sized) onion, peeled and coarsely chopped",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 171844,
+        "description": "Pure large or 2 medium onions, sliced into thin rings",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 171874,
+        "description": "Pure lb onions, finely chopped (2 cups)",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 171957,
+        "description": "Pure scallions (green onions), roughly chopped",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 172125,
+        "description": "Pure yellow onion, halved, with the skin left on",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 194274,
+        "description": "Pure tablespoons maui onion salsa",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 172188,
+        "description": "Pure small red onion, halved lengthwise and sliced thin",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 172190,
+        "description": "Pure large red onion, quartered and sliced thin",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 172229,
+        "description": "Pure few tablespoons chopped white onion, for garnish",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      }
+    ],
+    "garlic": [
+      {
+        "id": 170743,
+        "description": "Pure cup sweet chili garlic sauce*",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 171206,
+        "description": "Pure large garlic clove, minced and mashed to a paste with 1/4 teaspoon salt",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 6549,
+        "description": "CHICKEN SPICE MIX, GARLIC & GINGER",
+        "brandOwner": "",
+        "canonicalTag": "ice"
+      },
+      {
+        "id": 5215,
+        "description": "GARLIC SUMMER SAUSAGE KIT, GARLIC SUMMER",
+        "brandOwner": "Ps Seasoning & Spices Inc.",
+        "canonicalTag": "pound sausage"
+      },
+      {
+        "id": 171838,
+        "description": "Pure cup coarsely crushed garlic croutons",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 171842,
+        "description": "Pure medium garlic cloves (about 3 heads)",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 171846,
+        "description": "Pure head garlic, end cut off, brushed with olive oil and wrapped in aluminum foil",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 172127,
+        "description": "Pure heads of garlic, the outer skin removed, leaving the cloves attached at the root end",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 172157,
+        "description": "Pure garlic clove, minced and mashed to a paste with 1 teaspoon salt",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 172405,
+        "description": "Pure medium garlic cloves, pressed",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      }
+    ],
+    "potato": [
+      {
+        "id": 170617,
+        "description": "Pure cups ore-ida® shredded hash brown potatoes",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 170619,
+        "description": "Pure (16 ounce) packages frozen o'brien hash brown potatoes",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 170678,
+        "description": "Pure soft potato rolls or sweet hawaiian bread rolls",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 2822,
+        "description": "FLAMIN HOT VARIETY POTATO CHIPS",
+        "brandOwner": "",
+        "canonicalTag": "chips"
+      },
+      {
+        "id": 171266,
+        "description": "Pure pound red-skinned potatoes, peeled, cut into 1/2-inch pieces",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 171308,
+        "description": "Pure cups potatoes, cubed",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 171310,
+        "description": "Pure cups cubed (1-inch) russet or red potatoes",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 171314,
+        "description": "Pure large potatoes, sliced thick",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 171380,
+        "description": "Pure medium potatoes, cut into large bite-size pieces",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 171839,
+        "description": "Pure pounds new potatoes, quartered",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      }
+    ],
+    "carrot": [
+      {
+        "id": 171265,
+        "description": "Pure carrot, peeled, chopped",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 171327,
+        "description": "Pure carrots, sliced (1 cup)",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 171902,
+        "description": "Pure medium carrot, cut into 1/8-inch dice",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 171917,
+        "description": "Pure large carrots, peeled, sliced diagonally into 1-inch pieces",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 172015,
+        "description": "Pure carrot, quartered lengthwise and sliced thin crosswise",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 172875,
+        "description": "Pure carrots, peeled and cut into 1-inch cubes",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 173113,
+        "description": "Pure cups finely grated carrot",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 173504,
+        "description": "Pure cup 1/4-inch sticks cut carrot",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      },
+      {
+        "id": 1398,
+        "description": "PEAS & DICED CARROTS",
+        "brandOwner": "Wal-Mart Stores, Inc.",
+        "canonicalTag": null
+      },
+      {
+        "id": 180663,
+        "description": "Pure carrots, cut diagonally into 1-inch pieces",
+        "brandOwner": "Generic",
+        "canonicalTag": null
+      }
+    ]
+  },
+  "unmappedSample": [
+    {
+      "id": 15,
+      "description": "MYSTERY VOO DEW SODA, MYSTERY",
+      "brandOwner": "Pepsi-Cola North America Inc."
+    },
+    {
+      "id": 136,
+      "description": "AMERICA POP GUM, AMERICA POP",
+      "brandOwner": "Mars, Inc."
+    },
+    {
+      "id": 138,
+      "description": "CHEWING GUM",
+      "brandOwner": "Mars, Inc."
+    },
+    {
+      "id": 285,
+      "description": "ASSORTED FLAVORS HARD CANDY, ASSORTED",
+      "brandOwner": "Mars, Inc."
+    },
+    {
+      "id": 322,
+      "description": "CHEWING GUM",
+      "brandOwner": "Mars, Inc."
+    },
+    {
+      "id": 329,
+      "description": "ASSORTED FLAVORS HARD CANDY LOLLIPOPS, ASSORTED",
+      "brandOwner": "Mars, Inc."
+    },
+    {
+      "id": 365,
+      "description": "ASSORTED FLAVORS HARD CANDY, ASSORTED",
+      "brandOwner": "Mars, Inc."
+    },
+    {
+      "id": 390,
+      "description": "CHEWING GUM",
+      "brandOwner": "Mars, Inc."
+    },
+    {
+      "id": 519,
+      "description": "BASKETBALL SHAPED PRETZELS",
+      "brandOwner": "Frito-Lay Company"
+    },
+    {
+      "id": 537,
+      "description": "EXTRA HONEY HABANERO POTATO CHIPS, EXTRA HONEY HABANERO",
+      "brandOwner": "Frito-Lay Company"
+    },
+    {
+      "id": 167892,
+      "description": "Pure sweet onion (such as vidalia or walla walla), cut into 1/3-inch-thick slices",
+      "brandOwner": "Generic"
+    },
+    {
+      "id": 167893,
+      "description": "Pure ounces idiazábal or smoked gouda cheese, rind trimmed, thinly sliced",
+      "brandOwner": "Generic"
+    },
+    {
+      "id": 167894,
+      "description": "Pure sourdough rolls (each about 4 inches in diameter), halved horizontally",
+      "brandOwner": "Generic"
+    },
+    {
+      "id": 167895,
+      "description": "Pure 4-inch portobello mushrooms, stemmed, gills cut out and discarded",
+      "brandOwner": "Generic"
+    },
+    {
+      "id": 167896,
+      "description": "Pure large red bell peppers, halved, seeded",
+      "brandOwner": "Generic"
+    },
+    {
+      "id": 167897,
+      "description": "Pure large yellow bell peppers, halved, seeded",
+      "brandOwner": "Generic"
+    },
+    {
+      "id": 167898,
+      "description": "Pure large red onions, cut into 1/2-inch-thick rounds",
+      "brandOwner": "Generic"
+    },
+    {
+      "id": 167899,
+      "description": "Pure portobello mushrooms, stems removed",
+      "brandOwner": "Generic"
+    },
+    {
+      "id": 167900,
+      "description": "Pure roasted red pepper, peeled and minced",
+      "brandOwner": "Generic"
+    },
+    {
+      "id": 167901,
+      "description": "Pure cups canned cannellini beans",
+      "brandOwner": "Generic"
+    }
+  ],
+  "suggestions": [
+    {
+      "id": 614,
+      "description": "MILK CHOCOLATE & PEANUT BUTTER TREES, MILK CHOCOLATE & PEANUT BUTTER",
+      "brandOwner": "The Hershey Company",
+      "suggestedCanonical": "milk"
+    },
+    {
+      "id": 613,
+      "description": "MILK CHOCOLATE & PEANUT BUTTER CREME EGGS, MILK CHOCOLATE & PEANUT BUTTER CREME",
+      "brandOwner": "The Hershey Company",
+      "suggestedCanonical": "milk"
+    },
+    {
+      "id": 633,
+      "description": "RASPBERRY POMEGRANATE DAIRY-FREE ALMONDMILK YOGURT ALTERNATIVE, RASPBERRY POMEGRANATE",
+      "brandOwner": "Danone US, LLC",
+      "suggestedCanonical": "milk"
+    },
+    {
+      "id": 644,
+      "description": "50% COCOA OAT MILK + DARK CHOCOLATE",
+      "brandOwner": "The Endangered Species Chocolate Co",
+      "suggestedCanonical": "milk"
+    },
+    {
+      "id": 656,
+      "description": "CHOCOLATE NUT PEANUTS, RAISINS, MILK CHOCOLATE CANDIES, GOLDEN RAISINS & CASHEWS TRAIL MIX, CHOCOLATE NUT",
+      "brandOwner": "Bay Valley Foods, LLC",
+      "suggestedCanonical": "milk"
+    },
+    {
+      "id": 168355,
+      "description": "Pure (12 ounce) package dole® very veggie™",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "egg"
+    },
+    {
+      "id": 168587,
+      "description": "Pure hard-boiled eggs, peeled, sliced",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "egg"
+    },
+    {
+      "id": 168704,
+      "description": "Pure hard boiled large egg, minced",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "egg"
+    },
+    {
+      "id": 168727,
+      "description": "Pure 7 1/2-ounce can caponata (eggplant appetizer)",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "egg"
+    },
+    {
+      "id": 168889,
+      "description": "Pure eggplant (about 1 pound), cut lengthwise into 3/4-inch-thick slices",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "egg"
+    },
+    {
+      "id": 169003,
+      "description": "Pure eggplants, cut into 1/3-inch slices",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "egg"
+    },
+    {
+      "id": 169030,
+      "description": "Pure large japanese eggplants, trimmed, quartered lengthwise",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "egg"
+    },
+    {
+      "id": 169089,
+      "description": "Pure small eggplant (about 1 pound), cut crosswise into 1/2-inch-thick rounds",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "egg"
+    },
+    {
+      "id": 169252,
+      "description": "Pure cup grated parmigiano-reggiano cheese (about 3 ounces)",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "egg"
+    },
+    {
+      "id": 169004,
+      "description": "Pure beefsteak or heirloom tomatoes, cut into 1/4-inch slices",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "beef"
+    },
+    {
+      "id": 999,
+      "description": "TERIYAKI BEEF JERKY, TERIYAKI",
+      "brandOwner": "Associated Wholesale Grocers, Inc.",
+      "suggestedCanonical": "beef"
+    },
+    {
+      "id": 169567,
+      "description": "Pure pound beef ribeye steak, thinly sliced",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "beef"
+    },
+    {
+      "id": 169671,
+      "description": "Pure tablespoon beef broth",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "beef"
+    },
+    {
+      "id": 169685,
+      "description": "Pure pound 93% lean ground beef",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "beef"
+    },
+    {
+      "id": 170364,
+      "description": "Pure (1/2-lb) piece boneless beef sirloin steak or tenderloin",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "beef"
+    },
+    {
+      "id": 171312,
+      "description": "Pure (10 ounce) cans beef broth",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "beef"
+    },
+    {
+      "id": 171383,
+      "description": "Pure pounds beef bottom round, cut into cubes",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "beef"
+    },
+    {
+      "id": 171384,
+      "description": "Pure pound beef soup bones, trimmed of excess fat",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "beef"
+    },
+    {
+      "id": 171385,
+      "description": "Pure (14 ounce) can msg-free beef broth (such as swanson®)",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "beef"
+    },
+    {
+      "id": 171309,
+      "description": "Pure tablespoon chopped onions",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "onion"
+    },
+    {
+      "id": 171817,
+      "description": "Pure small (golf-ball sized) onion, peeled and coarsely chopped",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "onion"
+    },
+    {
+      "id": 171844,
+      "description": "Pure large or 2 medium onions, sliced into thin rings",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "onion"
+    },
+    {
+      "id": 171874,
+      "description": "Pure lb onions, finely chopped (2 cups)",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "onion"
+    },
+    {
+      "id": 171957,
+      "description": "Pure scallions (green onions), roughly chopped",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "onion"
+    },
+    {
+      "id": 172125,
+      "description": "Pure yellow onion, halved, with the skin left on",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "onion"
+    },
+    {
+      "id": 194274,
+      "description": "Pure tablespoons maui onion salsa",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "onion"
+    },
+    {
+      "id": 172188,
+      "description": "Pure small red onion, halved lengthwise and sliced thin",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "onion"
+    },
+    {
+      "id": 172190,
+      "description": "Pure large red onion, quartered and sliced thin",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "onion"
+    },
+    {
+      "id": 172229,
+      "description": "Pure few tablespoons chopped white onion, for garnish",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "onion"
+    },
+    {
+      "id": 170743,
+      "description": "Pure cup sweet chili garlic sauce*",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "garlic"
+    },
+    {
+      "id": 171206,
+      "description": "Pure large garlic clove, minced and mashed to a paste with 1/4 teaspoon salt",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "garlic"
+    },
+    {
+      "id": 171838,
+      "description": "Pure cup coarsely crushed garlic croutons",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "garlic"
+    },
+    {
+      "id": 171842,
+      "description": "Pure medium garlic cloves (about 3 heads)",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "garlic"
+    },
+    {
+      "id": 171846,
+      "description": "Pure head garlic, end cut off, brushed with olive oil and wrapped in aluminum foil",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "garlic"
+    },
+    {
+      "id": 172127,
+      "description": "Pure heads of garlic, the outer skin removed, leaving the cloves attached at the root end",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "garlic"
+    },
+    {
+      "id": 172157,
+      "description": "Pure garlic clove, minced and mashed to a paste with 1 teaspoon salt",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "garlic"
+    },
+    {
+      "id": 172405,
+      "description": "Pure medium garlic cloves, pressed",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "garlic"
+    },
+    {
+      "id": 170617,
+      "description": "Pure cups ore-ida® shredded hash brown potatoes",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "potato"
+    },
+    {
+      "id": 170619,
+      "description": "Pure (16 ounce) packages frozen o'brien hash brown potatoes",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "potato"
+    },
+    {
+      "id": 170678,
+      "description": "Pure soft potato rolls or sweet hawaiian bread rolls",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "potato"
+    },
+    {
+      "id": 171266,
+      "description": "Pure pound red-skinned potatoes, peeled, cut into 1/2-inch pieces",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "potato"
+    },
+    {
+      "id": 171308,
+      "description": "Pure cups potatoes, cubed",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "potato"
+    },
+    {
+      "id": 171310,
+      "description": "Pure cups cubed (1-inch) russet or red potatoes",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "potato"
+    },
+    {
+      "id": 171314,
+      "description": "Pure large potatoes, sliced thick",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "potato"
+    },
+    {
+      "id": 171380,
+      "description": "Pure medium potatoes, cut into large bite-size pieces",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "potato"
+    },
+    {
+      "id": 171839,
+      "description": "Pure pounds new potatoes, quartered",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "potato"
+    },
+    {
+      "id": 171265,
+      "description": "Pure carrot, peeled, chopped",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "carrot"
+    },
+    {
+      "id": 171327,
+      "description": "Pure carrots, sliced (1 cup)",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "carrot"
+    },
+    {
+      "id": 171902,
+      "description": "Pure medium carrot, cut into 1/8-inch dice",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "carrot"
+    },
+    {
+      "id": 171917,
+      "description": "Pure large carrots, peeled, sliced diagonally into 1-inch pieces",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "carrot"
+    },
+    {
+      "id": 172015,
+      "description": "Pure carrot, quartered lengthwise and sliced thin crosswise",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "carrot"
+    },
+    {
+      "id": 172875,
+      "description": "Pure carrots, peeled and cut into 1-inch cubes",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "carrot"
+    },
+    {
+      "id": 173113,
+      "description": "Pure cups finely grated carrot",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "carrot"
+    },
+    {
+      "id": 173504,
+      "description": "Pure cup 1/4-inch sticks cut carrot",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "carrot"
+    },
+    {
+      "id": 1398,
+      "description": "PEAS & DICED CARROTS",
+      "brandOwner": "Wal-Mart Stores, Inc.",
+      "suggestedCanonical": "carrot"
+    },
+    {
+      "id": 180663,
+      "description": "Pure carrots, cut diagonally into 1-inch pieces",
+      "brandOwner": "Generic",
+      "suggestedCanonical": "carrot"
+    }
+  ],
+  "recommendations": [
+    "Majority of products are Generic. Focus on mapping real brand products for higher value.",
+    "There are many unmapped products with clear ingredient keywords. Use these as candidates for auto-tagging.",
+    "Review top 20 real brands for high-impact canonical linking.",
+    "Prioritize products with high-frequency keywords and no canonicalTag."
+  ]
+}

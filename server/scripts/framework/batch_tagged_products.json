@@ -1,0 +1,44 @@
+[
+  {
+    "id": 613,
+    "description": "MILK CHOCOLATE & PEANUT BUTTER CREME EGGS, MILK CHOCOLATE & PEANUT BUTTER CREME",
+    "brandOwner": "The Hershey Company",
+    "canonicalTag": "milk"
+  },
+  {
+    "id": 614,
+    "description": "MILK CHOCOLATE & PEANUT BUTTER TREES, MILK CHOCOLATE & PEANUT BUTTER",
+    "brandOwner": "The Hershey Company",
+    "canonicalTag": "milk"
+  },
+  {
+    "id": 633,
+    "description": "RASPBERRY POMEGRANATE DAIRY-FREE ALMONDMILK YOGURT ALTERNATIVE, RASPBERRY POMEGRANATE",
+    "brandOwner": "Danone US, LLC",
+    "canonicalTag": "milk"
+  },
+  {
+    "id": 644,
+    "description": "50% COCOA OAT MILK + DARK CHOCOLATE",
+    "brandOwner": "The Endangered Species Chocolate Co",
+    "canonicalTag": "milk"
+  },
+  {
+    "id": 656,
+    "description": "CHOCOLATE NUT PEANUTS, RAISINS, MILK CHOCOLATE CANDIES, GOLDEN RAISINS & CASHEWS TRAIL MIX, CHOCOLATE NUT",
+    "brandOwner": "Bay Valley Foods, LLC",
+    "canonicalTag": "milk"
+  },
+  {
+    "id": 999,
+    "description": "TERIYAKI BEEF JERKY, TERIYAKI",
+    "brandOwner": "Associated Wholesale Grocers, Inc.",
+    "canonicalTag": "beef"
+  },
+  {
+    "id": 1398,
+    "description": "PEAS & DICED CARROTS",
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "canonicalTag": "carrot"
+  }
+]

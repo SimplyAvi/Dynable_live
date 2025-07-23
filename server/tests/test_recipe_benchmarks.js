@@ -4,8 +4,8 @@ async function testRecipeBenchmarks() {
   try {
     await db.authenticate();
     const Recipe = require('./db/models/Recipe/Recipe.js');
-    const Ingredient = require('./db/models/Recipe/Ingredient.js');
-    const Food = require('./db/models/Food.js');
+    const RecipeIngredient = require('./db/models/Recipe/RecipeIngredient.js');
+    const IngredientCategorized = require('./db/models/IngredientCategorized.js');
     
     console.log('🧪 TESTING RECIPE BENCHMARKS...\n');
     
@@ -25,8 +25,8 @@ async function testRecipeBenchmarks() {
       try {
         const recipe = await Recipe.findByPk(testRecipe.id, {
           include: [{
-            model: Ingredient,
-            as: 'Ingredients'
+            model: RecipeIngredient,
+            as: 'RecipeIngredients'
           }]
         });
         
@@ -41,21 +41,21 @@ async function testRecipeBenchmarks() {
         console.log(`  ⏱️  Prep time: ${recipe.prepTime || 'Not specified'}`);
         console.log(`  🔥 Cook time: ${recipe.cookTime || 'Not specified'}`);
         
-        if (!recipe.Ingredients || recipe.Ingredients.length === 0) {
+        if (!recipe.RecipeIngredients || recipe.RecipeIngredients.length === 0) {
           console.log(`  ❌ No ingredients found`);
           continue;
         }
         
-        console.log(`\n  📋 INGREDIENTS (${recipe.Ingredients.length}):`);
+        console.log(`\n  📋 INGREDIENTS (${recipe.RecipeIngredients.length}):`);
         
-        let totalIngredients = 0;
-        let mappedIngredients = 0;
+        let totalRecipeIngredients = 0;
+        let mappedRecipeIngredients = 0;
         let ingredientsWithRealProducts = 0;
         let ingredientsWithPureProducts = 0;
         
-        for (const ingredient of recipe.Ingredients) {
-          totalIngredients++;
-          console.log(`\n    ${totalIngredients}. "${ingredient.name}"`);
+        for (const ingredient of recipe.RecipeIngredients) {
+          totalRecipeIngredients++;
+          console.log(`\n    ${totalRecipeIngredients}. "${ingredient.name}"`);
           console.log(`       Amount: ${ingredient.amount || 'Not specified'}`);
           console.log(`       Unit: ${ingredient.unit || 'Not specified'}`);
           
@@ -63,7 +63,7 @@ async function testRecipeBenchmarks() {
           const canonicalMapping = await db.query(`
             SELECT ci.name as "canonicalName" 
             FROM "IngredientToCanonicals" itc
-            JOIN "CanonicalIngredients" ci ON itc."CanonicalIngredientId" = ci.id
+            JOIN "CanonicalRecipeIngredients" ci ON itc."IngredientId" = ci.id
             WHERE itc."messyName" = :ingredientName
             LIMIT 1
           `, {
@@ -72,12 +72,12 @@ async function testRecipeBenchmarks() {
           });
           
           if (canonicalMapping.length > 0) {
-            mappedIngredients++;
+            mappedRecipeIngredients++;
             const canonicalName = canonicalMapping[0].canonicalName;
             console.log(`       ✅ Mapped to: "${canonicalName}"`);
             
             // Check products for this canonical
-            const products = await Food.findAll({
+            const products = await IngredientCategorized.findAll({
               where: {
                 canonicalTag: canonicalName
               },
@@ -121,13 +121,13 @@ async function testRecipeBenchmarks() {
         }
         
         // Recipe summary
-        const mappingRate = ((mappedIngredients / totalIngredients) * 100).toFixed(1);
-        const realProductRate = ((ingredientsWithRealProducts / totalIngredients) * 100).toFixed(1);
-        const pureProductRate = ((ingredientsWithPureProducts / totalIngredients) * 100).toFixed(1);
+        const mappingRate = ((mappedRecipeIngredients / totalRecipeIngredients) * 100).toFixed(1);
+        const realProductRate = ((ingredientsWithRealProducts / totalRecipeIngredients) * 100).toFixed(1);
+        const pureProductRate = ((ingredientsWithPureProducts / totalRecipeIngredients) * 100).toFixed(1);
         
         console.log(`\n  📊 RECIPE SUMMARY:`);
-        console.log(`     Total ingredients: ${totalIngredients}`);
-        console.log(`     Mapped ingredients: ${mappedIngredients} (${mappingRate}%)`);
+        console.log(`     Total ingredients: ${totalRecipeIngredients}`);
+        console.log(`     Mapped ingredients: ${mappedRecipeIngredients} (${mappingRate}%)`);
         console.log(`     With real products: ${ingredientsWithRealProducts} (${realProductRate}%)`);
         console.log(`     With pure products: ${ingredientsWithPureProducts} (${pureProductRate}%)`);
         
@@ -139,7 +139,7 @@ async function testRecipeBenchmarks() {
         if (realProductRate >= 60) qualityScore += 15;
         if (pureProductRate >= 60) qualityScore += 25;
         if (pureProductRate >= 40) qualityScore += 15;
-        if (totalIngredients > 0) qualityScore += 25;
+        if (totalRecipeIngredients > 0) qualityScore += 25;
         
         const finalScore = ((qualityScore / 100) * 100).toFixed(1);
         
@@ -193,7 +193,7 @@ function isPureIngredient(product, canonicalName) {
   }
   
   // Common pure ingredients that are typically unprocessed
-  const pureIngredients = [
+  const pureRecipeIngredients = [
     'salt', 'sugar', 'honey', 'maple syrup', 'olive oil', 'coconut oil',
     'almond milk', 'soy milk', 'oat milk', 'rice', 'quinoa', 'lentils',
     'chickpeas', 'black beans', 'kidney beans', 'pinto beans',
@@ -201,7 +201,7 @@ function isPureIngredient(product, canonicalName) {
     'chia seeds', 'flax seeds', 'pumpkin seeds'
   ];
   
-  for (const pureIngredient of pureIngredients) {
+  for (const pureIngredient of pureRecipeIngredients) {
     if (canonicalName.toLowerCase().includes(pureIngredient)) {
       return true;
     }

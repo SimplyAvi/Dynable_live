@@ -18,8 +18,8 @@ async function testAllRecipesCoverage() {
       { name: 'Random Sample (All ranges)', start: 1, end: totalRecipes[0].count, sample: 100 }
     ];
     
-    let overallTotalIngredients = 0;
-    let overallMappedIngredients = 0;
+    let overallTotalRecipeIngredients = 0;
+    let overallMappedRecipeIngredients = 0;
     let overallWithRealProducts = 0;
     
     for (const range of testRanges) {
@@ -29,7 +29,7 @@ async function testAllRecipesCoverage() {
       const recipes = await db.query(`
         SELECT r.id, r.title, COUNT(i.id) as ingredient_count
         FROM "Recipes" r
-        LEFT JOIN "Ingredients" i ON r.id = i."RecipeId"
+        LEFT JOIN "RecipeIngredients" i ON r.id = i."RecipeId"
         WHERE r.id >= :startId AND r.id <= :endId
         GROUP BY r.id, r.title
         ORDER BY RANDOM()
@@ -43,22 +43,22 @@ async function testAllRecipesCoverage() {
         type: Sequelize.QueryTypes.SELECT
       });
       
-      let rangeTotalIngredients = 0;
-      let rangeMappedIngredients = 0;
+      let rangeTotalRecipeIngredients = 0;
+      let rangeMappedRecipeIngredients = 0;
       let rangeWithRealProducts = 0;
       
       for (const recipe of recipes) {
         const ingredients = await db.query(`
           SELECT i.name, i.quantity
-          FROM "Ingredients" i
+          FROM "RecipeIngredients" i
           WHERE i."RecipeId" = :recipeId
         `, {
           replacements: { recipeId: recipe.id },
           type: Sequelize.QueryTypes.SELECT
         });
         
-        rangeTotalIngredients += ingredients.length;
-        overallTotalIngredients += ingredients.length;
+        rangeTotalRecipeIngredients += ingredients.length;
+        overallTotalRecipeIngredients += ingredients.length;
         
         for (const ingredient of ingredients) {
           if (ingredient.name) {
@@ -66,13 +66,13 @@ async function testAllRecipesCoverage() {
             const mapping = await findCanonicalMapping(cleanedName);
             
             if (mapping) {
-              rangeMappedIngredients++;
-              overallMappedIngredients++;
+              rangeMappedRecipeIngredients++;
+              overallMappedRecipeIngredients++;
               
               // Check if canonical has real products
               const realProducts = await db.query(`
                 SELECT COUNT(*) as count
-                FROM "Food"
+                FROM "IngredientCategorized"
                 WHERE "canonicalTag" = :canonicalName
                   AND "brandOwner" != 'Generic'
               `, {
@@ -90,16 +90,16 @@ async function testAllRecipesCoverage() {
       }
       
       console.log(`   📊 ${range.name}:`);
-      console.log(`      🎯 Mapped: ${rangeMappedIngredients}/${rangeTotalIngredients} (${(rangeMappedIngredients/rangeTotalIngredients*100).toFixed(1)}%)`);
-      console.log(`      🏪 Real Products: ${rangeWithRealProducts}/${rangeTotalIngredients} (${(rangeWithRealProducts/rangeTotalIngredients*100).toFixed(1)}%)`);
+      console.log(`      🎯 Mapped: ${rangeMappedRecipeIngredients}/${rangeTotalRecipeIngredients} (${(rangeMappedRecipeIngredients/rangeTotalRecipeIngredients*100).toFixed(1)}%)`);
+      console.log(`      🏪 Real Products: ${rangeWithRealProducts}/${rangeTotalRecipeIngredients} (${(rangeWithRealProducts/rangeTotalRecipeIngredients*100).toFixed(1)}%)`);
       console.log(`      📖 Sample size: ${recipes.length} recipes\n`);
     }
     
     // Overall summary
     console.log('2️⃣ OVERALL COVERAGE SUMMARY');
-    console.log(`   📊 Total Ingredients Tested: ${overallTotalIngredients.toLocaleString()}`);
-    console.log(`   🎯 Overall Mapping Coverage: ${overallMappedIngredients}/${overallTotalIngredients} (${(overallMappedIngredients/overallTotalIngredients*100).toFixed(1)}%)`);
-    console.log(`   🏪 Overall Real Product Coverage: ${overallWithRealProducts}/${overallTotalIngredients} (${(overallWithRealProducts/overallTotalIngredients*100).toFixed(1)}%)`);
+    console.log(`   📊 Total RecipeIngredients Tested: ${overallTotalRecipeIngredients.toLocaleString()}`);
+    console.log(`   🎯 Overall Mapping Coverage: ${overallMappedRecipeIngredients}/${overallTotalRecipeIngredients} (${(overallMappedRecipeIngredients/overallTotalRecipeIngredients*100).toFixed(1)}%)`);
+    console.log(`   🏪 Overall Real Product Coverage: ${overallWithRealProducts}/${overallTotalRecipeIngredients} (${(overallWithRealProducts/overallTotalRecipeIngredients*100).toFixed(1)}%)`);
     
     // Test specific recipe types
     console.log('\n3️⃣ TESTING SPECIFIC RECIPE TYPES');
@@ -116,7 +116,7 @@ async function testAllRecipesCoverage() {
       const typeRecipes = await db.query(`
         SELECT r.id, r.title, COUNT(i.id) as ingredient_count
         FROM "Recipes" r
-        LEFT JOIN "Ingredients" i ON r.id = i."RecipeId"
+        LEFT JOIN "RecipeIngredients" i ON r.id = i."RecipeId"
         WHERE ${type.query}
         GROUP BY r.id, r.title
         ORDER BY RANDOM()
@@ -124,20 +124,20 @@ async function testAllRecipesCoverage() {
       `, { type: Sequelize.QueryTypes.SELECT });
       
       if (typeRecipes.length > 0) {
-        let typeTotalIngredients = 0;
-        let typeMappedIngredients = 0;
+        let typeTotalRecipeIngredients = 0;
+        let typeMappedRecipeIngredients = 0;
         
         for (const recipe of typeRecipes) {
           const ingredients = await db.query(`
             SELECT i.name
-            FROM "Ingredients" i
+            FROM "RecipeIngredients" i
             WHERE i."RecipeId" = :recipeId
           `, {
             replacements: { recipeId: recipe.id },
             type: Sequelize.QueryTypes.SELECT
           });
           
-          typeTotalIngredients += ingredients.length;
+          typeTotalRecipeIngredients += ingredients.length;
           
           for (const ingredient of ingredients) {
             if (ingredient.name) {
@@ -145,19 +145,19 @@ async function testAllRecipesCoverage() {
               const mapping = await findCanonicalMapping(cleanedName);
               
               if (mapping) {
-                typeMappedIngredients++;
+                typeMappedRecipeIngredients++;
               }
             }
           }
         }
         
-        console.log(`   🍕 ${type.name}: ${typeMappedIngredients}/${typeTotalIngredients} (${(typeMappedIngredients/typeTotalIngredients*100).toFixed(1)}%)`);
+        console.log(`   🍕 ${type.name}: ${typeMappedRecipeIngredients}/${typeTotalRecipeIngredients} (${(typeMappedRecipeIngredients/typeTotalRecipeIngredients*100).toFixed(1)}%)`);
       }
     }
     
     // Final assessment
     console.log('\n4️⃣ FINAL ASSESSMENT');
-    const overallCoverage = (overallMappedIngredients/overallTotalIngredients*100);
+    const overallCoverage = (overallMappedRecipeIngredients/overallTotalRecipeIngredients*100);
     
     if (overallCoverage >= 95) {
       console.log('   🎉 EXCELLENT: Coverage is consistently high across all recipe ranges!');
@@ -196,7 +196,7 @@ async function findCanonicalMapping(cleanedName) {
   const exactMatch = await db.query(`
     SELECT ci.name
     FROM "IngredientToCanonicals" itc
-    JOIN "CanonicalIngredients" ci ON itc."CanonicalIngredientId" = ci.id
+    JOIN "CanonicalRecipeIngredients" ci ON itc."IngredientId" = ci.id
     WHERE LOWER(itc."messyName") = :name
     LIMIT 1
   `, {
@@ -212,7 +212,7 @@ async function findCanonicalMapping(cleanedName) {
   const partialMatch = await db.query(`
     SELECT ci.name
     FROM "IngredientToCanonicals" itc
-    JOIN "CanonicalIngredients" ci ON itc."CanonicalIngredientId" = ci.id
+    JOIN "CanonicalRecipeIngredients" ci ON itc."IngredientId" = ci.id
     WHERE LOWER(itc."messyName") LIKE :name
     LIMIT 1
   `, {

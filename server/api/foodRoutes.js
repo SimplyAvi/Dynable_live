@@ -1,10 +1,10 @@
 const express = require('express');
 const { Op, Sequelize } = require('sequelize');
 const router = express.Router();
-const Food = require('../db/models/Food');
+const IngredientCategorized = require('../db/models/IngredientCategorized');
 const { Subcategory } = require('../db/models');
 const IngredientToCanonical = require('../db/models/IngredientToCanonical');
-const CanonicalIngredient = require('../db/models/CanonicalIngredient');
+const Ingredient = require('../db/models/Ingredient');
 const IngredientMatchingRule = require('../db/models/IngredientMatchingRule');
 const SubstituteMapping = require('../db/models/SubstituteMapping');
 
@@ -23,14 +23,14 @@ router.get('/foods', async (req, res) => {
     }
 
     // Perform the query with pagination
-    const foods = await Food.findAll({
+    const foods = await IngredientCategorized.findAll({
       where: whereClause,
       offset,
       limit: parseInt(limit, 10),
     });
 
     // Get the total count of foods for pagination
-    const totalCount = await Food.count({ where: whereClause });
+    const totalCount = await IngredientCategorized.count({ where: whereClause });
 
     return res.json({
       totalCount,
@@ -46,7 +46,7 @@ router.get('/foods', async (req, res) => {
 
 router.post('/foods', async (req, res) => {
   try {
-    const { excludeIngredients } = req.body || {};
+    const { excludeRecipeIngredients } = req.body || {};
     const { name, page = 1, limit = 10 } = req.query;
     const offset = (page - 1) * limit;
 
@@ -62,8 +62,8 @@ router.post('/foods', async (req, res) => {
       return res.json({ totalCount: 0, totalPages: 0, currentPage: parseInt(page, 10), foods: [] });
     }
 
-    if (excludeIngredients && Array.isArray(excludeIngredients) && excludeIngredients.length > 0) {
-      const lowerCaseAllergens = excludeIngredients.map(a => a.toLowerCase());
+    if (excludeRecipeIngredients && Array.isArray(excludeRecipeIngredients) && excludeRecipeIngredients.length > 0) {
+      const lowerCaseAllergens = excludeRecipeIngredients.map(a => a.toLowerCase());
       const notExistsClauses = lowerCaseAllergens.map(
         allergen => Sequelize.literal(`NOT EXISTS (SELECT 1 FROM unnest(allergens) a WHERE LOWER(a) = '${allergen}')`)
       );
@@ -72,9 +72,9 @@ router.post('/foods', async (req, res) => {
     
     // Debug log: print the whereClause and query params
     console.log('Final whereClause:', whereClause);
-    console.log('Query params:', { name, excludeIngredients, page, limit });
+    console.log('Query params:', { name, excludeRecipeIngredients, page, limit });
 
-    const { count, rows } = await Food.findAndCountAll({
+    const { count, rows } = await IngredientCategorized.findAndCountAll({
       where: whereClause,
       offset,
       limit: parseInt(limit, 10),
@@ -99,7 +99,7 @@ router.get('/', async (req, res) => {
     const { id } = req.query;
     console.log('looking for:', id)
 
-    const product = await Food.findByPk(id)
+    const product = await IngredientCategorized.findByPk(id)
 
     if (!product) {
       return res.status(404).json({ error: 'Item not found' });
@@ -129,8 +129,8 @@ router.post('/product/subcat', async (req,res)=>{
 
     // Find one food item with the specified subcategoryId
     
-    const foodItem =  await Food.sequelize.query(
-      `SELECT * FROM "Food" WHERE "SubcategoryID" = :id AND NOT "allergens" && ARRAY[:allergens]::varchar[] LIMIT 1`,
+    const foodItem =  await IngredientCategorized.sequelize.query(
+      `SELECT * FROM "IngredientCategorized" WHERE "SubcategoryID" = :id AND NOT "allergens" && ARRAY[:allergens]::varchar[] LIMIT 1`,
       {
         replacements: { id, allergens: validAllergens },
         type: Sequelize.QueryTypes.SELECT
@@ -171,12 +171,12 @@ router.post('/product/nosubcat', async (req,res)=>{
 
     // Use a raw SQL query for allergen filtering
     const sql = `
-      SELECT * FROM "Food"
+      SELECT * FROM "IngredientCategorized"
       WHERE "description" ILIKE :name
         AND ("allergens" IS NULL OR NOT ("allergens" && ARRAY[:allergens]::varchar[]))
       LIMIT 1
     `;
-    const foodItems = await Food.sequelize.query(sql, {
+    const foodItems = await IngredientCategorized.sequelize.query(sql, {
       replacements: { name: `%${name}%`, allergens },
       type: Sequelize.QueryTypes.SELECT,
     });
@@ -231,7 +231,7 @@ function buildPureIngredientPatterns(ingredient) {
 }
 
 // Helper: identify processed food descriptions
-function isProcessedFood(description) {
+function isProcessedIngredientCategorized(description) {
   const processedKeywords = [
     'cookies', 'cookie', 'crackers', 'cracker', 'chips', 'popcorn', 
     'candy', 'gum', 'chocolate', 'cake', 'pie', 'bars', 'snack',
@@ -268,7 +268,7 @@ router.post('/by-ingredient', async (req, res) => {
       where: { messyName: cleanedName.toLowerCase() } 
     });
     if (mappingObj) {
-      const canonicalObj = await CanonicalIngredient.findByPk(mappingObj.CanonicalIngredientId);
+      const canonicalObj = await Ingredient.findByPk(mappingObj.IngredientId);
       if (canonicalObj) {
         canonical = canonicalObj.name;
       }
@@ -277,10 +277,12 @@ router.post('/by-ingredient', async (req, res) => {
       canonical = 'eggs'; // Use plural to match database
     }
 
+    const escapedCanonical = canonical.toLowerCase().replace(/'/g, "''"); // Escape single quotes for SQL
+
     let where = {
       [Sequelize.Op.and]: [
         Sequelize.literal('array_length("canonicalTags", 1) = 1'),
-        Sequelize.literal(`"canonicalTags"[1] = '${canonical.toLowerCase()}'`),
+        Sequelize.literal(`"canonicalTags"[1] = '${escapedCanonical}'`),
         { brandName: { [Sequelize.Op.ne]: 'Generic' } }
       ]
     };
@@ -304,7 +306,7 @@ router.post('/by-ingredient', async (req, res) => {
       console.log('=== ADDING ALLERGEN FILTER ===');
       console.log('where before:', where);
       const allergenLiteral = Sequelize.literal(`("allergens" IS NULL OR NOT EXISTS (
-        SELECT 1 FROM unnest("allergens") a WHERE UPPER(a) = ANY(ARRAY[${allergens.map(a => `'${a.toUpperCase()}'`).join(',')}])
+        SELECT 1 FROM unnest("allergens") a WHERE LOWER(a) = ANY(ARRAY[${allergens.map(a => `'${a.toLowerCase()}'`).join(',')}])
       ))`);
       console.log('allergen literal:', allergenLiteral);
       where[Sequelize.Op.and] = where[Sequelize.Op.and] || [];
@@ -313,7 +315,7 @@ router.post('/by-ingredient', async (req, res) => {
     }
 
     // Query for products with SQL logging
-    const products = await Food.findAll({
+    const products = await IngredientCategorized.findAll({
       where,
       include: [{
         model: Subcategory,
@@ -378,7 +380,7 @@ router.get('/search', async (req, res) => {
       }
     }
 
-    const { count, rows } = await Food.findAndCountAll({
+    const { count, rows } = await IngredientCategorized.findAndCountAll({
       where,
       limit: parseInt(limit),
       offset,

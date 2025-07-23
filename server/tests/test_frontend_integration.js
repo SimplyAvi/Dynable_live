@@ -16,17 +16,17 @@ async function testFrontendIntegration() {
     const recipeResponse = await axios.get(`${baseURL}/api/recipe?id=17`);
     const recipe = recipeResponse.data;
     console.log(`   ✅ Recipe "${recipe.title}" loaded`);
-    console.log(`   📊 Ingredients: ${recipe.ingredients.length}`);
+    console.log(`   📊 RecipeIngredients: ${recipe.ingredients.length}`);
     
     // Check canonical mappings
-    const mappedIngredients = recipe.ingredients.filter(i => i.canonical);
-    console.log(`   🎯 Canonical mappings: ${mappedIngredients.length}/${recipe.ingredients.length} (${(mappedIngredients.length/recipe.ingredients.length*100).toFixed(1)}%)`);
+    const mappedRecipeIngredients = recipe.ingredients.filter(i => i.canonical);
+    console.log(`   🎯 Canonical mappings: ${mappedRecipeIngredients.length}/${recipe.ingredients.length} (${(mappedRecipeIngredients.length/recipe.ingredients.length*100).toFixed(1)}%)`);
 
     // Test 3: Product API for key ingredients
     console.log('\n3️⃣ Testing Product API...');
-    const keyIngredients = ['milk, cow', 'egg, chicken', 'flour, wheat', 'sugar'];
+    const keyRecipeIngredients = ['milk, cow', 'egg, chicken', 'flour, wheat', 'sugar'];
     
-    for (const canonical of keyIngredients) {
+    for (const canonical of keyRecipeIngredients) {
       try {
         const productResponse = await axios.get(`${baseURL}/api/product/foods?name=${encodeURIComponent(canonical)}&limit=3`);
         const products = productResponse.data.foods;
@@ -53,12 +53,12 @@ async function testFrontendIntegration() {
     const allergenResponse = await axios.get(`${baseURL}/api/recipe?id=17&userAllergens=milk`);
     const allergenRecipe = allergenResponse.data;
     
-    const flaggedIngredients = allergenRecipe.ingredients.filter(i => i.flagged);
-    console.log(`   🥛 Milk allergen: ${flaggedIngredients.length} ingredients flagged`);
+    const flaggedRecipeIngredients = allergenRecipe.ingredients.filter(i => i.flagged);
+    console.log(`   🥛 Milk allergen: ${flaggedRecipeIngredients.length} ingredients flagged`);
     
-    if (flaggedIngredients.length > 0) {
+    if (flaggedRecipeIngredients.length > 0) {
       console.log(`   🔍 Flagged ingredients:`);
-      flaggedIngredients.forEach(ing => {
+      flaggedRecipeIngredients.forEach(ing => {
         console.log(`      - ${ing.name} (${ing.canonical})`);
         if (ing.substitutions && ing.substitutions.length > 0) {
           console.log(`        💡 Substitutes: ${ing.substitutions.map(s => s.substituteName).join(', ')}`);

@@ -1,0 +1,2786 @@
+[
+  {
+    "original": "cup olive oil",
+    "normalized": "olive oil"
+  },
+  {
+    "original": "cup water",
+    "normalized": "water"
+  },
+  {
+    "original": "tablespoons sugar",
+    "normalized": "sugar"
+  },
+  {
+    "original": "teaspoon salt",
+    "normalized": "salt"
+  },
+  {
+    "original": "1 cup beer",
+    "normalized": "beer"
+  },
+  {
+    "original": "1 tbsp butter",
+    "normalized": "butter"
+  },
+  {
+    "original": "1 lb eggplant",
+    "normalized": "eggplant"
+  },
+  {
+    "original": "10 pound turkey",
+    "normalized": "turkey"
+  },
+  {
+    "original": "12 pound turkey",
+    "normalized": "turkey"
+  },
+  {
+    "original": "15 pound ham",
+    "normalized": "ham"
+  },
+  {
+    "original": "16 pound turkey",
+    "normalized": "turkey"
+  },
+  {
+    "original": "2 cups water",
+    "normalized": "water"
+  },
+  {
+    "original": "2 pound cauliflower",
+    "normalized": "cauliflower"
+  },
+  {
+    "original": "2 pound lobster",
+    "normalized": "lobster"
+  },
+  {
+    "original": "2 pound lobsters",
+    "normalized": "lobsters"
+  },
+  {
+    "original": "2 pound pumpkin",
+    "normalized": "pumpkin"
+  },
+  {
+    "original": "4 pound chicken",
+    "normalized": "chicken"
+  },
+  {
+    "original": "4 pound chicken",
+    "normalized": "chicken"
+  },
+  {
+    "original": "6 ounce salmon",
+    "normalized": "salmon"
+  },
+  {
+    "original": "8 ounce baguette",
+    "normalized": "baguette"
+  },
+  {
+    "original": "8 ounce yams",
+    "normalized": "yams"
+  },
+  {
+    "original": "8 pound ham",
+    "normalized": "ham"
+  },
+  {
+    "original": "1 cup salt",
+    "normalized": "salt"
+  },
+  {
+    "original": "1 gallon water",
+    "normalized": "water"
+  },
+  {
+    "original": "1 quart ice",
+    "normalized": "ice"
+  },
+  {
+    "original": "1 tablespoon butter",
+    "normalized": "butter"
+  },
+  {
+    "original": "1 tablespoon cayenne",
+    "normalized": "cayenne"
+  },
+  {
+    "original": "10 lb turkey",
+    "normalized": "turkey"
+  },
+  {
+    "original": "13 pound turkey",
+    "normalized": "turkey"
+  },
+  {
+    "original": "16 pound turkey",
+    "normalized": "turkey"
+  },
+  {
+    "original": "2 cups blueberries",
+    "normalized": "blueberries"
+  },
+  {
+    "original": "2 cups hummus",
+    "normalized": "hummus"
+  },
+  {
+    "original": "2 cups water",
+    "normalized": "water"
+  },
+  {
+    "original": "2 quarts water",
+    "normalized": "water"
+  },
+  {
+    "original": "2 tablespoons chopped",
+    "normalized": "chopped"
+  },
+  {
+    "original": "20 pound turkey",
+    "normalized": "turkey"
+  },
+  {
+    "original": "3 pound cantaloupe",
+    "normalized": "cantaloupe"
+  },
+  {
+    "original": "3 pound chicken",
+    "normalized": "chicken"
+  },
+  {
+    "original": "4 cups water",
+    "normalized": "water"
+  },
+  {
+    "original": "4 lb chicken",
+    "normalized": "chicken"
+  },
+  {
+    "original": "4 pound chicken",
+    "normalized": "chicken"
+  },
+  {
+    "original": "5 pound chicken",
+    "normalized": "chicken"
+  },
+  {
+    "original": "6 cups water",
+    "normalized": "water"
+  },
+  {
+    "original": "cup calvados",
+    "normalized": "calvados"
+  },
+  {
+    "original": "cup champagne",
+    "normalized": "champagne"
+  },
+  {
+    "original": "cup cointreau",
+    "normalized": "cointreau"
+  },
+  {
+    "original": "cup dashi",
+    "normalized": "dashi"
+  },
+  {
+    "original": "cup parmesan",
+    "normalized": "parmesan"
+  },
+  {
+    "original": "cup peanut butter",
+    "normalized": "peanut butter"
+  },
+  {
+    "original": "cup pernod",
+    "normalized": "pernod"
+  },
+  {
+    "original": "cup prosecco",
+    "normalized": "prosecco"
+  },
+  {
+    "original": "cup sherry vinegar",
+    "normalized": "sherry vinegar"
+  },
+  {
+    "original": "cup almonds",
+    "normalized": "almonds"
+  },
+  {
+    "original": "cup applejack",
+    "normalized": "applejack"
+  },
+  {
+    "original": "cup apples",
+    "normalized": "apples"
+  },
+  {
+    "original": "cup applesauce",
+    "normalized": "applesauce"
+  },
+  {
+    "original": "cup arugula",
+    "normalized": "arugula"
+  },
+  {
+    "original": "cup bacon",
+    "normalized": "bacon"
+  },
+  {
+    "original": "cup basil",
+    "normalized": "basil"
+  },
+  {
+    "original": "cup bay leaves",
+    "normalized": "bay leaves"
+  },
+  {
+    "original": "cup beef bouillon",
+    "normalized": "beef bouillon"
+  },
+  {
+    "original": "cup blackberries",
+    "normalized": "blackberries"
+  },
+  {
+    "original": "cup broccoli",
+    "normalized": "broccoli"
+  },
+  {
+    "original": "cup bulgur",
+    "normalized": "bulgur"
+  },
+  {
+    "original": "cup cashew halves",
+    "normalized": "cashew halves"
+  },
+  {
+    "original": "cup cauliflower",
+    "normalized": "cauliflower"
+  },
+  {
+    "original": "cup celery",
+    "normalized": "celery"
+  },
+  {
+    "original": "cup celery salt",
+    "normalized": "celery salt"
+  },
+  {
+    "original": "cup champagne",
+    "normalized": "champagne"
+  },
+  {
+    "original": "cup chestnuts",
+    "normalized": "chestnuts"
+  },
+  {
+    "original": "cup chickpeas",
+    "normalized": "chickpeas"
+  },
+  {
+    "original": "cup chives",
+    "normalized": "chives"
+  },
+  {
+    "original": "cup chutney",
+    "normalized": "chutney"
+  },
+  {
+    "original": "cup cilantro",
+    "normalized": "cilantro"
+  },
+  {
+    "original": "cup cocoa",
+    "normalized": "cocoa"
+  },
+  {
+    "original": "cup coconut",
+    "normalized": "coconut"
+  },
+  {
+    "original": "cup coffee",
+    "normalized": "coffee"
+  },
+  {
+    "original": "cup cola",
+    "normalized": "cola"
+  },
+  {
+    "original": "cup couscous",
+    "normalized": "couscous"
+  },
+  {
+    "original": "cup crabmeat",
+    "normalized": "crabmeat"
+  },
+  {
+    "original": "cup cream",
+    "normalized": "cream"
+  },
+  {
+    "original": "cup dashi",
+    "normalized": "dashi"
+  },
+  {
+    "original": "cup dates",
+    "normalized": "dates"
+  },
+  {
+    "original": "cup edamame",
+    "normalized": "edamame"
+  },
+  {
+    "original": "cup eggs",
+    "normalized": "eggs"
+  },
+  {
+    "original": "cup garlic paste",
+    "normalized": "garlic paste"
+  },
+  {
+    "original": "cup garlic salt",
+    "normalized": "garlic salt"
+  },
+  {
+    "original": "cup gin",
+    "normalized": "gin"
+  },
+  {
+    "original": "cup grapes",
+    "normalized": "grapes"
+  },
+  {
+    "original": "cup gravy",
+    "normalized": "gravy"
+  },
+  {
+    "original": "cup grenadine",
+    "normalized": "grenadine"
+  },
+  {
+    "original": "cup grits",
+    "normalized": "grits"
+  },
+  {
+    "original": "cup guacamole",
+    "normalized": "guacamole"
+  },
+  {
+    "original": "cup kale",
+    "normalized": "kale"
+  },
+  {
+    "original": "cup kimchi",
+    "normalized": "kimchi"
+  },
+  {
+    "original": "cup kirsch",
+    "normalized": "kirsch"
+  },
+  {
+    "original": "cup lemon pepper",
+    "normalized": "lemon pepper"
+  },
+  {
+    "original": "cup lentils",
+    "normalized": "lentils"
+  },
+  {
+    "original": "cup macaroni",
+    "normalized": "macaroni"
+  },
+  {
+    "original": "cup marshmallows",
+    "normalized": "marshmallows"
+  },
+  {
+    "original": "cup mirin",
+    "normalized": "mirin"
+  },
+  {
+    "original": "cup mustard",
+    "normalized": "mustard"
+  },
+  {
+    "original": "cup mustard powder",
+    "normalized": "mustard powder"
+  },
+  {
+    "original": "cup oil",
+    "normalized": "oil"
+  },
+  {
+    "original": "cup olive tapenade",
+    "normalized": "olive tapenade"
+  },
+  {
+    "original": "cup olives",
+    "normalized": "olives"
+  },
+  {
+    "original": "cup panko",
+    "normalized": "panko"
+  },
+  {
+    "original": "cup panko",
+    "normalized": "panko"
+  },
+  {
+    "original": "cup peanut butter",
+    "normalized": "peanut butter"
+  },
+  {
+    "original": "cup pesto",
+    "normalized": "pesto"
+  },
+  {
+    "original": "cup pineapple",
+    "normalized": "pineapple"
+  },
+  {
+    "original": "cup pistachios",
+    "normalized": "pistachios"
+  },
+  {
+    "original": "cup polenta",
+    "normalized": "polenta"
+  },
+  {
+    "original": "cup polenta",
+    "normalized": "polenta"
+  },
+  {
+    "original": "cup prosciutto",
+    "normalized": "prosciutto"
+  },
+  {
+    "original": "cup prunes",
+    "normalized": "prunes"
+  },
+  {
+    "original": "cup pumpkin",
+    "normalized": "pumpkin"
+  },
+  {
+    "original": "cup quinoa",
+    "normalized": "quinoa"
+  },
+  {
+    "original": "cup radishes",
+    "normalized": "radishes"
+  },
+  {
+    "original": "cup rice vinegar",
+    "normalized": "rice vinegar"
+  },
+  {
+    "original": "cup ricotta",
+    "normalized": "ricotta"
+  },
+  {
+    "original": "cup scallops",
+    "normalized": "scallops"
+  },
+  {
+    "original": "cup shallots",
+    "normalized": "shallots"
+  },
+  {
+    "original": "cup sherry vinegar",
+    "normalized": "sherry vinegar"
+  },
+  {
+    "original": "cup shrimp",
+    "normalized": "shrimp"
+  },
+  {
+    "original": "cup spinach",
+    "normalized": "spinach"
+  },
+  {
+    "original": "cup sugar substitute",
+    "normalized": "sugar substitute"
+  },
+  {
+    "original": "cup sumac",
+    "normalized": "sumac"
+  },
+  {
+    "original": "cup syrup",
+    "normalized": "syrup"
+  },
+  {
+    "original": "cup tahini",
+    "normalized": "tahini"
+  },
+  {
+    "original": "cup tamari",
+    "normalized": "tamari"
+  },
+  {
+    "original": "cup tapioca",
+    "normalized": "tapioca"
+  },
+  {
+    "original": "cup tofu",
+    "normalized": "tofu"
+  },
+  {
+    "original": "cup tomato juice",
+    "normalized": "tomato juice"
+  },
+  {
+    "original": "cup vanilla extract",
+    "normalized": "vanilla extract"
+  },
+  {
+    "original": "cup vanilla pudding",
+    "normalized": "vanilla pudding"
+  },
+  {
+    "original": "cup water",
+    "normalized": "water"
+  },
+  {
+    "original": "cup watercress",
+    "normalized": "watercress"
+  },
+  {
+    "original": "cup whiskey",
+    "normalized": "whiskey"
+  },
+  {
+    "original": "cup wine",
+    "normalized": "wine"
+  },
+  {
+    "original": "cups almonds",
+    "normalized": "almonds"
+  },
+  {
+    "original": "cups apple butter",
+    "normalized": "apple butter"
+  },
+  {
+    "original": "cups applesauce",
+    "normalized": "applesauce"
+  },
+  {
+    "original": "cups arugula",
+    "normalized": "arugula"
+  },
+  {
+    "original": "cups beef bouillon",
+    "normalized": "beef bouillon"
+  },
+  {
+    "original": "cups beer",
+    "normalized": "beer"
+  },
+  {
+    "original": "cups blackberries",
+    "normalized": "blackberries"
+  },
+  {
+    "original": "cups bourbon",
+    "normalized": "bourbon"
+  },
+  {
+    "original": "cups brandy",
+    "normalized": "brandy"
+  },
+  {
+    "original": "cups broccoli",
+    "normalized": "broccoli"
+  },
+  {
+    "original": "cups bulgur",
+    "normalized": "bulgur"
+  },
+  {
+    "original": "cups bulgur",
+    "normalized": "bulgur"
+  },
+  {
+    "original": "cups butter",
+    "normalized": "butter"
+  },
+  {
+    "original": "cups cantaloupe",
+    "normalized": "cantaloupe"
+  },
+  {
+    "original": "cups cashew halves",
+    "normalized": "cashew halves"
+  },
+  {
+    "original": "cups cashews",
+    "normalized": "cashews"
+  },
+  {
+    "original": "cups cauliflower",
+    "normalized": "cauliflower"
+  },
+  {
+    "original": "cups champagne",
+    "normalized": "champagne"
+  },
+  {
+    "original": "cups chestnuts",
+    "normalized": "chestnuts"
+  },
+  {
+    "original": "cups chocolate syrup",
+    "normalized": "chocolate syrup"
+  },
+  {
+    "original": "cups coconut",
+    "normalized": "coconut"
+  },
+  {
+    "original": "cups coconut oil",
+    "normalized": "coconut oil"
+  },
+  {
+    "original": "cups corn",
+    "normalized": "corn"
+  },
+  {
+    "original": "cups corn oil",
+    "normalized": "corn oil"
+  },
+  {
+    "original": "cups cornmeal",
+    "normalized": "cornmeal"
+  },
+  {
+    "original": "cups cornstarch",
+    "normalized": "cornstarch"
+  },
+  {
+    "original": "cups couscous",
+    "normalized": "couscous"
+  },
+  {
+    "original": "cups crabmeat",
+    "normalized": "crabmeat"
+  },
+  {
+    "original": "cups cranberries",
+    "normalized": "cranberries"
+  },
+  {
+    "original": "cups cream",
+    "normalized": "cream"
+  },
+  {
+    "original": "cups cream cheese",
+    "normalized": "cream cheese"
+  },
+  {
+    "original": "cups croutons",
+    "normalized": "croutons"
+  },
+  {
+    "original": "cups currants",
+    "normalized": "currants"
+  },
+  {
+    "original": "cups dashi",
+    "normalized": "dashi"
+  },
+  {
+    "original": "cups eggs",
+    "normalized": "eggs"
+  },
+  {
+    "original": "cups flour",
+    "normalized": "flour"
+  },
+  {
+    "original": "cups gin",
+    "normalized": "gin"
+  },
+  {
+    "original": "cups grapes",
+    "normalized": "grapes"
+  },
+  {
+    "original": "cups grits",
+    "normalized": "grits"
+  },
+  {
+    "original": "cups guacamole",
+    "normalized": "guacamole"
+  },
+  {
+    "original": "cups honey",
+    "normalized": "honey"
+  },
+  {
+    "original": "cups ketchup",
+    "normalized": "ketchup"
+  },
+  {
+    "original": "cups lard",
+    "normalized": "lard"
+  },
+  {
+    "original": "cups lentils",
+    "normalized": "lentils"
+  },
+  {
+    "original": "cups margarine",
+    "normalized": "margarine"
+  },
+  {
+    "original": "cups milk",
+    "normalized": "milk"
+  },
+  {
+    "original": "cups molasses",
+    "normalized": "molasses"
+  },
+  {
+    "original": "cups mussels",
+    "normalized": "mussels"
+  },
+  {
+    "original": "cups oil",
+    "normalized": "oil"
+  },
+  {
+    "original": "cups olive oil",
+    "normalized": "olive oil"
+  },
+  {
+    "original": "cups panko",
+    "normalized": "panko"
+  },
+  {
+    "original": "cups peanut butter",
+    "normalized": "peanut butter"
+  },
+  {
+    "original": "cups peas",
+    "normalized": "peas"
+  },
+  {
+    "original": "cups pecans",
+    "normalized": "pecans"
+  },
+  {
+    "original": "cups polenta",
+    "normalized": "polenta"
+  },
+  {
+    "original": "cups pumpkin",
+    "normalized": "pumpkin"
+  },
+  {
+    "original": "cups quinoa",
+    "normalized": "quinoa"
+  },
+  {
+    "original": "cups raspberries",
+    "normalized": "raspberries"
+  },
+  {
+    "original": "cups rice",
+    "normalized": "rice"
+  },
+  {
+    "original": "cups rice vinegar",
+    "normalized": "rice vinegar"
+  },
+  {
+    "original": "cups ricotta",
+    "normalized": "ricotta"
+  },
+  {
+    "original": "cups rum",
+    "normalized": "rum"
+  },
+  {
+    "original": "cups salsa",
+    "normalized": "salsa"
+  },
+  {
+    "original": "cups salt",
+    "normalized": "salt"
+  },
+  {
+    "original": "cups sherry",
+    "normalized": "sherry"
+  },
+  {
+    "original": "cups spinach",
+    "normalized": "spinach"
+  },
+  {
+    "original": "cups strawberries",
+    "normalized": "strawberries"
+  },
+  {
+    "original": "cups sugar",
+    "normalized": "sugar"
+  },
+  {
+    "original": "cups tapioca flour",
+    "normalized": "tapioca flour"
+  },
+  {
+    "original": "cups tea",
+    "normalized": "tea"
+  },
+  {
+    "original": "cups tequila",
+    "normalized": "tequila"
+  },
+  {
+    "original": "cups vinegar",
+    "normalized": "vinegar"
+  },
+  {
+    "original": "cups walnuts",
+    "normalized": "walnuts"
+  },
+  {
+    "original": "cups water",
+    "normalized": "water"
+  },
+  {
+    "original": "cups watercress",
+    "normalized": "watercress"
+  },
+  {
+    "original": "cups watermelon",
+    "normalized": "watermelon"
+  },
+  {
+    "original": "cups whiskey",
+    "normalized": "whiskey"
+  },
+  {
+    "original": "cups yogurt",
+    "normalized": "yogurt"
+  },
+  {
+    "original": "ounce cointreau",
+    "normalized": "cointreau"
+  },
+  {
+    "original": "ounce dubonnet",
+    "normalized": "dubonnet"
+  },
+  {
+    "original": "ounce pernod",
+    "normalized": "pernod"
+  },
+  {
+    "original": "ounce prosecco",
+    "normalized": "prosecco"
+  },
+  {
+    "original": "ounce applejack",
+    "normalized": "applejack"
+  },
+  {
+    "original": "ounce butter",
+    "normalized": "butter"
+  },
+  {
+    "original": "ounce calvados",
+    "normalized": "calvados"
+  },
+  {
+    "original": "ounce chocolate syrup",
+    "normalized": "chocolate syrup"
+  },
+  {
+    "original": "ounce cranberries",
+    "normalized": "cranberries"
+  },
+  {
+    "original": "ounce cream",
+    "normalized": "cream"
+  },
+  {
+    "original": "ounce cream cheese",
+    "normalized": "cream cheese"
+  },
+  {
+    "original": "ounce grenadine",
+    "normalized": "grenadine"
+  },
+  {
+    "original": "ounce honey",
+    "normalized": "honey"
+  },
+  {
+    "original": "ounce kirsch",
+    "normalized": "kirsch"
+  },
+  {
+    "original": "ounce lard",
+    "normalized": "lard"
+  },
+  {
+    "original": "ounce margarine",
+    "normalized": "margarine"
+  },
+  {
+    "original": "ounce olive oil",
+    "normalized": "olive oil"
+  },
+  {
+    "original": "ounce raisins",
+    "normalized": "raisins"
+  },
+  {
+    "original": "ounce salt",
+    "normalized": "salt"
+  },
+  {
+    "original": "ounce sugar",
+    "normalized": "sugar"
+  },
+  {
+    "original": "ounce tequila",
+    "normalized": "tequila"
+  },
+  {
+    "original": "ounce vodka",
+    "normalized": "vodka"
+  },
+  {
+    "original": "ounce water",
+    "normalized": "water"
+  },
+  {
+    "original": "ounces amaretto",
+    "normalized": "amaretto"
+  },
+  {
+    "original": "ounces champagne",
+    "normalized": "champagne"
+  },
+  {
+    "original": "ounces pernod",
+    "normalized": "pernod"
+  },
+  {
+    "original": "ounces prosecco",
+    "normalized": "prosecco"
+  },
+  {
+    "original": "ounces almonds",
+    "normalized": "almonds"
+  },
+  {
+    "original": "ounces amaretto",
+    "normalized": "amaretto"
+  },
+  {
+    "original": "ounces apple juice",
+    "normalized": "apple juice"
+  },
+  {
+    "original": "ounces applesauce",
+    "normalized": "applesauce"
+  },
+  {
+    "original": "ounces arugula",
+    "normalized": "arugula"
+  },
+  {
+    "original": "ounces asparagus",
+    "normalized": "asparagus"
+  },
+  {
+    "original": "ounces bean sprouts",
+    "normalized": "bean sprouts"
+  },
+  {
+    "original": "ounces beef broth",
+    "normalized": "beef broth"
+  },
+  {
+    "original": "ounces beer",
+    "normalized": "beer"
+  },
+  {
+    "original": "ounces blackberries",
+    "normalized": "blackberries"
+  },
+  {
+    "original": "ounces bourbon",
+    "normalized": "bourbon"
+  },
+  {
+    "original": "ounces broccoli",
+    "normalized": "broccoli"
+  },
+  {
+    "original": "ounces butter",
+    "normalized": "butter"
+  },
+  {
+    "original": "ounces caramels",
+    "normalized": "caramels"
+  },
+  {
+    "original": "ounces cashews",
+    "normalized": "cashews"
+  },
+  {
+    "original": "ounces champagne",
+    "normalized": "champagne"
+  },
+  {
+    "original": "ounces chestnuts",
+    "normalized": "chestnuts"
+  },
+  {
+    "original": "ounces chickpeas",
+    "normalized": "chickpeas"
+  },
+  {
+    "original": "ounces chocolate syrup",
+    "normalized": "chocolate syrup"
+  },
+  {
+    "original": "ounces clams",
+    "normalized": "clams"
+  },
+  {
+    "original": "ounces cola",
+    "normalized": "cola"
+  },
+  {
+    "original": "ounces cranberries",
+    "normalized": "cranberries"
+  },
+  {
+    "original": "ounces dates",
+    "normalized": "dates"
+  },
+  {
+    "original": "ounces feta",
+    "normalized": "feta"
+  },
+  {
+    "original": "ounces fettuccine",
+    "normalized": "fettuccine"
+  },
+  {
+    "original": "ounces gin",
+    "normalized": "gin"
+  },
+  {
+    "original": "ounces hazelnuts",
+    "normalized": "hazelnuts"
+  },
+  {
+    "original": "ounces honey",
+    "normalized": "honey"
+  },
+  {
+    "original": "ounces ketchup",
+    "normalized": "ketchup"
+  },
+  {
+    "original": "ounces kimchi",
+    "normalized": "kimchi"
+  },
+  {
+    "original": "ounces kumquats",
+    "normalized": "kumquats"
+  },
+  {
+    "original": "ounces lard",
+    "normalized": "lard"
+  },
+  {
+    "original": "ounces linguine pasta",
+    "normalized": "linguine pasta"
+  },
+  {
+    "original": "ounces mayonnaise",
+    "normalized": "mayonnaise"
+  },
+  {
+    "original": "ounces milk",
+    "normalized": "milk"
+  },
+  {
+    "original": "ounces mussels",
+    "normalized": "mussels"
+  },
+  {
+    "original": "ounces olive oil",
+    "normalized": "olive oil"
+  },
+  {
+    "original": "ounces paprika",
+    "normalized": "paprika"
+  },
+  {
+    "original": "ounces pasta",
+    "normalized": "pasta"
+  },
+  {
+    "original": "ounces peanut butter",
+    "normalized": "peanut butter"
+  },
+  {
+    "original": "ounces peas",
+    "normalized": "peas"
+  },
+  {
+    "original": "ounces pecans",
+    "normalized": "pecans"
+  },
+  {
+    "original": "ounces pesto",
+    "normalized": "pesto"
+  },
+  {
+    "original": "ounces pimento",
+    "normalized": "pimento"
+  },
+  {
+    "original": "ounces prosciutto",
+    "normalized": "prosciutto"
+  },
+  {
+    "original": "ounces prunes",
+    "normalized": "prunes"
+  },
+  {
+    "original": "ounces raisins",
+    "normalized": "raisins"
+  },
+  {
+    "original": "ounces ricotta",
+    "normalized": "ricotta"
+  },
+  {
+    "original": "ounces rum",
+    "normalized": "rum"
+  },
+  {
+    "original": "ounces salt",
+    "normalized": "salt"
+  },
+  {
+    "original": "ounces scallops",
+    "normalized": "scallops"
+  },
+  {
+    "original": "ounces sesame seeds",
+    "normalized": "sesame seeds"
+  },
+  {
+    "original": "ounces shallots",
+    "normalized": "shallots"
+  },
+  {
+    "original": "ounces shrimp",
+    "normalized": "shrimp"
+  },
+  {
+    "original": "ounces spinach",
+    "normalized": "spinach"
+  },
+  {
+    "original": "ounces sugar",
+    "normalized": "sugar"
+  },
+  {
+    "original": "ounces tequila",
+    "normalized": "tequila"
+  },
+  {
+    "original": "ounces tofu",
+    "normalized": "tofu"
+  },
+  {
+    "original": "ounces tomato juice",
+    "normalized": "tomato juice"
+  },
+  {
+    "original": "ounces walnuts",
+    "normalized": "walnuts"
+  },
+  {
+    "original": "ounces water",
+    "normalized": "water"
+  },
+  {
+    "original": "ounces whiskey",
+    "normalized": "whiskey"
+  },
+  {
+    "original": "pound almond meal",
+    "normalized": "almond meal"
+  },
+  {
+    "original": "pound almonds",
+    "normalized": "almonds"
+  },
+  {
+    "original": "pound arugula",
+    "normalized": "arugula"
+  },
+  {
+    "original": "pound asparagus",
+    "normalized": "asparagus"
+  },
+  {
+    "original": "pound baguette",
+    "normalized": "baguette"
+  },
+  {
+    "original": "pound bean sprouts",
+    "normalized": "bean sprouts"
+  },
+  {
+    "original": "pound beef brisket",
+    "normalized": "beef brisket"
+  },
+  {
+    "original": "pound beets",
+    "normalized": "beets"
+  },
+  {
+    "original": "pound broccoli",
+    "normalized": "broccoli"
+  },
+  {
+    "original": "pound butter",
+    "normalized": "butter"
+  },
+  {
+    "original": "pound cabbage",
+    "normalized": "cabbage"
+  },
+  {
+    "original": "pound cake",
+    "normalized": "cake"
+  },
+  {
+    "original": "pound caramels",
+    "normalized": "caramels"
+  },
+  {
+    "original": "pound cauliflower",
+    "normalized": "cauliflower"
+  },
+  {
+    "original": "pound celery",
+    "normalized": "celery"
+  },
+  {
+    "original": "pound cod",
+    "normalized": "cod"
+  },
+  {
+    "original": "pound crabmeat",
+    "normalized": "crabmeat"
+  },
+  {
+    "original": "pound cranberries",
+    "normalized": "cranberries"
+  },
+  {
+    "original": "pound cream cheese",
+    "normalized": "cream cheese"
+  },
+  {
+    "original": "pound currants",
+    "normalized": "currants"
+  },
+  {
+    "original": "pound dates",
+    "normalized": "dates"
+  },
+  {
+    "original": "pound feta",
+    "normalized": "feta"
+  },
+  {
+    "original": "pound fettuccine",
+    "normalized": "fettuccine"
+  },
+  {
+    "original": "pound gnocchi",
+    "normalized": "gnocchi"
+  },
+  {
+    "original": "pound grapes",
+    "normalized": "grapes"
+  },
+  {
+    "original": "pound honey",
+    "normalized": "honey"
+  },
+  {
+    "original": "pound kale",
+    "normalized": "kale"
+  },
+  {
+    "original": "pound lamb chops",
+    "normalized": "lamb chops"
+  },
+  {
+    "original": "pound lard",
+    "normalized": "lard"
+  },
+  {
+    "original": "pound leeks",
+    "normalized": "leeks"
+  },
+  {
+    "original": "pound lentils",
+    "normalized": "lentils"
+  },
+  {
+    "original": "pound linguine",
+    "normalized": "linguine"
+  },
+  {
+    "original": "pound linguine pasta",
+    "normalized": "linguine pasta"
+  },
+  {
+    "original": "pound macaroni",
+    "normalized": "macaroni"
+  },
+  {
+    "original": "pound margarine",
+    "normalized": "margarine"
+  },
+  {
+    "original": "pound orzo",
+    "normalized": "orzo"
+  },
+  {
+    "original": "pound parsnips",
+    "normalized": "parsnips"
+  },
+  {
+    "original": "pound pecans",
+    "normalized": "pecans"
+  },
+  {
+    "original": "pound pineapple",
+    "normalized": "pineapple"
+  },
+  {
+    "original": "pound raisins",
+    "normalized": "raisins"
+  },
+  {
+    "original": "pound ricotta",
+    "normalized": "ricotta"
+  },
+  {
+    "original": "pound salami",
+    "normalized": "salami"
+  },
+  {
+    "original": "pound salmon",
+    "normalized": "salmon"
+  },
+  {
+    "original": "pound salt",
+    "normalized": "salt"
+  },
+  {
+    "original": "pound sausages",
+    "normalized": "sausages"
+  },
+  {
+    "original": "pound scallops",
+    "normalized": "scallops"
+  },
+  {
+    "original": "pound shallots",
+    "normalized": "shallots"
+  },
+  {
+    "original": "pound shortening",
+    "normalized": "shortening"
+  },
+  {
+    "original": "pound shrimp",
+    "normalized": "shrimp"
+  },
+  {
+    "original": "pound spinach",
+    "normalized": "spinach"
+  },
+  {
+    "original": "pound squid",
+    "normalized": "squid"
+  },
+  {
+    "original": "pound turnips",
+    "normalized": "turnips"
+  },
+  {
+    "original": "pound vermicelli",
+    "normalized": "vermicelli"
+  },
+  {
+    "original": "pound walnuts",
+    "normalized": "walnuts"
+  },
+  {
+    "original": "pound watercress",
+    "normalized": "watercress"
+  },
+  {
+    "original": "pound zucchini",
+    "normalized": "zucchini"
+  },
+  {
+    "original": "pounds apples",
+    "normalized": "apples"
+  },
+  {
+    "original": "pounds asparagus",
+    "normalized": "asparagus"
+  },
+  {
+    "original": "pounds bacon",
+    "normalized": "bacon"
+  },
+  {
+    "original": "pounds bananas",
+    "normalized": "bananas"
+  },
+  {
+    "original": "pounds beef brisket",
+    "normalized": "beef brisket"
+  },
+  {
+    "original": "pounds beef chuck",
+    "normalized": "beef chuck"
+  },
+  {
+    "original": "pounds beef steaks",
+    "normalized": "beef steaks"
+  },
+  {
+    "original": "pounds bratwurst",
+    "normalized": "bratwurst"
+  },
+  {
+    "original": "pounds butter",
+    "normalized": "butter"
+  },
+  {
+    "original": "pounds cabbage",
+    "normalized": "cabbage"
+  },
+  {
+    "original": "pounds chestnuts",
+    "normalized": "chestnuts"
+  },
+  {
+    "original": "pounds chicken",
+    "normalized": "chicken"
+  },
+  {
+    "original": "pounds cod",
+    "normalized": "cod"
+  },
+  {
+    "original": "pounds crabmeat",
+    "normalized": "crabmeat"
+  },
+  {
+    "original": "pounds cranberries",
+    "normalized": "cranberries"
+  },
+  {
+    "original": "pounds cream cheese",
+    "normalized": "cream cheese"
+  },
+  {
+    "original": "pounds eggplant",
+    "normalized": "eggplant"
+  },
+  {
+    "original": "pounds honey",
+    "normalized": "honey"
+  },
+  {
+    "original": "pounds ice",
+    "normalized": "ice"
+  },
+  {
+    "original": "pounds lamb chops",
+    "normalized": "lamb chops"
+  },
+  {
+    "original": "pounds lamb shanks",
+    "normalized": "lamb shanks"
+  },
+  {
+    "original": "pounds leeks",
+    "normalized": "leeks"
+  },
+  {
+    "original": "pounds linguine",
+    "normalized": "linguine"
+  },
+  {
+    "original": "pounds macaroni",
+    "normalized": "macaroni"
+  },
+  {
+    "original": "pounds mussels",
+    "normalized": "mussels"
+  },
+  {
+    "original": "pounds parsnips",
+    "normalized": "parsnips"
+  },
+  {
+    "original": "pounds peaches",
+    "normalized": "peaches"
+  },
+  {
+    "original": "pounds peanut butter",
+    "normalized": "peanut butter"
+  },
+  {
+    "original": "pounds raisins",
+    "normalized": "raisins"
+  },
+  {
+    "original": "pounds raspberries",
+    "normalized": "raspberries"
+  },
+  {
+    "original": "pounds salmon",
+    "normalized": "salmon"
+  },
+  {
+    "original": "pounds salt",
+    "normalized": "salt"
+  },
+  {
+    "original": "pounds shortening",
+    "normalized": "shortening"
+  },
+  {
+    "original": "pounds shrimp",
+    "normalized": "shrimp"
+  },
+  {
+    "original": "pounds spaghetti",
+    "normalized": "spaghetti"
+  },
+  {
+    "original": "pounds spinach",
+    "normalized": "spinach"
+  },
+  {
+    "original": "pounds squid",
+    "normalized": "squid"
+  },
+  {
+    "original": "pounds sugar",
+    "normalized": "sugar"
+  },
+  {
+    "original": "pounds turnips",
+    "normalized": "turnips"
+  },
+  {
+    "original": "pounds watermelon",
+    "normalized": "watermelon"
+  },
+  {
+    "original": "pounds yams",
+    "normalized": "yams"
+  },
+  {
+    "original": "tablespoon amaretto",
+    "normalized": "amaretto"
+  },
+  {
+    "original": "tablespoon calvados",
+    "normalized": "calvados"
+  },
+  {
+    "original": "tablespoon champagne vinegar",
+    "normalized": "champagne vinegar"
+  },
+  {
+    "original": "tablespoon parmesan",
+    "normalized": "parmesan"
+  },
+  {
+    "original": "tablespoon pernod",
+    "normalized": "pernod"
+  },
+  {
+    "original": "tablespoon salt",
+    "normalized": "salt"
+  },
+  {
+    "original": "tablespoon sherry",
+    "normalized": "sherry"
+  },
+  {
+    "original": "tablespoon sherry vinegar",
+    "normalized": "sherry vinegar"
+  },
+  {
+    "original": "tablespoon allspice",
+    "normalized": "allspice"
+  },
+  {
+    "original": "tablespoon almonds",
+    "normalized": "almonds"
+  },
+  {
+    "original": "tablespoon apple juice",
+    "normalized": "apple juice"
+  },
+  {
+    "original": "tablespoon applesauce",
+    "normalized": "applesauce"
+  },
+  {
+    "original": "tablespoon basil",
+    "normalized": "basil"
+  },
+  {
+    "original": "tablespoon beef bouillon",
+    "normalized": "beef bouillon"
+  },
+  {
+    "original": "tablespoon beef broth",
+    "normalized": "beef broth"
+  },
+  {
+    "original": "tablespoon bourbon",
+    "normalized": "bourbon"
+  },
+  {
+    "original": "tablespoon capers",
+    "normalized": "capers"
+  },
+  {
+    "original": "tablespoon cardamom",
+    "normalized": "cardamom"
+  },
+  {
+    "original": "tablespoon cayenne",
+    "normalized": "cayenne"
+  },
+  {
+    "original": "tablespoon celery salt",
+    "normalized": "celery salt"
+  },
+  {
+    "original": "tablespoon champagne",
+    "normalized": "champagne"
+  },
+  {
+    "original": "tablespoon champagne vinegar",
+    "normalized": "champagne vinegar"
+  },
+  {
+    "original": "tablespoon chives",
+    "normalized": "chives"
+  },
+  {
+    "original": "tablespoon cilantro",
+    "normalized": "cilantro"
+  },
+  {
+    "original": "tablespoon cinnamon",
+    "normalized": "cinnamon"
+  },
+  {
+    "original": "tablespoon cloves",
+    "normalized": "cloves"
+  },
+  {
+    "original": "tablespoon cocoa",
+    "normalized": "cocoa"
+  },
+  {
+    "original": "tablespoon coconut oil",
+    "normalized": "coconut oil"
+  },
+  {
+    "original": "tablespoon cooking sherry",
+    "normalized": "cooking sherry"
+  },
+  {
+    "original": "tablespoon coriander",
+    "normalized": "coriander"
+  },
+  {
+    "original": "tablespoon corn oil",
+    "normalized": "corn oil"
+  },
+  {
+    "original": "tablespoon cornmeal",
+    "normalized": "cornmeal"
+  },
+  {
+    "original": "tablespoon cream",
+    "normalized": "cream"
+  },
+  {
+    "original": "tablespoon cream cheese",
+    "normalized": "cream cheese"
+  },
+  {
+    "original": "tablespoon cumin",
+    "normalized": "cumin"
+  },
+  {
+    "original": "tablespoon dill",
+    "normalized": "dill"
+  },
+  {
+    "original": "tablespoon egg",
+    "normalized": "egg"
+  },
+  {
+    "original": "tablespoon flour",
+    "normalized": "flour"
+  },
+  {
+    "original": "tablespoon garlic paste",
+    "normalized": "garlic paste"
+  },
+  {
+    "original": "tablespoon gin",
+    "normalized": "gin"
+  },
+  {
+    "original": "tablespoon grenadine",
+    "normalized": "grenadine"
+  },
+  {
+    "original": "tablespoon kirsch",
+    "normalized": "kirsch"
+  },
+  {
+    "original": "tablespoon lard",
+    "normalized": "lard"
+  },
+  {
+    "original": "tablespoon lemon extract",
+    "normalized": "lemon extract"
+  },
+  {
+    "original": "tablespoon lemon pepper",
+    "normalized": "lemon pepper"
+  },
+  {
+    "original": "tablespoon margarine",
+    "normalized": "margarine"
+  },
+  {
+    "original": "tablespoon millet",
+    "normalized": "millet"
+  },
+  {
+    "original": "tablespoon mirin",
+    "normalized": "mirin"
+  },
+  {
+    "original": "tablespoon oats",
+    "normalized": "oats"
+  },
+  {
+    "original": "tablespoon oil",
+    "normalized": "oil"
+  },
+  {
+    "original": "tablespoon olive",
+    "normalized": "olive"
+  },
+  {
+    "original": "tablespoon onion",
+    "normalized": "onion"
+  },
+  {
+    "original": "tablespoon oregano",
+    "normalized": "oregano"
+  },
+  {
+    "original": "tablespoon parsley",
+    "normalized": "parsley"
+  },
+  {
+    "original": "tablespoon peanut butter",
+    "normalized": "peanut butter"
+  },
+  {
+    "original": "tablespoon pepper",
+    "normalized": "pepper"
+  },
+  {
+    "original": "tablespoon polenta",
+    "normalized": "polenta"
+  },
+  {
+    "original": "tablespoon raisins",
+    "normalized": "raisins"
+  },
+  {
+    "original": "tablespoon rosemary",
+    "normalized": "rosemary"
+  },
+  {
+    "original": "tablespoon sake",
+    "normalized": "sake"
+  },
+  {
+    "original": "tablespoon salsa",
+    "normalized": "salsa"
+  },
+  {
+    "original": "tablespoon salt",
+    "normalized": "salt"
+  },
+  {
+    "original": "tablespoon shallots",
+    "normalized": "shallots"
+  },
+  {
+    "original": "tablespoon sherry",
+    "normalized": "sherry"
+  },
+  {
+    "original": "tablespoon shortening",
+    "normalized": "shortening"
+  },
+  {
+    "original": "tablespoon sugar",
+    "normalized": "sugar"
+  },
+  {
+    "original": "tablespoon sugar syrup",
+    "normalized": "sugar syrup"
+  },
+  {
+    "original": "tablespoon sumac",
+    "normalized": "sumac"
+  },
+  {
+    "original": "tablespoon tahini",
+    "normalized": "tahini"
+  },
+  {
+    "original": "tablespoon tamari",
+    "normalized": "tamari"
+  },
+  {
+    "original": "tablespoon tapioca",
+    "normalized": "tapioca"
+  },
+  {
+    "original": "tablespoon tarragon",
+    "normalized": "tarragon"
+  },
+  {
+    "original": "tablespoon tequila",
+    "normalized": "tequila"
+  },
+  {
+    "original": "tablespoon thyme",
+    "normalized": "thyme"
+  },
+  {
+    "original": "tablespoon turmeric",
+    "normalized": "turmeric"
+  },
+  {
+    "original": "tablespoon vanilla",
+    "normalized": "vanilla"
+  },
+  {
+    "original": "tablespoon vodka",
+    "normalized": "vodka"
+  },
+  {
+    "original": "tablespoon water",
+    "normalized": "water"
+  },
+  {
+    "original": "tablespoon whiskey",
+    "normalized": "whiskey"
+  },
+  {
+    "original": "tablespoon yeast",
+    "normalized": "yeast"
+  },
+  {
+    "original": "tablespoons chocolate syrup",
+    "normalized": "chocolate syrup"
+  },
+  {
+    "original": "tablespoons guacamole",
+    "normalized": "guacamole"
+  },
+  {
+    "original": "tablespoons pernod",
+    "normalized": "pernod"
+  },
+  {
+    "original": "tablespoons sherry",
+    "normalized": "sherry"
+  },
+  {
+    "original": "tablespoons sherry vinegar",
+    "normalized": "sherry vinegar"
+  },
+  {
+    "original": "tablespoons sherry vinegar",
+    "normalized": "sherry vinegar"
+  },
+  {
+    "original": "tablespoons almond meal",
+    "normalized": "almond meal"
+  },
+  {
+    "original": "tablespoons almonds",
+    "normalized": "almonds"
+  },
+  {
+    "original": "tablespoons aniseed",
+    "normalized": "aniseed"
+  },
+  {
+    "original": "tablespoons applesauce",
+    "normalized": "applesauce"
+  },
+  {
+    "original": "tablespoons basil",
+    "normalized": "basil"
+  },
+  {
+    "original": "tablespoons beef broth",
+    "normalized": "beef broth"
+  },
+  {
+    "original": "tablespoons beer",
+    "normalized": "beer"
+  },
+  {
+    "original": "tablespoons blackberries",
+    "normalized": "blackberries"
+  },
+  {
+    "original": "tablespoons blueberries",
+    "normalized": "blueberries"
+  },
+  {
+    "original": "tablespoons capers",
+    "normalized": "capers"
+  },
+  {
+    "original": "tablespoons cashew halves",
+    "normalized": "cashew halves"
+  },
+  {
+    "original": "tablespoons cayenne",
+    "normalized": "cayenne"
+  },
+  {
+    "original": "tablespoons champagne",
+    "normalized": "champagne"
+  },
+  {
+    "original": "tablespoons chocolate syrup",
+    "normalized": "chocolate syrup"
+  },
+  {
+    "original": "tablespoons chutney",
+    "normalized": "chutney"
+  },
+  {
+    "original": "tablespoons cilantro",
+    "normalized": "cilantro"
+  },
+  {
+    "original": "tablespoons cinnamon",
+    "normalized": "cinnamon"
+  },
+  {
+    "original": "tablespoons cocoa",
+    "normalized": "cocoa"
+  },
+  {
+    "original": "tablespoons cocoa powder",
+    "normalized": "cocoa powder"
+  },
+  {
+    "original": "tablespoons coconut",
+    "normalized": "coconut"
+  },
+  {
+    "original": "tablespoons coconut oil",
+    "normalized": "coconut oil"
+  },
+  {
+    "original": "tablespoons coffee",
+    "normalized": "coffee"
+  },
+  {
+    "original": "tablespoons cooking sherry",
+    "normalized": "cooking sherry"
+  },
+  {
+    "original": "tablespoons cornmeal",
+    "normalized": "cornmeal"
+  },
+  {
+    "original": "tablespoons cream cheese",
+    "normalized": "cream cheese"
+  },
+  {
+    "original": "tablespoons croutons",
+    "normalized": "croutons"
+  },
+  {
+    "original": "tablespoons cumin",
+    "normalized": "cumin"
+  },
+  {
+    "original": "tablespoons currants",
+    "normalized": "currants"
+  },
+  {
+    "original": "tablespoons dill",
+    "normalized": "dill"
+  },
+  {
+    "original": "tablespoons flour",
+    "normalized": "flour"
+  },
+  {
+    "original": "tablespoons garlic",
+    "normalized": "garlic"
+  },
+  {
+    "original": "tablespoons garlic paste",
+    "normalized": "garlic paste"
+  },
+  {
+    "original": "tablespoons gelatin",
+    "normalized": "gelatin"
+  },
+  {
+    "original": "tablespoons gin",
+    "normalized": "gin"
+  },
+  {
+    "original": "tablespoons grenadine",
+    "normalized": "grenadine"
+  },
+  {
+    "original": "tablespoons grits",
+    "normalized": "grits"
+  },
+  {
+    "original": "tablespoons guacamole",
+    "normalized": "guacamole"
+  },
+  {
+    "original": "tablespoons jam",
+    "normalized": "jam"
+  },
+  {
+    "original": "tablespoons lemon pepper",
+    "normalized": "lemon pepper"
+  },
+  {
+    "original": "tablespoons marjoram",
+    "normalized": "marjoram"
+  },
+  {
+    "original": "tablespoons mayonnaise",
+    "normalized": "mayonnaise"
+  },
+  {
+    "original": "tablespoons milk",
+    "normalized": "milk"
+  },
+  {
+    "original": "tablespoons millet",
+    "normalized": "millet"
+  },
+  {
+    "original": "tablespoons mirin",
+    "normalized": "mirin"
+  },
+  {
+    "original": "tablespoons mustard",
+    "normalized": "mustard"
+  },
+  {
+    "original": "tablespoons oats",
+    "normalized": "oats"
+  },
+  {
+    "original": "tablespoons oil",
+    "normalized": "oil"
+  },
+  {
+    "original": "tablespoons oregano",
+    "normalized": "oregano"
+  },
+  {
+    "original": "tablespoons parsley",
+    "normalized": "parsley"
+  },
+  {
+    "original": "tablespoons peanut butter",
+    "normalized": "peanut butter"
+  },
+  {
+    "original": "tablespoons peas",
+    "normalized": "peas"
+  },
+  {
+    "original": "tablespoons pesto",
+    "normalized": "pesto"
+  },
+  {
+    "original": "tablespoons quinoa",
+    "normalized": "quinoa"
+  },
+  {
+    "original": "tablespoons rosemary",
+    "normalized": "rosemary"
+  },
+  {
+    "original": "tablespoons sage",
+    "normalized": "sage"
+  },
+  {
+    "original": "tablespoons sake",
+    "normalized": "sake"
+  },
+  {
+    "original": "tablespoons salsa",
+    "normalized": "salsa"
+  },
+  {
+    "original": "tablespoons sherry",
+    "normalized": "sherry"
+  },
+  {
+    "original": "tablespoons sherry vinegar",
+    "normalized": "sherry vinegar"
+  },
+  {
+    "original": "tablespoons shortening",
+    "normalized": "shortening"
+  },
+  {
+    "original": "tablespoons sugar syrup",
+    "normalized": "sugar syrup"
+  },
+  {
+    "original": "tablespoons tamari",
+    "normalized": "tamari"
+  },
+  {
+    "original": "tablespoons tapenade",
+    "normalized": "tapenade"
+  },
+  {
+    "original": "tablespoons tapioca flour",
+    "normalized": "tapioca flour"
+  },
+  {
+    "original": "tablespoons tomato juice",
+    "normalized": "tomato juice"
+  },
+  {
+    "original": "tablespoons vanilla",
+    "normalized": "vanilla"
+  },
+  {
+    "original": "tablespoons vodka",
+    "normalized": "vodka"
+  },
+  {
+    "original": "tablespoons walnuts",
+    "normalized": "walnuts"
+  },
+  {
+    "original": "tablespoons whiskey",
+    "normalized": "whiskey"
+  },
+  {
+    "original": "tablespoons yogurt",
+    "normalized": "yogurt"
+  },
+  {
+    "original": "tablespoons melted",
+    "normalized": "melted"
+  },
+  {
+    "original": "tbsp butter",
+    "normalized": "butter"
+  },
+  {
+    "original": "teaspoon calvados",
+    "normalized": "calvados"
+  },
+  {
+    "original": "teaspoon champagne vinegar",
+    "normalized": "champagne vinegar"
+  },
+  {
+    "original": "teaspoon cointreau",
+    "normalized": "cointreau"
+  },
+  {
+    "original": "teaspoon pernod",
+    "normalized": "pernod"
+  },
+  {
+    "original": "teaspoon sherry vinegar",
+    "normalized": "sherry vinegar"
+  },
+  {
+    "original": "teaspoon amaretto",
+    "normalized": "amaretto"
+  },
+  {
+    "original": "teaspoon amaretto liqueur",
+    "normalized": "amaretto liqueur"
+  },
+  {
+    "original": "teaspoon beef bouillon",
+    "normalized": "beef bouillon"
+  },
+  {
+    "original": "teaspoon bitters",
+    "normalized": "bitters"
+  },
+  {
+    "original": "teaspoon brandy",
+    "normalized": "brandy"
+  },
+  {
+    "original": "teaspoon capers",
+    "normalized": "capers"
+  },
+  {
+    "original": "teaspoon cardamom",
+    "normalized": "cardamom"
+  },
+  {
+    "original": "teaspoon champagne vinegar",
+    "normalized": "champagne vinegar"
+  },
+  {
+    "original": "teaspoon chocolate syrup",
+    "normalized": "chocolate syrup"
+  },
+  {
+    "original": "teaspoon cilantro",
+    "normalized": "cilantro"
+  },
+  {
+    "original": "teaspoon cloves",
+    "normalized": "cloves"
+  },
+  {
+    "original": "teaspoon cocoa",
+    "normalized": "cocoa"
+  },
+  {
+    "original": "teaspoon cocoa powder",
+    "normalized": "cocoa powder"
+  },
+  {
+    "original": "teaspoon coconut oil",
+    "normalized": "coconut oil"
+  },
+  {
+    "original": "teaspoon coriander",
+    "normalized": "coriander"
+  },
+  {
+    "original": "teaspoon corn oil",
+    "normalized": "corn oil"
+  },
+  {
+    "original": "teaspoon cornmeal",
+    "normalized": "cornmeal"
+  },
+  {
+    "original": "teaspoon cream",
+    "normalized": "cream"
+  },
+  {
+    "original": "teaspoon dill",
+    "normalized": "dill"
+  },
+  {
+    "original": "teaspoon flour",
+    "normalized": "flour"
+  },
+  {
+    "original": "teaspoon garlic powder",
+    "normalized": "garlic powder"
+  },
+  {
+    "original": "teaspoon gelatin",
+    "normalized": "gelatin"
+  },
+  {
+    "original": "teaspoon ketchup",
+    "normalized": "ketchup"
+  },
+  {
+    "original": "teaspoon kirsch",
+    "normalized": "kirsch"
+  },
+  {
+    "original": "teaspoon lard",
+    "normalized": "lard"
+  },
+  {
+    "original": "teaspoon lemon pepper",
+    "normalized": "lemon pepper"
+  },
+  {
+    "original": "teaspoon maraschino",
+    "normalized": "maraschino"
+  },
+  {
+    "original": "teaspoon margarine",
+    "normalized": "margarine"
+  },
+  {
+    "original": "teaspoon marjoram",
+    "normalized": "marjoram"
+  },
+  {
+    "original": "teaspoon mayonnaise",
+    "normalized": "mayonnaise"
+  },
+  {
+    "original": "teaspoon milk",
+    "normalized": "milk"
+  },
+  {
+    "original": "teaspoon mirin",
+    "normalized": "mirin"
+  },
+  {
+    "original": "teaspoon molasses",
+    "normalized": "molasses"
+  },
+  {
+    "original": "teaspoon mustard",
+    "normalized": "mustard"
+  },
+  {
+    "original": "teaspoon oil",
+    "normalized": "oil"
+  },
+  {
+    "original": "teaspoon parsley",
+    "normalized": "parsley"
+  },
+  {
+    "original": "teaspoon peanut butter",
+    "normalized": "peanut butter"
+  },
+  {
+    "original": "teaspoon pesto",
+    "normalized": "pesto"
+  },
+  {
+    "original": "teaspoon raisins",
+    "normalized": "raisins"
+  },
+  {
+    "original": "teaspoon rosemary",
+    "normalized": "rosemary"
+  },
+  {
+    "original": "teaspoon rum",
+    "normalized": "rum"
+  },
+  {
+    "original": "teaspoon sage",
+    "normalized": "sage"
+  },
+  {
+    "original": "teaspoon sake",
+    "normalized": "sake"
+  },
+  {
+    "original": "teaspoon sesame seeds",
+    "normalized": "sesame seeds"
+  },
+  {
+    "original": "teaspoon sherry",
+    "normalized": "sherry"
+  },
+  {
+    "original": "teaspoon sherry vinegar",
+    "normalized": "sherry vinegar"
+  },
+  {
+    "original": "teaspoon shortening",
+    "normalized": "shortening"
+  },
+  {
+    "original": "teaspoon sugar substitute",
+    "normalized": "sugar substitute"
+  },
+  {
+    "original": "teaspoon sugar syrup",
+    "normalized": "sugar syrup"
+  },
+  {
+    "original": "teaspoon sumac",
+    "normalized": "sumac"
+  },
+  {
+    "original": "teaspoon tahini",
+    "normalized": "tahini"
+  },
+  {
+    "original": "teaspoon tamari",
+    "normalized": "tamari"
+  },
+  {
+    "original": "teaspoon tarragon",
+    "normalized": "tarragon"
+  },
+  {
+    "original": "teaspoon tequila",
+    "normalized": "tequila"
+  },
+  {
+    "original": "teaspoon thyme",
+    "normalized": "thyme"
+  },
+  {
+    "original": "teaspoon vanilla extract",
+    "normalized": "vanilla extract"
+  },
+  {
+    "original": "teaspoon vinegar",
+    "normalized": "vinegar"
+  },
+  {
+    "original": "teaspoon vodka",
+    "normalized": "vodka"
+  },
+  {
+    "original": "teaspoon whiskey",
+    "normalized": "whiskey"
+  },
+  {
+    "original": "teaspoon yeast",
+    "normalized": "yeast"
+  },
+  {
+    "original": "teaspoons champagne vinegar",
+    "normalized": "champagne vinegar"
+  },
+  {
+    "original": "teaspoons cointreau",
+    "normalized": "cointreau"
+  },
+  {
+    "original": "teaspoons sherry vinegar",
+    "normalized": "sherry vinegar"
+  },
+  {
+    "original": "teaspoons apple juice",
+    "normalized": "apple juice"
+  },
+  {
+    "original": "teaspoons applesauce",
+    "normalized": "applesauce"
+  },
+  {
+    "original": "teaspoons basil",
+    "normalized": "basil"
+  },
+  {
+    "original": "teaspoons beef bouillon",
+    "normalized": "beef bouillon"
+  },
+  {
+    "original": "teaspoons bourbon",
+    "normalized": "bourbon"
+  },
+  {
+    "original": "teaspoons brandy",
+    "normalized": "brandy"
+  },
+  {
+    "original": "teaspoons celery salt",
+    "normalized": "celery salt"
+  },
+  {
+    "original": "teaspoons chocolate syrup",
+    "normalized": "chocolate syrup"
+  },
+  {
+    "original": "teaspoons cilantro",
+    "normalized": "cilantro"
+  },
+  {
+    "original": "teaspoons cinnamon",
+    "normalized": "cinnamon"
+  },
+  {
+    "original": "teaspoons cloves",
+    "normalized": "cloves"
+  },
+  {
+    "original": "teaspoons cocoa",
+    "normalized": "cocoa"
+  },
+  {
+    "original": "teaspoons cocoa powder",
+    "normalized": "cocoa powder"
+  },
+  {
+    "original": "teaspoons coconut oil",
+    "normalized": "coconut oil"
+  },
+  {
+    "original": "teaspoons cooking sherry",
+    "normalized": "cooking sherry"
+  },
+  {
+    "original": "teaspoons coriander",
+    "normalized": "coriander"
+  },
+  {
+    "original": "teaspoons corn oil",
+    "normalized": "corn oil"
+  },
+  {
+    "original": "teaspoons cornmeal",
+    "normalized": "cornmeal"
+  },
+  {
+    "original": "teaspoons cream cheese",
+    "normalized": "cream cheese"
+  },
+  {
+    "original": "teaspoons cumin",
+    "normalized": "cumin"
+  },
+  {
+    "original": "teaspoons dill",
+    "normalized": "dill"
+  },
+  {
+    "original": "teaspoons flour",
+    "normalized": "flour"
+  },
+  {
+    "original": "teaspoons garlic paste",
+    "normalized": "garlic paste"
+  },
+  {
+    "original": "teaspoons ginger",
+    "normalized": "ginger"
+  },
+  {
+    "original": "teaspoons grenadine",
+    "normalized": "grenadine"
+  },
+  {
+    "original": "teaspoons lemon extract",
+    "normalized": "lemon extract"
+  },
+  {
+    "original": "teaspoons margarine",
+    "normalized": "margarine"
+  },
+  {
+    "original": "teaspoons milk",
+    "normalized": "milk"
+  },
+  {
+    "original": "teaspoons molasses",
+    "normalized": "molasses"
+  },
+  {
+    "original": "teaspoons mustard",
+    "normalized": "mustard"
+  },
+  {
+    "original": "teaspoons mustard powder",
+    "normalized": "mustard powder"
+  },
+  {
+    "original": "teaspoons nutmeg",
+    "normalized": "nutmeg"
+  },
+  {
+    "original": "teaspoons oil",
+    "normalized": "oil"
+  },
+  {
+    "original": "teaspoons olive oil",
+    "normalized": "olive oil"
+  },
+  {
+    "original": "teaspoons oregano",
+    "normalized": "oregano"
+  },
+  {
+    "original": "teaspoons parsley",
+    "normalized": "parsley"
+  },
+  {
+    "original": "teaspoons peanut butter",
+    "normalized": "peanut butter"
+  },
+  {
+    "original": "teaspoons pepper",
+    "normalized": "pepper"
+  },
+  {
+    "original": "teaspoons pesto",
+    "normalized": "pesto"
+  },
+  {
+    "original": "teaspoons raisins",
+    "normalized": "raisins"
+  },
+  {
+    "original": "teaspoons relish",
+    "normalized": "relish"
+  },
+  {
+    "original": "teaspoons rice vinegar",
+    "normalized": "rice vinegar"
+  },
+  {
+    "original": "teaspoons rice vinegar",
+    "normalized": "rice vinegar"
+  },
+  {
+    "original": "teaspoons rosemary",
+    "normalized": "rosemary"
+  },
+  {
+    "original": "teaspoons rum",
+    "normalized": "rum"
+  },
+  {
+    "original": "teaspoons saffron",
+    "normalized": "saffron"
+  },
+  {
+    "original": "teaspoons sage",
+    "normalized": "sage"
+  },
+  {
+    "original": "teaspoons sake",
+    "normalized": "sake"
+  },
+  {
+    "original": "teaspoons sherry",
+    "normalized": "sherry"
+  },
+  {
+    "original": "teaspoons sherry vinegar",
+    "normalized": "sherry vinegar"
+  },
+  {
+    "original": "teaspoons sugar",
+    "normalized": "sugar"
+  },
+  {
+    "original": "teaspoons sugar substitute",
+    "normalized": "sugar substitute"
+  },
+  {
+    "original": "teaspoons sumac",
+    "normalized": "sumac"
+  },
+  {
+    "original": "teaspoons tahini",
+    "normalized": "tahini"
+  },
+  {
+    "original": "teaspoons tapioca flour",
+    "normalized": "tapioca flour"
+  },
+  {
+    "original": "teaspoons tequila",
+    "normalized": "tequila"
+  },
+  {
+    "original": "teaspoons thyme",
+    "normalized": "thyme"
+  },
+  {
+    "original": "teaspoons turmeric",
+    "normalized": "turmeric"
+  },
+  {
+    "original": "teaspoons vanilla",
+    "normalized": "vanilla"
+  },
+  {
+    "original": "teaspoons vinegar",
+    "normalized": "vinegar"
+  },
+  {
+    "original": "teaspoons vodka",
+    "normalized": "vodka"
+  },
+  {
+    "original": "teaspoons water",
+    "normalized": "water"
+  },
+  {
+    "original": "teaspoons whiskey",
+    "normalized": "whiskey"
+  },
+  {
+    "original": "teaspoons yeast",
+    "normalized": "yeast"
+  },
+  {
+    "original": "teaspoons yogurt",
+    "normalized": "yogurt"
+  },
+  {
+    "original": "cups coconut oil",
+    "normalized": "coconut oil"
+  }
+]

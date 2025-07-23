@@ -1,0 +1,443 @@
+{
+  "addedCanonicals": [
+    "pomegranate molasses",
+    "butter softened",
+    "chopped almonds",
+    "melted butter",
+    "sliced almonds",
+    "bread flour",
+    "cherry brandy",
+    "grapefruit juice",
+    "grenadine syrup",
+    "raspberry vinegar",
+    "rice flour",
+    "vanilla sugar",
+    "almond flour",
+    "basil pesto",
+    "butter cubed",
+    "coconut flour",
+    "coconut sugar",
+    "pumpkin seeds",
+    "ricotta cheese",
+    "almond oil",
+    "bourbon whiskey",
+    "cherries pitted",
+    "chopped ham",
+    "chopped oregano",
+    "chopped pimento",
+    "cilantro leaves",
+    "cinnamon sugar",
+    "drained capers",
+    "egg noodles",
+    "fennel seed"
+  ],
+  "attempted": 30,
+  "actuallyAdded": 30,
+  "skipped": 0,
+  "newMappings": [
+    {
+      "messyName": "cup pomegranate molasses",
+      "canonical": "pomegranate molasses"
+    },
+    {
+      "messyName": "tablespoon pomegranate molasses",
+      "canonical": "pomegranate molasses"
+    },
+    {
+      "messyName": "tablespoons pomegranate molasses",
+      "canonical": "pomegranate molasses"
+    },
+    {
+      "messyName": "teaspoon pomegranate molasses",
+      "canonical": "pomegranate molasses"
+    },
+    {
+      "messyName": "teaspoons pomegranate molasses",
+      "canonical": "pomegranate molasses"
+    },
+    {
+      "messyName": "cup butter softened",
+      "canonical": "butter softened"
+    },
+    {
+      "messyName": "cups butter softened",
+      "canonical": "butter softened"
+    },
+    {
+      "messyName": "pound butter softened",
+      "canonical": "butter softened"
+    },
+    {
+      "messyName": "tablespoon butter softened",
+      "canonical": "butter softened"
+    },
+    {
+      "messyName": "tablespoons butter softened",
+      "canonical": "butter softened"
+    },
+    {
+      "messyName": "teaspoon butter softened",
+      "canonical": "butter softened"
+    },
+    {
+      "messyName": "teaspoons butter softened",
+      "canonical": "butter softened"
+    },
+    {
+      "messyName": "cup chopped almonds",
+      "canonical": "chopped almonds"
+    },
+    {
+      "messyName": "cups chopped almonds",
+      "canonical": "chopped almonds"
+    },
+    {
+      "messyName": "ounce chopped almonds",
+      "canonical": "chopped almonds"
+    },
+    {
+      "messyName": "ounces chopped almonds",
+      "canonical": "chopped almonds"
+    },
+    {
+      "messyName": "pound chopped almonds",
+      "canonical": "chopped almonds"
+    },
+    {
+      "messyName": "tablespoon chopped almonds",
+      "canonical": "chopped almonds"
+    },
+    {
+      "messyName": "tablespoons chopped almonds",
+      "canonical": "chopped almonds"
+    },
+    {
+      "messyName": "teaspoons chopped almonds",
+      "canonical": "chopped almonds"
+    },
+    {
+      "messyName": "cup melted butter",
+      "canonical": "melted butter"
+    },
+    {
+      "messyName": "cups melted butter",
+      "canonical": "melted butter"
+    },
+    {
+      "messyName": "ounce melted butter",
+      "canonical": "melted butter"
+    },
+    {
+      "messyName": "ounces melted butter",
+      "canonical": "melted butter"
+    },
+    {
+      "messyName": "tablespoon melted butter",
+      "canonical": "melted butter"
+    },
+    {
+      "messyName": "tablespoons melted butter",
+      "canonical": "melted butter"
+    },
+    {
+      "messyName": "teaspoon melted butter",
+      "canonical": "melted butter"
+    },
+    {
+      "messyName": "teaspoons melted butter",
+      "canonical": "melted butter"
+    },
+    {
+      "messyName": "cup sliced almonds",
+      "canonical": "sliced almonds"
+    },
+    {
+      "messyName": "cups sliced almonds",
+      "canonical": "sliced almonds"
+    },
+    {
+      "messyName": "ounce sliced almonds",
+      "canonical": "sliced almonds"
+    },
+    {
+      "messyName": "ounces sliced almonds",
+      "canonical": "sliced almonds"
+    },
+    {
+      "messyName": "tablespoon sliced almonds",
+      "canonical": "sliced almonds"
+    },
+    {
+      "messyName": "tablespoons sliced almonds",
+      "canonical": "sliced almonds"
+    },
+    {
+      "messyName": "tbsp sliced almonds",
+      "canonical": "sliced almonds"
+    },
+    {
+      "messyName": "teaspoon sliced almonds",
+      "canonical": "sliced almonds"
+    },
+    {
+      "messyName": "cup bread flour",
+      "canonical": "bread flour"
+    },
+    {
+      "messyName": "cups bread flour",
+      "canonical": "bread flour"
+    },
+    {
+      "messyName": "ounces bread flour",
+      "canonical": "bread flour"
+    },
+    {
+      "messyName": "pounds bread flour",
+      "canonical": "bread flour"
+    },
+    {
+      "messyName": "tablespoon bread flour",
+      "canonical": "bread flour"
+    },
+    {
+      "messyName": "tablespoons bread flour",
+      "canonical": "bread flour"
+    },
+    {
+      "messyName": "teaspoons bread flour",
+      "canonical": "bread flour"
+    },
+    {
+      "messyName": "cup cherry brandy",
+      "canonical": "cherry brandy"
+    },
+    {
+      "messyName": "gallon cherry brandy",
+      "canonical": "cherry brandy"
+    },
+    {
+      "messyName": "ounce cherry brandy",
+      "canonical": "cherry brandy"
+    },
+    {
+      "messyName": "ounces cherry brandy",
+      "canonical": "cherry brandy"
+    },
+    {
+      "messyName": "tablespoon cherry brandy",
+      "canonical": "cherry brandy"
+    },
+    {
+      "messyName": "tablespoons cherry brandy",
+      "canonical": "cherry brandy"
+    },
+    {
+      "messyName": "teaspoon cherry brandy",
+      "canonical": "cherry brandy"
+    },
+    {
+      "messyName": "cup grapefruit juice",
+      "canonical": "grapefruit juice"
+    },
+    {
+      "messyName": "cups grapefruit juice",
+      "canonical": "grapefruit juice"
+    },
+    {
+      "messyName": "ounce grapefruit juice",
+      "canonical": "grapefruit juice"
+    },
+    {
+      "messyName": "ounces grapefruit juice",
+      "canonical": "grapefruit juice"
+    },
+    {
+      "messyName": "tablespoon grapefruit juice",
+      "canonical": "grapefruit juice"
+    },
+    {
+      "messyName": "tablespoons grapefruit juice",
+      "canonical": "grapefruit juice"
+    },
+    {
+      "messyName": "teaspoons grapefruit juice",
+      "canonical": "grapefruit juice"
+    },
+    {
+      "messyName": "cup grenadine syrup",
+      "canonical": "grenadine syrup"
+    },
+    {
+      "messyName": "cups grenadine syrup",
+      "canonical": "grenadine syrup"
+    },
+    {
+      "messyName": "ounce grenadine syrup",
+      "canonical": "grenadine syrup"
+    },
+    {
+      "messyName": "tablespoon grenadine syrup",
+      "canonical": "grenadine syrup"
+    },
+    {
+      "messyName": "tablespoons grenadine syrup",
+      "canonical": "grenadine syrup"
+    },
+    {
+      "messyName": "teaspoon grenadine syrup",
+      "canonical": "grenadine syrup"
+    },
+    {
+      "messyName": "teaspoons grenadine syrup",
+      "canonical": "grenadine syrup"
+    },
+    {
+      "messyName": "cup raspberry vinegar",
+      "canonical": "raspberry vinegar"
+    },
+    {
+      "messyName": "tablespoon raspberry vinegar",
+      "canonical": "raspberry vinegar"
+    },
+    {
+      "messyName": "tablespoons raspberry vinegar",
+      "canonical": "raspberry vinegar"
+    },
+    {
+      "messyName": "teaspoon raspberry vinegar",
+      "canonical": "raspberry vinegar"
+    },
+    {
+      "messyName": "teaspoons raspberry vinegar",
+      "canonical": "raspberry vinegar"
+    },
+    {
+      "messyName": "cup rice flour",
+      "canonical": "rice flour"
+    },
+    {
+      "messyName": "cups rice flour",
+      "canonical": "rice flour"
+    },
+    {
+      "messyName": "tablespoon rice flour",
+      "canonical": "rice flour"
+    },
+    {
+      "messyName": "tablespoons rice flour",
+      "canonical": "rice flour"
+    },
+    {
+      "messyName": "teaspoons rice flour",
+      "canonical": "rice flour"
+    },
+    {
+      "messyName": "cup vanilla sugar",
+      "canonical": "vanilla sugar"
+    },
+    {
+      "messyName": "cups vanilla sugar",
+      "canonical": "vanilla sugar"
+    },
+    {
+      "messyName": "tablespoon vanilla sugar",
+      "canonical": "vanilla sugar"
+    },
+    {
+      "messyName": "tablespoons vanilla sugar",
+      "canonical": "vanilla sugar"
+    },
+    {
+      "messyName": "teaspoon vanilla sugar",
+      "canonical": "vanilla sugar"
+    },
+    {
+      "messyName": "teaspoons vanilla sugar",
+      "canonical": "vanilla sugar"
+    },
+    {
+      "messyName": "cup almond flour",
+      "canonical": "almond flour"
+    },
+    {
+      "messyName": "cups almond flour",
+      "canonical": "almond flour"
+    },
+    {
+      "messyName": "tablespoon almond flour",
+      "canonical": "almond flour"
+    },
+    {
+      "messyName": "tablespoons almond flour",
+      "canonical": "almond flour"
+    },
+    {
+      "messyName": "teaspoon almond flour",
+      "canonical": "almond flour"
+    },
+    {
+      "messyName": "cup basil pesto",
+      "canonical": "basil pesto"
+    },
+    {
+      "messyName": "ounces basil pesto",
+      "canonical": "basil pesto"
+    },
+    {
+      "messyName": "tablespoon basil pesto",
+      "canonical": "basil pesto"
+    },
+    {
+      "messyName": "tablespoons basil pesto",
+      "canonical": "basil pesto"
+    },
+    {
+      "messyName": "teaspoon basil pesto",
+      "canonical": "basil pesto"
+    },
+    {
+      "messyName": "teaspoons basil pesto",
+      "canonical": "basil pesto"
+    },
+    {
+      "messyName": "cup butter cubed",
+      "canonical": "butter cubed"
+    },
+    {
+      "messyName": "ounces butter cubed",
+      "canonical": "butter cubed"
+    },
+    {
+      "messyName": "pound butter cubed",
+      "canonical": "butter cubed"
+    },
+    {
+      "messyName": "tablespoon butter cubed",
+      "canonical": "butter cubed"
+    },
+    {
+      "messyName": "tablespoons butter cubed",
+      "canonical": "butter cubed"
+    },
+    {
+      "messyName": "teaspoons butter cubed",
+      "canonical": "butter cubed"
+    },
+    {
+      "messyName": "cup coconut flour",
+      "canonical": "coconut flour"
+    },
+    {
+      "messyName": "cups coconut flour",
+      "canonical": "coconut flour"
+    },
+    {
+      "messyName": "tablespoon coconut flour",
+      "canonical": "coconut flour"
+    }
+  ],
+  "totalNewMappings": 170,
+  "beforeCanonicals": 61623,
+  "afterCanonicals": "61653",
+  "coverageAfter": 61.5
+}

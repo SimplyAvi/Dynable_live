@@ -1,0 +1,2258 @@
+[
+  {
+    "productId": 71966,
+    "product": "CHOCOLATE COOKIE MONSTER MOTEL HOUSE KIT, CHOCOLATE COOKIE",
+    "brand": "Target Stores",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 893,
+    "product": "NATURALLY HARDWOOD SMOKED BACON",
+    "brand": "Kraft Heinz Foods Company",
+    "canonical": "bacon"
+  },
+  {
+    "productId": 1531,
+    "product": "CHOCOLATE PUDDING CUPS, CHOCOLATE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1248,
+    "product": "WHOLE GREEN BEANS",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "beans"
+  },
+  {
+    "productId": 1258,
+    "product": "CHOCOLATE TWIST & SHOUT SANDWICH COOKIES, CHOCOLATE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1308,
+    "product": "CHOCOLATE CHIP CHEWY GRANOLA BARS, CHOCOLATE CHIP",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1305,
+    "product": "CALIFORNIA EXTRA VIRGIN OLIVE OIL, CALIFORNIA",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "oil"
+  },
+  {
+    "productId": 1306,
+    "product": "CALIFORNIA EXTRA VIRGIN OLIVE OIL, CALIFORNIA",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "oil"
+  },
+  {
+    "productId": 1380,
+    "product": "HONEY THIN SLICED TURKEY BREAST, HONEY",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "honey"
+  },
+  {
+    "productId": 1383,
+    "product": "GREEN BREWED TEA WITH GINSENG & HONEY, GREEN WITH GINSENG & HONEY",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "honey"
+  },
+  {
+    "productId": 1382,
+    "product": "CHOCOLATE CHIP CHEWY GRANOLA BARS, CHOCOLATE CHIP",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1394,
+    "product": "HONEY GRAHAM CRACKERS, HONEY",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "honey"
+  },
+  {
+    "productId": 1428,
+    "product": "CHOCOLATE TWIST & SHOUT DOUBLE FILLED SANDWICH COOKIES, CHOCOLATE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1447,
+    "product": "MANDARIN ORANGES WHOLE SEGMENTS IN LIGHT SYRUP, MANDARIN IN LIGHT SYRUP",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "oranges"
+  },
+  {
+    "productId": 1450,
+    "product": "VANILLA ICE CREAM CUPS, VANILLA",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cream"
+  },
+  {
+    "productId": 1459,
+    "product": "VANILLA LIGHT ICE CREAM, VANILLA",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cream"
+  },
+  {
+    "productId": 1455,
+    "product": "HARDWOOD SMOKED BACON, HARDWOOD SMOKED",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "bacon"
+  },
+  {
+    "productId": 1469,
+    "product": "RICE CRISPS TOASTED RICE CEREAL, RICE CRISPS",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "rice"
+  },
+  {
+    "productId": 1490,
+    "product": "HONEY CRUNCH & OATS ORGANIC CEREAL, HONEY CRUNCH & OATS",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "honey"
+  },
+  {
+    "productId": 1502,
+    "product": "OATS & HONEY CRUNCHY GRANOLA BARS, OATS & HONEY",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "honey"
+  },
+  {
+    "productId": 1510,
+    "product": "VIRGIN COCONUT OIL",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "oil"
+  },
+  {
+    "productId": 1508,
+    "product": "MILK CHOCOLATE HOT COCOA MIX, MILK CHOCOLATE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1561,
+    "product": "SPRINKLES, CHOCOLATE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1626,
+    "product": "CREAM OF MUSHROOM HEALTHY CONDENSED SOUP, CREAM OF MUSHROOM",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cream"
+  },
+  {
+    "productId": 10677,
+    "product": "GRILLED CHICKEN BREAST MEAT FILLET WITH RIB MEAT",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 1687,
+    "product": "CHILE PEPPER & LIME POPCORN, CHILE PEPPER & LIME",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "pepper"
+  },
+  {
+    "productId": 1567,
+    "product": "CHOCOLATE COVERED DONUTS, CHOCOLATE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1749,
+    "product": "FROSTED CHOCOLATE FUDGE TOASTER PASTRIES, FROSTED CHOCOLATE FUDGE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1793,
+    "product": "SWEET CHOCOLATE BAKING BAR, SWEET CHOCOLATE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1811,
+    "product": "SALT & PEPPER SHELLED PISTACHIOS, SALT & PEPPER",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "pepper"
+  },
+  {
+    "productId": 1834,
+    "product": "WHITE SLICED BREAD, WHITE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "bread"
+  },
+  {
+    "productId": 1873,
+    "product": "CRUNCHY PEANUT BUTTER, CRUNCHY",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 1884,
+    "product": "CHICKEN TIKKA MASALA, CHICKEN",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 2063,
+    "product": "DARK CHOCOLATE WITH ALMONDS BARS, DARK CHOCOLATE WITH ALMONDS",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 2079,
+    "product": "STRAWBERRIES & CREAM INSTANT OATMEAL, STRAWBERRIES & CREAM",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "strawberries"
+  },
+  {
+    "productId": 2160,
+    "product": "PLUS PROTEIN 13 G COMPLETE NUTRITIONAL SHAKES, CHOCOLATE, CHOCOLATE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 2167,
+    "product": "HIGH PROTEIN 20 G NUTRITIONAL SHAKES, CHOCOLATE, CHOCOLATE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 2194,
+    "product": "CLASSIC OLIVE OIL, CLASSIC",
+    "brand": "Meijer, Inc.",
+    "canonical": "oil"
+  },
+  {
+    "productId": 52229,
+    "product": "GARLIC & HERB CREAM CHEESE SPREAD, GARLIC; HERB",
+    "brand": "Kraft Heinz Foods Company",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 80581,
+    "product": "AdvancePierre Fully Cooked Flamebroiled Beef Patties",
+    "brand": "Tyson Foods Inc.",
+    "canonical": "beef"
+  },
+  {
+    "productId": 49495,
+    "product": "AdvancePierre Fully Cooked Flame Broiled Rib Shaped Pork Pattie, 3 oz",
+    "brand": "Tyson Foods Inc.",
+    "canonical": "pork"
+  },
+  {
+    "productId": 3480,
+    "product": "DARK CHOCOLATE PEANUT BUTTER CUPS, DARK CHOCOLATE",
+    "brand": "Safeway, Inc.",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 3484,
+    "product": "CHOCOLATE SPRINKLES, CHOCOLATE",
+    "brand": "Safeway, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 13517,
+    "product": "PINTO BEANS, PINTO",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "beans"
+  },
+  {
+    "productId": 1264,
+    "product": "MILK CHOCOLATE BARS, MILK CHOCOLATE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1803,
+    "product": "MILK CHOCOLATE HOT COCOA MIX, MILK CHOCOLATE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1796,
+    "product": "GRILLED CHICKEN BREAST STRIPS",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 3666,
+    "product": "DARK CHOCOLATE COVERED PEPPERMINT PATTIES, DARK CHOCOLATE COVERED PEPPERMINT",
+    "brand": "The Hershey Company",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 31275,
+    "product": "DESSERT MINT MILK CHOCOLATE MELTS, DESSERT MINT MILK CHOCOLATE",
+    "brand": "Target Stores",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 72748,
+    "product": "UNSALTED DRY ROASTED SLICED ALMONDS, UNSALTED DRY ROASTED",
+    "brand": "Target Stores",
+    "canonical": "almonds"
+  },
+  {
+    "productId": 72750,
+    "product": "UNSALTED RAW JUMBO CASHEWS, UNSALTED",
+    "brand": "Target Stores",
+    "canonical": "cashews"
+  },
+  {
+    "productId": 72739,
+    "product": "UNSALTED RAW ALMONDS, UNSALTED",
+    "brand": "Target Stores",
+    "canonical": "almonds"
+  },
+  {
+    "productId": 72741,
+    "product": "UNSALTED RAW ALMONDS, UNSALTED",
+    "brand": "Target Stores",
+    "canonical": "almonds"
+  },
+  {
+    "productId": 72749,
+    "product": "SEA SALT ROASTED JUMBO CASHEWS, SEA SALT ROASTED",
+    "brand": "Target Stores",
+    "canonical": "cashews"
+  },
+  {
+    "productId": 73996,
+    "product": "CHUNK LIGHT TUNA IN VEGETABLE OIL, CHUNK LIGHT IN VEGETABLE OIL",
+    "brand": "Meijer, Inc.",
+    "canonical": "oil"
+  },
+  {
+    "productId": 74935,
+    "product": "SLICED BLANCHED ALMONDS",
+    "brand": "Meijer, Inc.",
+    "canonical": "almonds"
+  },
+  {
+    "productId": 74931,
+    "product": "UNSALTED ROASTED CASHEWS, UNSALTED ROASTED",
+    "brand": "Meijer, Inc.",
+    "canonical": "cashews"
+  },
+  {
+    "productId": 74937,
+    "product": "WHOLE BLANCHED ALMONDS",
+    "brand": "Meijer, Inc.",
+    "canonical": "almonds"
+  },
+  {
+    "productId": 74928,
+    "product": "UNSALTED ROASTED ALMONDS, UNSALTED ROASTED",
+    "brand": "Meijer, Inc.",
+    "canonical": "almonds"
+  },
+  {
+    "productId": 75143,
+    "product": "SALT & VINEGAR ROASTED WHOLE ALMONDS, SALT & VINEGAR ROASTED",
+    "brand": "Meijer, Inc.",
+    "canonical": "vinegar"
+  },
+  {
+    "productId": 75663,
+    "product": "UNSALTED RAW WALNUTS HALVES & PIECES, UNSALTED",
+    "brand": "Meijer, Inc.",
+    "canonical": "walnuts"
+  },
+  {
+    "productId": 79923,
+    "product": "AdvancePierre Fully Cooked Glazed with Ketchup Beef with Onion, Bell Pepper and Spices Meatloaf Slice",
+    "brand": "Tyson Foods Inc.",
+    "canonical": "pepper"
+  },
+  {
+    "productId": 79934,
+    "product": "Tenderbroil Flame Grilled Beef Pattie",
+    "brand": "Tyson Foods Inc.",
+    "canonical": "beef"
+  },
+  {
+    "productId": 57279,
+    "product": "SPECIALTY, DARK CHOCOLATE SEA SALT & TURBINADO SUGAR 52% CACAO ALMONDS, DARK CHOCOLATE",
+    "brand": "Wakefern Food Corporation",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 89239,
+    "product": "DARK CHOCOLATE SEA SALT TRUFFLES, DARK CHOCOLATE SEA SALT",
+    "brand": "Safeway, Inc.",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 89691,
+    "product": "SEA SALT ROASTED ALMONDS, SEA SALT ROASTED",
+    "brand": "Target Stores",
+    "canonical": "almonds"
+  },
+  {
+    "productId": 89704,
+    "product": "SEA SALT ROASTED MARCONA ALMONDS, SEA SALT ROASTED MARCONA",
+    "brand": "Target Stores",
+    "canonical": "almonds"
+  },
+  {
+    "productId": 2075,
+    "product": "CHILI RELLENO CASSEROLE ROASTED POBLANOS WITH BLACK BEANS AND TOFU, WITH MONTEREY JACK AND CHEDDAR CHEESE, CHILI RELLENO CASSEROLE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 35971,
+    "product": "NO SUGAR ADDED TOMATO KETCHUP",
+    "brand": "Kraft Heinz Foods Company",
+    "canonical": "tomato"
+  },
+  {
+    "productId": 35972,
+    "product": "NO SUGAR ADDED TOMATO KETCHUP",
+    "brand": "Kraft Heinz Foods Company",
+    "canonical": "tomato"
+  },
+  {
+    "productId": 4681,
+    "product": "CHOCOLATE SUGAR COOKIES, CHOCOLATE SUGAR",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 71173,
+    "product": "QUINOA & KALE TURKEY MEATBALLS, QUINOA & KALE TURKEY",
+    "brand": "Target Stores",
+    "canonical": "kale"
+  },
+  {
+    "productId": 63937,
+    "product": "DARK CHOCOLATE COVERED MACADAMIA NUTS, DARK CHOCOLATE",
+    "brand": "Meijer, Inc.",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 55277,
+    "product": "WILDFLOWER RAW HONEY, WILDFLOWER",
+    "brand": "Safeway, Inc.",
+    "canonical": "honey"
+  },
+  {
+    "productId": 4887,
+    "product": "PEACH ALMOND-BASED YOGURT ALTERNATIVE, PEACH",
+    "brand": "Meijer, Inc.",
+    "canonical": "yogurt"
+  },
+  {
+    "productId": 4891,
+    "product": "LIGHT TASTING OLIVE OIL, LIGHT",
+    "brand": "Meijer, Inc.",
+    "canonical": "oil"
+  },
+  {
+    "productId": 4892,
+    "product": "CLASSIC OLIVE OIL, CLASSIC",
+    "brand": "Meijer, Inc.",
+    "canonical": "oil"
+  },
+  {
+    "productId": 74507,
+    "product": "SEA SALT CARAMEL CHOCOLATE CREME PIE, SEA SALT CARAMEL CHOCOLATE CREME",
+    "brand": "Meijer, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 57458,
+    "product": "NO SALT ADDED CUT GREEN BEANS",
+    "brand": "Wakefern Food Corporation",
+    "canonical": "beans"
+  },
+  {
+    "productId": 64059,
+    "product": "DARK CHOCOLATE SEA SALT CARAMEL COFFEE BEANS, DARK CHOCOLATE SEA SALT CARAMEL",
+    "brand": "Meijer, Inc.",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 10947,
+    "product": "DARK CHOCOLATE SEA SALT CARAMELS, DARK CHOCOLATE SEA SALT",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 31263,
+    "product": "DARK CHOCOLATE SEA SALT CARAMELS, DARK CHOCOLATE SEA SALT",
+    "brand": "Target Stores",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 75195,
+    "product": "TURKEY BREAST, ROASTED, SALTED ALMONDS, COLBY & MONTEREY JACK CHEESE HOLD ME OVERS, TURKEY BREAST, ROASTED, SALTED ALMONDS, COLBY & MONTEREY JACK CHEESE",
+    "brand": "Meijer, Inc.",
+    "canonical": "almonds"
+  },
+  {
+    "productId": 71851,
+    "product": "SEA SALT & CRACKED PEPPER GLAZED SALMON FILLETS, SEA SALT & CRACKED PEPPER GLAZED",
+    "brand": "Target Stores",
+    "canonical": "pepper"
+  },
+  {
+    "productId": 34598,
+    "product": "ASSORTED CHOCOLATE TRUFFLES, STRAWBERRY ROSE CREME WHITE CHOCOLATE, COCONUT CREME MILK CHOCOLATE, MILK CHOCOLATE GANACHE MILK CHOCOLATE, SEA SALT CREME DARK CHOCOLATE",
+    "brand": "Target Stores",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 72814,
+    "product": "HOLIDAY MACARONS, GINGERBREAD, CHOCOLATE, PEPPERMINT, HAZELNUT, PISTACHIO, DARK CHOCOLATE, SALTED CARAMEL",
+    "brand": "Target Stores",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 75726,
+    "product": "SALTED ROASTED ORGANIC CASHEWS, SALTED ROASTED",
+    "brand": "Meijer, Inc.",
+    "canonical": "cashews"
+  },
+  {
+    "productId": 89631,
+    "product": "DECADENT HOLIDAY CHOCOLATES, MILK CHOCOLATE CREME MILK CHOCOLATE, DARK CHOCOLATE CREME DARK CHOCOLATE, HAZELNUT MILK CHOCOLATE, HAZELNUT WHITE CHOCOLATE, PASSION FRUIT CREME WHITE CHOCOLATE, CARAMEL COFFEE DARK CHOCOLATE, CARAMEL SEA SALT DARK CHOCOLATE, STRAWBERRY ROSE CREME WHITE CHOCOLATE",
+    "brand": "Target Stores",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 89401,
+    "product": "SEA SALT, PEPPER & ROASTED GARLIC LARGE-CUT CROUTONS, SEA SALT, PEPPER & ROASTED GARLIC",
+    "brand": "Target Stores",
+    "canonical": "pepper"
+  },
+  {
+    "productId": 10827,
+    "product": "SEA SALT CARAMEL CHOCOLATE CREME 8\" PIE, SEA SALT CARAMEL CHOCOLATE CREME",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 69600,
+    "product": "SEA SALT CARAMEL CHOCOLATE CREME PIE, SEA SALT CARAMEL CHOCOLATE CREME",
+    "brand": "Meijer, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 89244,
+    "product": "DARK CHOCOLATE SEA SALT CARAMELS, DARK CHOCOLATE SEA SALT",
+    "brand": "Safeway, Inc.",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 91830,
+    "product": "CHICKEN ORGANIC NO SALT ADDED BROTH, CHICKEN",
+    "brand": "Target Stores",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 6505,
+    "product": "AMERICAN PASTEURIZED PREPARED CHEESE PRODUCT SINGLES, AMERICAN",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 6708,
+    "product": "TOMATO BASIL GARLIC PASTA SAUCE, TOMATO BASIL GARLIC",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "garlic"
+  },
+  {
+    "productId": 12670,
+    "product": "CHOCOLATE SUGAR FREE FAT FREE COOK & SERVE REDUCED CALORIE PUDDING & PIE FILLING, CHOCOLATE",
+    "brand": "Kraft Heinz Foods Company",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 7241,
+    "product": "100% CANOLA OIL",
+    "brand": "Safeway, Inc.",
+    "canonical": "oil"
+  },
+  {
+    "productId": 7260,
+    "product": "GREAT NORTHERN BEANS, GREAT NORTHERN",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "beans"
+  },
+  {
+    "productId": 7293,
+    "product": "MIXED NUTS RAW ALMONDS, CASHEWS, WALNUTS, HAZELNUTS & PISTACHIOS, MIXED NUTS",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "almonds"
+  },
+  {
+    "productId": 7451,
+    "product": "CHOCOLATE CREME SANDWICH COOKIES, CHOCOLATE CREME",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 7701,
+    "product": "WHITE AMERICAN PASTEURIZED PREPARED CHEESE PRODUCT SINGLES, WHITE AMERICAN",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 7777,
+    "product": "DARK CHOCOLATE 60% CACAO CHIPS, DARK CHOCOLATE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 57539,
+    "product": "APPLES & CINNAMON INSTANT OATMEAL, APPLES & CINNAMON",
+    "brand": "Wakefern Food Corporation",
+    "canonical": "apples"
+  },
+  {
+    "productId": 8174,
+    "product": "YELLOW MUSTARD, YELLOW",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "mustard"
+  },
+  {
+    "productId": 117,
+    "product": "CRANBERRY CINNAMON GOAT SOFT CHEESE, CRANBERRY CINNAMON GOAT",
+    "brand": "Safeway, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 8314,
+    "product": "UNSALTED SWEET CREAM BUTTER, UNSALTED",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "butter"
+  },
+  {
+    "productId": 90220,
+    "product": "BLEACHED & PRE-SIFTED ENRICHED SELF-RISING FLOUR",
+    "brand": "Meijer, Inc.",
+    "canonical": "flour"
+  },
+  {
+    "productId": 8361,
+    "product": "PEANUT BUTTER COOKIES, PEANUT BUTTER",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 8373,
+    "product": "PEANUT BUTTER FILLED PRETZEL NUGGETS, PEANUT BUTTER",
+    "brand": "Safeway, Inc.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 8440,
+    "product": "CREAMY PEANUT BUTTER, CREAMY",
+    "brand": "Safeway, Inc.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 8537,
+    "product": "CANNELLINI WHITE KIDNEY BEANS, CANNELLINI WHITE KIDNEY",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "beans"
+  },
+  {
+    "productId": 57130,
+    "product": "UNBLEACHED, ENRICHED PRE-SIFTED ALL PURPOSE FLOUR",
+    "brand": "Wakefern Food Corporation",
+    "canonical": "flour"
+  },
+  {
+    "productId": 62819,
+    "product": "ENRICHED & PRE-SIFTED UNBLEACHED ALL PURPOSE FLOUR",
+    "brand": "Target Stores",
+    "canonical": "flour"
+  },
+  {
+    "productId": 16774,
+    "product": "Gold Medal Unbleached All Purpose Flour",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "flour"
+  },
+  {
+    "productId": 46287,
+    "product": "ALL PURPOSE FLOUR",
+    "brand": "Target Stores",
+    "canonical": "flour"
+  },
+  {
+    "productId": 8593,
+    "product": "CREAM STYLE SWEET CORN, CREAM STYLE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cream"
+  },
+  {
+    "productId": 73690,
+    "product": "SIGNATURE, PESTO CHICKEN WITH LEMON THYME ORZO, GRAPE TOMATOES, BASIL PESTO, LEMON, PARMESAN CHEESE, AND SPINACH, PESTO",
+    "brand": "Meijer, Inc.",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 8683,
+    "product": "CHOCOLATE CARAMEL COFFEE CREAMER, CHOCOLATE CARAMEL",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 88893,
+    "product": "MILK CHOCOLATE & PEANUT BUTTER EGG, MILK CHOCOLATE & PEANUT BUTTER",
+    "brand": "The Hershey Company",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 8768,
+    "product": "MANGO PEPPER JELLY, MANGO PEPPER",
+    "brand": "Target Stores",
+    "canonical": "pepper"
+  },
+  {
+    "productId": 8771,
+    "product": "ORIGINAL BAKED BEANS SEASONED WITH BACON & BROWN SUGAR, ORIGINAL",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "beans"
+  },
+  {
+    "productId": 8873,
+    "product": "HONEY NUT TOASTED OATS ORGANIC CEREAL, HONEY NUT TOASTED OATS",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "honey"
+  },
+  {
+    "productId": 33987,
+    "product": "ASSORTED CHOCOLATES MILK & DARK PREMIUM COLLECTION, MILK CHOCOLATE TRUFFLE, DARK CHOCOLATE TRUFFLE, VANILLA CARAMEL, DARK CHOCOLATE VANILLA CARAMEL, CHOCOLATE CARAMEL",
+    "brand": "The Hershey Company",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 73401,
+    "product": "HONEY VANILLA BOURBON PECANS, HONEY VANILLA BOURBON",
+    "brand": "Meijer, Inc.",
+    "canonical": "honey"
+  },
+  {
+    "productId": 9112,
+    "product": "PEANUT BUTTER FUDGE NO BAKE COOKIES, PEANUT BUTTER",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 9179,
+    "product": "ORIGINAL PASTEURIZED RECIPE CHEESE PRODUCT, ORIGINAL",
+    "brand": "Kraft Heinz Foods Company",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 1812,
+    "product": "MACARON ASSORTMENT, VANILLA, RASPBERRY, COFFEE, LEMON, PISTACHIO, CHOCOLATE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 9256,
+    "product": "GARLIC STUFFED ORGANIC OLIVES, GARLIC STUFFED",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "garlic"
+  },
+  {
+    "productId": 9426,
+    "product": "IODIZED SALT & PEPPER SHAKER SET",
+    "brand": "Target Stores",
+    "canonical": "pepper"
+  },
+  {
+    "productId": 9650,
+    "product": "CREAMY PEANUT BUTTER, CREAMY",
+    "brand": "Safeway, Inc.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 9840,
+    "product": "ORANGE SWIRL ORANGE SHERBET WITH VANILLA FLAVORED ICE CREAM, ORANGE SWIRL",
+    "brand": "Safeway, Inc.",
+    "canonical": "cream"
+  },
+  {
+    "productId": 9872,
+    "product": "YELLOW MUSTARD, YELLOW",
+    "brand": "Safeway, Inc.",
+    "canonical": "mustard"
+  },
+  {
+    "productId": 9974,
+    "product": "SUNFLOWER OIL",
+    "brand": "Meijer, Inc.",
+    "canonical": "oil"
+  },
+  {
+    "productId": 45554,
+    "product": "PLAIN CREAM CHEESE SPREAD, PLAIN",
+    "brand": "Target Stores",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 45555,
+    "product": "GARDEN VEGETABLE CREAM CHEESE SPREAD, GARDEN VEGETABLE",
+    "brand": "Target Stores",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 52227,
+    "product": "CHIVE & ONION REDUCE FAT CREAM CHEESE, CHIVE; ONION",
+    "brand": "Kraft Heinz Foods Company",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 40778,
+    "product": "CLASSIC RUSSET POTATOES WITH EGGS, CELERY & ONIONS IN A CLASSIC MAYONNAISE DRESSING POTATO SALAD, CLASSIC",
+    "brand": "Safeway, Inc.",
+    "canonical": "mayonnaise"
+  },
+  {
+    "productId": 40780,
+    "product": "CLASSIC RUSSET POTATOES WITH EGGS, CELERY & ONIONS IN A CLASSIC MAYONNAISE DRESSING POTATO SALAD, CLASSIC",
+    "brand": "Safeway, Inc.",
+    "canonical": "mayonnaise"
+  },
+  {
+    "productId": 16971,
+    "product": "Cascadian Farm Organic Riced Cauliflower Blend with Bell Peppers and Onions",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "cauliflower"
+  },
+  {
+    "productId": 79909,
+    "product": "AdvancePierre Fully Cooked Flamebroiled Bell Pepper, Onion and Beef Salisbury Steak, 3 oz",
+    "brand": "Tyson Foods Inc.",
+    "canonical": "pepper"
+  },
+  {
+    "productId": 35723,
+    "product": "Cheesy Beef Pasta Hamburger Helper",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "beef"
+  },
+  {
+    "productId": 45910,
+    "product": "BLUEBERRY CHEESECAKE-FLAVORED ICE CREAM WITH BLUEBERRY PIECES AND GRAHAM CRACKER SWIRL, BLUEBERRY CHEESECAKE",
+    "brand": "Target Stores",
+    "canonical": "cream"
+  },
+  {
+    "productId": 10348,
+    "product": "CHIVE & ONION CREAM CHEESE SPREAD, CHIVE & ONION",
+    "brand": "Kraft Heinz Foods Company",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 36627,
+    "product": "EGGS CREAMY CHEESE SAUCE & POTATOES FROZEN MEAL CRISPY BACON SCRAMBLE",
+    "brand": "Kraft Heinz Foods Company",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 45043,
+    "product": "GARLIC HERB SEASONED BONELESS, SKINLESS CHICKEN BREAST WITH RIB MEAT, GARLIC HERB SEASONED",
+    "brand": "Target Stores",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 51567,
+    "product": "Yoplait Original Strawberry Banana Gluten-Free Low-Fat Yogurt Cup",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "yogurt"
+  },
+  {
+    "productId": 45219,
+    "product": "ALMONDS, PEANUTS & SEA SALT WITH COCOA DRIZZLE NUT BARS, ALMONDS, PEANUTS & SEA SALT WITH COCOA DRIZZLE",
+    "brand": "Target Stores",
+    "canonical": "almonds"
+  },
+  {
+    "productId": 10508,
+    "product": "PEANUT BUTTER COOKIES, PEANUT BUTTER",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 13176,
+    "product": "SALTED WHIPPED BUTTER, SALTED",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "butter"
+  },
+  {
+    "productId": 45847,
+    "product": "HANDFUL OF EVERYTHING SWEETENED BANANA CHIPS, MANGOS & PINEAPPLE, YOGURT-FLAVORED COATED PEANUTS, CHOCOLATE CHIPS, ALMONDS, RAISINS, APRICOTS, SWEETENED CRANBERRIES AND COCONUT TRAIL MIX, HANDFUL OF EVERYTHING",
+    "brand": "Target Stores",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 47458,
+    "product": "KETO CHEESE, NUT & SEED ALMONDS, PUMPKIN SEED KERNELS, PEANUTS, DRIED CHEDDAE CHEESE BITES, PECANS TRAIL MIX, KETO CHEESE, NUT & SEED",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "almonds"
+  },
+  {
+    "productId": 45350,
+    "product": "SUNFLOWER KALE BROCCOLI STALK, GREEN CABBAGE, KALE, RADICCHIO, DRIED CRANBERRIES & ROASTED SUNFLOWER SEEDS CHOPPED SALAD KIT WITH HONEY DIJON DRESSING, SUNFLOWER KALE",
+    "brand": "Target Stores",
+    "canonical": "broccoli"
+  },
+  {
+    "productId": 46065,
+    "product": "STEAM-IN-BAG BROCCOLI, CAULIFLOWER & CARROTS",
+    "brand": "Target Stores",
+    "canonical": "cauliflower"
+  },
+  {
+    "productId": 46068,
+    "product": "STEAM-IN-BAG BROCCOLI FLORETS",
+    "brand": "Target Stores",
+    "canonical": "broccoli"
+  },
+  {
+    "productId": 1810,
+    "product": "PROBIOTIC MADE WITH YOGURT-FLAVORED CRANBERRIES WITH PROBIOTIC, SWEETENED DRIED CRANBERRIES, ALMONDS, RAISINS, GOLDEN RAISINS AND WALNUTS TRAIL MIX, PROBIOTIC",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "almonds"
+  },
+  {
+    "productId": 51583,
+    "product": "Yoplait Light Strawberries 'n Bananas Fat Free Yogurt",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "strawberries"
+  },
+  {
+    "productId": 49666,
+    "product": "For Food Lion Fine Ground Beef 73/27  Net Weight",
+    "brand": "Tyson Foods Inc.",
+    "canonical": "beef"
+  },
+  {
+    "productId": 49683,
+    "product": "ibp Trusted Excellence brand Fine Ground Beef 80/20",
+    "brand": "Tyson Foods Inc.",
+    "canonical": "beef"
+  },
+  {
+    "productId": 25915,
+    "product": "ROCKY ROAD ROASTED SALTED PEANUTS, RAISINS, YOGURT COVERED PEANUTS, MILK CHOCOLATE COVERED PEANUTS, MILK CHOCOLATE COVERED SALTED CARAMELS TRAIL MIX, ROCKY ROAD",
+    "brand": "Safeway, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 72680,
+    "product": "WHITE SANDWICH BREAD, WHITE",
+    "brand": "Target Stores",
+    "canonical": "bread"
+  },
+  {
+    "productId": 13289,
+    "product": "CHOPPED WALNUTS",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "walnuts"
+  },
+  {
+    "productId": 46482,
+    "product": "CARROT CAKE TRAIL MIX WITH YOGURT-FLAVORED COATED RAISINS, GLAZED WALNUTS, CARROT CAKE-FLAVORED COOKIES, COCONUT COATED PINEAPPLE AND COATED PRETZEL STICKS, CARROT CAKE",
+    "brand": "Target Stores",
+    "canonical": "walnuts"
+  },
+  {
+    "productId": 62641,
+    "product": "CITRUS BUTTER LETTUCE BLISS & RADICCHIO BLEND, SEASONED ROASTED WHITE-MEAT CHICKEN, FETA CHEESE, QUINOA, DRIED CRANBERRIES & CANDIED WALNUTS WITH HONEY CITRUS VINAIGRETTE SALAD, CITRUS BUTTER LETTUCE BLISS",
+    "brand": "Target Stores",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 71334,
+    "product": "CALIFORNIA STYLE SALAD WITH CHICKEN ROMAINE LETTUCE, CHICKEN BREAST, GOAT CHEESE, CRANBERRIES, WALNUTS, AND SERVED WITH POPPYSEED DRESSING, CALIFORNIA STYLE WITH CHICKEN",
+    "brand": "Target Stores",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 13290,
+    "product": "CHOPPED WALNUTS",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "walnuts"
+  },
+  {
+    "productId": 72764,
+    "product": "BANANA WALNUT BANANA CHIPS, YOGURT-COVERED RAISINS & COOKIES, SEASONED WALNUTS & OAT CEREAL BREAKFAST TRAIL MIX, BANANA WALNUT",
+    "brand": "Target Stores",
+    "canonical": "walnuts"
+  },
+  {
+    "productId": 51585,
+    "product": "Yoplait Light Banana Cream Pie Fat Free Yogurt",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "yogurt"
+  },
+  {
+    "productId": 45629,
+    "product": "FOUR-CHEESE WITH A RICH TOMATO SAUCE AND A BLEND OF MOZZARELLA, ASIAGO, ROMANO & PARMESAN CHEESES GLUTEN FREE CAULIFLOWER CRUST PIZZA, FOUR-CHEESE",
+    "brand": "Target Stores",
+    "canonical": "cauliflower"
+  },
+  {
+    "productId": 45630,
+    "product": "VEGETABLE WITH A RICH TOMATO SAUCE, PEPPERS, ONIONS & MUSHROOMS AND REAL MOZZARELLA CHEESE GLUTEN FREE CAULIFLOWER CRUST PIZZA, VEGETABLE",
+    "brand": "Target Stores",
+    "canonical": "cauliflower"
+  },
+  {
+    "productId": 11018,
+    "product": "ASIAN STYLE GREEN CABBAGE, GREEN LEAF LETTUCE, KALE, RED CABBAGE, CARROTS, GREEN ONIONS, SLICED ALMONDS, WONTON STRIPS AND SESAME GINGER DRESSING CHOPPED SALAD KIT, ASIAN STYLE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "lettuce"
+  },
+  {
+    "productId": 90073,
+    "product": "ROSEMARY OLIVE OIL LOAF, ROSEMARY OLIVE OIL",
+    "brand": "Target Stores",
+    "canonical": "oil"
+  },
+  {
+    "productId": 31283,
+    "product": "CUMIN & CHIPOTLE SEASONED PINTO BEANS WITH POBLANO PEPPER, GREEN CHILI & CILANTRO, CUMIN & CHIPOTLE",
+    "brand": "Target Stores",
+    "canonical": "cilantro"
+  },
+  {
+    "productId": 75131,
+    "product": "SOUTHWEST TOMATOES, CORN, BLACKEYE PEAS, GREEN BELL PEPPERS, RED ONION, CILANTRO, AND BLACK BEANS IN A CUMIN CITRUS VINAIGRETTE DRESSING SALSA, SOUTHWEST",
+    "brand": "Meijer, Inc.",
+    "canonical": "cilantro"
+  },
+  {
+    "productId": 78890,
+    "product": "FAJITA SMALL FLOUR TORTILLA, FAJITA",
+    "brand": "Meijer, Inc.",
+    "canonical": "flour"
+  },
+  {
+    "productId": 11060,
+    "product": "CHOCOLATE TWIST & SHOUT SANDWICH COOKIES, CHOCOLATE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 11369,
+    "product": "MEDITERRANEAN STYLE GARLIC & HERB ORGANIC GRINDER, MEDITERRANEAN STYLE GARLIC & HERB",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "garlic"
+  },
+  {
+    "productId": 11460,
+    "product": "TOMATO CONDENSED SOUP, TOMATO",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "tomato"
+  },
+  {
+    "productId": 11519,
+    "product": "CHOCOLATE CHIP ICE CREAM WITH RICH CHOCOLATE FLAVORED CHIPS, CHOCOLATE CHIP",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 74119,
+    "product": "HAWAIIAN STYLE CHOPPED ROMAINE, GRILLED CHICKEN, PINEAPPLE, CHEDDAR CHEESE, SUGAR SNAP PEAS, RED ONION AND RED BELL PEPPER SESAME GINGER DRESSING, HAWAIIAN STYLE",
+    "brand": "Meijer, Inc.",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 1760,
+    "product": "PARMA MELT CANADIAN-STYLE BACON WITH EGG, BRUSCHETTA JACK CHEESE AND PARMESAN SPREAD ON ROSEMARY FOCACCIA BUN BREAKFAST SANDWICHES, PARMA MELT",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 45429,
+    "product": "ROSEMARY CHICKEN SALAD, ROSEMARY CHICKEN",
+    "brand": "Target Stores",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 46587,
+    "product": "ROSEMARY OLIVE OIL TAKE & BAKE FOCACCIA, ROSEMARY OLIVE OIL",
+    "brand": "Target Stores",
+    "canonical": "oil"
+  },
+  {
+    "productId": 40860,
+    "product": "CINNAMON CHURRO ICE CREAM WITH A HONEY BUN SWIRL AND CHURRO PIECES, CINNAMON CHURRO",
+    "brand": "Safeway, Inc.",
+    "canonical": "cream"
+  },
+  {
+    "productId": 73394,
+    "product": "GRANOLA BREAKFAST CINNAMON YOGURT FLAVORED RAISINS, GRANOLA COOKIE PIECES, GRAHAM PIECES WITH PEANUT BUTTER COATING, CRANBERRIES, BANANA CHIPS AND ALMONDS SNACK MIX, GRANOLA BREAKFAST",
+    "brand": "Meijer, Inc.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 75693,
+    "product": "APPLE PIE SWEET CARAMEL BITS, WALNUTS, CRANBERRIES, GRAHAM PIECES IN APPLE CINNAMON YOGURT FLAVORED COATING, GRAHAM PIECES AND RAISINS IN YOGURT FLAVORED COATING SNACK MIX, APPLE PIE",
+    "brand": "Meijer, Inc.",
+    "canonical": "walnuts"
+  },
+  {
+    "productId": 91721,
+    "product": "MAPLE CINNAMON RAISIN TRAIL MIX WITH MAPLE GLAZED ALMONDS & PEANUTS, CINNAMON-FLAVORED PRETZEL BALLS, CINNAMON COOKIES, RAISINS & CEREAL SQUARES, MAPLE CINNAMON RAISIN",
+    "brand": "Target Stores",
+    "canonical": "almonds"
+  },
+  {
+    "productId": 92425,
+    "product": "ROASTED VEGETABLE THIN CRUST PIZZA WITH A VEGETABLE BLEND OF MUSHROOMS, TOMATOES, YELLOW PEPPERS, RED PEPPERS, ONIONS & GREEN PEPPERS; SEASONED WITH OREGANO, GARLIC & BASIL; TOPPED WITH MOZZARELLA, PARMESAN, ROMANO, AND ASIAGO CHEESES, ROASTED VEGETABLE",
+    "brand": "Target Stores",
+    "canonical": "garlic"
+  },
+  {
+    "productId": 11926,
+    "product": "OLIVE OIL & BALSAMIC VINAIGRETTE, OLIVE OIL & BALSAMIC",
+    "brand": "Safeway, Inc.",
+    "canonical": "oil"
+  },
+  {
+    "productId": 11834,
+    "product": "GARLIC & HERB GOAT SOFT CHEESE, GARLIC & HERB GOAT",
+    "brand": "Safeway, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 11852,
+    "product": "ORIGINAL PORK RINDS CHICHARRONES, ORIGINAL",
+    "brand": "Safeway, Inc.",
+    "canonical": "pork"
+  },
+  {
+    "productId": 11865,
+    "product": "MOZZARELLA LOW-MOISTURE PART-SKIM STRING CHEESE, MOZZARELLA",
+    "brand": "Safeway, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 45071,
+    "product": "ASSORTED CAKE DONUTS, PLAIN, CHOCOLATE, POWDERED SUGAR, CINNAMON",
+    "brand": "Target Stores",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 11877,
+    "product": "UNSAUCED HARDWOOD SMOKED PULLED CHICKEN, UNSAUCED",
+    "brand": "Safeway, Inc.",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 1536,
+    "product": "CHICKEN BREAST STRIPS",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 1538,
+    "product": "CHICKEN BREASTS",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 11910,
+    "product": "CHICKEN BROTH, CHICKEN",
+    "brand": "Safeway, Inc.",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 11911,
+    "product": "RICH CHOCOLATE HOT COCOA MIX, RICH CHOCOLATE",
+    "brand": "Safeway, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 11931,
+    "product": "FLOUR NO STICK COOKING SPRAY",
+    "brand": "Safeway, Inc.",
+    "canonical": "flour"
+  },
+  {
+    "productId": 1566,
+    "product": "CHOCOLATE FROSTING, CHOCOLATE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 11941,
+    "product": "GARLIC & HERB SEASONING, GARLIC & HERB",
+    "brand": "Safeway, Inc.",
+    "canonical": "garlic"
+  },
+  {
+    "productId": 6595,
+    "product": "HONEY MUSTARD ORGANIC DRESSING, HONEY MUSTARD",
+    "brand": "Target Stores",
+    "canonical": "mustard"
+  },
+  {
+    "productId": 10765,
+    "product": "WHITE CHOCOLATE FLAVORED EUROPEAN CAFE STYLE HOT COCOA, WHITE CHOCOLATE",
+    "brand": "Safeway, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 116,
+    "product": "JALAPENO PIMENTO CHEESE DIP, JALAPENO PIMENTO",
+    "brand": "Safeway, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 1655,
+    "product": "FLOUR CHICKEN TAQUITOS TORTILLAS STUFFED WITH ALL WHITE CHICKEN MEAT & MONTEREY JACK CHEESE, FLOUR CHICKEN",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 731,
+    "product": "SPECIALTY, AVOCADO OIL",
+    "brand": "Wakefern Food Corporation",
+    "canonical": "oil"
+  },
+  {
+    "productId": 13170,
+    "product": "BLACK BEANS",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "beans"
+  },
+  {
+    "productId": 13164,
+    "product": "PEPPER JACK MONTEREY JACK CHEESE WITH JALAPENO PEPPERS, PEPPER JACK",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "pepper"
+  },
+  {
+    "productId": 13189,
+    "product": "MONTEREY JACK CHEESE, MONTEREY JACK",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 13191,
+    "product": "AMERICAN REDUCED FAT PASTEURIZED PROCESS CHEESE SINGLES, AMERICAN",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 13247,
+    "product": "BALSAMIC VINEGAR OF MODENA, BALSAMIC",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "vinegar"
+  },
+  {
+    "productId": 13248,
+    "product": "ORGANIC UNREFINED EXPELLER PRESSED VIRGIN COCONUT OIL",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "oil"
+  },
+  {
+    "productId": 13249,
+    "product": "ORGANIC REFINED EXPELLER PRESSED COCONUT OIL",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "oil"
+  },
+  {
+    "productId": 13281,
+    "product": "DRY ROASTED SLICED ALMONDS SALAD TOPPER, DRY ROASTED",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "almonds"
+  },
+  {
+    "productId": 13325,
+    "product": "WHITE AMERICAN PASTEURIZED PREPARED CHEESE PRODUCT SINGLES, WHITE AMERICAN",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 13345,
+    "product": "POWDERED PEANUT BUTTER",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 13339,
+    "product": "DIJON ORGANIC MUSTARD, DIJON",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "mustard"
+  },
+  {
+    "productId": 13367,
+    "product": "BROCCOLI STIR-FRY",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "broccoli"
+  },
+  {
+    "productId": 13364,
+    "product": "FINE GREEN BEANS",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "beans"
+  },
+  {
+    "productId": 13366,
+    "product": "SUGAR SNAP PEAS, BROCCOLI, GREEN BEANS, YELLOW SQUASH, RED PEPPERS, CARROTS, YELLOW PEPPERS, WATER CHESTNUTS STIR-FRY, SUGAR SNAP PEA",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "broccoli"
+  },
+  {
+    "productId": 13374,
+    "product": "ROTINI PASTA & CHEDDAR BROCCOLI PASTA SIDE SAUCE MIX, ROTINI PASTA & CHEDDAR BROCCOLI",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "broccoli"
+  },
+  {
+    "productId": 13391,
+    "product": "PEPPER JACK MONTEREY JACK CHEESE WITH JALAPENO PEPPERS, PEPPER JACK",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "pepper"
+  },
+  {
+    "productId": 13388,
+    "product": "MINCED GARLIC IN WATER",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "garlic"
+  },
+  {
+    "productId": 13393,
+    "product": "SWISS CHEESE, SWISS",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 13400,
+    "product": "MOZZARELLA SHREDDED REDUCED FAT LOW-MOISTURE PART-SKIM CHEESE, MOZZARELLA",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 13407,
+    "product": "COLBY JACK REDUCED FAT COLBY & MONTEREY JACK SLICED CHEESE, COLBY JACK",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 13423,
+    "product": "NATURAL SLICED STRAWBERRIES",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "strawberries"
+  },
+  {
+    "productId": 13420,
+    "product": "MOZZARELLA AND CHEDDAR STYLE SHRED BLEND CHEESE, MOZZARELLA AND CHEDDAR STYLE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 13446,
+    "product": "ORIGINAL PREMIUM WHITE CHICKEN, ORIGINAL",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 13461,
+    "product": "PREMIUM CHUNK CHICKEN BREAST IN WATER, CHUNK IN WATER",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 13478,
+    "product": "TOASTED & SLICED ALMONDS",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "almonds"
+  },
+  {
+    "productId": 13515,
+    "product": "BLACK BEANS, BLACK",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "beans"
+  },
+  {
+    "productId": 13491,
+    "product": "MILD CHEDDAR SHREDDED CHEESE, MILD CHEDDAR",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 13493,
+    "product": "PARMESAN GRATED CHEESE, PARMESAN",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 13487,
+    "product": "MIXED VEGETABLES CARROTS, SWEET COM, GREEN BEANS, PEAS, MIXED VEGETABLES",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "beans"
+  },
+  {
+    "productId": 13501,
+    "product": "LIGHTLY SALTED ROASTED ALMONDS, LIGHTLY SALTED ROASTED",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "almonds"
+  },
+  {
+    "productId": 13530,
+    "product": "SUPERFINE BLANCHED ALMOND FLOUR",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "flour"
+  },
+  {
+    "productId": 13524,
+    "product": "SALT & PEPPER NO SHELL PISTACHIOS, SALT & PEPPER",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "pepper"
+  },
+  {
+    "productId": 13556,
+    "product": "MILD CHEDDAR FINELY SHREDDED CHEESE, MILD CHEDDAR",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 13557,
+    "product": "MILD CHEDDAR LONGHORN STYLE CHEESE, MILD CHEDDAR",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 13834,
+    "product": "FAT FREE REFRIED BEANS, FAT FREE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "beans"
+  },
+  {
+    "productId": 13905,
+    "product": "CARAMEL CHOCOLATE NUT ROLL SNACK BARS, CARAMEL CHOCOLATE NUT ROLL",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1322,
+    "product": "VANILLA LOVE ICE CREAM SANDWICH, VANILLA",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cream"
+  },
+  {
+    "productId": 6572,
+    "product": "GOURMET SWEETHEART FLAVORED CARAMEL CORN AND PINK SUGAR WAFER COOKIES WITH WHITE CHOCOLATE FLAVORED DRIZZLE POPCORN, GOURMET SWEETHEART",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1356,
+    "product": "CHOCOLATE DIPPED ICE CREAM BARS, CHOCOLATE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 124,
+    "product": "SANTA FE STYLE SALAD ROMAINE AND ICEBERG LETTUCES, WHITE MEAT CHICKEN, ROASTED CORN, FOUR-CHEESE BLEND AND TORTILLA CHIPS WITH SALSA RANCH DRESSING, SANTA FE STYLE",
+    "brand": "Safeway, Inc.",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 1420,
+    "product": "CHUNK LIGHT TUNA IN VEGETABLE OIL, CHUNK LIGHT IN VEGETABLE OIL",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "oil"
+  },
+  {
+    "productId": 1464,
+    "product": "TOMATO KETCHUP, TOMATO",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "tomato"
+  },
+  {
+    "productId": 1516,
+    "product": "BROWN SUGAR HICKORY BAKED BEANS, BROWN SUGAR HICKORY",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "beans"
+  },
+  {
+    "productId": 1534,
+    "product": "BEEF UNCURED FRANKS, BEEF",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "beef"
+  },
+  {
+    "productId": 1591,
+    "product": "HARISSA SALSA WITH RED PEPPER, TOMATO, ONION, HERBS & SPICES, HARISSA WITH RED PEPPER, TOMATO, ONION, HERBS & SPICES",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "pepper"
+  },
+  {
+    "productId": 1596,
+    "product": "ORIGINAL THICK CUT STEAK STRIPS BEEF SNACKS, ORIGINAL",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "beef"
+  },
+  {
+    "productId": 1594,
+    "product": "CARAMEL RICE CAKES, CARAMEL",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "rice"
+  },
+  {
+    "productId": 1619,
+    "product": "BREAD & BUTTER CHIPS PICKLES, BREAD & BUTTER",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "butter"
+  },
+  {
+    "productId": 74738,
+    "product": "PEANUT BUTTER BROWNIE FILLED PRETZELS, PEANUT BUTTER BROWNIE",
+    "brand": "Meijer, Inc.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 14701,
+    "product": "MILKLICIOUS MILK CHOCOLATE WITH CREAMY CHOCOLATE MILK FILLING, MILKLICIOUS MILK CHOCOLATE",
+    "brand": "The Hershey Company",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1761,
+    "product": "BEEF STREET KOREAN INSPIRED TACO KIT, BEEF STREET",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "beef"
+  },
+  {
+    "productId": 1573,
+    "product": "HAM & CHEESE FILLED SANDWICHES, HAM & CHEESE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 1586,
+    "product": "COOKIES & CREAM LIGHT ICE CREAM, COOKIES & CREAM",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cream"
+  },
+  {
+    "productId": 2076,
+    "product": "PAD THAI NOODLES, BROCCOLI AND TOFU SMOTHERED WITH A TAMARIND PEANUT SAUCE, PAD THAI",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "broccoli"
+  },
+  {
+    "productId": 2148,
+    "product": "COOKIES & CREAM FLAVOR PROTEIN BARS, COOKIES & CREAM",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cream"
+  },
+  {
+    "productId": 2195,
+    "product": "LIGHT TASTING OLIVE OIL, LIGHT",
+    "brand": "Meijer, Inc.",
+    "canonical": "oil"
+  },
+  {
+    "productId": 15470,
+    "product": "SEMI-SWEET CHOCOLATE CHIPS, SEMI-SWEET CHOCOLATE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 15478,
+    "product": "DELUXE STIR-FRY BROCCOLI, ITALIAN GREEN BEANS, CARROTS, BABY CORN COBS, WATER CHESTNUTS, RED BELL PEPPERS, DELUXE STIR-FRY",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "broccoli"
+  },
+  {
+    "productId": 15483,
+    "product": "LIGHT RED KIDNEY BEANS, LIGHT RED KIDNEY",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "beans"
+  },
+  {
+    "productId": 15468,
+    "product": "ALL NATURAL CHICKEN WINGS",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 15479,
+    "product": "SLICED ALMONDS",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "almonds"
+  },
+  {
+    "productId": 9367,
+    "product": "CHEESE DANISH, CHEESE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 6650,
+    "product": "SALAD WITH CARNITAS COTIJA CHEESE & ROASTED CORN, BBQ",
+    "brand": "Safeway, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 15629,
+    "product": "CILANTRO LIME RICE, CILANTRO LIME",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cilantro"
+  },
+  {
+    "productId": 15640,
+    "product": "DRY ROASTED SLICED ALMONDS, DRY ROASTED",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "almonds"
+  },
+  {
+    "productId": 6723,
+    "product": "CLASSIC CHICKEN HOMESTYLE GRAVY, CLASSIC CHICKEN",
+    "brand": "Kraft Heinz Foods Company",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 9417,
+    "product": "CHOCOLATE PIE, CHOCOLATE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1669,
+    "product": "VEGETABLE FRESH-MADE LASAGNA PASTA LAYERED WITH CREAMY SAUCE, SPINACH, CARROTS, & CORN TOPPED WITH MOZZARELLA CHEESE LASAGNA, VEGETABLE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "spinach"
+  },
+  {
+    "productId": 8033,
+    "product": "MEDITERRANEAN STYLE CHICKEN & TORTELLINI GRILLED CHICKEN STRIPS WITH CHEESE TORTELLINI, RED PEPPERS, SPINACH, SUNDRIED TOMATOES, AND KALAMATA OLIVES IN AN HERB AND FETA SAUCE STEAM MEAL, MEDITERRANEAN STYLE CHICKEN & TORTELLINI",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 1659,
+    "product": "CHEESE & PEPPERONI MINI PIZZA BAGELS, CHEESE & PEPPERONI",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 1658,
+    "product": "MINI PIZZA BAGELS TOPPED WITH TOMATO SAUCE, MOZZARELLA CHEESE AND PEPPERONI, MOZZARELLA CHEESE & PEPPERONI",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 1331,
+    "product": "REFINED AVOCADO OIL SPRAY",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "oil"
+  },
+  {
+    "productId": 45419,
+    "product": "GARLIC & OLIVE OIL 90 SECOND QUINOA, GARLIC & OLIVE OIL",
+    "brand": "Target Stores",
+    "canonical": "garlic"
+  },
+  {
+    "productId": 68931,
+    "product": "CALIFORNIA EXTRA VIRGIN OLIVE OIL, CALIFORNIA",
+    "brand": "Safeway, Inc.",
+    "canonical": "oil"
+  },
+  {
+    "productId": 79918,
+    "product": "Tenderbroil Fully Cooked Charbroiled Portion Beef Patties",
+    "brand": "Tyson Foods Inc.",
+    "canonical": "beef"
+  },
+  {
+    "productId": 13245,
+    "product": "ORGANIC EXTRA VIRGIN OLIVE OIL",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "oil"
+  },
+  {
+    "productId": 34088,
+    "product": "CLASSIC OLIVE OIL",
+    "brand": "Wakefern Food Corporation",
+    "canonical": "oil"
+  },
+  {
+    "productId": 75478,
+    "product": "ORGANIC PURE CANOLA OIL",
+    "brand": "Meijer, Inc.",
+    "canonical": "oil"
+  },
+  {
+    "productId": 79873,
+    "product": "FC Flamebroiled Beef Patty W/Onion & American Cheese On WG Bun",
+    "brand": "Tyson Foods Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 80149,
+    "product": "Fully Cooked Flamebroiled Beef Patties, Caramel Color Added",
+    "brand": "Tyson Foods Inc.",
+    "canonical": "beef"
+  },
+  {
+    "productId": 79490,
+    "product": "Beef Charbroil W/Cheese & Jalapenos Sandwich",
+    "brand": "Tyson Foods Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 16642,
+    "product": "Annie's Organic Chocolate Bunny Grahams Baked Graham Snacks",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 80372,
+    "product": "AdvancePierre Fully Cooked Down Home Charbroil Beef Salisbury Steak, 4 oz",
+    "brand": "Tyson Foods Inc.",
+    "canonical": "beef"
+  },
+  {
+    "productId": 16676,
+    "product": "Annie's Gluten Free Double Chocolate Chip Granola Bar",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 16674,
+    "product": "Annie's Organic Chewy Peanut Butter Chocolate Chip Granola Bar",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 49269,
+    "product": "AdvancePierre Fully Cooked, Flamebroiled, Rib Shaped Pork Patty",
+    "brand": "Tyson Foods Inc.",
+    "canonical": "pork"
+  },
+  {
+    "productId": 49506,
+    "product": "AdvancePierre Fully Cooked Flamebroiled Down Home Beef Salisbury Steak",
+    "brand": "Tyson Foods Inc.",
+    "canonical": "beef"
+  },
+  {
+    "productId": 16730,
+    "product": "Honey Nut Cheerios Cereal Bowlpak",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "honey"
+  },
+  {
+    "productId": 16732,
+    "product": "Gold Medal Organic All-Purpose Flour",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "flour"
+  },
+  {
+    "productId": 16725,
+    "product": "Gold Medal Whole Wheat Flour",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "flour"
+  },
+  {
+    "productId": 80364,
+    "product": "AdvancePierre Fully Cooked Down Home Charbroil Beef Salisbury Steak, 3.2 oz",
+    "brand": "Tyson Foods Inc.",
+    "canonical": "beef"
+  },
+  {
+    "productId": 16752,
+    "product": "Godiva Flourless Chocolate Torte Baking Mix with Dark Chocolate Ganache",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 16762,
+    "product": "Honey Nut Chex Cereal 2 Pack",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "honey"
+  },
+  {
+    "productId": 16991,
+    "product": "Cascadian Farm Organic Cut Green Beans",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "beans"
+  },
+  {
+    "productId": 79870,
+    "product": "FC Flamebroiled Beef Patty W/Onion & American Cheese Mini Twin Sandwich On A WG Bun",
+    "brand": "Tyson Foods Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 80412,
+    "product": "Minuteman Charbroil Fully Cooked Chicken Meatballs, 0.5 oz.",
+    "brand": "Tyson Foods Inc.",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 79464,
+    "product": "Giant Beef Charbroil W/Cheese",
+    "brand": "Tyson Foods Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 16827,
+    "product": "Betty Crocker Milk Chocolate Brownie Mix Family Size",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 49293,
+    "product": "Beef Charbroil W/Cheese & Jalapenos Sandwich",
+    "brand": "Tyson Foods Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 16870,
+    "product": "Betty Crocker Hershey's Triple Chocolate Brownie Mix 4 Pack",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1261,
+    "product": "HAMESTYLE VANILLA ICE CREAM, HOMESTYLE VANILLA",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cream"
+  },
+  {
+    "productId": 1324,
+    "product": "GINGERBREAD HOLIDAY VANILLA ICE CREAM SANDWICH, GINGERBREAD",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cream"
+  },
+  {
+    "productId": 16875,
+    "product": "Nature Valley Trail Mix Dark Chocolate & Nut Chewy Granola Bar",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 16881,
+    "product": "Nature Valley Crunchy Oats 'n Dark Chocolate Granola Bar",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 91130,
+    "product": "BUTTERNUT SQUASH RISOTTO MADE RICE, WITH YELLOW ONION, PARMESAN CHEESE & PARSLEY, BUTTERNUT SQUASH",
+    "brand": "Target Stores",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 16894,
+    "product": "Bugles Nacho Cheese Crispy Corn Snacks",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 16892,
+    "product": "Gold Medal All-Purpose Flour",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "flour"
+  },
+  {
+    "productId": 1404,
+    "product": "OATS & PEANUT BUTTER FIBER BARS, OATS & PEANUT BUTTER",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 1439,
+    "product": "CHOCOLATE ICE CREAM, CHOCOLATE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1442,
+    "product": "CREAMY NO STIR NATURAL PEANUT BUTTER SPREAD, CREAMY",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 1487,
+    "product": "TOMATO KETCHUP, TOMATO",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "tomato"
+  },
+  {
+    "productId": 16931,
+    "product": "Pillsbury Chocolate Chip Cookie Dough",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1527,
+    "product": "RICE CRISPS TOASTED RICE CEREAL, RICE CRISPS",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "rice"
+  },
+  {
+    "productId": 1691,
+    "product": "SWEET CREAM DAIRY COFFEE CREAMER, SWEET CREAM",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cream"
+  },
+  {
+    "productId": 1706,
+    "product": "BUTTER & HERB RICE PASTA & SAUCE MIX, BUTTER & HERB",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "butter"
+  },
+  {
+    "productId": 1734,
+    "product": "MILK CHOCOLATE MELTING WAFERS, MILK CHOCOLATE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1757,
+    "product": "HOLIDAY FROZEN HOT CHOCOLATE FLAVOR CHOCOLATE CARAMEL ICE CREAM WITH A MARSHMALLOW FLAVORED SWIRL AND CHOCOLATE FLAVORED CHUNKS ICE CREAM, HOLIDAY FROZEN HOT CHOCOLATE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1778,
+    "product": "GINGERBREAD HOLIDAY QUICK BREAD & MUFFIN MIX, GINGERBREAD",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "bread"
+  },
+  {
+    "productId": 16948,
+    "product": "Pillsbury Refrigerated Chocolate Chip Cookie Dough Roll Value Size",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1782,
+    "product": "CHOCOLATE PEPPERMINT SANDWICH HOLIDAY COOKIE KIT, CHOCOLATE PEPPERMINT SANDWICH",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 13518,
+    "product": "RED SMALL BEANS, RED",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "beans"
+  },
+  {
+    "productId": 1814,
+    "product": "PREMIUM CHICKEN SALAD IN A SAVORY DRESSING, CHICKEN",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 16972,
+    "product": "Cascadian Farm Organic Riced Cauliflower Blend with Stir-Fry Vegetables",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "cauliflower"
+  },
+  {
+    "productId": 1850,
+    "product": "VANILLA FLAVORED REDUCED FAT ICE CREAM WITH CHOCOLATE FLAVORED COATING BARS, VANILLA",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1882,
+    "product": "CHEESE BALLS, CHEESE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 17008,
+    "product": "Larabar Chocolate Chip Cookie Dough Fruit & Nut Bar",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1874,
+    "product": "CREAMY PEANUT BUTTER, CREAMY",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 1888,
+    "product": "CRUNCHY PEANUT BUTTER ENERGY BARS, CRUNCHY PEANUT BUTTER",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 17015,
+    "product": "Cascadian Farm Premium Organic Strawberries",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "strawberries"
+  },
+  {
+    "productId": 17017,
+    "product": "Cascadian Farm Organic Oats & Honey Granola Cereal",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "honey"
+  },
+  {
+    "productId": 75474,
+    "product": "MINT MUDSLIDE MINT PREMIUM ICE CREAM WITH CHOCOLATE FLAVORED COOKIE CRUMB SWIRL, MINT MUDSLIDE",
+    "brand": "Meijer, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 1902,
+    "product": "VANILLA ICE CREAM SANDWICHES, VANILLA",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cream"
+  },
+  {
+    "productId": 1912,
+    "product": "CHOCOLATE IRISH CREAM FLAVORED ICE CREAM WITH CHOCOLATE FLAVORED SWIRL, CHOCOLATE IRISH CREAM",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 2083,
+    "product": "PEANUT BUTTER PROTEIN GRANOLA, PEANUT BUTTER",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 2071,
+    "product": "MAPLE FLAVORED CHICKEN SAUSAGE LINKS, MAPLE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 76411,
+    "product": "PEANUT BUTTER FUDGE CRISP SNACK BARS, PEANUT BUTTER FUDGE CRISP",
+    "brand": "Meijer, Inc.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 25939,
+    "product": "GREEN BEANS",
+    "brand": "Safeway, Inc.",
+    "canonical": "beans"
+  },
+  {
+    "productId": 3481,
+    "product": "MILK CHOCOLATE PEANUT BUTTER CUPS, MILK CHOCOLATE",
+    "brand": "Safeway, Inc.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 3668,
+    "product": "MILK CHOCOLATE & PEANUT BUTTER CUPS, MILK CHOCOLATE & PEANUT BUTTER",
+    "brand": "The Hershey Company",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 3672,
+    "product": "MILK CHOCOLATE MILKLICIOUS WITH CREAMY CHOCOLATE MILK FILLING, MILK CHOCOLATE WITH CREAMY CHOCOLATE MILK FILLING",
+    "brand": "The Hershey Company",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 3669,
+    "product": "MILK CHOCOLATE & PEANUT BUTTER CRUNCHY CUPS, MILK CHOCOLATE & PEANUT BUTTER",
+    "brand": "The Hershey Company",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 3673,
+    "product": "CREAMY MILK CHOCOLATE & PEANUT BUTTER CUPS, CREAMY MILK CHOCOLATE & PEANUT BUTTER",
+    "brand": "The Hershey Company",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 4888,
+    "product": "MANGO ALMOND-BASED YOGURT ALTERNATIVE, MANGO",
+    "brand": "Meijer, Inc.",
+    "canonical": "yogurt"
+  },
+  {
+    "productId": 66855,
+    "product": "PRETZELS, CARAMEL, PEANUT BUTTER, PEANUTS, AND CHOCOLATE BAR, PRETZELS, CARAMEL, PEANUT BUTTER, PEANUTS, AND CHOCOLATE",
+    "brand": "The Hershey Company",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 8687,
+    "product": "SMOKED GOUDA ARTISAN CRAFTED ENRICHED MACARONI PRODUCT WITH CHEESE SAUCE, SMOKED GOUDA",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 35758,
+    "product": "Pillsbury Bacon Toaster Scrambles Pastries 8 Count",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "bacon"
+  },
+  {
+    "productId": 13839,
+    "product": "COLBY AND MONTEREY JACK FINELY SHREDDED CHEESE, COLBY AND MONTEREY JACK",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 14698,
+    "product": "MILK CHOCOLATE & PEANUT BUTTER UNWRAPPED MINIS, MILK CHOCOLATE & PEANUT BUTTER",
+    "brand": "The Hershey Company",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 15469,
+    "product": "MILD CHEDDAR CUBED CHEESE, MILD CHEDDAR",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 16779,
+    "product": "Nature Valley Peanut Butter Crispy Creamy Wafer Bar",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 16897,
+    "product": "Betty Crocker Delights Peanut Butter Cookie Brownie Bar Mix",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 16979,
+    "product": "Cascadian Farm Organic Strawberries",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "strawberries"
+  },
+  {
+    "productId": 17429,
+    "product": "Progresso Cannellini White Kidney Beans",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "beans"
+  },
+  {
+    "productId": 17430,
+    "product": "Progresso Cannellini White Kidney Beans",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "beans"
+  },
+  {
+    "productId": 17004,
+    "product": "Larabar Peanut Butter and Jelly Fruit and Nut Bar",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 18170,
+    "product": "Muir Glen Organic Tomato Sauce",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "tomato"
+  },
+  {
+    "productId": 64034,
+    "product": "DARK CHOCOLATE PEANUT BUTTER A BLEND OF BUTTER TOFFEE PEANUTS, ROASTED & SALTED PEANUTS, CHOCOLATE CHUNKS AND PEANUT BUTTER CANDIES MIX, DARK CHOCOLATE PEANUT BUTTER",
+    "brand": "Meijer, Inc.",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 21214,
+    "product": "MILK CHOCOLATE EASTER CANDY, CHOCOLATE",
+    "brand": "The Hershey Company",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 21233,
+    "product": "BIG CUP STUFFED WITH PRETZELS MILK CHOCOLATE & PEANUT BUTTER, MILK CHOCOLATE; PEANUT BUTTER",
+    "brand": "The Hershey Company",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 21260,
+    "product": "MILK CHOCOLATE PEANUT BUTTER CREME BUNNY EASTER CANDY, MILK CHOCOLATE; PEANUT BUTTER",
+    "brand": "The Hershey Company",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 21266,
+    "product": "ORGANIC MILK CHOCOLATE & PEANUT BUTTER CUPS, MILK CHOCOLATE; PEANUT BUTTER",
+    "brand": "The Hershey Company",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 22609,
+    "product": "ORIGINAL CHEESE DOGS",
+    "brand": "Kraft Heinz Foods Company",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 25809,
+    "product": "REDUCED FAT SOUR CREAM",
+    "brand": "Kraft Heinz Foods Company",
+    "canonical": "cream"
+  },
+  {
+    "productId": 25833,
+    "product": "IRISH CREAM COFFEE CREAMER, IRISH CREAM",
+    "brand": "Safeway, Inc.",
+    "canonical": "cream"
+  },
+  {
+    "productId": 25840,
+    "product": "BELGIAN STYLE CHOCOLATE TOFFEE COFFEE CREAMER, BELGIAN STYLE CHOCOLATE TOFFEE",
+    "brand": "Safeway, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 26452,
+    "product": "SOLID MILK CHOCOLATE CANDY, SOLID MILK CHOCOLATE",
+    "brand": "The Hershey Company",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 26552,
+    "product": "MILK CHOCOLATE BARS, MILK CHOCOLATE",
+    "brand": "The Hershey Company",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 17494,
+    "product": "Totino's Cheese Frozen Pizza Rolls 50 Count",
+    "brand": "GENERAL MILLS SALES INC.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 26655,
+    "product": "HOT COCOA MILK CHOCOLATE CANDY WITH MARSHMALLOW FLAVORED CREME, HOT COCOA MILK CHOCOLATE WITH MARSHMALLOW",
+    "brand": "The Hershey Company",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 30053,
+    "product": "MILK CHOCOLATE FLAVORED HOT COCOA MIX, MILK CHOCOLATE",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 4434,
+    "product": "CHOCOLATE & VANILLA ICE CREAM CUPS, CHOCOLATE & VANILLA",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "chocolate"
+  }
+]

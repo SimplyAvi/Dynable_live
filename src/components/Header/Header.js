@@ -80,6 +80,9 @@ const Header = () => {
                 </div>
                 {isAuthenticated ? (
                     <>
+                        <button className="nav-button profile" onClick={() => navigate('/profile')}>
+                            👤 Profile
+                        </button>
                         <button className="nav-button logout" onClick={handleLogout}>
                             Logout
                         </button>

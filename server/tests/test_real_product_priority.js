@@ -24,7 +24,7 @@ async function testRealProductPriority() {
       // Get products for this canonical, ordered by brandOwner (Generic last)
       const products = await db.query(`
         SELECT id, description, "brandOwner", "canonicalTag", "canonicalTagConfidence"
-        FROM "Food"
+        FROM "IngredientCategorized"
         WHERE "canonicalTag" = :canonical
         ORDER BY 
           CASE WHEN "brandOwner" = 'Generic' THEN 1 ELSE 0 END,
@@ -83,7 +83,7 @@ async function testRealProductPriority() {
       
       const ingredients = await db.query(`
         SELECT i.id, i.name, i.cleanedName, i."canonicalIngredientId"
-        FROM "Ingredients" i
+        FROM "RecipeIngredients" i
         WHERE i."recipeId" = :recipeId
         ORDER BY i.name
       `, {
@@ -91,13 +91,13 @@ async function testRealProductPriority() {
         type: db.QueryTypes.SELECT
       });
       
-      console.log(`\n🥘 Ingredients (${ingredients.length}):`);
+      console.log(`\n🥘 RecipeIngredients (${ingredients.length}):`);
       
       for (const ingredient of ingredients) {
         // Get canonical info
         const canonical = await db.query(`
           SELECT ci.name as canonicalName
-          FROM "CanonicalIngredient" ci
+          FROM "Ingredient" ci
           WHERE ci.id = :canonicalId
         `, {
           replacements: { canonicalId: ingredient.canonicalIngredientId },
@@ -109,7 +109,7 @@ async function testRealProductPriority() {
         // Get product count
         const productCount = await db.query(`
           SELECT COUNT(*) as count
-          FROM "Food"
+          FROM "IngredientCategorized"
           WHERE "canonicalTag" = :canonicalName
         `, {
           replacements: { canonicalName },
@@ -118,7 +118,7 @@ async function testRealProductPriority() {
         
         const realProductCount = await db.query(`
           SELECT COUNT(*) as count
-          FROM "Food"
+          FROM "IngredientCategorized"
           WHERE "canonicalTag" = :canonicalName
             AND "brandOwner" != 'Generic'
         `, {
@@ -134,7 +134,7 @@ async function testRealProductPriority() {
           // Show top real product
           const topProduct = await db.query(`
             SELECT description, "brandOwner"
-            FROM "Food"
+            FROM "IngredientCategorized"
             WHERE "canonicalTag" = :canonicalName
               AND "brandOwner" != 'Generic'
             ORDER BY "brandOwner", description

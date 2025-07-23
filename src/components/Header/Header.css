@@ -92,6 +92,21 @@
     background-color: #cc0000;
 }
 
+.nav-button.profile {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 0.5rem;
+}
+
+.nav-button.profile:hover {
+    background-color: #218838;
+}
+
 .cart-icon {
     position: relative;
     cursor: pointer;

@@ -58,31 +58,31 @@ async function testRecipeRange(startId, endId, sampleSize) {
     type: require('sequelize').QueryTypes.SELECT 
   });
 
-  let totalIngredients = 0;
-  let mappedIngredients = 0;
+  let totalRecipeIngredients = 0;
+  let mappedRecipeIngredients = 0;
   let realProducts = 0;
 
   for (const recipe of recipes) {
     const ingredients = await db.query(`
       SELECT i.name, f."canonicalTag"
-      FROM "Ingredients" i
-      LEFT JOIN "Food" f ON LOWER(REPLACE(i.name, ' ', '')) = LOWER(REPLACE(f."canonicalTag", ' ', ''))
+      FROM "RecipeIngredients" i
+      LEFT JOIN "IngredientCategorized" f ON LOWER(REPLACE(i.name, ' ', '')) = LOWER(REPLACE(f."canonicalTag", ' ', ''))
       WHERE i."RecipeId" = :recipeId
     `, { 
       replacements: { recipeId: recipe.id },
       type: require('sequelize').QueryTypes.SELECT 
     });
 
-    totalIngredients += ingredients.length;
+    totalRecipeIngredients += ingredients.length;
     
     for (const ingredient of ingredients) {
       if (ingredient.canonicalTag) {
-        mappedIngredients++;
+        mappedRecipeIngredients++;
         
         // Check if there are real products for this canonical
         const realProductCount = await db.query(`
           SELECT COUNT(*) as count
-          FROM "Food" 
+          FROM "IngredientCategorized" 
           WHERE "canonicalTag" = :canonicalTag 
           AND "canonicalTagConfidence" = 'confident'
         `, { 
@@ -99,8 +99,8 @@ async function testRecipeRange(startId, endId, sampleSize) {
     console.log(`  Recipe ${recipe.id}: ${ingredients.length} ingredients, ${ingredients.filter(i => i.canonicalTag).length} mapped`);
   }
 
-  const mappingCoverage = totalIngredients > 0 ? (mappedIngredients / totalIngredients) * 100 : 0;
-  const realProductCoverage = totalIngredients > 0 ? (realProducts / totalIngredients) * 100 : 0;
+  const mappingCoverage = totalRecipeIngredients > 0 ? (mappedRecipeIngredients / totalRecipeIngredients) * 100 : 0;
+  const realProductCoverage = totalRecipeIngredients > 0 ? (realProducts / totalRecipeIngredients) * 100 : 0;
 
   return { mappingCoverage, realProductCoverage };
 }

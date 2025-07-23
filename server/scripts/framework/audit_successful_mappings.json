@@ -1,0 +1,1817 @@
+{
+  "sample": [
+    {
+      "id": 61216,
+      "description": "MAPLE PORK & CHICKEN SAUSAGE. EGG & CHEESE BISCUIT ROLL-UPS, MAPLE PORK & CHICKEN SAUSAGE. EGG & CHEESE",
+      "brandOwner": "The Hillshire Brands Company",
+      "canonicalTag": "egg"
+    },
+    {
+      "id": 80644,
+      "description": "Precooked Scrambled Eggs, Small Curd, 1/30 lb., Frozen, Bulk",
+      "brandOwner": "Cargill Poultry Products Div",
+      "canonicalTag": "eggs"
+    },
+    {
+      "id": 49465,
+      "description": "AdvancePierre Gold Label Exclusive Cut Whole Muscle Raw Breaded Texas Style Country Fried Beef Steak Fritters, 5.33 oz",
+      "brandOwner": "Tyson Foods Inc.",
+      "canonicalTag": "bread"
+    },
+    {
+      "id": 61969,
+      "description": "CRUNCHY ALMOND BUTTER, CRUNCHY",
+      "brandOwner": "Target Stores",
+      "canonicalTag": "butter"
+    },
+    {
+      "id": 59447,
+      "description": "M&M'S, VANILLA GREEK NONFAT YOGURT WITH MILK CHOCOLATE CANDIES, VANILLA WITH MILK CHOCOLATE CANDIES",
+      "brandOwner": "The Yofarm Company",
+      "canonicalTag": "yogurt"
+    },
+    {
+      "id": 12118,
+      "description": "ROASTED RED PEPPER HUMMUS, ROASTED RED PEPPER",
+      "brandOwner": "Kraft Heinz Foods Company",
+      "canonicalTag": "onion"
+    },
+    {
+      "id": 29487,
+      "description": "SAVORY BUTTER ROLLS, SAVORY BUTTER",
+      "brandOwner": "King's Hawaiian Bakery West",
+      "canonicalTag": "butter"
+    },
+    {
+      "id": 41240,
+      "description": "VEGETABLE OIL",
+      "brandOwner": "Conagra Brands, Inc.",
+      "canonicalTag": "olive oil"
+    },
+    {
+      "id": 58433,
+      "description": "QUINOA ARTISAN BREAD LOAF, QUINOA",
+      "brandOwner": "Wakefern Food Corporation",
+      "canonicalTag": "bread"
+    },
+    {
+      "id": 56026,
+      "description": "MILK CHOCOLATE CANDY WITH ALMONDS PIECES, MILK CHOCOLATE WITH ALMONDS",
+      "brandOwner": "The Hershey Company",
+      "canonicalTag": "almond"
+    },
+    {
+      "id": 9556,
+      "description": "BUTTERNUT SQUASH SOUP WITH CHICKEN BONE BROTH",
+      "brandOwner": "KETTLE AND FIRE LLC",
+      "canonicalTag": "butter"
+    },
+    {
+      "id": 71636,
+      "description": "WATERMELON LOLLIPOP, WATERMELON",
+      "brandOwner": "Target Stores",
+      "canonicalTag": "water"
+    },
+    {
+      "id": 67495,
+      "description": "VANILLA PASTE, VANILLA",
+      "brandOwner": "Rodelle Inc.",
+      "canonicalTag": "vanilla"
+    },
+    {
+      "id": 40325,
+      "description": "READY TO EAT PEELED RED APPLE STICKS",
+      "brandOwner": "C.H. Robinson Company",
+      "canonicalTag": "apple"
+    },
+    {
+      "id": 56942,
+      "description": "ORGANIC, RAW WHOLE ALMONDS",
+      "brandOwner": "Wakefern Food Corporation",
+      "canonicalTag": "almond"
+    },
+    {
+      "id": 10725,
+      "description": "SPICY PEPPER STIR-FRY OIL, SPICY PEPPER",
+      "brandOwner": "Harris-Teeter Inc.",
+      "canonicalTag": "olive oil"
+    },
+    {
+      "id": 64697,
+      "description": "BROCCOLI FLORETTES",
+      "brandOwner": "Gold Coast Packing, Inc.",
+      "canonicalTag": "broccoli"
+    },
+    {
+      "id": 12864,
+      "description": "FLAT FILLETS ANCHOVIES IN 100% OLIVE OIL",
+      "brandOwner": "I. Epstein & Sons, Inc.",
+      "canonicalTag": "olive oil"
+    },
+    {
+      "id": 4123,
+      "description": "RED SANDING SUGAR SPRINKLES, RED",
+      "brandOwner": "Wilton Industries Inc.",
+      "canonicalTag": "sugar"
+    },
+    {
+      "id": 32164,
+      "description": "APRICOT PEAR CARROT BEET",
+      "brandOwner": "KIND Inc.",
+      "canonicalTag": "carrot"
+    },
+    {
+      "id": 29691,
+      "description": "ORIGINAL GOOD CRUNCH BANANA BITES, ORIGINAL",
+      "brandOwner": "Dole Packaged Foods, LLC",
+      "canonicalTag": "banana"
+    },
+    {
+      "id": 19741,
+      "description": "SPICE ISLANDS SMOKED PAPRIKA, 2.1 OZ",
+      "brandOwner": "B&G Foods North America, Inc. ",
+      "canonicalTag": "smoked paprika"
+    },
+    {
+      "id": 45103,
+      "description": "WHITE CHEDDAR CHEESE, DRIED SWEETENED CRANBERRIES & SEA-SALTED ROASTED ALMONDS QUICK BITES, WHITE CHEDDAR CHEESE, DRIED SWEETENED CRANBERRIES & SEA-SALTED ROASTED ALMONDS",
+      "brandOwner": "Target Stores",
+      "canonicalTag": "salt"
+    },
+    {
+      "id": 61320,
+      "description": "INSTANT NONFAT DRY MILK",
+      "brandOwner": "Wal-Mart Stores, Inc.",
+      "canonicalTag": "milk"
+    },
+    {
+      "id": 9082,
+      "description": "100% GUAVA FRUIT JUICE BLEND, GUAVA",
+      "brandOwner": "Stanmar International Inc.",
+      "canonicalTag": "juice"
+    },
+    {
+      "id": 43058,
+      "description": "FRUIT & VEGGIE BLENDS, TROPICAL AVOCADO WITH KALE",
+      "brandOwner": "Dole Packaged Foods, LLC",
+      "canonicalTag": "egg"
+    },
+    {
+      "id": 51594,
+      "description": "Go-Gurt Berry and Cherry Low Fat Yogurt Tubes 16 Count",
+      "brandOwner": "GENERAL MILLS SALES INC.",
+      "canonicalTag": "yogurt"
+    },
+    {
+      "id": 78124,
+      "description": "WAGYU BEEF GROUND BURGERS, WAGYU BEEF",
+      "brandOwner": "H E Butt Grocery Company",
+      "canonicalTag": "beef"
+    },
+    {
+      "id": 66019,
+      "description": "FAT FREE MILK",
+      "brandOwner": "BJ's Wholesale Club / Corporate Brands",
+      "canonicalTag": "milk"
+    },
+    {
+      "id": 41719,
+      "description": "YELLOW CORN ORGANIC POLENTA, YELLOW CORN",
+      "brandOwner": "Bob's Red Mill Natural Foods, Inc.",
+      "canonicalTag": "corn"
+    },
+    {
+      "id": 78713,
+      "description": "SEAFOOD MIX SQUID, MUSSELS, SHRIMP & SCALLOPS",
+      "brandOwner": "Wal-Mart Stores, Inc.",
+      "canonicalTag": "shrimp"
+    },
+    {
+      "id": 24649,
+      "description": "CINNAMON SUGAR SWIRL POTATO BREAD, CINNAMON; SUGAR",
+      "brandOwner": "Martin's Famous Pastry Shoppe, Inc.",
+      "canonicalTag": "cinnamon"
+    },
+    {
+      "id": 11008,
+      "description": "MAPLE BAKED BEANS WITH MAPLE SYRUP, MOLASSES & SPICES, MAPLE",
+      "brandOwner": "B&G Foods, Inc.",
+      "canonicalTag": "molasses"
+    },
+    {
+      "id": 76365,
+      "description": "JORDAN ALMONDS, JORDAN",
+      "brandOwner": "Meijer, Inc.",
+      "canonicalTag": "almond"
+    },
+    {
+      "id": 74020,
+      "description": "ORGANIC EXTRA VIRGIN OLIVE OIL",
+      "brandOwner": "Meijer, Inc.",
+      "canonicalTag": "olive oil"
+    },
+    {
+      "id": 29385,
+      "description": "DARK CHOCOLATE, SEA SALT CARAMELS",
+      "brandOwner": "Lunds Inc",
+      "canonicalTag": "sea salt"
+    },
+    {
+      "id": 14497,
+      "description": "CHUNK LIGHT YELLOWFIN TUNA IN VEGETABLE OIL, CHUNK LIGHT",
+      "brandOwner": "Pescados Industrializados, S.A. De C.V.",
+      "canonicalTag": "olive oil"
+    },
+    {
+      "id": 54282,
+      "description": "PREMIUM 100% EXTRA VIRGIN OLIVE OIL",
+      "brandOwner": "Iberia Foods Corporation",
+      "canonicalTag": "olive oil"
+    },
+    {
+      "id": 21433,
+      "description": "GREEK VANILLA FAT FREE YOGURT, VANILLA",
+      "brandOwner": "Danone US, LLC",
+      "canonicalTag": "yogurt"
+    },
+    {
+      "id": 14819,
+      "description": "HALVES & PIECES CASHEWS",
+      "brandOwner": "Piggly Wiggly Company",
+      "canonicalTag": "cashew"
+    },
+    {
+      "id": 31515,
+      "description": "SEED & NUT FLOUR MINT CHOCOLATE SWEET THINS, MINT; CHOCOLATE",
+      "brandOwner": "Simple Mills",
+      "canonicalTag": "flour"
+    },
+    {
+      "id": 68105,
+      "description": "PHILADELPHIA SMOKED SALMON SUSHI RICE ROLLED WITH CREAM CHEESE, AVOCADO SMOKED SALMON AND TOPPED WITH SESAME SEEDS, PHILADELPHIA SMOKED SALMON",
+      "brandOwner": "SureGreen Mulch, LLC",
+      "canonicalTag": "avocado"
+    },
+    {
+      "id": 92656,
+      "description": "HONEY & OAT CLUSTERS WITH ALMONDS LIGHTLY SWEETENED CORN & WHOLE WHEAT FLAKE CEREAL WITH GRANOLA AND ALMOND SLICES, HONEY & OAT CLUSTERS WITH ALMONDS",
+      "brandOwner": "Target Stores",
+      "canonicalTag": "almond"
+    },
+    {
+      "id": 71256,
+      "description": "CAESAR ROMAINE LETTUCE, PARMESAN CHEESE, CROUTONS, AND SERVED WITH CAESAR DRESSING SALAD, CAESAR",
+      "brandOwner": "Target Stores",
+      "canonicalTag": "lettuce"
+    },
+    {
+      "id": 58707,
+      "description": "BROCCOLI & CAULIFLOWER",
+      "brandOwner": "H E Butt Grocery Company",
+      "canonicalTag": "broccoli"
+    },
+    {
+      "id": 85798,
+      "description": "CRUNCHY CAULIFLOWER VEGGIE BURGERS, CRUNCHY CAULIFLOWER",
+      "brandOwner": "Dr. Praeger's Sensible Foods, Inc.",
+      "canonicalTag": "egg"
+    },
+    {
+      "id": 11987,
+      "description": "SPEARMINT SUGARFREE GUM, SPEARMINT",
+      "brandOwner": "Mars, Inc.",
+      "canonicalTag": "sugar"
+    },
+    {
+      "id": 63982,
+      "description": "WHITE CHOCOLATE & COCONUT BREAD, WHITE CHOCOLATE & COCONUT",
+      "brandOwner": "Meijer, Inc.",
+      "canonicalTag": "bread"
+    },
+    {
+      "id": 72800,
+      "description": "ASSORTED CHOCOLATE TRUFFLES, DARK CHOCOLATE RASPBERRY, MILK CHOCOLATE SEA SALT CARAMEL, MILK CHOCOLATE, WHITE CHOCOLATE PEPPERMINT",
+      "brandOwner": "Target Stores",
+      "canonicalTag": "salt"
+    },
+    {
+      "id": 28225,
+      "description": "PINEAPPLE JUICE, PINEAPPLE",
+      "brandOwner": "Tropicana Products, Inc.",
+      "canonicalTag": "juice"
+    },
+    {
+      "id": 80434,
+      "description": "The Original Steak-EZE BreakAway Sirloin Beef Steak, Non-Marinated, 5 oz",
+      "brandOwner": "Tyson Foods Inc.",
+      "canonicalTag": "tea"
+    },
+    {
+      "id": 12947,
+      "description": "CHEDDAR GOAT MILK, CHEDDAR",
+      "brandOwner": "Jackson-Mitchell, Inc.",
+      "canonicalTag": "oat milk"
+    },
+    {
+      "id": 85594,
+      "description": "BUTTERY STEAKHOUSE SEASONING, BUTTERY STEAKHOUSE",
+      "brandOwner": "P. K. Kinder Co., Inc.",
+      "canonicalTag": "butter"
+    },
+    {
+      "id": 22846,
+      "description": "CONFECTIONERS SUGAR",
+      "brandOwner": "Domino Foods, Inc.",
+      "canonicalTag": "confectioners sugar"
+    },
+    {
+      "id": 43222,
+      "description": "REFINED COCONUT OIL",
+      "brandOwner": "H2oh!, LLC.",
+      "canonicalTag": "olive oil"
+    },
+    {
+      "id": 22823,
+      "description": "COCA-COLA ENERGY DRINK, 12 FL OZ, 4 COUNT",
+      "brandOwner": "Coca-Cola USA Operations",
+      "canonicalTag": "cola"
+    },
+    {
+      "id": 65002,
+      "description": "FRIED EGGPLANT",
+      "brandOwner": "Galil Importing Corporation",
+      "canonicalTag": "egg"
+    },
+    {
+      "id": 88275,
+      "description": "FROST BITE ZERO SUGAR SODA, FROST BITE",
+      "brandOwner": "Pepsi-Cola North America Inc.",
+      "canonicalTag": "sugar"
+    },
+    {
+      "id": 65877,
+      "description": "CLASSIC SESAME THINS SNACK, CLASSIC",
+      "brandOwner": "CBC International Inc.",
+      "canonicalTag": "sesame"
+    },
+    {
+      "id": 88397,
+      "description": "DEVILED EGG POTATO SALAD, DEVILED EGG POTATO",
+      "brandOwner": "The Kroger Co.",
+      "canonicalTag": "egg"
+    },
+    {
+      "id": 72761,
+      "description": "BLACK & WHITE TRAIL MIX WITH CHOCOLATE & YOGURT-FLAVORED COATED PEANUTS & RAISINS, BLACK & WHITE",
+      "brandOwner": "Target Stores",
+      "canonicalTag": "yogurt"
+    },
+    {
+      "id": 7584,
+      "description": "WHITE CAKE WITH BUTTERCREME FLAVORED ICING, BUTTERCREME",
+      "brandOwner": "Wal-Mart Stores, Inc.",
+      "canonicalTag": "butter"
+    },
+    {
+      "id": 51621,
+      "description": "Yoplait Original Yogurt Variety Pack 12 Count",
+      "brandOwner": "GENERAL MILLS SALES INC.",
+      "canonicalTag": "yogurt"
+    },
+    {
+      "id": 48458,
+      "description": "PRETZEL & SEA SALT DARK CHOCOLATE, PRETZEL & SEA SALT",
+      "brandOwner": "The Hershey Company",
+      "canonicalTag": "salt"
+    },
+    {
+      "id": 8834,
+      "description": "AUTHENTIC SOUR CREAM & ONION VEGGIE STICKS SNACKS, SOUR CREAM & ONION",
+      "brandOwner": "Gluck Holdings, LLC.",
+      "canonicalTag": "egg"
+    },
+    {
+      "id": 5495,
+      "description": "CINNAMON VANILLA ALMOND, CINNAMON VANILLA",
+      "brandOwner": "The Gourmet Granola",
+      "canonicalTag": "cinnamon"
+    },
+    {
+      "id": 57710,
+      "description": "MADAGASCAR VANILLA GELATO, MADAGASCAR VANILLA",
+      "brandOwner": "Wakefern Food Corporation",
+      "canonicalTag": "vanilla"
+    },
+    {
+      "id": 39161,
+      "description": "LOWER SUGAR TROPICAL SMOOTHIE",
+      "brandOwner": "Wm. Bolthouse Farms Inc.",
+      "canonicalTag": "sugar"
+    },
+    {
+      "id": 69297,
+      "description": "UNSWEETENED FLAKED COCONUT UNSULFURED, UNSWEETENED",
+      "brandOwner": "Bob's Red Mill Natural Foods, Inc.",
+      "canonicalTag": "coconut"
+    },
+    {
+      "id": 21441,
+      "description": "GREEK STRAWBERRY BANANA FAT FREE YOGURT, STRAWBERRY; BANANA",
+      "brandOwner": "Danone US, LLC",
+      "canonicalTag": "yogurt"
+    },
+    {
+      "id": 68530,
+      "description": "GARELICK FARMS WHOLE MILK, 0.5 GALLON",
+      "brandOwner": "DFA Dairy Brands, LLC",
+      "canonicalTag": "milk"
+    },
+    {
+      "id": 77508,
+      "description": "Yoplait Whips! Raspberry Low Fat Yogurt Mousse",
+      "brandOwner": "GENERAL MILLS SALES INC.",
+      "canonicalTag": "yogurt"
+    },
+    {
+      "id": 51814,
+      "description": "Brakebush Signature Classic Crispy Chicken Breast Filets, Par-Fried, Breaded, Boneless, Skinless, Frozen, 5.7 oz.",
+      "brandOwner": "Brakebush Brothers",
+      "canonicalTag": "bread"
+    },
+    {
+      "id": 66806,
+      "description": "HONEYCRISP UNSWEETENED APPLE CHIPS, HONEYCRISP UNSWEETENED",
+      "brandOwner": "Waymouth Farms, Inc.",
+      "canonicalTag": "honey"
+    },
+    {
+      "id": 14199,
+      "description": "HIMALAYAN SALT VEGGIE FLOUR PITA CRACKERS, HIMALAYAN SALT",
+      "brandOwner": "Simple Mills",
+      "canonicalTag": "egg"
+    },
+    {
+      "id": 62386,
+      "description": "ENRICHED MACARONI PRODUCT, THIN SPAGHETTI",
+      "brandOwner": "Target Stores",
+      "canonicalTag": "thin spaghetti"
+    },
+    {
+      "id": 8330,
+      "description": "SEMI-SWEET CHOCOLATE BAKING BAR, SEMI-SWEET CHOCOLATE",
+      "brandOwner": "Wal-Mart Stores, Inc.",
+      "canonicalTag": "semi-sweet chocolate"
+    },
+    {
+      "id": 15451,
+      "description": "99% LEAN 1% FAT GROUND TURKEY",
+      "brandOwner": "Wegmans Food Markets, Inc. ",
+      "canonicalTag": "turkey"
+    },
+    {
+      "id": 84629,
+      "description": "COCONUT CASHEWS, COCONUT",
+      "brandOwner": "Waymouth Farms, Inc.",
+      "canonicalTag": "cashew"
+    },
+    {
+      "id": 61392,
+      "description": "SEA CUISINE, SHRIMP SCAMPI SEASONING",
+      "brandOwner": "High Liner Foods (USA) Incorporated",
+      "canonicalTag": "shrimp"
+    },
+    {
+      "id": 52291,
+      "description": "INDIAN SPICE QUINOA",
+      "brandOwner": "Good Groceries Company Inc.",
+      "canonicalTag": "quinoa"
+    },
+    {
+      "id": 11998,
+      "description": "SWEET MINT SUGARFREE GUM, SWEET MINT",
+      "brandOwner": "Mars, Inc.",
+      "canonicalTag": "sugar"
+    },
+    {
+      "id": 89267,
+      "description": "DARK CHOCOLATE SEA SALT CARAMELS, DARK CHOCOLATE SEA SALT",
+      "brandOwner": "Safeway, Inc.",
+      "canonicalTag": "salt"
+    },
+    {
+      "id": 25982,
+      "description": "BOURBON BARREL AGED STEAM-CRAFTED MAPLE ORGANIC SYRUP, BOURBON BARREL AGED MAPLE",
+      "brandOwner": "Safeway, Inc.",
+      "canonicalTag": "tea"
+    },
+    {
+      "id": 92722,
+      "description": "CHEDDAR CHEESE SANDWICH CRACKERS, CHEDDAR CHEESE",
+      "brandOwner": "Target Stores",
+      "canonicalTag": "cheddar cheese"
+    },
+    {
+      "id": 86809,
+      "description": "HONEY MUSTARD DRESSING, HONEY MUSTARD",
+      "brandOwner": "Wakefern Food Corporation",
+      "canonicalTag": "honey mustard"
+    },
+    {
+      "id": 22387,
+      "description": "ORANGE LOW CALORIE GELATIN SNACKS, ORANGE",
+      "brandOwner": "Kraft Heinz Foods Company",
+      "canonicalTag": "gelatin"
+    },
+    {
+      "id": 80961,
+      "description": "Kellogg's Cheez It Crackers Duoz Sharp Cheddar Parmesan 12.4oz",
+      "brandOwner": "Kellogg Company US",
+      "canonicalTag": "sharp cheddar"
+    },
+    {
+      "id": 74902,
+      "description": "STEW POTATOES, CARROTS, ONIONS & CELERY VEGETABLES MEDLEYS, STEW",
+      "brandOwner": "Meijer, Inc.",
+      "canonicalTag": "onion"
+    },
+    {
+      "id": 67668,
+      "description": "SAUSAGE & EGG MUFFIN SANDWICH, SAUSAGE & EGG",
+      "brandOwner": "Fresh & Ready Foods LLC",
+      "canonicalTag": "egg"
+    },
+    {
+      "id": 83641,
+      "description": "AVOCADO OIL",
+      "brandOwner": "Primal Nutrition",
+      "canonicalTag": "olive oil"
+    },
+    {
+      "id": 26799,
+      "description": "MIXED FRUIT IN A BLEND OF FRUIT JUICES WITH GREEN TEA EXTRACT, FRUIT JUICES WITH GREEN TEA EXTRACT",
+      "brandOwner": "Dole Packaged Foods, LLC",
+      "canonicalTag": "juice"
+    },
+    {
+      "id": 18688,
+      "description": "WELCH'S 48/5.5 FL OZ 100% JUICE - APPLE",
+      "brandOwner": "WELCH FOODS INC.",
+      "canonicalTag": "juice"
+    },
+    {
+      "id": 3664,
+      "description": "HONEY ROASTED PEANUTS, HONEY ROASTED",
+      "brandOwner": "Marlow Candy & Nut Company",
+      "canonicalTag": "peanut"
+    },
+    {
+      "id": 14049,
+      "description": "CHOCOLATE SEA SALT DIPPED PROTEIN BAR, CHOCOLATE SEA SALT",
+      "brandOwner": "K & D Image Production, Inc.",
+      "canonicalTag": "salt"
+    },
+    {
+      "id": 76565,
+      "description": "ACTIVATED SPROUTED SALTED PUMPKIN SEEDS, SALTED PUMPKIN",
+      "brandOwner": "Living Intentions, LLC",
+      "canonicalTag": "salt"
+    },
+    {
+      "id": 36993,
+      "description": "JEWISH RYE BREAD",
+      "brandOwner": "Heidelberg Baking Co.",
+      "canonicalTag": "bread"
+    },
+    {
+      "id": 32161,
+      "description": "PINEAPPLE COCONUT CHIA, PINEAPPLE COCONUT CHIA",
+      "brandOwner": "KIND Inc.",
+      "canonicalTag": "coconut"
+    },
+    {
+      "id": 65005,
+      "description": "DARK ROAST MACA CHOCOLATE ORGANIC CHICORY HERBAL COFFEE, MACA CHOCOLATE",
+      "brandOwner": "Teeccino, Inc.",
+      "canonicalTag": "chocolate"
+    },
+    {
+      "id": 49156,
+      "description": "Tyson Uncooked Breaded Hot & Spicy Chicken Breast Filets, 4 oz.",
+      "brandOwner": "Tyson Foods Inc.",
+      "canonicalTag": "bread"
+    }
+  ],
+  "questionable": [
+    {
+      "id": 49465,
+      "description": "AdvancePierre Gold Label Exclusive Cut Whole Muscle Raw Breaded Texas Style Country Fried Beef Steak Fritters, 5.33 oz",
+      "brandOwner": "Tyson Foods Inc.",
+      "canonicalTag": "bread"
+    },
+    {
+      "id": 12118,
+      "description": "ROASTED RED PEPPER HUMMUS, ROASTED RED PEPPER",
+      "brandOwner": "Kraft Heinz Foods Company",
+      "canonicalTag": "onion"
+    },
+    {
+      "id": 41240,
+      "description": "VEGETABLE OIL",
+      "brandOwner": "Conagra Brands, Inc.",
+      "canonicalTag": "olive oil"
+    },
+    {
+      "id": 56026,
+      "description": "MILK CHOCOLATE CANDY WITH ALMONDS PIECES, MILK CHOCOLATE WITH ALMONDS",
+      "brandOwner": "The Hershey Company",
+      "canonicalTag": "almond"
+    },
+    {
+      "id": 9556,
+      "description": "BUTTERNUT SQUASH SOUP WITH CHICKEN BONE BROTH",
+      "brandOwner": "KETTLE AND FIRE LLC",
+      "canonicalTag": "butter"
+    },
+    {
+      "id": 71636,
+      "description": "WATERMELON LOLLIPOP, WATERMELON",
+      "brandOwner": "Target Stores",
+      "canonicalTag": "water"
+    },
+    {
+      "id": 56942,
+      "description": "ORGANIC, RAW WHOLE ALMONDS",
+      "brandOwner": "Wakefern Food Corporation",
+      "canonicalTag": "almond"
+    },
+    {
+      "id": 10725,
+      "description": "SPICY PEPPER STIR-FRY OIL, SPICY PEPPER",
+      "brandOwner": "Harris-Teeter Inc.",
+      "canonicalTag": "olive oil"
+    },
+    {
+      "id": 45103,
+      "description": "WHITE CHEDDAR CHEESE, DRIED SWEETENED CRANBERRIES & SEA-SALTED ROASTED ALMONDS QUICK BITES, WHITE CHEDDAR CHEESE, DRIED SWEETENED CRANBERRIES & SEA-SALTED ROASTED ALMONDS",
+      "brandOwner": "Target Stores",
+      "canonicalTag": "salt"
+    },
+    {
+      "id": 43058,
+      "description": "FRUIT & VEGGIE BLENDS, TROPICAL AVOCADO WITH KALE",
+      "brandOwner": "Dole Packaged Foods, LLC",
+      "canonicalTag": "egg"
+    },
+    {
+      "id": 76365,
+      "description": "JORDAN ALMONDS, JORDAN",
+      "brandOwner": "Meijer, Inc.",
+      "canonicalTag": "almond"
+    },
+    {
+      "id": 14497,
+      "description": "CHUNK LIGHT YELLOWFIN TUNA IN VEGETABLE OIL, CHUNK LIGHT",
+      "brandOwner": "Pescados Industrializados, S.A. De C.V.",
+      "canonicalTag": "olive oil"
+    },
+    {
+      "id": 14819,
+      "description": "HALVES & PIECES CASHEWS",
+      "brandOwner": "Piggly Wiggly Company",
+      "canonicalTag": "cashew"
+    },
+    {
+      "id": 85798,
+      "description": "CRUNCHY CAULIFLOWER VEGGIE BURGERS, CRUNCHY CAULIFLOWER",
+      "brandOwner": "Dr. Praeger's Sensible Foods, Inc.",
+      "canonicalTag": "egg"
+    },
+    {
+      "id": 11987,
+      "description": "SPEARMINT SUGARFREE GUM, SPEARMINT",
+      "brandOwner": "Mars, Inc.",
+      "canonicalTag": "sugar"
+    },
+    {
+      "id": 80434,
+      "description": "The Original Steak-EZE BreakAway Sirloin Beef Steak, Non-Marinated, 5 oz",
+      "brandOwner": "Tyson Foods Inc.",
+      "canonicalTag": "tea"
+    },
+    {
+      "id": 12947,
+      "description": "CHEDDAR GOAT MILK, CHEDDAR",
+      "brandOwner": "Jackson-Mitchell, Inc.",
+      "canonicalTag": "oat milk"
+    },
+    {
+      "id": 85594,
+      "description": "BUTTERY STEAKHOUSE SEASONING, BUTTERY STEAKHOUSE",
+      "brandOwner": "P. K. Kinder Co., Inc.",
+      "canonicalTag": "butter"
+    },
+    {
+      "id": 43222,
+      "description": "REFINED COCONUT OIL",
+      "brandOwner": "H2oh!, LLC.",
+      "canonicalTag": "olive oil"
+    },
+    {
+      "id": 65002,
+      "description": "FRIED EGGPLANT",
+      "brandOwner": "Galil Importing Corporation",
+      "canonicalTag": "egg"
+    },
+    {
+      "id": 7584,
+      "description": "WHITE CAKE WITH BUTTERCREME FLAVORED ICING, BUTTERCREME",
+      "brandOwner": "Wal-Mart Stores, Inc.",
+      "canonicalTag": "butter"
+    },
+    {
+      "id": 8834,
+      "description": "AUTHENTIC SOUR CREAM & ONION VEGGIE STICKS SNACKS, SOUR CREAM & ONION",
+      "brandOwner": "Gluck Holdings, LLC.",
+      "canonicalTag": "egg"
+    },
+    {
+      "id": 51814,
+      "description": "Brakebush Signature Classic Crispy Chicken Breast Filets, Par-Fried, Breaded, Boneless, Skinless, Frozen, 5.7 oz.",
+      "brandOwner": "Brakebush Brothers",
+      "canonicalTag": "bread"
+    },
+    {
+      "id": 66806,
+      "description": "HONEYCRISP UNSWEETENED APPLE CHIPS, HONEYCRISP UNSWEETENED",
+      "brandOwner": "Waymouth Farms, Inc.",
+      "canonicalTag": "honey"
+    },
+    {
+      "id": 14199,
+      "description": "HIMALAYAN SALT VEGGIE FLOUR PITA CRACKERS, HIMALAYAN SALT",
+      "brandOwner": "Simple Mills",
+      "canonicalTag": "egg"
+    },
+    {
+      "id": 84629,
+      "description": "COCONUT CASHEWS, COCONUT",
+      "brandOwner": "Waymouth Farms, Inc.",
+      "canonicalTag": "cashew"
+    },
+    {
+      "id": 11998,
+      "description": "SWEET MINT SUGARFREE GUM, SWEET MINT",
+      "brandOwner": "Mars, Inc.",
+      "canonicalTag": "sugar"
+    },
+    {
+      "id": 25982,
+      "description": "BOURBON BARREL AGED STEAM-CRAFTED MAPLE ORGANIC SYRUP, BOURBON BARREL AGED MAPLE",
+      "brandOwner": "Safeway, Inc.",
+      "canonicalTag": "tea"
+    },
+    {
+      "id": 74902,
+      "description": "STEW POTATOES, CARROTS, ONIONS & CELERY VEGETABLES MEDLEYS, STEW",
+      "brandOwner": "Meijer, Inc.",
+      "canonicalTag": "onion"
+    },
+    {
+      "id": 83641,
+      "description": "AVOCADO OIL",
+      "brandOwner": "Primal Nutrition",
+      "canonicalTag": "olive oil"
+    },
+    {
+      "id": 26799,
+      "description": "MIXED FRUIT IN A BLEND OF FRUIT JUICES WITH GREEN TEA EXTRACT, FRUIT JUICES WITH GREEN TEA EXTRACT",
+      "brandOwner": "Dole Packaged Foods, LLC",
+      "canonicalTag": "juice"
+    },
+    {
+      "id": 3664,
+      "description": "HONEY ROASTED PEANUTS, HONEY ROASTED",
+      "brandOwner": "Marlow Candy & Nut Company",
+      "canonicalTag": "peanut"
+    },
+    {
+      "id": 76565,
+      "description": "ACTIVATED SPROUTED SALTED PUMPKIN SEEDS, SALTED PUMPKIN",
+      "brandOwner": "Living Intentions, LLC",
+      "canonicalTag": "salt"
+    },
+    {
+      "id": 49156,
+      "description": "Tyson Uncooked Breaded Hot & Spicy Chicken Breast Filets, 4 oz.",
+      "brandOwner": "Tyson Foods Inc.",
+      "canonicalTag": "bread"
+    }
+  ],
+  "highConfidence": [
+    {
+      "id": 61216,
+      "description": "MAPLE PORK & CHICKEN SAUSAGE. EGG & CHEESE BISCUIT ROLL-UPS, MAPLE PORK & CHICKEN SAUSAGE. EGG & CHEESE",
+      "brandOwner": "The Hillshire Brands Company",
+      "canonicalTag": "egg"
+    },
+    {
+      "id": 80644,
+      "description": "Precooked Scrambled Eggs, Small Curd, 1/30 lb., Frozen, Bulk",
+      "brandOwner": "Cargill Poultry Products Div",
+      "canonicalTag": "eggs"
+    },
+    {
+      "id": 61969,
+      "description": "CRUNCHY ALMOND BUTTER, CRUNCHY",
+      "brandOwner": "Target Stores",
+      "canonicalTag": "butter"
+    },
+    {
+      "id": 59447,
+      "description": "M&M'S, VANILLA GREEK NONFAT YOGURT WITH MILK CHOCOLATE CANDIES, VANILLA WITH MILK CHOCOLATE CANDIES",
+      "brandOwner": "The Yofarm Company",
+      "canonicalTag": "yogurt"
+    },
+    {
+      "id": 29487,
+      "description": "SAVORY BUTTER ROLLS, SAVORY BUTTER",
+      "brandOwner": "King's Hawaiian Bakery West",
+      "canonicalTag": "butter"
+    },
+    {
+      "id": 58433,
+      "description": "QUINOA ARTISAN BREAD LOAF, QUINOA",
+      "brandOwner": "Wakefern Food Corporation",
+      "canonicalTag": "bread"
+    },
+    {
+      "id": 67495,
+      "description": "VANILLA PASTE, VANILLA",
+      "brandOwner": "Rodelle Inc.",
+      "canonicalTag": "vanilla"
+    },
+    {
+      "id": 40325,
+      "description": "READY TO EAT PEELED RED APPLE STICKS",
+      "brandOwner": "C.H. Robinson Company",
+      "canonicalTag": "apple"
+    },
+    {
+      "id": 64697,
+      "description": "BROCCOLI FLORETTES",
+      "brandOwner": "Gold Coast Packing, Inc.",
+      "canonicalTag": "broccoli"
+    },
+    {
+      "id": 12864,
+      "description": "FLAT FILLETS ANCHOVIES IN 100% OLIVE OIL",
+      "brandOwner": "I. Epstein & Sons, Inc.",
+      "canonicalTag": "olive oil"
+    },
+    {
+      "id": 4123,
+      "description": "RED SANDING SUGAR SPRINKLES, RED",
+      "brandOwner": "Wilton Industries Inc.",
+      "canonicalTag": "sugar"
+    },
+    {
+      "id": 32164,
+      "description": "APRICOT PEAR CARROT BEET",
+      "brandOwner": "KIND Inc.",
+      "canonicalTag": "carrot"
+    },
+    {
+      "id": 29691,
+      "description": "ORIGINAL GOOD CRUNCH BANANA BITES, ORIGINAL",
+      "brandOwner": "Dole Packaged Foods, LLC",
+      "canonicalTag": "banana"
+    },
+    {
+      "id": 19741,
+      "description": "SPICE ISLANDS SMOKED PAPRIKA, 2.1 OZ",
+      "brandOwner": "B&G Foods North America, Inc. ",
+      "canonicalTag": "smoked paprika"
+    },
+    {
+      "id": 61320,
+      "description": "INSTANT NONFAT DRY MILK",
+      "brandOwner": "Wal-Mart Stores, Inc.",
+      "canonicalTag": "milk"
+    },
+    {
+      "id": 9082,
+      "description": "100% GUAVA FRUIT JUICE BLEND, GUAVA",
+      "brandOwner": "Stanmar International Inc.",
+      "canonicalTag": "juice"
+    },
+    {
+      "id": 51594,
+      "description": "Go-Gurt Berry and Cherry Low Fat Yogurt Tubes 16 Count",
+      "brandOwner": "GENERAL MILLS SALES INC.",
+      "canonicalTag": "yogurt"
+    },
+    {
+      "id": 78124,
+      "description": "WAGYU BEEF GROUND BURGERS, WAGYU BEEF",
+      "brandOwner": "H E Butt Grocery Company",
+      "canonicalTag": "beef"
+    },
+    {
+      "id": 66019,
+      "description": "FAT FREE MILK",
+      "brandOwner": "BJ's Wholesale Club / Corporate Brands",
+      "canonicalTag": "milk"
+    },
+    {
+      "id": 41719,
+      "description": "YELLOW CORN ORGANIC POLENTA, YELLOW CORN",
+      "brandOwner": "Bob's Red Mill Natural Foods, Inc.",
+      "canonicalTag": "corn"
+    },
+    {
+      "id": 78713,
+      "description": "SEAFOOD MIX SQUID, MUSSELS, SHRIMP & SCALLOPS",
+      "brandOwner": "Wal-Mart Stores, Inc.",
+      "canonicalTag": "shrimp"
+    },
+    {
+      "id": 24649,
+      "description": "CINNAMON SUGAR SWIRL POTATO BREAD, CINNAMON; SUGAR",
+      "brandOwner": "Martin's Famous Pastry Shoppe, Inc.",
+      "canonicalTag": "cinnamon"
+    },
+    {
+      "id": 11008,
+      "description": "MAPLE BAKED BEANS WITH MAPLE SYRUP, MOLASSES & SPICES, MAPLE",
+      "brandOwner": "B&G Foods, Inc.",
+      "canonicalTag": "molasses"
+    },
+    {
+      "id": 74020,
+      "description": "ORGANIC EXTRA VIRGIN OLIVE OIL",
+      "brandOwner": "Meijer, Inc.",
+      "canonicalTag": "olive oil"
+    },
+    {
+      "id": 29385,
+      "description": "DARK CHOCOLATE, SEA SALT CARAMELS",
+      "brandOwner": "Lunds Inc",
+      "canonicalTag": "sea salt"
+    },
+    {
+      "id": 54282,
+      "description": "PREMIUM 100% EXTRA VIRGIN OLIVE OIL",
+      "brandOwner": "Iberia Foods Corporation",
+      "canonicalTag": "olive oil"
+    },
+    {
+      "id": 21433,
+      "description": "GREEK VANILLA FAT FREE YOGURT, VANILLA",
+      "brandOwner": "Danone US, LLC",
+      "canonicalTag": "yogurt"
+    },
+    {
+      "id": 31515,
+      "description": "SEED & NUT FLOUR MINT CHOCOLATE SWEET THINS, MINT; CHOCOLATE",
+      "brandOwner": "Simple Mills",
+      "canonicalTag": "flour"
+    },
+    {
+      "id": 68105,
+      "description": "PHILADELPHIA SMOKED SALMON SUSHI RICE ROLLED WITH CREAM CHEESE, AVOCADO SMOKED SALMON AND TOPPED WITH SESAME SEEDS, PHILADELPHIA SMOKED SALMON",
+      "brandOwner": "SureGreen Mulch, LLC",
+      "canonicalTag": "avocado"
+    },
+    {
+      "id": 92656,
+      "description": "HONEY & OAT CLUSTERS WITH ALMONDS LIGHTLY SWEETENED CORN & WHOLE WHEAT FLAKE CEREAL WITH GRANOLA AND ALMOND SLICES, HONEY & OAT CLUSTERS WITH ALMONDS",
+      "brandOwner": "Target Stores",
+      "canonicalTag": "almond"
+    },
+    {
+      "id": 71256,
+      "description": "CAESAR ROMAINE LETTUCE, PARMESAN CHEESE, CROUTONS, AND SERVED WITH CAESAR DRESSING SALAD, CAESAR",
+      "brandOwner": "Target Stores",
+      "canonicalTag": "lettuce"
+    },
+    {
+      "id": 58707,
+      "description": "BROCCOLI & CAULIFLOWER",
+      "brandOwner": "H E Butt Grocery Company",
+      "canonicalTag": "broccoli"
+    },
+    {
+      "id": 63982,
+      "description": "WHITE CHOCOLATE & COCONUT BREAD, WHITE CHOCOLATE & COCONUT",
+      "brandOwner": "Meijer, Inc.",
+      "canonicalTag": "bread"
+    },
+    {
+      "id": 72800,
+      "description": "ASSORTED CHOCOLATE TRUFFLES, DARK CHOCOLATE RASPBERRY, MILK CHOCOLATE SEA SALT CARAMEL, MILK CHOCOLATE, WHITE CHOCOLATE PEPPERMINT",
+      "brandOwner": "Target Stores",
+      "canonicalTag": "salt"
+    },
+    {
+      "id": 28225,
+      "description": "PINEAPPLE JUICE, PINEAPPLE",
+      "brandOwner": "Tropicana Products, Inc.",
+      "canonicalTag": "juice"
+    },
+    {
+      "id": 22846,
+      "description": "CONFECTIONERS SUGAR",
+      "brandOwner": "Domino Foods, Inc.",
+      "canonicalTag": "confectioners sugar"
+    },
+    {
+      "id": 22823,
+      "description": "COCA-COLA ENERGY DRINK, 12 FL OZ, 4 COUNT",
+      "brandOwner": "Coca-Cola USA Operations",
+      "canonicalTag": "cola"
+    },
+    {
+      "id": 88275,
+      "description": "FROST BITE ZERO SUGAR SODA, FROST BITE",
+      "brandOwner": "Pepsi-Cola North America Inc.",
+      "canonicalTag": "sugar"
+    },
+    {
+      "id": 65877,
+      "description": "CLASSIC SESAME THINS SNACK, CLASSIC",
+      "brandOwner": "CBC International Inc.",
+      "canonicalTag": "sesame"
+    },
+    {
+      "id": 88397,
+      "description": "DEVILED EGG POTATO SALAD, DEVILED EGG POTATO",
+      "brandOwner": "The Kroger Co.",
+      "canonicalTag": "egg"
+    },
+    {
+      "id": 72761,
+      "description": "BLACK & WHITE TRAIL MIX WITH CHOCOLATE & YOGURT-FLAVORED COATED PEANUTS & RAISINS, BLACK & WHITE",
+      "brandOwner": "Target Stores",
+      "canonicalTag": "yogurt"
+    },
+    {
+      "id": 51621,
+      "description": "Yoplait Original Yogurt Variety Pack 12 Count",
+      "brandOwner": "GENERAL MILLS SALES INC.",
+      "canonicalTag": "yogurt"
+    },
+    {
+      "id": 48458,
+      "description": "PRETZEL & SEA SALT DARK CHOCOLATE, PRETZEL & SEA SALT",
+      "brandOwner": "The Hershey Company",
+      "canonicalTag": "salt"
+    },
+    {
+      "id": 5495,
+      "description": "CINNAMON VANILLA ALMOND, CINNAMON VANILLA",
+      "brandOwner": "The Gourmet Granola",
+      "canonicalTag": "cinnamon"
+    },
+    {
+      "id": 57710,
+      "description": "MADAGASCAR VANILLA GELATO, MADAGASCAR VANILLA",
+      "brandOwner": "Wakefern Food Corporation",
+      "canonicalTag": "vanilla"
+    },
+    {
+      "id": 39161,
+      "description": "LOWER SUGAR TROPICAL SMOOTHIE",
+      "brandOwner": "Wm. Bolthouse Farms Inc.",
+      "canonicalTag": "sugar"
+    },
+    {
+      "id": 69297,
+      "description": "UNSWEETENED FLAKED COCONUT UNSULFURED, UNSWEETENED",
+      "brandOwner": "Bob's Red Mill Natural Foods, Inc.",
+      "canonicalTag": "coconut"
+    },
+    {
+      "id": 21441,
+      "description": "GREEK STRAWBERRY BANANA FAT FREE YOGURT, STRAWBERRY; BANANA",
+      "brandOwner": "Danone US, LLC",
+      "canonicalTag": "yogurt"
+    },
+    {
+      "id": 68530,
+      "description": "GARELICK FARMS WHOLE MILK, 0.5 GALLON",
+      "brandOwner": "DFA Dairy Brands, LLC",
+      "canonicalTag": "milk"
+    },
+    {
+      "id": 77508,
+      "description": "Yoplait Whips! Raspberry Low Fat Yogurt Mousse",
+      "brandOwner": "GENERAL MILLS SALES INC.",
+      "canonicalTag": "yogurt"
+    },
+    {
+      "id": 62386,
+      "description": "ENRICHED MACARONI PRODUCT, THIN SPAGHETTI",
+      "brandOwner": "Target Stores",
+      "canonicalTag": "thin spaghetti"
+    },
+    {
+      "id": 8330,
+      "description": "SEMI-SWEET CHOCOLATE BAKING BAR, SEMI-SWEET CHOCOLATE",
+      "brandOwner": "Wal-Mart Stores, Inc.",
+      "canonicalTag": "semi-sweet chocolate"
+    },
+    {
+      "id": 15451,
+      "description": "99% LEAN 1% FAT GROUND TURKEY",
+      "brandOwner": "Wegmans Food Markets, Inc. ",
+      "canonicalTag": "turkey"
+    },
+    {
+      "id": 61392,
+      "description": "SEA CUISINE, SHRIMP SCAMPI SEASONING",
+      "brandOwner": "High Liner Foods (USA) Incorporated",
+      "canonicalTag": "shrimp"
+    },
+    {
+      "id": 52291,
+      "description": "INDIAN SPICE QUINOA",
+      "brandOwner": "Good Groceries Company Inc.",
+      "canonicalTag": "quinoa"
+    },
+    {
+      "id": 89267,
+      "description": "DARK CHOCOLATE SEA SALT CARAMELS, DARK CHOCOLATE SEA SALT",
+      "brandOwner": "Safeway, Inc.",
+      "canonicalTag": "salt"
+    },
+    {
+      "id": 92722,
+      "description": "CHEDDAR CHEESE SANDWICH CRACKERS, CHEDDAR CHEESE",
+      "brandOwner": "Target Stores",
+      "canonicalTag": "cheddar cheese"
+    },
+    {
+      "id": 86809,
+      "description": "HONEY MUSTARD DRESSING, HONEY MUSTARD",
+      "brandOwner": "Wakefern Food Corporation",
+      "canonicalTag": "honey mustard"
+    },
+    {
+      "id": 22387,
+      "description": "ORANGE LOW CALORIE GELATIN SNACKS, ORANGE",
+      "brandOwner": "Kraft Heinz Foods Company",
+      "canonicalTag": "gelatin"
+    },
+    {
+      "id": 80961,
+      "description": "Kellogg's Cheez It Crackers Duoz Sharp Cheddar Parmesan 12.4oz",
+      "brandOwner": "Kellogg Company US",
+      "canonicalTag": "sharp cheddar"
+    },
+    {
+      "id": 67668,
+      "description": "SAUSAGE & EGG MUFFIN SANDWICH, SAUSAGE & EGG",
+      "brandOwner": "Fresh & Ready Foods LLC",
+      "canonicalTag": "egg"
+    },
+    {
+      "id": 18688,
+      "description": "WELCH'S 48/5.5 FL OZ 100% JUICE - APPLE",
+      "brandOwner": "WELCH FOODS INC.",
+      "canonicalTag": "juice"
+    },
+    {
+      "id": 14049,
+      "description": "CHOCOLATE SEA SALT DIPPED PROTEIN BAR, CHOCOLATE SEA SALT",
+      "brandOwner": "K & D Image Production, Inc.",
+      "canonicalTag": "salt"
+    },
+    {
+      "id": 36993,
+      "description": "JEWISH RYE BREAD",
+      "brandOwner": "Heidelberg Baking Co.",
+      "canonicalTag": "bread"
+    },
+    {
+      "id": 32161,
+      "description": "PINEAPPLE COCONUT CHIA, PINEAPPLE COCONUT CHIA",
+      "brandOwner": "KIND Inc.",
+      "canonicalTag": "coconut"
+    },
+    {
+      "id": 65005,
+      "description": "DARK ROAST MACA CHOCOLATE ORGANIC CHICORY HERBAL COFFEE, MACA CHOCOLATE",
+      "brandOwner": "Teeccino, Inc.",
+      "canonicalTag": "chocolate"
+    }
+  ],
+  "byCanonical": {
+    "egg": {
+      "count": 8,
+      "topDescriptions": [
+        "MAPLE PORK & CHICKEN SAUSAGE. EGG & CHEESE BISCUIT ROLL-UPS, MAPLE PORK & CHICKEN SAUSAGE. EGG & CHEESE",
+        "FRUIT & VEGGIE BLENDS, TROPICAL AVOCADO WITH KALE",
+        "CRUNCHY CAULIFLOWER VEGGIE BURGERS, CRUNCHY CAULIFLOWER",
+        "FRIED EGGPLANT",
+        "DEVILED EGG POTATO SALAD, DEVILED EGG POTATO"
+      ],
+      "brands": [
+        "The Hillshire Brands Company",
+        "Dole Packaged Foods, LLC",
+        "Dr. Praeger's Sensible Foods, Inc.",
+        "Galil Importing Corporation",
+        "The Kroger Co.",
+        "Gluck Holdings, LLC.",
+        "Simple Mills",
+        "Fresh & Ready Foods LLC"
+      ]
+    },
+    "eggs": {
+      "count": 1,
+      "topDescriptions": [
+        "Precooked Scrambled Eggs, Small Curd, 1/30 lb., Frozen, Bulk"
+      ],
+      "brands": [
+        "Cargill Poultry Products Div"
+      ]
+    },
+    "bread": {
+      "count": 6,
+      "topDescriptions": [
+        "AdvancePierre Gold Label Exclusive Cut Whole Muscle Raw Breaded Texas Style Country Fried Beef Steak Fritters, 5.33 oz",
+        "QUINOA ARTISAN BREAD LOAF, QUINOA",
+        "WHITE CHOCOLATE & COCONUT BREAD, WHITE CHOCOLATE & COCONUT",
+        "Brakebush Signature Classic Crispy Chicken Breast Filets, Par-Fried, Breaded, Boneless, Skinless, Frozen, 5.7 oz.",
+        "JEWISH RYE BREAD"
+      ],
+      "brands": [
+        "Tyson Foods Inc.",
+        "Wakefern Food Corporation",
+        "Meijer, Inc.",
+        "Brakebush Brothers",
+        "Heidelberg Baking Co."
+      ]
+    },
+    "butter": {
+      "count": 5,
+      "topDescriptions": [
+        "CRUNCHY ALMOND BUTTER, CRUNCHY",
+        "SAVORY BUTTER ROLLS, SAVORY BUTTER",
+        "BUTTERNUT SQUASH SOUP WITH CHICKEN BONE BROTH",
+        "BUTTERY STEAKHOUSE SEASONING, BUTTERY STEAKHOUSE",
+        "WHITE CAKE WITH BUTTERCREME FLAVORED ICING, BUTTERCREME"
+      ],
+      "brands": [
+        "Target Stores",
+        "King's Hawaiian Bakery West",
+        "KETTLE AND FIRE LLC",
+        "P. K. Kinder Co., Inc.",
+        "Wal-Mart Stores, Inc."
+      ]
+    },
+    "yogurt": {
+      "count": 7,
+      "topDescriptions": [
+        "M&M'S, VANILLA GREEK NONFAT YOGURT WITH MILK CHOCOLATE CANDIES, VANILLA WITH MILK CHOCOLATE CANDIES",
+        "Go-Gurt Berry and Cherry Low Fat Yogurt Tubes 16 Count",
+        "GREEK VANILLA FAT FREE YOGURT, VANILLA",
+        "BLACK & WHITE TRAIL MIX WITH CHOCOLATE & YOGURT-FLAVORED COATED PEANUTS & RAISINS, BLACK & WHITE",
+        "Yoplait Original Yogurt Variety Pack 12 Count"
+      ],
+      "brands": [
+        "The Yofarm Company",
+        "GENERAL MILLS SALES INC.",
+        "Danone US, LLC",
+        "Target Stores"
+      ]
+    },
+    "onion": {
+      "count": 2,
+      "topDescriptions": [
+        "ROASTED RED PEPPER HUMMUS, ROASTED RED PEPPER",
+        "STEW POTATOES, CARROTS, ONIONS & CELERY VEGETABLES MEDLEYS, STEW"
+      ],
+      "brands": [
+        "Kraft Heinz Foods Company",
+        "Meijer, Inc."
+      ]
+    },
+    "olive oil": {
+      "count": 8,
+      "topDescriptions": [
+        "VEGETABLE OIL",
+        "SPICY PEPPER STIR-FRY OIL, SPICY PEPPER",
+        "FLAT FILLETS ANCHOVIES IN 100% OLIVE OIL",
+        "ORGANIC EXTRA VIRGIN OLIVE OIL",
+        "CHUNK LIGHT YELLOWFIN TUNA IN VEGETABLE OIL, CHUNK LIGHT"
+      ],
+      "brands": [
+        "Conagra Brands, Inc.",
+        "Harris-Teeter Inc.",
+        "I. Epstein & Sons, Inc.",
+        "Meijer, Inc.",
+        "Pescados Industrializados, S.A. De C.V.",
+        "Iberia Foods Corporation",
+        "H2oh!, LLC.",
+        "Primal Nutrition"
+      ]
+    },
+    "almond": {
+      "count": 4,
+      "topDescriptions": [
+        "MILK CHOCOLATE CANDY WITH ALMONDS PIECES, MILK CHOCOLATE WITH ALMONDS",
+        "ORGANIC, RAW WHOLE ALMONDS",
+        "JORDAN ALMONDS, JORDAN",
+        "HONEY & OAT CLUSTERS WITH ALMONDS LIGHTLY SWEETENED CORN & WHOLE WHEAT FLAKE CEREAL WITH GRANOLA AND ALMOND SLICES, HONEY & OAT CLUSTERS WITH ALMONDS"
+      ],
+      "brands": [
+        "The Hershey Company",
+        "Wakefern Food Corporation",
+        "Meijer, Inc.",
+        "Target Stores"
+      ]
+    },
+    "water": {
+      "count": 1,
+      "topDescriptions": [
+        "WATERMELON LOLLIPOP, WATERMELON"
+      ],
+      "brands": [
+        "Target Stores"
+      ]
+    },
+    "vanilla": {
+      "count": 2,
+      "topDescriptions": [
+        "VANILLA PASTE, VANILLA",
+        "MADAGASCAR VANILLA GELATO, MADAGASCAR VANILLA"
+      ],
+      "brands": [
+        "Rodelle Inc.",
+        "Wakefern Food Corporation"
+      ]
+    },
+    "apple": {
+      "count": 1,
+      "topDescriptions": [
+        "READY TO EAT PEELED RED APPLE STICKS"
+      ],
+      "brands": [
+        "C.H. Robinson Company"
+      ]
+    },
+    "broccoli": {
+      "count": 2,
+      "topDescriptions": [
+        "BROCCOLI FLORETTES",
+        "BROCCOLI & CAULIFLOWER"
+      ],
+      "brands": [
+        "Gold Coast Packing, Inc.",
+        "H E Butt Grocery Company"
+      ]
+    },
+    "sugar": {
+      "count": 5,
+      "topDescriptions": [
+        "RED SANDING SUGAR SPRINKLES, RED",
+        "SPEARMINT SUGARFREE GUM, SPEARMINT",
+        "FROST BITE ZERO SUGAR SODA, FROST BITE",
+        "LOWER SUGAR TROPICAL SMOOTHIE",
+        "SWEET MINT SUGARFREE GUM, SWEET MINT"
+      ],
+      "brands": [
+        "Wilton Industries Inc.",
+        "Mars, Inc.",
+        "Pepsi-Cola North America Inc.",
+        "Wm. Bolthouse Farms Inc."
+      ]
+    },
+    "carrot": {
+      "count": 1,
+      "topDescriptions": [
+        "APRICOT PEAR CARROT BEET"
+      ],
+      "brands": [
+        "KIND Inc."
+      ]
+    },
+    "banana": {
+      "count": 1,
+      "topDescriptions": [
+        "ORIGINAL GOOD CRUNCH BANANA BITES, ORIGINAL"
+      ],
+      "brands": [
+        "Dole Packaged Foods, LLC"
+      ]
+    },
+    "smoked paprika": {
+      "count": 1,
+      "topDescriptions": [
+        "SPICE ISLANDS SMOKED PAPRIKA, 2.1 OZ"
+      ],
+      "brands": [
+        "B&G Foods North America, Inc. "
+      ]
+    },
+    "salt": {
+      "count": 6,
+      "topDescriptions": [
+        "WHITE CHEDDAR CHEESE, DRIED SWEETENED CRANBERRIES & SEA-SALTED ROASTED ALMONDS QUICK BITES, WHITE CHEDDAR CHEESE, DRIED SWEETENED CRANBERRIES & SEA-SALTED ROASTED ALMONDS",
+        "ASSORTED CHOCOLATE TRUFFLES, DARK CHOCOLATE RASPBERRY, MILK CHOCOLATE SEA SALT CARAMEL, MILK CHOCOLATE, WHITE CHOCOLATE PEPPERMINT",
+        "PRETZEL & SEA SALT DARK CHOCOLATE, PRETZEL & SEA SALT",
+        "DARK CHOCOLATE SEA SALT CARAMELS, DARK CHOCOLATE SEA SALT",
+        "CHOCOLATE SEA SALT DIPPED PROTEIN BAR, CHOCOLATE SEA SALT"
+      ],
+      "brands": [
+        "Target Stores",
+        "The Hershey Company",
+        "Safeway, Inc.",
+        "K & D Image Production, Inc.",
+        "Living Intentions, LLC"
+      ]
+    },
+    "milk": {
+      "count": 3,
+      "topDescriptions": [
+        "INSTANT NONFAT DRY MILK",
+        "FAT FREE MILK",
+        "GARELICK FARMS WHOLE MILK, 0.5 GALLON"
+      ],
+      "brands": [
+        "Wal-Mart Stores, Inc.",
+        "BJ's Wholesale Club / Corporate Brands",
+        "DFA Dairy Brands, LLC"
+      ]
+    },
+    "juice": {
+      "count": 4,
+      "topDescriptions": [
+        "100% GUAVA FRUIT JUICE BLEND, GUAVA",
+        "PINEAPPLE JUICE, PINEAPPLE",
+        "MIXED FRUIT IN A BLEND OF FRUIT JUICES WITH GREEN TEA EXTRACT, FRUIT JUICES WITH GREEN TEA EXTRACT",
+        "WELCH'S 48/5.5 FL OZ 100% JUICE - APPLE"
+      ],
+      "brands": [
+        "Stanmar International Inc.",
+        "Tropicana Products, Inc.",
+        "Dole Packaged Foods, LLC",
+        "WELCH FOODS INC."
+      ]
+    },
+    "beef": {
+      "count": 1,
+      "topDescriptions": [
+        "WAGYU BEEF GROUND BURGERS, WAGYU BEEF"
+      ],
+      "brands": [
+        "H E Butt Grocery Company"
+      ]
+    },
+    "corn": {
+      "count": 1,
+      "topDescriptions": [
+        "YELLOW CORN ORGANIC POLENTA, YELLOW CORN"
+      ],
+      "brands": [
+        "Bob's Red Mill Natural Foods, Inc."
+      ]
+    },
+    "shrimp": {
+      "count": 2,
+      "topDescriptions": [
+        "SEAFOOD MIX SQUID, MUSSELS, SHRIMP & SCALLOPS",
+        "SEA CUISINE, SHRIMP SCAMPI SEASONING"
+      ],
+      "brands": [
+        "Wal-Mart Stores, Inc.",
+        "High Liner Foods (USA) Incorporated"
+      ]
+    },
+    "cinnamon": {
+      "count": 2,
+      "topDescriptions": [
+        "CINNAMON SUGAR SWIRL POTATO BREAD, CINNAMON; SUGAR",
+        "CINNAMON VANILLA ALMOND, CINNAMON VANILLA"
+      ],
+      "brands": [
+        "Martin's Famous Pastry Shoppe, Inc.",
+        "The Gourmet Granola"
+      ]
+    },
+    "molasses": {
+      "count": 1,
+      "topDescriptions": [
+        "MAPLE BAKED BEANS WITH MAPLE SYRUP, MOLASSES & SPICES, MAPLE"
+      ],
+      "brands": [
+        "B&G Foods, Inc."
+      ]
+    },
+    "sea salt": {
+      "count": 1,
+      "topDescriptions": [
+        "DARK CHOCOLATE, SEA SALT CARAMELS"
+      ],
+      "brands": [
+        "Lunds Inc"
+      ]
+    },
+    "cashew": {
+      "count": 2,
+      "topDescriptions": [
+        "HALVES & PIECES CASHEWS",
+        "COCONUT CASHEWS, COCONUT"
+      ],
+      "brands": [
+        "Piggly Wiggly Company",
+        "Waymouth Farms, Inc."
+      ]
+    },
+    "flour": {
+      "count": 1,
+      "topDescriptions": [
+        "SEED & NUT FLOUR MINT CHOCOLATE SWEET THINS, MINT; CHOCOLATE"
+      ],
+      "brands": [
+        "Simple Mills"
+      ]
+    },
+    "avocado": {
+      "count": 1,
+      "topDescriptions": [
+        "PHILADELPHIA SMOKED SALMON SUSHI RICE ROLLED WITH CREAM CHEESE, AVOCADO SMOKED SALMON AND TOPPED WITH SESAME SEEDS, PHILADELPHIA SMOKED SALMON"
+      ],
+      "brands": [
+        "SureGreen Mulch, LLC"
+      ]
+    },
+    "lettuce": {
+      "count": 1,
+      "topDescriptions": [
+        "CAESAR ROMAINE LETTUCE, PARMESAN CHEESE, CROUTONS, AND SERVED WITH CAESAR DRESSING SALAD, CAESAR"
+      ],
+      "brands": [
+        "Target Stores"
+      ]
+    },
+    "tea": {
+      "count": 2,
+      "topDescriptions": [
+        "The Original Steak-EZE BreakAway Sirloin Beef Steak, Non-Marinated, 5 oz",
+        "BOURBON BARREL AGED STEAM-CRAFTED MAPLE ORGANIC SYRUP, BOURBON BARREL AGED MAPLE"
+      ],
+      "brands": [
+        "Tyson Foods Inc.",
+        "Safeway, Inc."
+      ]
+    },
+    "oat milk": {
+      "count": 1,
+      "topDescriptions": [
+        "CHEDDAR GOAT MILK, CHEDDAR"
+      ],
+      "brands": [
+        "Jackson-Mitchell, Inc."
+      ]
+    },
+    "confectioners sugar": {
+      "count": 1,
+      "topDescriptions": [
+        "CONFECTIONERS SUGAR"
+      ],
+      "brands": [
+        "Domino Foods, Inc."
+      ]
+    },
+    "cola": {
+      "count": 1,
+      "topDescriptions": [
+        "COCA-COLA ENERGY DRINK, 12 FL OZ, 4 COUNT"
+      ],
+      "brands": [
+        "Coca-Cola USA Operations"
+      ]
+    },
+    "sesame": {
+      "count": 1,
+      "topDescriptions": [
+        "CLASSIC SESAME THINS SNACK, CLASSIC"
+      ],
+      "brands": [
+        "CBC International Inc."
+      ]
+    },
+    "coconut": {
+      "count": 2,
+      "topDescriptions": [
+        "UNSWEETENED FLAKED COCONUT UNSULFURED, UNSWEETENED",
+        "PINEAPPLE COCONUT CHIA, PINEAPPLE COCONUT CHIA"
+      ],
+      "brands": [
+        "Bob's Red Mill Natural Foods, Inc.",
+        "KIND Inc."
+      ]
+    },
+    "honey": {
+      "count": 1,
+      "topDescriptions": [
+        "HONEYCRISP UNSWEETENED APPLE CHIPS, HONEYCRISP UNSWEETENED"
+      ],
+      "brands": [
+        "Waymouth Farms, Inc."
+      ]
+    },
+    "thin spaghetti": {
+      "count": 1,
+      "topDescriptions": [
+        "ENRICHED MACARONI PRODUCT, THIN SPAGHETTI"
+      ],
+      "brands": [
+        "Target Stores"
+      ]
+    },
+    "semi-sweet chocolate": {
+      "count": 1,
+      "topDescriptions": [
+        "SEMI-SWEET CHOCOLATE BAKING BAR, SEMI-SWEET CHOCOLATE"
+      ],
+      "brands": [
+        "Wal-Mart Stores, Inc."
+      ]
+    },
+    "turkey": {
+      "count": 1,
+      "topDescriptions": [
+        "99% LEAN 1% FAT GROUND TURKEY"
+      ],
+      "brands": [
+        "Wegmans Food Markets, Inc. "
+      ]
+    },
+    "quinoa": {
+      "count": 1,
+      "topDescriptions": [
+        "INDIAN SPICE QUINOA"
+      ],
+      "brands": [
+        "Good Groceries Company Inc."
+      ]
+    },
+    "cheddar cheese": {
+      "count": 1,
+      "topDescriptions": [
+        "CHEDDAR CHEESE SANDWICH CRACKERS, CHEDDAR CHEESE"
+      ],
+      "brands": [
+        "Target Stores"
+      ]
+    },
+    "honey mustard": {
+      "count": 1,
+      "topDescriptions": [
+        "HONEY MUSTARD DRESSING, HONEY MUSTARD"
+      ],
+      "brands": [
+        "Wakefern Food Corporation"
+      ]
+    },
+    "gelatin": {
+      "count": 1,
+      "topDescriptions": [
+        "ORANGE LOW CALORIE GELATIN SNACKS, ORANGE"
+      ],
+      "brands": [
+        "Kraft Heinz Foods Company"
+      ]
+    },
+    "sharp cheddar": {
+      "count": 1,
+      "topDescriptions": [
+        "Kellogg's Cheez It Crackers Duoz Sharp Cheddar Parmesan 12.4oz"
+      ],
+      "brands": [
+        "Kellogg Company US"
+      ]
+    },
+    "peanut": {
+      "count": 1,
+      "topDescriptions": [
+        "HONEY ROASTED PEANUTS, HONEY ROASTED"
+      ],
+      "brands": [
+        "Marlow Candy & Nut Company"
+      ]
+    },
+    "chocolate": {
+      "count": 1,
+      "topDescriptions": [
+        "DARK ROAST MACA CHOCOLATE ORGANIC CHICORY HERBAL COFFEE, MACA CHOCOLATE"
+      ],
+      "brands": [
+        "Teeccino, Inc."
+      ]
+    }
+  },
+  "overMappedCanonicals": [],
+  "metrics": {
+    "canonicalDistribution": {
+      "egg": 8,
+      "eggs": 1,
+      "bread": 6,
+      "butter": 5,
+      "yogurt": 7,
+      "onion": 2,
+      "olive oil": 8,
+      "almond": 4,
+      "water": 1,
+      "vanilla": 2,
+      "apple": 1,
+      "broccoli": 2,
+      "sugar": 5,
+      "carrot": 1,
+      "banana": 1,
+      "smoked paprika": 1,
+      "salt": 6,
+      "milk": 3,
+      "juice": 4,
+      "beef": 1,
+      "corn": 1,
+      "shrimp": 2,
+      "cinnamon": 2,
+      "molasses": 1,
+      "sea salt": 1,
+      "cashew": 2,
+      "flour": 1,
+      "avocado": 1,
+      "lettuce": 1,
+      "tea": 2,
+      "oat milk": 1,
+      "confectioners sugar": 1,
+      "cola": 1,
+      "sesame": 1,
+      "coconut": 2,
+      "honey": 1,
+      "thin spaghetti": 1,
+      "semi-sweet chocolate": 1,
+      "turkey": 1,
+      "quinoa": 1,
+      "cheddar cheese": 1,
+      "honey mustard": 1,
+      "gelatin": 1,
+      "sharp cheddar": 1,
+      "peanut": 1,
+      "chocolate": 1
+    },
+    "brandDiversity": {
+      "egg": 8,
+      "eggs": 1,
+      "bread": 5,
+      "butter": 5,
+      "yogurt": 4,
+      "onion": 2,
+      "olive oil": 8,
+      "almond": 4,
+      "water": 1,
+      "vanilla": 2,
+      "apple": 1,
+      "broccoli": 2,
+      "sugar": 4,
+      "carrot": 1,
+      "banana": 1,
+      "smoked paprika": 1,
+      "salt": 5,
+      "milk": 3,
+      "juice": 4,
+      "beef": 1,
+      "corn": 1,
+      "shrimp": 2,
+      "cinnamon": 2,
+      "molasses": 1,
+      "sea salt": 1,
+      "cashew": 2,
+      "flour": 1,
+      "avocado": 1,
+      "lettuce": 1,
+      "tea": 2,
+      "oat milk": 1,
+      "confectioners sugar": 1,
+      "cola": 1,
+      "sesame": 1,
+      "coconut": 2,
+      "honey": 1,
+      "thin spaghetti": 1,
+      "semi-sweet chocolate": 1,
+      "turkey": 1,
+      "quinoa": 1,
+      "cheddar cheese": 1,
+      "honey mustard": 1,
+      "gelatin": 1,
+      "sharp cheddar": 1,
+      "peanut": 1,
+      "chocolate": 1
+    },
+    "questionableCount": 34,
+    "highConfidenceCount": 66
+  }
+}

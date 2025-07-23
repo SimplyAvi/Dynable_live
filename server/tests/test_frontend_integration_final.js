@@ -16,15 +16,15 @@ async function testFrontendIntegrationFinal() {
     const recipeResponse = await axios.get(`${baseURL}/api/recipe?id=17`);
     const recipe = recipeResponse.data;
     console.log(`   ✅ Recipe "${recipe.title}" loaded`);
-    console.log(`   📊 Ingredients: ${recipe.ingredients.length}`);
+    console.log(`   📊 RecipeIngredients: ${recipe.ingredients.length}`);
     
     // Check canonical coverage
-    let mappedIngredients = 0;
+    let mappedRecipeIngredients = 0;
     let ingredientsWithRealProducts = 0;
     
     for (const ingredient of recipe.ingredients) {
       if (ingredient.canonical) {
-        mappedIngredients++;
+        mappedRecipeIngredients++;
         console.log(`   🎯 "${ingredient.name}" → ${ingredient.canonical}`);
         
         // Test if canonical has real products
@@ -48,13 +48,13 @@ async function testFrontendIntegrationFinal() {
     }
     
     console.log(`\n   📊 Coverage Summary:`);
-    console.log(`      🎯 Mapped: ${mappedIngredients}/${recipe.ingredients.length} (${(mappedIngredients/recipe.ingredients.length*100).toFixed(1)}%)`);
+    console.log(`      🎯 Mapped: ${mappedRecipeIngredients}/${recipe.ingredients.length} (${(mappedRecipeIngredients/recipe.ingredients.length*100).toFixed(1)}%)`);
     console.log(`      🏪 Real Products: ${ingredientsWithRealProducts}/${recipe.ingredients.length} (${(ingredientsWithRealProducts/recipe.ingredients.length*100).toFixed(1)}%)`);
 
     // Test 3: Test multiple recipes
     console.log('\n3️⃣ Testing Multiple Recipes...');
     const testRecipes = [17, 20005, 20006, 20007, 20017];
-    let totalIngredients = 0;
+    let totalRecipeIngredients = 0;
     let totalMapped = 0;
     let totalWithRealProducts = 0;
     
@@ -67,7 +67,7 @@ async function testFrontendIntegrationFinal() {
         let recipeWithRealProducts = 0;
         
         for (const ingredient of recipe.ingredients) {
-          totalIngredients++;
+          totalRecipeIngredients++;
           if (ingredient.canonical) {
             totalMapped++;
             recipeMapped++;
@@ -93,8 +93,8 @@ async function testFrontendIntegrationFinal() {
     }
     
     console.log(`\n   📊 Overall Coverage:`);
-    console.log(`      🎯 Mapped: ${totalMapped}/${totalIngredients} (${(totalMapped/totalIngredients*100).toFixed(1)}%)`);
-    console.log(`      🏪 Real Products: ${totalWithRealProducts}/${totalIngredients} (${(totalWithRealProducts/totalIngredients*100).toFixed(1)}%)`);
+    console.log(`      🎯 Mapped: ${totalMapped}/${totalRecipeIngredients} (${(totalMapped/totalRecipeIngredients*100).toFixed(1)}%)`);
+    console.log(`      🏪 Real Products: ${totalWithRealProducts}/${totalRecipeIngredients} (${(totalWithRealProducts/totalRecipeIngredients*100).toFixed(1)}%)`);
 
     // Test 4: Frontend accessibility
     console.log('\n4️⃣ Testing Frontend Accessibility...');

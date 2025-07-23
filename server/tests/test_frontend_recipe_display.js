@@ -10,7 +10,7 @@ async function testFrontendRecipeDisplay() {
         const recipe = recipeResponse.data;
         
         console.log(`✅ Recipe: ${recipe.title}`);
-        console.log(`   Ingredients: ${recipe.ingredients.length}`);
+        console.log(`   RecipeIngredients: ${recipe.ingredients.length}`);
         
         // Show first few ingredients with their processing
         recipe.ingredients.slice(0, 5).forEach(ing => {
@@ -42,9 +42,9 @@ async function testFrontendRecipeDisplay() {
 
         // Test 3: Test the enhanced filtering logic
         console.log('\n3. Testing enhanced filtering for basic ingredients...');
-        const basicIngredients = ['sugar', 'flour', 'salt', 'olive oil'];
+        const basicRecipeIngredients = ['sugar', 'flour', 'salt', 'olive oil'];
         
-        for (const ingredient of basicIngredients) {
+        for (const ingredient of basicRecipeIngredients) {
             try {
                 const response = await axios.post('http://localhost:5001/api/product/by-ingredient', {
                     ingredientName: ingredient,
@@ -83,7 +83,7 @@ async function testFrontendRecipeDisplay() {
         console.log('\n✅ Frontend Recipe Display Test Complete!');
         console.log('\n📋 Summary:');
         console.log('- Recipe data is being fetched with ingredients');
-        console.log('- Ingredients are being processed with canonical mapping');
+        console.log('- RecipeIngredients are being processed with canonical mapping');
         console.log('- Product matching is working with enhanced filtering');
         console.log('- Allergen filtering is functional');
         console.log('- The frontend should now display recipes with proper ingredient-product matching');

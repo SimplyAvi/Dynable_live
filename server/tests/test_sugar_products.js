@@ -27,9 +27,9 @@ async function testSugarProducts() {
 
         // Test 2: Check what canonical tags exist for basic ingredients
         console.log('\n2. Checking canonical tags for basic ingredients...');
-        const basicIngredients = ['sugar', 'flour', 'salt', 'milk', 'butter', 'oil', 'egg'];
+        const basicRecipeIngredients = ['sugar', 'flour', 'salt', 'milk', 'butter', 'oil', 'egg'];
         
-        for (const ingredient of basicIngredients) {
+        for (const ingredient of basicRecipeIngredients) {
             const ingredientProducts = response.data.foods.filter(p => 
                 p.canonicalTag && p.canonicalTag.toLowerCase().includes(ingredient.toLowerCase())
             );

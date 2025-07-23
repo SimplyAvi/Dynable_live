@@ -5,14 +5,14 @@ async function testRealVsGenericProducts() {
     await db.authenticate();
     const Recipe = require('./db/models/Recipe/Recipe.js');
     const Ingredient = require('./db/models/Recipe/Ingredient.js');
-    const CanonicalIngredient = require('./db/models/CanonicalIngredient.js');
+    const Ingredient = require('./db/models/Ingredient.js');
     const IngredientToCanonical = require('./db/models/IngredientToCanonical.js');
-    const Food = require('./db/models/Food.js');
+    const IngredientCategorized = require('./db/models/IngredientCategorized.js');
     
     console.log('🛍️  Testing Real vs Generic Products...\n');
     
     // Test some common ingredients that should have real products
-    const testIngredients = [
+    const testRecipeIngredients = [
       'salt',
       'sugar', 
       'eggs',
@@ -25,13 +25,13 @@ async function testRealVsGenericProducts() {
       'onion'
     ];
     
-    console.log('📋 Testing Common Ingredients:\n');
+    console.log('📋 Testing Common RecipeIngredients:\n');
     
-    for (const ingredientName of testIngredients) {
+    for (const ingredientName of testRecipeIngredients) {
       console.log(`🥘 Testing: "${ingredientName}"`);
       
       // Find canonical ingredient
-      const canonical = await CanonicalIngredient.findOne({
+      const canonical = await Ingredient.findOne({
         where: { name: ingredientName }
       });
       
@@ -43,7 +43,7 @@ async function testRealVsGenericProducts() {
       console.log(`  ✅ Canonical: "${canonical.name}"`);
       
       // Get all products for this canonical
-      const allProducts = await Food.findAll({
+      const allProducts = await IngredientCategorized.findAll({
         where: { canonicalTag: canonical.name },
         order: [
           [db.Sequelize.literal(`CASE WHEN "brandOwner" = 'Generic' THEN 1 ELSE 0 END`), 'ASC'],
@@ -92,7 +92,7 @@ async function testRealVsGenericProducts() {
       const recipe = await Recipe.findByPk(recipeId, {
         include: [{
           model: Ingredient,
-          as: 'Ingredients'
+          as: 'RecipeIngredients'
         }]
       });
       
@@ -104,9 +104,9 @@ async function testRealVsGenericProducts() {
       console.log(`  Recipe: "${recipe.name || 'Unnamed Recipe'}"`);
       
       // Test first 5 ingredients
-      const testIngredients = recipe.Ingredients.slice(0, 5);
+      const testRecipeIngredients = recipe.RecipeIngredients.slice(0, 5);
       
-      for (const ingredient of testIngredients) {
+      for (const ingredient of testRecipeIngredients) {
         const cleanedName = cleanIngredientName(ingredient.name);
         console.log(`\n    🥘 "${ingredient.name}"`);
         console.log(`       Cleaned: "${cleanedName}"`);
@@ -117,13 +117,13 @@ async function testRealVsGenericProducts() {
         });
         
         if (mapping) {
-          const canonical = await CanonicalIngredient.findByPk(mapping.CanonicalIngredientId);
+          const canonical = await Ingredient.findByPk(mapping.IngredientId);
           
           if (canonical) {
             console.log(`       ✅ Mapped to: "${canonical.name}"`);
             
             // Get products (prioritizing real over generic)
-            const products = await Food.findAll({
+            const products = await IngredientCategorized.findAll({
               where: { canonicalTag: canonical.name },
               order: [
                 [db.Sequelize.literal(`CASE WHEN "brandOwner" = 'Generic' THEN 1 ELSE 0 END`), 'ASC'],
@@ -157,8 +157,8 @@ async function testRealVsGenericProducts() {
     // Overall statistics
     console.log('\n📊 Overall Product Statistics:\n');
     
-    const totalProducts = await Food.count();
-    const genericProducts = await Food.count({ where: { brandOwner: 'Generic' } });
+    const totalProducts = await IngredientCategorized.count();
+    const genericProducts = await IngredientCategorized.count({ where: { brandOwner: 'Generic' } });
     const realProducts = totalProducts - genericProducts;
     
     console.log(`Total products in database: ${totalProducts}`);
@@ -168,11 +168,11 @@ async function testRealVsGenericProducts() {
     // Check canonical coverage
     const canonicalsWithRealProducts = await db.query(`
       SELECT COUNT(DISTINCT "canonicalTag") as count
-      FROM "Foods" 
+      FROM "IngredientCategorizeds" 
       WHERE "brandOwner" != 'Generic' AND "canonicalTag" IS NOT NULL
     `, { type: db.QueryTypes.SELECT });
     
-    const totalCanonicals = await CanonicalIngredient.count();
+    const totalCanonicals = await Ingredient.count();
     
     console.log(`\nCanonical ingredients with real products: ${canonicalsWithRealProducts[0].count}/${totalCanonicals} (${((canonicalsWithRealProducts[0].count/totalCanonicals)*100).toFixed(1)}%)`);
     

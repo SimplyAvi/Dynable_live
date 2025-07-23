@@ -1,12 +1,12 @@
 const request = require('supertest');
-const { Food, CanonicalIngredient, IngredientToCanonical, SubstituteMapping } = require('../../db/models');
+const { IngredientCategorized, Ingredient, IngredientToCanonical, SubstituteMapping } = require('../../db/models');
 
 // Mock the models
 jest.mock('../../db/models', () => ({
-  Food: {
+  IngredientCategorized: {
     findAll: jest.fn()
   },
-  CanonicalIngredient: {
+  Ingredient: {
     findByPk: jest.fn()
   },
   IngredientToCanonical: {
@@ -33,14 +33,14 @@ describe('Product Matching API', () => {
   describe('POST /api/product/by-ingredient', () => {
     test('should return products with matching canonical tags', async () => {
       // Mock data
-      const mockCanonicalIngredient = {
+      const mockIngredient = {
         id: 1,
         name: 'flour',
         aliases: ['all-purpose flour', 'bread flour']
       };
 
       const mockMapping = {
-        CanonicalIngredientId: 1
+        IngredientId: 1
       };
 
       const mockProducts = [
@@ -60,8 +60,8 @@ describe('Product Matching API', () => {
 
       // Setup mocks
       IngredientToCanonical.findOne.mockResolvedValue(mockMapping);
-      CanonicalIngredient.findByPk.mockResolvedValue(mockCanonicalIngredient);
-      Food.findAll.mockResolvedValue(mockProducts);
+      Ingredient.findByPk.mockResolvedValue(mockIngredient);
+      IngredientCategorized.findAll.mockResolvedValue(mockProducts);
 
       // Test the logic directly (since we can't easily test the Express route)
       const { cleanIngredientName } = require('../../api/foodRoutes');
@@ -73,12 +73,12 @@ describe('Product Matching API', () => {
       const mapping = await IngredientToCanonical.findOne({ where: { messyName: cleanedName.toLowerCase() } });
       expect(mapping).toBe(mockMapping);
       
-      const canonical = await CanonicalIngredient.findByPk(mapping.CanonicalIngredientId);
-      expect(canonical).toBe(mockCanonicalIngredient);
+      const canonical = await Ingredient.findByPk(mapping.IngredientId);
+      expect(canonical).toBe(mockIngredient);
       
       // Simulate the product query
       const canonicalTags = [canonical.name.toLowerCase(), ...(canonical.aliases || []).map(a => a.toLowerCase())];
-      const products = await Food.findAll({
+      const products = await IngredientCategorized.findAll({
         where: { canonicalTag: { [require('sequelize').Op.in]: canonicalTags } }
       });
       
@@ -104,7 +104,7 @@ describe('Product Matching API', () => {
 
       // Setup mocks
       SubstituteMapping.findOne.mockResolvedValue(mockSubstitute);
-      Food.findAll.mockResolvedValue(mockSubstituteProducts);
+      IngredientCategorized.findAll.mockResolvedValue(mockSubstituteProducts);
 
       // Test substitute logic
       const substituteName = 'milk';
@@ -112,7 +112,7 @@ describe('Product Matching API', () => {
       expect(substitute).toBe(mockSubstitute);
 
       const subTags = [substitute.substituteType.toLowerCase(), ...(substitute.searchTerms || []).map(s => s.toLowerCase())];
-      const subProducts = await Food.findAll({
+      const subProducts = await IngredientCategorized.findAll({
         where: { canonicalTag: { [require('sequelize').Op.in]: subTags } }
       });
 
@@ -144,7 +144,7 @@ describe('Product Matching API', () => {
 
       // Setup mocks
       SubstituteMapping.findOne.mockResolvedValue(mockSubstitute);
-      Food.findAll.mockResolvedValue(mockProductsWithAllergens);
+      IngredientCategorized.findAll.mockResolvedValue(mockProductsWithAllergens);
 
       // Test allergen filtering
       const allergens = ['milk'];
@@ -167,7 +167,7 @@ describe('Product Matching API', () => {
     test('should return empty array when no canonical mapping exists', async () => {
       // Setup mocks
       IngredientToCanonical.findOne.mockResolvedValue(null);
-      Food.findAll.mockResolvedValue([]);
+      IngredientCategorized.findAll.mockResolvedValue([]);
 
       const { cleanIngredientName } = require('../../api/foodRoutes');
       
@@ -178,7 +178,7 @@ describe('Product Matching API', () => {
       expect(mapping).toBeNull();
       
       // Should return empty array when no mapping exists
-      const products = await Food.findAll();
+      const products = await IngredientCategorized.findAll();
       expect(products).toEqual([]);
     });
   });
@@ -187,8 +187,8 @@ describe('Product Matching API', () => {
     test('should filter by subcategory size for basic ingredients', async () => {
       // Mock basic ingredient detection
       const canonicalTags = ['sugar'];
-      const basicIngredients = ['sugar', 'salt', 'flour', 'milk', 'butter', 'oil', 'yeast', 'egg'];
-      const isBasicIngredient = basicIngredients.some(basic => 
+      const basicRecipeIngredients = ['sugar', 'salt', 'flour', 'milk', 'butter', 'oil', 'yeast', 'egg'];
+      const isBasicIngredient = basicRecipeIngredients.some(basic => 
         canonicalTags.some(tag => tag.includes(basic.toLowerCase()))
       );
       
@@ -199,7 +199,7 @@ describe('Product Matching API', () => {
         SELECT "SubcategoryID" FROM "Subcategories" 
         WHERE "pure_ingredient" = true
         AND "SubcategoryID" IN (
-          SELECT "SubcategoryID" FROM "Food" 
+          SELECT "SubcategoryID" FROM "IngredientCategorized" 
           GROUP BY "SubcategoryID" 
           HAVING COUNT(*) < 100
         )
@@ -257,8 +257,8 @@ describe('Product Matching API', () => {
 
     test('should not apply strict filtering for non-basic ingredients', async () => {
       const canonicalTags = ['pizza sauce'];
-      const basicIngredients = ['sugar', 'salt', 'flour', 'milk', 'butter', 'oil', 'yeast', 'egg'];
-      const isBasicIngredient = basicIngredients.some(basic => 
+      const basicRecipeIngredients = ['sugar', 'salt', 'flour', 'milk', 'butter', 'oil', 'yeast', 'egg'];
+      const isBasicIngredient = basicRecipeIngredients.some(basic => 
         canonicalTags.some(tag => tag.includes(basic.toLowerCase()))
       );
       

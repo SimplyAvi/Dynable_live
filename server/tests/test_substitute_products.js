@@ -1,4 +1,4 @@
-const { CanonicalIngredient, Substitution, Food } = require('./db/models');
+const { Ingredient, Substitution, IngredientCategorized } = require('./db/models');
 const sequelize = require('./db/database');
 
 async function testSubstituteProducts() {
@@ -24,7 +24,7 @@ async function testSubstituteProducts() {
       console.log(`\n🔍 Testing: "${canonicalIngredient}"`);
       
       // Find the canonical ingredient
-      const canonical = await CanonicalIngredient.findOne({
+      const canonical = await Ingredient.findOne({
         where: { name: canonicalIngredient }
       });
 
@@ -38,7 +38,7 @@ async function testSubstituteProducts() {
 
       // Get substitutions
       const substitutions = await Substitution.findAll({
-        where: { CanonicalIngredientId: canonical.id }
+        where: { IngredientId: canonical.id }
       });
 
       console.log(`   🔄 Found ${substitutions.length} substitutions:`);
@@ -47,7 +47,7 @@ async function testSubstituteProducts() {
         console.log(`      - ${sub.substituteName} (${sub.notes})`);
         
         // Check if we have products for this substitute
-        const products = await Food.findAll({
+        const products = await IngredientCategorized.findAll({
           where: {
             canonicalTag: sub.substituteName.toLowerCase(),
             canonicalTagConfidence: 'confident'
@@ -79,7 +79,7 @@ async function testSubstituteProducts() {
     for (const test of specificTests) {
       console.log(`\n🔍 Testing substitute: "${test.substitute}" for "${test.ingredient}"`);
       
-      const products = await Food.findAll({
+      const products = await IngredientCategorized.findAll({
         where: {
           canonicalTag: test.substitute.toLowerCase(),
           canonicalTagConfidence: 'confident'

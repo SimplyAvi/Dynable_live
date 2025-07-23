@@ -3,7 +3,7 @@ const { cleanIngredientName } = require('./api/foodRoutes.js');
 function testCleaning() {
   console.log('🔍 Testing ingredient name cleaning...\n');
   
-  const testIngredients = [
+  const testRecipeIngredients = [
     '1 pound lean ground beef',
     '2 teaspoons onion powder', 
     '1/4 cup honey mustard',
@@ -16,14 +16,14 @@ function testCleaning() {
     '4 hamburger buns'
   ];
   
-  for (const ingredient of testIngredients) {
+  for (const ingredient of testRecipeIngredients) {
     const cleaned = cleanIngredientName(ingredient);
     console.log(`"${ingredient}" → "${cleaned}"`);
   }
   
   console.log('\n💡 Analysis:');
-  console.log('- Ingredients that work: ground beef, onion powder, salt, brown sugar, olive oil, hamburger buns');
-  console.log('- Ingredients that don\'t work: honey mustard, garlic powder, crushed red pepper, swiss cheese');
+  console.log('- RecipeIngredients that work: ground beef, onion powder, salt, brown sugar, olive oil, hamburger buns');
+  console.log('- RecipeIngredients that don\'t work: honey mustard, garlic powder, crushed red pepper, swiss cheese');
   console.log('- The cleaning function is removing important words like "honey", "garlic", "crushed", "swiss"');
 }
 

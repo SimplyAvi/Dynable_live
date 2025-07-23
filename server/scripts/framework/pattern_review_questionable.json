@@ -1,0 +1,5371 @@
+[
+  {
+    "id": 15,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "MYSTERY VOO DEW SODA, MYSTERY",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 584,
+    "brandOwner": "The Quaker Oats Company",
+    "description": "CRUNCH MEGA BERRIES SWEETENED CORN & OAT SNACK POUCHES, CRUNCH MEGA BERRIES",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 594,
+    "brandOwner": "Keebler Company",
+    "description": "CHEESE & PEANUT BUTTER SANDWICH CRACKERS, CHEESE & PEANUT BUTTER",
+    "suggestedCanonical": "cheddar cheese",
+    "score": 3
+  },
+  {
+    "id": 673,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE FILLED FIGURINE CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 687,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 698,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CAFE MOCHA CHOCOLATE CANDIES, MILK CHOCOLATE CAFE MOCHA",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 865,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "BLUEBERRY POMEGRANATE GELATIN DESSERT, BLUEBERRY POMEGRANATE",
+    "suggestedCanonical": "gelatin",
+    "score": 3
+  },
+  {
+    "id": 867,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "RASPBERRY GELATIN DESSERT, RASPBERRY",
+    "suggestedCanonical": "gelatin",
+    "score": 3
+  },
+  {
+    "id": 71966,
+    "brandOwner": "Target Stores",
+    "description": "CHOCOLATE COOKIE MONSTER MOTEL HOUSE KIT, CHOCOLATE COOKIE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 881,
+    "brandOwner": "HP Hood LLC",
+    "description": "VANILLA ICE CREAM WITH CHOCOLATE FLAVORED COATING BARS, VANILLA, CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 1029,
+    "brandOwner": "Wells Enterprises, Inc.",
+    "description": "CHOCOLATE CHIP VANILLA FROZEN DAIRY DESSERT WITH CHOCOLATE FLAVORED CHIPS, CHOCOLATE CHIP",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 1074,
+    "brandOwner": "Nestle USA Inc.",
+    "description": "WHITE CRISPY THIN CRUST PIZZA PIZZA TOPPED WITH SPINACH, GARLIC, RICOTTA, MOZZARELLA, PARMESAN, ROMANO AND ASIAGO CHEESES OVER CREAMY GARLIC SAUCE, WHITE",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 1152,
+    "brandOwner": "Barilla G & R F.Lli S.P.A.",
+    "description": "ENRICHED MACARONI PRODUCT, FARFALLE, ELBOWS, ROTINI",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 1144,
+    "brandOwner": "Apple & Eve,  LLC",
+    "description": "PEAR PEACH FLAVORED JUICE BLEND OF FRUIT & VEGETABLE JUICES FROM CONCENTRATE, PEAR PEACH",
+    "suggestedCanonical": "juice",
+    "score": 3
+  },
+  {
+    "id": 1248,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "WHOLE GREEN BEANS",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 1249,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SPRINKLE MIX, MONSTER LAB",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1247,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "POULTRY SEASONING, POULTRY",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1264,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MILK CHOCOLATE BARS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 1258,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CHOCOLATE TWIST & SHOUT SANDWICH COOKIES, CHOCOLATE",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 1272,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "ORANGE EARLY RISE DRINK MIX, ORANGE EARLY RISE",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1274,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SOUTHERN SWEET TEA DRINK ENHANCER, SOUTHERN SWEET TEA",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 1266,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SPRINKLE MIX",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1275,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "RASPBERRY ICE DRINK MIX, RASPBERRY ICE",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1308,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CHOCOLATE CHIP CHEWY GRANOLA BARS, CHOCOLATE CHIP",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 1318,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "RASPBERRY LEMONADE DRINK MIX, RASPBERRY LEMONADE",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1315,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MANGO DRINK MIX, MANGO",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1328,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SPRINKLE MIX, CHRISTMAS TREE",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1330,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SPRINKLE MIX, PEPPERMINT CRUNCH CANDIES",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1353,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "FRUIT PUNCH HYDRATION DRINK MIX, FRUIT PUNCH",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 91130,
+    "brandOwner": "Target Stores",
+    "description": "BUTTERNUT SQUASH RISOTTO MADE RICE, WITH YELLOW ONION, PARMESAN CHEESE & PARSLEY, BUTTERNUT SQUASH",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 1356,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CHOCOLATE DIPPED ICE CREAM BARS, CHOCOLATE",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 1382,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CHOCOLATE CHIP CHEWY GRANOLA BARS, CHOCOLATE CHIP",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 1399,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "LIME MARGARITA DRINK MIX, LIME MARGARITA",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1408,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "FROSTED BITE SIZE SHREDDED WHEAT SWEETENED WHOLE GRAIN CEREAL, FROSTED BITE SIZE SHREDDED WHEAT",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 1428,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CHOCOLATE TWIST & SHOUT DOUBLE FILLED SANDWICH COOKIES, CHOCOLATE",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 1410,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "STRAWBERRY ORANGE BANANA DRINK MIX, STRAWBERRY ORANGE BANANA",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1422,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SWEET BREWED ICED TEA, SWEET",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 1439,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CHOCOLATE ICE CREAM, CHOCOLATE",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 1435,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SWEET CORN MUFFINS, SWEET CORN",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 1447,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MANDARIN ORANGES WHOLE SEGMENTS IN LIGHT SYRUP, MANDARIN IN LIGHT SYRUP",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 1506,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "PUMPKIN SPICE CAPPUCCINO MIX SINGLE SERVE CUPS, PUMPKIN SPICE",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1507,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "HAZELNUT CAPPUCCINO MIX SINGLE SERVE CUPS, HAZELNUT",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1508,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MILK CHOCOLATE HOT COCOA MIX, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 1520,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "ASIAN STYLE SWEET CHILI WING SAUCE, ASIAN STYLE SWEET CHILI",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 1561,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SPRINKLES, CHOCOLATE",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 1581,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CHERRY DRINK MIX, CHERRY",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1628,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "BROWNIE MIX, BROWNIE",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1691,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SWEET CREAM DAIRY COFFEE CREAMER, SWEET CREAM",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 1706,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "BUTTER & HERB RICE PASTA & SAUCE MIX, BUTTER & HERB",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1734,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MILK CHOCOLATE MELTING WAFERS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 1749,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "FROSTED CHOCOLATE FUDGE TOASTER PASTRIES, FROSTED CHOCOLATE FUDGE",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 1757,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "HOLIDAY FROZEN HOT CHOCOLATE FLAVOR CHOCOLATE CARAMEL ICE CREAM WITH A MARSHMALLOW FLAVORED SWIRL AND CHOCOLATE FLAVORED CHUNKS ICE CREAM, HOLIDAY FROZEN HOT CHOCOLATE",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 1778,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "GINGERBREAD HOLIDAY QUICK BREAD & MUFFIN MIX, GINGERBREAD",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1785,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SPRINKLE MIX",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1786,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SPRINKLE MIX",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1782,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CHOCOLATE PEPPERMINT SANDWICH HOLIDAY COOKIE KIT, CHOCOLATE PEPPERMINT SANDWICH",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 1795,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MOCHA MACCHIATO CAPPUCCINO MIX SINGLE SERVE CUPS, MOCHA MACCHIATO",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1803,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MILK CHOCOLATE HOT COCOA MIX, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 1805,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "FRENCH VANILLA CAPPUCCINO DRINK MIX SINGLE SERVE CUPS, FRENCH VANILLA",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1806,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CHAI LATTE DRINK MIX SINGLE SERVE CUPS, CHAI LATTE",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1818,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SPRINKLE MIX",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1828,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SPRINKLE MIX",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1829,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SPRINKLE MIX, SNOWFLAKE",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1859,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "STRAWBERRY DRINK MIX, STRAWBERRY",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 75474,
+    "brandOwner": "Meijer, Inc.",
+    "description": "MINT MUDSLIDE MINT PREMIUM ICE CREAM WITH CHOCOLATE FLAVORED COOKIE CRUMB SWIRL, MINT MUDSLIDE",
+    "suggestedCanonical": "bread",
+    "score": 3
+  },
+  {
+    "id": 1896,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SPRINKLE MIX",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1897,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SPRINKLE MIX",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1906,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "RED & WHITE BAKING CHIPS, RED & WHITE",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 1908,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SPRINKLE MIX",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 1912,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CHOCOLATE IRISH CREAM FLAVORED ICE CREAM WITH CHOCOLATE FLAVORED SWIRL, CHOCOLATE IRISH CREAM",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 2031,
+    "brandOwner": "Astor Chocolate Corp.",
+    "description": "HOPEFUL MILK CHOCOLATE CARAMEL FILLED BAR, HOPEFUL",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 2063,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "DARK CHOCOLATE WITH ALMONDS BARS, DARK CHOCOLATE WITH ALMONDS",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 2071,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MAPLE FLAVORED CHICKEN SAUSAGE LINKS, MAPLE",
+    "suggestedCanonical": "egg",
+    "score": 3
+  },
+  {
+    "id": 2079,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "STRAWBERRIES & CREAM INSTANT OATMEAL, STRAWBERRIES & CREAM",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 2160,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "PLUS PROTEIN 13 G COMPLETE NUTRITIONAL SHAKES, CHOCOLATE, CHOCOLATE",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 2167,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "HIGH PROTEIN 20 G NUTRITIONAL SHAKES, CHOCOLATE, CHOCOLATE",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 2225,
+    "brandOwner": "Ghirardelli Chocolate Company",
+    "description": "MILK CHOCOLATE CARAMEL MINIS, MILK CHOCOLATE CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 2290,
+    "brandOwner": "Five Star Organics LLC ",
+    "description": "PB & J ORGANIC MILK CHOCOLATE FILLED WITH PEANUT BUTTER & RASPBERRY JAM BAR, PB & J",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 2463,
+    "brandOwner": "Kellogg Company US",
+    "description": "Kellogg's Corn Flakes Cereal 12oz",
+    "suggestedCanonical": "sharp cheddar",
+    "score": 3
+  },
+  {
+    "id": 2475,
+    "brandOwner": "Kellogg Company US",
+    "description": "Kellogg's Frosted Flakes Cereal 24oz",
+    "suggestedCanonical": "sharp cheddar",
+    "score": 3
+  },
+  {
+    "id": 2486,
+    "brandOwner": "Kellogg Company US",
+    "description": "Kellogg's Cocoa Krispies Cereal 23.3oz",
+    "suggestedCanonical": "sharp cheddar",
+    "score": 3
+  },
+  {
+    "id": 2495,
+    "brandOwner": "Kellogg Company US",
+    "description": "Kellogg's Rice Krispies Cereal Red & Blue 10.3oz",
+    "suggestedCanonical": "sharp cheddar",
+    "score": 3
+  },
+  {
+    "id": 2496,
+    "brandOwner": "Kellogg Company US",
+    "description": "Kellogg's Rice Krispies Cereal Spring 10.3oz",
+    "suggestedCanonical": "sharp cheddar",
+    "score": 3
+  },
+  {
+    "id": 2508,
+    "brandOwner": "Kellogg Company US",
+    "description": "Kellogg's Crispix Cereal 18oz",
+    "suggestedCanonical": "sharp cheddar",
+    "score": 3
+  },
+  {
+    "id": 79063,
+    "brandOwner": "Edward Marc Brands, Inc.",
+    "description": "HALLOW BOO MILK CHOCOLATE BARK WITH CANDY CORN, SPOOKY SPRINKLES AND GOOGLY EYES BARK, HALLOW BOO",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 3374,
+    "brandOwner": "The Kroger Co.",
+    "description": "CHICKEN PARTY WINGS, CHICKEN",
+    "suggestedCanonical": "egg",
+    "score": 3
+  },
+  {
+    "id": 3430,
+    "brandOwner": "General Mills, Inc.",
+    "description": "FROSTED LEMON SWEETENED WHOLE GRAIN OAT CEREAL, FROSTED LEMON",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 3484,
+    "brandOwner": "Safeway, Inc.",
+    "description": "CHOCOLATE SPRINKLES, CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 3560,
+    "brandOwner": "Ibp, Inc.",
+    "description": "90% LEAN/10% FAT GROUND BEEF SIRLOIN",
+    "suggestedCanonical": "turkey",
+    "score": 3
+  },
+  {
+    "id": 3633,
+    "brandOwner": "The Quaker Oats Company",
+    "description": "MEGA BERRIES SWEETENED CORN & OAT SNACK, MEGA BERRIES",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 3672,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE MILKLICIOUS WITH CREAMY CHOCOLATE MILK FILLING, MILK CHOCOLATE WITH CREAMY CHOCOLATE MILK FILLING",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 3704,
+    "brandOwner": "Danone US, LLC",
+    "description": "STRAWBEERY ALMONDMILK YOGURT ALTERNATIVE, STRAWBERRY",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 3759,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 3762,
+    "brandOwner": "Associated Brands Limited",
+    "description": "MILK CHOCOLATE WITH RUM AND RAISINS, RUM & RAISIN",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 4004,
+    "brandOwner": "Fannie May Confections, Inc.",
+    "description": "PIXIE EGG SMOOTH CARAMEL AND CRUNCHY PECANS DRENCHED IN MILK CHOCOLATE, PIXIE EGG",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 80254,
+    "brandOwner": "Kellogg Company US",
+    "description": "Kellogg's Froot Loops Cereal Reduced Sugar",
+    "suggestedCanonical": "sharp cheddar",
+    "score": 3
+  },
+  {
+    "id": 4434,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CHOCOLATE & VANILLA ICE CREAM CUPS, CHOCOLATE & VANILLA",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 4437,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "STRAWBERRIES & CREAM INSTANT OATMEAL, STRAWBERRIES & CREAM",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 4652,
+    "brandOwner": "Maestrani Schweizer",
+    "description": "KIDS SWISS MILK CHOCOLATE WITH EXTRA MILK FILLING, SWISS MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 4681,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CHOCOLATE SUGAR COOKIES, CHOCOLATE SUGAR",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 4962,
+    "brandOwner": "John B. Martin & Sons Farms, Inc.",
+    "description": "MAPLE ROASTED PUMPKIN SEEDS WITH MAPLE SYRUP, MAPLE",
+    "suggestedCanonical": "molasses",
+    "score": 3
+  },
+  {
+    "id": 4963,
+    "brandOwner": "Fran's Chocolates, Ltd.",
+    "description": "DARK CHOCOLATE CARAMELS, DARK CHOCOLATE",
+    "suggestedCanonical": "sea salt",
+    "score": 3
+  },
+  {
+    "id": 4991,
+    "brandOwner": "Clamtown Brewery, Inc.",
+    "description": "DARK MILK 58% CACAO CHOCOLATE BAR, DARK MILK",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 7690,
+    "brandOwner": "Coastal Cocktails Inc.",
+    "description": "MILK CHOCOLATE, STRAWBERRY & CARAMEL FLAVORED HOT CHOCOLATE BOMBS, MILK CHOCOLATE, STRAWBERRY & CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 5897,
+    "brandOwner": "Danone US, LLC",
+    "description": "MOZZARELLA LOW MOISTURE PART SKIM ORGANIC STRING CHEESE STICKS, MOZZARELLA",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 5945,
+    "brandOwner": "Teton Waters Ranch ",
+    "description": "UNCURED BEEF SPICY ITALIAN-STYLE SMOKED SAUSAGE WITH MOZZARELLA CHEESE, MOZZARELLA CHEESE",
+    "suggestedCanonical": "avocado",
+    "score": 3
+  },
+  {
+    "id": 6041,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "EVERYTHING BAGEL SEASONING, EVERYTHING BAGEL",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 6195,
+    "brandOwner": "Wilton Industries Inc.",
+    "description": "VALENTINE JUMBO HEART SPRINKLES",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 6197,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SPRINKLE MIX",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 6277,
+    "brandOwner": "Wilton Industries Inc.",
+    "description": "NONPAREILS SPRINKLES, WHITE",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 6281,
+    "brandOwner": "Frankford Candy, LLC",
+    "description": "MILK CHOCOLATE WITH CANDY, STICKERS, GREEN APPLE, MANGO, BLUE RASPBERRY, CHERRY",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 6325,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "TROPICAL PUNCH DRINK MIX, TROPICAL PUNCH",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 6544,
+    "brandOwner": "Five Star Organics LLC ",
+    "description": "PB & J MILK CHOCOLATE FILLED WITH PEANUT BUTTER & RASPBERRY JAM ORGANIC MINIS, PB & J",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 88829,
+    "brandOwner": "The Hershey Company",
+    "description": "POPPED SNACK MIX, PEANUT BUTTER CUP MINIS, PRETZELS, CHOCOLATE DRIZZLED POPCORN",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 6714,
+    "brandOwner": "Spike's Baking Co. Inc.",
+    "description": "ORGANIC WILD BLUEBERRY COCONUT BITES WITH CACAO NIBS AND DARK CHOCOLATE, WILD BLUEBERRY, CACAO NIBS AND DARK CHOCOLATE",
+    "suggestedCanonical": "chocolate",
+    "score": 3
+  },
+  {
+    "id": 6820,
+    "brandOwner": "Associated Brands Limited",
+    "description": "MILK CHOCOLATE WITH FRUIT AND NUT, FRUIT AND NUT",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 6878,
+    "brandOwner": "Maud Borup, Inc.",
+    "description": "DINNER DATE MADE WITH MILK & WHITE CHOCOLATE, MILK & WHITE CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 6951,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "BERRY POMEGRANATE DRINK MIX, BERRY POMEGRANATE",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 6969,
+    "brandOwner": "Keebler Company",
+    "description": "CHEESE & PEANUT BUTTER SANDWICH CRACKERS, CHEESE & PEANUT BUTTER",
+    "suggestedCanonical": "cheddar cheese",
+    "score": 3
+  },
+  {
+    "id": 7451,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CHOCOLATE CREME SANDWICH COOKIES, CHOCOLATE CREME",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 7534,
+    "brandOwner": "Meijer, Inc.",
+    "description": "STEEL CUT ORGANIC OATS, STEEL CUT",
+    "suggestedCanonical": "olive oil",
+    "score": 3
+  },
+  {
+    "id": 7591,
+    "brandOwner": "Riviana Foods Inc.",
+    "description": "ENRICHED MACARONI PRODUCT, LASAGNA",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 7607,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 7744,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SPRINKLE MIX, CHRISTMAS TREE",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 7777,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "DARK CHOCOLATE 60% CACAO CHIPS, DARK CHOCOLATE",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 7928,
+    "brandOwner": "Wells Enterprises, Inc.",
+    "description": "CHOCOLATE SWIRL VANILLA ICE CREAM WITH CHOCOLATE FLAVORED SWIRL CUPS, CHOCOLATE SWIRL",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 7959,
+    "brandOwner": "Chocolate Chocolate Chocolate Company",
+    "description": "MILK CHOCOLATE CARAMEL BUNNIES, MILK CHOCOLATE CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 7987,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "DEWSHINE CLEAR CITRUS SODA, DEWSHINE",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 8133,
+    "brandOwner": "Target Stores",
+    "description": "ASSORTED HALLOWEEN SPRINKLES, MIDNIGHT FRIGHT",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 8238,
+    "brandOwner": "Wilton Industries Inc.",
+    "description": "SPRINKLES MIX, METALLIC",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 8348,
+    "brandOwner": "Wells Enterprises, Inc.",
+    "description": "CHOCOLATE CREME SANDWICH CHOCOLATE FROZEN DAIRY DESSERT OUTSIDE WITH A BURST OF SWEET VANILLA FLAVORED SWIRL IN THE MIDDLE POPS, CHOCOLATE CREME SANDWICH",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 8356,
+    "brandOwner": "COCOA BOMBS LLC",
+    "description": "MILK CHOCOLATE WITH MINI MARSHMALLOWS COCOA BOMBS, MILK CHOCOLATE WITH MINI MARSHMALLOWS",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 8367,
+    "brandOwner": "PepsiCo, Inc. (CytoSport)",
+    "description": "VANILLA CREME LIGHT NON DAIRY LOW-FAT PROTEIN SHAKE, VANILLA CREME",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 8378,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "RAINBOW SPRINKLE MIX, RAINBOW",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 8373,
+    "brandOwner": "Safeway, Inc.",
+    "description": "PEANUT BUTTER FILLED PRETZEL NUGGETS, PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 8401,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "ROMAINE & SPRING MIX, ROMAINE & SPRING",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 8458,
+    "brandOwner": "Russell Stover Candies Inc.",
+    "description": "CARAMEL BROWNIE HEART CANDY IN MILK CHOCOLATE, CARAMEL BROWNIE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 8462,
+    "brandOwner": "Cheese Merchants Of America Inc.",
+    "description": "PARMESAN AND PECORINO ROMANO GRATED CHEESE, PARMESAN AND PECORINO ROMANO",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 8508,
+    "brandOwner": "Raley's",
+    "description": "MILK CHOCOLATE FILLED WITH MINI MARSHMALLOWS STAR SHAPED HOT COCOA BOMB, MILK CHOCOLATE FILLED WITH MINI MARSHMALLOWS",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 8513,
+    "brandOwner": "Cadia",
+    "description": "YELLOW CORN ORGANIC CHIPS, YELLOW CORN",
+    "suggestedCanonical": "corn",
+    "score": 3
+  },
+  {
+    "id": 8554,
+    "brandOwner": "Five Star Organics LLC ",
+    "description": "COCONUT ORGANIC DARK CHOCOLATE FILLED WITH COCONUT BARS, COCONUT",
+    "suggestedCanonical": "chocolate",
+    "score": 3
+  },
+  {
+    "id": 8555,
+    "brandOwner": "Target Stores",
+    "description": "SWEETENED DRIED CRANBERRIES, SWEETENED",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 8593,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CREAM STYLE SWEET CORN, CREAM STYLE",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 8639,
+    "brandOwner": "Target Stores",
+    "description": "UNCURED SAUCISSON SEC FRENCH-STYLE SALAMI COATED WITH HERBS, UNCURED SAUCISSON SEC",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 8683,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CHOCOLATE CARAMEL COFFEE CREAMER, CHOCOLATE CARAMEL",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 8695,
+    "brandOwner": "Stark Group International, Inc.",
+    "description": "VELVETY MILK CHOCOLATE WITH A CRUNCHY WHOLE ITALIAN HAZELNUT, VELVETY MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 8687,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SMOKED GOUDA ARTISAN CRAFTED ENRICHED MACARONI PRODUCT WITH CHEESE SAUCE, SMOKED GOUDA",
+    "suggestedCanonical": "avocado",
+    "score": 3
+  },
+  {
+    "id": 8771,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "ORIGINAL BAKED BEANS SEASONED WITH BACON & BROWN SUGAR, ORIGINAL",
+    "suggestedCanonical": "molasses",
+    "score": 3
+  },
+  {
+    "id": 8861,
+    "brandOwner": "Original Gourmet Food Company Inc.",
+    "description": "SOFT & SMOOTH FRUIT FLAVORED CHEWY CANDY WITH A JUICE BURST, APPLE, STRAWBERRY, ORANGE, RASPBERRY, LEMON, CHERRY",
+    "suggestedCanonical": "juice",
+    "score": 3
+  },
+  {
+    "id": 8926,
+    "brandOwner": "Rafael Padilla & Cia S. En C.",
+    "description": "BELGIAN MILK CHOCOLATE ENROBED PRETZEL, BELGIAN MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 9045,
+    "brandOwner": "Russell Stover Candies Inc.",
+    "description": "PECANS AND CARAMEL IN LUSCIOUS MILK CHOCOLATE, PECANS AND CARAMEL IN LUSCIOUS MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 9125,
+    "brandOwner": "Godiva Chocolatier, Inc.",
+    "description": "MILK CHOCOLATE BLISS WITH CREAMY MILK CHOCOLATE FILLING, MILK CHOCOLATE BLISS",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 9177,
+    "brandOwner": "Peet's Coffee and Tea, Inc.",
+    "description": "BARIDI COFFEE COLD BREW, DARK CHOCOLATE",
+    "suggestedCanonical": "chocolate",
+    "score": 3
+  },
+  {
+    "id": 9275,
+    "brandOwner": "Chevron U.S.A.",
+    "description": "RASPBERRY CENTER DARK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 9466,
+    "brandOwner": "Circle City Marketing & Distributing, Inc.",
+    "description": "HAZARDOUSLY SOUR CANDY, RASPBERRY/LEMON, ORANGE/APPLE, BANANA/BLUEBERRY, GRAPE/STRAWBERRY, PINEAPPLE/PASSION FRUIT",
+    "suggestedCanonical": "juice",
+    "score": 3
+  },
+  {
+    "id": 9431,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MILK CHOCOLATE & WHITE CHOCOLATE STRAWBERRY FLAVORED HOT CHOCOLATE DRINK BOMBS, MILK CHOCOLATE & WHITE CHOCOLATE STRAWBERRY",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 9490,
+    "brandOwner": "Russell Stover Candies Inc.",
+    "description": "CARAMEL IN MILK CHOCOLATE, CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 9494,
+    "brandOwner": "Leaf, Inc.",
+    "description": "TOFFEE FLAVORED FROZEN DAIRY DESSERT DIPPED IN MILK CHOCOLATE FLAVORED COATING WITH HEATH TOFFEE PIECES, TOFFEE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 9517,
+    "brandOwner": "Russell Stover Candies Inc.",
+    "description": "PECAN DELIGHTS CARAMEL & PECANS COVERED IN MILK CHOCOLATE, PECAN DELIGHTS",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 9541,
+    "brandOwner": "Ghirardelli Chocolate Company",
+    "description": "PREMIUM ASSORTMENT FRUIT & DARK CHOCOLATE SQUARES, DARK CHOCOLATE BLUEBERRY, DARK CHOCOLATE 60% CACAO, DARK CHOCOLATE RASPBERRY",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 9606,
+    "brandOwner": "Lindt & Sprungli (Schweiz) AG",
+    "description": "MILK CHOCOLATE WITH HAZELNUT AND CRISP FILLING, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 9631,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SWEET HAWAIIAN ROLLS, SWEET HAWAIIAN",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 9733,
+    "brandOwner": "WR Group, Inc ",
+    "description": "100% RAW ORGANIC POWDER, EXTRA RICH CACAO",
+    "suggestedCanonical": "olive oil",
+    "score": 3
+  },
+  {
+    "id": 9829,
+    "brandOwner": "Russell Stover Candies Inc.",
+    "description": "CARAMEL IN MILK CHOCOLATE, CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 9880,
+    "brandOwner": "The Kroger Co.",
+    "description": "MEATLESS KIELBASA PLANT BASED SAUSAGE, MEATLESS KIELBASA",
+    "suggestedCanonical": "egg",
+    "score": 3
+  },
+  {
+    "id": 9962,
+    "brandOwner": "Wegmans Food Markets, Inc. ",
+    "description": "LOW FAT FUDGE BARS",
+    "suggestedCanonical": "turkey",
+    "score": 3
+  },
+  {
+    "id": 10213,
+    "brandOwner": "Fairway Operating Corp.",
+    "description": "TRULY COLD BREWED COFFEE, DARK ROAST",
+    "suggestedCanonical": "chocolate",
+    "score": 3
+  },
+  {
+    "id": 10433,
+    "brandOwner": "Bulletproof Digital, Inc.",
+    "description": "DARK CHOCOLATE COLD BREW COLLAGEN PROTEIN COFFEE, DARK CHOCOLATE",
+    "suggestedCanonical": "chocolate",
+    "score": 3
+  },
+  {
+    "id": 10443,
+    "brandOwner": "The Hillshire Brands Company",
+    "description": "BARBECUE PORK JERKY, BARBECUE",
+    "suggestedCanonical": "egg",
+    "score": 3
+  },
+  {
+    "id": 10479,
+    "brandOwner": "The Hillshire Brands Company",
+    "description": "100% PREMIUM PORK",
+    "suggestedCanonical": "egg",
+    "score": 3
+  },
+  {
+    "id": 10506,
+    "brandOwner": "Harry and David",
+    "description": "MOOSE MUNCH PREMIUM POPCORN, MILK CHOCOLATE, DARK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 10630,
+    "brandOwner": "Safeway, Inc.",
+    "description": "MIXED FRUIT STRAWBERRY, ORANGE, APPLE, CHERRY, GRAPE, BLUE RASPBERRY DINOS FRUIT FLAVORED SNACKS, MIXED FRUIT",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 10661,
+    "brandOwner": "NibMor Inc.",
+    "description": "ORGANIC DARK CHOCOLATE PEPPERMINT, DARK CHOCOLATE",
+    "suggestedCanonical": "chocolate",
+    "score": 3
+  },
+  {
+    "id": 10700,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SPRINKLE MIX",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 10729,
+    "brandOwner": "Maud Borup, Inc.",
+    "description": "CHOCOLATE FILLED WITH MINI MARSHMALLOWS HOT COCOA BOMBS, MILK CHOCOLATE, DARK CHOCOLATE, WHITE CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 10821,
+    "brandOwner": "Stark Group International, Inc.",
+    "description": "CREAMY MILK AND DARK GIANDUIA CHOCOLATES WITH FINEST ITALIAN HAZELNUTS, ASSORTED",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 10854,
+    "brandOwner": "Russell Stover Candies Inc.",
+    "description": "PECAN DELIGHTS CARAMEL & PECANS COVERED IN MILK CHOCOLATE, PECAN DELIGHTS",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 10874,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "BERRY LEMONADE FLAVORED PREBIOTIC DRINK MIX, BERRY LEMONADE",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 10923,
+    "brandOwner": "Cumberland Farms Dairy Inc",
+    "description": "CREAMY MILK CHOCOLATE BAR WITH PROTEIN, CREAMY MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 11018,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "ASIAN STYLE GREEN CABBAGE, GREEN LEAF LETTUCE, KALE, RED CABBAGE, CARROTS, GREEN ONIONS, SLICED ALMONDS, WONTON STRIPS AND SESAME GINGER DRESSING CHOPPED SALAD KIT, ASIAN STYLE",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 11055,
+    "brandOwner": "Ferrero U.S.A., Incorporated",
+    "description": "MILK CHOCOLATE WITH CREAMY MILK FILLING CHOCOLATE, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 11060,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CHOCOLATE TWIST & SHOUT SANDWICH COOKIES, CHOCOLATE",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 11125,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SPRINKLES MIX, SPRING",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 27127,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "PEANUT BUTTER MILK CHOCOLATE WITH CREAMY CARAMEL AND PEANUTS EGG, PEANUT BUTTER",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 27334,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "PEANUT BUTTER CRISPER CRISP RICE, MILK CHOCOLATE, CARAMEL, PEANUTS BAR, PEANUT BUTTER CRISPER",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 11202,
+    "brandOwner": "The Endangered Species Chocolate Co",
+    "description": "RICH CARAMEL + MILK CHOCOLATE 48% COCOA CHOCOLATE BAR, RICH CARAMEL + MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 11305,
+    "brandOwner": "Frankford Candy, LLC",
+    "description": "MILK CHOCOLATE WITH CANDY, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 11519,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CHOCOLATE CHIP ICE CREAM WITH RICH CHOCOLATE FLAVORED CHIPS, CHOCOLATE CHIP",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 11527,
+    "brandOwner": "New Seasons Market, LLC",
+    "description": "YELLOW CORN ORGANIC TORTILLAS, YELLOW CORN",
+    "suggestedCanonical": "corn",
+    "score": 3
+  },
+  {
+    "id": 11567,
+    "brandOwner": "Lindt & Sprungli (Schweiz) AG",
+    "description": "DARK CHOCOLATE TRUFFLES, DARK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 11579,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "PEPSI SODA, 12 FL OZ, 12 COUNT",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 32162,
+    "brandOwner": "KIND Inc.",
+    "description": "MANGO APPLE CHIA FRUIT BARS, MANGO APPLE CHIA",
+    "suggestedCanonical": "coconut",
+    "score": 3
+  },
+  {
+    "id": 32163,
+    "brandOwner": "KIND Inc.",
+    "description": "CHERRY APPLE CHIA FRUIT BARS, CHERRY APPLE CHIA",
+    "suggestedCanonical": "coconut",
+    "score": 3
+  },
+  {
+    "id": 11911,
+    "brandOwner": "Safeway, Inc.",
+    "description": "RICH CHOCOLATE HOT COCOA MIX, RICH CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 12019,
+    "brandOwner": "Guida-Seibert Dairy Co.",
+    "description": "CHOCOLATE FAT FREE MILK, CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 33510,
+    "brandOwner": "Godiva Chocolatier, Inc.",
+    "description": "ASSORTED CHOCOLATE CREATIONS, RED VELVET; DARK CHOCOLATE; WHITE CHOCOLATE; STRAWBERRY; HAZELNUT",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 12315,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "SIMPLY CARAMEL MILK CHOCOLATE FILLED WITH CREAMY CARAMEL BUNNIES, SIMPLY CARAMEL",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 12325,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "SPOOKY RED NOUGAT WITH MILK CHOCOLATE MUSKEFEARS BAR, SPOOKY RED NOUGAT",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 12337,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 12349,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "RICH, DARK CHOCOLATE, GOLDEN CARAMEL, VANILLA NOUGAT MIDNIGHT BAR, RICH, DARK CHOCOLATE, GOLDEN CARAMEL, VANILLA NOUGAT",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 12710,
+    "brandOwner": "The Federated Group, Inc.",
+    "description": "MACARONI PRODUCT, SPAGHETTI",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 12704,
+    "brandOwner": "Coca-Cola USA Operations",
+    "description": "COLA",
+    "suggestedCanonical": "cola",
+    "score": 3
+  },
+  {
+    "id": 12726,
+    "brandOwner": "The Moran Group Incorporated",
+    "description": "ORIGINAL WOVEN WHEATS BAKED SNACK CRACKERS WITH WHOLE GRAIN WHEAT, ORIGINAL",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 12907,
+    "brandOwner": "Dole Packaged Foods, LLC",
+    "description": "MILK CHOCOLATE COVERED REAL BANANA SLICES DIPPERS, MILK CHOCOLATE BANANA",
+    "suggestedCanonical": "banana",
+    "score": 3
+  },
+  {
+    "id": 13106,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MELT'N DIP EASY MELT REDUCED FAT PASTEURIZED PREPARED CHEESE PRODUCT, MELT'N DIP",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 13110,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "ITALIAN STYLE FINELY SHREDDED LOW-MOISTURE PART-SKIM MOZZARELLA, NOT SMOKED PROVOLONE, PARMESAN, ROMANO, FONTINA AND ASIAGO CHEESE, ITALIAN STYLE",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 13151,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "FLOUR TORTILLA MIX, FLOUR",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 13172,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "ENRICHED MACARONI PRODUCT, SMALL SHELLS",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 13182,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "ENRICHED MACARONI PRODUCT, FETTUCCINE",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 13191,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "AMERICAN REDUCED FAT PASTEURIZED PROCESS CHEESE SINGLES, AMERICAN",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 35758,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Pillsbury Bacon Toaster Scrambles Pastries 8 Count",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 13243,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "WHOLE WHEAT MACARONI PRODUCT, ELBOWS",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 13281,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "DRY ROASTED SLICED ALMONDS SALAD TOPPER, DRY ROASTED",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 13299,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "ENRICHED MACARONI PRODUCT, ELBOWS",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 13300,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "ENRICHED MACARONI PRODUCT, PENNE",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 13334,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "ENRICHED MACARONI PRODUCT, RIGATONI",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 13335,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "ENRICHED MACARONI PRODUCT, SHELLS",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 13341,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MIXED BERRIES ELECTROLYTE VITAMIN ENHANCED DRINK MIX, MIXED BERRIES",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 13362,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SWEET PEAS, SWEET",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 13374,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "ROTINI PASTA & CHEDDAR BROCCOLI PASTA SIDE SAUCE MIX, ROTINI PASTA & CHEDDAR BROCCOLI",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 13400,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MOZZARELLA SHREDDED REDUCED FAT LOW-MOISTURE PART-SKIM CHEESE, MOZZARELLA",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 13407,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "COLBY JACK REDUCED FAT COLBY & MONTEREY JACK SLICED CHEESE, COLBY JACK",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 13434,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "WHOLE OKRA",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 13433,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "GRAPE DRINK MIX, GRAPE",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 13465,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "FRENCH VANILLA FLAVORED SUGAR FREE NON-DAIRY COFFEE CREAMER, FRENCH VANILLA",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 13469,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "WATERMELON ROSE BEAM & GLEAM COLLAGEN DRINK MIX, WATERMELON ROSE",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 13471,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "BLACKBERRY HIBISCUS RELAXATION DRINK MIX, BLACKBERRY HIBISCUS",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 13486,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "ROOT BLEND WITH BEETS, CARROTS, PARSNIPS, SWEET POTATOES, ROOT BLEND",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 13487,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MIXED VEGETABLES CARROTS, SWEET COM, GREEN BEANS, PEAS, MIXED VEGETABLES",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 13510,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "TROPICAL MELON DRINK MIX, TROPICAL MELON",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 13704,
+    "brandOwner": "ASTI MANUFACTURING CORP INC",
+    "description": "ENRICHED MACARONI PRODUCT, ANGEL HAIR",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 13748,
+    "brandOwner": "KIND Inc.",
+    "description": "OATS & HONEY WITH TOASTED COCONUT HEALTHY GRAINS GRANOLA BARS, OATS & HONEY WITH TOASTED COCONUT",
+    "suggestedCanonical": "coconut",
+    "score": 3
+  },
+  {
+    "id": 13904,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "KETO FAT CUPS, CARAMEL, CARAMEL",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 13905,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CARAMEL CHOCOLATE NUT ROLL SNACK BARS, CARAMEL CHOCOLATE NUT ROLL",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 13991,
+    "brandOwner": "The Fred W. Albrecht Grocery Co.",
+    "description": "BUCKEYE SATURDAY PEANUT BUTTER ICE CREAM WITH A CREAMY PEANUT BUTTER SWIRL AND CHOCOLATE COVERED BUCKEYE CANDIES, BUCKEYE SATURDAY",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 13986,
+    "brandOwner": "The Fred W. Albrecht Grocery Co.",
+    "description": "CARAMEL CONE TWIST VANILLA FLAVORED ICE CREAM SWIRLED WITH CARAMEL AND CHOCOLATE COVERED CONE PIECES, CARAMEL CONE TWIST",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 13995,
+    "brandOwner": "The Fred W. Albrecht Grocery Co.",
+    "description": "CAPPUCCINO CHOCOLATE CHIP COFFEE ICE CREAM WITH CHUNKS OF DARK CHOCOLATE, CAPPUCCINO CHOCOLATE CHIP",
+    "suggestedCanonical": "chocolate",
+    "score": 3
+  },
+  {
+    "id": 14366,
+    "brandOwner": "The Kroger Co.",
+    "description": "PARMESAN SHREDDED NATURAL CHEESE, PARMESAN",
+    "suggestedCanonical": "egg",
+    "score": 3
+  },
+  {
+    "id": 14398,
+    "brandOwner": "The Kroger Co.",
+    "description": "BLUE CHEESE DRESSING, BLUE CHEESE",
+    "suggestedCanonical": "egg",
+    "score": 3
+  },
+  {
+    "id": 14407,
+    "brandOwner": "The Kroger Co.",
+    "description": "COLBY JACK CHEESE, COLBY JACK",
+    "suggestedCanonical": "egg",
+    "score": 3
+  },
+  {
+    "id": 14676,
+    "brandOwner": "Belgioioso Cheese, Inc.",
+    "description": "BURRATA FRESH MOZZARELLA CHEESE FILLED WITH SHREDS OF MOZZARELLA SOAKED IN CREAM, BURRATA FRESH MOZZARELLA",
+    "suggestedCanonical": "avocado",
+    "score": 3
+  },
+  {
+    "id": 14701,
+    "brandOwner": "The Hershey Company",
+    "description": "MILKLICIOUS MILK CHOCOLATE WITH CREAMY CHOCOLATE MILK FILLING, MILKLICIOUS MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 14798,
+    "brandOwner": "Wakefern Food Corporation",
+    "description": "WHITE GRAPE SPARKLING BEVERAGE, WHITE GRAPE",
+    "suggestedCanonical": "bread",
+    "score": 3
+  },
+  {
+    "id": 15009,
+    "brandOwner": "Raley's",
+    "description": "ENRICHED MACARONI PRODUCT, SMALL ELBOW MACARONI",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 15011,
+    "brandOwner": "Raley's",
+    "description": "ENRICHED MACARONI PRODUCT, LASAGNA",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 15012,
+    "brandOwner": "Raley's",
+    "description": "PENNE RIGATE, ENRICHED MACARONI PRODUCT",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 15014,
+    "brandOwner": "Raley's",
+    "description": "ENRICHED MACARONI PRODUCT, ROTINI",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 15015,
+    "brandOwner": "Bay Valley Foods, LLC",
+    "description": "ENRICHED MACARONI PRODUCT, SHORT (SALAD) MACARONI",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 15010,
+    "brandOwner": "Raley's",
+    "description": "ENRICHED MACARONI PRODUCT, MEDIUM SHELLS",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 15383,
+    "brandOwner": "Iberia Foods Corporation",
+    "description": "BASMATI PREMIUM AGED RICE, BASMATI",
+    "suggestedCanonical": "olive oil",
+    "score": 3
+  },
+  {
+    "id": 15476,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MILK CHOCOLATE CHIPS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 15622,
+    "brandOwner": "Sam's Club West",
+    "description": "MILK CHOCOLATE TOFFEE TRUFFLES WITH A HINT OF SEA SALT, MILK CHOCOLATE WITH A HINT OF SEA SALT",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 15640,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "DRY ROASTED SLICED ALMONDS, DRY ROASTED",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 15638,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CHEDDAR SHREDDED DAIRY-FREE CHEESE ALTERNATIVE, CHEDDAR",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 15921,
+    "brandOwner": "Ghirardelli Chocolate Company",
+    "description": "CARAMEL MILK CHOCOLATE SQUARES, CARAMEL MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 16128,
+    "brandOwner": "Alter Eco Americas Inc.",
+    "description": "DARK 100% CACAO ORGANIC CHOCOLATE, DARK",
+    "suggestedCanonical": "chocolate",
+    "score": 3
+  },
+  {
+    "id": 16306,
+    "brandOwner": "KDI LLC",
+    "description": "BELGIAN DARK CHOCOLATE WITH RASPBERRY 72% CACOA DARK CHOCOLATE PLANT BASED SNACKS, BELGIAN DARK CHOCOLATE WITH RASPBERRY",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 16638,
+    "brandOwner": "ASPIRE BAKERIES",
+    "description": "MUFFIN CORN MADE WITH 51% WHOLE GRAIN INDIVIDUALLY WRAPPED 48/4 OZ",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 16642,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Annie's Organic Chocolate Bunny Grahams Baked Graham Snacks",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 16654,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Annie's White Cheddar Mac N Cheese Microwave Cups 4 Count",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 16676,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Annie's Gluten Free Double Chocolate Chip Granola Bar",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 16674,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Annie's Organic Chewy Peanut Butter Chocolate Chip Granola Bar",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 16698,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Annie's Organic Crescent Rolls 8 Count",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 16699,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Annie's Organic Flaky Biscuits 8 Count",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 16738,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Betty Crocker Rainbow Chip Mug Treats 4 Count",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 16747,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Nature Valley Crunchy Peanut Butter Dark Chocolate Granola Bar",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 16858,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Chex Mix Peanut Butter & Chocolate Muddy Buddies",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 16851,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Betty Crocker Rich and Creamy Dark Chocolate Frosting",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 16870,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Betty Crocker Hershey's Triple Chocolate Brownie Mix 4 Pack",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 16875,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Nature Valley Trail Mix Dark Chocolate & Nut Chewy Granola Bar",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 16881,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Nature Valley Crunchy Oats 'n Dark Chocolate Granola Bar",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 16883,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Chex Mix Peanut Butter and Chocolate Muddy Buddies",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 16912,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Pillsbury Grands! Southern Homestyle Biscuits Southern Recipe Canned Dough 8 Count",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 16931,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Pillsbury Chocolate Chip Cookie Dough",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 16939,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Pillsbury Apple Toaster Strudel Pastries 6 Count",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 16948,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Pillsbury Refrigerated Chocolate Chip Cookie Dough Roll Value Size",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 16961,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Pillsbury Grands! Southern Style Biscuits 12 Count",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 16972,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Cascadian Farm Organic Riced Cauliflower Blend with Stir-Fry Vegetables",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 17008,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Larabar Chocolate Chip Cookie Dough Fruit & Nut Bar",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 17124,
+    "brandOwner": "JONES DAIRY FARM",
+    "description": "All Natural ABF Country Pork Sausage Roll, Uncooked, Original, 12 oz.",
+    "suggestedCanonical": "egg",
+    "score": 3
+  },
+  {
+    "id": 17190,
+    "brandOwner": "Kellogg Company US",
+    "description": "Kellogg's Rice Krispies Treats Squares Whole Grain 1.41oz",
+    "suggestedCanonical": "sharp cheddar",
+    "score": 3
+  },
+  {
+    "id": 17199,
+    "brandOwner": "Kellogg Company US",
+    "description": "Kellogg's Rice Krispies Treats Squares Original 2.2oz",
+    "suggestedCanonical": "sharp cheddar",
+    "score": 3
+  },
+  {
+    "id": 17220,
+    "brandOwner": "Kellogg Company US",
+    "description": "Kellogg's Cereal Breakfast Bar Apple Cinnamon 30.5oz 24ct",
+    "suggestedCanonical": "sharp cheddar",
+    "score": 3
+  },
+  {
+    "id": 17218,
+    "brandOwner": "Kellogg Company US",
+    "description": "Kellogg's Shredded Wheat Minis Cereal Bite Size Unfrosted 1.2oz",
+    "suggestedCanonical": "sharp cheddar",
+    "score": 3
+  },
+  {
+    "id": 17471,
+    "brandOwner": "WELCH FOODS INC.",
+    "description": "11.5 FL OZ JUICE DRINK - GRAPE",
+    "suggestedCanonical": "juice",
+    "score": 3
+  },
+  {
+    "id": 17494,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Totino's Cheese Frozen Pizza Rolls 50 Count",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 17532,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Old El Paso Super Stuffer Shells 10 Count",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 17916,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Mountain High Fat Free Plain Yoghurt",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 18014,
+    "brandOwner": "Nardone Brothers Baking Co.  Inc.",
+    "description": "4x6 Whole Wheat Cheese Pizza Individually Boxed Pizza Topped with Tomato Sauce and Mozzarella Cheese",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 17996,
+    "brandOwner": "Nardone Brothers Baking Co.  Inc.",
+    "description": "4x6 Whole Wheat Cheese Pizza Topped with Tomato Sauce and Mozzarella Cheese",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 17997,
+    "brandOwner": "Nardone Brothers Baking Co.  Inc.",
+    "description": "4x6 Whole Wheat Pepperoni Pizza Individually Boxed Pizza Topped with Tomato Sauce, Mozzarella Cheese, and Pepperoni",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 18024,
+    "brandOwner": "Nardone Brothers Baking Co.  Inc.",
+    "description": "Pizzeria Style Pizza Topped with Tomato Sauce and Mozzarella Cheese",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 18064,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Annie's Organic Red Wine & Olive Oil Vinaigrette",
+    "suggestedCanonical": "olive oil",
+    "score": 3
+  },
+  {
+    "id": 20556,
+    "brandOwner": "Mother's Cake & Cookie Company",
+    "description": "MILK CHOCOLATE M&M'S CHOCOLATE CANDIES COOKIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 71589,
+    "brandOwner": "Target Stores",
+    "description": "PRE-BUILT GINGERBREAD HOUSE WITH ICING",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 68917,
+    "brandOwner": "Safeway, Inc.",
+    "description": "PEANUT BUTTER MOUNTAIN MIX ROASTED SALTED PEANUTS, M&M'S PEANUT MILK CHOCOLATE CANDIES, RAISINS, PEANUT BUTTER CHIPS, MINI PEANUT BUTTER CUPS, PRETZEL BALLS TRAIL MIX, PEANUT BUTTER MOUNTAIN MIX",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 64034,
+    "brandOwner": "Meijer, Inc.",
+    "description": "DARK CHOCOLATE PEANUT BUTTER A BLEND OF BUTTER TOFFEE PEANUTS, ROASTED & SALTED PEANUTS, CHOCOLATE CHUNKS AND PEANUT BUTTER CANDIES MIX, DARK CHOCOLATE PEANUT BUTTER",
+    "suggestedCanonical": "bread",
+    "score": 3
+  },
+  {
+    "id": 19026,
+    "brandOwner": "Madelaine Chocolate Novelties",
+    "description": "CHERRY & DARK CHOCOLATE TRUFFLES",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 19042,
+    "brandOwner": "The Hershey Company",
+    "description": "HERSHEY'S CHOCOLATE MINIATURES ASSORTMENT PARTY PACK, 35 OZ",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 19103,
+    "brandOwner": "Target Stores",
+    "description": "WONDERSHOP AT TARGET CRAFT COCKTAIL MIXER COLLECTION, 6 COUNT, 14.1 FL OZ",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 19107,
+    "brandOwner": "Target Stores",
+    "description": "WONDERSHOP AT TARGET DECORATING KIT, 9 COUNT, 5.2 OZ",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 19146,
+    "brandOwner": "Lindt & Sprungli (Schweiz) AG",
+    "description": "ASSORTED CHOCOLATE TRUFFLES",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 19155,
+    "brandOwner": "Lindt & Sprungli (Schweiz) AG",
+    "description": "MILK CHOCOLATE TRUFFLES, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 19168,
+    "brandOwner": "Lindt & Sprungli (Schweiz) AG",
+    "description": "EXTRA DARK DARK CHOCOLATE TRUFFLES",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 19169,
+    "brandOwner": "Lindt & Sprungli (Schweiz) AG",
+    "description": "HAZELNUT MILK CHOCOLATE TRUFFLES, HAZELNUT; MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 19181,
+    "brandOwner": "Lindt & Sprungli (Schweiz) AG",
+    "description": "ASSORTED CHOCOLATE TRUFFLES",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 19180,
+    "brandOwner": "Lindt & Sprungli (Schweiz) AG",
+    "description": "LINDT LINDOR MILK CHOCOLATE TRUFFLES, 8.4 OZ",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 19301,
+    "brandOwner": "Cellas Confections Inc.",
+    "description": "DELICIOUS COVERED WITH REAL MILK CHOCOLATE CHERRIES, CHERRY",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 19323,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "PEPSI SODA, 16 FL OZ, 6 COUNT",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 19336,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "ORIGINAL BAJA BLAST SODA",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 19370,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "OATMILK DARK CHOCOLATE BROWNIE CHILLED COFFEE DRINK, CHOCOLATE",
+    "suggestedCanonical": "chocolate",
+    "score": 3
+  },
+  {
+    "id": 19358,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "GINGERBREAD SNAP'D SODA, GINGERBREAD",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 19363,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "THRASHED APPLE FLAVOR SODA, APPLE",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 19376,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "MINI WILD CHERRY SODA, WILD CHERRY",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 19381,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "BAJA MANGO GEM SODA, MANGO",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 19397,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "WILD CHERRY COLA SODA, WILD CHERRY",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 19391,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "MYSTERY FLAVOR SODA",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 19392,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "MYSTERY FLAVOR SODA",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 19486,
+    "brandOwner": "General Mills, Inc.",
+    "description": "ORGANIC DIPPED MILK CHOCOLATE CARAMEL GRANOLA BAR, CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 14405,
+    "brandOwner": "The Kroger Co.",
+    "description": "RICOTTA CHEESE WHOLE MILK, RICOTTA CHEESE",
+    "suggestedCanonical": "egg",
+    "score": 3
+  },
+  {
+    "id": 19771,
+    "brandOwner": "Chocolats Camille Bloch",
+    "description": "FINE SWISS MILK WITH TRUFFLE FILLING CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 19743,
+    "brandOwner": "B&G Foods North America, Inc. ",
+    "description": "CLASSIC CIDER BLEND MULLING SPICE KIT",
+    "suggestedCanonical": "smoked paprika",
+    "score": 3
+  },
+  {
+    "id": 19808,
+    "brandOwner": "Koppers Chocolate Specialty Co",
+    "description": "MY ESPRESSO BEANS MILK, DARK & WHITE CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 20284,
+    "brandOwner": "Danone US, LLC",
+    "description": "PLAIN ALMONDMILK YOGURT ALTERNATIVE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 20566,
+    "brandOwner": "Nestle USA Inc.",
+    "description": "SEMI-SWEET CHOCOLATE MORSELS, CHOCOLATE",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 20581,
+    "brandOwner": "Nestle USA Inc.",
+    "description": "CHOCOLATE CARAMEL DULCE DE LECHE FLAVORED BITE-SIZED FILLED BAKING TRUFFLES, CHOCOLATE; CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 20930,
+    "brandOwner": "The Quaker Oats Company",
+    "description": "SWEETENED CORN & OAT CEREAL, CORN",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 20940,
+    "brandOwner": "The Quaker Oats Company",
+    "description": "SWEETENED CORN & OAT NATURALLY & ARTIFICIALLY FLAVORED CEREAL",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 21036,
+    "brandOwner": "Godiva Chocolatier, Inc.",
+    "description": "CARAMEL LION OF BELGIUM MILK CHOCOLATE, CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 21111,
+    "brandOwner": "Bloom Packaging Corp.",
+    "description": "SEMI SWEET REAL CHOCOLATE CHIPS",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 21232,
+    "brandOwner": "The Hershey Company",
+    "description": "BIG CUP STUFFED WITH PRETZELS MILK CHOCOLATE & PEANUT BUTTER, MILK CHOCOLATE; PEANUT BUTTER",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 21233,
+    "brandOwner": "The Hershey Company",
+    "description": "BIG CUP STUFFED WITH PRETZELS MILK CHOCOLATE & PEANUT BUTTER, MILK CHOCOLATE; PEANUT BUTTER",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 21246,
+    "brandOwner": "The Hershey Company",
+    "description": "REESE'S MILK CHOCOLATE & PEANUT BUTTER CUPS SNACK SIZE, 60 COUNT, 33 OZ, MILK CHOCOLATE; PEANUT BUTTER",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 21247,
+    "brandOwner": "The Hershey Company",
+    "description": "STOCKING STUFFER SQUAD CANDY, CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 21271,
+    "brandOwner": "The Hershey Company",
+    "description": "MALLOW-TOP MARSHMALLOW FLAVORED CREME WITH MILK CHOCOLATE PEANUT BUTTER CUPS, MILK CHOCOLATE; PEANUT BUTTER",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 21475,
+    "brandOwner": "Danone US, LLC",
+    "description": "OATMILK CHOCOLATE HAZELNUT BROWNIE NON-DAIRY FROZEN DESSERT, CHOCOLATE; HAZELNUT; BROWNIE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 21506,
+    "brandOwner": "Danone US, LLC",
+    "description": "VANILLA FROZEN DESSERT, VANILLA",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 21545,
+    "brandOwner": "Lindt & Sprungli (Schweiz) AG",
+    "description": "COCONUT WHITE WITH DELICATE COCONUT FLAKES CHOCOLATE, COCONUT",
+    "suggestedCanonical": "bread",
+    "score": 3
+  },
+  {
+    "id": 21550,
+    "brandOwner": "Lindt & Sprungli (Schweiz) AG",
+    "description": "LINDT LINDOR DARK CHOCOLATE TRUFFLES, 60 COUNT, 25.4 OZ",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 21561,
+    "brandOwner": "Lindt & Sprungli (Schweiz) AG",
+    "description": "HAZELNUT MILK CHOCOLATE TRUFFLES, HAZELNUT; MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 87394,
+    "brandOwner": "Target Stores",
+    "description": "TURKEY & BACON CHEF ICEBERG & ROMAINE LETTUCE BLEND WITH SHREDDED CARROTS, RED CABBAGE, ROASTED TURKEY, COATED PUMPKIN SEEDS, BACON PIECES, AND BLUE CHEESE DRESSING SALAD, TURKEY & BACON CHEF",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 21679,
+    "brandOwner": "Bob's Red Mill Natural Foods, Inc.",
+    "description": "GLUTEN FREE VANILLA YELLOW CAKE MIX, VANILLA",
+    "suggestedCanonical": "corn",
+    "score": 3
+  },
+  {
+    "id": 21874,
+    "brandOwner": "Goya Foods, Inc. ",
+    "description": "PREMIUM SPANISH OLIVE OIL BLEND",
+    "suggestedCanonical": "olive oil",
+    "score": 3
+  },
+  {
+    "id": 21965,
+    "brandOwner": "Frankford Candy, LLC",
+    "description": "MARVEL AGES 5+ MILK CHOCOLATE, MANGO; BLUE RASPBERRY; STRAWBERRY; GREEN APPLE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 22238,
+    "brandOwner": "UTZ Quality Foods, LLC",
+    "description": "MILK CHOCOLATE PEANUT BUTTER PRETZEL BITES, MILK CHOCOLATE; PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 22372,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "ORANGE NATURALLY FLAVORED POWDERED SOFT DRINK MIX, ORANGE",
+    "suggestedCanonical": "gelatin",
+    "score": 3
+  },
+  {
+    "id": 22397,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "ORANGE NARANJA DRINK MIX, ORANGE",
+    "suggestedCanonical": "gelatin",
+    "score": 3
+  },
+  {
+    "id": 22388,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "CHOCOLATE VANILLA SWIRLS PUDDING SNACKS, CHOCOLATE; VANILLA",
+    "suggestedCanonical": "gelatin",
+    "score": 3
+  },
+  {
+    "id": 22404,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "BLUEBERRY POMEGRANATE GELATIN DESSERT, BLUEBERRY; POMEGRANATE",
+    "suggestedCanonical": "gelatin",
+    "score": 3
+  },
+  {
+    "id": 22433,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "CHERRY GEL SNACKS, CHERRY",
+    "suggestedCanonical": "gelatin",
+    "score": 3
+  },
+  {
+    "id": 22438,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "BLUE RASPBERRY GELATIN DESSERT, BLUE RASPBERRY",
+    "suggestedCanonical": "gelatin",
+    "score": 3
+  },
+  {
+    "id": 22439,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "GREEN APPLE GELATIN DESSERT, GREEN APPLE",
+    "suggestedCanonical": "gelatin",
+    "score": 3
+  },
+  {
+    "id": 22456,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "PEACH GELATIN DESSERT MIX, PEACH",
+    "suggestedCanonical": "gelatin",
+    "score": 3
+  },
+  {
+    "id": 22457,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "BERRY BLUE GELATIN DESSERT",
+    "suggestedCanonical": "gelatin",
+    "score": 3
+  },
+  {
+    "id": 22459,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "RASPBERRY GELATIN DESSERT, RASPBERRY",
+    "suggestedCanonical": "gelatin",
+    "score": 3
+  },
+  {
+    "id": 22461,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "LIME GELATIN DESSERT, LIME",
+    "suggestedCanonical": "gelatin",
+    "score": 3
+  },
+  {
+    "id": 22567,
+    "brandOwner": "Nabisco Biscuit Company",
+    "description": "CREAM CHEESE SANDWICH CRACKERS, CREAM; CHEESE",
+    "suggestedCanonical": "cheddar cheese",
+    "score": 3
+  },
+  {
+    "id": 22721,
+    "brandOwner": "Mars, Inc.",
+    "description": "VANILLA WITH DARK CHOCOLATE ICE CREAM BARS, VANILLA; DARK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 22722,
+    "brandOwner": "Mars, Inc.",
+    "description": "RASPBERRY WITH DARK CHOCOLATE SORBET BARS, RASPBERRY; DARK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 22786,
+    "brandOwner": "Coca-Cola USA Operations",
+    "description": "FRUIT PUNCH SPORTS DRINK, FRUIT PUNCH",
+    "suggestedCanonical": "cola",
+    "score": 3
+  },
+  {
+    "id": 22790,
+    "brandOwner": "Coca-Cola USA Operations",
+    "description": "MOVE TRANSFORMATION FLAVORED COLA",
+    "suggestedCanonical": "cola",
+    "score": 3
+  },
+  {
+    "id": 22810,
+    "brandOwner": "Coca-Cola USA Operations",
+    "description": "GEORGIA PEACH FLAVORED COLA, GEORGIA PEACH",
+    "suggestedCanonical": "cola",
+    "score": 3
+  },
+  {
+    "id": 22800,
+    "brandOwner": "Coca-Cola USA Operations",
+    "description": "MIXED BERRY ZERO CALORIE SPORTS DRINK, MIXED BERRY",
+    "suggestedCanonical": "cola",
+    "score": 3
+  },
+  {
+    "id": 22834,
+    "brandOwner": "Coca-Cola USA Operations",
+    "description": "MOVE TRANSFORMATION FLAVORED COLA",
+    "suggestedCanonical": "cola",
+    "score": 3
+  },
+  {
+    "id": 1091,
+    "brandOwner": "Torn & Glasser Inc",
+    "description": "PEANUT BUTTER FILLED MILK CHOCOLATE PRETZEL NUGGETS, PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 1236,
+    "brandOwner": "Snyder's-Lance, Inc.",
+    "description": "MILK CHOCOLATE PRETZEL DIPS, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 23907,
+    "brandOwner": "Hawaiian Host Inc.",
+    "description": "HAWAIIAN HOST ALOHAMACS MILK CHOCOLATE, 12 COUNT, 6 OZ",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 23911,
+    "brandOwner": "Blue Bell Creameries, Inc.",
+    "description": "KRUNCH BARS, VANILLA; MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 1405,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "OATS & CHOCOLATE FIBER BARS, OATS & CHOCOLATE",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 24203,
+    "brandOwner": "Herr Foods Inc.",
+    "description": "CARAMEL WITH MILK CHOCOLATE FLAVORED DRIZZLE POPCORN, CARAMEL",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 24570,
+    "brandOwner": "The Haagen-Dazs Company, Inc.",
+    "description": "VANILLA MILK CHOCOLATE ICE CREAM BARS, VANILLA; MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 24684,
+    "brandOwner": "Eddyleon Chocolate Co Inc",
+    "description": "DARK CHOCOLATE RASPBERRY FLAVORED JELLY BARS, DARK CHOCOLATE; RASPBERRY",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 24881,
+    "brandOwner": "Whitman's Candies, Inc.",
+    "description": "ASSORTED MILK AND DARK CHOCOLATES",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 2054,
+    "brandOwner": "Ferrero U.S.A., Incorporated",
+    "description": "CHEWY CARAMEL, MILK CHOCOLATE, CRISPY CRUNCHIES BARS, CHEWY CARAMEL, MILK CHOCOLATE, CRISPY CRUNCHIES",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 24927,
+    "brandOwner": "Ross Acquisition Inc.",
+    "description": "THE MANDALORIAN HOLIDAY MILK CHOCOLATE WITH MARSHMALLOW",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 24985,
+    "brandOwner": "Russell Stover Candies Inc.",
+    "description": "PECAN DELIGHTS MILK CHOCOLATE, CARAMEL & PECANS",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 24965,
+    "brandOwner": "Russell Stover Candies Inc.",
+    "description": "GAMER HEART ASSORTED MILK & DARK CHOCOLATES",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 24979,
+    "brandOwner": "Russell Stover Candies Inc.",
+    "description": "PECAN DELIGHTS MILK CHOCOLATE, CARAMEL; PECANS",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 2472,
+    "brandOwner": "Kellogg Company US",
+    "description": "Kellogg's Rice Krispies Treats Poppers Vanilla 7.1oz",
+    "suggestedCanonical": "sharp cheddar",
+    "score": 3
+  },
+  {
+    "id": 2485,
+    "brandOwner": "Kellogg Company US",
+    "description": "Pringles Wavy Crisps Applewood Smoked Cheddar 4.8oz",
+    "suggestedCanonical": "sharp cheddar",
+    "score": 3
+  },
+  {
+    "id": 25422,
+    "brandOwner": "Lindt & Sprungli (Schweiz) AG",
+    "description": "MAPLE MILK CHOCOLATE TRUFFLES, MAPLE MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 25498,
+    "brandOwner": "Ferrero U.S.A., Incorporated",
+    "description": "RICH CARAMEL MILK CHOCOLATE CRISPY CRUNCHIES, CARAMEL; MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 25507,
+    "brandOwner": "The Kroger Co.",
+    "description": "LACEY SWISS SLICED CHEESE, LACEY SWISS",
+    "suggestedCanonical": "egg",
+    "score": 3
+  },
+  {
+    "id": 25536,
+    "brandOwner": "Kingston Marketing Co",
+    "description": "FRENCH PETIT BEURRE BISCUITS WITH MILK CHOCOLATE, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 25570,
+    "brandOwner": "Mars Retail Group Inc.",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 25573,
+    "brandOwner": "Mars Retail Group Inc.",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 25586,
+    "brandOwner": "Mars Retail Group Inc.",
+    "description": "CARAMEL MILK CHOCOLATE, CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 25604,
+    "brandOwner": "Nestle Usa-Frozen Food Division",
+    "description": "LASAGNA WITH MEAT & SAUCE WITH 100% PURE BEEF, HERB SEASONED TOMATO SAUCE AND REAL MOZZARELLA CHEESE, LASAGNA WITH MEAT & SAUCE",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 25608,
+    "brandOwner": "Nestle Usa-Frozen Food Division",
+    "description": "MEAT LOVERS WITH 100% REAL MOZZARELLA CHEESE, PREMIUM PEPPERONI AND ZESTY ITALIAN SAUSAGE LASAGNA, MEAT LOVERS",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 25669,
+    "brandOwner": "General Mills, Inc.",
+    "description": "HOT COCOA SWEETENED CORN CEREAL WITH MARSHMALLOWS, HOT COCOA",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 25725,
+    "brandOwner": "Royce Apparel Inc. ",
+    "description": "FILLED WITH MILK CHOCOLATE WAFFLE CONES",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 25797,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "MOZZARELLA SHREDDED LOW-MOISTURE PART-SKIM CHEESE WITH CREAM CHEESE, MOZZARELLA",
+    "suggestedCanonical": "avocado",
+    "score": 3
+  },
+  {
+    "id": 25841,
+    "brandOwner": "Safeway, Inc.",
+    "description": "WHITE CHOCOLATE MOCHA COFFEE CREAMER, WHITE CHOCOLATE MOCHA",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 25840,
+    "brandOwner": "Safeway, Inc.",
+    "description": "BELGIAN STYLE CHOCOLATE TOFFEE COFFEE CREAMER, BELGIAN STYLE CHOCOLATE TOFFEE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 26061,
+    "brandOwner": "Marie Callender's Retail Foods",
+    "description": "RED CHILI GRILLED CHICKEN BURRITO TENDER CHICKEN BREAST WITH RICE, BELL PEPPERS & BLACK BEANS IN A RED CHILI SAUCE TOPPED WITH MOZZARELLA CHEESE BOWL, RED CHILI GRILLED CHICKEN BURRITO",
+    "suggestedCanonical": "avocado",
+    "score": 3
+  },
+  {
+    "id": 26066,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "MOZZARELLA LOW-MOISTURE PART-SKIM CHEESE, MOZZARELLA",
+    "suggestedCanonical": "gelatin",
+    "score": 3
+  },
+  {
+    "id": 26236,
+    "brandOwner": "Nestle USA Inc.",
+    "description": "CREAMY MILK CHOCOLATE WITH CRISPED RICE BARS, CREAMY MILK",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 26247,
+    "brandOwner": "Nestle USA Inc.",
+    "description": "CREAMY MILK CHOCOLATE WITH CRISPED RICE BARS, CREAMY MILK",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 26307,
+    "brandOwner": "The Quaker Oats Company",
+    "description": "SWEETENED CORN & OAT CEREAL",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 4862,
+    "brandOwner": "Hammond's Candies Since 1920, LLC",
+    "description": "COOKIES & CREAM MILK CHOCOLATE WITH BITS OF COOKIE, COOKIES & CREAM",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 26344,
+    "brandOwner": "Conagra Frozen Foods",
+    "description": "THREE MEAT PIZZA SAUCE AND MOZZARELLA CHEESE WITH TOMATOES, BEEF, SAUSAGE, AND PEPPERONI CRUSTLESS MEGA PIZZA, THREE MEAT",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 26348,
+    "brandOwner": "Conagra Frozen Foods",
+    "description": "PANCAKE BREAKFAST PORK AND TURKEY & A MAPLE FLAVORED DIPPING SAUCE FULLY COOKED SAUSAGE LINKS, PANCAKE BREAKFAST",
+    "suggestedCanonical": "egg",
+    "score": 3
+  },
+  {
+    "id": 26429,
+    "brandOwner": "The Hershey Company",
+    "description": "CHOCOLATE MINT CANDY CANES, CHOCOLATE MINT",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 26433,
+    "brandOwner": "The Hershey Company",
+    "description": "CHOCOLATE MINT CANDY CANES, CHOCOLATE MINT",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 26497,
+    "brandOwner": "The Hershey Company",
+    "description": "SEMI-SWEET CHOCOLATE CHIPS, SEMI-SWEET CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 26517,
+    "brandOwner": "The Hershey Company",
+    "description": "CHOCOLATE CANDY MINIATURES, CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 26525,
+    "brandOwner": "The Hershey Company",
+    "description": "CHOCOLATE CANDY MINIATURES, CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 26528,
+    "brandOwner": "The Hershey Company",
+    "description": "CHOCOLATE CANDY MINIATURES, CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 26534,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE EGGS WITH PRETZEL BITS, MILK CHOCOLATE WITH PRETZEL BITS",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 26555,
+    "brandOwner": "The Hershey Company",
+    "description": "GENUINE CHOCOLATE SIMPLY SYRUP, GENUINE CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 26575,
+    "brandOwner": "The Hershey Company",
+    "description": "STRAWBERRY WAFFLE LAYER CRUNCH MILK CHOCOLATE BAR WITH WAFFLE CONE PIECES, STRAWBERRY",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 26606,
+    "brandOwner": "The Hershey Company",
+    "description": "CHOCOLATE CANDY & PEANUT BUTTER CREME BELLS, CHOCOLATE CANDY & PEANUT BUTTER CREME",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 26660,
+    "brandOwner": "The Hershey Company",
+    "description": "LITE SYRUP GENUINE CHOCOLATE, GENUINE CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 26655,
+    "brandOwner": "The Hershey Company",
+    "description": "HOT COCOA MILK CHOCOLATE CANDY WITH MARSHMALLOW FLAVORED CREME, HOT COCOA MILK CHOCOLATE WITH MARSHMALLOW",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 26824,
+    "brandOwner": "Dole Packaged Foods, LLC",
+    "description": "APPLE BANANA SQUEEZABLE FRUIT POUCH, APPLE BANANA",
+    "suggestedCanonical": "banana",
+    "score": 3
+  },
+  {
+    "id": 26835,
+    "brandOwner": "Dole Packaged Foods, LLC",
+    "description": "APPLE PINEAPPLE SQUEEZABLE FRUIT POUCH, APPLE PINEAPPLE",
+    "suggestedCanonical": "juice",
+    "score": 3
+  },
+  {
+    "id": 26887,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 26897,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE & CARAMEL COOKIE MINIS, MILK CHOCOLATE & CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 26922,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 26944,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 26974,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 26991,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "PEANUT BUTTER, PEANUTS, CARAMEL, & NOUGAT AND COVERED IN MILK CHOCOLATE SQUARED SQUARES, PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 26986,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 26997,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 27007,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "CARAMEL MILK CHOCOLATE PROMISES, CARAMEL MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27025,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "CARAMEL, MILK CHOCOLATE COOKIE BARS, CARAMEL, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27049,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 27061,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 27074,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 27088,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 27104,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 27427,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE TRUFFLES, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27152,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 27209,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 27230,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "CARAMEL & MILK CHOCOLATE FLOWERS PROMISES, CARAMEL & MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27233,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE TRUFFLES, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27249,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 27261,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE PEANUT BUTTER TRUFFLES, MILK CHOCOLATE PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27260,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "DARK CHOCOLATE TRUFFLES, DARK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27257,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 27278,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE TRUFFLES, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27299,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "DARK CHOCOLATE TRUFFLES, DARK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27303,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "CARAMEL & MILK CHOCOLATE WITCHES MIX PROMISES, CARAMEL & MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27313,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 27329,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 27332,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE RED, WHITE & BLUE MIX CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 27349,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE PEANUT BUTTER TRUFFLES, MILK CHOCOLATE PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27348,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "DARK CHOCOLATE TRUFFLES, DARK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27347,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE TRUFFLES, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27351,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "DARK CHOCOLATE TRUFFLES, DARK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27352,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE TRUFFLES, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27372,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "CREAMY PEANUT BUTTER PEANUTS, CARAMEL, MILK CHOCOLATE SQUARES, CREAMY PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27367,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 27378,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "RASPBERRY ROSE DARK CHOCOLATE BAR, RASPBERRY ROSE DARK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27390,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE PEANUT BUTTER TRUFFLES, MILK CHOCOLATE PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27388,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE TRUFFLES, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27401,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "DARK CHOCOLATE TRUFFLES, DARK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27404,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE TRUFFLES, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27405,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE TRUFFLES, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27417,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 27428,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "DARK CHOCOLATE TRUFFLES, DARK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27430,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "DARK CHOCOLATE TRUFFLES, DARK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27434,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE TRUFFLES, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27442,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 27466,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE GLOW IN THE DARK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 27482,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "CLASSIC MIX CHOCOLATE CANDIES, MILK CHOCOLATE, PEANUT BUTTER, PEANUT",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 27484,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "DARK CHOCOLATE TRUFFLES, DARK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27478,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 27511,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "CARAMEL, MILK CHOCOLATE COOKIE BARS OR TREAT, CARAMEL, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27519,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "CARAMEL, MILK CHOCOLATE COOKIE BARS MINIS, CARAMEL, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27520,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "CARAMEL & MILK CHOCOLATE GIFTS PROMISES, CARAMEL & MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27564,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 27675,
+    "brandOwner": "H E Butt Grocery Company",
+    "description": "SESAME SWEET ASIAN FRESH BLEND OF SAVOY CABBAGE, KALE, GREEN CABBAGE, SWEET CARROTS, CELERY, GREEN ONION, AND CILANTRO WITH ASIAN STYLE SESAME DRESSING, SLICED ALMONDS AND CRISPY WONTON STRIPS CHOPPED SALAD KIT, SESAME SWEET ASIAN",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 27731,
+    "brandOwner": "H E Butt Grocery Company",
+    "description": "DARK ORGANIC 71% CACAO PREMIUM SWISS CHOCOLATE, DARK",
+    "suggestedCanonical": "chocolate",
+    "score": 3
+  },
+  {
+    "id": 7368,
+    "brandOwner": "Wells Enterprises, Inc.",
+    "description": "CARAMEL VANILLA FROZEN DAIRY DESSERT WITH A SWIRL OF CARAMEL DIPPED IN A CHOCOLATE FLAVORED COATING ALL INSIDE A SUGAR MINI CONES, CARAMEL",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 27769,
+    "brandOwner": "H E Butt Grocery Company",
+    "description": "SMOKED SEASONED SMOKEHOUSE SHREDDED BEEF WITH BBQ SAUCE, SMOKED SEASONED",
+    "suggestedCanonical": "beef",
+    "score": 3
+  },
+  {
+    "id": 27998,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "ORANGE DRINK MIX, ORANGE",
+    "suggestedCanonical": "gelatin",
+    "score": 3
+  },
+  {
+    "id": 28184,
+    "brandOwner": "Mars, Inc.",
+    "description": "VANILLA ICE CREAM BARS WITH DARK CHOCOLATE, VANILLA WITH DARK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 28186,
+    "brandOwner": "Mars, Inc.",
+    "description": "DARK CHOCOLATE, CARAMEL, PEANUTS CHOCOLATE-PEANUT BUTTER ICE CREAM BARS, DARK",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 28228,
+    "brandOwner": "Coca-Cola USA Operations",
+    "description": "FRUIT PUNCH FLAVORED SPORTS DRINK, FRUIT PUNCH",
+    "suggestedCanonical": "cola",
+    "score": 3
+  },
+  {
+    "id": 28429,
+    "brandOwner": "Red Bull North America, Inc.",
+    "description": "RED BULL ENERGY DRINK, 12 FL OZ, 4 COUNT",
+    "suggestedCanonical": "cola",
+    "score": 3
+  },
+  {
+    "id": 28432,
+    "brandOwner": "Red Bull North America, Inc.",
+    "description": "RED BULL ENERGY DRINK, 8.4 FL OZ, 6 COUNT",
+    "suggestedCanonical": "cola",
+    "score": 3
+  },
+  {
+    "id": 28834,
+    "brandOwner": "Kraft Foods Schweiz Holding GmbH",
+    "description": "TOFFEE CRUNCH MILK CHOCOLATE CONFECTION WITH TOFFEE, TOFFEE CRUNCH MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 9754,
+    "brandOwner": "The Quaker Oats Company",
+    "description": "CHRISTMAS CRUNCH SWEETENED CORN & OAT CEREAL, CHRISTMAS CRUNCH",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 28913,
+    "brandOwner": "Wells Enterprises, Inc.",
+    "description": "VANILLA KRUNCH FLAVORED REDUCED FAT ICE CREAM DIPPED IN CHOCOLATE FLAVORED COATING AND CRISP RICE BARS, VANILLA KRUNCH",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 9877,
+    "brandOwner": "Mother's Cake & Cookie Company",
+    "description": "MILK CHOCOLATE CANDIES, M&M'S MINIS COOKIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 29080,
+    "brandOwner": "Cachere Distributing Inc.",
+    "description": "FAT FREE IMITATION CHICKEN FLAVOR INSTANT NOODLE SOUP, CHICKEN",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 29083,
+    "brandOwner": "National Beef Packing Company L.P.",
+    "description": "93% LEAN 7% FAT LEAN GROUND BEEF",
+    "suggestedCanonical": "turkey",
+    "score": 3
+  },
+  {
+    "id": 29084,
+    "brandOwner": "National Beef Packing Company L.P.",
+    "description": "85% LEAN 15% FAT GROUND BEEF ROUND",
+    "suggestedCanonical": "turkey",
+    "score": 3
+  },
+  {
+    "id": 29146,
+    "brandOwner": "Dole Packaged Foods, LLC",
+    "description": "PINEAPPLE BANANA WHIP SPOONABLE SMOOTHIES, PINEAPPLE BANANA",
+    "suggestedCanonical": "banana",
+    "score": 3
+  },
+  {
+    "id": 29184,
+    "brandOwner": "Dole Packaged Foods, LLC",
+    "description": "MILK CHOCOLATE COVERED REAL BANANA SLICES, MILK CHOCOLATE",
+    "suggestedCanonical": "banana",
+    "score": 3
+  },
+  {
+    "id": 29484,
+    "brandOwner": "King's Hawaiian Bakery West",
+    "description": "HAWAIIAN SWEET ROLLS, ORIGINAL",
+    "suggestedCanonical": "butter",
+    "score": 3
+  },
+  {
+    "id": 29561,
+    "brandOwner": "Danone US, LLC",
+    "description": "CHOCOLATE COCONUTMILK NON-DAIRY FROZEN DESSERT, CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 29590,
+    "brandOwner": "Ghirardelli Chocolate Company",
+    "description": "CARAMEL BUNNIES MILK CHOCOLATE, CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 29591,
+    "brandOwner": "Ghirardelli Chocolate Company",
+    "description": "CARAMEL SNOWMEN MILK CHOCOLATE, CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 29594,
+    "brandOwner": "Ghirardelli Chocolate Company",
+    "description": "CARAMEL SNOWMEN MILK CHOCOLATE, CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 29595,
+    "brandOwner": "Ghirardelli Chocolate Company",
+    "description": "CARAMEL DUET HEARTS MILK CHOCOLATE, CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 29610,
+    "brandOwner": "Ghirardelli Chocolate Company",
+    "description": "VALENTINE'S DAY MILK CHOCOLATE CARAMEL CARD BAR",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 29837,
+    "brandOwner": "Barilla G & R F.Lli S.P.A.",
+    "description": "ENRICHED MACARONI PRODUCT, PENNE",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 29842,
+    "brandOwner": "Barilla G & R F.Lli S.P.A.",
+    "description": "ENRICHED MACARONI PRODUCT, MOSTACCIOLI",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 29848,
+    "brandOwner": "Barilla G & R F.Lli S.P.A.",
+    "description": "ENRICHED MACARONI PRODUCT, FETTUCCINE",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 29867,
+    "brandOwner": "Ben & Jerry's Homemade Inc.",
+    "description": "CHOCOLATE CHIP COOKIE DOUGH VANILLA NON-DAIRY FROZEN DESSERT WITH GOBS OF CHOCOLATE CHIP COOKIE DOUGH & FUDGE FLAKES, CHOCOLATE CHIP COOKIE DOUGH",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 11028,
+    "brandOwner": "CVS Pharmacy, Inc.",
+    "description": "DARK CHOCOLATE KONA COFFEE FLAVORED MACADAMIA NUTS, DARK CHOCOLATE",
+    "suggestedCanonical": "chocolate",
+    "score": 3
+  },
+  {
+    "id": 11063,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "JINGLE MIX, JINGLE",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 30053,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MILK CHOCOLATE FLAVORED HOT COCOA MIX, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 30052,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MILK CHOCOLATE HOT COCOA MIX, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 30051,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SNICKERDOODLE INSTANT OATMEAL, SNICKERDOODLE",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 30056,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MOUNTAIN TRAIL MIX, MOUNTAIN",
+    "suggestedCanonical": "shrimp",
+    "score": 3
+  },
+  {
+    "id": 13226,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CHEESE TORTELLINI PASTA FILLED WITH RICOTTA, MOZZARELLA, AND ROMANO CHEESES, CHEESE",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 30566,
+    "brandOwner": "DRE Medical Group, Inc.",
+    "description": "SNAP WHITE & MILK CHOCOLATE BAR WITH WAFER, WHITE CHOCOLATE; MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 30618,
+    "brandOwner": "Alter Eco Americas Inc.",
+    "description": "MINT CRME ORGANIC DARK CHOCOLATE, MINT CRME",
+    "suggestedCanonical": "chocolate",
+    "score": 3
+  },
+  {
+    "id": 30620,
+    "brandOwner": "Alter Eco Americas Inc.",
+    "description": "CLASSIC ORGANIC DARK CHOCOLATE",
+    "suggestedCanonical": "chocolate",
+    "score": 3
+  },
+  {
+    "id": 30621,
+    "brandOwner": "Alter Eco Americas Inc.",
+    "description": "SILK VELVET ORGANIC DARK CHOCOLATE",
+    "suggestedCanonical": "chocolate",
+    "score": 3
+  },
+  {
+    "id": 13899,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CHOCOLATE PEANUT BUTTER MEAL BARS, CHOCOLATE PEANUT BUTTER",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 30866,
+    "brandOwner": "Ussac International, Inc.",
+    "description": "ITALIA WITH CARAMELIZED HAZELNUTS MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 30896,
+    "brandOwner": "Glicks Food Corp.",
+    "description": "REAL SEMI-SWEET DARK CHOCOLATE CHIPS, DARK CHOCOLATE",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 30890,
+    "brandOwner": "Justin's, LLC",
+    "description": "ORGANIC DARK CHOCOLATE CRISPY PEANUT BUTTER CUPS, DARK CHOCOLATE; PEANUT BUTTER",
+    "suggestedCanonical": "chocolate",
+    "score": 3
+  },
+  {
+    "id": 45548,
+    "brandOwner": "Target Stores",
+    "description": "ROMAINE HEARTS",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 31213,
+    "brandOwner": "Target Stores",
+    "description": "DELUXE SHELLS & CHEDDAR MACARONI & CHEESE, DELUXE SHELLS & CHEDDAR",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 31214,
+    "brandOwner": "Target Stores",
+    "description": "DARK CHOCOLATE CHUNKS, DARK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 31245,
+    "brandOwner": "Target Stores",
+    "description": "MILK CHOCOLATE, CARAMEL, PRETZEL CRUNCHY CLUSTERS WITH HOLIDAY SPRINKLES, MILK CHOCOLATE, CARAMEL, PRETZEL",
+    "suggestedCanonical": "butter",
+    "score": 3
+  },
+  {
+    "id": 31257,
+    "brandOwner": "Target Stores",
+    "description": "WHITE CHOCOLATY DIPPED PRETZEL RODS WITH GREEN DRIZZLE AND RED SPRINKLES, WHITE CHOCOLATY",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 31260,
+    "brandOwner": "Target Stores",
+    "description": "CANDY CANE CRUNCH PRETZEL RODS, CANDY CANE CRUNCH",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 31274,
+    "brandOwner": "Target Stores",
+    "description": "DARK CHOCOLATE PEPPERMINT CREMES, DARK CHOCOLATE PEPPERMINT",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 31276,
+    "brandOwner": "Target Stores",
+    "description": "CANDY CANE CRUNCH DARK CHOCOLATE SQUARES, CANDY CANE CRUNCH DARK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 31269,
+    "brandOwner": "Target Stores",
+    "description": "DESSERT MINT DARK CHOCOLATE MINI PRETZELS, DESSERT MINT DARK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 31286,
+    "brandOwner": "Target Stores",
+    "description": "PEANUT BUTTER SOFT BAKED COOKIES, PEANUT BUTTER",
+    "suggestedCanonical": "butter",
+    "score": 3
+  },
+  {
+    "id": 15723,
+    "brandOwner": "Atkins Nutritionals, Inc.",
+    "description": "CHOCOLATE CARAMEL PRETZEL BARS, CHOCOLATE CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 31508,
+    "brandOwner": "Simple Mills",
+    "description": "ALMOND FLOUR BANANA MUFFIN BAKING MIX, BANANA",
+    "suggestedCanonical": "flour",
+    "score": 3
+  },
+  {
+    "id": 45549,
+    "brandOwner": "Target Stores",
+    "description": "ROMAINE HEARTS",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 31622,
+    "brandOwner": "Midwood Distributors Inc.",
+    "description": "PREMIUM MILK CHOCOLATE TRUFFLES, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 31653,
+    "brandOwner": "Little Secrets, LLC",
+    "description": "MILK CHOCOLATE WITH SEA SALT CRISPY WAFERS, MILK CHOCOLATE; SEA SALT",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 31655,
+    "brandOwner": "BIXBY & CO",
+    "description": "CRUNCHY PEANUT BUTTER MAINE SEA SALT BITES, CHOCOLATE; PEANUT BUTTER",
+    "suggestedCanonical": "sea salt",
+    "score": 3
+  },
+  {
+    "id": 31872,
+    "brandOwner": "Post Consumer Brands, LLC",
+    "description": "STRAWBERRIES SWEETENED WITH OATS & HONEY CEREAL, STRAWBERRY",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 31873,
+    "brandOwner": "Post Consumer Brands, LLC",
+    "description": "CHOCOLATE SWEETENED CORN & OAT SNACK, CHOCOLATE",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 32159,
+    "brandOwner": "KIND Inc.",
+    "description": "MANGO APPLE CHIA",
+    "suggestedCanonical": "coconut",
+    "score": 3
+  },
+  {
+    "id": 32160,
+    "brandOwner": "KIND Inc.",
+    "description": "CHERRY APPLE CHIA FRUIT BARS, CHERRY APPLE CHIA",
+    "suggestedCanonical": "coconut",
+    "score": 3
+  },
+  {
+    "id": 32125,
+    "brandOwner": "KIND Inc.",
+    "description": "KIND, HEALTHY GRAINS GRANOLA BAR, OATS & HONEY WITH TOASTED COCONUT, OATS & HONEY WITH TOASTED COCONUT",
+    "suggestedCanonical": "coconut",
+    "score": 3
+  },
+  {
+    "id": 32153,
+    "brandOwner": "KIND Inc.",
+    "description": "MANGO APPLE CHIA FRUIT BAR, MANGO APPLE CHIA",
+    "suggestedCanonical": "coconut",
+    "score": 3
+  },
+  {
+    "id": 32154,
+    "brandOwner": "KIND Inc.",
+    "description": "CHERRY APPLE CHIA FRUIT BAR, CHERRY APPLE CHIA",
+    "suggestedCanonical": "coconut",
+    "score": 3
+  },
+  {
+    "id": 32208,
+    "brandOwner": "Candyrific, LLC",
+    "description": "MILK CHOCOLATE CHRISTMAS FAN CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 32213,
+    "brandOwner": "Candyrific, LLC",
+    "description": "MILK CHOCOLATE CHARACTER CASE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 32251,
+    "brandOwner": "Dole Packaged Foods, LLC",
+    "description": "DARK CHOCOLATE FREEZE-DRIED STRAWBERRIES SNACK BITES, DARK CHOCOLATE FREEZE-DRIED STRAWBERRIES",
+    "suggestedCanonical": "banana",
+    "score": 3
+  },
+  {
+    "id": 32249,
+    "brandOwner": "Dole Packaged Foods, LLC",
+    "description": "CRAN-BLUEBERRY NUT CLUSTERS SNACK BITES, CRAN-BLUEBERRY NUT CLUSTERS",
+    "suggestedCanonical": "banana",
+    "score": 3
+  },
+  {
+    "id": 32250,
+    "brandOwner": "Dole Packaged Foods, LLC",
+    "description": "MILK CHOCOLATE FREEZE-DRIED STRAWBERRIES SNACK BITES, MILK CHOCOLATE FREEZE-DRIED STRAWBERRIES",
+    "suggestedCanonical": "banana",
+    "score": 3
+  },
+  {
+    "id": 32728,
+    "brandOwner": "Teeccino, Inc.",
+    "description": "HAZELNUT ROASTED HERBAL TEA BAGS, HAZELNUT",
+    "suggestedCanonical": "chocolate",
+    "score": 3
+  },
+  {
+    "id": 32732,
+    "brandOwner": "Teeccino, Inc.",
+    "description": "DANDELION CARAMEL NUT ROASTED HERBAL TEA BAGS, DANDELION CARAMEL NUT",
+    "suggestedCanonical": "chocolate",
+    "score": 3
+  },
+  {
+    "id": 33005,
+    "brandOwner": "Berger Paints Trinidad Limited",
+    "description": "HOT SMOKED NORWEGIAN ATLANTIC SALMON WITH GARLIC, HOT SMOKED NORWEGIAN ATLANTIC WITH GARLIC",
+    "suggestedCanonical": "avocado",
+    "score": 3
+  },
+  {
+    "id": 33043,
+    "brandOwner": "The Toffee House",
+    "description": "TURTLE MILK CHOCOLATE LAYERED WITH HAND-MADE CARAMEL AND CHOPPED PECANS BARK, TURTLE MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 33011,
+    "brandOwner": "Saker ShopRites, Inc.",
+    "description": "FRESH PORK LAUGANEGA WITH CHEESE AND PARSLEY, CHEESE AND PARSLEY",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 33118,
+    "brandOwner": "Dyla LLC ",
+    "description": "CHOCOLATE LATTE ORGANIC FORTO COFFEE SHOT, CHOCOLATE LATTE",
+    "suggestedCanonical": "chocolate",
+    "score": 3
+  },
+  {
+    "id": 33230,
+    "brandOwner": "Verse Chocolate LLC",
+    "description": "COFFEE BOLD ROASTED COFFEE 90% CACAO DARK CHOCOLATE MEDALLION, COFFEE BOLD ROASTED COFFEE",
+    "suggestedCanonical": "chocolate",
+    "score": 3
+  },
+  {
+    "id": 33365,
+    "brandOwner": "mena candy's",
+    "description": "ENRICHED MACARONI PRODUCT, LASAGNE",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 33394,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "DIET CLASSIC SODA",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 33398,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "PURPLE THUNDER SODA, BERRY PLUM",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 33400,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "SUMMER FREEZE SODA",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 33526,
+    "brandOwner": "The Hershey Company",
+    "description": "MALLOW-TOP MARSHMALLOW FLAVORED CREME WITH MILK CHOCOLATE PEANUT BUTTER CUPS, MARSHMALLOW; MILK CHOCOLATE; PEANUT BUTTER",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 19099,
+    "brandOwner": "Target Stores",
+    "description": "CHOCOLATE CHEESECAKE SAMPLER",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 33833,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "MOZZARELLA LOW-MOISTURE PART-SKIM STRING CHEESE, MOZZARELLA",
+    "suggestedCanonical": "gelatin",
+    "score": 3
+  },
+  {
+    "id": 33760,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "LEMON LIME FLAVORED CAFFEINE FREE SODA, LEMON LIME",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 33771,
+    "brandOwner": "Nestle Usa-Frozen Food Division",
+    "description": "CHICKEN PARMESAN STUFFED MELT WHITE MEAT CHICKEN, SPINACH, TOMATO SAUCE, AND MOZZARELLA, PARMESAN & ASIAGO CHEESES IN A CRUST MADE WITH WHEAT AND CAULIFLOWER PROTEIN LOVERS, CHICKEN PARMESAN STUFFED MELT",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 33799,
+    "brandOwner": "General Mills, Inc.",
+    "description": "SWEETENED CORN PUFFS WITH MINIS MARSHMALLOWS, SWEETENED CORN WITH MINIS MARSHMALLOWS",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 33886,
+    "brandOwner": "Ibp, Inc.",
+    "description": "80% LEAN 20% FAT GROUND BEEF CHUCK",
+    "suggestedCanonical": "turkey",
+    "score": 3
+  },
+  {
+    "id": 33950,
+    "brandOwner": "Keebler Company",
+    "description": "CHEESE & PEANUT BUTTER SANDWICH CRACKERS, CHEESE & PEANUT BUTTER",
+    "suggestedCanonical": "cheddar cheese",
+    "score": 3
+  },
+  {
+    "id": 34005,
+    "brandOwner": "The Hershey Company",
+    "description": "SEMI-SWEET MINI CHOCOLATE CHIPS, SEMI-SWEET",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 34017,
+    "brandOwner": "The Hershey Company",
+    "description": "CHOCOLATE CANDY, CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 34018,
+    "brandOwner": "The Hershey Company",
+    "description": "CHOCOLATE CANDY, CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 34022,
+    "brandOwner": "The Hershey Company",
+    "description": "TREASURE SURPRISE TOY + MILK CHOCOLATES",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 34068,
+    "brandOwner": "Bi-Lo Inc.",
+    "description": "CAROLINA REAPER MONTEREY JACK CHEESE WITH JALAPENO, HABANERO AND CAROLINA REAPER PEPPERS CRACKER CUTS NATURAL CHEESE, CAROLINA REAPER",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 34090,
+    "brandOwner": "Wakefern Food Corporation",
+    "description": "SPECIALTY, AVOCADO OIL BALSAMIC DRESSING & MARINADE, AVOCADO OIL BALSAMIC",
+    "suggestedCanonical": "honey mustard",
+    "score": 3
+  },
+  {
+    "id": 34205,
+    "brandOwner": "Nestle USA Inc.",
+    "description": "RASPBERRY PEANUT BUTTER IN DARK CHOCOLATE NUT BUTTER BOMBS, RASPBERRY PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 20929,
+    "brandOwner": "The Quaker Oats Company",
+    "description": "RED WHITE & BLUE CRUNCH SWEETENED CORN & OAT CEREAL, CORN",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 21038,
+    "brandOwner": "Godiva Chocolatier, Inc.",
+    "description": "MASTERPIECES AN ASSORTMENT OF LEGENDARY CHOCOLATES, MILK CHOCOLATE; DARK CHOCOLATE; MILK CHOCOLATE HAZELNUT",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 34333,
+    "brandOwner": "Harris-Teeter Inc.",
+    "description": "VANILLA FROZEN DAIRY DESSERT WITH A CHOCOLATE FLAVORED COATING BARS, VANILLA",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 34441,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "PUMPKIN SPICE INSTANT OATMEAL, PUMPKIN SPICE",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 34472,
+    "brandOwner": "DRE Medical Group, Inc.",
+    "description": "CARAMELIZED WHITE CHOCOLATE WITH MILK CREAM BAR, CARAMELIZED",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 34543,
+    "brandOwner": "Target Stores",
+    "description": "PEANUT BUTTER MILK CHOCOLATE, PEANUT BUTTER",
+    "suggestedCanonical": "butter",
+    "score": 3
+  },
+  {
+    "id": 34544,
+    "brandOwner": "Target Stores",
+    "description": "S'MORES BARK CRISPS WITH MILK CHOCOLATE, CRUNCHY GRAHAMS AND MARSHMALLOWS, S'MORES",
+    "suggestedCanonical": "butter",
+    "score": 3
+  },
+  {
+    "id": 34567,
+    "brandOwner": "Target Stores",
+    "description": "DARK CHOCOLATY & PEPPERMINT CRUNCH COCOA TOPPERS, DARK CHOCOLATY & PEPPERMINT CRUNCH",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 34569,
+    "brandOwner": "Target Stores",
+    "description": "WHITE CHOCOLATY COATED STIRRER WITH MARSHMALLOWS, WHITE CHOCOLATY WITH MARSHMALLOWS",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 34578,
+    "brandOwner": "Target Stores",
+    "description": "HOLLY JOLLY DIPPED PRETZELS, DRIZZLED CARAMEL POPCORN AND HOLIDAY CHOCOLATE GEMS SNACK MIX, HOLLY JOLLY",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 34583,
+    "brandOwner": "Target Stores",
+    "description": "WHITE CHOCOLATY SANTA WITH CANDY CANE CRUNCH, WHITE CHOCOLATY",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 34629,
+    "brandOwner": "J. Morgan's Confections Inc.",
+    "description": "NUT & BERRY CARAMEL MILK CHOCOLATE, NUT & BERRY CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 34779,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "PORK ITALIAN STYLE MEATBALLS WITH PARMESAN CHEESE, PORK ITALIAN STYLE",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 34970,
+    "brandOwner": "Meijer, Inc.",
+    "description": "ORGANIC MACARONI PRODUCT, BRONZE CUT SHELLS",
+    "suggestedCanonical": "olive oil",
+    "score": 3
+  },
+  {
+    "id": 34984,
+    "brandOwner": "Meijer, Inc.",
+    "description": "CHOCOLATE & SWEETENED DRIED FRUIT MIX, CHOCOLATE & SWEETENED",
+    "suggestedCanonical": "bread",
+    "score": 3
+  },
+  {
+    "id": 34983,
+    "brandOwner": "Meijer, Inc.",
+    "description": "MILK CHOCOLATE COVERED RAISINS, MILK CHOCOLATE",
+    "suggestedCanonical": "bread",
+    "score": 3
+  },
+  {
+    "id": 34994,
+    "brandOwner": "Meijer, Inc.",
+    "description": "PATRIOTIC STARS AND STRIPES CHOCOLATE BALLS CANDY 1, PATRIOTIC",
+    "suggestedCanonical": "bread",
+    "score": 3
+  },
+  {
+    "id": 35365,
+    "brandOwner": "Mike Natural Foods LLC",
+    "description": "CREAMY PASSION FRUIT MANGO, STRAWBERRY, PINEAPPLE, GUANABANA, GUAVA, MAMEY ICE CREAM BARS, CREAMY PASSION FRUIT",
+    "suggestedCanonical": "juice",
+    "score": 3
+  },
+  {
+    "id": 35387,
+    "brandOwner": "Feastables",
+    "description": "MILK CHOCOLATE MADE WITH GRASS-FED MILK, MILK",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 35462,
+    "brandOwner": "5150 Craft Chocolate LLC",
+    "description": "DARK CHOCOLATE SWEETENED WITH 70% CACAO WHOLE DATES, DARK CHOCOLATE",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 46077,
+    "brandOwner": "Target Stores",
+    "description": "BROWN WHOLE GRAIN RICE, BROWN",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 35704,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Annie's Shells & White Cheddar Macaroni & Cheese With Organic Pasta",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 35705,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Annie's Classic Cheddar Macaroni & Cheese With Organic Pasta",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 35742,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Betty Crocker Dark Chocolate Brownie Mix",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 35755,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Pillsbury Reese's Peanut Butter Cookies 24 Count",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 35761,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Pillsbury Regular Pie Crusts 2 Count",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 35803,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Old El Paso Mini Flour Tortilla Taco Boats 12 Count",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 35932,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "WILD CHERRY SODA, WILD CHERRY",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 35958,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "SUGAR FREE DRAGON FRUIT ENERGY DRINK, DRAGON FRUIT",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 27480,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "CLASSIC MIX CHOCOLATE CANDIES, MILK CHOCOLATE, PEANUT BUTTER, PEANUT",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 36978,
+    "brandOwner": "Godiva Chocolatier, Inc.",
+    "description": "ORIGINAL RECIPE CARAMELS MILK CHOCOLATE, CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 37238,
+    "brandOwner": "Danone US, LLC",
+    "description": "UNSWEET VANILLA PEA, ALMOND AND CASHEWMILK, VANILLA",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 43152,
+    "brandOwner": "R L Albert & Son Inc",
+    "description": "MILK CHOCOLATE PEEKABOO SURPRISE EGG WITH JELLY BEANS, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 37436,
+    "brandOwner": "Dole Packaged Foods, LLC",
+    "description": "PINEAPPLE BANANA FRUIT JUICE DRINK, PINEAPPLE; BANANA",
+    "suggestedCanonical": "banana",
+    "score": 3
+  },
+  {
+    "id": 37721,
+    "brandOwner": "Goya Foods, Inc. ",
+    "description": "ANGEL HAIR ENRICHED MACARONI PRODUCT",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 26576,
+    "brandOwner": "The Hershey Company",
+    "description": "STRAWBERRY WAFFLE LAYER CRUNCH MILK CHOCOLATE BARS WITH WAFFLE CONE PIECES, STRAWBERRY",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 26899,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "CARAMEL, MILK CHOCOLATE COOKIE BARS MINIS, CARAMEL, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 38014,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "LIQUID ORANGE DRINK MIX, ORANGE",
+    "suggestedCanonical": "gelatin",
+    "score": 3
+  },
+  {
+    "id": 26931,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "CARAMEL, MILK CHOCOLATE COOKIE BARS, CARAMEL, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27075,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "CARAMEL, MILK CHOCOLATE COOKIE BARS MINIS, CARAMEL, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 27170,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "CARAMEL, MILK CHOCOLATE COOKIE BARS MINIS, CARAMEL, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 38242,
+    "brandOwner": "Tri-Union Seafoods, LLC",
+    "description": "WILD CAUGHT SMOKED PINK WITH NATURAL WOOD SMOKE FLAVOR SALMON",
+    "suggestedCanonical": "avocado",
+    "score": 3
+  },
+  {
+    "id": 38243,
+    "brandOwner": "Tri-Union Seafoods, LLC",
+    "description": "WILD CAUGHT SMOKED PINK WITH MAPLE SMOKEHOUSE FLAVOR SALMON",
+    "suggestedCanonical": "avocado",
+    "score": 3
+  },
+  {
+    "id": 38266,
+    "brandOwner": "Coca-Cola USA Operations",
+    "description": "MOVE TRANSFORMATION FLAVORED ZERO CALORIE COLA",
+    "suggestedCanonical": "cola",
+    "score": 3
+  },
+  {
+    "id": 38268,
+    "brandOwner": "Coca-Cola USA Operations",
+    "description": "DIET COKE SODA, 12 FL OZ, 24 COUNT",
+    "suggestedCanonical": "cola",
+    "score": 3
+  },
+  {
+    "id": 38297,
+    "brandOwner": "Coca-Cola USA Operations",
+    "description": "MOVE TRANSFORMATION FLAVORED ZERO CALORIE COLA",
+    "suggestedCanonical": "cola",
+    "score": 3
+  },
+  {
+    "id": 38298,
+    "brandOwner": "Coca-Cola USA Operations",
+    "description": "MOVE ZERO CALORIE COLA",
+    "suggestedCanonical": "cola",
+    "score": 3
+  },
+  {
+    "id": 39664,
+    "brandOwner": "Lactalis American Group, Inc. ",
+    "description": "LACTOSE FREE WHOLE MILK RICOTTA CHEESE",
+    "suggestedCanonical": "milk",
+    "score": 3
+  },
+  {
+    "id": 28253,
+    "brandOwner": "Nestle USA Inc.",
+    "description": "MILK CHOCOLATE HOLIDAY SUGAR COOKIE DOUGH CHOCOLATE CANDIES MINIS, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 40339,
+    "brandOwner": "Ferrero U.S.A., Incorporated",
+    "description": "CREAMY MILK CHOCOLATE WITH CRISPED RICE BARS, CREAMY MILK",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 40369,
+    "brandOwner": "The Kroger Co.",
+    "description": "SWEET CHOCOLATE 46% CACAO BAKING SQUARES, SWEET CHOCOLATE",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 3
+  },
+  {
+    "id": 40401,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "LEMON LIME CAFFEINE FREE SODA, LEMON LIME",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 40396,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "SODA",
+    "suggestedCanonical": "sugar",
+    "score": 3
+  },
+  {
+    "id": 28833,
+    "brandOwner": "Kraft Foods Schweiz Holding GmbH",
+    "description": "BROKEN NUTS MILK CHOCOLATE CONFECTION WITH HAZELNUTS, BROKEN NUTS MILK CHOCOLATE WITH HAZELNUTS",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 40641,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "MOZZARELLA LOW-MOISTURE PART-SKIM SLIM CUT CHEESE SLICES, MOZZARELLA",
+    "suggestedCanonical": "gelatin",
+    "score": 3
+  },
+  {
+    "id": 40702,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "MOZZARELLA & CHEDDAR MARBLED CHEDDAR AND LOW-MOISTURE MOZZARELLA CHEESE SLICES, MOZZARELLA & CHEDDAR",
+    "suggestedCanonical": "gelatin",
+    "score": 3
+  },
+  {
+    "id": 40711,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "MOZZARELLA SHREDDED LOW-MOISTURE MOZZARELLA CHEESE, MOZZARELLA",
+    "suggestedCanonical": "gelatin",
+    "score": 3
+  },
+  {
+    "id": 40735,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "MOZZARELLA SHREDDED LOW-MOISTURE PART-SKIM MOZZARRELLA CHEESE, MOZZARELLA",
+    "suggestedCanonical": "gelatin",
+    "score": 3
+  },
+  {
+    "id": 40801,
+    "brandOwner": "Safeway, Inc.",
+    "description": "DENALI CARAMEL CARIBOU TOFFEE FLAVORED ICE CREAM WITH CARAMEL CUPS AND DENALI CARAMEL SWIRL, DENALI CARAMEL CARIBOU",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 40799,
+    "brandOwner": "Safeway, Inc.",
+    "description": "CHOCOLATE ICE CREAM, CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 40810,
+    "brandOwner": "Safeway, Inc.",
+    "description": "DULCE DE LECHE CARAMEL ICE CREAM WITH A CARAMEL SWIRL, DULCE DE LECHE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 40868,
+    "brandOwner": "Safeway, Inc.",
+    "description": "91% LEAN/9% FAT GROUND BEEF PATTIES",
+    "suggestedCanonical": "turkey",
+    "score": 3
+  },
+  {
+    "id": 40866,
+    "brandOwner": "Safeway, Inc.",
+    "description": "73% LEAN/27% FAT GROUND BEEF PATTIES",
+    "suggestedCanonical": "turkey",
+    "score": 3
+  },
+  {
+    "id": 40990,
+    "brandOwner": "Safeway, Inc.",
+    "description": "ENRICHED MACARONI PRODUCT, EXTRA WIDE YOLK-FREE RIBBONS",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 41164,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "GHOST PEPPER MONTEREY JACK CHEESE WITH JALAPENO, HABANERO AND GHOST PEPPERS, GHOST PEPPER",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 41282,
+    "brandOwner": "The Quaker Oats Company",
+    "description": "CHRISTMAS CRUNCH SWEETENED CORN & OAT CEREAL, CHRISTMAS CRUNCH",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 41283,
+    "brandOwner": "Giant Eagle, Inc.",
+    "description": "YELLOW CORN ORGANIC TORTILLA CHIPS, YELLOW CORN",
+    "suggestedCanonical": "corn",
+    "score": 3
+  },
+  {
+    "id": 41302,
+    "brandOwner": "Giant Eagle, Inc.",
+    "description": "BLONDE ROAST UNSWEETENED ORGANIC COLD BREW BLACK COFFEE BEVERAGE, BLONDE ROAST",
+    "suggestedCanonical": "chocolate",
+    "score": 3
+  },
+  {
+    "id": 41436,
+    "brandOwner": "The Hershey Company",
+    "description": "SPECIAL DARK 100% CACAO COCOA, SPECIAL DARK",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 41470,
+    "brandOwner": "The Hershey Company",
+    "description": "POPPED SNACK MIX, PEANUT BUTTER CUP MINIS, PRETZELS, CHOCOLATE DRIZZLED POPCORN",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 41463,
+    "brandOwner": "The Hershey Company",
+    "description": "SEMI- SWEET CHOCOLATE CHIPS COOKIES, SEMI- SWEET CHOCOLATE CHIPS",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 41477,
+    "brandOwner": "The Hershey Company",
+    "description": "CHOCOLATE CANDY MINIATURES, CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 41495,
+    "brandOwner": "The Hershey Company",
+    "description": "GENUINE CHOCOLATE SYRUP, GENUINE CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 41502,
+    "brandOwner": "The Hershey Company",
+    "description": "PRETZEL DELIGHTS",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 41503,
+    "brandOwner": "The Hershey Company",
+    "description": "CREAMY CARAMELS WRAPPED IN RICH CHOCOLATE CANDY, CREAMY CARAMELS WRAPPED IN RICH CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 41541,
+    "brandOwner": "The Hershey Company",
+    "description": "CHOCOLATE TWISTS CANDY, CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 41573,
+    "brandOwner": "The Hershey Company",
+    "description": "GENUINE CHOCOLATE FLAVOR SYRUP, GENUINE CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 41574,
+    "brandOwner": "The Hershey Company",
+    "description": "INDULGENT CARAMEL SYRUP, INDULGENT CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 41586,
+    "brandOwner": "Mizkan America, Inc.",
+    "description": "CREAMY BASIL ALFREDO WITH AGED PARMESAN CHEESE SAUCE, CREAMY BASIL ALFREDO",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 41593,
+    "brandOwner": "Mizkan America, Inc.",
+    "description": "THREE CHEESE WITH AGED ASIAGO, ROMANO & PARMESAN RUSTIC CUT PASTA SAUCE WITH HEARTY VEGETABLES, THREE CHEESE WITH AGED ASIAGO, ROMANO & PARMESAN",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 41673,
+    "brandOwner": "Dole Packaged Foods, LLC",
+    "description": "PINEAPPLE BANANA FRUIT JUICE DRINK BLEND DIGESTIVE BLISS, PINEAPPLE BANANA",
+    "suggestedCanonical": "banana",
+    "score": 3
+  },
+  {
+    "id": 41674,
+    "brandOwner": "Dole Packaged Foods, LLC",
+    "description": "TROPICAL PASSION FRUIT JUICE DRINK BLEND DIGESTIVE BLISS, TROPICAL PASSION",
+    "suggestedCanonical": "juice",
+    "score": 3
+  },
+  {
+    "id": 41701,
+    "brandOwner": "Bob's Red Mill Natural Foods, Inc.",
+    "description": "ORGANIC FLAXSEED MEAL",
+    "suggestedCanonical": "corn",
+    "score": 3
+  },
+  {
+    "id": 41723,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 41729,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 41733,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE RED, WHITE & BLUE MIX CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 41853,
+    "brandOwner": "H E Butt Grocery Company",
+    "description": "WHOLE WHEAT MACARONI PRODUCT, SPAGHETTI",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 41925,
+    "brandOwner": "Publix Super Markets, Inc.",
+    "description": "ENRICHED MACARONI PRODUCT, ANGEL HAIR",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 30316,
+    "brandOwner": "Simple Mills",
+    "description": "NUT BUTTER STUFFED CREAMY PEANUT BUTTER SANDWICH COOKIES, PEANUT BUTTER",
+    "suggestedCanonical": "flour",
+    "score": 3
+  },
+  {
+    "id": 42172,
+    "brandOwner": "Raley's",
+    "description": "WHOLE WHEAT MACARONI PRODUCT, SPAGHETTI",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 42173,
+    "brandOwner": "Raley's",
+    "description": "WHOLE WHEAT MACARONI PRODUCT, SPAGHETTI",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 42188,
+    "brandOwner": "Snyder's-Lance, Inc.",
+    "description": "DARK CHOCOLATE CRUNCH PRETZEL CRISPS, DARK CHOCOLATE CRUNCH",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 42186,
+    "brandOwner": "Tropicana Products, Inc.",
+    "description": "PINEAPPLE LIMEADE PROBIOTICS DRINKS, PINEAPPLE LIMEADE",
+    "suggestedCanonical": "juice",
+    "score": 3
+  },
+  {
+    "id": 42348,
+    "brandOwner": "Vital Pharmaceuticals, Inc.",
+    "description": "MIAMI COLA ENERGY DRINK",
+    "suggestedCanonical": "cola",
+    "score": 3
+  },
+  {
+    "id": 42790,
+    "brandOwner": "Associated Wholesale Grocers, Inc.",
+    "description": "WHOLE WHEAT MACARONI PRODUCT, SPAGHETTI",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 42810,
+    "brandOwner": "Associated Wholesale Grocers, Inc.",
+    "description": "MACARONI PRODUCT, SPAGHETTI",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 43515,
+    "brandOwner": "Ghirardelli Chocolate Company",
+    "description": "CARAMEL MILK CHOCOLATE SQUARES, CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 43576,
+    "brandOwner": "Iberia Foods Corporation",
+    "description": "ORGANIC CHICK PEAS",
+    "suggestedCanonical": "olive oil",
+    "score": 3
+  },
+  {
+    "id": 43653,
+    "brandOwner": "JBS USA, LLC",
+    "description": "80% LEAN 20% FAT GRASS FED GROUND BEEF CRUMBLES",
+    "suggestedCanonical": "turkey",
+    "score": 3
+  },
+  {
+    "id": 43651,
+    "brandOwner": "JBS USA, LLC",
+    "description": "80% LEAN 20% FAT GROUND BEEF CRUMBLES",
+    "suggestedCanonical": "turkey",
+    "score": 3
+  },
+  {
+    "id": 43679,
+    "brandOwner": "Barilla G & R F.Lli S.P.A.",
+    "description": "ENRICHED MACARONI PRODUCT, ROTINI",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 43714,
+    "brandOwner": "Good Humor-Breyers Ice Cream",
+    "description": "MILK CHOCOLATE MOCHA COFFEE ICE CREAM WITH MILK CHOCOLATE SHARDS IN A CRACKING MILK CHOCOLATE SHELL, MILK CHOCOLATE MOCHA",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 32035,
+    "brandOwner": "Ferrero U.S.A., Incorporated",
+    "description": "CREAMY MILK CHOCOLATE WITH CRISPED RICE BARS, CREAMY MILK",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 32050,
+    "brandOwner": "Ferrero U.S.A., Incorporated",
+    "description": "CREAMY MILK CHOCOLATE WITH CRISPED RICE BAR, CREAMY MILK",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 44548,
+    "brandOwner": "Del Real LLC",
+    "description": "MASA STUFFED WITH CARNITAS AND CHEESE PUPUSAS",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 44727,
+    "brandOwner": "Luthman Backlund Foods USA Inc., aka LUB Foods USA Inc",
+    "description": "KETO KARAMELL CHOKLAD SWEDISH-STYLE SNACK BAR, MILK CHOCOLATE; CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 44755,
+    "brandOwner": "Tru Fru",
+    "description": "FROZEN FRESH IN WHITE CHOCOLATE & COCONUT NATURE'S PINEAPPLE, WHITE CHOCOLATE; COCONUT",
+    "suggestedCanonical": "bread",
+    "score": 3
+  },
+  {
+    "id": 45042,
+    "brandOwner": "Target Stores",
+    "description": "BONELESS, SKINLESS CHICKEN BREAST WITH RIB MEAT",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 45090,
+    "brandOwner": "Target Stores",
+    "description": "CHOCOLATE CROISSANTS, CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 45129,
+    "brandOwner": "Target Stores",
+    "description": "SWISS CLASSIC CHEESE, SWISS",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 45137,
+    "brandOwner": "Target Stores",
+    "description": "CARAMEL APPLE CARAMEL CORN, CARAMEL APPLE",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 45147,
+    "brandOwner": "Target Stores",
+    "description": "CREAMY NO STIR PEANUT BUTTER SPREAD, CREAMY",
+    "suggestedCanonical": "butter",
+    "score": 3
+  },
+  {
+    "id": 45153,
+    "brandOwner": "Target Stores",
+    "description": "RICOTTA WHOLE MILK CHEESE, RICOTTA",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 45152,
+    "brandOwner": "Target Stores",
+    "description": "RICOTTA PART-SKIM CHEESE, RICOTTA",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 45155,
+    "brandOwner": "Target Stores",
+    "description": "GOUDA CHEESE STICKS, GOUDA",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 45171,
+    "brandOwner": "Target Stores",
+    "description": "BANANA CHOCOLATE CHIP DATE & NUT BARS, BANANA CHOCOLATE CHIP",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 45172,
+    "brandOwner": "Target Stores",
+    "description": "50% LESS FAT KETTLE COOKED POTATO CHIPS, 50% LESS FAT",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 45184,
+    "brandOwner": "Target Stores",
+    "description": "WHITE CORN TORTILLA CHIPS, WHITE CORN",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 45217,
+    "brandOwner": "Target Stores",
+    "description": "PEANUTS, ALMONDS & PEANUT BUTTER WITH COCOA DRIZZLE NUT BARS, PEANUTS, ALMONDS & PEANUT BUTTER WITH COCOA DRIZZLE",
+    "suggestedCanonical": "butter",
+    "score": 3
+  },
+  {
+    "id": 45223,
+    "brandOwner": "Target Stores",
+    "description": "RASPBERRY FRUIT SPREAD, RASPBERRY",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 45233,
+    "brandOwner": "Target Stores",
+    "description": "PEANUT BUTTER POPPERS CEREAL, PEANUT BUTTER POPPERS",
+    "suggestedCanonical": "butter",
+    "score": 3
+  },
+  {
+    "id": 45230,
+    "brandOwner": "Target Stores",
+    "description": "PRETZEL STICKS",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 45262,
+    "brandOwner": "Target Stores",
+    "description": "BLUE CHEESE, BLUE",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 45263,
+    "brandOwner": "Target Stores",
+    "description": "GORGONZOLA CHEESE, GORGONZOLA",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 45286,
+    "brandOwner": "Target Stores",
+    "description": "WHOLE STRAWBERRIES",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 45296,
+    "brandOwner": "Target Stores",
+    "description": "WHOLE STRAWBERRIES",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 45302,
+    "brandOwner": "Target Stores",
+    "description": "ANTIOXIDANT SLICED STRAWBERRIES, DARK SWEET PITTED CHERRIES, WILD BLUEBERRIES, POMEGRANATE ARILS & RASPBERRIES FRUIT BLEND, ANTIOXIDANT",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 45304,
+    "brandOwner": "Target Stores",
+    "description": "WHOLE RASPBERRIES",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 45308,
+    "brandOwner": "Target Stores",
+    "description": "WHOLE STRAWBERRIES",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 45316,
+    "brandOwner": "Target Stores",
+    "description": "WHOLE STRAWBERRIES",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 45318,
+    "brandOwner": "Target Stores",
+    "description": "WHOLE BLUEBERRIES",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 45334,
+    "brandOwner": "Target Stores",
+    "description": "ROMAINE HEARTS, ROMAINE",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 45335,
+    "brandOwner": "Target Stores",
+    "description": "ROMAINE HEARTS, ROMAINE",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 45356,
+    "brandOwner": "Target Stores",
+    "description": "50% LESS FAT KETTLE COOKED POTATO CHIPS, 50% LESS FAT",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 45370,
+    "brandOwner": "Target Stores",
+    "description": "CHICKEN LOW SODIUM BROTH, CHICKEN",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 45388,
+    "brandOwner": "Target Stores",
+    "description": "PIZZA SAUCE WITH TOMATOES, BASIL & PARSLEY, PIZZA",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 45411,
+    "brandOwner": "Target Stores",
+    "description": "SPANISH-STYLE 90 SECOND RICE WITH TOMATOES & PEPPERS, SPANISH-STYLE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 45432,
+    "brandOwner": "Target Stores",
+    "description": "PARMESAN GARLIC FLAVORED POTATO CHIPS, PARMESAN GARLIC",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 45444,
+    "brandOwner": "Target Stores",
+    "description": "APPLE & MAPLE CHICKEN SAUSAGE MINI LINKS, APPLE & MAPLE",
+    "suggestedCanonical": "egg",
+    "score": 3
+  },
+  {
+    "id": 45445,
+    "brandOwner": "Target Stores",
+    "description": "APPLE & GOUDA CHEESE SMOKED CHICKEN SAUSAGE, APPLE & GOUDA CHEESE",
+    "suggestedCanonical": "egg",
+    "score": 3
+  },
+  {
+    "id": 45485,
+    "brandOwner": "Target Stores",
+    "description": "MEXICAN STYLE COLBY JACK, CHEDDAR, AND MONTEREY JACK FINELY SHREDDED CHEESES, MEXICAN STYLE",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 45487,
+    "brandOwner": "Target Stores",
+    "description": "MILD CHEDDAR FINELY SHREDDED CHEESE, MILD CHEDDAR",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 45488,
+    "brandOwner": "Target Stores",
+    "description": "COLBY JACK COLBY & MONTEREY JACK FINELY SHREDDED CHEESE BLEND, COLBY JACK",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 45501,
+    "brandOwner": "Target Stores",
+    "description": "SWEETENED DRIED BLUEBERRIES, SWEETENED",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 45503,
+    "brandOwner": "Target Stores",
+    "description": "SWEETENED DRIED STRAWBERRIES, SWEETENED",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 45527,
+    "brandOwner": "Target Stores",
+    "description": "RAW MIXED NUTS WITH ALMONDS, CASHEWS, WALNUTS, HAZELNUTS & PISTACHIOS, RAW",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 45556,
+    "brandOwner": "Target Stores",
+    "description": "PLAIN WHIPPED CREAM CHEESE SPREAD, PLAIN WHIPPED",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 45557,
+    "brandOwner": "Target Stores",
+    "description": "STRAWBERRY WHIPPED CREAM CHEESE SPREAD, STRAWBERRY",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 45558,
+    "brandOwner": "Target Stores",
+    "description": "PLAIN WHIPPED CREAM CHEESE SPREAD, PLAIN WHIPPED",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 45568,
+    "brandOwner": "Target Stores",
+    "description": "BLACK LOW SODIUM BEANS, BLACK",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 45608,
+    "brandOwner": "Target Stores",
+    "description": "PASTA PRODUCT, BRONZE CUT FARFALLE RIGATE",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 45564,
+    "brandOwner": "Target Stores",
+    "description": "GLUTEN FREE CORN & RICE BLEND PASTA, PENNE RIGATE",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 45565,
+    "brandOwner": "Target Stores",
+    "description": "GLUTEN FREE CORN & RICE BLEND PASTA, SPAGHETTI",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 45566,
+    "brandOwner": "Target Stores",
+    "description": "GLUTEN FREE CORN & RICE BLEND PASTA, ROTINI",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 45609,
+    "brandOwner": "Target Stores",
+    "description": "PASTA PRODUCT, BRONZE CUT ARCOBALENO",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 45588,
+    "brandOwner": "Target Stores",
+    "description": "SEASONED FAT FREE REFRIED BEANS, SEASONED",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 45733,
+    "brandOwner": "Target Stores",
+    "description": "PEACH RASPBERRY LAYERED FRUIT BARS, PEACH RASPBERRY",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 45775,
+    "brandOwner": "Target Stores",
+    "description": "SWISS SPREADABLE CHEESE WEDGES, SWISS",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 45777,
+    "brandOwner": "Target Stores",
+    "description": "SPICY PEPPER JACK SPREADABLE CHEESE WEDGES, SPICY PEPPER JACK",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 45797,
+    "brandOwner": "Target Stores",
+    "description": "FUDGE CHOCOLATE-FLAVORED TREAT BARS, FUDGE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 45791,
+    "brandOwner": "Target Stores",
+    "description": "PEANUT BUTTER CHOCOLATE NON-DAIRY FROZEN DESSERT WITH A PEANUT BUTTER SWIRL AND PEANUT BUTTER TRUFFLES, PEANUT BUTTER CHOCOLATE",
+    "suggestedCanonical": "butter",
+    "score": 3
+  },
+  {
+    "id": 45818,
+    "brandOwner": "Target Stores",
+    "description": "SWEETENED BANANA CHIPS, SWEETENED",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 45844,
+    "brandOwner": "Target Stores",
+    "description": "MONSTER PEANUTS, M&M'S MILK CHOCOLATE CANDIES, RAISINS, MILK CHOCOLATE CHIPS AND PEANUT BUTTER CHIPS TRAIL MIX, MONSTER",
+    "suggestedCanonical": "butter",
+    "score": 3
+  },
+  {
+    "id": 45855,
+    "brandOwner": "Target Stores",
+    "description": "CHOCOLATE CHIP COOKIE DOUGH SNACKS, CHOCOLATE CHIP",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 45866,
+    "brandOwner": "Target Stores",
+    "description": "RASPBERRY FRUIT BARS, RASPBERRY",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 45882,
+    "brandOwner": "Target Stores",
+    "description": "CHOCOLATE ICE CREAM, CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 45883,
+    "brandOwner": "Target Stores",
+    "description": "FRENCH VANILLA ICE CREAM, FRENCH VANILLA",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 45894,
+    "brandOwner": "Target Stores",
+    "description": "RAINBOW ROAD FRUITY ICE CREAM WITH POWDERED SUGAR AND STRAWBERRY RHUBARB SWIRLS, RAINBOW ROAD",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 45897,
+    "brandOwner": "Target Stores",
+    "description": "MONSTER COOKIE PEANUT BUTTER ICE CREAM WITH MONSTER COOKIE PIECES, MONSTER COOKIE",
+    "suggestedCanonical": "butter",
+    "score": 3
+  },
+  {
+    "id": 45898,
+    "brandOwner": "Target Stores",
+    "description": "CHOCOLATE FUDGE BROWNIE ICE CREAM, CHOCOLATE FUDGE BROWNIE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 45906,
+    "brandOwner": "Target Stores",
+    "description": "SOUTHWEST-STYLE DIPPING SAUCE WITH ZESTY CAYENNE & ANCHO CHILI PEPPERS, SOUTHWEST-STYLE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 45960,
+    "brandOwner": "Target Stores",
+    "description": "PEACH RINGS GUMMI CANDIES, PEACH RINGS",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 45961,
+    "brandOwner": "Target Stores",
+    "description": "ASSORTED JELLY BEANS, ASSORTED",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 45968,
+    "brandOwner": "Target Stores",
+    "description": "CHOCOLATE CHIP WHOLE GRAIN BAKED BARS, CHOCOLATE CHIP",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 45980,
+    "brandOwner": "Target Stores",
+    "description": "DARK CHOCOLATE COVERED MINI PRETZELS, DARK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 45985,
+    "brandOwner": "Target Stores",
+    "description": "PEACH RINGS GUMMI CANDIES, PEACH RINGS",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 46000,
+    "brandOwner": "Target Stores",
+    "description": "CHOCOLATE MOUSSE NON-DAIRY DIP & SPREAD, CHOCOLATE MOUSSE",
+    "suggestedCanonical": "yogurt",
+    "score": 3
+  },
+  {
+    "id": 46032,
+    "brandOwner": "Target Stores",
+    "description": "SWEETENED DRIED CRANBERRIES, SWEETENED",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 46036,
+    "brandOwner": "Target Stores",
+    "description": "SWEETENED DRIED MANGOES, SWEETENED",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 46037,
+    "brandOwner": "Target Stores",
+    "description": "SWEETENED DRIED CHERRIES, SWEETENED",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 46038,
+    "brandOwner": "Target Stores",
+    "description": "SWEETENED DRIED CRANBERRIES, SWEETENED",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 46039,
+    "brandOwner": "Target Stores",
+    "description": "SWEETENED DRIED BLUEBERRIES, SWEETENED",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 46040,
+    "brandOwner": "Target Stores",
+    "description": "SWEETENED BANANA CHIPS, SWEETENED",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 46048,
+    "brandOwner": "Target Stores",
+    "description": "CARAMEL APPLE CRISP COOKIES, CARAMEL APPLE",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 46094,
+    "brandOwner": "Target Stores",
+    "description": "SWEET POTATO CORN TORTILLA CHIPS, SWEET POTATO CORN",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 46097,
+    "brandOwner": "Target Stores",
+    "description": "ULTRA THIN MINI PIZZA CRUST, ULTRA THIN",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 3
+  },
+  {
+    "id": 46106,
+    "brandOwner": "Target Stores",
+    "description": "GREEN GODDESS DRESSING & DIP, GREEN GODDESS",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 46148,
+    "brandOwner": "Target Stores",
+    "description": "SEASONED CROUTONS, SEASONED",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 46153,
+    "brandOwner": "Target Stores",
+    "description": "RASPBERRY FRUIT SPREAD, RASPBERRY",
+    "suggestedCanonical": "salt",
+    "score": 3
+  },
+  {
+    "id": 46200,
+    "brandOwner": "Target Stores",
+    "description": "WHITE MILD CHEDDAR CRACKER CUT CHEESE, WHITE MILD CHEDDAR",
+    "suggestedCanonical": "lettuce",
+    "score": 3
+  },
+  {
+    "id": 46185,
+    "brandOwner": "Target Stores",
+    "description": "WHITE CHEDDAR BAKED CORN PUFFS, WHITE CHEDDAR",
+    "suggestedCanonical": "almond",
+    "score": 3
+  },
+  {
+    "id": 46203,
+    "brandOwner": "Target Stores",
+    "description": "STRAWBERRY, APPLE & PEACH FREEZE-DRIED FRUIT BLEND, STRAWBERRY, APPLE & PEACH",
+    "suggestedCanonical": "juice",
+    "score": 3
+  },
+  {
+    "id": 46212,
+    "brandOwner": "Target Stores",
+    "description": "PEANUT BUTTER SANDWICH CRACKERS, PEANUT BUTTER",
+    "suggestedCanonical": "butter",
+    "score": 3
+  },
+  {
+    "id": 46214,
+    "brandOwner": "Target Stores",
+    "description": "PEANUT BUTTER MINI SANDWICH CRACKERS, PEANUT BUTTER",
+    "suggestedCanonical": "butter",
+    "score": 3
+  },
+  {
+    "id": 46216,
+    "brandOwner": "Target Stores",
+    "description": "PEANUT BUTTER FILLED MINI PRETZELS, PEANUT BUTTER",
+    "suggestedCanonical": "butter",
+    "score": 3
+  },
+  {
+    "id": 46235,
+    "brandOwner": "Target Stores",
+    "description": "STRAWBERRY SHORTCAKE WHOLE GRAIN BAKED BARS, STRAWBERRY SHORTCAKE",
+    "suggestedCanonical": "almond",
+    "score": 3
+  }
+]

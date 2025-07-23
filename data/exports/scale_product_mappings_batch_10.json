@@ -1,0 +1,1088 @@
+[
+  {
+    "productId": 24934,
+    "product": "VANILLA  FROSTING, VANILLA",
+    "brand": "Erba Food Products Inc",
+    "canonical": "vanilla"
+  },
+  {
+    "productId": 24936,
+    "product": "BROWN GRAVY MIX",
+    "brand": "Erba Food Products Inc",
+    "canonical": "mix"
+  },
+  {
+    "productId": 24948,
+    "product": "VANILLA CREME COOKIES SANDWICH, VANILLA CREME",
+    "brand": "Erba Food Products Inc",
+    "canonical": "vanilla"
+  },
+  {
+    "productId": 24955,
+    "product": "BITTERSWEET CHOCOLATE",
+    "brand": "Elite Israel Choc & Sweets",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 24944,
+    "product": "SWEET & SOUR DUCK SAUCE, SWEET & SOUR",
+    "brand": "Erba Food Products Inc",
+    "canonical": "sauce"
+  },
+  {
+    "productId": 2237,
+    "product": "DARK CHOCOLATE FLAVORED WAFFLE CONE SNACKS, DARK CHOCOLATE",
+    "brand": "Gino's Restaurant, Inc.",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 2335,
+    "product": "PROTEIN 15 G SHAKE, PEANUT BUTTER CRUNCH, PEANUT BUTTER CRUNCH",
+    "brand": "Oats Overnight LLC",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 24965,
+    "product": "GAMER HEART ASSORTED MILK & DARK CHOCOLATES",
+    "brand": "Russell Stover Candies Inc.",
+    "canonical": "milk"
+  },
+  {
+    "productId": 25210,
+    "product": "CHUNK LIGHT IN VEGETABLE OIL TUNA",
+    "brand": "StarKist Co.",
+    "canonical": "vegetable oil"
+  },
+  {
+    "productId": 2416,
+    "product": "SWEETENED CHOCOLATE FLAVORED CORN AND OAT PUFFED CEREAL WITH COCOA, SWEETENED CHOCOLATE WITH COCOA",
+    "brand": "Post Consumer Brands, LLC",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 25019,
+    "product": "VANILLA FLAVORED WAFERS, VANILLA",
+    "brand": "Osem Export (1962) Ltd.",
+    "canonical": "vanilla"
+  },
+  {
+    "productId": 25022,
+    "product": "DISNEY FROZEN MINIS ICE POPS, BERRY; CHERRY; RASPBERRY",
+    "brand": "Good Humor-Breyers Ice Cream",
+    "canonical": "cherry"
+  },
+  {
+    "productId": 25032,
+    "product": "CLASSIC ICE CREAM BARS",
+    "brand": "Good Humor-Breyers Ice Cream",
+    "canonical": "cream"
+  },
+  {
+    "productId": 25035,
+    "product": "MUSHROOM PASTA SAUCE, MUSHROOM",
+    "brand": "LiDestri Foods, Inc.",
+    "canonical": "sauce"
+  },
+  {
+    "productId": 25057,
+    "product": "BASIL BALSAMIC VINAIGRETTE CAPRESE SALAD",
+    "brand": "Ready Pac Produce, Inc.",
+    "canonical": "basil"
+  },
+  {
+    "productId": 25064,
+    "product": "SUNDAE BEST PREMIUM ICE CREAM",
+    "brand": "Casper's Ice Cream, Inc.",
+    "canonical": "cream"
+  },
+  {
+    "productId": 25066,
+    "product": "THICK CUT HICKORY SMOKED PREMIUM BACON",
+    "brand": "The Hillshire Brands Company",
+    "canonical": "bacon"
+  },
+  {
+    "productId": 25067,
+    "product": "FULLY COOKED ORIGINAL PORK SAUSAGE PATTIES",
+    "brand": "The Hillshire Brands Company",
+    "canonical": "pork"
+  },
+  {
+    "productId": 25076,
+    "product": "BOWLS TUSCAN STYLE CHICKEN",
+    "brand": "Blount Seafood Corporation ",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 25080,
+    "product": "CREAMY TOMATO SOUP, TOMATO",
+    "brand": "Blount Seafood Corporation ",
+    "canonical": "tomato"
+  },
+  {
+    "productId": 25119,
+    "product": "DIET GINGER ALE",
+    "brand": "Dr. Pepper/Seven Up, Inc.",
+    "canonical": "ginger"
+  },
+  {
+    "productId": 25150,
+    "product": "DR PEPPER SODA, 12 FL OZ, 4 COUNT",
+    "brand": "Dr. Pepper/Seven Up, Inc.",
+    "canonical": "pepper"
+  },
+  {
+    "productId": 25158,
+    "product": "CANADA DRY GINGER ALE, 1 LITER",
+    "brand": "Dr. Pepper/Seven Up, Inc.",
+    "canonical": "ginger"
+  },
+  {
+    "productId": 25165,
+    "product": "PREMIUM GINGER ALE",
+    "brand": "Dr. Pepper/Seven Up, Inc.",
+    "canonical": "ginger"
+  },
+  {
+    "productId": 25182,
+    "product": "CHOCOLATE RUGELACH, CHOCOLATE",
+    "brand": "Reisman Bros Bakery",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 25186,
+    "product": "SLICED ORANGE RIND MUENSTER CHEESE ",
+    "brand": "Miller's Cheese Corp.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 25204,
+    "product": "SOFT-BAKED CHOCOLATE CHIP COOKIES, CHOCOLATE CHIP",
+    "brand": "Matt's Cookie Company",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 25208,
+    "product": "SOLID WHITE IN VEGETABLE OIL ALBACORE TUNA",
+    "brand": "StarKist Co.",
+    "canonical": "vegetable oil"
+  },
+  {
+    "productId": 25205,
+    "product": "SOFT-BAKED PEANUT BUTTER COOKIES, PEANUT BUTTER",
+    "brand": "Matt's Cookie Company",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 25236,
+    "product": "MEDIUM SALSA",
+    "brand": "Sabra Dipping Company LLC",
+    "canonical": "salsa"
+  },
+  {
+    "productId": 25296,
+    "product": "RED RASPBERRY FRUIT SPREAD, RED RASPBERRY",
+    "brand": "Charles Jacquin Et Cie Inc.",
+    "canonical": "spread"
+  },
+  {
+    "productId": 25287,
+    "product": "KOOL-AID 3PK. POPPING CANDY PEG BAG, 0.24 OZ, TROPICAL PUNCH; CHERRY; GRAPE",
+    "brand": "Hilco LLC",
+    "canonical": "cherry"
+  },
+  {
+    "productId": 29799,
+    "product": "VANILLA FIG COLD BREW GROUND COFFEE, VANILLA FIG",
+    "brand": "Starbucks Coffee Company",
+    "canonical": "vanilla"
+  },
+  {
+    "productId": 25301,
+    "product": "COOKIES & CREME CEREAL, COOKIES & CREAM",
+    "brand": "Israel Edible Products Ltd.",
+    "canonical": "cream"
+  },
+  {
+    "productId": 25315,
+    "product": "SNOW PALS MERINGUE COOKIE KIT",
+    "brand": "Target Stores",
+    "canonical": "cookie"
+  },
+  {
+    "productId": 25322,
+    "product": "CHILI LIME MINI RICE CRACKERS, CHILI LIME",
+    "brand": "PANOS Brands LLC ",
+    "canonical": "rice"
+  },
+  {
+    "productId": 25329,
+    "product": "NATIONAL SPICE BUN, 4.4 OZ",
+    "brand": "National Continental Corp. Ltd",
+    "canonical": "bun"
+  },
+  {
+    "productId": 25753,
+    "product": "PURE VEGETABLE OIL",
+    "brand": "B&G Foods, Inc.",
+    "canonical": "vegetable oil"
+  },
+  {
+    "productId": 25344,
+    "product": "CRANBERRY-CHERRY PRESERVES, CRANBERRY; CHERRY",
+    "brand": "Andros S.A.",
+    "canonical": "cherry"
+  },
+  {
+    "productId": 25345,
+    "product": "PEACH, APRICOT AND VERBENA FRENCH FRUIT TREAT, PEACH; APRICOT; VERBENA",
+    "brand": "Andros S.A.",
+    "canonical": "peach"
+  },
+  {
+    "productId": 25346,
+    "product": "CHERRY, REDCURRANT AND HIBISCUS FRENCH FRUIT TREAT, CHERRY; REDCURRANT; HIBISCUS",
+    "brand": "Andros S.A.",
+    "canonical": "cherry"
+  },
+  {
+    "productId": 25367,
+    "product": "JAMAICAN SOF DRINK CREAM SODA",
+    "brand": "Reggae Imports Ltd.",
+    "canonical": "cream"
+  },
+  {
+    "productId": 25754,
+    "product": "PURE VEGETABLE OIL",
+    "brand": "B&G Foods, Inc.",
+    "canonical": "vegetable oil"
+  },
+  {
+    "productId": 25382,
+    "product": "GENUINE JAMAICAN PINEAPPLE FLAVORED SODA, PINEAPPLE",
+    "brand": "Reggae Imports Ltd.",
+    "canonical": "pineapple"
+  },
+  {
+    "productId": 25404,
+    "product": "CHOCOLATE CHIP WAFFLES, CHOCOLATE CHIP",
+    "brand": "KSLB Holdings, LLC",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 25414,
+    "product": "OXTAIL SEASONING",
+    "brand": "Eve Sales Company",
+    "canonical": "seasoning"
+  },
+  {
+    "productId": 25416,
+    "product": "EXTRA FINE TIGER NUT FLOUR",
+    "brand": "Pamela's Products Inc.",
+    "canonical": "flour"
+  },
+  {
+    "productId": 25408,
+    "product": "REAL KOSHER SMOOTH & CREAMY VANILLA NON-DAIRY  FROZEN DESSERT , VANILLA",
+    "brand": "Real Kosher Ice Cream Co.",
+    "canonical": "vanilla"
+  },
+  {
+    "productId": 25418,
+    "product": "DOUBLE CRME WHITE CHEESE",
+    "brand": "Arla Foods Amba",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 25421,
+    "product": "COLORING & SEASONING CONDIMENT",
+    "brand": "Bijol & Spices Inc.",
+    "canonical": "seasoning"
+  },
+  {
+    "productId": 25430,
+    "product": "72% COCOA FINEST BITTERSWEET SWISS CHOCOLATE",
+    "brand": "Maestrani Schweizer",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 25427,
+    "product": "TRADER JOE'S, FUDGE SAUCE",
+    "brand": "Emissive Energy Corporation",
+    "canonical": "sauce"
+  },
+  {
+    "productId": 25441,
+    "product": "PREMIUM CHILI BASE",
+    "brand": "Southeastern Mills Inc.",
+    "canonical": "base"
+  },
+  {
+    "productId": 25446,
+    "product": "ORGANIC MUSHROOM BASE",
+    "brand": "Southeastern Mills Inc.",
+    "canonical": "base"
+  },
+  {
+    "productId": 25480,
+    "product": "CRISPETY, CRUNCHETY, PEANUT-BUTTERY BAR, PEANUT BUTTER",
+    "brand": "Ferrero U.S.A., Incorporated",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 25483,
+    "product": "RAISINETS CALIFORNIA RAISINS COVERED IN DARK CHOCOLATE, 3.5 OZ",
+    "brand": "Ferrero U.S.A., Incorporated",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 25497,
+    "product": "RAISINETS CALIFORNIA RAISINS COVERED IN DARK CHOCOLATE, 8 OZ",
+    "brand": "Ferrero U.S.A., Incorporated",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 25507,
+    "product": "LACEY SWISS SLICED CHEESE, LACEY SWISS",
+    "brand": "The Kroger Co.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 25523,
+    "product": "LITE COCONUT MILK, LITE",
+    "brand": "The Kroger Co.",
+    "canonical": "milk"
+  },
+  {
+    "productId": 25531,
+    "product": "PEPPER JELLY",
+    "brand": "McIlhenny Company",
+    "canonical": "pepper"
+  },
+  {
+    "productId": 25532,
+    "product": "MILD JALAPENO PEPPER JELLY, MILD JALAPENO",
+    "brand": "McIlhenny Company",
+    "canonical": "pepper"
+  },
+  {
+    "productId": 25556,
+    "product": "WILD CHERRY COLA MINI, WILD CHERRY",
+    "brand": "Pepsi-Cola North America Inc.",
+    "canonical": "cherry"
+  },
+  {
+    "productId": 25579,
+    "product": "LEMON SATIN CREME DARK CHOCOLATE, LEMON SATIN CREME",
+    "brand": "Mars Retail Group Inc.",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 25580,
+    "product": "HOLIDAY PEPPERMINT BARK DARK CHOCOLATE, HOLIDAY PEPPERMINT BARK",
+    "brand": "Mars Retail Group Inc.",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 2916,
+    "product": "HERSHEY'S MINIATURES CHOCOLATE CANDY, 17.1 OZ",
+    "brand": "",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 2969,
+    "product": "HONEY HAM SNACK TRAY",
+    "brand": "",
+    "canonical": "honey"
+  },
+  {
+    "productId": 25608,
+    "product": "MEAT LOVERS WITH 100% REAL MOZZARELLA CHEESE, PREMIUM PEPPERONI AND ZESTY ITALIAN SAUSAGE LASAGNA, MEAT LOVERS",
+    "brand": "Nestle Usa-Frozen Food Division",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 25610,
+    "product": "HOT JALAPENO TOMATO KETCHUP, HOT JALAPENO",
+    "brand": "Kraft Heinz Foods Company",
+    "canonical": "tomato"
+  },
+  {
+    "productId": 25611,
+    "product": "RASPBERRY JAM, RASPBERRY",
+    "brand": "Caldo International Inc.",
+    "canonical": "jam"
+  },
+  {
+    "productId": 25651,
+    "product": "TOMATO KETCHUP, TOMATO",
+    "brand": "Western Family Foods, Inc.",
+    "canonical": "tomato"
+  },
+  {
+    "productId": 25632,
+    "product": "CUT GREEN BEANS",
+    "brand": "Pinnacle Foods Group LLC",
+    "canonical": "beans"
+  },
+  {
+    "productId": 25634,
+    "product": "BROCCOLI, CARROTS, SUGAR SNAP PEAS & WATER CHESTNUTS",
+    "brand": "Pinnacle Foods Group LLC",
+    "canonical": "broccoli"
+  },
+  {
+    "productId": 25650,
+    "product": "RASPBERRIES",
+    "brand": "Western Family Foods, Inc.",
+    "canonical": "raspberries"
+  },
+  {
+    "productId": 3087,
+    "product": "ORGANIC CREAMY MOROCCAN SWEET POTATO SOUP",
+    "brand": "",
+    "canonical": "sweet potato"
+  },
+  {
+    "productId": 25656,
+    "product": "CLASSIC YELLOW MUSTARD, CLASSIC YELLOW",
+    "brand": "",
+    "canonical": "mustard"
+  },
+  {
+    "productId": 25668,
+    "product": "HEAVY WHIPPING CREAM",
+    "brand": "Borden, Inc.",
+    "canonical": "cream"
+  },
+  {
+    "productId": 25681,
+    "product": "SOLID LIGHT IN OIL TUNA",
+    "brand": "Heart and Soul Foods Inc.",
+    "canonical": "oil"
+  },
+  {
+    "productId": 25680,
+    "product": "PREMIUM PRESERVES APRICOT JAM, APRICOT",
+    "brand": "TSR Inc",
+    "canonical": "jam"
+  },
+  {
+    "productId": 25682,
+    "product": "HERBAL ICED TEA BEVERAGE, PINEAPPLE, BERRY BLUE",
+    "brand": "Anheuser-Busch InBev",
+    "canonical": "pineapple"
+  },
+  {
+    "productId": 25683,
+    "product": "CRAFT ICED TEA, GREEN TEA BEVERAGE, PEACH, THAI LEMONGRASS & MINT",
+    "brand": "Anheuser-Busch InBev",
+    "canonical": "peach"
+  },
+  {
+    "productId": 25684,
+    "product": "CRAFT ICED BLACK TEA BEVERAGE, MANGO",
+    "brand": "Anheuser-Busch InBev",
+    "canonical": "mango"
+  },
+  {
+    "productId": 25701,
+    "product": "PURE RAW & UNFILTERED WILDFLOWER HONEY, WILDFLOWER",
+    "brand": "Sioux Honey Association",
+    "canonical": "honey"
+  },
+  {
+    "productId": 25693,
+    "product": "COOKIES AND CREAM GELATO LAYERS, COOKIES AND CREAM",
+    "brand": "Conopco Inc.",
+    "canonical": "cream"
+  },
+  {
+    "productId": 25712,
+    "product": "THE ORIGINAL HOT SAUCE",
+    "brand": "Southeastern Mills Inc.",
+    "canonical": "sauce"
+  },
+  {
+    "productId": 25751,
+    "product": "PURE VEGETABLE OIL",
+    "brand": "B&G Foods, Inc.",
+    "canonical": "vegetable oil"
+  },
+  {
+    "productId": 25727,
+    "product": "FILLED WITH WHITE CHOCOLATE WAFFLE CONES, WHITE CHOCOLATE",
+    "brand": "Royce Apparel Inc. ",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 25728,
+    "product": "CHOCOLATE SANDWICH COOKIES, CHOCOLATE",
+    "brand": "Mondelez International, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 25747,
+    "product": "PURE CANOLA OIL",
+    "brand": "B&G Foods, Inc.",
+    "canonical": "oil"
+  },
+  {
+    "productId": 25745,
+    "product": "ORGANIC PASSION FRUIT & PEACH FLAVORED GREEN TEA, PASSION FRUIT; PEACH",
+    "brand": "Lenovo (Beijing) Co., Ltd.",
+    "canonical": "peach"
+  },
+  {
+    "productId": 25738,
+    "product": "SPICY HARISSA TAHINI, CHILLI",
+    "brand": "Lenovo (Beijing) Co., Ltd.",
+    "canonical": "tahini"
+  },
+  {
+    "productId": 25795,
+    "product": "ORIGINAL BARBECUE SAUCE, ORIGINAL BARBECUE",
+    "brand": "Kraft Heinz Foods Company",
+    "canonical": "sauce"
+  },
+  {
+    "productId": 25815,
+    "product": "COLBY CHEESE, COLBY",
+    "brand": "Kraft Heinz Foods Company",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 25828,
+    "product": "FRENCH VANILLA FAT FREE COFFEE CREAMER, FRENCH VANILLA",
+    "brand": "Safeway, Inc.",
+    "canonical": "vanilla"
+  },
+  {
+    "productId": 25841,
+    "product": "WHITE CHOCOLATE MOCHA COFFEE CREAMER, WHITE CHOCOLATE MOCHA",
+    "brand": "Safeway, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 25862,
+    "product": "ASIAN-STYLE VEGETABLES STEAMS IN BAG BROCCOLI, CARROTS, SUGAR SNAP PEAS, WATER CHESTNUTS, ASIAN-STYLE VEGETABLES",
+    "brand": "Safeway, Inc.",
+    "canonical": "broccoli"
+  },
+  {
+    "productId": 25866,
+    "product": "FETA CHEESE CRUMBLES, FETA",
+    "brand": "Safeway, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 25867,
+    "product": "PARMESAN GRATED CHEESE, PARMESAN",
+    "brand": "Safeway, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 25875,
+    "product": "PARMESAN SHREDDED CHEESE, PARMESAN",
+    "brand": "Safeway, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 3442,
+    "product": "PEPPERONI BEEF STICKS, PEPPERONI",
+    "brand": "Link Snacks, Inc.",
+    "canonical": "beef"
+  },
+  {
+    "productId": 25908,
+    "product": "PARMESAN CHEESE, PARMESAN",
+    "brand": "Safeway, Inc.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 25904,
+    "product": "HOT COCOA MIX",
+    "brand": "Safeway, Inc.",
+    "canonical": "mix"
+  },
+  {
+    "productId": 3628,
+    "product": "S'MORES GRAHAM CRACKER FLAVORED GRANOLA WITH CHOCOLATE AND MARSHMALLOW PIECES, S'MORES GRAHAM CRACKER",
+    "brand": "Giant Eagle, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 25926,
+    "product": "PEPPERMINT WHITE & DARK CHOCOLATE BARK, PEPPERMINT",
+    "brand": "Safeway, Inc.",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 25932,
+    "product": "MAPLE BROWN SUGAR SEASONAL COFFEE CREAMER, MAPLE BROWN SUGAR",
+    "brand": "Safeway, Inc.",
+    "canonical": "brown sugar"
+  },
+  {
+    "productId": 25944,
+    "product": "TOMATO KETCHUP, TOMATO",
+    "brand": "Safeway, Inc.",
+    "canonical": "tomato"
+  },
+  {
+    "productId": 25947,
+    "product": "CREAM SODA, CREAM",
+    "brand": "Safeway, Inc.",
+    "canonical": "cream"
+  },
+  {
+    "productId": 25950,
+    "product": "PINEAPPLE SODA, PINEAPPLE",
+    "brand": "Safeway, Inc.",
+    "canonical": "pineapple"
+  },
+  {
+    "productId": 3721,
+    "product": "PRETZEL FLAVORED CENTER WITH PEANUT BUTTER COATING, PRETZEL",
+    "brand": "Hormel Foods Corporation ",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 25977,
+    "product": "APPLE SAUCE, APPLE",
+    "brand": "Safeway, Inc.",
+    "canonical": "sauce"
+  },
+  {
+    "productId": 25988,
+    "product": "CORN AND RICE GLUTEN FREE PASTA, PENNE RIGATE",
+    "brand": "Safeway, Inc.",
+    "canonical": "rice"
+  },
+  {
+    "productId": 25980,
+    "product": "HONEY FLAVORED WITH GINSENG GREEN TEA, HONEY WITH GINSENG",
+    "brand": "Safeway, Inc.",
+    "canonical": "honey"
+  },
+  {
+    "productId": 25994,
+    "product": "CHERRY SOURS CANDY, CHERRY SOURS",
+    "brand": "Safeway, Inc.",
+    "canonical": "cherry"
+  },
+  {
+    "productId": 4085,
+    "product": "YACHTWURST WITH PISTACHIO NUTS, PISTACHIO NUTS",
+    "brand": "Fred Usinger, Inc.",
+    "canonical": "nuts"
+  },
+  {
+    "productId": 26082,
+    "product": "PARSLEY PUREE, PARSLEY",
+    "brand": "Wow Associates Ltd.",
+    "canonical": "parsley"
+  },
+  {
+    "productId": 4425,
+    "product": "VANILLA CUPCAKES, VANILLA",
+    "brand": "Wal-Mart Stores, Inc.",
+    "canonical": "vanilla"
+  },
+  {
+    "productId": 26042,
+    "product": "TURKEY POT PIE, TURKEY",
+    "brand": "Marie Callender's Retail Foods",
+    "canonical": "pie"
+  },
+  {
+    "productId": 4457,
+    "product": "CHOCOLATE CHIP SOFT-BAKED COOKIES, CHOCOLATE CHIP",
+    "brand": "Matt's Cookie Company",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 26046,
+    "product": "CHICKEN POT PIES, CHICKEN",
+    "brand": "Marie Callender's Retail Foods",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 30131,
+    "product": "DRIED MANGO SLICES",
+    "brand": "International Foodsource",
+    "canonical": "mango"
+  },
+  {
+    "productId": 26055,
+    "product": "SPAGHETTI WITH MEAT SAUCE, MEAT SAUCE",
+    "brand": "Marie Callender's Retail Foods",
+    "canonical": "sauce"
+  },
+  {
+    "productId": 4550,
+    "product": "THE GAME DAY BOX CRUNCHY BROAD BEANS",
+    "brand": "",
+    "canonical": "beans"
+  },
+  {
+    "productId": 26081,
+    "product": "CILANTRO PUREE, CILANTRO",
+    "brand": "Wow Associates Ltd.",
+    "canonical": "cilantro"
+  },
+  {
+    "productId": 4508,
+    "product": "RICEMILK RICEMILK CRUNCH AND DARK CHOCOLATE MINIS",
+    "brand": "",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 26066,
+    "product": "MOZZARELLA LOW-MOISTURE PART-SKIM CHEESE, MOZZARELLA",
+    "brand": "Kraft Heinz Foods Company",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 4612,
+    "product": "SEMI-SWEET VEGAN & SOY-FREE CHOCOLATE CHIPS",
+    "brand": "",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 26107,
+    "product": "MORTON, ALL-PURPOSE NATURAL SEA SALT",
+    "brand": "Morton Salt, Inc.",
+    "canonical": "sea salt"
+  },
+  {
+    "productId": 26111,
+    "product": "SEA SALT",
+    "brand": "Morton Salt, Inc.",
+    "canonical": "sea salt"
+  },
+  {
+    "productId": 26109,
+    "product": "SEA SALT",
+    "brand": "Morton Salt, Inc.",
+    "canonical": "sea salt"
+  },
+  {
+    "productId": 26101,
+    "product": "HICKORY SMOKED BACON, HICKORY SMOKED",
+    "brand": "Tyson Foods, Inc.",
+    "canonical": "bacon"
+  },
+  {
+    "productId": 26120,
+    "product": "GREEN MINT CHIP PREMIUM ICE CREAM, GREEN MINT CHIP",
+    "brand": "Hershey Creamery Company",
+    "canonical": "cream"
+  },
+  {
+    "productId": 26121,
+    "product": "PISTACHIO PREMIUM ICE CREAM, PISTACHIO",
+    "brand": "Hershey Creamery Company",
+    "canonical": "cream"
+  },
+  {
+    "productId": 26132,
+    "product": "SALSA PICANTE, HOT",
+    "brand": "Joe T. Garcia's Enterprise's Inc.",
+    "canonical": "salsa"
+  },
+  {
+    "productId": 26192,
+    "product": "VEGETABLE OIL",
+    "brand": "Ventura Foods, L.L.C.",
+    "canonical": "vegetable oil"
+  },
+  {
+    "productId": 26201,
+    "product": "PINEAPPLE JUICY GELS, PINEAPPLE",
+    "brand": "Conagra Brands, Inc.",
+    "canonical": "pineapple"
+  },
+  {
+    "productId": 26202,
+    "product": "TROPICAL PUDDING MERMAID SPLASHES, TROPICAL PUDDING",
+    "brand": "Conagra Brands, Inc.",
+    "canonical": "pudding"
+  },
+  {
+    "productId": 26227,
+    "product": "SIMPLY SEA SALT GOURMET POPPING CORN, SIMPLY SEA SALT",
+    "brand": "Conagra Brands, Inc.",
+    "canonical": "sea salt"
+  },
+  {
+    "productId": 26226,
+    "product": "SIMPLY SEA SALT NATURALS GOURMET POPPING CORN, SIMPLY SEA SALT",
+    "brand": "Conagra Brands, Inc.",
+    "canonical": "sea salt"
+  },
+  {
+    "productId": 26214,
+    "product": "DULCE DE LECHE PUDDING, DULCE DE LECHE",
+    "brand": "Conagra Brands, Inc.",
+    "canonical": "pudding"
+  },
+  {
+    "productId": 26237,
+    "product": "DARK CHOCOLATE 53% CACAO MORSELS, DARK CHOCOLATE",
+    "brand": "Nestle USA Inc.",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 26230,
+    "product": "SEA SALT SMARTPOP! GOURMET POPPING CORN, SEA SALT",
+    "brand": "Conagra Brands, Inc.",
+    "canonical": "sea salt"
+  },
+  {
+    "productId": 26242,
+    "product": "DARK BUNCHA BUNCHES OF CRUNCHY DARK CHOCOLATE, DARK",
+    "brand": "Nestle USA Inc.",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 26244,
+    "product": "DARK BUNCHA BUNCHES OF CRUNCHY DARK CHOCOLATE, DARK",
+    "brand": "Nestle USA Inc.",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 26255,
+    "product": "MEXICAN RESTAURANT STYLE TORTILLA CHIPS, MEXICAN RESTAURANT STYLE",
+    "brand": "Frito-Lay Company",
+    "canonical": "tortilla"
+  },
+  {
+    "productId": 26271,
+    "product": "DINAMITA CHILE LIMON ROLLED TORTILLA CHIPS, DINAMITA CHILE LIMON",
+    "brand": "Frito-Lay Company",
+    "canonical": "tortilla"
+  },
+  {
+    "productId": 4814,
+    "product": "CHOCOLATE CHIP MINI COOKIES, CHOCOLATE CHIP",
+    "brand": "Too Good Gourmet, Inc.",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 26282,
+    "product": "NACHO CHEESE FLAVORED POPCORN, NACHO CHEESE",
+    "brand": "Frito-Lay Company",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 26293,
+    "product": "SALTED PLAIN WHOLE GRAIN BROWN RICE CAKES, SALTED",
+    "brand": "The Quaker Oats Company",
+    "canonical": "rice"
+  },
+  {
+    "productId": 26294,
+    "product": "SODIUM FREE PLAIN WHOLE GRAIN BROWN RICE CAKES, SODIUM FREE PLAIN",
+    "brand": "The Quaker Oats Company",
+    "canonical": "rice"
+  },
+  {
+    "productId": 26314,
+    "product": "PITA OVER BAKED CRACKERS, PITA",
+    "brand": "Keebler Company",
+    "canonical": "pita"
+  },
+  {
+    "productId": 26320,
+    "product": "COOKIES & CREAM CHEWY GRANOLA BAR, COOKIES & CREAM",
+    "brand": "The Quaker Oats Company",
+    "canonical": "cream"
+  },
+  {
+    "productId": 26322,
+    "product": "AMERICAN HERITAGE, MILD CHEDDAR SHREDDED CHEESE, MILD CHEDDAR",
+    "brand": "Smithfield Packaged Meats Corp.",
+    "canonical": "cheese"
+  },
+  {
+    "productId": 4942,
+    "product": "PEANUT BUTTER DELIGHT GOURMET POPCORN, PEANUT BUTTER DELIGHT",
+    "brand": "Savory Foods, Inc.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 26356,
+    "product": "COUNTRY RECIPE PORK & TURKEY FULLY COOKED SAUSAGE LINKS, COUNTRY RECIPE",
+    "brand": "Conagra Frozen Foods",
+    "canonical": "pork"
+  },
+  {
+    "productId": 26334,
+    "product": "TERIYAKI LESS SODIUM SAUCE, TERIYAKI",
+    "brand": "Conagra Frozen Foods",
+    "canonical": "sauce"
+  },
+  {
+    "productId": 5207,
+    "product": "STREET CORN BLEND, STREET CORN",
+    "brand": "Ps Seasoning & Spices Inc.",
+    "canonical": "blend"
+  },
+  {
+    "productId": 5232,
+    "product": "COCK-A-DOODLE BREW BEER CAN CHICKEN RUB, COCK-A-DOODLE BREW",
+    "brand": "Ps Seasoning & Spices Inc.",
+    "canonical": "chicken"
+  },
+  {
+    "productId": 5322,
+    "product": "PEANUT BUTTER & JELLY SNACK BARS, PEANUT BUTTER & JELLY",
+    "brand": "Grab The Gold, Inc.",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 26359,
+    "product": "ORIGINAL PORK & TURKEY FULLY COOKED SAUSAGE LINKS, ORIGINAL",
+    "brand": "Conagra Frozen Foods",
+    "canonical": "pork"
+  },
+  {
+    "productId": 26360,
+    "product": "ORIGINAL PORK & TURKEY FULLY COOKED SAUSAGE LINKS, ORIGINAL",
+    "brand": "Conagra Frozen Foods",
+    "canonical": "pork"
+  },
+  {
+    "productId": 26374,
+    "product": "TERIYAKI SAUCE, TERIYAKI",
+    "brand": "Conagra Frozen Foods",
+    "canonical": "sauce"
+  },
+  {
+    "productId": 5440,
+    "product": "MOCHA OAT MILK LATTE COLD BREW COFFEE, MOCHA OAT MILK LATTE",
+    "brand": "Ambrosetti's Sister",
+    "canonical": "milk"
+  },
+  {
+    "productId": 5506,
+    "product": "DARK CHOCOLATE WITH ALASKAN KELP & CAYENNE, ALASKAN KELP & CAYENNE",
+    "brand": "Chugach Chocolates LLC",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 5601,
+    "product": "CHOCOLATE WAFFLES, CHOCOLATE",
+    "brand": "Jaroen Innovation LLC DBA Waffly Good Waffles",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 30801,
+    "product": "NATURAL SPRING WATER, BLACK CHERRY",
+    "brand": "Nestle Waters North America Inc./deer Park",
+    "canonical": "cherry"
+  },
+  {
+    "productId": 26410,
+    "product": "CRANBERRY MANGO JUICE DRINK FROM CONCENTRATE",
+    "brand": "Ocean Spray Cranberries, Inc.",
+    "canonical": "mango"
+  },
+  {
+    "productId": 26423,
+    "product": "GREEN BEANS",
+    "brand": "Taylor Fresh Foods, Inc.",
+    "canonical": "beans"
+  },
+  {
+    "productId": 26429,
+    "product": "CHOCOLATE MINT CANDY CANES, CHOCOLATE MINT",
+    "brand": "The Hershey Company",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 26433,
+    "product": "CHOCOLATE MINT CANDY CANES, CHOCOLATE MINT",
+    "brand": "The Hershey Company",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 26421,
+    "product": "ORGANIC BROCCOLI SLAW",
+    "brand": "Taylor Fresh Foods, Inc.",
+    "canonical": "broccoli"
+  },
+  {
+    "productId": 26449,
+    "product": "DARK CHOCOLATE NUGGETS TRUFFLES, DARK CHOCOLATE",
+    "brand": "The Hershey Company",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 26450,
+    "product": "DARK CHOCOLATE COVERED PEPPERMINT PATTIES, DARK CHOCOLATE, PEPPERMINT",
+    "brand": "The Hershey Company",
+    "canonical": "dark chocolate"
+  },
+  {
+    "productId": 41138,
+    "product": "CUT GREEN BEANS",
+    "brand": "Del Monte Foods Inc.",
+    "canonical": "beans"
+  },
+  {
+    "productId": 26497,
+    "product": "SEMI-SWEET CHOCOLATE CHIPS, SEMI-SWEET CHOCOLATE",
+    "brand": "The Hershey Company",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 26517,
+    "product": "CHOCOLATE CANDY MINIATURES, CHOCOLATE",
+    "brand": "The Hershey Company",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 26509,
+    "product": "SPECIAL DARK MILDLY SWEET CHOCOLATE CANDY, SPECIAL DARK",
+    "brand": "The Hershey Company",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 26525,
+    "product": "CHOCOLATE CANDY MINIATURES, CHOCOLATE",
+    "brand": "The Hershey Company",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 26526,
+    "product": "SPECIAL DARK MILDLY SWEET CHOCOLATE ASSORTMENT MINIATURES, SPECIAL DARK",
+    "brand": "The Hershey Company",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 26528,
+    "product": "CHOCOLATE CANDY MINIATURES, CHOCOLATE",
+    "brand": "The Hershey Company",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 26531,
+    "product": "CANDY ASSORTMENT, PEANUT BUTTER CUPS",
+    "brand": "The Hershey Company",
+    "canonical": "peanut butter"
+  },
+  {
+    "productId": 26555,
+    "product": "GENUINE CHOCOLATE SIMPLY SYRUP, GENUINE CHOCOLATE",
+    "brand": "The Hershey Company",
+    "canonical": "chocolate"
+  },
+  {
+    "productId": 26568,
+    "product": "CARAMEL CREME CANDY WITH PRETZEL BITS, CARAMEL CREME WITH PRETZEL BITS",
+    "brand": "The Hershey Company",
+    "canonical": "caramel"
+  }
+]

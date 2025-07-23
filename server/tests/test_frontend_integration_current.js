@@ -12,27 +12,27 @@ async function testFrontendIntegration() {
     const recipe = recipeResponse.data;
     
     console.log(`   📖 Recipe: "${recipe.title}"`);
-    console.log(`   🥘 Ingredients: ${recipe.ingredients.length}`);
+    console.log(`   🥘 RecipeIngredients: ${recipe.ingredients.length}`);
     
     // Analyze ingredient mapping coverage
-    let mappedIngredients = 0;
-    let flaggedIngredients = 0;
+    let mappedRecipeIngredients = 0;
+    let flaggedRecipeIngredients = 0;
     let ingredientsWithSubstitutes = 0;
     
     recipe.ingredients.forEach(ing => {
       if (ing.canonical && ing.canonical !== 'e') {
-        mappedIngredients++;
+        mappedRecipeIngredients++;
       }
       if (ing.flagged) {
-        flaggedIngredients++;
+        flaggedRecipeIngredients++;
       }
       if (ing.substitutions && ing.substitutions.length > 0) {
         ingredientsWithSubstitutes++;
       }
     });
     
-    console.log(`   🎯 Mapped: ${mappedIngredients}/${recipe.ingredients.length} (${(mappedIngredients/recipe.ingredients.length*100).toFixed(1)}%)`);
-    console.log(`   ⚠️  Flagged: ${flaggedIngredients}`);
+    console.log(`   🎯 Mapped: ${mappedRecipeIngredients}/${recipe.ingredients.length} (${(mappedRecipeIngredients/recipe.ingredients.length*100).toFixed(1)}%)`);
+    console.log(`   ⚠️  Flagged: ${flaggedRecipeIngredients}`);
     console.log(`   🔄 Substitutes: ${ingredientsWithSubstitutes}\n`);
     
     // Test 2: Recipe with allergen filtering
@@ -80,7 +80,7 @@ async function testFrontendIntegration() {
     // Test 4: Multiple recipes to check coverage consistency
     console.log('4️⃣ Testing Coverage Across Multiple Recipes...');
     const testRecipes = [1, 100, 1000, 5000, 10000];
-    let totalIngredients = 0;
+    let totalRecipeIngredients = 0;
     let totalMapped = 0;
     
     for (const recipeId of testRecipes) {
@@ -89,7 +89,7 @@ async function testFrontendIntegration() {
         const testRecipe = response.data;
         
         const mapped = testRecipe.ingredients.filter(ing => ing.canonical && ing.canonical !== 'e').length;
-        totalIngredients += testRecipe.ingredients.length;
+        totalRecipeIngredients += testRecipe.ingredients.length;
         totalMapped += mapped;
         
         console.log(`   📖 Recipe ${recipeId}: ${mapped}/${testRecipe.ingredients.length} (${(mapped/testRecipe.ingredients.length*100).toFixed(1)}%)`);
@@ -98,13 +98,13 @@ async function testFrontendIntegration() {
       }
     }
     
-    const overallCoverage = (totalMapped / totalIngredients * 100);
-    console.log(`   📊 Overall Coverage: ${totalMapped}/${totalIngredients} (${overallCoverage.toFixed(1)}%)\n`);
+    const overallCoverage = (totalMapped / totalRecipeIngredients * 100);
+    console.log(`   📊 Overall Coverage: ${totalMapped}/${totalRecipeIngredients} (${overallCoverage.toFixed(1)}%)\n`);
     
     // Test 5: Recipe search with allergen filtering
     console.log('5️⃣ Testing Recipe Search with Allergen Filtering...');
     const searchResponse = await axios.post(`${baseURL}/api/recipe/?page=1&limit=5`, {
-      excludeIngredients: ['milk', 'wheat']
+      excludeRecipeIngredients: ['milk', 'wheat']
     });
     
     const filteredRecipes = searchResponse.data;

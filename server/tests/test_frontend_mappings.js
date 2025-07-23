@@ -6,10 +6,10 @@ async function testFrontendMappings() {
     await db.authenticate();
     
     const IngredientToCanonical = require('./db/models/IngredientToCanonical.js');
-    const CanonicalIngredient = require('./db/models/CanonicalIngredient.js');
-    const Food = require('./db/models/Food.js');
+    const Ingredient = require('./db/models/Ingredient.js');
+    const IngredientCategorized = require('./db/models/IngredientCategorized.js');
     
-    const frontendCleanedIngredients = [
+    const frontendCleanedRecipeIngredients = [
       'ground beef',
       'onion powder',
       'honey mustard',
@@ -24,17 +24,17 @@ async function testFrontendMappings() {
     
     console.log('🔍 Testing frontend-cleaned ingredient mappings:');
     
-    for (const ingredient of frontendCleanedIngredients) {
+    for (const ingredient of frontendCleanedRecipeIngredients) {
       const mapping = await IngredientToCanonical.findOne({ 
         where: { messyName: ingredient.toLowerCase() } 
       });
       
       if (mapping) {
-        const canonical = await CanonicalIngredient.findByPk(mapping.CanonicalIngredientId);
+        const canonical = await Ingredient.findByPk(mapping.IngredientId);
         console.log(`✅ ${ingredient} -> ${canonical.name}`);
         
         // Check products
-        const products = await Food.findAll({
+        const products = await IngredientCategorized.findAll({
           where: {
             canonicalTag: canonical.name.toLowerCase(),
             canonicalTagConfidence: 'confident'

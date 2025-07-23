@@ -1,4 +1,4 @@
-const { Recipe, Ingredient, IngredientToCanonical, CanonicalIngredient, Substitution } = require('./db/models');
+const { Recipe, Ingredient, IngredientToCanonical, Ingredient, Substitution } = require('./db/models');
 const { cleanIngredientName } = require('./api/foodRoutes');
 
 async function testWhalerAllergens() {
@@ -11,9 +11,9 @@ async function testWhalerAllergens() {
       const mapping = await IngredientToCanonical.findOne({ where: { messyName: cleanedName.toLowerCase() } });
       let canonical = null;
       if (mapping) {
-        canonical = await CanonicalIngredient.findByPk(mapping.CanonicalIngredientId);
+        canonical = await Ingredient.findByPk(mapping.IngredientId);
       }
-      const subs = canonical ? await Substitution.findAll({ where: { CanonicalIngredientId: canonical.id } }) : [];
+      const subs = canonical ? await Substitution.findAll({ where: { IngredientId: canonical.id } }) : [];
       
       console.log(`Ingredient: '${ing.name}'`);
       console.log(`  Cleaned: '${cleanedName}'`);

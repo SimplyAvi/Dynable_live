@@ -1,0 +1,1346 @@
+[
+  {
+    "id": 687,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 1264,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MILK CHOCOLATE BARS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 1508,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MILK CHOCOLATE HOT COCOA MIX, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 1576,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SUGAR COOKIES, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 1734,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MILK CHOCOLATE MELTING WAFERS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 1761,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "BEEF STREET KOREAN INSPIRED TACO KIT, BEEF STREET",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 1803,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MILK CHOCOLATE HOT COCOA MIX, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 2351,
+    "brandOwner": "Barash Cosmetics LLC.",
+    "description": "MILK CHOCOLATE WAFFLE CONE SNACKS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 3401,
+    "brandOwner": "Essenhaus, Inc.",
+    "description": "BEEF",
+    "suggestedCanonical": "beef",
+    "score": 7
+  },
+  {
+    "id": 3460,
+    "brandOwner": "Rosalind Candy Castle",
+    "description": "MILK CHOCOLATE, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 3495,
+    "brandOwner": "Hempler Foods Group LLC",
+    "description": "BEEF WIENERS",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 3759,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 3762,
+    "brandOwner": "Associated Brands Limited",
+    "description": "MILK CHOCOLATE WITH RUM AND RAISINS, RUM & RAISIN",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 3821,
+    "brandOwner": "Frankford Candy, LLC",
+    "description": "MILK CHOCOLATE, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 4223,
+    "brandOwner": "Supreme Meats Inc",
+    "description": "BEEF PIZZA PATTIES, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 4302,
+    "brandOwner": "Land O'Frost, Inc.",
+    "description": "BEEF HOT DOGS, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 4345,
+    "brandOwner": "Independent Meat Company",
+    "description": "BEEF WIENERS, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 4718,
+    "brandOwner": "Walgreens Co.",
+    "description": "CARROT GUMMY CANDY, CARROT",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 4953,
+    "brandOwner": "Diana's Bananas Inc.",
+    "description": "MILK CHOCOLATE REAL BANANA HALVES, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 5021,
+    "brandOwner": "Ross Acquisition Inc.",
+    "description": "MILK CHOCOLATE & SURPRISE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 5107,
+    "brandOwner": "Mozian & Associates, Inc.",
+    "description": "BEEF & PORK SLICED SUMMER SAUSAGE, BEEF & PORK",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 5102,
+    "brandOwner": "SweetWorks Confections, LLC",
+    "description": "MILK CHOCOLATE BUNNY, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 5540,
+    "brandOwner": "Creative Snacks Co., LLC",
+    "description": "MILK CHOCOLATE RAISINS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 5621,
+    "brandOwner": "Glo's Gumbo, LLC",
+    "description": "MILK CHOCOLATE WAFFLE CONE SNACKS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 6387,
+    "brandOwner": "Freak Flag Foods",
+    "description": "CARROT PESTO, CARROT",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 6820,
+    "brandOwner": "Associated Brands Limited",
+    "description": "MILK CHOCOLATE WITH FRUIT AND NUT, FRUIT AND NUT",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 7030,
+    "brandOwner": "Mars, Inc.",
+    "description": "BUTTER RUM CANDY CANES, BUTTER RUM",
+    "suggestedCanonical": "butter",
+    "score": 4
+  },
+  {
+    "id": 7159,
+    "brandOwner": "Mars, Inc.",
+    "description": "BUTTER RUM HARD CANDY, BUTTER RUM",
+    "suggestedCanonical": "butter",
+    "score": 4
+  },
+  {
+    "id": 7427,
+    "brandOwner": "Giant Eagle, Inc.",
+    "description": "BEEF FRANKS, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 7607,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 7731,
+    "brandOwner": "Ross Acquisition Inc.",
+    "description": "MILK CHOCOLATE ROSE, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 8003,
+    "brandOwner": "Miller Packing Company",
+    "description": "BEEF FRANKFURTERS, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 8148,
+    "brandOwner": "Food Markets Northwest, Inc.",
+    "description": "BEEF RUB, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 8733,
+    "brandOwner": "Ross Acquisition Inc.",
+    "description": "MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 8874,
+    "brandOwner": "Nestle USA Inc.",
+    "description": "MILK CHOCOLATE MORSELS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 9145,
+    "brandOwner": "Nestle USA Inc.",
+    "description": "MILK CHOCOLATE MORSELS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 9796,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SUGAR COOKIES, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 9913,
+    "brandOwner": "Ghirardelli Chocolate Company",
+    "description": "MILK CHOCOLATE DUET HEARTS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 10212,
+    "brandOwner": "Ingles Markets Inc.",
+    "description": "BEEF STEW, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 10904,
+    "brandOwner": "McCormick & Company, Inc.",
+    "description": "BEEF STEW MIX, BEEF STEW",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 11214,
+    "brandOwner": "Agri Star Meat & Poultry LLC",
+    "description": "BEEF FRANKS",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 11305,
+    "brandOwner": "Frankford Candy, LLC",
+    "description": "MILK CHOCOLATE WITH CANDY, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 12337,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 13843,
+    "brandOwner": "Candyrific, LLC",
+    "description": "MILK CHOCOLATE CHARACTER DISPENSER, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 14844,
+    "brandOwner": "Frankford Candy, LLC",
+    "description": "MILK CHOCOLATE BUNNY BUCKS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 15437,
+    "brandOwner": "Wegmans Food Markets, Inc. ",
+    "description": "BEEF CULINARY STOCK, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 15476,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MILK CHOCOLATE CHIPS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 18695,
+    "brandOwner": "JTM Food Group",
+    "description": "Beef Cincy Style Chili 6/5# 30#",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 18707,
+    "brandOwner": "JTM Food Group",
+    "description": "Beef Taco Filling 6/5# 30#",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 18995,
+    "brandOwner": "JTM Food Group",
+    "description": "Beef Crumble 6/5# 30#",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 19155,
+    "brandOwner": "Lindt & Sprungli (Schweiz) AG",
+    "description": "MILK CHOCOLATE TRUFFLES, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 19234,
+    "brandOwner": "Leaf, Inc.",
+    "description": "MILK CHOCOLATE ENGLISH TOFFE  BAR",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 19471,
+    "brandOwner": "Hometown Food Company",
+    "description": "MILK CHOCOLATE FLAVORED FROSTING, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 19479,
+    "brandOwner": "Rose Of Galilee Chocolat/candy",
+    "description": "MILK CHOCOLATE COATED CORNFLAKES",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 20527,
+    "brandOwner": "Mother's Cake & Cookie Company",
+    "description": "MILK CHOCOLATE M&M'S MINIS COOKIES",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 20586,
+    "brandOwner": "Nestle USA Inc.",
+    "description": "BEEF FLAVOR BOUILLON CUBES, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 21018,
+    "brandOwner": "Ocean Spray Cranberries, Inc.",
+    "description": "MILK CHOCOLATE DRIED CRANBERRIES, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 21124,
+    "brandOwner": "Marlow Candy & Nut Company",
+    "description": "MILK CHOCOLATE RAISINS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 21205,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE CRISP WAFERS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 21214,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE EASTER CANDY, CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 21350,
+    "brandOwner": "Trilliant Food and Nutrition, LLC",
+    "description": "MILK CHOCOLATE HOT COCOA MIX, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 21547,
+    "brandOwner": "Lindt & Sprungli (Schweiz) AG",
+    "description": "MILK CHOCOLATE TRUFFLE PIECES, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 23371,
+    "brandOwner": "Aron Streit Inc.",
+    "description": "MILK CHOCOLATE MATZOS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 1236,
+    "brandOwner": "Snyder's-Lance, Inc.",
+    "description": "MILK CHOCOLATE PRETZEL DIPS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 24954,
+    "brandOwner": "Elite Israel Choc & Sweets",
+    "description": "MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 24970,
+    "brandOwner": "Russell Stover Candies Inc.",
+    "description": "MILK CHOCOLATE PECAN DELIGHTS",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 25017,
+    "brandOwner": "Osem Export (1962) Ltd.",
+    "description": "BEEF FLAVOR SOUP & SEASONING MIX, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 25570,
+    "brandOwner": "Mars Retail Group Inc.",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 25573,
+    "brandOwner": "Mars Retail Group Inc.",
+    "description": "MILK CHOCOLATE CANDIES, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 26466,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE CANDY, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 26485,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE CANDY, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 26599,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE BARS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 26437,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE NUGGETS, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 26487,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE CANDY, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 26522,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE PRETZEL BITES, MILK CHOCOLATE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 26996,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "EGG",
+    "suggestedCanonical": "egg",
+    "score": 7
+  },
+  {
+    "id": 27783,
+    "brandOwner": "Meijer, Inc.",
+    "description": "BEEF STEW SEASONING MIX, BEEF STEW",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 7869,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SUGAR COOKIES, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 9605,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SUGAR COOKIES, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 29615,
+    "brandOwner": "Ghirardelli Chocolate Company",
+    "description": "SUGAR COOKIE SQUARES WHITE CHOCOLATE",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 29636,
+    "brandOwner": "Conagra Brands, Inc.",
+    "description": "BEEF FRANKS, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 33865,
+    "brandOwner": "The Hain Celestial Group, Inc.",
+    "description": "BEEF MINI MEATBALLS FOR KIDS, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 35329,
+    "brandOwner": "Hawaiian Kine Trading Company LLC",
+    "description": "BEEF JERKY CRISPS, BEEF JERKY",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 35958,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "SUGAR FREE DRAGON FRUIT ENERGY DRINK, DRAGON FRUIT",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 38702,
+    "brandOwner": "Nissin Foods USA Co Inc",
+    "description": "BEEF FLAVOR RAMEN NOODLE SOUP, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 39476,
+    "brandOwner": "Kenover Marketing Corp.",
+    "description": "BEEF BROTH, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 40212,
+    "brandOwner": "Israel Edible Products Ltd.",
+    "description": "BEEF FLAVORED STOCK CUBES, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 28657,
+    "brandOwner": "Serendipity 3, Inc.",
+    "description": "BEEF FLAVOR WITH VEGETABLE BOWL NOODLE SOUP, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 42723,
+    "brandOwner": "Cavallini Papers & Co., Inc.",
+    "description": "SUGAR FREE CHOCOLATE WAFER COOKIES, CHOCOLATE",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 45364,
+    "brandOwner": "Target Stores",
+    "description": "BEEF BROTH, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 45365,
+    "brandOwner": "Target Stores",
+    "description": "BEEF REDUCED SODIUM BROTH, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 45363,
+    "brandOwner": "Target Stores",
+    "description": "BEEF BROTH, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 45453,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR HAND-DECORATED COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 45724,
+    "brandOwner": "Target Stores",
+    "description": "BEEF-STYLE MEATLESS GRILLER PATTIES, BEEF-STYLE",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 45862,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR HAND-DECORATED COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 46145,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR MINI COOKIES, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 46228,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 46230,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 46424,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR VARIETY COOKIES, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 46432,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR COOKIES MUG HUGGERS, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 46522,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR HAND-DECORATED COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 46560,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR HAND-DECORATED COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 46731,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR HAND-DECORATED COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 44619,
+    "brandOwner": "Saraya USA, Inc.",
+    "description": "SUGAR FREE KETO PANCAKE & BAKING MIX",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 50084,
+    "brandOwner": "Giant Eagle, Inc.",
+    "description": "BEEF BROTH, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 45584,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR HAND-DECORATED COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 50825,
+    "brandOwner": "Market Cuts LLC",
+    "description": "CARROT STICKS",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 50826,
+    "brandOwner": "Market Cuts LLC",
+    "description": "CARROT & CELERY STICKS",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 50837,
+    "brandOwner": "Save Mart Supermarkets Inc.",
+    "description": "BEEF INSTANT BOUILLON CUBES, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 46433,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR HAND-DECORATED COOKIES, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 46523,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR HAND-DECORATED COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 46559,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR HAND-DECORATED COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 51917,
+    "brandOwner": "JTM Food Group",
+    "description": "Beef Taco Filling (drained) 6/5# 30#",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 53448,
+    "brandOwner": "Alle Processing Corp",
+    "description": "BEEF FRANKS, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 56071,
+    "brandOwner": "The Hershey Company",
+    "description": "CARROT CAKE CANDY, CARROT CAKE",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 56788,
+    "brandOwner": "Wakefern Food Corporation",
+    "description": "PLAIN PANKO BREAD CRUMBS, PLAIN",
+    "suggestedCanonical": "bread",
+    "score": 4
+  },
+  {
+    "id": 56944,
+    "brandOwner": "Wakefern Food Corporation",
+    "description": "PLAIN PANKO BREAD CRUMBS, PLAIN",
+    "suggestedCanonical": "bread",
+    "score": 4
+  },
+  {
+    "id": 58536,
+    "brandOwner": "H E Butt Grocery Company",
+    "description": "BEEF BRISKET TEXAS HERITAGE HOT DOGS, BEEF BRISKET",
+    "suggestedCanonical": "beef",
+    "score": 6
+  },
+  {
+    "id": 58675,
+    "brandOwner": "H E Butt Grocery Company",
+    "description": "LEAN BEEF BURGERS",
+    "suggestedCanonical": "beef",
+    "score": 5
+  },
+  {
+    "id": 59364,
+    "brandOwner": "The Hillshire Brands Company",
+    "description": "BEEF SMOKED SAUSAGE, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 59393,
+    "brandOwner": "The Hillshire Brands Company",
+    "description": "BEEF SMOKED SAUSAGE, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 59567,
+    "brandOwner": "Alle Processing Corp",
+    "description": "BEEF SALAMI, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 59668,
+    "brandOwner": "The Hillshire Brands Company",
+    "description": "BEEF SMOKED SAUSAGE, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 60691,
+    "brandOwner": "Wei-Chuan U S A Inc.",
+    "description": "BEEF & BEEF TENDON BALLS",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 61297,
+    "brandOwner": "W W Wood, Inc.",
+    "description": "BEEF RUB, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 61344,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SUGAR COOKIES, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 62889,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR HAND-DECORATED COOKIES, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 62890,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR HAND-DECORATED COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 62893,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR HAND-DECORATED COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 63193,
+    "brandOwner": "Damiano's Fine Foods llc",
+    "description": "BEEF MEATBALLS",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 63913,
+    "brandOwner": "Meijer, Inc.",
+    "description": "BEEF ORGANIC BROTH, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 64010,
+    "brandOwner": "Meijer, Inc.",
+    "description": "BEEF FLAVORED BROTH CONCENTRATE, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 63663,
+    "brandOwner": "America's Bakery",
+    "description": "BREAD CRUMBS",
+    "suggestedCanonical": "bread",
+    "score": 4
+  },
+  {
+    "id": 64267,
+    "brandOwner": "Meijer, Inc.",
+    "description": "BEEF ORGANIC BONE BROTH, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 64695,
+    "brandOwner": "Perfection Foods Company Inc.",
+    "description": "BEEF FRANKS IN A BLANKET",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 65180,
+    "brandOwner": "Wholesome Goodness, LLC",
+    "description": "BEEF LOW SODIUM BROTH, BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 58743,
+    "brandOwner": "H E Butt Grocery Company",
+    "description": "90% LEAN/10% FAT GROUND BEEF",
+    "suggestedCanonical": "beef",
+    "score": 4
+  },
+  {
+    "id": 67445,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR HAND-DECORATED COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 35957,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "SUGAR FREE BLACK CHERRY ENERGY DRINK, BLACK CHERRY",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 36517,
+    "brandOwner": "F.Lli De Cecco Di Filippo Fara",
+    "description": "EGG PAPPARDELLE NO. 101 NOODLES",
+    "suggestedCanonical": "egg",
+    "score": 4
+  },
+  {
+    "id": 67664,
+    "brandOwner": "Valentine Food Company, LLC",
+    "description": "SUGAR COOKIES, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 71667,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR HAND DECORATED COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 69341,
+    "brandOwner": "Wakefern Food Corporation",
+    "description": "PLAIN BREAD CRUMBS, PLAIN",
+    "suggestedCanonical": "bread",
+    "score": 4
+  },
+  {
+    "id": 71592,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR COOKIES, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 71601,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR COOKIES, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 71606,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR COOKIES, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 71699,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR HAND DECORATED COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 71724,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR HAND DECORATED COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 71809,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR HAND DECORATED COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 71984,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR COOKIES, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 72098,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR HAND DECORATED COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 72315,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR COOKIE TRAY, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 72412,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR CALAVERA COOKIES, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 72565,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR COOKIES, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 31235,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR CALAVERA COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 78603,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR HAND DECORATED COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 71811,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR HAND DECORATED COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 72413,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR HAND DECORATED COOKIES, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 90121,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR MINI COOKIES, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 90131,
+    "brandOwner": "Target Stores",
+    "description": "SUGAR HAND-DECORATED COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 2357,
+    "brandOwner": "Collin Street Bakery, Inc.",
+    "description": "SUGAR COOKIES",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 8303,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SUGAR COOKIES, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 10790,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SUGAR SANDWICH COOKIE, SUGAR",
+    "suggestedCanonical": "sugar",
+    "score": 4
+  },
+  {
+    "id": 56070,
+    "brandOwner": "The Hershey Company",
+    "description": "CARROT CAKE CANDY, CARROT CAKE",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 63344,
+    "brandOwner": "Chester A. Asher, Inc.",
+    "description": "BUTTER RUM CARAMELS CHOCOLATE, BUTTER RUM CARAMELS",
+    "suggestedCanonical": "butter",
+    "score": 4
+  },
+  {
+    "id": 73419,
+    "brandOwner": "Meijer, Inc.",
+    "description": "CARROT CAKE, CARROT",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 49883,
+    "brandOwner": "Price Chopper Supermarkets",
+    "description": "CARROT CAKE DESSERT BOMB, CARROT CAKE",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 2188,
+    "brandOwner": "Classic Cooking Inc.",
+    "description": "CARROT BERRY MUFFINS, CARROT BERRY",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 24232,
+    "brandOwner": "Kenover Marketing Corp.",
+    "description": "CARROT CAKE MACAROONS, CARROT CAKE",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 32799,
+    "brandOwner": "MadeHere, LLC",
+    "description": "CARROT CAKE BAR, CARROT CAKE",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 70175,
+    "brandOwner": "Ferrara Candy Company",
+    "description": "CARROT CAKE CANDY CORN, CARROT CAKE",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 59822,
+    "brandOwner": "Lowell International Company",
+    "description": "CARROT & ORANGE JUICE DRINK, CARROT; ORANGE",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 22578,
+    "brandOwner": "Nabisco Biscuit Company",
+    "description": "CARROT CAKE SANDWICH COOKIES, CARROT CAKE",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 46161,
+    "brandOwner": "Target Stores",
+    "description": "CARROT CAKE SOFT BAKED COOKIES, CARROT CAKE",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 63701,
+    "brandOwner": "Sagsveen & Sagsveen Food Brokers Ltd.",
+    "description": "CARROT CHIPS, CARROT",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 84538,
+    "brandOwner": "Publix Super Markets, Inc.",
+    "description": "CARROT BAR CAKE, CARROT",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 16261,
+    "brandOwner": "Sara's Soup LLC DBA Soupergirl",
+    "description": "CARROT DILL SOUP, CARROT DILL",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 32338,
+    "brandOwner": "Too Good Gourmet, Inc.",
+    "description": "CARROT CAKE COOKIES, CARROT CAKE",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 68401,
+    "brandOwner": "Meijer, Inc.",
+    "description": "CARROT SINGLE LAYER CAKE, CARROT",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 69727,
+    "brandOwner": "Meijer, Inc.",
+    "description": "CARROT MINI CUPCAKE, CARROT",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 73623,
+    "brandOwner": "Meijer, Inc.",
+    "description": "CARROT MINI CUPCAKES, CARROT",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 8641,
+    "brandOwner": "New NGC, Inc.",
+    "description": "CARROT CAKE",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 86238,
+    "brandOwner": "Target Stores",
+    "description": "CARROT CAKE GRANOLA, CARROT CAKE",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 89039,
+    "brandOwner": "General Mills, Inc.",
+    "description": "CARROT DELIGHTS CAKE MIX, CARROT",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 8866,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CARROT DESSERT CAKE, CARROT DESSERT",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 78208,
+    "brandOwner": "General Nutrition Centers, Inc",
+    "description": "CARROT SHAKE FLAVORED LEAN SHAKE 25, CARROT CAKE",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 28494,
+    "brandOwner": "Charles River Media",
+    "description": "CARROT CAKE SLICE, CARROT",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 33136,
+    "brandOwner": "MadeHere, LLC",
+    "description": "CARROT MISO VINAIGRETTE, CARROT MISO",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 7555,
+    "brandOwner": "Hostess Brands, LLC",
+    "description": "CARROT CAKE FLAVORED MINI DONUTS, CARROT CAKE",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 32640,
+    "brandOwner": "World Of Chantilly Inc.",
+    "description": "CARROT PARFAIT",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 65959,
+    "brandOwner": "Hostess Brands, LLC",
+    "description": "CARROT CAKE MINI DONUTS, CARROT CAKE",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  },
+  {
+    "id": 50857,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "CARROT CUPCAKE, CARROT",
+    "suggestedCanonical": "carrot",
+    "score": 4
+  }
+]

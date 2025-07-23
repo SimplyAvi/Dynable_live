@@ -54,3 +54,5 @@ data/*.csv
 # Database files
 *.sqlite
 *.db
+database/migrations/all_data.sql
+server/scripts/legacy/seed/Data/Products/split_*.js

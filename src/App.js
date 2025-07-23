@@ -34,7 +34,7 @@ import RecipePage from './pages/RecipePage/RecipePage';
 import CategoryPage from './pages/Catagory_Testing/CatagoryPage';
 import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
-import Profile from './components/Profile/Profile';
+import Profile from './components/Auth/Profile';
 import GoogleCallback from './components/Auth/GoogleCallback';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 import CartPage from './pages/CartPage/CartPage';

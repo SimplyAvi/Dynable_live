@@ -3,10 +3,10 @@ const sequelize = require('../database');
 
 const FoodAttribute = sequelize.define('FoodAttribute', {
   id: { type: DataTypes.INTEGER, primaryKey: true },
-  // Add other properties as needed
-
-  // Foreign Key
-  foodId: { type: DataTypes.INTEGER },
+  // Add other properties as needed, matching your Supabase columns
+  foodId: { type: DataTypes.INTEGER }
+}, {
+  tableName: 'FoodAttributes'
 });
 
 module.exports = FoodAttribute;

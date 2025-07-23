@@ -1,4 +1,4 @@
-const { Recipe, Ingredient, Food, CanonicalIngredient, IngredientToCanonical } = require('../../db/models');
+const { Recipe, Ingredient, IngredientCategorized, Ingredient, IngredientToCanonical } = require('../../db/models');
 
 // Mock the models for testing
 jest.mock('../../db/models', () => ({
@@ -9,10 +9,10 @@ jest.mock('../../db/models', () => ({
   Ingredient: {
     findOne: jest.fn()
   },
-  Food: {
+  IngredientCategorized: {
     findAll: jest.fn()
   },
-  CanonicalIngredient: {
+  Ingredient: {
     findByPk: jest.fn()
   },
   IngredientToCanonical: {
@@ -31,7 +31,7 @@ describe('Audit Script Integration', () => {
       const mockFocusRecipe = {
         id: 1,
         title: '1-Dish Pepperoni Cheese Pizza Bake',
-        Ingredients: [
+        RecipeIngredients: [
           { name: '3/4 cups all-purpose flour' },
           { name: 'teaspoons sugar' },
           { name: 'tablespoons olive oil' }
@@ -42,7 +42,7 @@ describe('Audit Script Integration', () => {
         {
           id: 2,
           title: 'Test Recipe 1',
-          Ingredients: [{ name: '2 cups milk' }]
+          RecipeIngredients: [{ name: '2 cups milk' }]
         }
       ];
 
@@ -58,13 +58,13 @@ describe('Audit Script Integration', () => {
       
       expect(focusRecipe).toBe(mockFocusRecipe);
       expect(focusRecipe.title).toBe('1-Dish Pepperoni Cheese Pizza Bake');
-      expect(focusRecipe.Ingredients).toHaveLength(3);
+      expect(focusRecipe.RecipeIngredients).toHaveLength(3);
     });
 
     test('should correctly identify ingredients with product matches', async () => {
       // Mock canonical mapping
       const mockMapping = {
-        CanonicalIngredientId: 1
+        IngredientId: 1
       };
 
       const mockCanonical = {
@@ -83,8 +83,8 @@ describe('Audit Script Integration', () => {
 
       // Setup mocks
       IngredientToCanonical.findOne.mockResolvedValue(mockMapping);
-      CanonicalIngredient.findByPk.mockResolvedValue(mockCanonical);
-      Food.findAll.mockResolvedValue(mockProducts);
+      Ingredient.findByPk.mockResolvedValue(mockCanonical);
+      IngredientCategorized.findAll.mockResolvedValue(mockProducts);
 
       // Test ingredient processing
       const ingredientName = '3/4 cups all-purpose flour';
@@ -99,11 +99,11 @@ describe('Audit Script Integration', () => {
       });
       expect(mapping).toBe(mockMapping);
 
-      const canonical = await CanonicalIngredient.findByPk(mapping.CanonicalIngredientId);
+      const canonical = await Ingredient.findByPk(mapping.IngredientId);
       expect(canonical).toBe(mockCanonical);
 
       const canonicalTags = [canonical.name.toLowerCase(), ...(canonical.aliases || []).map(a => a.toLowerCase())];
-      const products = await Food.findAll({
+      const products = await IngredientCategorized.findAll({
         where: { canonicalTag: { [require('sequelize').Op.in]: canonicalTags } },
         limit: 10
       });
@@ -115,7 +115,7 @@ describe('Audit Script Integration', () => {
     test('should identify ingredients with no product matches', async () => {
       // Mock no mapping found
       IngredientToCanonical.findOne.mockResolvedValue(null);
-      Food.findAll.mockResolvedValue([]);
+      IngredientCategorized.findAll.mockResolvedValue([]);
 
       const ingredientName = 'unknown ingredient';
       const cleanedName = ingredientName.toLowerCase();
@@ -126,7 +126,7 @@ describe('Audit Script Integration', () => {
       expect(mapping).toBeNull();
 
       // Should use cleaned name as fallback
-      const products = await Food.findAll({
+      const products = await IngredientCategorized.findAll({
         where: { canonicalTag: { [require('sequelize').Op.in]: [cleanedName] } },
         limit: 10
       });
@@ -144,7 +144,7 @@ describe('Audit Script Integration', () => {
         }
       ];
 
-      Food.findAll.mockResolvedValue(mockSuspiciousProducts);
+      IngredientCategorized.findAll.mockResolvedValue(mockSuspiciousProducts);
 
       const ingredientName = 'flour';
       const products = mockSuspiciousProducts;
@@ -177,7 +177,7 @@ describe('Audit Script Integration', () => {
       require('../../db/models').SubstituteMapping = {
         findOne: jest.fn().mockResolvedValue(mockSubstitute)
       };
-      Food.findAll.mockResolvedValue(mockSubstituteProducts);
+      IngredientCategorized.findAll.mockResolvedValue(mockSubstituteProducts);
 
       const ingredientName = 'milk';
       const substitute = await require('../../db/models').SubstituteMapping.findOne({ 
@@ -187,7 +187,7 @@ describe('Audit Script Integration', () => {
       expect(substitute).toBe(mockSubstitute);
 
       const subTags = [substitute.substituteType.toLowerCase(), ...(substitute.searchTerms || []).map(s => s.toLowerCase())];
-      const subProducts = await Food.findAll({
+      const subProducts = await IngredientCategorized.findAll({
         where: { canonicalTag: { [require('sequelize').Op.in]: subTags } },
         limit: 10
       });

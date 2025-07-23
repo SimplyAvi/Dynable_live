@@ -42,7 +42,7 @@ async function testProactiveFixes() {
       // Get ingredients for this recipe
       const ingredients = await db.query(`
         SELECT i.id, i.name, i.quantity
-        FROM "Ingredients" i
+        FROM "RecipeIngredients" i
         WHERE i."RecipeId" = :recipeId
         ORDER BY i.name
         LIMIT 5
@@ -69,7 +69,7 @@ async function testProactiveFixes() {
         const mapping = await db.query(`
           SELECT ci.id, ci.name as canonicalname
           FROM "IngredientToCanonicals" itc
-          JOIN "CanonicalIngredients" ci ON itc."CanonicalIngredientId" = ci.id
+          JOIN "CanonicalRecipeIngredients" ci ON itc."IngredientId" = ci.id
           WHERE itc."messyName" = :cleanedName
           LIMIT 1
         `, {
@@ -91,7 +91,7 @@ async function testProactiveFixes() {
             COUNT(*) as totalproducts,
             COUNT(CASE WHEN "brandOwner" != 'Generic' THEN 1 END) as realproducts,
             COUNT(CASE WHEN "brandOwner" = 'Generic' THEN 1 END) as genericproducts
-          FROM "Food"
+          FROM "IngredientCategorized"
           WHERE "canonicalTag" = :canonicalName
         `, {
           replacements: { canonicalName: canonicalName },

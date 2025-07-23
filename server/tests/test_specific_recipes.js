@@ -4,10 +4,10 @@ async function testSpecificRecipes() {
   try {
     await db.authenticate();
     const Recipe = require('./db/models/Recipe/Recipe.js');
-    const Ingredient = require('./db/models/Recipe/Ingredient.js');
-    const CanonicalIngredient = require('./db/models/CanonicalIngredient.js');
+    const RecipeIngredient = require('./db/models/Recipe/RecipeIngredient.js');
+    const Ingredient = require('./db/models/Ingredient.js');
     const IngredientToCanonical = require('./db/models/IngredientToCanonical.js');
-    const Food = require('./db/models/Food.js');
+    const IngredientCategorized = require('./db/models/IngredientCategorized.js');
     
     console.log('🧪 Testing Specific Recipes...\n');
     
@@ -19,8 +19,8 @@ async function testSpecificRecipes() {
       
       const recipe = await Recipe.findByPk(recipeId, {
         include: [{
-          model: Ingredient,
-          as: 'Ingredients'
+          model: RecipeIngredient,
+          as: 'RecipeIngredients'
         }]
       });
       
@@ -30,12 +30,12 @@ async function testSpecificRecipes() {
       }
       
       console.log(`  Recipe: "${recipe.name || 'Unnamed Recipe'}"`);
-      console.log(`  Ingredients: ${recipe.Ingredients.length}`);
+      console.log(`  RecipeIngredients: ${recipe.RecipeIngredients.length}`);
       
       let mappedCount = 0;
       let productCount = 0;
       
-      for (const ingredient of recipe.Ingredients) {
+      for (const ingredient of recipe.RecipeIngredients) {
         const cleanedName = cleanIngredientName(ingredient.name);
         console.log(`\n    🥘 "${ingredient.name}"`);
         console.log(`       Cleaned: "${cleanedName}"`);
@@ -47,13 +47,13 @@ async function testSpecificRecipes() {
         
         if (mapping) {
           mappedCount++;
-          const canonical = await CanonicalIngredient.findByPk(mapping.CanonicalIngredientId);
+          const canonical = await Ingredient.findByPk(mapping.IngredientId);
           
           if (canonical) {
             console.log(`       ✅ Mapped to: "${canonical.name}"`);
             
             // Check products
-            const products = await Food.findAll({
+            const products = await IngredientCategorized.findAll({
               where: { canonicalTag: canonical.name },
               limit: 5
             });
@@ -75,12 +75,12 @@ async function testSpecificRecipes() {
         }
       }
       
-      const mappingPercentage = ((mappedCount / recipe.Ingredients.length) * 100).toFixed(1);
-      const productPercentage = ((productCount / recipe.Ingredients.length) * 100).toFixed(1);
+      const mappingPercentage = ((mappedCount / recipe.RecipeIngredients.length) * 100).toFixed(1);
+      const productPercentage = ((productCount / recipe.RecipeIngredients.length) * 100).toFixed(1);
       
       console.log(`\n  📊 Recipe Summary:`);
-      console.log(`     Mappings: ${mappedCount}/${recipe.Ingredients.length} (${mappingPercentage}%)`);
-      console.log(`     Products: ${productCount}/${recipe.Ingredients.length} (${productPercentage}%)`);
+      console.log(`     Mappings: ${mappedCount}/${recipe.RecipeIngredients.length} (${mappingPercentage}%)`);
+      console.log(`     Products: ${productCount}/${recipe.RecipeIngredients.length} (${productPercentage}%)`);
       
       if (parseFloat(mappingPercentage) >= 80 && parseFloat(productPercentage) >= 80) {
         console.log(`     🟢 Status: Fully Functional`);
@@ -101,7 +101,7 @@ async function testSpecificRecipes() {
       console.log(`\n🥛 Testing ${allergen.toUpperCase()} allergen filtering:`);
       
       // Find canonical ingredients that contain this allergen
-      const allergenCanonicals = await CanonicalIngredient.findAll({
+      const allergenCanonicals = await Ingredient.findAll({
         where: {
           name: {
             [db.Sequelize.Op.iLike]: `%${allergen}%`
@@ -116,7 +116,7 @@ async function testSpecificRecipes() {
           console.log(`    - "${canonical.name}"`);
           
           // Check for substitutes
-          const substitutes = await Food.findAll({
+          const substitutes = await IngredientCategorized.findAll({
             where: {
               canonicalTag: canonical.name,
               isPureIngredient: true

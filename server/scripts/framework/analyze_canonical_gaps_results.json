@@ -1,0 +1,3220 @@
+{
+  "totalUnmapped": 1000,
+  "prioritizedCanonicals": [
+    {
+      "category": "beverages",
+      "canonical": "teaspoon salt",
+      "potential": 56
+    },
+    {
+      "category": "other",
+      "canonical": "tablespoons olive oil",
+      "potential": 23
+    },
+    {
+      "category": "other",
+      "canonical": "cup allpurpose flour",
+      "potential": 17
+    },
+    {
+      "category": "sweeteners",
+      "canonical": "cup white sugar",
+      "potential": 17
+    },
+    {
+      "category": "other",
+      "canonical": "cups allpurpose flour",
+      "potential": 14
+    },
+    {
+      "category": "beverages",
+      "canonical": "cup milk",
+      "potential": 12
+    },
+    {
+      "category": "sweeteners",
+      "canonical": "cups white sugar",
+      "potential": 12
+    },
+    {
+      "category": "proteins",
+      "canonical": "eggs beaten",
+      "potential": 12
+    },
+    {
+      "category": "other",
+      "canonical": "tablespoon olive oil",
+      "potential": 10
+    },
+    {
+      "category": "dairy",
+      "canonical": "tablespoon butter",
+      "potential": 9
+    },
+    {
+      "category": "vegetables",
+      "canonical": "cup grated zucchini",
+      "potential": 9
+    },
+    {
+      "category": "other",
+      "canonical": "cup water",
+      "potential": 8
+    },
+    {
+      "category": "proteins",
+      "canonical": "large eggs",
+      "potential": 7
+    },
+    {
+      "category": "dairy",
+      "canonical": "tablespoons butter",
+      "potential": 7
+    },
+    {
+      "category": "dairy",
+      "canonical": "cup shredded mozzarella cheese",
+      "potential": 7
+    },
+    {
+      "category": "beverages",
+      "canonical": "teaspoons salt",
+      "potential": 5
+    },
+    {
+      "category": "beverages",
+      "canonical": "teaspoon white sugar",
+      "potential": 5
+    },
+    {
+      "category": "dairy",
+      "canonical": "cup butter melted",
+      "potential": 5
+    },
+    {
+      "category": "vegetables",
+      "canonical": "zucchini sliced",
+      "potential": 5
+    },
+    {
+      "category": "beverages",
+      "canonical": "teaspoon sugar",
+      "potential": 4
+    },
+    {
+      "category": "sweeteners",
+      "canonical": "cup brown sugar",
+      "potential": 4
+    },
+    {
+      "category": "proteins",
+      "canonical": "large egg",
+      "potential": 4
+    },
+    {
+      "category": "dairy",
+      "canonical": "cup shredded cheddar cheese",
+      "potential": 4
+    },
+    {
+      "category": "proteins",
+      "canonical": "large eggs lightly beaten",
+      "potential": 3
+    },
+    {
+      "category": "vegetables",
+      "canonical": "cup shredded zucchini",
+      "potential": 3
+    },
+    {
+      "category": "vegetables",
+      "canonical": "cups chopped zucchini",
+      "potential": 3
+    },
+    {
+      "category": "sweeteners",
+      "canonical": "tablespoon white sugar",
+      "potential": 2
+    },
+    {
+      "category": "sweeteners",
+      "canonical": "12 cups white sugar",
+      "potential": 2
+    },
+    {
+      "category": "vegetables",
+      "canonical": "large zucchini",
+      "potential": 2
+    },
+    {
+      "category": "fruits",
+      "canonical": "cup unsweetened applesauce",
+      "potential": 2
+    },
+    {
+      "category": "fruits",
+      "canonical": "cup crushed pineapple drained",
+      "potential": 2
+    },
+    {
+      "category": "grains",
+      "canonical": "cup whole wheat flour",
+      "potential": 2
+    },
+    {
+      "category": "grains",
+      "canonical": "cup uncooked long grain white rice",
+      "potential": 2
+    },
+    {
+      "category": "herbs",
+      "canonical": "cup thinly sliced fresh basil",
+      "potential": 2
+    },
+    {
+      "category": "herbs",
+      "canonical": "cup chopped fresh italian parsley",
+      "potential": 2
+    },
+    {
+      "category": "spices",
+      "canonical": "garlic clove finely grated",
+      "potential": 2
+    },
+    {
+      "category": "proteins",
+      "canonical": "tablespoons chicken bouillon powder",
+      "potential": 1
+    },
+    {
+      "category": "fruits",
+      "canonical": "3inch strips fresh orange zest removed with a vegetable peeler",
+      "potential": 1
+    },
+    {
+      "category": "fruits",
+      "canonical": "ounces grape or cherry tomatoes halved lengthwise 2 cups",
+      "potential": 1
+    },
+    {
+      "category": "fruits",
+      "canonical": "tablespoon grated fresh lemon zest",
+      "potential": 1
+    },
+    {
+      "category": "grains",
+      "canonical": "pound pearl barley",
+      "potential": 1
+    },
+    {
+      "category": "grains",
+      "canonical": "12 cups brown rice",
+      "potential": 1
+    },
+    {
+      "category": "grains",
+      "canonical": "cup fresh corn kernels cut from 2 ears",
+      "potential": 1
+    },
+    {
+      "category": "herbs",
+      "canonical": "16 ounce package smoked sausage",
+      "potential": 1
+    },
+    {
+      "category": "herbs",
+      "canonical": "flatleafed parsley sprigs",
+      "potential": 1
+    },
+    {
+      "category": "herbs",
+      "canonical": "cup chopped flatleafed parsley leaves",
+      "potential": 1
+    },
+    {
+      "category": "spices",
+      "canonical": "tablespoons red pepper flakes",
+      "potential": 1
+    },
+    {
+      "category": "spices",
+      "canonical": "12 tablespoons cumin",
+      "potential": 1
+    },
+    {
+      "category": "spices",
+      "canonical": "garlic cloves sliced thin",
+      "potential": 1
+    },
+    {
+      "category": "spices",
+      "canonical": "good grinds black pepper",
+      "potential": 1
+    }
+  ],
+  "roadmap": [
+    {
+      "rank": 1,
+      "canonical": "teaspoon salt",
+      "category": "beverages",
+      "potential": 56,
+      "expectedCoverage": "5.60%"
+    },
+    {
+      "rank": 2,
+      "canonical": "tablespoons olive oil",
+      "category": "other",
+      "potential": 23,
+      "expectedCoverage": "2.30%"
+    },
+    {
+      "rank": 3,
+      "canonical": "cup allpurpose flour",
+      "category": "other",
+      "potential": 17,
+      "expectedCoverage": "1.70%"
+    },
+    {
+      "rank": 4,
+      "canonical": "cup white sugar",
+      "category": "sweeteners",
+      "potential": 17,
+      "expectedCoverage": "1.70%"
+    },
+    {
+      "rank": 5,
+      "canonical": "cups allpurpose flour",
+      "category": "other",
+      "potential": 14,
+      "expectedCoverage": "1.40%"
+    },
+    {
+      "rank": 6,
+      "canonical": "cup milk",
+      "category": "beverages",
+      "potential": 12,
+      "expectedCoverage": "1.20%"
+    },
+    {
+      "rank": 7,
+      "canonical": "cups white sugar",
+      "category": "sweeteners",
+      "potential": 12,
+      "expectedCoverage": "1.20%"
+    },
+    {
+      "rank": 8,
+      "canonical": "eggs beaten",
+      "category": "proteins",
+      "potential": 12,
+      "expectedCoverage": "1.20%"
+    },
+    {
+      "rank": 9,
+      "canonical": "tablespoon olive oil",
+      "category": "other",
+      "potential": 10,
+      "expectedCoverage": "1.00%"
+    },
+    {
+      "rank": 10,
+      "canonical": "tablespoon butter",
+      "category": "dairy",
+      "potential": 9,
+      "expectedCoverage": "0.90%"
+    },
+    {
+      "rank": 11,
+      "canonical": "cup grated zucchini",
+      "category": "vegetables",
+      "potential": 9,
+      "expectedCoverage": "0.90%"
+    },
+    {
+      "rank": 12,
+      "canonical": "cup water",
+      "category": "other",
+      "potential": 8,
+      "expectedCoverage": "0.80%"
+    },
+    {
+      "rank": 13,
+      "canonical": "large eggs",
+      "category": "proteins",
+      "potential": 7,
+      "expectedCoverage": "0.70%"
+    },
+    {
+      "rank": 14,
+      "canonical": "tablespoons butter",
+      "category": "dairy",
+      "potential": 7,
+      "expectedCoverage": "0.70%"
+    },
+    {
+      "rank": 15,
+      "canonical": "cup shredded mozzarella cheese",
+      "category": "dairy",
+      "potential": 7,
+      "expectedCoverage": "0.70%"
+    },
+    {
+      "rank": 16,
+      "canonical": "teaspoons salt",
+      "category": "beverages",
+      "potential": 5,
+      "expectedCoverage": "0.50%"
+    },
+    {
+      "rank": 17,
+      "canonical": "teaspoon white sugar",
+      "category": "beverages",
+      "potential": 5,
+      "expectedCoverage": "0.50%"
+    },
+    {
+      "rank": 18,
+      "canonical": "cup butter melted",
+      "category": "dairy",
+      "potential": 5,
+      "expectedCoverage": "0.50%"
+    },
+    {
+      "rank": 19,
+      "canonical": "zucchini sliced",
+      "category": "vegetables",
+      "potential": 5,
+      "expectedCoverage": "0.50%"
+    },
+    {
+      "rank": 20,
+      "canonical": "teaspoon sugar",
+      "category": "beverages",
+      "potential": 4,
+      "expectedCoverage": "0.40%"
+    },
+    {
+      "rank": 21,
+      "canonical": "cup brown sugar",
+      "category": "sweeteners",
+      "potential": 4,
+      "expectedCoverage": "0.40%"
+    },
+    {
+      "rank": 22,
+      "canonical": "large egg",
+      "category": "proteins",
+      "potential": 4,
+      "expectedCoverage": "0.40%"
+    },
+    {
+      "rank": 23,
+      "canonical": "cup shredded cheddar cheese",
+      "category": "dairy",
+      "potential": 4,
+      "expectedCoverage": "0.40%"
+    },
+    {
+      "rank": 24,
+      "canonical": "large eggs lightly beaten",
+      "category": "proteins",
+      "potential": 3,
+      "expectedCoverage": "0.30%"
+    },
+    {
+      "rank": 25,
+      "canonical": "cup shredded zucchini",
+      "category": "vegetables",
+      "potential": 3,
+      "expectedCoverage": "0.30%"
+    },
+    {
+      "rank": 26,
+      "canonical": "cups chopped zucchini",
+      "category": "vegetables",
+      "potential": 3,
+      "expectedCoverage": "0.30%"
+    },
+    {
+      "rank": 27,
+      "canonical": "tablespoon white sugar",
+      "category": "sweeteners",
+      "potential": 2,
+      "expectedCoverage": "0.20%"
+    },
+    {
+      "rank": 28,
+      "canonical": "12 cups white sugar",
+      "category": "sweeteners",
+      "potential": 2,
+      "expectedCoverage": "0.20%"
+    },
+    {
+      "rank": 29,
+      "canonical": "large zucchini",
+      "category": "vegetables",
+      "potential": 2,
+      "expectedCoverage": "0.20%"
+    },
+    {
+      "rank": 30,
+      "canonical": "cup unsweetened applesauce",
+      "category": "fruits",
+      "potential": 2,
+      "expectedCoverage": "0.20%"
+    },
+    {
+      "rank": 31,
+      "canonical": "cup crushed pineapple drained",
+      "category": "fruits",
+      "potential": 2,
+      "expectedCoverage": "0.20%"
+    },
+    {
+      "rank": 32,
+      "canonical": "cup whole wheat flour",
+      "category": "grains",
+      "potential": 2,
+      "expectedCoverage": "0.20%"
+    },
+    {
+      "rank": 33,
+      "canonical": "cup uncooked long grain white rice",
+      "category": "grains",
+      "potential": 2,
+      "expectedCoverage": "0.20%"
+    },
+    {
+      "rank": 34,
+      "canonical": "cup thinly sliced fresh basil",
+      "category": "herbs",
+      "potential": 2,
+      "expectedCoverage": "0.20%"
+    },
+    {
+      "rank": 35,
+      "canonical": "cup chopped fresh italian parsley",
+      "category": "herbs",
+      "potential": 2,
+      "expectedCoverage": "0.20%"
+    },
+    {
+      "rank": 36,
+      "canonical": "garlic clove finely grated",
+      "category": "spices",
+      "potential": 2,
+      "expectedCoverage": "0.20%"
+    },
+    {
+      "rank": 37,
+      "canonical": "tablespoons chicken bouillon powder",
+      "category": "proteins",
+      "potential": 1,
+      "expectedCoverage": "0.10%"
+    },
+    {
+      "rank": 38,
+      "canonical": "3inch strips fresh orange zest removed with a vegetable peeler",
+      "category": "fruits",
+      "potential": 1,
+      "expectedCoverage": "0.10%"
+    },
+    {
+      "rank": 39,
+      "canonical": "ounces grape or cherry tomatoes halved lengthwise 2 cups",
+      "category": "fruits",
+      "potential": 1,
+      "expectedCoverage": "0.10%"
+    },
+    {
+      "rank": 40,
+      "canonical": "tablespoon grated fresh lemon zest",
+      "category": "fruits",
+      "potential": 1,
+      "expectedCoverage": "0.10%"
+    },
+    {
+      "rank": 41,
+      "canonical": "pound pearl barley",
+      "category": "grains",
+      "potential": 1,
+      "expectedCoverage": "0.10%"
+    },
+    {
+      "rank": 42,
+      "canonical": "12 cups brown rice",
+      "category": "grains",
+      "potential": 1,
+      "expectedCoverage": "0.10%"
+    },
+    {
+      "rank": 43,
+      "canonical": "cup fresh corn kernels cut from 2 ears",
+      "category": "grains",
+      "potential": 1,
+      "expectedCoverage": "0.10%"
+    },
+    {
+      "rank": 44,
+      "canonical": "16 ounce package smoked sausage",
+      "category": "herbs",
+      "potential": 1,
+      "expectedCoverage": "0.10%"
+    },
+    {
+      "rank": 45,
+      "canonical": "flatleafed parsley sprigs",
+      "category": "herbs",
+      "potential": 1,
+      "expectedCoverage": "0.10%"
+    },
+    {
+      "rank": 46,
+      "canonical": "cup chopped flatleafed parsley leaves",
+      "category": "herbs",
+      "potential": 1,
+      "expectedCoverage": "0.10%"
+    },
+    {
+      "rank": 47,
+      "canonical": "tablespoons red pepper flakes",
+      "category": "spices",
+      "potential": 1,
+      "expectedCoverage": "0.10%"
+    },
+    {
+      "rank": 48,
+      "canonical": "12 tablespoons cumin",
+      "category": "spices",
+      "potential": 1,
+      "expectedCoverage": "0.10%"
+    },
+    {
+      "rank": 49,
+      "canonical": "garlic cloves sliced thin",
+      "category": "spices",
+      "potential": 1,
+      "expectedCoverage": "0.10%"
+    },
+    {
+      "rank": 50,
+      "canonical": "good grinds black pepper",
+      "category": "spices",
+      "potential": 1,
+      "expectedCoverage": "0.10%"
+    }
+  ],
+  "expectedTotalCoverage": "30.40",
+  "byCategory": {
+    "beverages": [
+      {
+        "ingredient": "teaspoon salt",
+        "count": 56
+      },
+      {
+        "ingredient": "cup milk",
+        "count": 12
+      },
+      {
+        "ingredient": "teaspoons salt",
+        "count": 5
+      },
+      {
+        "ingredient": "teaspoon white sugar",
+        "count": 5
+      },
+      {
+        "ingredient": "teaspoon sugar",
+        "count": 4
+      },
+      {
+        "ingredient": "14 teaspoons salt",
+        "count": 3
+      },
+      {
+        "ingredient": "12 cups milk",
+        "count": 3
+      },
+      {
+        "ingredient": "cup whole milk",
+        "count": 2
+      },
+      {
+        "ingredient": "cups evaporated milk",
+        "count": 2
+      },
+      {
+        "ingredient": "teaspoon olive oil",
+        "count": 2
+      },
+      {
+        "ingredient": "12 teaspoons sugar",
+        "count": 2
+      },
+      {
+        "ingredient": "teaspoon water if needed",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon grated fresh lemon peel",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoons confectioners sugar",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoons allpurpose flour",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon water",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon dried mint",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon white truffle oil",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon allpurpose flour",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon water or as desired",
+        "count": 1
+      },
+      {
+        "ingredient": "12 teaspoons salt",
+        "count": 1
+      },
+      {
+        "ingredient": "12 tablespoons red wine vinegar",
+        "count": 1
+      },
+      {
+        "ingredient": "cup dry white wine optional",
+        "count": 1
+      },
+      {
+        "ingredient": "34 cups milk",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon dried thyme crushed",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon fresh lemon juice or to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoons celery seed",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon celery seeds",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups buttermilk baking mix",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoons finely chopped fresh lemon thyme",
+        "count": 1
+      },
+      {
+        "ingredient": "14ounce envelope active dry yeast about 2 14 teaspoons",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon or more fresh lime juice",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon generous fennel seeds",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon onion salt or to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon garlic salt or to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon onion salt",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon milk",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoons butter",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon fennel seeds chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon garlic salt divided",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon plus 2 teaspoons fresh lemon juice",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon garlic paste",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons milk or more to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon salt or as needed",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoons brown sugar",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon butter",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon basil",
+        "count": 1
+      },
+      {
+        "ingredient": "14 teaspoons garlic salt",
+        "count": 1
+      },
+      {
+        "ingredient": "cup hot milk",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons chopped fresh tarragon or 2 teaspoons dried",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoons lemon juice optional",
+        "count": 1
+      },
+      {
+        "ingredient": "12 teaspoon salt",
+        "count": 1
+      },
+      {
+        "ingredient": "cups chilled stout or dark beer",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon white wine vinegar or to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups white wine vinegar",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon dill seeds",
+        "count": 1
+      },
+      {
+        "ingredient": "13 12 to 14oz can unsweetened coconut milk well stirred",
+        "count": 1
+      },
+      {
+        "ingredient": "to 2 teaspoons chopped fresh jalapeo chile including seeds",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoons finely chopped fresh mint leaves",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoons freshly grated lemon zest",
+        "count": 1
+      }
+    ],
+    "other": [
+      {
+        "ingredient": "tablespoons olive oil",
+        "count": 23
+      },
+      {
+        "ingredient": "cup allpurpose flour",
+        "count": 17
+      },
+      {
+        "ingredient": "cups allpurpose flour",
+        "count": 14
+      },
+      {
+        "ingredient": "tablespoon olive oil",
+        "count": 10
+      },
+      {
+        "ingredient": "cup water",
+        "count": 8
+      },
+      {
+        "ingredient": "tablespoons allpurpose flour",
+        "count": 7
+      },
+      {
+        "ingredient": "",
+        "count": 7
+      },
+      {
+        "ingredient": "cup olive oil",
+        "count": 6
+      },
+      {
+        "ingredient": "cups water",
+        "count": 5
+      },
+      {
+        "ingredient": "12 cups allpurpose flour",
+        "count": 5
+      },
+      {
+        "ingredient": "14 cups water",
+        "count": 2
+      },
+      {
+        "ingredient": "12 tablespoons olive oil",
+        "count": 2
+      },
+      {
+        "ingredient": "cup biscuit baking mix",
+        "count": 2
+      },
+      {
+        "ingredient": "cup flour",
+        "count": 2
+      },
+      {
+        "ingredient": "4 ounce package zwieback toast",
+        "count": 1
+      },
+      {
+        "ingredient": "cups fresh figs stemmed and quartered",
+        "count": 1
+      },
+      {
+        "ingredient": "cups kale  washed dried and shredded",
+        "count": 1
+      },
+      {
+        "ingredient": "16 ounce packages linguine pasta",
+        "count": 1
+      },
+      {
+        "ingredient": "65 ounce cans chopped clams",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons extravirgin olive oil or as desired",
+        "count": 1
+      },
+      {
+        "ingredient": "15 ounce cans cannellini beans drained and rinsed divided",
+        "count": 1
+      },
+      {
+        "ingredient": "ounces pancetta bacon diced",
+        "count": 1
+      },
+      {
+        "ingredient": "cups cooked cannellini beans",
+        "count": 1
+      },
+      {
+        "ingredient": "slices crispcooked bacon",
+        "count": 1
+      },
+      {
+        "ingredient": "cup coarsely grated havarti about 2 ounces",
+        "count": 1
+      },
+      {
+        "ingredient": "9 to 10inch flour tortillas",
+        "count": 1
+      },
+      {
+        "ingredient": "drained canned whole chipotle chile in adobo",
+        "count": 1
+      },
+      {
+        "ingredient": "cup ruby port",
+        "count": 1
+      },
+      {
+        "ingredient": "cup fresh raspberries or frozen unsweetened raspberries thawed",
+        "count": 1
+      },
+      {
+        "ingredient": "cups dry brown lentils",
+        "count": 1
+      },
+      {
+        "ingredient": "34 cups water",
+        "count": 1
+      },
+      {
+        "ingredient": "coloring if desired optional",
+        "count": 1
+      },
+      {
+        "ingredient": "12 ounce package white chocolate chips",
+        "count": 1
+      },
+      {
+        "ingredient": "ounces semisweet chocolate chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "cup chocolatecoated toffee bits",
+        "count": 1
+      },
+      {
+        "ingredient": "cup frozen unsweetened raspberries",
+        "count": 1
+      },
+      {
+        "ingredient": "ounces bittersweet chocolate chopped fine",
+        "count": 1
+      },
+      {
+        "ingredient": "1825 ounce package white cake mix with pudding",
+        "count": 1
+      },
+      {
+        "ingredient": "cup oat flour",
+        "count": 1
+      },
+      {
+        "ingredient": "6 to 7ounce red snapper fillets skinned",
+        "count": 1
+      },
+      {
+        "ingredient": "shallot finely diced",
+        "count": 1
+      },
+      {
+        "ingredient": "pound halibut fillets cut into 1inch cubes see note",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon pine nuts lightly toasted",
+        "count": 1
+      },
+      {
+        "ingredient": "to 3 tablespoons olive oil",
+        "count": 1
+      },
+      {
+        "ingredient": "9 ounce package mushroom ravioli",
+        "count": 1
+      },
+      {
+        "ingredient": "cup coarsely grated jalapeo monterey jack",
+        "count": 1
+      },
+      {
+        "ingredient": "salt preferably fleur de sel",
+        "count": 1
+      },
+      {
+        "ingredient": "16 ounce package farfalle pasta",
+        "count": 1
+      },
+      {
+        "ingredient": "155 ounce can chickpeas rinsed and drained",
+        "count": 1
+      },
+      {
+        "ingredient": "8 ounce package button mushrooms sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "cups half and half",
+        "count": 1
+      },
+      {
+        "ingredient": "12 pound large leeks white and pale green parts only thinly sliced about 2 12 cups",
+        "count": 1
+      },
+      {
+        "ingredient": "cups macaroni",
+        "count": 1
+      },
+      {
+        "ingredient": "equipment an adjustableblade slicer with julienne cutter or a julienne peeler",
+        "count": 1
+      },
+      {
+        "ingredient": "large cucumber about 13 ounces peeled seeded diced",
+        "count": 1
+      },
+      {
+        "ingredient": "sheet frozen puff pastry half of 173ounce package thawed",
+        "count": 1
+      },
+      {
+        "ingredient": "slices bread torn into pieces",
+        "count": 1
+      },
+      {
+        "ingredient": "cup italianstyle dry bread crumbs",
+        "count": 1
+      },
+      {
+        "ingredient": "dashes worcestershire sauce optional",
+        "count": 1
+      },
+      {
+        "ingredient": "cup cold water",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon salt or more to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "16 ounce package thin spaghetti broken into halves",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons chopped garlic",
+        "count": 1
+      },
+      {
+        "ingredient": "cup vegetable stock",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon allpurpose flour",
+        "count": 1
+      },
+      {
+        "ingredient": "cup allpurpose biscuit baking mix",
+        "count": 1
+      },
+      {
+        "ingredient": "cup icecold water",
+        "count": 1
+      },
+      {
+        "ingredient": "to 4 slices white bread crusts removed",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons chopped fresh tarragon",
+        "count": 1
+      },
+      {
+        "ingredient": "cup finely minced shallot",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons salt",
+        "count": 1
+      },
+      {
+        "ingredient": "14 cups fresh raspberries",
+        "count": 1
+      },
+      {
+        "ingredient": "cup millers bran available at natural foods stores specialty foods shops and some supermarkets",
+        "count": 1
+      },
+      {
+        "ingredient": "12inch nonstick skillet",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups olive oil",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups allpurpose flour divided plus more for surface",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon or more chopped jalapeo chile with seeds",
+        "count": 1
+      },
+      {
+        "ingredient": "1 pound loaf italian bread thickly sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "cups chopped plums",
+        "count": 1
+      },
+      {
+        "ingredient": "cup olive oil or as needed",
+        "count": 1
+      },
+      {
+        "ingredient": "yellow summer squash thinly sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "10ounce bag frozen peas",
+        "count": 1
+      },
+      {
+        "ingredient": "cup cooked crumbled bacon",
+        "count": 1
+      },
+      {
+        "ingredient": "10 inch unbaked pie crust",
+        "count": 1
+      },
+      {
+        "ingredient": "9 inch unbaked pie crusts",
+        "count": 1
+      },
+      {
+        "ingredient": "1quart canning jars with lids and rings",
+        "count": 1
+      },
+      {
+        "ingredient": "cup salt",
+        "count": 1
+      },
+      {
+        "ingredient": "cup plus 2 tablespoons olive oil",
+        "count": 1
+      },
+      {
+        "ingredient": "cup olive oil not extravirgin",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons olive oil or as desired",
+        "count": 1
+      },
+      {
+        "ingredient": "cup about olive oil",
+        "count": 1
+      },
+      {
+        "ingredient": "cup or more all purpose flour",
+        "count": 1
+      },
+      {
+        "ingredient": "oil for frying about 1 12 cups",
+        "count": 1
+      },
+      {
+        "ingredient": "cup panko japanese breadcrumbs",
+        "count": 1
+      },
+      {
+        "ingredient": "leek white and palegreen parts only finely chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "pound rotini pasta",
+        "count": 1
+      },
+      {
+        "ingredient": "yellow summer squash cut into spirals using a spiral slicer",
+        "count": 1
+      },
+      {
+        "ingredient": "ounces thin spaghetti",
+        "count": 1
+      },
+      {
+        "ingredient": "8 ounce package uncooked pasta shells",
+        "count": 1
+      },
+      {
+        "ingredient": "pinch dried celery flakes",
+        "count": 1
+      },
+      {
+        "ingredient": "ounces penne pasta",
+        "count": 1
+      },
+      {
+        "ingredient": "16 ounce jar spaghetti sauce",
+        "count": 1
+      },
+      {
+        "ingredient": "cup fresh white breadcrumbs",
+        "count": 1
+      },
+      {
+        "ingredient": "ounces thinly sliced prosciutto torn into 12 pieces plus more for topping optional",
+        "count": 1
+      },
+      {
+        "ingredient": "ounces fresh mozzarella sliced into 12 pieces",
+        "count": 1
+      },
+      {
+        "ingredient": "cup olive oil for frying",
+        "count": 1
+      },
+      {
+        "ingredient": "cups panko breadcrumbs",
+        "count": 1
+      },
+      {
+        "ingredient": "16 ounce jar marinara sauce",
+        "count": 1
+      },
+      {
+        "ingredient": "spray such as pam",
+        "count": 1
+      },
+      {
+        "ingredient": "cup plain dry bread crumbs",
+        "count": 1
+      },
+      {
+        "ingredient": "cup freshly grated parmesan 34ounce",
+        "count": 1
+      },
+      {
+        "ingredient": "cup fresh white bread crumbs",
+        "count": 1
+      },
+      {
+        "ingredient": "cup sliced celery",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons vegetable or canola oil",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons water",
+        "count": 1
+      },
+      {
+        "ingredient": "to 8 tablespoons allpurpose flour",
+        "count": 1
+      },
+      {
+        "ingredient": "fresh chopped mushrooms",
+        "count": 1
+      },
+      {
+        "ingredient": "yellow squash cut into 12inch cubes",
+        "count": 1
+      },
+      {
+        "ingredient": "ounces uncooked orzo pasta",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon olive oil preferably extravirgin",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon water or more if needed",
+        "count": 1
+      },
+      {
+        "ingredient": "14 cups allpurpose flour",
+        "count": 1
+      },
+      {
+        "ingredient": "8 ounce package sliced fresh button mushrooms chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons pure wesson canola oil divided",
+        "count": 1
+      },
+      {
+        "ingredient": "8ounce ball fresh buffalo mozzarella thinly sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "cup pitted cured black olives halved divided",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons olive oil divided plus more for drizzling",
+        "count": 1
+      },
+      {
+        "ingredient": "medium yellow squash about 1 14 pounds spiralized or cut into matchsticks",
+        "count": 1
+      },
+      {
+        "ingredient": "cup grated parmesan",
+        "count": 1
+      },
+      {
+        "ingredient": "cups bean sprouts divided",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons water or as needed optional",
+        "count": 1
+      },
+      {
+        "ingredient": "12 tablespoons tamarind paste",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon seasoned salt such as spike seasoning",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons extravirgin olive oil divided",
+        "count": 1
+      },
+      {
+        "ingredient": "16 ounce jar marinara sauce or to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons olive oil divided or as needed",
+        "count": 1
+      },
+      {
+        "ingredient": "cup frozen peas thawed",
+        "count": 1
+      },
+      {
+        "ingredient": "ounces prosciutto chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "cup chopped asparagus",
+        "count": 1
+      },
+      {
+        "ingredient": "cup pine nuts or to taste optional",
+        "count": 1
+      },
+      {
+        "ingredient": "12 tablespoons sesame seeds",
+        "count": 1
+      },
+      {
+        "ingredient": "small yellow squash cut into 14inch rounds",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons dry bread crumbs if needed optional",
+        "count": 1
+      },
+      {
+        "ingredient": "15 ounce can cannellini beans drained",
+        "count": 1
+      },
+      {
+        "ingredient": "15 ounce jar mushroom alfredo sauce such as bertolli",
+        "count": 1
+      },
+      {
+        "ingredient": "6 ounce package portobello mushrooms chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "cup parmesan curls shaved with a vegetable peeler from a piece of parmesan",
+        "count": 1
+      },
+      {
+        "ingredient": "cup pinto beans rinsed and drained",
+        "count": 1
+      },
+      {
+        "ingredient": "oil for serving",
+        "count": 1
+      },
+      {
+        "ingredient": "slices bread crumbled",
+        "count": 1
+      },
+      {
+        "ingredient": "equipment a muffin pan with 12 12cup cups 12 paper liners",
+        "count": 1
+      },
+      {
+        "ingredient": "cup mild olive oil",
+        "count": 1
+      },
+      {
+        "ingredient": "cup canned garbanzo beans drained",
+        "count": 1
+      },
+      {
+        "ingredient": "avocado  peeled pitted and coarsely chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "cucumbers sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons vegetable oil or more as needed",
+        "count": 1
+      },
+      {
+        "ingredient": "cup shredded yellow squash",
+        "count": 1
+      },
+      {
+        "ingredient": "oil for frying",
+        "count": 1
+      },
+      {
+        "ingredient": "salt such as fleur de sel for sprinkling",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon reducedsodium soy sauce",
+        "count": 1
+      },
+      {
+        "ingredient": "oil for deepfrying",
+        "count": 1
+      },
+      {
+        "ingredient": "cups bread crumbs divided",
+        "count": 1
+      },
+      {
+        "ingredient": "wrap heavy duty aluminum foil",
+        "count": 1
+      },
+      {
+        "ingredient": "cup artichoke and garlic pizza sauce",
+        "count": 1
+      },
+      {
+        "ingredient": "bulb fennel diced green tops reserved",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon minced shallot",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups chopped mushrooms",
+        "count": 1
+      },
+      {
+        "ingredient": "cup salsa verde green salsa",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons coarse sea salt or pickling salt divided",
+        "count": 1
+      },
+      {
+        "ingredient": "cup coconut oil",
+        "count": 1
+      },
+      {
+        "ingredient": "13 cups allpurpose flour",
+        "count": 1
+      },
+      {
+        "ingredient": "cup shredded cucumber",
+        "count": 1
+      },
+      {
+        "ingredient": "1 ounce package ranchstyle dressing mix",
+        "count": 1
+      },
+      {
+        "ingredient": "cups sourdough bread crumbs",
+        "count": 1
+      },
+      {
+        "ingredient": "10ounce packages frozen peas thawed",
+        "count": 1
+      },
+      {
+        "ingredient": "cup currants",
+        "count": 1
+      }
+    ],
+    "sweeteners": [
+      {
+        "ingredient": "cup white sugar",
+        "count": 17
+      },
+      {
+        "ingredient": "cups white sugar",
+        "count": 12
+      },
+      {
+        "ingredient": "cup brown sugar",
+        "count": 4
+      },
+      {
+        "ingredient": "tablespoon white sugar",
+        "count": 2
+      },
+      {
+        "ingredient": "12 cups white sugar",
+        "count": 2
+      },
+      {
+        "ingredient": "tablespoons brown sugar",
+        "count": 2
+      },
+      {
+        "ingredient": "tablespoon white sugar or to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "13 cups white sugar",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons sugar",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups sugar",
+        "count": 1
+      },
+      {
+        "ingredient": "14 cups white sugar",
+        "count": 1
+      },
+      {
+        "ingredient": "34 cups white sugar",
+        "count": 1
+      },
+      {
+        "ingredient": "cup powdered sugar",
+        "count": 1
+      },
+      {
+        "ingredient": "cup packed golden brown sugar",
+        "count": 1
+      },
+      {
+        "ingredient": "cup brown sugar not packed",
+        "count": 1
+      },
+      {
+        "ingredient": "cups brown sugar",
+        "count": 1
+      },
+      {
+        "ingredient": "cup mild honey",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon white sugar optional",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons white sugar",
+        "count": 1
+      }
+    ],
+    "proteins": [
+      {
+        "ingredient": "eggs beaten",
+        "count": 12
+      },
+      {
+        "ingredient": "large eggs",
+        "count": 7
+      },
+      {
+        "ingredient": "large egg",
+        "count": 4
+      },
+      {
+        "ingredient": "large eggs lightly beaten",
+        "count": 3
+      },
+      {
+        "ingredient": "tablespoons chicken bouillon powder",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups or more canned lowsalt chicken broth",
+        "count": 1
+      },
+      {
+        "ingredient": "32 ounce can chicken broth",
+        "count": 1
+      },
+      {
+        "ingredient": "egg beaten",
+        "count": 1
+      },
+      {
+        "ingredient": "cups vegetable or chicken stock",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups lowsalt chicken broth",
+        "count": 1
+      },
+      {
+        "ingredient": "cooked chicken breast halves cubed",
+        "count": 1
+      },
+      {
+        "ingredient": "cup chopped cooked chicken",
+        "count": 1
+      },
+      {
+        "ingredient": "12 large long chinese eggplants about 34 pound cut into 14 slices on the bias",
+        "count": 1
+      },
+      {
+        "ingredient": "ounces peeled and deveined shrimp",
+        "count": 1
+      },
+      {
+        "ingredient": "ounces skinless boneless chicken breasts cut into 1inch cubes",
+        "count": 1
+      },
+      {
+        "ingredient": "pound large shrimp peeled and deveined",
+        "count": 1
+      },
+      {
+        "ingredient": "12lb piece parmigianoreggiano",
+        "count": 1
+      },
+      {
+        "ingredient": "whole smoked chicken breast 1 lb skinned and thinly sliced crosswise with a knife",
+        "count": 1
+      },
+      {
+        "ingredient": "large eggs beaten to blend",
+        "count": 1
+      },
+      {
+        "ingredient": "cups egg noodles",
+        "count": 1
+      },
+      {
+        "ingredient": "large eggs beaten",
+        "count": 1
+      },
+      {
+        "ingredient": "cup swanson chicken broth",
+        "count": 1
+      }
+    ],
+    "dairy": [
+      {
+        "ingredient": "tablespoon butter",
+        "count": 9
+      },
+      {
+        "ingredient": "tablespoons butter",
+        "count": 7
+      },
+      {
+        "ingredient": "cup shredded mozzarella cheese",
+        "count": 7
+      },
+      {
+        "ingredient": "cup butter melted",
+        "count": 5
+      },
+      {
+        "ingredient": "cup shredded cheddar cheese",
+        "count": 4
+      },
+      {
+        "ingredient": "cup butter",
+        "count": 4
+      },
+      {
+        "ingredient": "cups plain yogurt",
+        "count": 2
+      },
+      {
+        "ingredient": "cup butter softened",
+        "count": 2
+      },
+      {
+        "ingredient": "cups shredded mozzarella cheese",
+        "count": 2
+      },
+      {
+        "ingredient": "tablespoons butter melted",
+        "count": 2
+      },
+      {
+        "ingredient": "cups shredded mozzarella cheese divided",
+        "count": 2
+      },
+      {
+        "ingredient": "cup butter cut into chunks",
+        "count": 1
+      },
+      {
+        "ingredient": "14 cups dry small curd cottage cheese",
+        "count": 1
+      },
+      {
+        "ingredient": "8 ounce package sharp cheddar cheese grated and divided",
+        "count": 1
+      },
+      {
+        "ingredient": "cup unsalted butter at room temperature",
+        "count": 1
+      },
+      {
+        "ingredient": "cup cold heavy whipping cream",
+        "count": 1
+      },
+      {
+        "ingredient": "cups grated parmesan cheese",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons plus 14 cup freshly grated parmesan cheese",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups shredded mozzarella cheese",
+        "count": 1
+      },
+      {
+        "ingredient": "cup grated cheddar cheese",
+        "count": 1
+      },
+      {
+        "ingredient": "14 cups shredded mozzarella cheese",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon butter or to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "ounces brie cheese cut into small chunks",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon melted butter",
+        "count": 1
+      },
+      {
+        "ingredient": "ounces shredded colby cheese",
+        "count": 1
+      },
+      {
+        "ingredient": "ounces cottage cheese drained",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons melted butter",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons grated parmigianoreggiano cheese",
+        "count": 1
+      },
+      {
+        "ingredient": "slices smoked fontina cheese halved",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons freshly grated parmesan or mozzarella cheese",
+        "count": 1
+      },
+      {
+        "ingredient": "12 ounces goat cheese crumbled",
+        "count": 1
+      },
+      {
+        "ingredient": "ounces fontina cheese grated about 1 12 cups",
+        "count": 1
+      },
+      {
+        "ingredient": "cup shredded mexican 4cheese blend",
+        "count": 1
+      },
+      {
+        "ingredient": "cups 8 oz250 g shredded mozzarella cheese",
+        "count": 1
+      },
+      {
+        "ingredient": "cups shredded cheddar cheese",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon butter diced",
+        "count": 1
+      },
+      {
+        "ingredient": "12 tablespoons cream of tartar",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups butter at room temperature",
+        "count": 1
+      },
+      {
+        "ingredient": "cup packed freshly grated parmesan cheese",
+        "count": 1
+      },
+      {
+        "ingredient": "8ounce package philadelphia brand cream cheese do not use reducedfat or fatfree room temperature",
+        "count": 1
+      },
+      {
+        "ingredient": "cups finely crushed buttery round crackers such as ritz",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon grated parmesan cheese or to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons light cream cheese",
+        "count": 1
+      },
+      {
+        "ingredient": "cup 12 stick butter",
+        "count": 1
+      },
+      {
+        "ingredient": "cup ricotta cheese",
+        "count": 1
+      },
+      {
+        "ingredient": "cup grated parmesan cheese plus more for sprinkling",
+        "count": 1
+      },
+      {
+        "ingredient": "cup shredded partskim mozzarella cheese",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons shredded parmesan cheese",
+        "count": 1
+      },
+      {
+        "ingredient": "butter and vegetable oil",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons parmesan cheese",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons grated parmesan cheese or to taste optional",
+        "count": 1
+      },
+      {
+        "ingredient": "cup grated pecorino cheese",
+        "count": 1
+      },
+      {
+        "ingredient": "7 ounce container 2 greek yogurt",
+        "count": 1
+      },
+      {
+        "ingredient": "cup plain nonfat yogurt",
+        "count": 1
+      },
+      {
+        "ingredient": "cups small curd cottage cheese divided",
+        "count": 1
+      },
+      {
+        "ingredient": "ounces cream cheese cubed",
+        "count": 1
+      },
+      {
+        "ingredient": "cup plain yogurt not greek",
+        "count": 1
+      },
+      {
+        "ingredient": "cups shredded sharp cheddar cheese divided",
+        "count": 1
+      },
+      {
+        "ingredient": "cup melted butter",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons 14 stick butter",
+        "count": 1
+      },
+      {
+        "ingredient": "cup freshly grated pecorino romano cheese about 3 ounces",
+        "count": 1
+      },
+      {
+        "ingredient": "pound fresh mozzarella cheese sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "ounces thinly sliced mozzarella cheese",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups shredded gouda cheese",
+        "count": 1
+      },
+      {
+        "ingredient": "cup yogurt",
+        "count": 1
+      },
+      {
+        "ingredient": "8 ounce package shredded fatfree mozzarella cheese",
+        "count": 1
+      },
+      {
+        "ingredient": "cup crumbled reducedfat feta cheese",
+        "count": 1
+      },
+      {
+        "ingredient": "cup very soft butter",
+        "count": 1
+      },
+      {
+        "ingredient": "cup shredded cheddar cheese divided",
+        "count": 1
+      },
+      {
+        "ingredient": "ounces cheddar cheese shredded",
+        "count": 1
+      },
+      {
+        "ingredient": "cup finely shredded cheddar cheese",
+        "count": 1
+      }
+    ],
+    "vegetables": [
+      {
+        "ingredient": "cup grated zucchini",
+        "count": 9
+      },
+      {
+        "ingredient": "zucchini sliced",
+        "count": 5
+      },
+      {
+        "ingredient": "cup shredded zucchini",
+        "count": 3
+      },
+      {
+        "ingredient": "cups chopped zucchini",
+        "count": 3
+      },
+      {
+        "ingredient": "large zucchini",
+        "count": 2
+      },
+      {
+        "ingredient": "zucchini grated",
+        "count": 2
+      },
+      {
+        "ingredient": "cup dry potato flakes",
+        "count": 2
+      },
+      {
+        "ingredient": "zucchini thinly sliced",
+        "count": 2
+      },
+      {
+        "ingredient": "cups diced zucchini",
+        "count": 2
+      },
+      {
+        "ingredient": "cups zucchini thinly sliced",
+        "count": 2
+      },
+      {
+        "ingredient": "cups zucchini  peeled seeded and sliced",
+        "count": 2
+      },
+      {
+        "ingredient": "pounds zucchini thinly sliced",
+        "count": 2
+      },
+      {
+        "ingredient": "medium zucchini sliced",
+        "count": 2
+      },
+      {
+        "ingredient": "potatoes cut into 14inch slices",
+        "count": 1
+      },
+      {
+        "ingredient": "145 ounce cans crushed tomatoes",
+        "count": 1
+      },
+      {
+        "ingredient": "carrot chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "medium zucchini chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "7inchlong zucchini each about 12 pound",
+        "count": 1
+      },
+      {
+        "ingredient": "12 pounds plum tomatoes cut into chunks",
+        "count": 1
+      },
+      {
+        "ingredient": "pound spinach i use the whole thing stems and leaves because im lazy",
+        "count": 1
+      },
+      {
+        "ingredient": "pounds zucchini 6 medium cut into 12inchthick rounds",
+        "count": 1
+      },
+      {
+        "ingredient": "pound zucchini about 2 large",
+        "count": 1
+      },
+      {
+        "ingredient": "cup thinly sliced sweet onion",
+        "count": 1
+      },
+      {
+        "ingredient": "medium tomatoes coarsely chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "smalltomedium zucchini trimmed and cut into slices about 38 inch thick",
+        "count": 1
+      },
+      {
+        "ingredient": "medium zucchini scrubbed and cut into 14inch thick slices",
+        "count": 1
+      },
+      {
+        "ingredient": "pounds zucchini halved crosswise each half cut lengthwise into 4 flat slices",
+        "count": 1
+      },
+      {
+        "ingredient": "onions minced",
+        "count": 1
+      },
+      {
+        "ingredient": "small zucchini julienned",
+        "count": 1
+      },
+      {
+        "ingredient": "large zucchini cut into large chunks",
+        "count": 1
+      },
+      {
+        "ingredient": "pound zucchini cut into 1inch rounds",
+        "count": 1
+      },
+      {
+        "ingredient": "12 pounds yukon gold potatoes peeled cut into 2inch pieces",
+        "count": 1
+      },
+      {
+        "ingredient": "large tomato chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "pound zucchini sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "125 ounce packages beef with onion soup mix",
+        "count": 1
+      },
+      {
+        "ingredient": "cups chopped tomatoes",
+        "count": 1
+      },
+      {
+        "ingredient": "large tomato thinly sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "12 pounds medium zucchini",
+        "count": 1
+      },
+      {
+        "ingredient": "cup finely chopped vidalia or maui onion",
+        "count": 1
+      },
+      {
+        "ingredient": "small to medium zucchini about 1 12 pounds total trimmed",
+        "count": 1
+      },
+      {
+        "ingredient": "small zucchini cut into thin rounds",
+        "count": 1
+      },
+      {
+        "ingredient": "cup drained oilpacked sundried tomatoes thinly sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "extra large zucchini cubed",
+        "count": 1
+      },
+      {
+        "ingredient": "pounds zucchini sliced crosswise 13inch thick",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups shredded zucchini",
+        "count": 1
+      },
+      {
+        "ingredient": "large potatoes peeled and cut into chunks",
+        "count": 1
+      },
+      {
+        "ingredient": "zucchini peeled and cut into chunks",
+        "count": 1
+      },
+      {
+        "ingredient": "cups grated unpeeled zucchini",
+        "count": 1
+      },
+      {
+        "ingredient": "zucchini cut into long strands",
+        "count": 1
+      },
+      {
+        "ingredient": "28 ounce can petite diced tomatoes",
+        "count": 1
+      },
+      {
+        "ingredient": "cups quartered zucchini slices",
+        "count": 1
+      },
+      {
+        "ingredient": "1 ounce packages dry onion soup mix",
+        "count": 1
+      },
+      {
+        "ingredient": "zucchini peeled and spiralized",
+        "count": 1
+      },
+      {
+        "ingredient": "8 ounce can tomato paste",
+        "count": 1
+      },
+      {
+        "ingredient": "ripe tomatoes chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "ounces zucchini sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "cups zucchini chunks",
+        "count": 1
+      },
+      {
+        "ingredient": "12 pounds zucchini cut into 1inch pieces",
+        "count": 1
+      },
+      {
+        "ingredient": "12 pounds zucchini sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "pounds zucchini chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "pound zucchini thinly sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "pounds sliced zucchini",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups diced zucchini",
+        "count": 1
+      },
+      {
+        "ingredient": "pounds zucchini peeled and diced",
+        "count": 1
+      },
+      {
+        "ingredient": "onion grated",
+        "count": 1
+      },
+      {
+        "ingredient": "zucchinis peeled and grated",
+        "count": 1
+      },
+      {
+        "ingredient": "small zucchini",
+        "count": 1
+      },
+      {
+        "ingredient": "pounds zucchini peeled and cut into 1 inch thick slices",
+        "count": 1
+      },
+      {
+        "ingredient": "large zucchini squash thinly sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "medium zucchinis cut into random pieces",
+        "count": 1
+      },
+      {
+        "ingredient": "small zucchini cut lengthwise into slightly less than 14inch slices",
+        "count": 1
+      },
+      {
+        "ingredient": "medium zucchini thinly sliced with a vegetable peeler",
+        "count": 1
+      },
+      {
+        "ingredient": "pounds zucchini",
+        "count": 1
+      },
+      {
+        "ingredient": "large zucchini sliced into long ribbons using a vegetable peeler discarding the seedy core",
+        "count": 1
+      },
+      {
+        "ingredient": "pounds zucchini peeled quartered lengthwise cored and chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "cups 1inch pieces zucchini",
+        "count": 1
+      },
+      {
+        "ingredient": "cup diced onions",
+        "count": 1
+      },
+      {
+        "ingredient": "cups coarsely grated zucchini",
+        "count": 1
+      },
+      {
+        "ingredient": "zucchini sliced into rounds",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups chopped spanish onion 1 pound",
+        "count": 1
+      },
+      {
+        "ingredient": "pounds boiling potatoes",
+        "count": 1
+      },
+      {
+        "ingredient": "pounds zucchini preferably small 6 to 8",
+        "count": 1
+      },
+      {
+        "ingredient": "12 pounds boiling potatoes such as yukon gold",
+        "count": 1
+      },
+      {
+        "ingredient": "34 pounds zucchini about 3 medium",
+        "count": 1
+      },
+      {
+        "ingredient": "medium zucchini very thinly sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "red onion very thinly sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "small red waxy potatoes about 12 pound scrubbed very thinly sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "to 18 ounces zucchini about 4 medium trimmed cut into 12inch rounds",
+        "count": 1
+      },
+      {
+        "ingredient": "7 to 8ounce yukon gold potato peeled cut into 12inch cubes",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups cubed zucchini",
+        "count": 1
+      },
+      {
+        "ingredient": "large zucchini sliced into 14inch pieces",
+        "count": 1
+      },
+      {
+        "ingredient": "cups finely grated zucchini",
+        "count": 1
+      },
+      {
+        "ingredient": "15 ounce can italianstyle tomato sauce",
+        "count": 1
+      },
+      {
+        "ingredient": "cups shredded unpeeled zucchini",
+        "count": 1
+      },
+      {
+        "ingredient": "cup peeled cubed zucchini",
+        "count": 1
+      },
+      {
+        "ingredient": "cups peeled seeded and sliced zucchini",
+        "count": 1
+      },
+      {
+        "ingredient": "pound onions quartered and thinly sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "small zucchini about 9 ounces trimmed cut into 12inch pieces",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups coarsely grated zucchini about 8 ounces",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups finely chopped yellow onion",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups coarsely grated zucchini from about 3 medium",
+        "count": 1
+      },
+      {
+        "ingredient": "medium onion coarsely grated",
+        "count": 1
+      },
+      {
+        "ingredient": "medium zucchini coarsely grated",
+        "count": 1
+      },
+      {
+        "ingredient": "zucchini cut into spirals using a spiral slicer",
+        "count": 1
+      },
+      {
+        "ingredient": "large sweet onion halved",
+        "count": 1
+      },
+      {
+        "ingredient": "roma tomato diced",
+        "count": 1
+      },
+      {
+        "ingredient": "zucchini thinly sliced into rounds",
+        "count": 1
+      },
+      {
+        "ingredient": "large zucchinis sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "large zucchini thinly sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "zucchini  peeled sliced lengthwise and sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "pounds zucchini trimmed cut into 1inch pieces",
+        "count": 1
+      },
+      {
+        "ingredient": "pounds plum tomatoes cored and roughly chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "zucchini horizontally and thinly sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "medium zucchini about 1 pound total",
+        "count": 1
+      },
+      {
+        "ingredient": "pounds zucchini cubed",
+        "count": 1
+      },
+      {
+        "ingredient": "cups shredded zucchini squeezed dry",
+        "count": 1
+      },
+      {
+        "ingredient": "cups coarsely grated zucchini 1 lb",
+        "count": 1
+      },
+      {
+        "ingredient": "medium zucchini about 34 pound",
+        "count": 1
+      },
+      {
+        "ingredient": "zucchini cut into 12inch slices",
+        "count": 1
+      },
+      {
+        "ingredient": "zucchini cut into 12inch cubes",
+        "count": 1
+      },
+      {
+        "ingredient": "sweet onion such as vidalia chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "ounces tomatoes cored cut into 14inch wedges",
+        "count": 1
+      },
+      {
+        "ingredient": "medium onions cut into 12inch wedges",
+        "count": 1
+      },
+      {
+        "ingredient": "pound zucchini about 4 medium trimmed cut diagonally into 12inch slices",
+        "count": 1
+      },
+      {
+        "ingredient": "145 ounce can hunts petite diced tomatoes undrained",
+        "count": 1
+      },
+      {
+        "ingredient": "cups cherry tomatoes divided",
+        "count": 1
+      },
+      {
+        "ingredient": "medium zucchini about 1 14 pounds spiralized or cut into matchsticks",
+        "count": 1
+      },
+      {
+        "ingredient": "large zucchini thinly sliced into noodlelike ribbons with a vegetable peeler or mandoline about 6 cups",
+        "count": 1
+      },
+      {
+        "ingredient": "green onions chopped into 1inch pieces",
+        "count": 1
+      },
+      {
+        "ingredient": "cup lightly torn fresh spinach",
+        "count": 1
+      },
+      {
+        "ingredient": "cup chopped white onion",
+        "count": 1
+      },
+      {
+        "ingredient": "zucchini cut into noodleshape strands",
+        "count": 1
+      },
+      {
+        "ingredient": "12 pounds zucchini",
+        "count": 1
+      },
+      {
+        "ingredient": "small onion thinly sliced lengthwise",
+        "count": 1
+      },
+      {
+        "ingredient": "zucchini or more to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "zucchini squash cut into noodles using a spiral slicer or vegetable peeler",
+        "count": 1
+      },
+      {
+        "ingredient": "cup cherry tomatoes halved",
+        "count": 1
+      },
+      {
+        "ingredient": "medium zucchini julienned",
+        "count": 1
+      },
+      {
+        "ingredient": "small zucchini cut into 14inch rounds",
+        "count": 1
+      },
+      {
+        "ingredient": "cups peeled chopped zucchini",
+        "count": 1
+      },
+      {
+        "ingredient": "medium zucchini 34 lb total",
+        "count": 1
+      },
+      {
+        "ingredient": "cups finely chopped zucchini",
+        "count": 1
+      },
+      {
+        "ingredient": "145 ounce can whole peeled tomatoes chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "large zucchini cut into 18inch thick rounds",
+        "count": 1
+      },
+      {
+        "ingredient": "large carrots finely chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "large zucchini trimmed",
+        "count": 1
+      },
+      {
+        "ingredient": "cups peeled seeded and shredded zucchini",
+        "count": 1
+      },
+      {
+        "ingredient": "small zucchini peeled",
+        "count": 1
+      },
+      {
+        "ingredient": "1pound 13ounce can italian plum tomatoes",
+        "count": 1
+      },
+      {
+        "ingredient": "lb zucchini cut into 14inchthick matchsticks",
+        "count": 1
+      },
+      {
+        "ingredient": "zucchini each cut into 14inch slices",
+        "count": 1
+      },
+      {
+        "ingredient": "small russet potato peeled",
+        "count": 1
+      },
+      {
+        "ingredient": "small zucchini ends trimmed",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups seeded chopped tomatoes",
+        "count": 1
+      },
+      {
+        "ingredient": "12 pounds zucchini cubed",
+        "count": 1
+      },
+      {
+        "ingredient": "pounds zucchini cut into 14inch slices",
+        "count": 1
+      },
+      {
+        "ingredient": "cups coarsely grated zucchini 2 medium",
+        "count": 1
+      },
+      {
+        "ingredient": "small onion roughly chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "zucchini about 1 14 pounds grated",
+        "count": 1
+      },
+      {
+        "ingredient": "large ripe fresh tomatoes sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "12 pounds zucchini about 3 medium grated",
+        "count": 1
+      },
+      {
+        "ingredient": "medium zucchini cut diagonally into 14inchthick slices",
+        "count": 1
+      },
+      {
+        "ingredient": "zucchini quartered lengthwise and cut into 12inch pieces",
+        "count": 1
+      },
+      {
+        "ingredient": "large zucchini cubed",
+        "count": 1
+      },
+      {
+        "ingredient": "zucchini cut into 14inch rounds",
+        "count": 1
+      },
+      {
+        "ingredient": "zucchini or other summer squash sliced into very thin rounds",
+        "count": 1
+      },
+      {
+        "ingredient": "zucchini peeled and thinly sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "small zucchini shaved into thin strips",
+        "count": 1
+      },
+      {
+        "ingredient": "large tomatoes peeled and sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "cups shredded zucchini divided",
+        "count": 1
+      },
+      {
+        "ingredient": "pounds small zucchini preferably about 4 or 8 long trimmed",
+        "count": 1
+      },
+      {
+        "ingredient": "145 ounce can canned peeled and diced tomatoes",
+        "count": 1
+      },
+      {
+        "ingredient": "onion chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "medium green or cocozelle zucchini 3 lb cut crosswise into 12inchthick slices",
+        "count": 1
+      },
+      {
+        "ingredient": "large onion thinly sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "small zucchini coarsely chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "cups cubed peeled zucchini",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups zucchini  peeled seeded and sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "cup coarsely chopped zucchini",
+        "count": 1
+      },
+      {
+        "ingredient": "small carrot thinly sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "12 pounds zucchini coarsely chopped 12inch pieces",
+        "count": 1
+      },
+      {
+        "ingredient": "to 4 small zucchini each about 7 inches long",
+        "count": 1
+      }
+    ],
+    "fruits": [
+      {
+        "ingredient": "cup unsweetened applesauce",
+        "count": 2
+      },
+      {
+        "ingredient": "cup crushed pineapple drained",
+        "count": 2
+      },
+      {
+        "ingredient": "3inch strips fresh orange zest removed with a vegetable peeler",
+        "count": 1
+      },
+      {
+        "ingredient": "ounces grape or cherry tomatoes halved lengthwise 2 cups",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon grated fresh lemon zest",
+        "count": 1
+      },
+      {
+        "ingredient": "8 ounce can crushed pineapple well drained",
+        "count": 1
+      },
+      {
+        "ingredient": "cup yellow grape tomatoes",
+        "count": 1
+      },
+      {
+        "ingredient": "3inchwide wedges honeydew melon seeded and rind removed",
+        "count": 1
+      },
+      {
+        "ingredient": "6 ounce package strawberry flavored jello mix",
+        "count": 1
+      },
+      {
+        "ingredient": "1525 ounce can crushed pineapple drained",
+        "count": 1
+      }
+    ],
+    "grains": [
+      {
+        "ingredient": "cup whole wheat flour",
+        "count": 2
+      },
+      {
+        "ingredient": "cup uncooked long grain white rice",
+        "count": 2
+      },
+      {
+        "ingredient": "pound pearl barley",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups brown rice",
+        "count": 1
+      },
+      {
+        "ingredient": "cup fresh corn kernels cut from 2 ears",
+        "count": 1
+      },
+      {
+        "ingredient": "6 ounce package corn bread stuffing mix such as kraft stove top",
+        "count": 1
+      },
+      {
+        "ingredient": "cup dry farina cereal such as cream of wheat",
+        "count": 1
+      },
+      {
+        "ingredient": "cups arborio rice uncooked",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons brown rice flour",
+        "count": 1
+      },
+      {
+        "ingredient": "cup about corn oil",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups whole wheat flour",
+        "count": 1
+      },
+      {
+        "ingredient": "cups whole wheat flour",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon rice vinegar",
+        "count": 1
+      },
+      {
+        "ingredient": "cup corn muffin mix",
+        "count": 1
+      },
+      {
+        "ingredient": "cup scant toasted whole wheat breadcrumbs",
+        "count": 1
+      },
+      {
+        "ingredient": "14 cups cornmeal",
+        "count": 1
+      },
+      {
+        "ingredient": "85 ounce package cornbread mix",
+        "count": 1
+      },
+      {
+        "ingredient": "cups cornbread crumbs",
+        "count": 1
+      },
+      {
+        "ingredient": "85 ounce package dry corn muffin mix",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups fresh corn kernels cut from cob",
+        "count": 1
+      }
+    ],
+    "herbs": [
+      {
+        "ingredient": "cup thinly sliced fresh basil",
+        "count": 2
+      },
+      {
+        "ingredient": "cup chopped fresh italian parsley",
+        "count": 2
+      },
+      {
+        "ingredient": "16 ounce package smoked sausage",
+        "count": 1
+      },
+      {
+        "ingredient": "flatleafed parsley sprigs",
+        "count": 1
+      },
+      {
+        "ingredient": "cup chopped flatleafed parsley leaves",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon chopped fresh dill leaves",
+        "count": 1
+      },
+      {
+        "ingredient": "cup chopped fresh dill weed",
+        "count": 1
+      },
+      {
+        "ingredient": "12 cups loosely packed fresh mint leaves coarsely chopped divided",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons chopped fresh dill",
+        "count": 1
+      },
+      {
+        "ingredient": "cup parsley",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon fresh basil",
+        "count": 1
+      },
+      {
+        "ingredient": "leaves fresh sage for garnish optional",
+        "count": 1
+      },
+      {
+        "ingredient": "small handful mint washed and chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "small handful flatleaf italian parsley washed and chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon chopped fresh basil leaves or to taste optional",
+        "count": 1
+      },
+      {
+        "ingredient": "cup thinly sliced basil leaves",
+        "count": 1
+      },
+      {
+        "ingredient": "cup packed fresh cilantro",
+        "count": 1
+      },
+      {
+        "ingredient": "12 tablespoons chopped fresh dill",
+        "count": 1
+      },
+      {
+        "ingredient": "cup tightly packed fresh basil leaves chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "cup fresh parsley chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "cup packed chopped fresh basil or 1 tablespoon dried",
+        "count": 1
+      },
+      {
+        "ingredient": "cup chopped fresh basil leaves packed",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons chopped fresh mint",
+        "count": 1
+      },
+      {
+        "ingredient": "cup packed basil leaves chopped divided",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons chopped fresh parsley or to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon chopped fresh basil or to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "cup packed fresh mint leaves cut crosswise into thin shreds",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons chopped basil",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons chopped fresh mint leaves",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons finely chopped fresh mint plus more for serving",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons finely chopped fresh parsley plus more for serving",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons finely chopped fresh mint",
+        "count": 1
+      },
+      {
+        "ingredient": "fresh dill sprigs",
+        "count": 1
+      },
+      {
+        "ingredient": "5 to 7ounce container basil pesto",
+        "count": 1
+      },
+      {
+        "ingredient": "64 small fresh mint leaves",
+        "count": 1
+      }
+    ],
+    "spices": [
+      {
+        "ingredient": "garlic clove finely grated",
+        "count": 2
+      },
+      {
+        "ingredient": "tablespoons red pepper flakes",
+        "count": 1
+      },
+      {
+        "ingredient": "12 tablespoons cumin",
+        "count": 1
+      },
+      {
+        "ingredient": "garlic cloves sliced thin",
+        "count": 1
+      },
+      {
+        "ingredient": "good grinds black pepper",
+        "count": 1
+      },
+      {
+        "ingredient": "large cloves garlic very thinly sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "12 teaspoons ground cumin or to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "and coarsely ground black pepper to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "anaheim chile peppers chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "cinnamon sticks optional",
+        "count": 1
+      },
+      {
+        "ingredient": "1 inch piece fresh ginger grated",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon hot pepper sauce or to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "garlic clove peeled",
+        "count": 1
+      },
+      {
+        "ingredient": "clove garlic finely minced or to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon freshly ground black pepper or to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "medium red bell pepper chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "cup 1inch pieces sweet bell pepper",
+        "count": 1
+      },
+      {
+        "ingredient": "green bell pepper diced",
+        "count": 1
+      },
+      {
+        "ingredient": "green bell peppers seeded and chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "hungarian hot peppers seeded and chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "teaspoon red pepper flakes optional",
+        "count": 1
+      },
+      {
+        "ingredient": "arugula grated fresh lemon zest fresh lemon juice and freshly ground black pepper",
+        "count": 1
+      },
+      {
+        "ingredient": "dash black pepper to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "ounces pepper jack cheese cubed",
+        "count": 1
+      },
+      {
+        "ingredient": "red bell peppers chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "ounce diced roasted red peppers",
+        "count": 1
+      },
+      {
+        "ingredient": "cloves garlic sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "clove garlic grated",
+        "count": 1
+      },
+      {
+        "ingredient": "to 12 teaspoon red pepper flakes",
+        "count": 1
+      },
+      {
+        "ingredient": "clove garlic minced optional",
+        "count": 1
+      },
+      {
+        "ingredient": "12 tablespoons asian chile pepper sauce",
+        "count": 1
+      },
+      {
+        "ingredient": "sweet pepper chicken sausages sliced",
+        "count": 1
+      },
+      {
+        "ingredient": "pinch sea salt and freshly ground black pepper to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "red bell pepper cut into matchsticksized pieces",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon freshly ground black pepper or to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoon red pepper flakes or to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "cup crystallized ginger 1 34 oz coarsely chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "salt and freshly ground black pepper to taste",
+        "count": 1
+      },
+      {
+        "ingredient": "large clove garlic crushed",
+        "count": 1
+      },
+      {
+        "ingredient": "green bell pepper coarsely shredded",
+        "count": 1
+      }
+    ],
+    "nuts": [
+      {
+        "ingredient": "cup finely chopped toasted hazelnuts skins removed",
+        "count": 1
+      },
+      {
+        "ingredient": "cup chopped toasted hazelnuts",
+        "count": 1
+      },
+      {
+        "ingredient": "tablespoons pistachio oil",
+        "count": 1
+      },
+      {
+        "ingredient": "ounce walnuts chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "ounce blanched almonds chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "ounce hazelnuts chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "cup blanched almonds roughly chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "cup almond flour",
+        "count": 1
+      },
+      {
+        "ingredient": "cup walnuts 1 ounce toasted",
+        "count": 1
+      },
+      {
+        "ingredient": "34 cups ground walnuts",
+        "count": 1
+      },
+      {
+        "ingredient": "cup pecans 1 oz coarsely chopped",
+        "count": 1
+      },
+      {
+        "ingredient": "cup roasted cashews chopped",
+        "count": 1
+      }
+    ]
+  }
+}

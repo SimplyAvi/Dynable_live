@@ -1,0 +1,74 @@
+{
+  "total": 1000,
+  "highConfidence": 233,
+  "questionable": 767,
+  "topCanonicals": [
+    [
+      "salt",
+      261
+    ],
+    [
+      "yogurt",
+      242
+    ],
+    [
+      "shrimp",
+      51
+    ],
+    [
+      "almond",
+      49
+    ],
+    [
+      "thin spaghetti",
+      46
+    ],
+    [
+      "lettuce",
+      42
+    ],
+    [
+      "semi-sweet chocolate",
+      42
+    ],
+    [
+      "milk",
+      32
+    ],
+    [
+      "gelatin",
+      28
+    ],
+    [
+      "sugar",
+      26
+    ]
+  ],
+  "overMapped": [
+    {
+      "canonical": "salt",
+      "count": 261
+    },
+    {
+      "canonical": "yogurt",
+      "count": 242
+    }
+  ],
+  "canonicalDistribution": {
+    "egg": 3,
+    "molasses": 1,
+    "yogurt": 12,
+    "gelatin": 4,
+    "shrimp": 7,
+    "milk": 4,
+    "sharp cheddar": 1,
+    "thin spaghetti": 1,
+    "turkey": 2,
+    "salt": 7,
+    "chocolate": 1,
+    "semi-sweet chocolate": 2,
+    "juice": 2,
+    "butter": 1,
+    "lettuce": 2
+  }
+}

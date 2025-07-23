@@ -1,0 +1,1633 @@
+[
+  {
+    "id": 912,
+    "brandOwner": "B&G Foods, Inc.",
+    "description": "BACON & ONION BAKED BEANS WITH SPECIALLY CURED BACON & SAVORY SPICES, BACON & ONION",
+    "suggestedCanonical": "molasses",
+    "score": 6
+  },
+  {
+    "id": 1645,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "ORANGE FLAVORED FAT-FREE GELATIN DESSERT, ORANGE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 1675,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "GUACAMOLE SEASONING GAME TIME PARTY MIX, GUACAMOLE",
+    "suggestedCanonical": "shrimp",
+    "score": 4
+  },
+  {
+    "id": 1793,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SWEET CHOCOLATE BAKING BAR, SWEET CHOCOLATE",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 6
+  },
+  {
+    "id": 1850,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "VANILLA FLAVORED REDUCED FAT ICE CREAM WITH CHOCOLATE FLAVORED COATING BARS, VANILLA",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 1917,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "STRAWBERRY FLAVORED FAT-FREE GELATIN DESSERT, STRAWBERRY",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 1937,
+    "brandOwner": "Seattle Chocolate Company, Inc",
+    "description": "COCONUT SEA SALT DARK CHOCOLATE TRUFFLE BAR, COCONUT SEA SALT",
+    "suggestedCanonical": "sea salt",
+    "score": 4
+  },
+  {
+    "id": 76794,
+    "brandOwner": "Debbas Gourmet, LLC",
+    "description": "MILK CHOCOLATE CARAMEL PRETZEL WITH CHOCOLATE CANDIES GOURMET MINI BARK, MILK CHOCOLATE CARAMEL PRETZEL WITH CHOCOLATE CANDIES",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 2452,
+    "brandOwner": "Kellogg Company US",
+    "description": "Kellogg's Cheez It Caddies Crackers Halloween .38oz",
+    "suggestedCanonical": "sharp cheddar",
+    "score": 5
+  },
+  {
+    "id": 2458,
+    "brandOwner": "Kellogg Company US",
+    "description": "Kellogg's Klg Licensed Crackers Cookies Scooby-Doo Cinnamon Graham Sticks 3oz",
+    "suggestedCanonical": "sharp cheddar",
+    "score": 4
+  },
+  {
+    "id": 3481,
+    "brandOwner": "Safeway, Inc.",
+    "description": "MILK CHOCOLATE PEANUT BUTTER CUPS, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 3480,
+    "brandOwner": "Safeway, Inc.",
+    "description": "DARK CHOCOLATE PEANUT BUTTER CUPS, DARK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 3666,
+    "brandOwner": "The Hershey Company",
+    "description": "DARK CHOCOLATE COVERED PEPPERMINT PATTIES, DARK CHOCOLATE COVERED PEPPERMINT",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 3668,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE & PEANUT BUTTER CUPS, MILK CHOCOLATE & PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 3669,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE & PEANUT BUTTER CRUNCHY CUPS, MILK CHOCOLATE & PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 3673,
+    "brandOwner": "The Hershey Company",
+    "description": "CREAMY MILK CHOCOLATE & PEANUT BUTTER CUPS, CREAMY MILK CHOCOLATE & PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 80949,
+    "brandOwner": "Kellogg Company US",
+    "description": "Kellogg's Cheez It Crackers Pepper Jack 3oz",
+    "suggestedCanonical": "sharp cheddar",
+    "score": 5
+  },
+  {
+    "id": 66855,
+    "brandOwner": "The Hershey Company",
+    "description": "PRETZELS, CARAMEL, PEANUT BUTTER, PEANUTS, AND CHOCOLATE BAR, PRETZELS, CARAMEL, PEANUT BUTTER, PEANUTS, AND CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 7131,
+    "brandOwner": "B&G Foods, Inc.",
+    "description": "BACON & ONION BAKED BEANS WITH SPECIALLY CURED BACON & SAVORY SPICES, BACON & ONION",
+    "suggestedCanonical": "molasses",
+    "score": 6
+  },
+  {
+    "id": 7521,
+    "brandOwner": "Lunds Inc",
+    "description": "PREMIUM PURE DARK BELGIAN CHOCOLATE, DARK CHOCOLATE",
+    "suggestedCanonical": "sea salt",
+    "score": 4
+  },
+  {
+    "id": 8242,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "FAT FREE PASTEURIZED PROCESS CHEESE PRODUCT SINGLES, FAT FREE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 88893,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE & PEANUT BUTTER EGG, MILK CHOCOLATE & PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 9521,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "MILD CHILI SEASONING MIX, MILD CHILI",
+    "suggestedCanonical": "shrimp",
+    "score": 4
+  },
+  {
+    "id": 9895,
+    "brandOwner": "Prairie Farms Dairy, Inc.",
+    "description": "KRISPY KRUNCH VANILLA ICE CREAM BARS WITH REAL MILK CHOCOLATE AND CRISPED RICE, KRISPY KRUNCH",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 9896,
+    "brandOwner": "Clover Stornetta Farms, Inc.",
+    "description": "1% LOW FAT MILK, CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 10557,
+    "brandOwner": "Ghirardelli Chocolate Company",
+    "description": "ASSORTED PREMIUM CHOCOLATE SQUARES, MINT DARK CHOCOLATE, CARAMEL MILK CHOCOLATE, 60% CACAO DARK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 5
+  },
+  {
+    "id": 11260,
+    "brandOwner": "Sweet Arrow Springs, LLC",
+    "description": "CHOCOLATE LOW FAT MILK, CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 12341,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "SALTED CARAMEL MILK CHOCOLATE, CREAMY CARAMEL, CRUNCHY SALT, SMOOTH NOUGAT BARS, SALTED CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 13703,
+    "brandOwner": "ASTI MANUFACTURING CORP INC",
+    "description": "ENRICHED MACARONI PRODUCT, SPAGHETTI",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 4
+  },
+  {
+    "id": 13716,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "VEGETABLE 3 LAYER PASTA STUFFED WITH RICOTTA CHEESE AND VEGETABLES TOPPED WITH MOZZARELLA AND PARMESAN CHEESE LASAGNA, VEGETABLE",
+    "suggestedCanonical": "lettuce",
+    "score": 4
+  },
+  {
+    "id": 13816,
+    "brandOwner": "KIND Inc.",
+    "description": "PUMPKIN SUNFLOWER CHIA COCONUT & SEEDS CLUSTERS, PUMPKIN SUNFLOWER CHIA COCONUT & SEEDS",
+    "suggestedCanonical": "coconut",
+    "score": 4
+  },
+  {
+    "id": 13834,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "FAT FREE REFRIED BEANS, FAT FREE",
+    "suggestedCanonical": "milk",
+    "score": 4
+  },
+  {
+    "id": 14698,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE & PEANUT BUTTER UNWRAPPED MINIS, MILK CHOCOLATE & PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 15470,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "SEMI-SWEET CHOCOLATE CHIPS, SEMI-SWEET CHOCOLATE",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 5
+  },
+  {
+    "id": 16752,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Godiva Flourless Chocolate Torte Baking Mix with Dark Chocolate Ganache",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 16827,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Betty Crocker Milk Chocolate Brownie Mix Family Size",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 17028,
+    "brandOwner": "Kellogg Company US",
+    "description": "Kellogg's Cheez It Crackers Grooves Cheddar Ranch 6oz",
+    "suggestedCanonical": "sharp cheddar",
+    "score": 6
+  },
+  {
+    "id": 17096,
+    "brandOwner": "Kellogg Company US",
+    "description": "Kellogg's Private Label Crackers Original 4oz 50ct",
+    "suggestedCanonical": "sharp cheddar",
+    "score": 5
+  },
+  {
+    "id": 17469,
+    "brandOwner": "WELCH FOODS INC.",
+    "description": "WELCH'S 5.5 FL OZ JUICE COCKTAIL - CRANBERRY",
+    "suggestedCanonical": "juice",
+    "score": 4
+  },
+  {
+    "id": 60198,
+    "brandOwner": "Wells Enterprises, Inc.",
+    "description": "DOUBLE CARAMEL SWIRL FLAVORED LOW FAT ICE CREAM CONES WITH A CARAMEL SWIRL IN A SUGAR CONE TOPPED WITH CHOCOLATE CURLS, DOUBLE CARAMEL SWIRL",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 17917,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Mountain High Low Fat Plain Yoghurt",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 18426,
+    "brandOwner": "Kellogg Company US",
+    "description": "Kellogg's Processor Crackers Wheat 289.6oz 1ct",
+    "suggestedCanonical": "sharp cheddar",
+    "score": 4
+  },
+  {
+    "id": 19027,
+    "brandOwner": "Madelaine Chocolate Novelties",
+    "description": "DARK CHOCOLATE MOCHA & CARAMEL TRUFFLES",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 19035,
+    "brandOwner": "The Hershey Company",
+    "description": "CRISP WAFERS IN MILK CHOCOLATE BARS, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 19133,
+    "brandOwner": "Lindt & Sprungli (Schweiz) AG",
+    "description": "CARAMEL MILK CHOCOLATE TRUFFLES, CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 19149,
+    "brandOwner": "Lindt & Sprungli (Schweiz) AG",
+    "description": "ASSORTED DARK CHOCOLATE TRUFFLES",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 19135,
+    "brandOwner": "Lindt & Sprungli (Schweiz) AG",
+    "description": "ASSORTED CHOCOLATE TRUFFLES, DARK CHOCOLATE; WHITE CHOCOLATE; 60% EXTRA DARK CHOCOLATE; CARAMEL MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 6
+  },
+  {
+    "id": 20285,
+    "brandOwner": "Danone US, LLC",
+    "description": "VANILLA ALMONDMILK YOGURT ALTERNATIVE, VANILLA",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 21206,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE PEANUT BUTTER CUPS, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 21218,
+    "brandOwner": "The Hershey Company",
+    "description": "SPECIAL DARK MILDLY SWEET XL CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 21205,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE CRISP WAFERS, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 21214,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE EASTER CANDY, CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 21223,
+    "brandOwner": "The Hershey Company",
+    "description": "SPECIAL DARK MILDLY SWEET CHOCOLATE BAR",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 21224,
+    "brandOwner": "The Hershey Company",
+    "description": "SPECIAL DARK MILDLY SWEET CHOCOLATE BAR, SPECIAL DARK",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 21227,
+    "brandOwner": "The Hershey Company",
+    "description": "SOLID MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 21245,
+    "brandOwner": "The Hershey Company",
+    "description": "GIANT MILK CHOCOLATE & PEANUT BUTTER BAR, MILK CHOCOLATE; PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 21250,
+    "brandOwner": "The Hershey Company",
+    "description": "MINIATURES MILK CHOCOLATE PEANUT BUTTER CUPS CANDY, MILK CHOCOLATE; PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 21261,
+    "brandOwner": "The Hershey Company",
+    "description": "SOLID MILK CHOCOLATE BUNNY",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 21260,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE PEANUT BUTTER CREME BUNNY EASTER CANDY, MILK CHOCOLATE; PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 21266,
+    "brandOwner": "The Hershey Company",
+    "description": "ORGANIC MILK CHOCOLATE & PEANUT BUTTER CUPS, MILK CHOCOLATE; PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 21263,
+    "brandOwner": "The Hershey Company",
+    "description": "HERSHEY'S KISSES MILK CHOCOLATE, 2.24 OZ",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 21391,
+    "brandOwner": "Danone US, LLC",
+    "description": "ALMOND BUTTER & COCONUT FLAVOR GREEK YOGURT, ALMOND BUTTER; COCONUT",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 21449,
+    "brandOwner": "Danone US, LLC",
+    "description": "CHOCOLATE COCONUT FLAVOR ALMONDMILK PROBIOTIC YOGURT ALTERNATIVE, CHOCOLATE; COCONUT",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 21479,
+    "brandOwner": "Danone US, LLC",
+    "description": "ALMONDMILK COCONUT CHOCOLATE ALMOND YOGURT ALTERNATIVE, TOASTED COCONUT; DARK CHOCOLATE; ALMOND",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 22376,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "VANILLA REDUCED CALORIE PUDDING SNACKS, VANILLA",
+    "suggestedCanonical": "gelatin",
+    "score": 4
+  },
+  {
+    "id": 22395,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "GERMAN'S SWEET CHOCOLATE WITH 48% CACAO PREMIUM BAKING BAR",
+    "suggestedCanonical": "semi-sweet chocolate",
+    "score": 4
+  },
+  {
+    "id": 22429,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "SOURS BLUE RASPBERRY GELATIN SNACKS, BLUE RASPBERRY",
+    "suggestedCanonical": "gelatin",
+    "score": 4
+  },
+  {
+    "id": 22460,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "ORANGE FLAVOR GELATIN DESSERT, ORANGE",
+    "suggestedCanonical": "gelatin",
+    "score": 4
+  },
+  {
+    "id": 22720,
+    "brandOwner": "Mars, Inc.",
+    "description": "VANILLA WITH MILK CHOCOLATE ICE CREAM BARS, VANILLA; MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 22727,
+    "brandOwner": "B&G Foods, Inc.",
+    "description": "MAPLE BAKED BEANS, MAPLE",
+    "suggestedCanonical": "molasses",
+    "score": 5
+  },
+  {
+    "id": 22728,
+    "brandOwner": "B&G Foods, Inc.",
+    "description": "MAPLE BAKED BEANS, MAPLE",
+    "suggestedCanonical": "molasses",
+    "score": 5
+  },
+  {
+    "id": 23582,
+    "brandOwner": "World Finer Foods, Inc.",
+    "description": "PREMIUM 100% PURE OLIVE OIL",
+    "suggestedCanonical": "olive oil",
+    "score": 4
+  },
+  {
+    "id": 2416,
+    "brandOwner": "Post Consumer Brands, LLC",
+    "description": "SWEETENED CHOCOLATE FLAVORED CORN AND OAT PUFFED CEREAL WITH COCOA, SWEETENED CHOCOLATE WITH COCOA",
+    "suggestedCanonical": "almond",
+    "score": 4
+  },
+  {
+    "id": 25067,
+    "brandOwner": "The Hillshire Brands Company",
+    "description": "FULLY COOKED ORIGINAL PORK SAUSAGE PATTIES",
+    "suggestedCanonical": "egg",
+    "score": 4
+  },
+  {
+    "id": 25926,
+    "brandOwner": "Safeway, Inc.",
+    "description": "PEPPERMINT WHITE & DARK CHOCOLATE BARK, PEPPERMINT",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26340,
+    "brandOwner": "Conagra Frozen Foods",
+    "description": "THREE CHEESE TWO LAYERS OF CRUST STUFFED WITH MARINARA SAUCE, MOZZARELLA, PARMESAN, AND ROMANO CHEESES DOUBLE STUFFED MEGA PIZZA, THREE CHEESE",
+    "suggestedCanonical": "lettuce",
+    "score": 4
+  },
+  {
+    "id": 26466,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE CANDY, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26485,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE CANDY, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26599,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE BARS, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26428,
+    "brandOwner": "The Hershey Company",
+    "description": "CANDY, SPRINGTIME CANDY, MILK CHOCOLATE, SOLID MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26437,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE NUGGETS, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26449,
+    "brandOwner": "The Hershey Company",
+    "description": "DARK CHOCOLATE NUGGETS TRUFFLES, DARK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 5
+  },
+  {
+    "id": 26451,
+    "brandOwner": "The Hershey Company",
+    "description": "SOLID MILK CHOCOLATE CANDY, SOLID MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26452,
+    "brandOwner": "The Hershey Company",
+    "description": "SOLID MILK CHOCOLATE CANDY, SOLID MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26450,
+    "brandOwner": "The Hershey Company",
+    "description": "DARK CHOCOLATE COVERED PEPPERMINT PATTIES, DARK CHOCOLATE, PEPPERMINT",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26467,
+    "brandOwner": "The Hershey Company",
+    "description": "CANDY COATED MILK CHOCOLATE HERSHEY-ETS, CANDY COATED MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26487,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE CANDY, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26488,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE EGG HUNT CANDY, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26509,
+    "brandOwner": "The Hershey Company",
+    "description": "SPECIAL DARK MILDLY SWEET CHOCOLATE CANDY, SPECIAL DARK",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26504,
+    "brandOwner": "The Hershey Company",
+    "description": "EXTRA CREAMY SOLID MILK CHOCOLATE HEARTS, EXTRA CREAMY SOLID MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26505,
+    "brandOwner": "The Hershey Company",
+    "description": "EXTRA CREAMY SOLID MILK CHOCOLATE BELLS, EXTRA CREAMY SOLID MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26598,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE & PEANUT BUTTER CUPS MINIATURES, MILK CHOCOLATE & PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26522,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE PRETZEL BITES, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 5
+  },
+  {
+    "id": 26526,
+    "brandOwner": "The Hershey Company",
+    "description": "SPECIAL DARK MILDLY SWEET CHOCOLATE ASSORTMENT MINIATURES, SPECIAL DARK",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26547,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE POPCORN, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26552,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE BARS, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26568,
+    "brandOwner": "The Hershey Company",
+    "description": "CARAMEL CREME CANDY WITH PRETZEL BITS, CARAMEL CREME WITH PRETZEL BITS",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26585,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE CANDY, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26590,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE & PEANUT BUTTER CUPS, MILK CHOCOLATE & PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26591,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE & PEANUT BUTTER CUPS, MILK CHOCOLATE & PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26593,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE & PEANUT BUTTER CUPS, MILK CHOCOLATE & PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26597,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE & PEANUT BUTTER MINIATURES CUP, MILK CHOCOLATE & PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26603,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE & PEANUT BUTTER THINS CUPS, MILK CHOCOLATE & PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26600,
+    "brandOwner": "The Hershey Company",
+    "description": "ASSORTED MILK & DARK CHOCOLATES PREMIUM COLLECTION, ASSORTED MILK & DARK CHOCOLATES",
+    "suggestedCanonical": "salt",
+    "score": 5
+  },
+  {
+    "id": 26629,
+    "brandOwner": "The Hershey Company",
+    "description": "SPECIAL DARK MILDLY SWEET CHOCOLATE BARS, SPECIAL DARK",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26612,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE BAR, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26638,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE GRINCH CANDY, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26639,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE SANTAS, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26633,
+    "brandOwner": "The Hershey Company",
+    "description": "SPECIAL DARK MILDLY SWEET CHOCOLATE CANDY, SPECIAL DARK",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26640,
+    "brandOwner": "The Hershey Company",
+    "description": "CLASSIC DARK OAT MADE PLANT-BASED CHOCOLATE CONFECTION, CLASSIC DARK",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26646,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE BUILD-A-SANTA BAR, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26648,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE REINDEER, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 26654,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE DROPS, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 27344,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "ASSORTED CHOCOLATE HEARTS PROMISES, MILK CHOCOLATE & DARK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 27532,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "MILK AND DARK CHOCOLATE ASSORTED TRUFFLES, MILK AND DARK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 5
+  },
+  {
+    "id": 28167,
+    "brandOwner": "Mars, Inc.",
+    "description": "VANILLA ICE CREAM BAR WITH MILK CHOCOLATE, VANILLA WITH MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 28200,
+    "brandOwner": "Mars, Inc.",
+    "description": "VANILLA ICE CREAM BARS MINIS WITH MILK CHOCOLATE, VANILLA WITH MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 28744,
+    "brandOwner": "The Hershey Company",
+    "description": "POMEGRANATE FLAVOR DARK CHOCOLATE, POMEGRANATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 29407,
+    "brandOwner": "Mott's LLP",
+    "description": "PINEAPPLE ORANGE GUAVA JUICE BLEND COCKTAIL, PINEAPPLE; ORANGE; GUAVA",
+    "suggestedCanonical": "juice",
+    "score": 4
+  },
+  {
+    "id": 29839,
+    "brandOwner": "Barilla G & R F.Lli S.P.A.",
+    "description": "ENRICHED MACARONI PRODUCT, SPAGHETTI",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 4
+  },
+  {
+    "id": 29866,
+    "brandOwner": "Ben & Jerry's Homemade Inc.",
+    "description": "CHOCOLATE MILK & COOKIES CHOCOLATE & VANILLA SWIRLED WITH CHOCOLATE CHIP COOKIES LIGHT ICE CREAM, CHOCOLATE MILK & COOKIES",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 30659,
+    "brandOwner": "Chobani, Inc.",
+    "description": "ALMOND COCO LOCO LOW-FAT GREEK YOGURT, ALMOND; COCONUT; DARK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 5
+  },
+  {
+    "id": 31227,
+    "brandOwner": "Target Stores",
+    "description": "CHOCOLATE MINI BROWNIES WITH FROSTING, CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 31273,
+    "brandOwner": "Target Stores",
+    "description": "PEPPERMINT BELGIAN DARK CHOCOLATE AND WHITE CHOCOLATE SNOWFLAKE BARK WITH CANDY CANE CRUNCH, PEPPERMINT",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 31275,
+    "brandOwner": "Target Stores",
+    "description": "DESSERT MINT MILK CHOCOLATE MELTS, DESSERT MINT MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 31281,
+    "brandOwner": "Target Stores",
+    "description": "HANUKKAH GELT MILK CHOCOLATE COINS, HANUKKAH GELT",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 31513,
+    "brandOwner": "Simple Mills",
+    "description": "CRUNCHY ALMOND FLOUR DOUBLE CHOCOLATE COOKIES, CHOCOLATE",
+    "suggestedCanonical": "flour",
+    "score": 4
+  },
+  {
+    "id": 45604,
+    "brandOwner": "Target Stores",
+    "description": "MACARONI PRODUCT, BRONZE CUT PENNONI",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 4
+  },
+  {
+    "id": 45605,
+    "brandOwner": "Target Stores",
+    "description": "MACARONI PRODUCT, BRONZE CUT PACCHERI",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 4
+  },
+  {
+    "id": 16957,
+    "brandOwner": "GENERAL MILLS SALES INC.",
+    "description": "Pillsbury Chocolate Chunk and Chip Cookie Dough 24 Count",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 32735,
+    "brandOwner": "Teeccino, Inc.",
+    "description": "REISHI ELEUTHERO ORGANIC MUSHROOM HERBAL TEA BAGS, REISHI ELEUTHERO",
+    "suggestedCanonical": "chocolate",
+    "score": 4
+  },
+  {
+    "id": 32729,
+    "brandOwner": "Teeccino, Inc.",
+    "description": "FRENCH ROAST ORGANIC ROASTED HERBAL TEA BAGS, FRENCH ROAST",
+    "suggestedCanonical": "chocolate",
+    "score": 5
+  },
+  {
+    "id": 32731,
+    "brandOwner": "Teeccino, Inc.",
+    "description": "DANDELION DARK ROAST ORGANIC ROASTED HERBAL TEA BAGS, DANDELION DARK ROAST",
+    "suggestedCanonical": "chocolate",
+    "score": 6
+  },
+  {
+    "id": 32741,
+    "brandOwner": "Teeccino, Inc.",
+    "description": "MEDIUM ROAST HAZELNUT CHICORY HERBAL COFFEE, HAZELNUT",
+    "suggestedCanonical": "chocolate",
+    "score": 6
+  },
+  {
+    "id": 31285,
+    "brandOwner": "Target Stores",
+    "description": "HALLOWEEN GRAVEYARD CRUNCH MILK CHOCOLATE BARK CRISPS WITH COOKIE PIECES, GUMMY WORMS AND SPRINKLES, HALLOWEEN GRAVEYARD CRUNCH",
+    "suggestedCanonical": "yogurt",
+    "score": 5
+  },
+  {
+    "id": 45606,
+    "brandOwner": "Target Stores",
+    "description": "MACARONI PRODUCT, BRONZE CUT LUMACONI",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 4
+  },
+  {
+    "id": 33525,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE HOLIDAY BAR",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 19143,
+    "brandOwner": "Lindt & Sprungli (Schweiz) AG",
+    "description": "ASSORTED CHOCOLATE TRUFFLES, MILK CHOCOLATE; DARK CHOCOLATE; WHITE CHOCOLATE; 60% EXTRA DARK CHOCOLATE; CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 6
+  },
+  {
+    "id": 33838,
+    "brandOwner": "Safeway, Inc.",
+    "description": "TOFFEE PRETZEL MILK CHOCOLATE BARK, TOFFEE PRETZEL",
+    "suggestedCanonical": "salt",
+    "score": 5
+  },
+  {
+    "id": 33840,
+    "brandOwner": "Safeway, Inc.",
+    "description": "COFFEE TOFFEE MILK CHOCOLATE BARK, COFFEE TOFFEE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 33971,
+    "brandOwner": "Godiva Chocolatier, Inc.",
+    "description": "NAPOLITAINS ASSORTED SOLID CHOCOLATES, MILK CHOCOLATE, DARK CHOCOLATE AND HAZELNUT MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 33990,
+    "brandOwner": "The Hershey Company",
+    "description": "ASSORTED MILK & DARK CHOCOLATES VALENTINE COLLECTION, ASSORTED MILK & DARK CHOCOLATES",
+    "suggestedCanonical": "salt",
+    "score": 5
+  },
+  {
+    "id": 33984,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE NUGGETS, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 33985,
+    "brandOwner": "The Hershey Company",
+    "description": "DARK CHOCOLATE NUGGETS TRUFFLES, DARK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 5
+  },
+  {
+    "id": 33991,
+    "brandOwner": "The Hershey Company",
+    "description": "ASSORTED CHOCOLATES TRUFFLES COLLECTION, ASSORTED CHOCOLATES",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 33992,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE NUGGETS, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 34026,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE & PEANUT BUTTER BIG CUPS, MILK CHOCOLATE & PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 34030,
+    "brandOwner": "The Hershey Company",
+    "description": "SOLID MILK CHOCOLATE CANDY, SOLID MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 21203,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE PEANUT BUTTER & NOUGAT BAR, MILK CHOCOLATE; PEANUT; NOUGAT",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 21390,
+    "brandOwner": "Danone US, LLC",
+    "description": "ALMOND BUTTER & VANILLA GREEK YOGURT, ALMOND BUTTER; VANILLA",
+    "suggestedCanonical": "yogurt",
+    "score": 5
+  },
+  {
+    "id": 34613,
+    "brandOwner": "Target Stores",
+    "description": "HOLIDAY COUNTDOWN WITH MILK CHOCOLATE, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 5
+  },
+  {
+    "id": 34577,
+    "brandOwner": "Target Stores",
+    "description": "SNOWFLAKE SPARKLE DARK CHOCOLATE AND WHITE CHOCOLATE WITH PEPPERMINT CRUNCH HOT DRINK BOMB FILLED WITH MINI MARSHMALLOWS, SNOWFLAKE SPARKLE",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 34579,
+    "brandOwner": "Target Stores",
+    "description": "PEPPERMINT DARK AND WHITE CHOCOLATE WITH CANDY CANE CRUNCH BARK, PEPPERMINT",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 34590,
+    "brandOwner": "Target Stores",
+    "description": "HOLIDAY BELGIAN MILK CHOCOLATE TOPPED WITH SPRINKLES HOT DRINK BOMB FILLED WITH MINI MARSHMALLOWS AND COCOA MIX, HOLIDAY",
+    "suggestedCanonical": "yogurt",
+    "score": 5
+  },
+  {
+    "id": 34592,
+    "brandOwner": "Target Stores",
+    "description": "BELGIAN CHOCOLATE HOT COCOA SPOONS WITH PEPPERMINT CRUNCH, BELGIAN CHOCOLATE WITH PEPPERMINT CRUNCH",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 34597,
+    "brandOwner": "Target Stores",
+    "description": "MILK CHOCOLATE HOT COCOA MIX, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 34601,
+    "brandOwner": "Target Stores",
+    "description": "CHOCOLATE ICING WITH STAR TIP, CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 22731,
+    "brandOwner": "B&G Foods, Inc.",
+    "description": "BACON & ONION BAKED BEANS, BACON; ONION",
+    "suggestedCanonical": "molasses",
+    "score": 4
+  },
+  {
+    "id": 35697,
+    "brandOwner": "Kasim International Corp",
+    "description": "CHOCOLATE INSTANT LOW FAT DRY MILK, CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 35922,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "ZERO SUGAR SODA",
+    "suggestedCanonical": "sugar",
+    "score": 5
+  },
+  {
+    "id": 35944,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "MYSTERY FLAVOR ZERO SUGAR SODA",
+    "suggestedCanonical": "sugar",
+    "score": 5
+  },
+  {
+    "id": 35945,
+    "brandOwner": "Pepsi-Cola North America Inc.",
+    "description": "MYSTERY FLAVOR ZERO SUGAR SODA",
+    "suggestedCanonical": "sugar",
+    "score": 5
+  },
+  {
+    "id": 37030,
+    "brandOwner": "The Hershey Company",
+    "description": "KISSES SPECIAL DARK MILDLY SWEET CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 37048,
+    "brandOwner": "The Hershey Company",
+    "description": "ORGANIC SPECIAL DARK MILDLY SWEET CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 37047,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE BAR, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 37176,
+    "brandOwner": "Danone US, LLC",
+    "description": "VANILLA LOWFAT YOGURT, VANILLA",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 37193,
+    "brandOwner": "Danone US, LLC",
+    "description": "GREEK VANILLA FAT FREE YOGURT, VANILLA",
+    "suggestedCanonical": "yogurt",
+    "score": 6
+  },
+  {
+    "id": 37203,
+    "brandOwner": "Danone US, LLC",
+    "description": "VANILLA GREEK LOWFAT YOGURT, VANILLA",
+    "suggestedCanonical": "yogurt",
+    "score": 5
+  },
+  {
+    "id": 37218,
+    "brandOwner": "Danone US, LLC",
+    "description": "VANILLA CHAI ICELANDIC STYLE NONFAT YOGURT, VANILLA CHAI",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 37437,
+    "brandOwner": "Dole Packaged Foods, LLC",
+    "description": "DIGESTIVE BLISS TROPICAL PASSION FRUIT JUICE DRINK BLEND, PINEAPPLE; GUAVA; PASSIONFRUIT",
+    "suggestedCanonical": "juice",
+    "score": 5
+  },
+  {
+    "id": 38057,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "PEACH LOW CALORIE GELATIN DESSERT, PEACH",
+    "suggestedCanonical": "gelatin",
+    "score": 5
+  },
+  {
+    "id": 27358,
+    "brandOwner": "Mars Chocolate North America LLC",
+    "description": "CRISPY MILK CHOCOLATE CANDIES BAR WITH MINIS & CRISP RICE, CRISPY",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 38911,
+    "brandOwner": "Alanric Food Distributors, Inc.",
+    "description": "RED WITH EXTRA VIRGIN OLIVE OIL CLAM SAUCE",
+    "suggestedCanonical": "olive oil",
+    "score": 4
+  },
+  {
+    "id": 29949,
+    "brandOwner": "Wegmans Food Markets, Inc. ",
+    "description": "CINNAMON SQUARES SWEETENED WHOLE WHEAT & RICE CEREAL WITH CINNAMON, CINNAMON SQUARES",
+    "suggestedCanonical": "almond",
+    "score": 4
+  },
+  {
+    "id": 41424,
+    "brandOwner": "The Hershey Company",
+    "description": "SPECIAL DARK MILDLY SWEET CHOCOLATE NUGGETS, SPECIAL DARK",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41423,
+    "brandOwner": "The Hershey Company",
+    "description": "ASSORTED MILK & DARK CHOCOLATES COLLECTION, ASSORTED MILK & DARK CHOCOLATES",
+    "suggestedCanonical": "salt",
+    "score": 5
+  },
+  {
+    "id": 41429,
+    "brandOwner": "The Hershey Company",
+    "description": "SOLID MILK CHOCOLATE CANDY, SOLID MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41439,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE, MILK",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41447,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE TIE DYE CANDY, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41452,
+    "brandOwner": "The Hershey Company",
+    "description": "SOLID MILK CHOCOLATE CANDY, SOLID MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41462,
+    "brandOwner": "The Hershey Company",
+    "description": "SPECIAL DARK MILDLY SWEET CHOCOLATE CHIPS, SPECIAL DARK",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41466,
+    "brandOwner": "The Hershey Company",
+    "description": "EXTRA CREAMY SOLID MILK CHOCOLATE HEARTS, EXTRA CREAMY SOLID MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41485,
+    "brandOwner": "The Hershey Company",
+    "description": "SPECIAL DARK MILDLY SWEET CHOCOLATE BARS, SPECIAL DARK MILDLY SWEET CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41481,
+    "brandOwner": "The Hershey Company",
+    "description": "DIPPED BITE SIZE ANIMAL CRACKERS COVERED IN PEANUT BUTTER CANDY AND DIPPED IN MILK CHOCOLATE, PEANUT BUTTER, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41479,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE BUNNIES, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41482,
+    "brandOwner": "The Hershey Company",
+    "description": "CRISP WAFERS IN MILK CHOCOLATE, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41489,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE BARS, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41490,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE BARS, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41492,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE HALLOWEEN PROPS BARS, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41512,
+    "brandOwner": "The Hershey Company",
+    "description": "DARK CHOCOLATE COVERED PEPPERMINT PATTIES SNOWFLAKES, DARK CHOCOLATE COVERED PEPPERMINT",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41506,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE & PEANUT BUTTER CUPS, MILK CHOCOLATE & PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41518,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE & PEANUT BUTTER MINIATURE CUPS, MILK CHOCOLATE & PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41519,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE & PEANUT BUTTER MINIATURES CUPS, MILK CHOCOLATE & PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41526,
+    "brandOwner": "The Hershey Company",
+    "description": "ASSORTED MILK & DARK CHOCOLATES VALENTINE COLLECTION, ASSORTED MILK & DARK CHOCOLATES",
+    "suggestedCanonical": "salt",
+    "score": 5
+  },
+  {
+    "id": 41521,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE & PEANUT BUTTER CUPS, MILK CHOCOLATE & PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41544,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE MINI BUNNIES, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41551,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE & PEANUT BUTTER CUPS MINIATURES, MILK CHOCOLATE & PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41549,
+    "brandOwner": "The Hershey Company",
+    "description": "CRISP WAFERS IN MILK CHOCOLATE THINS, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41570,
+    "brandOwner": "The Hershey Company",
+    "description": "SPECIAL DARK MILDLY SWEET CHOCOLATE BAR, SPECIAL DARK MILDLY SWEET CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41576,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE & PEANUT BUTTER CUPS, MILK CHOCOLATE & PEANUT BUTTER",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41562,
+    "brandOwner": "The Hershey Company",
+    "description": "MILK CHOCOLATE CANDY, MILK CHOCOLATE",
+    "suggestedCanonical": "salt",
+    "score": 4
+  },
+  {
+    "id": 41613,
+    "brandOwner": "Topco Associates, Inc.",
+    "description": "ENRICHED MACARONI PRODUCT, SPAGHETTI",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 4
+  },
+  {
+    "id": 41769,
+    "brandOwner": "Wakefern Food Corporation",
+    "description": "LEMON ALFREDO WITH REAL CREAM & EXTRA VIRGIN OLIVE OIL, LEMON ALFREDO",
+    "suggestedCanonical": "olive oil",
+    "score": 4
+  },
+  {
+    "id": 42095,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "RASPBERRY LOW CALORIE GELATIN DESSERT, RASPBERRY",
+    "suggestedCanonical": "gelatin",
+    "score": 5
+  },
+  {
+    "id": 42096,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "BLACK CHERRY LOW CALORIE GELATIN DESSERT, BLACK CHERRY",
+    "suggestedCanonical": "gelatin",
+    "score": 5
+  },
+  {
+    "id": 42094,
+    "brandOwner": "Kraft Heinz Foods Company",
+    "description": "LEMON SPARKLING LOW CALORIE GELATIN DESSERT, LEMON",
+    "suggestedCanonical": "gelatin",
+    "score": 5
+  },
+  {
+    "id": 43638,
+    "brandOwner": "Evolution Fresh, Inc.",
+    "description": "ORGANIC SWEET APPLE GREENS COLD-PRESSED VEGETABLE & FRUIT JUICE BLEND, CUCUMBER; APPLE; CELERY; SPINACH; PINEAPPLE; ROMAINE",
+    "suggestedCanonical": "juice",
+    "score": 5
+  },
+  {
+    "id": 43757,
+    "brandOwner": "The Hillshire Brands Company",
+    "description": "ORIGINAL FULLY COOKED PORK SAUSAGE PATTIES, ORIGINAL",
+    "suggestedCanonical": "egg",
+    "score": 4
+  },
+  {
+    "id": 43759,
+    "brandOwner": "The Hillshire Brands Company",
+    "description": "ORIGINAL FULLY COOKED PORK SAUSAGE PATTIES, ORIGINAL",
+    "suggestedCanonical": "egg",
+    "score": 4
+  },
+  {
+    "id": 43834,
+    "brandOwner": "Wal-Mart Stores, Inc.",
+    "description": "VANILLA MILK CHOCOLATE WITH SALTED TOFFEE, VANILLA WITH SALTED TOFFEE",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 45148,
+    "brandOwner": "Target Stores",
+    "description": "CRUNCHY NO STIR PEANUT BUTTER SPREAD, CRUNCHY",
+    "suggestedCanonical": "butter",
+    "score": 4
+  },
+  {
+    "id": 45601,
+    "brandOwner": "Target Stores",
+    "description": "MACARONI PRODUCT, BRONZE CUT LINGUINE",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 4
+  },
+  {
+    "id": 45602,
+    "brandOwner": "Target Stores",
+    "description": "MACARONI PRODUCT, BRONZE CUT PAPPARDELLE",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 4
+  },
+  {
+    "id": 45603,
+    "brandOwner": "Target Stores",
+    "description": "MACARONI PRODUCT, BRONZE CUT FUSILLONI",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 4
+  },
+  {
+    "id": 45612,
+    "brandOwner": "Target Stores",
+    "description": "MACARONI PRODUCT, BRONZE CUT STELLINE",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 4
+  },
+  {
+    "id": 45613,
+    "brandOwner": "Target Stores",
+    "description": "MACARONI PRODUCT, BRONZE CUT ORZO",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 4
+  },
+  {
+    "id": 45632,
+    "brandOwner": "Target Stores",
+    "description": "MACARONI PRODUCT, BRONZE CUT PENNE RIGATE",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 4
+  },
+  {
+    "id": 45633,
+    "brandOwner": "Target Stores",
+    "description": "MACARONI PRODUCT, ELBOWS",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 4
+  },
+  {
+    "id": 45634,
+    "brandOwner": "Target Stores",
+    "description": "WHOLE WHEAT MACARONI PRODUCT, FARFALLE",
+    "suggestedCanonical": "almond",
+    "score": 4
+  },
+  {
+    "id": 45635,
+    "brandOwner": "Target Stores",
+    "description": "WHOLE WHEAT MACARONI PRODUCT, SPAGHETTI",
+    "suggestedCanonical": "almond",
+    "score": 4
+  },
+  {
+    "id": 45640,
+    "brandOwner": "Target Stores",
+    "description": "DOUBLE CHOCOLATE PETITS FOURS FILLED WITH BUTTERCREAM, DOUBLE CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 45665,
+    "brandOwner": "Target Stores",
+    "description": "MACARONI PRODUCT, BRONZE CUT RADIATORE",
+    "suggestedCanonical": "thin spaghetti",
+    "score": 4
+  },
+  {
+    "id": 45725,
+    "brandOwner": "Target Stores",
+    "description": "GOLDEN SWEET WHOLE KERNEL CORN, GOLDEN SWEET",
+    "suggestedCanonical": "almond",
+    "score": 4
+  },
+  {
+    "id": 45796,
+    "brandOwner": "Target Stores",
+    "description": "ORANGE CREAM VANILLA FROZEN DAIRY DESSERT BARS WITH AN ORANGE SHERBET SHELL, ORANGE CREAM",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 33848,
+    "brandOwner": "Safeway, Inc.",
+    "description": "MILK CHOCOLATE COOKIES & CARAMEL CLUSTERS, MILK CHOCOLATE COOKIES & CARAMEL",
+    "suggestedCanonical": "salt",
+    "score": 5
+  },
+  {
+    "id": 45881,
+    "brandOwner": "Target Stores",
+    "description": "NEAPOLITAN VANILLA, STRAWBERRY AND CHOCOLATE ICE CREAM, NEAPOLITAN",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 45887,
+    "brandOwner": "Target Stores",
+    "description": "NEAPOLITAN VANILLA, STRAWBERRY AND CHOCOLATE ICE CREAM, NEAPOLITAN",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 45899,
+    "brandOwner": "Target Stores",
+    "description": "JAVA CHUNK COFFEE ICE CREAM SWIRLED WITH CHOCOLATE-FLAVORED CHUNKS, JAVA CHUNK",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 45912,
+    "brandOwner": "Target Stores",
+    "description": "AMARETTO CHERRY CHOCOLATE BLACK CHERRY-FLAVORED ICE CREAM WITH BLACK CHERRIES AND CHOCOLATY CHUNKS, AMARETTO CHERRY CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 45916,
+    "brandOwner": "Target Stores",
+    "description": "DOUBLE VANILLA ICE CREAM WITH GROUND VANILLA BEANS, DOUBLE VANILLA",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 45926,
+    "brandOwner": "Target Stores",
+    "description": "MILK CHOCOLATE & MACADAMIA TOFFEE WAFERS, MILK CHOCOLATE & MACADAMIA",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 45981,
+    "brandOwner": "Target Stores",
+    "description": "MILK CHOCOLATE COVERED MINI PRETZELS, MILK CHOCOLATE",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  },
+  {
+    "id": 46045,
+    "brandOwner": "Target Stores",
+    "description": "PEPPERMINT BARK PEPPERMINT ICE CREAM WITH CHOCOLATE-FLAVORED CHUNKS AND CANDY CANE SWIRL, PEPPERMINT BARK",
+    "suggestedCanonical": "yogurt",
+    "score": 4
+  }
+]

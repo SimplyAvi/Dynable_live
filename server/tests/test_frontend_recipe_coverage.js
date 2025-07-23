@@ -4,26 +4,26 @@ async function testFrontendRecipeCoverage() {
   try {
     await db.authenticate();
     const Recipe = require('./db/models/Recipe/Recipe.js');
-    const Ingredient = require('./db/models/Recipe/Ingredient.js');
-    const CanonicalIngredient = require('./db/models/CanonicalIngredient.js');
+    const RecipeIngredient = require('./db/models/Recipe/RecipeIngredient.js');
+    const Ingredient = require('./db/models/Ingredient.js');
     const IngredientToCanonical = require('./db/models/IngredientToCanonical.js');
-    const Food = require('./db/models/Food.js');
+    const IngredientCategorized = require('./db/models/IngredientCategorized.js');
     
     console.log('🧪 Testing Frontend Recipe Coverage...\n');
     
     // Get a large sample of recipes
     const recipes = await Recipe.findAll({
       include: [{
-        model: Ingredient,
-        as: 'Ingredients'
+        model: RecipeIngredient,
+        as: 'RecipeIngredients'
       }],
       limit: 1000 // Test 1000 recipes
     });
     
     console.log(`📋 Testing ${recipes.length} recipes...\n`);
     
-    let totalIngredients = 0;
-    let mappedIngredients = 0;
+    let totalRecipeIngredients = 0;
+    let mappedRecipeIngredients = 0;
     let ingredientsWithProducts = 0;
     let fullyFunctionalRecipes = 0;
     let partiallyFunctionalRecipes = 0;
@@ -34,13 +34,13 @@ async function testFrontendRecipeCoverage() {
     // Test each recipe
     for (let i = 0; i < recipes.length; i++) {
       const recipe = recipes[i];
-      const recipeIngredients = recipe.Ingredients || [];
+      const recipeRecipeIngredients = recipe.RecipeIngredients || [];
       
       let recipeMappedCount = 0;
       let recipeProductCount = 0;
       
-      for (const ingredient of recipeIngredients) {
-        totalIngredients++;
+      for (const ingredient of recipeRecipeIngredients) {
+        totalRecipeIngredients++;
         
         // Clean ingredient name (same as frontend)
         const cleanedName = cleanIngredientName(ingredient.name);
@@ -51,13 +51,13 @@ async function testFrontendRecipeCoverage() {
         });
         
         if (mapping) {
-          mappedIngredients++;
+          mappedRecipeIngredients++;
           recipeMappedCount++;
           
           // Check if canonical has products
-          const canonical = await CanonicalIngredient.findByPk(mapping.CanonicalIngredientId);
+          const canonical = await Ingredient.findByPk(mapping.IngredientId);
           if (canonical) {
-            const productCount = await Food.count({
+            const productCount = await IngredientCategorized.count({
               where: { canonicalTag: canonical.name }
             });
             
@@ -70,7 +70,7 @@ async function testFrontendRecipeCoverage() {
       }
       
       // Categorize recipe functionality
-      const ingredientCount = recipeIngredients.length;
+      const ingredientCount = recipeRecipeIngredients.length;
       const mappingPercentage = ingredientCount > 0 ? (recipeMappedCount / ingredientCount) * 100 : 0;
       const productPercentage = ingredientCount > 0 ? (recipeProductCount / ingredientCount) * 100 : 0;
       
@@ -103,8 +103,8 @@ async function testFrontendRecipeCoverage() {
     }
     
     // Calculate overall statistics
-    const mappingCoverage = ((mappedIngredients / totalIngredients) * 100).toFixed(1);
-    const productCoverage = ((ingredientsWithProducts / totalIngredients) * 100).toFixed(1);
+    const mappingCoverage = ((mappedRecipeIngredients / totalRecipeIngredients) * 100).toFixed(1);
+    const productCoverage = ((ingredientsWithProducts / totalRecipeIngredients) * 100).toFixed(1);
     const fullyFunctionalPercentage = ((fullyFunctionalRecipes / recipes.length) * 100).toFixed(1);
     const partiallyFunctionalPercentage = ((partiallyFunctionalRecipes / recipes.length) * 100).toFixed(1);
     const nonFunctionalPercentage = ((nonFunctionalRecipes / recipes.length) * 100).toFixed(1);
@@ -112,9 +112,9 @@ async function testFrontendRecipeCoverage() {
     console.log('\n📊 FRONTEND READINESS REPORT');
     console.log('=' .repeat(50));
     console.log(`📋 Total Recipes Tested: ${recipes.length}`);
-    console.log(`🥘 Total Ingredients: ${totalIngredients}`);
-    console.log(`🔗 Ingredients with Mappings: ${mappedIngredients} (${mappingCoverage}%)`);
-    console.log(`🛍️  Ingredients with Products: ${ingredientsWithProducts} (${productCoverage}%)`);
+    console.log(`🥘 Total RecipeIngredients: ${totalRecipeIngredients}`);
+    console.log(`🔗 RecipeIngredients with Mappings: ${mappedRecipeIngredients} (${mappingCoverage}%)`);
+    console.log(`🛍️  RecipeIngredients with Products: ${ingredientsWithProducts} (${productCoverage}%)`);
     
     console.log('\n🎯 Recipe Functionality Breakdown:');
     console.log(`  ✅ Fully Functional (80%+ coverage): ${fullyFunctionalRecipes} recipes (${fullyFunctionalPercentage}%)`);

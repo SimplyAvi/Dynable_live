@@ -16,7 +16,7 @@ function cleanIngredientNameFrontend(raw) {
     return cleaned;
 }
 
-const testIngredients = [
+const testRecipeIngredients = [
     '1 pound lean ground beef',
     '2 teaspoons onion powder',
     '1/4 cup honey mustard',
@@ -30,7 +30,7 @@ const testIngredients = [
 ];
 
 console.log('🔍 Testing frontend cleaning function:');
-testIngredients.forEach(ingredient => {
+testRecipeIngredients.forEach(ingredient => {
     const cleaned = cleanIngredientNameFrontend(ingredient);
     console.log(`"${ingredient}" -> "${cleaned}"`);
 }); 

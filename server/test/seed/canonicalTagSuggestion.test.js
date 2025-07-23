@@ -1,4 +1,4 @@
-const { Food, CanonicalIngredient, IngredientToCanonical } = require('../../db/models');
+const { IngredientCategorized, Ingredient, IngredientToCanonical } = require('../../db/models');
 const { Op } = require('sequelize');
 
 // Mock the cleanIngredientName function
@@ -10,7 +10,7 @@ jest.mock('../../api/foodRoutes', () => ({
 }));
 
 describe('Canonical Tag Suggestion', () => {
-  let mockCanonicalIngredients;
+  let mockCanonicalRecipeIngredients;
   let mockProducts;
 
   beforeEach(() => {
@@ -18,7 +18,7 @@ describe('Canonical Tag Suggestion', () => {
     jest.clearAllMocks();
     
     // Mock canonical ingredients
-    mockCanonicalIngredients = [
+    mockCanonicalRecipeIngredients = [
       {
         id: 1,
         name: 'flour',
@@ -77,8 +77,8 @@ describe('Canonical Tag Suggestion', () => {
   describe('Confident Tag Assignment', () => {
     test('should assign confident tag for exact matches', async () => {
       // Mock database calls
-      CanonicalIngredient.findAll = jest.fn().mockResolvedValue(mockCanonicalIngredients);
-      Food.findAll = jest.fn().mockResolvedValue(mockProducts);
+      Ingredient.findAll = jest.fn().mockResolvedValue(mockCanonicalRecipeIngredients);
+      IngredientCategorized.findAll = jest.fn().mockResolvedValue(mockProducts);
 
       const { cleanIngredientName } = require('../../api/foodRoutes');
       
@@ -87,7 +87,7 @@ describe('Canonical Tag Suggestion', () => {
       const cleanedDesc = cleanIngredientName(flourProduct.description); // 'all-purpose flour'
       
       // Check if cleaned description exactly matches a canonical name or alias
-      const allTags = mockCanonicalIngredients.flatMap(ci => [ci.name, ...(ci.aliases || [])]);
+      const allTags = mockCanonicalRecipeIngredients.flatMap(ci => [ci.name, ...(ci.aliases || [])]);
       const exactMatch = allTags.find(tag => cleanedDesc === tag.toLowerCase());
       
       expect(exactMatch).toBe('all-purpose flour');
@@ -100,7 +100,7 @@ describe('Canonical Tag Suggestion', () => {
       const cleaned = cleanIngredientName('All-Purpose Flour');
       expect(cleaned).toBe('all-purpose flour');
       
-      const allTags = mockCanonicalIngredients.flatMap(ci => [ci.name, ...(ci.aliases || [])]);
+      const allTags = mockCanonicalRecipeIngredients.flatMap(ci => [ci.name, ...(ci.aliases || [])]);
       const match = allTags.find(tag => cleaned === tag.toLowerCase());
       expect(match).toBe('all-purpose flour');
     });
@@ -114,7 +114,7 @@ describe('Canonical Tag Suggestion', () => {
       const productDesc = 'Chocolate Chip Cookies with Flour';
       const cleanedDesc = cleanIngredientName(productDesc);
       
-      const allTags = mockCanonicalIngredients.flatMap(ci => [ci.name, ...(ci.aliases || [])]);
+      const allTags = mockCanonicalRecipeIngredients.flatMap(ci => [ci.name, ...(ci.aliases || [])]);
       const exactMatch = allTags.find(tag => cleanedDesc === tag.toLowerCase());
       const substringMatch = allTags.find(tag => cleanedDesc.includes(tag.toLowerCase()));
       
@@ -153,7 +153,7 @@ describe('Canonical Tag Suggestion', () => {
         return 'none';
       };
 
-      const allTags = mockCanonicalIngredients.flatMap(ci => [ci.name, ...(ci.aliases || [])]);
+      const allTags = mockCanonicalRecipeIngredients.flatMap(ci => [ci.name, ...(ci.aliases || [])]);
       
       expect(determineConfidence('All-Purpose Flour', allTags)).toBe('confident');
       expect(determineConfidence('Chocolate Chip Cookies with Flour', allTags)).toBe('suggested');

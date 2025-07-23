@@ -1,0 +1,702 @@
+[
+  {
+    "rank": 1,
+    "canonical": "pomegranate molasses",
+    "category": "product",
+    "frequency": 11,
+    "expectedCoverage": "11 ingredients"
+  },
+  {
+    "rank": 2,
+    "canonical": "butter softened",
+    "category": "product",
+    "frequency": 8,
+    "expectedCoverage": "8 ingredients"
+  },
+  {
+    "rank": 3,
+    "canonical": "chopped almonds",
+    "category": "product",
+    "frequency": 8,
+    "expectedCoverage": "8 ingredients"
+  },
+  {
+    "rank": 4,
+    "canonical": "melted butter",
+    "category": "form",
+    "frequency": 8,
+    "expectedCoverage": "8 ingredients"
+  },
+  {
+    "rank": 5,
+    "canonical": "sliced almonds",
+    "category": "product",
+    "frequency": 8,
+    "expectedCoverage": "8 ingredients"
+  },
+  {
+    "rank": 6,
+    "canonical": "bread flour",
+    "category": "form",
+    "frequency": 7,
+    "expectedCoverage": "7 ingredients"
+  },
+  {
+    "rank": 7,
+    "canonical": "cherry brandy",
+    "category": "form",
+    "frequency": 7,
+    "expectedCoverage": "7 ingredients"
+  },
+  {
+    "rank": 8,
+    "canonical": "grapefruit juice",
+    "category": "form",
+    "frequency": 7,
+    "expectedCoverage": "7 ingredients"
+  },
+  {
+    "rank": 9,
+    "canonical": "grenadine syrup",
+    "category": "form",
+    "frequency": 7,
+    "expectedCoverage": "7 ingredients"
+  },
+  {
+    "rank": 10,
+    "canonical": "raspberry vinegar",
+    "category": "product",
+    "frequency": 7,
+    "expectedCoverage": "7 ingredients"
+  },
+  {
+    "rank": 11,
+    "canonical": "rice flour",
+    "category": "form",
+    "frequency": 7,
+    "expectedCoverage": "7 ingredients"
+  },
+  {
+    "rank": 12,
+    "canonical": "vanilla sugar",
+    "category": "product",
+    "frequency": 7,
+    "expectedCoverage": "7 ingredients"
+  },
+  {
+    "rank": 13,
+    "canonical": "almond flour",
+    "category": "form",
+    "frequency": 6,
+    "expectedCoverage": "6 ingredients"
+  },
+  {
+    "rank": 14,
+    "canonical": "basil pesto",
+    "category": "product",
+    "frequency": 6,
+    "expectedCoverage": "6 ingredients"
+  },
+  {
+    "rank": 15,
+    "canonical": "butter cubed",
+    "category": "product",
+    "frequency": 6,
+    "expectedCoverage": "6 ingredients"
+  },
+  {
+    "rank": 16,
+    "canonical": "coconut flour",
+    "category": "form",
+    "frequency": 6,
+    "expectedCoverage": "6 ingredients"
+  },
+  {
+    "rank": 17,
+    "canonical": "coconut sugar",
+    "category": "product",
+    "frequency": 6,
+    "expectedCoverage": "6 ingredients"
+  },
+  {
+    "rank": 18,
+    "canonical": "pumpkin seeds",
+    "category": "product",
+    "frequency": 6,
+    "expectedCoverage": "6 ingredients"
+  },
+  {
+    "rank": 19,
+    "canonical": "ricotta cheese",
+    "category": "form",
+    "frequency": 6,
+    "expectedCoverage": "6 ingredients"
+  },
+  {
+    "rank": 20,
+    "canonical": "almond oil",
+    "category": "form",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 21,
+    "canonical": "bourbon whiskey",
+    "category": "product",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 22,
+    "canonical": "cherries pitted",
+    "category": "product",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 23,
+    "canonical": "chopped ham",
+    "category": "product",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 24,
+    "canonical": "chopped oregano",
+    "category": "product",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 25,
+    "canonical": "chopped pimento",
+    "category": "product",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 26,
+    "canonical": "cilantro leaves",
+    "category": "form",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 27,
+    "canonical": "cinnamon sugar",
+    "category": "product",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 28,
+    "canonical": "drained capers",
+    "category": "product",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 29,
+    "canonical": "egg noodles",
+    "category": "product",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 30,
+    "canonical": "fennel seed",
+    "category": "product",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 31,
+    "canonical": "feta cheese",
+    "category": "form",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 32,
+    "canonical": "mango chutney",
+    "category": "product",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 33,
+    "canonical": "maraschino liqueur",
+    "category": "form",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 34,
+    "canonical": "onion salt",
+    "category": "product",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 35,
+    "canonical": "orange marmalade",
+    "category": "product",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 36,
+    "canonical": "pomegranate juice",
+    "category": "form",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 37,
+    "canonical": "quinoa flour",
+    "category": "form",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 38,
+    "canonical": "rice wine",
+    "category": "product",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 39,
+    "canonical": "strawberry preserves",
+    "category": "form",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 40,
+    "canonical": "tamari sauce",
+    "category": "form",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 41,
+    "canonical": "tapioca starch",
+    "category": "product",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 42,
+    "canonical": "tarragon vinegar",
+    "category": "product",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 43,
+    "canonical": "walnut halves",
+    "category": "form",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 44,
+    "canonical": "parmesan cheese",
+    "category": "form",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 45,
+    "canonical": "chicken stock",
+    "category": "product",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 46,
+    "canonical": "diced onion",
+    "category": "product",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 47,
+    "canonical": "pecan halves",
+    "category": "form",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 48,
+    "canonical": "potato starch",
+    "category": "product",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 49,
+    "canonical": "chopped pecans",
+    "category": "product",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 50,
+    "canonical": "orange liqueur",
+    "category": "form",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 51,
+    "canonical": "tomato sauce",
+    "category": "form",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 52,
+    "canonical": "chile sauce",
+    "category": "form",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 53,
+    "canonical": "truffle oil",
+    "category": "form",
+    "frequency": 5,
+    "expectedCoverage": "5 ingredients"
+  },
+  {
+    "rank": 54,
+    "canonical": "allspice berries",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 55,
+    "canonical": "bacon drippings",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 56,
+    "canonical": "cayenne pepper",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 57,
+    "canonical": "chile paste",
+    "category": "form",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 58,
+    "canonical": "chocolate chips",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 59,
+    "canonical": "chopped basil",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 60,
+    "canonical": "chopped carrot",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 61,
+    "canonical": "chopped chives",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 62,
+    "canonical": "chopped dill",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 63,
+    "canonical": "chopped ginger",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 64,
+    "canonical": "chopped hazelnuts",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 65,
+    "canonical": "chopped mint",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 66,
+    "canonical": "chopped mushrooms",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 67,
+    "canonical": "chopped nuts",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 68,
+    "canonical": "chopped peanuts",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 69,
+    "canonical": "chopped prosciutto",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 70,
+    "canonical": "chopped sage",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 71,
+    "canonical": "chopped scallion",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 72,
+    "canonical": "chopped shallot",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 73,
+    "canonical": "chopped shallots",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 74,
+    "canonical": "chopped tomatoes",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 75,
+    "canonical": "coconut flakes",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 76,
+    "canonical": "coconut milk",
+    "category": "form",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 77,
+    "canonical": "coffee liqueur",
+    "category": "form",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 78,
+    "canonical": "coriander seeds",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 79,
+    "canonical": "corn kernels",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 80,
+    "canonical": "crab meat",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 81,
+    "canonical": "crabmeat flaked",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 82,
+    "canonical": "egg white",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 83,
+    "canonical": "fennel seeds",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 84,
+    "canonical": "grape jelly",
+    "category": "form",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 85,
+    "canonical": "grape juice",
+    "category": "form",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 86,
+    "canonical": "icing sugar",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 87,
+    "canonical": "lavender honey",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 88,
+    "canonical": "mint leaves",
+    "category": "form",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 89,
+    "canonical": "onion juice",
+    "category": "form",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 90,
+    "canonical": "orzo pasta",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 91,
+    "canonical": "peach nectar",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 92,
+    "canonical": "pesto sauce",
+    "category": "form",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 93,
+    "canonical": "pumpkin puree",
+    "category": "form",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 94,
+    "canonical": "raspberry juice",
+    "category": "form",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 95,
+    "canonical": "rosemary leaves",
+    "category": "form",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 96,
+    "canonical": "sliced pepperoni",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 97,
+    "canonical": "spaghetti sauce",
+    "category": "form",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 98,
+    "canonical": "walnut pieces",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 99,
+    "canonical": "wine vinegar",
+    "category": "product",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  },
+  {
+    "rank": 100,
+    "canonical": "bacon bits",
+    "category": "form",
+    "frequency": 4,
+    "expectedCoverage": "4 ingredients"
+  }
+]

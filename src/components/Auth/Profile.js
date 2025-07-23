@@ -312,6 +312,115 @@ const Profile = () => {
         }
     };
 
+    const renderRolePrivileges = () => {
+        const getPrivilegeIcon = (privilege) => {
+            const icons = {
+                'manage_users': '👥',
+                'manage_sellers': '🛒',
+                'view_analytics': '📊',
+                'manage_products': '📦',
+                'sell_products': '💰',
+                'view_orders': '📋',
+                'edit_profile': '✏️',
+                'basic_access': '👤'
+            };
+            return icons[privilege] || '✅';
+        };
+
+        const getPrivilegeDescription = (privilege) => {
+            const descriptions = {
+                'manage_users': 'Manage all user accounts',
+                'manage_sellers': 'Approve and manage seller accounts',
+                'view_analytics': 'View system-wide analytics',
+                'manage_products': 'Add and edit your products',
+                'sell_products': 'Sell products on the platform',
+                'view_orders': 'View your order history',
+                'edit_profile': 'Edit your profile information',
+                'basic_access': 'Browse and purchase products'
+            };
+            return descriptions[privilege] || privilege;
+        };
+
+        const getRolePrivileges = () => {
+            const basePrivileges = ['edit_profile', 'basic_access'];
+            
+            switch (userRole) {
+                case 'admin':
+                    return [
+                        ...basePrivileges,
+                        'manage_users',
+                        'manage_sellers', 
+                        'view_analytics'
+                    ];
+                case 'seller':
+                    return [
+                        ...basePrivileges,
+                        'manage_products',
+                        'sell_products',
+                        'view_orders'
+                    ];
+                case 'end_user':
+                default:
+                    return [
+                        ...basePrivileges,
+                        'view_orders'
+                    ];
+            }
+        };
+
+        const privileges = getRolePrivileges();
+
+        return (
+            <div className="role-privileges-section">
+                <h3>🎯 Role Privileges</h3>
+                <div className="privileges-grid">
+                    {privileges.map((privilege, index) => (
+                        <div key={index} className="privilege-item">
+                            <div className="privilege-icon">
+                                {getPrivilegeIcon(privilege)}
+                            </div>
+                            <div className="privilege-info">
+                                <div className="privilege-name">
+                                    {privilege.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                                </div>
+                                <div className="privilege-description">
+                                    {getPrivilegeDescription(privilege)}
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                
+                {/* Role-specific status */}
+                {userRole === 'seller' && (
+                    <div className="seller-status-info">
+                        <div className="status-item">
+                            <span className="status-label">Verification Status:</span>
+                            <span className={`status-value ${isVerifiedSeller ? 'verified' : 'pending'}`}>
+                                {isVerifiedSeller ? '✅ Verified Seller' : '⏳ Pending Verification'}
+                            </span>
+                        </div>
+                        {storeInfo.store_name && (
+                            <div className="status-item">
+                                <span className="status-label">Store Name:</span>
+                                <span className="status-value">{storeInfo.store_name}</span>
+                            </div>
+                        )}
+                    </div>
+                )}
+                
+                {userRole === 'admin' && (
+                    <div className="admin-status-info">
+                        <div className="status-item">
+                            <span className="status-label">Admin Level:</span>
+                            <span className="status-value admin">👑 Full System Access</span>
+                        </div>
+                    </div>
+                )}
+            </div>
+        );
+    };
+
     if (!user) {
         return <div className="auth-container">Loading...</div>;
     }
@@ -390,6 +499,9 @@ const Profile = () => {
 
                 {/* Role-specific sections */}
                 {renderRoleSpecificSection()}
+                
+                {/* Role Privileges Section */}
+                {renderRolePrivileges()}
             </div>
         </div>
     );
