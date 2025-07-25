@@ -15,61 +15,130 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../redux/authSlice';
-import { 
-    selectUserRole,
-    selectIsAdmin,
-    selectIsSeller,
-    selectIsVerifiedSeller,
-    selectUserStoreInfo,
-    selectConvertedFromAnonymous
-} from '../../redux/authSlice';
-import FormInput from '../FormInput';
+import { supabase } from '../../utils/supabaseClient';
 import './Auth.css';
 
 const Profile = () => {
-    const [email, setEmail] = useState('');
-    const [name, setName] = useState('');
-    const [isEditing, setIsEditing] = useState(false);
-    const [isStoreEditing, setIsStoreEditing] = useState(false);
-    const [storeName, setStoreName] = useState('');
-    const [storeDescription, setStoreDescription] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
-    
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const { user } = useSelector(state => state.auth);
     
-    // Enhanced selectors for role-based features
-    const user = useSelector((state) => state.auth.user);
-    const userRole = useSelector(selectUserRole);
-    const isAdmin = useSelector(selectIsAdmin);
-    const isSeller = useSelector(selectIsSeller);
-    const isVerifiedSeller = useSelector(selectIsVerifiedSeller);
-    const storeInfo = useSelector(selectUserStoreInfo);
-    const convertedFromAnonymous = useSelector(selectConvertedFromAnonymous);
+    const [isEditing, setIsEditing] = useState(false);
+    const [isStoreEditing, setIsStoreEditing] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [userProfile, setUserProfile] = useState({
+        name: '',
+        email: '',
+        role: 'authenticated'
+    });
+    const [storeName, setStoreName] = useState('');
+    const [storeDescription, setStoreDescription] = useState('');
+    const [userRole, setUserRole] = useState('authenticated');
+    const [isVerifiedSeller, setIsVerifiedSeller] = useState(false);
 
     useEffect(() => {
-        if (user) {
-            setEmail(user.email);
-            setName(user.name || '');
-            setStoreName(user.store_name || '');
-            setStoreDescription(user.store_description || '');
-        }
+        const fetchUserData = async () => {
+            if (user && user.email) {
+                try {
+                    // Fetch user data from Users table
+                    const { data: userData, error } = await supabase
+                        .from('Users')
+                        .select('*')
+                        .eq('email', user.email)
+                        .single();
+
+                    if (error) {
+                        console.error('Error fetching user data:', error);
+                        // If user doesn't exist in Users table, create them
+                        if (error.code === 'PGRST116') {
+                            console.log('User not found in Users table, creating user...');
+                            const { data: newUser, error: createError } = await supabase
+                                .from('Users')
+                                .insert({
+                                    supabase_user_id: user.id, // Use Supabase UUID for secure RLS
+                                    email: user.email,
+                                    name: user.user_metadata?.name || '',
+                                    role: 'end_user',
+                                    createdAt: new Date().toISOString(),
+                                    updatedAt: new Date().toISOString()
+                                })
+                                .select()
+                                .single();
+
+                            if (createError) {
+                                console.error('Error creating user:', createError);
+                                // Fallback to Supabase auth user data
+                                setUserProfile({
+                                    name: user.user_metadata?.name || '',
+                                    email: user.email || '',
+                                    role: user.user_metadata?.role || 'end_user'
+                                });
+                                setUserRole(user.user_metadata?.role || 'end_user');
+                            } else {
+                                // Use newly created user data
+                                setUserProfile({
+                                    name: newUser.name || '',
+                                    email: newUser.email || '',
+                                    role: newUser.role || 'end_user'
+                                });
+                                setUserRole(newUser.role || 'end_user');
+                                setStoreName(newUser.store_name || '');
+                                setStoreDescription(newUser.store_description || '');
+                                setIsVerifiedSeller(newUser.is_verified_seller || false);
+                            }
+                        } else {
+                            // Fallback to Supabase auth user data
+                            setUserProfile({
+                                name: user.user_metadata?.name || '',
+                                email: user.email || '',
+                                role: user.user_metadata?.role || 'end_user'
+                            });
+                            setUserRole(user.user_metadata?.role || 'end_user');
+                        }
+                    } else {
+                        // Use data from Users table
+                        setUserProfile({
+                            name: userData.name || '',
+                            email: userData.email || '',
+                            role: userData.role || 'end_user'
+                        });
+                        setUserRole(userData.role || 'end_user');
+                        setStoreName(userData.store_name || '');
+                        setStoreDescription(userData.store_description || '');
+                        setIsVerifiedSeller(userData.is_verified_seller || false);
+                    }
+                } catch (error) {
+                    console.error('Error in fetchUserData:', error);
+                    // Fallback to Supabase auth user data
+                    setUserProfile({
+                        name: user.user_metadata?.name || '',
+                        email: user.email || '',
+                        role: user.user_metadata?.role || 'end_user'
+                    });
+                    setUserRole(user.user_metadata?.role || 'end_user');
+                }
+            } else if (user && !user.email) {
+                console.log('User has no email, using auth metadata only');
+                // User is authenticated but has no email (Google OAuth issue)
+                setUserProfile({
+                    name: user.user_metadata?.name || '',
+                    email: user.user_metadata?.email || '',
+                    role: user.user_metadata?.role || 'end_user'
+                });
+                setUserRole(user.user_metadata?.role || 'end_user');
+            }
+        };
+
+        fetchUserData();
     }, [user]);
 
     const handleLogout = async () => {
         try {
-            setIsLoading(true);
-            await fetch('http://localhost:5001/api/auth/logout', {
-                method: 'POST',
-                credentials: 'include',
-            });
+            await supabase.auth.signOut();
             dispatch(logout());
-            navigate('/login');
+            navigate('/');
         } catch (error) {
             console.error('Logout error:', error);
-            alert('An error occurred during logout.');
-        } finally {
-            setIsLoading(false);
         }
     };
 
@@ -77,26 +146,33 @@ const Profile = () => {
         e.preventDefault();
         try {
             setIsLoading(true);
-            const response = await fetch('http://localhost:5001/api/auth/profile', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                },
-                body: JSON.stringify({ name, email }),
+            
+            // Update user data in Users table
+            const { error } = await supabase
+                .from('Users')
+                .update({
+                    name: userProfile.name,
+                    role: userProfile.role
+                })
+                .eq('email', user.email);
+
+            if (error) {
+                throw error;
+            }
+
+            // Also update Supabase auth user metadata
+            await supabase.auth.updateUser({
+                data: {
+                    name: userProfile.name,
+                    role: userProfile.role
+                }
             });
 
-            if (response.ok) {
-                const updatedUser = await response.json();
-                // TODO: Update user in Redux store
-                setIsEditing(false);
-                alert('Profile updated successfully!');
-            } else {
-                alert('Failed to update profile. Please try again.');
-            }
+            setIsEditing(false);
+            alert('Profile updated successfully!');
         } catch (error) {
             console.error('Profile update error:', error);
-            alert('An error occurred while updating profile.');
+            alert('Failed to update profile. Please try again.');
         } finally {
             setIsLoading(false);
         }
@@ -106,29 +182,25 @@ const Profile = () => {
         e.preventDefault();
         try {
             setIsLoading(true);
-            const response = await fetch('http://localhost:5001/api/auth/profile', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                },
-                body: JSON.stringify({ 
-                    store_name: storeName, 
-                    store_description: storeDescription 
-                }),
-            });
+            
+            // Update store information in Users table
+            const { error } = await supabase
+                .from('Users')
+                .update({
+                    store_name: storeName,
+                    store_description: storeDescription
+                })
+                .eq('email', user.email);
 
-            if (response.ok) {
-                const updatedUser = await response.json();
-                // TODO: Update user in Redux store
-                setIsStoreEditing(false);
-                alert('Store information updated successfully!');
-            } else {
-                alert('Failed to update store information. Please try again.');
+            if (error) {
+                throw error;
             }
+
+            setIsStoreEditing(false);
+            alert('Store information updated successfully!');
         } catch (error) {
             console.error('Store update error:', error);
-            alert('An error occurred while updating store information.');
+            alert('Failed to update store information. Please try again.');
         } finally {
             setIsLoading(false);
         }
@@ -137,24 +209,24 @@ const Profile = () => {
     const handleApplyForSeller = async () => {
         try {
             setIsLoading(true);
-            const response = await fetch('http://localhost:5001/api/auth/apply-seller', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                },
-            });
+            
+            // Update user role to seller in Users table
+            const { error } = await supabase
+                .from('Users')
+                .update({
+                    role: 'seller'
+                })
+                .eq('email', user.email);
 
-            if (response.ok) {
-                alert('Seller application submitted successfully! You can now manage products.');
-                // Refresh the page to update role information
-                window.location.reload();
-            } else {
-                alert('Failed to submit seller application. Please try again.');
+            if (error) {
+                throw error;
             }
+
+            setUserRole('seller');
+            alert('Seller application submitted successfully! You can now manage products.');
         } catch (error) {
             console.error('Seller application error:', error);
-            alert('An error occurred while submitting seller application.');
+            alert('Failed to submit seller application. Please try again.');
         } finally {
             setIsLoading(false);
         }
@@ -231,18 +303,23 @@ const Profile = () => {
                         
                         {isStoreEditing ? (
                             <form onSubmit={handleUpdateStore} className="store-form">
-                                <FormInput
-                                    type="text"
-                                    value={storeName}
-                                    handleChange={(e) => setStoreName(e.target.value)}
-                                    label="Store Name"
-                                />
-                                <FormInput
-                                    type="textarea"
-                                    value={storeDescription}
-                                    handleChange={(e) => setStoreDescription(e.target.value)}
-                                    label="Store Description"
-                                />
+                                <div className="profile-form-group">
+                                    <label>Store Name:</label>
+                                    <input
+                                        type="text"
+                                        value={storeName}
+                                        onChange={(e) => setStoreName(e.target.value)}
+                                        className="profile-input"
+                                    />
+                                </div>
+                                <div className="profile-form-group">
+                                    <label>Store Description:</label>
+                                    <textarea
+                                        value={storeDescription}
+                                        onChange={(e) => setStoreDescription(e.target.value)}
+                                        className="profile-input"
+                                    />
+                                </div>
                                 <div className="profile-buttons">
                                     <button type="submit" className="auth-button" disabled={isLoading}>
                                         {isLoading ? 'Saving...' : 'Save Store Info'}
@@ -258,8 +335,8 @@ const Profile = () => {
                             </form>
                         ) : (
                             <div className="store-info">
-                                <p><strong>Store Name:</strong> {storeInfo.store_name || 'Not set'}</p>
-                                <p><strong>Store Description:</strong> {storeInfo.store_description || 'Not set'}</p>
+                                <p><strong>Store Name:</strong> {storeName || 'Not set'}</p>
+                                <p><strong>Store Description:</strong> {storeDescription || 'Not set'}</p>
                                 <div className="seller-actions">
                                     <button 
                                         className="auth-button"
@@ -400,10 +477,10 @@ const Profile = () => {
                                 {isVerifiedSeller ? '✅ Verified Seller' : '⏳ Pending Verification'}
                             </span>
                         </div>
-                        {storeInfo.store_name && (
+                        {storeName && (
                             <div className="status-item">
                                 <span className="status-label">Store Name:</span>
-                                <span className="status-value">{storeInfo.store_name}</span>
+                                <span className="status-value">{storeName}</span>
                             </div>
                         )}
                     </div>
@@ -431,27 +508,29 @@ const Profile = () => {
                 <div className="profile-header">
                     <h2>Profile</h2>
                     {getRoleBadge()}
-                    {convertedFromAnonymous && (
-                        <div className="conversion-notice">
-                            <p>🔄 Converted from anonymous user</p>
-                        </div>
-                    )}
+                    {/* convertedFromAnonymous is removed as per new_code */}
                 </div>
 
                 {isEditing ? (
                     <form onSubmit={handleUpdateProfile} className="profile-form">
-                        <FormInput
-                            type="text"
-                            value={name}
-                            handleChange={(e) => setName(e.target.value)}
-                            label="Name"
-                        />
-                        <FormInput
-                            type="email"
-                            value={email}
-                            handleChange={(e) => setEmail(e.target.value)}
-                            label="Email"
-                        />
+                        <div className="profile-form-group">
+                            <label>Name:</label>
+                            <input
+                                type="text"
+                                value={userProfile.name}
+                                onChange={(e) => setUserProfile({ ...userProfile, name: e.target.value })}
+                                className="profile-input"
+                            />
+                        </div>
+                        <div className="profile-form-group">
+                            <label>Email:</label>
+                            <input
+                                type="email"
+                                value={userProfile.email}
+                                onChange={(e) => setUserProfile({ ...userProfile, email: e.target.value })}
+                                className="profile-input"
+                            />
+                        </div>
                         <div className="profile-buttons">
                             <button type="submit" className="auth-button" disabled={isLoading}>
                                 {isLoading ? 'Saving...' : 'Save Changes'}
@@ -468,12 +547,12 @@ const Profile = () => {
                 ) : (
                     <div className="profile-content">
                         <div className="profile-info">
-                            <p><strong>Name:</strong> {name}</p>
-                            <p><strong>Email:</strong> {email}</p>
+                            <p><strong>Name:</strong> {userProfile.name}</p>
+                            <p><strong>Email:</strong> {userProfile.email}</p>
                             <p><strong>Role:</strong> {userRole}</p>
                             {userRole === 'seller' && (
                                 <>
-                                    <p><strong>Store Name:</strong> {storeInfo.store_name || 'Not set'}</p>
+                                    <p><strong>Store Name:</strong> {storeName || 'Not set'}</p>
                                     <p><strong>Verification:</strong> {isVerifiedSeller ? '✅ Verified' : '⏳ Pending'}</p>
                                 </>
                             )}

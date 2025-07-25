@@ -1,25 +1,23 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React, {useEffect, useState, useCallback} from 'react'
 import { useNavigate } from 'react-router-dom';
-import './RecipeCard.css'
-import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { getProductsByIngredientFromSupabase } from '../../utils/supabaseQueries';
+import './RecipeCard.css';
 
 const RecipeCard = ({recipe, id, allergies}) =>{
-
     const navigate = useNavigate();
-    const [ingredients, setIngredients] = useState(recipe.ingredients || []);
-    const [activeIngredient, setActiveIngredient] = useState(null);
-    const userAllergens = Object.keys(allergies).filter(key => allergies[key]).map(a => a.toLowerCase());
     const [productOptions, setProductOptions] = useState({});
     const [selectedProducts, setSelectedProducts] = useState({});
+    const [ingredients, setIngredients] = useState([]);
+    const userAllergens = Object.keys(allergies).filter(key => allergies[key]);
 
-    const {title, image=`${process.env.PUBLIC_URL}/default_img.png`, ingredients: recipeIngredients = []}= recipe
-    
-    let shortenedTitle = title
-    if (title.length>50) shortenedTitle = title.slice(0,40) + '...'
+    const {title, directions, source, url} = recipe;
+    const shortenedTitle = title || 'Untitled Recipe';
+    const image = `${process.env.PUBLIC_URL}/default_img.png`;
 
     const handleClick  = (e) => {
-        console.log('RecipeCard clicked:', e.target, e.nativeEvent.composedPath ? e.nativeEvent.composedPath() : e.nativeEvent.path);
-        navigate(`/recipe/${id}`)
+        console.log('RecipeCard clicked:', e.target);
+        navigate(`/recipe/${id}`);
     }
 
     const handleSubstitute = (ingredientId, newName) => {
@@ -28,22 +26,15 @@ const RecipeCard = ({recipe, id, allergies}) =>{
                 ing.id === ingredientId ? { ...ing, displayName: newName } : ing
             )
         );
-        setActiveIngredient(null);
-        
-        // Fetch products for the new substitute immediately
-        const updatedIngredients = ingredients.map(ing =>
-            ing.id === ingredientId ? { ...ing, displayName: newName } : ing
-        );
-        fetchProducts(updatedIngredients);
     };
 
-    // Fetch products for each ingredient or substitute
+    // Fetch products for each ingredient
     const fetchProducts = useCallback(async (ings) => {
         const userAllergensArr = Object.keys(allergies).filter(key => allergies[key]);
         const newOptions = {};
+        
         for (const ing of ings) {
-            const name = ing.displayName || ing.name;
-            if (!name) {
+            if (!ing.name) {
                 newOptions[ing.id] = [];
                 continue;
             }
@@ -52,13 +43,9 @@ const RecipeCard = ({recipe, id, allergies}) =>{
                 const hasSubstitute = ing.displayName && ing.displayName !== ing.name;
                 const substituteName = hasSubstitute ? ing.displayName : null;
                 
-                const res = await axios.post('http://localhost:5001/api/product/by-ingredient', {
-                    ingredientName: ing.name, // Always use original ingredient name
-                    allergens: userAllergensArr,
-                    substituteName: substituteName // Pass substitute name if user selected one
-                });
+                const res = await getProductsByIngredientFromSupabase(ing.name, userAllergensArr, substituteName);
                 // Use new response structure
-                const { products = [], mappingStatus, coverageStats, brandPriority, canonicalIngredient } = res.data;
+                const { products = [], mappingStatus, coverageStats, brandPriority, canonicalIngredient } = res;
                 newOptions[ing.id] = {
                   products,
                   mappingStatus,

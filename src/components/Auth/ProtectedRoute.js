@@ -55,8 +55,8 @@ const ProtectedRoute = ({
     requireAuth = true,
     fallback = null 
 }) => {
-    const isAuthenticated = useSelector(selectIsAuthenticated);
-    const userRole = useSelector(selectUserRole);
+    const isAuthenticated = useSelector(state => state.auth?.isAuthenticated || false);
+    const userRole = useSelector(state => state.auth?.role || null);
 
     // If authentication is required but user is not authenticated
     if (requireAuth && !isAuthenticated) {
@@ -86,8 +86,8 @@ const ProtectedRoute = ({
  * @param {React.ReactNode} props.fallback - Fallback component for unauthorized access
  */
 export const AdminRoute = ({ children, fallback = null }) => {
-    const isAdmin = useSelector(selectIsAdmin);
-    const isAuthenticated = useSelector(selectIsAuthenticated);
+    const isAdmin = useSelector(state => state.auth?.role === 'admin' || false);
+    const isAuthenticated = useSelector(state => state.auth?.isAuthenticated || false);
 
     if (!isAuthenticated) {
         return <Navigate to="/login" replace />;
@@ -111,9 +111,9 @@ export const AdminRoute = ({ children, fallback = null }) => {
  * @param {boolean} props.requireVerified - Whether seller must be verified (default: false)
  */
 export const SellerRoute = ({ children, fallback = null, requireVerified = false }) => {
-    const isSeller = useSelector(selectIsSeller);
-    const isVerifiedSeller = useSelector(selectIsVerifiedSeller);
-    const isAuthenticated = useSelector(selectIsAuthenticated);
+    const isSeller = useSelector(state => (state.auth?.role === 'seller' || state.auth?.role === 'admin') || false);
+    const isVerifiedSeller = useSelector(state => state.auth?.isVerifiedSeller || false);
+    const isAuthenticated = useSelector(state => state.auth?.isAuthenticated || false);
 
     if (!isAuthenticated) {
         return <Navigate to="/login" replace />;
@@ -159,8 +159,8 @@ export const VerifiedSellerRoute = ({ children, fallback = null }) => {
  * @param {React.ReactNode} props.fallback - Fallback component for unauthorized access
  */
 export const AuthenticatedRoute = ({ children, fallback = null }) => {
-    const isAuthenticated = useSelector(selectIsAuthenticated);
-    const convertedFromAnonymous = useSelector(state => state.auth.convertedFromAnonymous);
+    const isAuthenticated = useSelector(state => state.auth?.isAuthenticated || false);
+    const convertedFromAnonymous = useSelector(state => state.auth?.convertedFromAnonymous || false);
 
     if (!isAuthenticated) {
         return <Navigate to="/login" replace />;
@@ -182,8 +182,8 @@ export const AuthenticatedRoute = ({ children, fallback = null }) => {
  * @param {React.ReactNode} props.fallback - Fallback component for unauthorized access
  */
 export const EndUserRoute = ({ children, fallback = null }) => {
-    const userRole = useSelector(selectUserRole);
-    const isAuthenticated = useSelector(selectIsAuthenticated);
+    const userRole = useSelector(state => state.auth?.role || null);
+    const isAuthenticated = useSelector(state => state.auth?.isAuthenticated || false);
 
     if (!isAuthenticated) {
         return <Navigate to="/login" replace />;
@@ -207,7 +207,7 @@ export const EndUserRoute = ({ children, fallback = null }) => {
  * @param {React.ReactNode} props.fallback - Fallback component for unauthenticated users
  */
 export const OptionalAuthRoute = ({ children, fallback = null }) => {
-    const isAuthenticated = useSelector(selectIsAuthenticated);
+    const isAuthenticated = useSelector(state => state.auth?.isAuthenticated || false);
 
     if (!isAuthenticated && fallback) {
         return fallback;

@@ -15,73 +15,59 @@
  * - Error handling
  */
 
-import React, { useEffect, useRef, useCallback, useState } from 'react'
-import axios from 'axios'
+import React, { useState, useCallback, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux';
-import { setProducts, clearProducts } from '../../redux/productSlice';
-import { addRecipes } from '../../redux/recipeSlice';
-import { useSearchCookieHandler } from '../../helperfunc/useCookieHandler';
-import FormInput from '../FormInput'
+import { setProducts } from '../../redux/productSlice'
+import { addRecipes } from '../../redux/recipeSlice'
+import { setSearchbarValue } from '../../redux/searchbarSlice'
 import './Searchbar.css'
-import {debounce} from 'lodash'
-import { batch } from 'react-redux';
+import { searchProductsFromSupabasePure, searchRecipesFromSupabasePure } from '../../utils/supabaseQueries'
+import FormInput from '../FormInput'
 
 const Searchbar = ({ curAllergen }) => {
-    const textbar = useSelector((state) => state.searchbar.searchbar);
-    const allergies = useSelector((state) => state.allergies.allergies);
+    const textbar = useSelector((state) => state.searchbar?.searchbar || '');
+    const allergies = useSelector((state) => state.allergies?.allergies || {});
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { saveToCookies, initializeSearchFromCookies } = useSearchCookieHandler();
     
     // Local state for input
     const [inputValue, setInputValue] = useState(textbar || '');
     
-    const filteredAllergens = useCallback(() => {
-        let allergensArr = []
-        Object.keys(allergies).forEach((key)=>{
-            const lowerKey = key.toLowerCase()
-            if (allergies[key]) allergensArr.push(lowerKey)
-        })
-        console.log('Sending allergens:', allergensArr)
-        return allergensArr
-    }, [allergies]);
-
     // Search function
-    const getResponse = useCallback(async (searchInput = textbar) => {
-        try {
-            dispatch(clearProducts());
-            const sendAllergens = filteredAllergens();
-            const params = new URLSearchParams({
-                name: searchInput || '',
-                page: 1,
-                limit: 10,
-                allergens: sendAllergens.join(',')
-            });
-
-            // Use GET request for product search
-            const foodResponse = await axios.get(`http://localhost:5001/api/product/search?${params}`);
-            console.log('Food response:', foodResponse.data)
-            
-            // Use POST request for recipes to handle excludeIngredients in body
-            const recipeResponse = await axios.post('http://localhost:5001/api/recipe/?page=1', {
-                search: searchInput || '',
-                excludeIngredients: sendAllergens
-            });
-            console.log('Recipe response:', recipeResponse.data)
-            
-            batch(() => {
-                dispatch(setProducts(foodResponse.data));
-                dispatch(addRecipes(recipeResponse.data));
-            });
-        } catch (error) {
-            console.error('Search error:', error);
-        }
-    }, [dispatch, textbar, filteredAllergens]);
-
-    useEffect(() => {
-        initializeSearchFromCookies()
-    }, [initializeSearchFromCookies])
+    const getResponse = useCallback(
+        async (searchInput = textbar) => {
+            try {
+                const sendAllergens = Object.keys(allergies).filter(key => allergies[key]).map(key => key.toLowerCase())
+                console.log('Sending allergens:', sendAllergens);
+                
+                // ENABLED FOR SUPABASE PURE TESTING
+                const foodResponse = await searchProductsFromSupabasePure({
+                    name: searchInput,
+                    page: 1,
+                    limit: 10,
+                    allergens: sendAllergens
+                });
+                
+                const recipeResponse = await searchRecipesFromSupabasePure({
+                    search: searchInput,
+                    excludeIngredients: sendAllergens,
+                    page: 1,
+                    limit: 10
+                });
+                
+                console.log('[SUPABASE PURE] Search results:', { 
+                    products: foodResponse.length, 
+                    recipes: recipeResponse.length 
+                });
+                
+                dispatch(setProducts(foodResponse));
+                dispatch(addRecipes(recipeResponse));
+                
+            } catch (error) {
+                console.error('Search error:', error);
+            }
+        }, [dispatch, textbar, allergies]);
 
     // Auto-search when allergens change, using the Redux/global search value
     useEffect(() => {
@@ -92,7 +78,6 @@ const Searchbar = ({ curAllergen }) => {
     // Handle input change (local state only)
     const handleTextChange = (input) => {
         setInputValue(input.target.value);
-        saveToCookies(input.target.value);
     }
     
     // On submit, update Redux/global state and trigger search
@@ -100,12 +85,8 @@ const Searchbar = ({ curAllergen }) => {
         event.preventDefault();
         console.log('Search form submitted:', inputValue);
         if (inputValue) {
-            // Here you would update Redux/global state for searchbar
-            // If you have an action like setSearchbar, dispatch it here
-            // For now, just call getResponse with inputValue
+            dispatch(setSearchbarValue(inputValue));
             await getResponse(inputValue);
-            // Optionally update Redux searchbar value if needed
-            // dispatch(setSearchbar(inputValue));
             navigate('/')
         }
     }

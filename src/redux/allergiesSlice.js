@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { fetchAllergensFromDatabase } from '../allergensList'
+import { fetchAllergensFromDatabase, fetchAllergensFromDatabasePure } from '../allergensList'
 
 const initialState = {
     allergies: {},
@@ -32,7 +32,37 @@ const allergiesSlice = createSlice({
     }
 })
 
-// Thunk to fetch allergens from database
+/**
+ * PURE SUPABASE TESTING THUNK - No fallback logic
+ * Use this for testing the Supabase-first approach
+ * This will throw an error if Supabase fails
+ * No fallback to hardcoded allergens
+ */
+export const fetchAllergensPure = () => async (dispatch) => {
+    console.log('[Allergies PURE] Starting fetchAllergensPure thunk (no fallback)...');
+    dispatch(setLoading(true))
+    dispatch(setError(null))
+    
+    try {
+        const allergens = await fetchAllergensFromDatabasePure()
+        console.log('[Allergies PURE] Successfully fetched allergens from Supabase:', {
+            count: Object.keys(allergens).length,
+            allergens: Object.keys(allergens)
+        });
+        dispatch(setAllergies(allergens))
+        console.log('[Allergies PURE] Allergens set in Redux state');
+    } catch (error) {
+        console.error('[Allergies PURE] Failed to fetch allergens from Supabase:', error)
+        dispatch(setError(`Supabase query failed: ${error.message}`))
+        // Don't set any allergens - let the error show
+        console.log('[Allergies PURE] No fallback - error will be displayed to user');
+    } finally {
+        dispatch(setLoading(false))
+        console.log('[Allergies PURE] fetchAllergensPure thunk completed');
+    }
+}
+
+// Thunk to fetch allergens from database (with fallback)
 export const fetchAllergens = () => async (dispatch) => {
     console.log('[Allergies] Starting fetchAllergens thunk');
     dispatch(setLoading(true))

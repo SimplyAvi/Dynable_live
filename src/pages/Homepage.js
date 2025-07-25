@@ -1,39 +1,45 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import axios from 'axios'
 import SearchAndFilter from '../components/SearchAndFilter/SearchAndFilter'
 import ShowResults from '../components/ShowResults'
 import { setProducts } from '../redux/productSlice'
 import { addRecipes } from '../redux/recipeSlice'
-import { buildApiUrl, products, recipes } from '../config/api'
 import './Homepage.css'
 import { useNavigate } from 'react-router-dom';
+import { searchProductsFromSupabasePure, searchRecipesFromSupabasePure } from '../utils/supabaseQueries'
 
 const Homepage = () => {
     const dispatch = useDispatch()
-    const allergies = useSelector((state) => state.allergies.allergies)
+    const allergies = useSelector((state) => state.allergies?.allergies || [])
     const navigate = useNavigate();
 
     useEffect(() => {
         const loadInitialData = async () => {
             try {
+                // ENABLED FOR SUPABASE PURE TESTING
                 // Load initial products
-                const params = new URLSearchParams({
+                const foodResponse = await searchProductsFromSupabasePure({
                     name: '',
                     page: 1,
                     limit: 10,
-                    allergens: [].join(',')
+                    allergens: []
                 });
-                const foodResponse = await axios.get(`${buildApiUrl(products)}/search?${params}`);
                 
                 // Load initial recipes
-                const recipeResponse = await axios.post(buildApiUrl(recipes), {
+                const recipeResponse = await searchRecipesFromSupabasePure({
                     search: '',
-                    excludeIngredients: []
+                    excludeIngredients: [],
+                    page: 1,
+                    limit: 10
                 });
                 
-                dispatch(setProducts(foodResponse.data))
-                dispatch(addRecipes(recipeResponse.data))
+                console.log('[SUPABASE PURE] Initial data loaded:', { 
+                    products: foodResponse.length, 
+                    recipes: recipeResponse.length 
+                });
+                
+                dispatch(setProducts(foodResponse))
+                dispatch(addRecipes(recipeResponse))
             } catch (error) {
                 console.error('Error loading initial data:', error);
             }

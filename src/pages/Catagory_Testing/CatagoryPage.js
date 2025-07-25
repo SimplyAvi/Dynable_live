@@ -1,6 +1,6 @@
 // components/FoodCategoryTable.js
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { supabase } from '../../utils/supabaseClient';
 import Tree from 'react-d3-tree';
 import './CatagoryPage.css';
 
@@ -11,16 +11,37 @@ const CatagoryPage = () => {
     useEffect(() => {
         const fetchHierarchy = async () => {
             try {
-                const response = await axios.get('http://localhost:5001/api/foodCategories');
-                // The root of the tree needs to be a single object.
-                // We'll create a dummy root to hold all our categories.
+                // Fetch categories from Supabase
+                const { data: categories, error } = await supabase
+                    .from('Categories')
+                    .select('*');
+
+                if (error) {
+                    console.error('Error fetching categories:', error);
+                    return;
+                }
+
+                // Fetch subcategories from Supabase
+                const { data: subcategories, error: subError } = await supabase
+                    .from('Subcategories')
+                    .select('*');
+
+                if (subError) {
+                    console.error('Error fetching subcategories:', subError);
+                    return;
+                }
+
+                // Build hierarchy structure
                 const root = {
                     name: 'Categories',
-                    children: response.data.map(category => ({
+                    children: categories.map(category => ({
                         name: category.CategoryName,
-                        children: category.children.map(sub => ({ name: sub.SubCategoryName }))
+                        children: subcategories
+                            .filter(sub => sub.CategoryId === category.id)
+                            .map(sub => ({ name: sub.SubCategoryName }))
                     }))
                 };
+                
                 setHierarchy(root);
             } catch (error) {
                 console.error('Error fetching category hierarchy:', error);

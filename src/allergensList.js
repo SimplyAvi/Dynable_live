@@ -1,6 +1,6 @@
 // Dynamic allergen list that fetches from database
 // Fallback to basic allergens if API is unavailable
-import { buildApiUrl, allergens } from './config/api';
+import { fetchAllergensFromSupabase, fetchAllergensFromSupabasePure } from './utils/supabaseQueries';
 
 const fallbackAllergenList = {
     // Major Allergens (Big 9 + additional common ones)
@@ -16,25 +16,30 @@ const fallbackAllergenList = {
     gluten: false,
 };
 
-// Function to fetch allergens from database
+/**
+ * PURE SUPABASE TESTING FUNCTION - No fallback logic
+ * Use this for testing the Supabase-first approach
+ * This function will throw an error if Supabase fails
+ * No fallback to hardcoded allergens
+ */
+export const fetchAllergensFromDatabasePure = async () => {
+    console.log('[Allergens PURE] Fetching from Supabase database (no fallback)...');
+    
+    const allergens = await fetchAllergensFromSupabasePure();
+    console.log(`[Allergens PURE] Successfully loaded ${Object.keys(allergens).length} allergens from Supabase:`, Object.keys(allergens));
+    return allergens;
+};
+
+// Function to fetch allergens from Supabase database (with fallback)
 export const fetchAllergensFromDatabase = async () => {
     try {
-        const apiUrl = buildApiUrl(allergens);
-        console.log(`[Allergens] Fetching from: ${apiUrl}`);
+        console.log('[Allergens] Fetching from Supabase database...');
         
-        const response = await fetch(apiUrl);
-        console.log(`[Allergens] API response status: ${response.status} ${response.statusText}`);
-        
-        if (response.ok) {
-            const allergens = await response.json();
-            console.log(`[Allergens] Successfully loaded ${Object.keys(allergens).length} allergens from database:`, Object.keys(allergens));
-            return allergens;
-        } else {
-            console.warn(`[Allergens] API returned ${response.status}: ${response.statusText}`);
-            throw new Error(`API returned ${response.status}`);
-        }
+        const allergens = await fetchAllergensFromSupabase();
+        console.log(`[Allergens] Successfully loaded ${Object.keys(allergens).length} allergens from Supabase:`, Object.keys(allergens));
+        return allergens;
     } catch (error) {
-        console.warn('[Allergens] Failed to fetch allergens from database, using fallback:', error.message);
+        console.warn('[Allergens] Failed to fetch allergens from Supabase database, using fallback:', error.message);
         console.error('[Allergens] Full error details:', error);
         throw error; // Re-throw to trigger fallback
     }

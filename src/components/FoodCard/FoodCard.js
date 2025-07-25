@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addItemToCart, addToCartAnonymous } from '../../redux/cartSlice';
+import { addItemToCart } from '../../redux/anonymousCartSlice';
 import './FoodCard.css'
 
 const FoodCard = ({foodItem, id, showAddToCart = false, ingredientFlagged = false, onAddToCart}) =>{

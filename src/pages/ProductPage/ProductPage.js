@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios'
-import { addItemToCart, updateCart, fetchCart, addToCartAnonymous } from '../../redux/cartSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { addItemToCart, fetchCart, initializeAuth } from '../../redux/anonymousCartSlice';
 import './ProductPage.css'
 import SearchAndFilter from '../../components/SearchAndFilter/SearchAndFilter';
+import { supabase } from '../../utils/supabaseClient';
 
 const ProductPage = () =>{
     const { id } = useParams();
@@ -12,15 +12,26 @@ const ProductPage = () =>{
     const [quantity, setQuantity] = useState(1)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
-    const token = useSelector(state => state.auth.token)
-    const cartItems = useSelector(state => state.cart.items)
+    const isAuthenticated = useSelector(state => state.auth?.isAuthenticated || false)
+    const token = useSelector(state => state.auth?.token || null)
+    const cartItems = useSelector(state => state.anonymousCart?.items || [])
 
     useEffect(()=>{
         const getProduct = async () =>{
             try{
-                const productResponse = await axios.get(`http://localhost:5001/api/product/?id=${id}`)
-                setItem(productResponse.data)
+                // Use Supabase to get product by ID
+                const { data, error } = await supabase
+                    .from('IngredientCategorized')
+                    .select('*')
+                    .eq('id', id)
+                    .single();
+                
+                if (error) {
+                    console.error('Error fetching product:', error);
+                    return;
+                }
+                
+                setItem(data);
             } catch(err){
                 console.log(err)
             }
@@ -48,8 +59,10 @@ const ProductPage = () =>{
         }
 
         if (!isAuthenticated) {
-            // Anonymous: add to cart in localStorage/Redux
-            dispatch(addToCartAnonymous(cartItem));
+            // Initialize anonymous auth first, then add to cart
+            console.log('[PRODUCT_PAGE] User not authenticated, initializing anonymous auth');
+            await dispatch(initializeAuth());
+            dispatch(addItemToCart(cartItem));
             return;
         }
 

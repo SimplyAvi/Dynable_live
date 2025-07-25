@@ -1,22 +1,13 @@
 /**
  * Cart Page Implementation
  * Author: Justin Linzan
- * Date: June 2025
+ * Date: January 2025
  * 
- * Amazon-style cart page with features:
- * - List of cart items with images and details
- * - Quantity adjustment
- * - Remove items
- * - Price calculations
- * - Checkout button
- * - Empty cart state
- * - Purchase history
- * 
- * Database Integration:
- * - Cart data is loaded from database on component mount
- * - All changes (quantity updates, removals) are synced with database
- * - Purchase history is fetched from database
- * - Checkout process creates order in database
+ * Updated for Anonymous Auth:
+ * - Uses Supabase Carts table for persistence
+ * - Anonymous users can add to cart
+ * - Automatic cart transfer on login
+ * - No localStorage required
  */
 
 import React, { useState, useEffect } from 'react';
@@ -26,17 +17,15 @@ import {
     selectCartItems, 
     selectCartTotal,
     selectCartHistory,
-    removeFromCart, 
+    removeItemFromCart, 
     updateQuantity,
     fetchCart,
-    updateCart,
     checkout,
     fetchOrders,
-    clearCart,
-    addToCartAnonymous,
-    removeFromCartAnonymous,
-    updateQuantityAnonymous
-} from '../../redux/cartSlice';
+    clearCartItems,
+    selectIsAnonymous,
+    initializeAuth
+} from '../../redux/anonymousCartSlice';
 import { selectIsAuthenticated } from '../../redux/authSlice';
 import './CartPage.css';
 
@@ -46,20 +35,28 @@ const CartPage = () => {
     const cartItems = useSelector(selectCartItems);
     const total = useSelector(selectCartTotal);
     const history = useSelector(selectCartHistory);
-    const isAuthenticated = useSelector(selectIsAuthenticated);
+    const isAuthenticated = useSelector(state => state.auth?.isAuthenticated || false);
+    const isAnonymous = useSelector(selectIsAnonymous);
     const [activeTab, setActiveTab] = useState('cart');
 
     useEffect(() => {
-        if (isAuthenticated) {
-            // Authenticated: load cart and orders from database
-            console.log('[CART_PAGE] Fetching cart and orders for authenticated user');
-            dispatch(fetchCart());
-            dispatch(fetchOrders()); // Always fetch purchase history for logged-in users
+        // Always fetch cart from Supabase (works for both anonymous and authenticated users)
+        console.log('[CART_PAGE] Fetching cart from Supabase');
+        
+        // If not authenticated, initialize anonymous auth first
+        if (!isAuthenticated) {
+            console.log('[CART_PAGE] User not authenticated, initializing anonymous auth');
+            dispatch(initializeAuth()).then(() => {
+                dispatch(fetchCart());
+            });
         } else {
-            // Reset to cart tab when user becomes anonymous
-            setActiveTab('cart');
+            dispatch(fetchCart());
         }
-        // For anonymous users, cart is already loaded from localStorage on app load
+        
+        if (isAuthenticated) {
+            // Also fetch purchase history for authenticated users
+            dispatch(fetchOrders());
+        }
     }, [dispatch, isAuthenticated]);
 
     useEffect(() => {
@@ -78,54 +75,56 @@ const CartPage = () => {
 
     const handleQuantityChange = async (itemId, newQuantity) => {
         if (newQuantity < 1) return;
-        if (isAuthenticated) {
-            // Authenticated: update in backend
-            dispatch(updateQuantity({ id: itemId, quantity: newQuantity }));
-            const updatedItems = cartItems.map(item => 
-                item.id === itemId ? { ...item, quantity: newQuantity } : item
-            );
-            dispatch(updateCart(updatedItems));
-        } else {
-            // Anonymous: update in localStorage/Redux
-            dispatch(updateQuantityAnonymous(itemId, newQuantity));
+        
+        try {
+            await dispatch(updateQuantity({ itemId, quantity: newQuantity })).unwrap();
+            console.log('[CART_PAGE] Quantity updated successfully');
+        } catch (error) {
+            console.error('[CART_PAGE] Failed to update quantity:', error);
         }
     };
 
     const handleRemoveItem = async (itemId) => {
-        if (isAuthenticated) {
-            dispatch(removeFromCart(itemId));
-            const updatedItems = cartItems.filter(item => item.id !== itemId);
-            dispatch(updateCart(updatedItems));
-        } else {
-            dispatch(removeFromCartAnonymous(itemId));
+        try {
+            await dispatch(removeItemFromCart(itemId)).unwrap();
+            console.log('[CART_PAGE] Item removed successfully');
+        } catch (error) {
+            console.error('[CART_PAGE] Failed to remove item:', error);
         }
     };
 
     const handleCheckout = async () => {
         if (!isAuthenticated) {
-            // Anonymous: set post-login redirect and go to login
-            console.log('[CHECKOUT] Setting postLoginRedirect to /cart');
+            // Not authenticated: redirect to login
+            console.log('[CHECKOUT] User not authenticated, redirecting to login');
+            // Store the current location for post-login redirect
             localStorage.setItem('postLoginRedirect', '/cart');
-            console.log('[CHECKOUT] postLoginRedirect set to:', localStorage.getItem('postLoginRedirect'));
             navigate('/login');
             return;
         }
+        
         console.log('[CHECKOUT] Cart items at checkout:', cartItems);
         try {
-            // Authenticated: process checkout
-            await dispatch(checkout()).unwrap();
-            // Refresh order history and cart after successful checkout
+            // Authenticated user: process checkout
+            await dispatch(checkout({
+                shippingAddress: {
+                    street: '123 Main St',
+                    city: 'Anytown',
+                    state: 'CA',
+                    zipCode: '12345',
+                    country: 'USA'
+                },
+                paymentMethod: 'credit_card'
+            })).unwrap();
+            
+            // Refresh order history after successful checkout
             await dispatch(fetchOrders());
-            await dispatch(fetchCart());
-            // Clear anonymous cart from localStorage just in case
-            localStorage.removeItem('anonymous_cart');
+            
             alert('Thank you for your purchase! You can view your order in your purchase history tab below.');
             navigate('/cart');
         } catch (error) {
             console.error('[CHECKOUT] Checkout failed:', error);
-            alert('Checkout failed. Please try again.');
-            // Optionally, sync cart state after failure
-            await dispatch(fetchCart());
+            alert('Checkout failed: ' + error.message);
         }
     };
 

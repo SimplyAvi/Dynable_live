@@ -1,33 +1,32 @@
 import { configureStore } from '@reduxjs/toolkit'
-import rootReducer from './reducers';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage
+import productReducer from './productSlice';
+import recipeReducer from './recipeSlice';
+import searchbarSlice from './searchbarSlice';
+import foodCategoryReducer from './foodCatagorySlice';
+import allergiesReducer from './allergiesSlice';
+import authReducer from './authSlice';
+import anonymousCartReducer from './anonymousCartSlice';
 
-// Only persist the cart slice (for anonymous users)
-const persistConfig = {
-  key: 'root',
-  storage,
-  whitelist: ['cart'], // Only persist cart
-};
+console.log('[STORE] Creating Redux store...');
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-
+// Remove redux-persist since we're using Supabase for persistence
 const store = configureStore({
-  reducer: persistedReducer,
+  reducer: {
+    products: productReducer,
+    recipes: recipeReducer,
+    searchbar: searchbarSlice,
+    foodCategory: foodCategoryReducer,
+    allergies: allergiesReducer,
+    auth: authReducer,
+    anonymousCart: anonymousCartReducer,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
     }),
 });
 
-export const persistor = persistStore(store);
-
-// --- IMPORTANT ---
-// After a user logs in (in GoogleCallback.js or Login.js), call persistor.purge()
-// to clear any persisted cart state and ensure Redux is hydrated from backend only.
-// Example:
-//   import { persistor } from '../../redux/store';
-//   persistor.purge();
-// -----------------
+console.log('[STORE] Redux store created successfully');
+console.log('[STORE] Initial state:', store.getState());
 
 export default store;

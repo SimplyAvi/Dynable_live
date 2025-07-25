@@ -14,17 +14,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setCredentials, setLegacyCredentials } from '../../redux/authSlice';
-import { mergeCarts, updateCart, fetchCart } from '../../redux/cartSlice';
-import { persistor } from '../../redux/store';
-import { prepareForIdentityLinking, cleanupAnonymousData } from '../../utils/anonymousUserManager';
+import { setCredentials } from '../../redux/authSlice';
 import FormInput from '../FormInput';
 import './Auth.css';
+import { supabase } from '../../utils/supabaseClient';
+import { isAnonymousUser } from '../../utils/anonymousAuth';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [hasNavigated, setHasNavigated] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -32,112 +30,68 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
-        
+
         try {
-            const response = await fetch('http://localhost:5001/api/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email,
+                password
             });
 
-            if (response.ok) {
-                const data = await response.json();
-                console.log('[LOGIN] Received response:', {
-                    hasUser: !!data.user,
-                    hasToken: !!data.token,
-                    hasRole: !!data.user?.role,
-                    hasSupabaseToken: !!data.supabaseToken
-                });
-
-                // Determine if this is new format (with role) or legacy format
-                const isNewFormat = data.user && data.user.role;
+            if (error) {
+                console.error('[LOGIN] Login failed:', error);
                 
-                if (isNewFormat) {
-                    // New format with role information
-                    console.log('[LOGIN] Using new format with role information');
-                    dispatch(setCredentials({
-                        user: data.user,
-                        token: data.token,
-                        supabaseToken: data.supabaseToken || null
-                    }));
-                } else {
-                    // Legacy format - use backward compatibility
-                    console.log('[LOGIN] Using legacy format - backward compatibility');
-                    dispatch(setLegacyCredentials({
-                        user: data.user,
-                        token: data.token
-                    }));
-                }
-
-                // Store tokens in localStorage
-                localStorage.setItem('token', data.token);
-                if (data.supabaseToken) {
-                    localStorage.setItem('supabaseToken', data.supabaseToken);
-                }
-
-                // Purge persisted state after login to avoid stale cart
-                await persistor.purge();
-
-                // --- Enhanced cart merging with Supabase identity linking support ---
-                console.log('[LOGIN] Preparing for identity linking...');
-                
-                // Prepare anonymous user data for identity linking
-                const anonymousData = await prepareForIdentityLinking();
-                
-                if (anonymousData.success) {
-                    console.log('[LOGIN] Anonymous data prepared:', {
-                        anonymousId: anonymousData.anonymousId,
-                        cartItems: anonymousData.cartItems.length
+                // Check if user doesn't exist (common error codes)
+                if (error.message?.includes('Invalid login credentials') || 
+                    error.message?.includes('Email not confirmed') ||
+                    error.code === 'invalid_grant') {
+                    
+                    // User doesn't exist - redirect to signup with pre-filled email
+                    console.log('[LOGIN] User not found, redirecting to signup');
+                    navigate('/signup', { 
+                        state: { 
+                            email: email,
+                            fromLogin: true,
+                            message: 'Account not found. Please sign up to continue.'
+                        }
                     });
-                    
-                    // Fetch server cart (if any)
-                    const serverCartRes = await fetch('http://localhost:5001/api/cart', {
-                        headers: { 'Authorization': `Bearer ${data.token}` }
-                    });
-                    let serverCart = [];
-                    if (serverCartRes.ok) {
-                        serverCart = await serverCartRes.json();
-                    }
-                    
-                    // Merge carts and update server
-                    const merged = mergeCarts(anonymousData.cartItems, serverCart);
-                    console.log('[LOGIN] Merging carts:', { 
-                        anonymousCart: anonymousData.cartItems, 
-                        serverCart, 
-                        merged 
-                    });
-                    
-                    const updateResult = await dispatch(updateCart(merged)).unwrap();
-                    console.log('[LOGIN] updateCart completed with result:', updateResult);
-                    
-                    // Clean up anonymous data after successful login
-                    cleanupAnonymousData();
-                } else {
-                    console.log('[LOGIN] No anonymous data to merge');
+                    return;
                 }
-                // Always fetch the latest cart from backend to update Redux
-                const fetchRes = await dispatch(fetchCart()).unwrap();
-                console.log('[LOGIN] fetchCart response:', fetchRes);
-                // --- End merge logic ---
-
-                // Redirect to intended page after login (e.g., /cart), or home
-                const redirectTo = localStorage.getItem('postLoginRedirect') || '/';
-                console.log('[LOGIN] postLoginRedirect value:', localStorage.getItem('postLoginRedirect'));
-                console.log('[LOGIN] redirectTo:', redirectTo);
-                console.log('[LOGIN] hasNavigated:', hasNavigated);
                 
-                if (!hasNavigated) {
-                    setHasNavigated(true);
-                    navigate(redirectTo, { replace: true });
-                    // Clear the redirect after navigation to prevent issues with React StrictMode
-                    if (redirectTo !== '/') localStorage.removeItem('postLoginRedirect');
-                }
+                // Other errors (wrong password, etc.)
+                alert(error.message || 'Login failed. Please check your credentials.');
             } else {
-                const errorData = await response.json().catch(() => ({}));
-                console.error('[LOGIN] Login failed:', errorData);
-                alert(errorData.message || 'Login failed. Please check your credentials.');
+                console.log('[LOGIN] Login successful:', data);
+                
+                // Check if user exists in Users table
+                const userExists = await checkUserExists(data.user.email);
+                if (!userExists) {
+                    // User authenticated but doesn't exist in Users table
+                    // This shouldn't happen with email/password, but handle it
+                    navigate('/signup', { 
+                        state: { 
+                            email: data.user.email,
+                            fromLogin: true,
+                            message: 'Please complete your profile to continue.'
+                        }
+                    });
+                    return;
+                }
+                
+                dispatch(setCredentials({
+                    user: data.user,
+                    token: data.session?.access_token,
+                    isAuthenticated: true
+                }));
+
+                // Check for post-login redirect (e.g., from checkout)
+                const postLoginRedirect = localStorage.getItem('postLoginRedirect');
+                if (postLoginRedirect) {
+                    console.log('[LOGIN] Redirecting to:', postLoginRedirect);
+                    localStorage.removeItem('postLoginRedirect');
+                    navigate(postLoginRedirect);
+                } else {
+                    navigate('/');
+                }
             }
         } catch (error) {
             console.error('[LOGIN] Login error:', error);
@@ -147,38 +101,78 @@ const Login = () => {
         }
     };
 
-    const handleGoogleLogin = () => {
-        const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
-        const redirectUri = 'http://localhost:5001/api/auth/google/callback';
-        const scopes = [
-            'email',
-            'profile',
-            'https://www.googleapis.com/auth/userinfo.profile',
-            'https://www.googleapis.com/auth/userinfo.email',
-            'openid'
-        ].join(' ');
+    const handleGoogleLogin = async () => {
+        try {
+            // First, ensure we have an anonymous session
+            const { data: { session } } = await supabase.auth.getSession();
+            
+            let anonymousUserId = null;
+            
+            if (session && isAnonymousUser(session)) {
+                // Use existing anonymous session
+                anonymousUserId = session.user.id;
+                console.log('[LOGIN] Using existing anonymous session:', anonymousUserId);
+            } else {
+                // No session or not anonymous, create one
+                console.log('[LOGIN] No anonymous session found, creating one...');
+                const { data, error } = await supabase.auth.signInAnonymously();
+                
+                if (error) {
+                    console.error('[LOGIN] Failed to create anonymous session:', error);
+                    return;
+                }
+                
+                anonymousUserId = data.user.id;
+                console.log('[LOGIN] Created new anonymous session:', anonymousUserId);
+            }
+            
+            // Store the current anonymous user ID for cart merging
+            console.log('[LOGIN] Storing anonymous user ID for cart merge:', anonymousUserId);
+            localStorage.setItem('anonymousUserIdForMerge', anonymousUserId);
+            console.log('[LOGIN] anonymousUserIdForMerge in localStorage:', localStorage.getItem('anonymousUserIdForMerge'));
+            
+            // Redirect to Google OAuth
+            const { error } = await supabase.auth.signInWithOAuth({
+                provider: 'google',
+                options: {
+                    redirectTo: `${window.location.origin}/auth/callback`
+                }
+            });
+            
+            if (error) {
+                console.error('[LOGIN] Google OAuth error:', error);
+            }
+        } catch (error) {
+            console.error('[LOGIN] Error initiating Google login:', error);
+        }
+    };
 
-        // Get anonymous cart data for identity linking
-        const anonymousCart = JSON.parse(localStorage.getItem('anonymous_cart') || '[]');
-        const anonymousUserId = localStorage.getItem('anonymous_user_id');
-        
-        // Add cart data to state parameter for Google OAuth
-        const stateData = {
-            type: 'login',
-            anonymousUserId: anonymousUserId,
-            cartData: anonymousCart
-        };
+    // Check if user exists in Users table and handle anonymous conversion
+    const checkUserExists = async (email) => {
+        try {
+            const { data: userData, error } = await supabase
+                .from('Users')
+                .select('*')
+                .eq('email', email)
+                .single();
 
-        const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?` +
-            `client_id=${clientId}` +
-            `&redirect_uri=${encodeURIComponent(redirectUri)}` +
-            `&response_type=code` +
-            `&scope=${encodeURIComponent(scopes)}` +
-            `&access_type=offline` +
-            `&prompt=consent` +
-            `&state=${encodeURIComponent(JSON.stringify(stateData))}`;
-
-        window.location.href = googleAuthUrl;
+            if (error && error.code === 'PGRST116') {
+                // User doesn't exist in Users table - redirect to signup
+                console.log('[LOGIN] User not found in Users table, redirecting to signup');
+                navigate('/signup', { 
+                    state: { 
+                        email: email,
+                        fromGoogle: true,
+                        message: 'Please complete your profile to continue'
+                    }
+                });
+                return false;
+            }
+            return true;
+        } catch (error) {
+            console.error('[LOGIN] Error checking user existence:', error);
+            return false;
+        }
     };
 
     return (

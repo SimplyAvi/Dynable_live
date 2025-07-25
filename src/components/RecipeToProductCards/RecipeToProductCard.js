@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { addItemToCart, addToCartAnonymous } from '../../redux/cartSlice'
-import axios from 'axios'
+import { addItemToCart } from '../../redux/anonymousCartSlice'
+import { getProductsByIngredientFromSupabase } from '../../utils/supabaseQueries';
 import './RecipeToProductCards.css'
 
 const RecipeToProductCard = ({ recipe, allergies }) => {
@@ -53,13 +53,9 @@ const RecipeToProductCard = ({ recipe, allergies }) => {
                 const hasSubstitute = ing.displayName && ing.displayName !== ing.name;
                 const substituteName = hasSubstitute ? ing.displayName : null;
                 
-                const res = await axios.post('http://localhost:5001/api/product/by-ingredient', {
-                    ingredientName: ing.name, // Always use original ingredient name
-                    allergens: userAllergensArr,
-                    substituteName: substituteName // Pass substitute name if user selected one
-                });
+                const res = await getProductsByIngredientFromSupabase(ing.name, userAllergensArr, substituteName);
                 // Use new response structure
-                const { products = [], mappingStatus, coverageStats, brandPriority, canonicalIngredient } = res.data;
+                const { products = [], mappingStatus, coverageStats, brandPriority, canonicalIngredient } = res;
                 newOptions[ing.id] = {
                   products,
                   mappingStatus,
@@ -114,7 +110,7 @@ const RecipeToProductCard = ({ recipe, allergies }) => {
             if (isAuthenticated) {
                 await dispatch(addItemToCart(cartItem)).unwrap();
             } else {
-                dispatch(addToCartAnonymous(cartItem));
+                dispatch(addItemToCart(cartItem));
             }
         } catch (error) {
             console.error('Failed to add to cart:', error);

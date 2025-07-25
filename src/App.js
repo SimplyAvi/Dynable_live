@@ -1,32 +1,24 @@
 /**
  * Main Application Component
  * Author: Justin Linzan
- * Date: June 2025
+ * Date: January 2025
  * 
- * Key Changes from Original:
- * - Added Google OAuth authentication flow
- * - Implemented protected routes for authenticated users
- * - Added new routes for profile and OAuth callback
- * - Integrated Redux for auth state management
- * 
- * Routes:
- * - /: Homepage
- * - /product/:id: Product details
- * - /recipe/:id: Recipe details
- * - /category/:id: Category view
- * - /login: User login
- * - /signup: User registration
- * - /auth/callback: Google OAuth callback
- * - /profile: Protected user profile
+ * Updated for Anonymous Auth:
+ * - Uses signInAnonymously() for unauthenticated users
+ * - Cart persistence in Supabase Carts table
+ * - Automatic cart transfer on login
+ * - No localStorage required
  */
 
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectIsAuthenticated, setCredentials } from './redux/authSlice';
-import { initializeAnonymousCartAsync, fetchCart } from './redux/cartSlice';
-import { initializeAnonymousUser } from './utils/anonymousUserManager';
-import { fetchAllergens } from './redux/allergiesSlice';
+import { selectIsAuthenticated, setCredentials, logout, clearCredentials } from './redux/authSlice';
+import { initializeAuth, fetchCart, mergeAnonymousCartWithServer } from './redux/anonymousCartSlice';
+import { fetchAllergensPure } from './redux/allergiesSlice';
+import { supabase } from './utils/supabaseClient';
+import { isAnonymousUser } from './utils/anonymousAuth';
+import store from './redux/store';
 import Header from './components/Header/Header';
 import Homepage from './pages/Homepage';
 import ProductPage from './pages/ProductPage/ProductPage';
@@ -41,67 +33,136 @@ import CartPage from './pages/CartPage/CartPage';
 import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
 import './App.css';
 
-// Note: ProtectedRouteComponent is now handled by the ProtectedRoute component
-// This wrapper is no longer needed as we use the imported ProtectedRoute component
-
 function App() {
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const isAuthenticated = useSelector(state => {
+    console.log('[APP] Current Redux state:', state);
+    console.log('[APP] Auth state:', state.auth);
+    console.log('[APP] AnonymousCart state:', state.anonymousCart);
+    return state.auth?.isAuthenticated || false;
+  });
 
   useEffect(() => {
-    // Fetch allergens from database on app start
-    dispatch(fetchAllergens());
+    // Fetch allergens from Supabase database on app start
+    dispatch(fetchAllergensPure());
   }, [dispatch]);
 
   useEffect(() => {
-    // Load token from localStorage on app start
-    const token = localStorage.getItem('token');
-    if (token) {
-      // Fetch user profile to get user data
-      fetch('http://localhost:5001/api/auth/profile', {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      })
-      .then(response => response.json())
-      .then(userData => {
-        dispatch(setCredentials({ user: userData, token }));
-        // Always hydrate cart from backend after login
-        dispatch(fetchCart());
-      })
-      .catch(error => {
-        console.error('Error loading user profile:', error);
-        localStorage.removeItem('token');
-        // Do NOT call initializeAnonymousCart here!
-        // Let the next effect run (with no token) and handle it.
-      });
-    } else if (!isAuthenticated) {
-      // No token and not authenticated: initialize Supabase anonymous user
-      console.log('[APP] No token found, initializing anonymous user...');
+    // Check for existing session first
+    const checkExistingSession = async () => {
+      console.log('[APP] Starting checkExistingSession...');
+      const { data: { session } } = await supabase.auth.getSession();
       
-      // Initialize Supabase anonymous user first (with fallback support)
-      initializeAnonymousUser().then(result => {
-        if (result.success) {
-          console.log('[APP] Anonymous user initialized:', result.anonymousId, 'Fallback:', result.fallback);
-          // Then initialize cart with session
-          dispatch(initializeAnonymousCartAsync());
+      console.log('[APP] Session check result:', session ? 'Session found' : 'No session');
+      if (session) {
+        console.log('[APP] Session user ID:', session.user.id);
+        console.log('[APP] Session user:', session.user);
+      }
+      
+      if (!session) {
+        // Only initialize anonymous auth if no session exists
+        console.log('[APP] No existing session, initializing anonymous auth...');
+        dispatch(initializeAuth()).then((result) => {
+          console.log('[APP] initializeAuth result:', result);
+          if (result.meta.requestStatus === 'fulfilled') {
+            console.log('[APP] Anonymous auth initialized successfully');
+            // Fetch cart after auth is initialized
+            dispatch(fetchCart());
+          } else {
+            console.error('[APP] Failed to initialize anonymous auth:', result.error);
+          }
+        });
+      } else {
+        // Check if this is an anonymous session using improved detection
+        const isAnonymous = isAnonymousUser(session);
+        console.log('[APP] Is anonymous session:', isAnonymous);
+        
+        if (isAnonymous) {
+          console.log('[APP] Anonymous session found, not setting authenticated state');
+          // For anonymous sessions, don't set isAuthenticated to true
+          // Just fetch cart
+          dispatch(fetchCart());
         } else {
-          console.error('[APP] Failed to initialize anonymous user:', result.error);
-          // Fallback to regular anonymous cart
-          dispatch(initializeAnonymousCartAsync());
+          console.log('[APP] Authenticated session found, setting credentials');
+          // Set credentials for authenticated session
+          dispatch(setCredentials({
+            user: session.user,
+            token: session.access_token,
+            isAuthenticated: true
+          }));
+          // Fetch cart for existing session
+          dispatch(fetchCart());
         }
-      });
-    }
-  }, [dispatch, isAuthenticated]);
+      }
+    };
 
-  // Always fetch cart from backend when authenticated
-  useEffect(() => {
-    if (isAuthenticated) {
-      console.log('[APP] User authenticated, fetching cart from backend');
-      console.log('[APP] Current location:', window.location.pathname);
-      dispatch(fetchCart());
-    }
-  }, [dispatch, isAuthenticated]);
+    checkExistingSession();
+
+    // Set up Supabase auth state change listener
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      async (event, session) => {
+        console.log('[SUPABASE AUTH] Auth state changed:', event, session);
+        
+        if (event === 'SIGNED_IN' && session) {
+          console.log('[SUPABASE AUTH] User signed in:', session.user);
+          
+          // Check if this is an anonymous session using improved detection
+          const isAnonymous = isAnonymousUser(session);
+          
+          if (isAnonymous) {
+            console.log('[SUPABASE AUTH] Anonymous session signed in, not setting authenticated state');
+            // For anonymous sessions, just fetch cart
+            dispatch(fetchCart());
+          } else {
+            console.log('[SUPABASE AUTH] Authenticated user signed in, setting credentials');
+            
+            // Check if we have a stored anonymous user ID for cart merging
+            const anonymousUserId = localStorage.getItem('anonymousUserIdForMerge');
+            
+            if (anonymousUserId) {
+              console.log('[SUPABASE AUTH] Found stored anonymous user ID, merging carts');
+              try {
+                // Import the merge function
+                const { mergeAnonymousCartWithStoredId } = await import('./utils/anonymousAuth');
+                await mergeAnonymousCartWithStoredId(anonymousUserId, session.user.id);
+                console.log('[SUPABASE AUTH] Cart merge completed successfully');
+                // Clear the stored ID after successful merge
+                localStorage.removeItem('anonymousUserIdForMerge');
+              } catch (error) {
+                console.error('[SUPABASE AUTH] Cart merge failed:', error);
+              }
+            }
+            
+            // Set credentials in Redux for authenticated users
+            dispatch(setCredentials({
+              user: session.user,
+              token: session.access_token,
+              isAuthenticated: true
+            }));
+            // Fetch cart after auth is initialized
+            dispatch(fetchCart());
+          }
+        } else if (event === 'SIGNED_OUT') {
+          console.log('[SUPABASE AUTH] User signed out');
+          
+          // Clear auth state completely
+          dispatch(logout());
+          
+          // Don't immediately reinitialize anonymous auth
+          // Let the user stay logged out until they interact with the app
+        } else if (event === 'TOKEN_REFRESHED' && session) {
+          console.log('[SUPABASE AUTH] Token refreshed');
+          
+          // Only update token if user is still authenticated
+          // Don't automatically set isAuthenticated to true
+          // This prevents interference with logout state
+        }
+      }
+    );
+
+    // Cleanup subscription on unmount
+    return () => subscription.unsubscribe();
+  }, [dispatch]);
 
   return (
     <Router>
@@ -130,6 +191,14 @@ function App() {
             <Route
               path="/cart"
               element={<CartPage />}
+            />
+            <Route
+              path="/orders"
+              element={
+                <ProtectedRoute>
+                  <CartPage />
+                </ProtectedRoute>
+              }
             />
           </Routes>
         </main>

@@ -16,25 +16,61 @@ import React from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../../redux/authSlice'
-import { clearOrders } from '../../redux/cartSlice'
+import { clearCartItems } from '../../redux/anonymousCartSlice'
+import { supabase } from '../../utils/supabaseClient'
 import './Header.css'
 
 const Header = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const dispatch = useDispatch()
-    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
-    const cartItemCount = useSelector(state => state.cart.items.length)
+    const isAuthenticated = useSelector(state => state.auth?.isAuthenticated || false)
+    const cartItemCount = useSelector(state => state.anonymousCart?.items?.length || 0)
 
-    const handleLogout = () => {
-        // Clear token from localStorage
-        localStorage.removeItem('token')
-        // Clear auth state from Redux
-        dispatch(logout())
-        // Clear purchase history from Redux
-        dispatch(clearOrders())
-        // Navigate to home page
-        navigate('/')
+    const handleLogout = async () => {
+        try {
+            console.log('[HEADER] Logging out user...');
+            console.log('[HEADER] Current auth state before logout:', isAuthenticated);
+            
+            // Sign out from Supabase first
+            const { error } = await supabase.auth.signOut();
+            if (error) {
+                console.error('[HEADER] Supabase sign out error:', error);
+            } else {
+                console.log('[HEADER] Supabase sign out successful');
+            }
+            
+            // Clear token from localStorage
+            localStorage.removeItem('token')
+            localStorage.removeItem('anonymous_user_id')
+            localStorage.removeItem('anonymous_cart')
+            localStorage.removeItem('postLoginRedirect')
+            console.log('[HEADER] localStorage cleared');
+            
+            // Clear auth state from Redux
+            console.log('[HEADER] Dispatching logout action...');
+            dispatch(logout())
+            console.log('[HEADER] Logout action dispatched');
+            
+            // Clear cart from Redux
+            dispatch(clearCartItems())
+            console.log('[HEADER] Cart cleared from Redux');
+            
+            // Navigate to home page
+            navigate('/')
+            
+            console.log('[HEADER] Logout completed successfully');
+        } catch (error) {
+            console.error('[HEADER] Logout error:', error);
+            // Still clear everything even if Supabase sign out fails
+            localStorage.removeItem('token')
+            localStorage.removeItem('anonymous_user_id')
+            localStorage.removeItem('anonymous_cart')
+            localStorage.removeItem('postLoginRedirect')
+            dispatch(logout())
+            dispatch(clearCartItems())
+            navigate('/')
+        }
     }
 
     const handleLoginClick = () => {

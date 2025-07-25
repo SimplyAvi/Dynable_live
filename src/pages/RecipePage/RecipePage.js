@@ -1,10 +1,11 @@
 import React, {useEffect, useState, useCallback} from 'react'
 import { useParams } from 'react-router-dom';
-import axios from 'axios'
 import './RecipePage.css'
 import SearchAndFilter from '../../components/SearchAndFilter/SearchAndFilter';
 import ProductSelector from '../../components/ProductSelector/ProductSelector';
 import { useSelector } from 'react-redux';
+import { searchRecipesFromSupabasePure, searchProductsFromSupabasePure, getRecipeSubstitutesFromSupabase, getProductsByIngredientFromSupabase } from '../../utils/supabaseQueries';
+import { supabase } from '../../utils/supabaseClient';
 
 const RecipePage = () =>{
     const { id } = useParams();
@@ -23,12 +24,33 @@ const RecipePage = () =>{
 
     const getProduct = async () =>{
         try{
-            const userAllergensArr = Object.keys(allergies).filter(key => allergies[key]);
-            const params = new URLSearchParams({ id });
-            params.append('userAllergens', userAllergensArr.join(','));
-            const recipeResponse = await axios.get(`http://localhost:5001/api/recipe/?${params.toString()}`)
-            setItem(recipeResponse.data)
-            setIngredients(recipeResponse.data.ingredients || [])
+            // Use Supabase to get recipe by ID
+            const { data, error } = await supabase
+                .from('Recipes')
+                .select('*')
+                .eq('id', id)
+                .single();
+            
+            if (error) {
+                console.error('Error fetching recipe:', error);
+                return;
+            }
+            
+            setItem(data);
+            
+            // Now fetch the recipe ingredients
+            const { data: ingredientsData, error: ingredientsError } = await supabase
+                .from('RecipeIngredients')
+                .select('*')
+                .eq('RecipeId', id);
+            
+            if (ingredientsError) {
+                console.error('Error fetching recipe ingredients:', ingredientsError);
+                setIngredients([]);
+            } else {
+                console.log('Fetched ingredients:', ingredientsData);
+                setIngredients(ingredientsData || []);
+            }
         } catch(err){
             console.log(err)
         }
@@ -72,83 +94,100 @@ const RecipePage = () =>{
     }
 
     // Fetch products for each ingredient or substitute
-    const fetchProducts = useCallback(async (ings) => {
+    const fetchProducts = useCallback(async (ingredients) => {
+        console.log('Fetching products for ingredients:', ingredients.length);
         const userAllergensArr = Object.keys(allergies).filter(key => allergies[key]);
         const newOptions = {};
         
-        // Filter out empty ingredients and section headers
-        const actualIngredients = ings.filter(ing => {
-            const name = ing.displayName || ing.name;
-            return name && name.trim() !== '' && !name.trim().endsWith(':');
-        });
-        
-        for (const ing of actualIngredients) {
-            const name = ing.displayName || ing.canonical || ing.name;
-            if (!name) {
-                newOptions[ing.id] = { products: [], displayName: '' };
-                continue;
-            }
-            try {
+        // Process ingredients in batches to avoid overwhelming the database
+        const batchSize = 2; // Process 2 ingredients at a time
+        for (let i = 0; i < ingredients.length; i += batchSize) {
+            const batch = ingredients.slice(i, i + batchSize);
+            
+            // Process batch in parallel with timeout
+            const batchPromises = batch.map(async (ing) => {
+                const name = ing.name;
                 console.log('Fetching products for:', name);
                 
-                // Check if this ingredient has a substitute selected (displayName differs from original name)
-                const hasSubstitute = ing.displayName && ing.displayName !== ing.name;
-                const substituteName = hasSubstitute ? ing.displayName : null;
-                
-                // If ingredient is flagged due to allergens and no substitute is selected, 
-                // automatically fetch all available substitutes
-                if (ing.flagged && !substituteName && ing.substitutions && ing.substitutions.length > 0) {
-                    console.log('Ingredient flagged, fetching all substitute products for:', name);
+                try {
+                    // Add timeout to individual queries
+                    const timeoutPromise = new Promise((_, reject) => 
+                        setTimeout(() => reject(new Error('Query timeout')), 5000)
+                    );
                     
-                    // Clean the ingredient name for the endpoint
-                    const cleanedName = cleanIngredientNameFrontend(ing.name);
-                    const canonicalName = mapToCanonicalName(cleanedName);
-                    try {
-                        const substituteResponse = await axios.get(`http://localhost:5001/api/recipe/substitute-products?canonicalIngredient=${encodeURIComponent(canonicalName)}`);
-                        const allSubstituteProducts = [];
-                        
-                        substituteResponse.data.substitutes.forEach(substitute => {
-                            if (substitute.products && substitute.products.length > 0) {
-                                const productsWithSubstituteInfo = substitute.products.map(product => ({
-                                    ...product,
-                                    substituteName: substitute.substituteName,
-                                    substituteNotes: substitute.notes
-                                }));
-                                allSubstituteProducts.push(...productsWithSubstituteInfo);
+                    const queryPromise = (async () => {
+                        // Check for substitutes if user has allergens
+                        if (userAllergensArr.length > 0) {
+                            try {
+                                const substituteRes = await getRecipeSubstitutesFromSupabase(ing.canonical || ing.name);
+                                const { substitutes = [] } = substituteRes;
+                                
+                                if (substitutes.length > 0) {
+                                    console.log(`Found ${substitutes.length} substitutes for ${ing.canonical || ing.name}`);
+                                    // For now, just use the first substitute
+                                    const substituteName = substitutes[0].substituteName;
+                                    
+                                    const res = await getProductsByIngredientFromSupabase(ing.name, userAllergensArr, substituteName);
+                                    const { products = [], mappingStatus, coverageStats, brandPriority, canonicalIngredient } = res;
+                                    
+                                    return {
+                                        id: ing.id,
+                                        products,
+                                        displayName: ing.canonical || ing.name,
+                                        mappingStatus,
+                                        coverageStats,
+                                        brandPriority,
+                                        canonicalIngredient
+                                    };
+                                }
+                            } catch (substituteError) {
+                                console.error('Error fetching substitute products:', substituteError);
+                                // Fall back to regular product fetch
                             }
-                        });
+                        }
                         
-                        console.log(`Found ${allSubstituteProducts.length} total substitute products for ${name}`);
-                        // Use the canonical ingredient name for display
-                        newOptions[ing.id] = { products: allSubstituteProducts, displayName: ing.canonical || ing.name };
-                        continue; // Skip the regular product fetch
-                    } catch (substituteError) {
-                        console.error('Error fetching substitute products:', substituteError);
-                        // Fall back to regular product fetch
-                    }
+                        // Regular product fetch
+                        const res = await getProductsByIngredientFromSupabase(ing.name, userAllergensArr);
+                        const { products = [], mappingStatus, coverageStats, brandPriority, canonicalIngredient } = res;
+                        
+                        return {
+                            id: ing.id,
+                            products,
+                            displayName: ing.canonical || ing.name,
+                            mappingStatus,
+                            coverageStats,
+                            brandPriority,
+                            canonicalIngredient
+                        };
+                    })();
+                    
+                    const result = await Promise.race([queryPromise, timeoutPromise]);
+                    return result;
+                    
+                } catch (e) {
+                    console.error('Error fetching products for', name, ':', e);
+                    return {
+                        id: ing.id,
+                        products: [],
+                        displayName: ing.canonical || ing.name
+                    };
                 }
-                
-                // Regular product fetch (either no allergens, substitute selected, or fallback)
-                const res = await axios.post('http://localhost:5001/api/product/by-ingredient', {
-                    ingredientName: ing.name, // Always use original ingredient name
-                    allergens: userAllergensArr,
-                    substituteName: substituteName // Pass substitute name if user selected one
-                });
-                // Use new response structure
-                const { products = [], mappingStatus, coverageStats, brandPriority, canonicalIngredient } = res.data;
-                newOptions[ing.id] = {
-                  products,
-                  displayName: ing.canonical || ing.name,
-                  mappingStatus,
-                  coverageStats,
-                  brandPriority,
-                  canonicalIngredient
-                };
-            } catch (e) {
-                console.error('Error fetching products for', name, ':', e);
-                newOptions[ing.id] = { products: [], displayName: ing.canonical || ing.name };
+            });
+            
+            // Wait for batch to complete before processing next batch
+            const batchResults = await Promise.all(batchPromises);
+            
+            // Add results to newOptions
+            batchResults.forEach(result => {
+                newOptions[result.id] = result;
+            });
+            
+            // Small delay between batches to avoid overwhelming the database
+            if (i + batchSize < ingredients.length) {
+                await new Promise(resolve => setTimeout(resolve, 1000));
             }
         }
+        
         console.log('Final product options:', newOptions);
         setProductOptions(newOptions);
     }, [allergies]);

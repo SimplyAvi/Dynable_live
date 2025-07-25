@@ -14,7 +14,7 @@
  */
 
 import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit';
-import { clearOrders } from './cartSlice';
+import { clearCartItems } from './anonymousCartSlice';
 
 const initialState = {
     user: null,
@@ -75,12 +75,27 @@ const authSlice = createSlice({
         },
         
         logout: (state) => {
+            console.log('[AUTH_SLICE] Logout reducer called, clearing auth state');
             state.user = null;
             state.token = null;
             state.supabaseToken = null;
             state.isAuthenticated = false;
             state.loading = false;
             state.error = null;
+            // Clear role-based state
+            state.role = null;
+            state.isVerifiedSeller = false;
+            state.convertedFromAnonymous = false;
+            console.log('[AUTH_SLICE] Auth state cleared, isAuthenticated set to false');
+        },
+        
+        clearCredentials: (state) => {
+            // Clear credentials but keep loading/error state
+            state.user = null;
+            state.token = null;
+            state.supabaseToken = null;
+            state.isAuthenticated = false;
+            // Don't clear loading/error state
             // Clear role-based state
             state.role = null;
             state.isVerifiedSeller = false;
@@ -177,6 +192,7 @@ export const {
     updateSellerStatus,
     setAnonymousConversion,
     setLegacyCredentials,
+    clearCredentials,
 } = authSlice.actions;
 
 export default authSlice.reducer;
