@@ -3,11 +3,11 @@
  * Author: Justin Linzan
  * Date: January 2025
  * 
- * Supabase-native cart management:
+ * Simplified Supabase-native cart management:
  * - Uses anonymous auth instead of localStorage
  * - All cart operations go through Supabase
  * - Automatic session management
- * - No manual merging required
+ * - Simple database-only merge logic
  */
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
@@ -20,7 +20,7 @@ import {
     removeFromCart,
     clearCart,
     createOrder,
-    isAnonymousUser
+    mergeAnonymousCartWithStoredId
 } from '../utils/anonymousAuth';
 
 console.log('[ANONYMOUS CART] anonymousCartSlice.js loaded');
@@ -37,8 +37,13 @@ export const initializeAuth = createAsyncThunk(
 export const fetchCart = createAsyncThunk(
     'anonymousCart/fetchCart',
     async () => {
-        const items = await getCart();
-        return items;
+        try {
+            const items = await getCart();
+            return items || [];
+        } catch (error) {
+            console.error('[ANONYMOUS CART] Error fetching cart:', error);
+            return [];
+        }
     }
 );
 
@@ -97,152 +102,108 @@ export const checkout = createAsyncThunk(
     }
 );
 
-export const fetchOrders = createAsyncThunk(
-    'anonymousCart/fetchOrders',
-    async () => {
-        // For now, return empty array - we can implement order fetching later
-        return [];
+// 🎯 ENHANCED MERGE FUNCTION - DATABASE-FIRST APPROACH
+export const mergeAnonymousCartWithServer = createAsyncThunk(
+    'anonymousCart/mergeAnonymousCartWithServer',
+    async ({ anonymousUserId, authenticatedUserId }) => {
+        try {
+            console.log('[ANONYMOUS CART] 🚀 Starting enhanced merge thunk...');
+            console.log('[ANONYMOUS CART] Anonymous user ID:', anonymousUserId);
+            console.log('[ANONYMOUS CART] Authenticated user ID:', authenticatedUserId);
+            
+            // 🎯 INPUT VALIDATION
+            if (!anonymousUserId || !authenticatedUserId) {
+                console.error('[ANONYMOUS CART] ❌ Invalid user IDs provided to merge thunk');
+                throw new Error('Invalid user IDs provided');
+            }
+            
+            if (anonymousUserId === authenticatedUserId) {
+                console.warn('[ANONYMOUS CART] ⚠️  Cannot merge cart with same user ID');
+                throw new Error('Cannot merge cart with same user ID');
+            }
+            
+            // 🎯 USE THE ENHANCED MERGE FUNCTION FROM anonymousAuth.js
+            const mergeResult = await mergeAnonymousCartWithStoredId(anonymousUserId, authenticatedUserId);
+            
+            console.log('[ANONYMOUS CART] Merge result:', mergeResult);
+            
+            if (!mergeResult.success) {
+                console.error('[ANONYMOUS CART] ❌ Merge failed:', mergeResult.error);
+                throw new Error(mergeResult.error || 'Merge operation failed');
+            }
+            
+            console.log('[ANONYMOUS CART] ✅ Merge completed successfully');
+            console.log('[ANONYMOUS CART] Merged items count:', mergeResult.mergedItems?.length || 0);
+            
+            // Return the merged items for Redux state update
+            return mergeResult.mergedItems || [];
+            
+        } catch (error) {
+            console.error('[ANONYMOUS CART] ❌ Merge thunk failed:', error);
+            throw error; // Re-throw to trigger rejected action
+        }
     }
 );
 
-// Merge anonymous cart with server cart when user logs in
-export const mergeAnonymousCartWithServer = createAsyncThunk(
-    'anonymousCart/mergeAnonymousCartWithServer',
-    async (_, { getState }) => {
+export const fetchOrders = createAsyncThunk(
+    'anonymousCart/fetchOrders',
+    async () => {
         try {
-            const { data: { user } } = await supabase.auth.getUser();
-            if (!user || !user.email) {
-                console.log('[CART MERGE] No authenticated user, skipping merge');
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session) {
                 return [];
             }
-
-            console.log('[CART MERGE] Starting cart merge for authenticated user:', user.id);
-
-            // Get the current Redux state to find the anonymous user ID
-            const state = getState();
-            const anonymousSession = state.anonymousCart.session;
             
-            if (!anonymousSession || !anonymousSession.user) {
-                console.log('[CART MERGE] No anonymous session found, skipping merge');
+            const { data: orders, error } = await supabase
+                .from('Orders')
+                .select('*')
+                .eq('supabase_user_id', session.user.id)
+                .order('createdAt', { ascending: false });
+            
+            if (error) {
+                console.error('[ANONYMOUS CART] Error fetching orders:', error);
                 return [];
             }
-
-            const anonymousUserId = anonymousSession.user.id;
-            console.log('[CART MERGE] Anonymous user ID:', anonymousUserId);
-
-            // Get anonymous user's cart from database
-            const { data: anonymousCart, error: anonymousError } = await supabase
-                .from('Carts')
-                .select('items')
-                .eq('supabase_user_id', anonymousUserId)
-                .maybeSingle();
-
-            if (anonymousError) {
-                console.error('[CART MERGE] Error fetching anonymous cart:', anonymousError);
-                return [];
-            }
-
-            const anonymousItems = anonymousCart?.items || [];
-            console.log('[CART MERGE] Anonymous cart items:', anonymousItems);
-
-            if (anonymousItems.length === 0) {
-                console.log('[CART MERGE] No anonymous cart items to merge');
-                return [];
-            }
-
-            // Get authenticated user's cart from database
-            const { data: authenticatedCart, error: authenticatedError } = await supabase
-                .from('Carts')
-                .select('items')
-                .eq('supabase_user_id', user.id)
-                .maybeSingle();
-
-            if (authenticatedError) {
-                console.error('[CART MERGE] Error fetching authenticated cart:', authenticatedError);
-                return [];
-            }
-
-            const authenticatedItems = authenticatedCart?.items || [];
-            console.log('[CART MERGE] Authenticated cart items:', authenticatedItems);
-
-            // Merge carts
-            const mergedItems = mergeCarts(anonymousItems, authenticatedItems);
-            console.log('[CART MERGE] Merged cart items:', mergedItems);
-
-            // Update authenticated user's cart with merged items
-            const { error: updateError } = await supabase
-                .from('Carts')
-                .upsert({
-                    supabase_user_id: user.id,
-                    items: mergedItems,
-                    updatedAt: new Date().toISOString()
-                });
-
-            if (updateError) {
-                console.error('[CART MERGE] Error updating authenticated cart:', updateError);
-                return authenticatedItems; // Keep existing cart if update fails
-            }
-
-            // Delete the anonymous user's cart after successful merge
-            const { error: deleteError } = await supabase
-                .from('Carts')
-                .delete()
-                .eq('supabase_user_id', anonymousUserId);
-
-            if (deleteError) {
-                console.error('[CART MERGE] Error deleting anonymous cart:', deleteError);
-                // Don't fail the merge if delete fails
-            }
-
-            console.log('[CART MERGE] Successfully merged carts and deleted anonymous cart');
-            return mergedItems;
-
+            
+            return orders || [];
         } catch (error) {
-            console.error('[CART MERGE] Merge operation failed:', error);
+            console.error('[ANONYMOUS CART] Error fetching orders:', error);
             return [];
         }
     }
 );
 
-// Utility function to merge two cart arrays
-function mergeCarts(localItems, serverItems) {
-    const merged = [...serverItems];
-    
-    localItems.forEach(localItem => {
-        const existingIndex = merged.findIndex(item => item.id === localItem.id);
-        
-        if (existingIndex >= 0) {
-            // Item exists, add quantities
-            merged[existingIndex] = {
-                ...merged[existingIndex],
-                quantity: merged[existingIndex].quantity + localItem.quantity
-            };
-        } else {
-            // New item, add to cart
-            merged.push(localItem);
-        }
-    });
-    
-    return merged;
-}
-
+// Initial state
 const initialState = {
     items: [],
+    history: [],
     loading: false,
     error: null,
     isAnonymous: false,
     session: null
 };
 
+// Slice
 const anonymousCartSlice = createSlice({
     name: 'anonymousCart',
     initialState,
     reducers: {
-        setError: (state, action) => {
-            state.error = action.payload;
-        },
         clearError: (state) => {
             state.error = null;
+        },
+        setSession: (state, action) => {
+            state.session = action.payload;
+            state.isAnonymous = action.payload?.isAnonymous || false;
+        },
+        setCartItems: (state, action) => {
+            state.items = action.payload;
+            console.log('[ANONYMOUS CART] Cart items updated:', action.payload);
+        },
+        clearCartState: (state) => {
+            state.items = [];
+            state.loading = false;
+            state.error = null;
+            console.log('[ANONYMOUS CART] Cart cleared');
         }
     },
     extraReducers: (builder) => {
@@ -250,15 +211,13 @@ const anonymousCartSlice = createSlice({
             // Initialize Auth
             .addCase(initializeAuth.pending, (state) => {
                 state.loading = true;
+                state.error = null;
             })
             .addCase(initializeAuth.fulfilled, (state, action) => {
                 state.loading = false;
                 state.session = action.payload.session;
                 state.isAnonymous = action.payload.isAnonymous;
-                console.log('[ANONYMOUS CART] Auth initialized:', {
-                    userId: action.payload.session?.user?.id,
-                    isAnonymous: action.payload.isAnonymous
-                });
+                console.log('[ANONYMOUS CART] Auth initialized:', action.payload);
             })
             .addCase(initializeAuth.rejected, (state, action) => {
                 state.loading = false;
@@ -268,6 +227,7 @@ const anonymousCartSlice = createSlice({
             // Fetch Cart
             .addCase(fetchCart.pending, (state) => {
                 state.loading = true;
+                state.error = null;
             })
             .addCase(fetchCart.fulfilled, (state, action) => {
                 state.loading = false;
@@ -282,6 +242,7 @@ const anonymousCartSlice = createSlice({
             // Add Item
             .addCase(addItemToCart.pending, (state) => {
                 state.loading = true;
+                state.error = null;
             })
             .addCase(addItemToCart.fulfilled, (state, action) => {
                 state.loading = false;
@@ -296,11 +257,11 @@ const anonymousCartSlice = createSlice({
             // Update Quantity
             .addCase(updateQuantity.pending, (state) => {
                 state.loading = true;
+                state.error = null;
             })
             .addCase(updateQuantity.fulfilled, (state, action) => {
                 state.loading = false;
                 state.items = action.payload;
-                console.log('[ANONYMOUS CART] Quantity updated:', action.payload);
             })
             .addCase(updateQuantity.rejected, (state, action) => {
                 state.loading = false;
@@ -310,11 +271,11 @@ const anonymousCartSlice = createSlice({
             // Remove Item
             .addCase(removeItemFromCart.pending, (state) => {
                 state.loading = true;
+                state.error = null;
             })
             .addCase(removeItemFromCart.fulfilled, (state, action) => {
                 state.loading = false;
                 state.items = action.payload;
-                console.log('[ANONYMOUS CART] Item removed:', action.payload);
             })
             .addCase(removeItemFromCart.rejected, (state, action) => {
                 state.loading = false;
@@ -324,11 +285,11 @@ const anonymousCartSlice = createSlice({
             // Clear Cart
             .addCase(clearCartItems.pending, (state) => {
                 state.loading = true;
+                state.error = null;
             })
             .addCase(clearCartItems.fulfilled, (state, action) => {
                 state.loading = false;
                 state.items = action.payload;
-                console.log('[ANONYMOUS CART] Cart cleared');
             })
             .addCase(clearCartItems.rejected, (state, action) => {
                 state.loading = false;
@@ -338,11 +299,12 @@ const anonymousCartSlice = createSlice({
             // Checkout
             .addCase(checkout.pending, (state) => {
                 state.loading = true;
+                state.error = null;
             })
             .addCase(checkout.fulfilled, (state, action) => {
                 state.loading = false;
-                state.items = []; // Clear cart after successful checkout
-                console.log('[ANONYMOUS CART] Checkout successful:', action.payload);
+                state.items = [];
+                state.history.push(action.payload);
             })
             .addCase(checkout.rejected, (state, action) => {
                 state.loading = false;
@@ -352,18 +314,39 @@ const anonymousCartSlice = createSlice({
             // Fetch Orders
             .addCase(fetchOrders.pending, (state) => {
                 state.loading = true;
+                state.error = null;
             })
             .addCase(fetchOrders.fulfilled, (state, action) => {
                 state.loading = false;
                 state.history = action.payload;
-                console.log('[ANONYMOUS CART] Orders fetched:', action.payload);
             })
             .addCase(fetchOrders.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message;
+            })
+            
+            // Merge Cart
+            .addCase(mergeAnonymousCartWithServer.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(mergeAnonymousCartWithServer.fulfilled, (state, action) => {
+                state.loading = false;
+                if (action.payload.length > 0) { // Check if payload is an array
+                    state.items = action.payload;
+                    console.log('[ANONYMOUS CART] Cart merge completed:', action.payload.length);
+                } else {
+                    state.error = 'No items merged or merge failed.';
+                }
+            })
+            .addCase(mergeAnonymousCartWithServer.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message;
             });
     }
 });
+
+export const { clearError, setSession, setCartItems, clearCartState } = anonymousCartSlice.actions;
 
 // Selectors
 export const selectCartItems = (state) => state.anonymousCart.items;
@@ -376,7 +359,5 @@ export const selectIsAnonymous = (state) => state.anonymousCart.isAnonymous;
 export const selectSession = (state) => state.anonymousCart.session;
 export const selectCartLoading = (state) => state.anonymousCart.loading;
 export const selectCartError = (state) => state.anonymousCart.error;
-
-export const { setError, clearError } = anonymousCartSlice.actions;
 
 export default anonymousCartSlice.reducer; 

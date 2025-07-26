@@ -1,142 +1,105 @@
 /**
- * Anonymous Authentication Implementation
+ * Anonymous Authentication Utilities
  * Author: Justin Linzan
  * Date: January 2025
  * 
- * Supabase-native anonymous auth handling:
- * - Automatic anonymous sign-in for unauthenticated users
- * - Cart persistence in Supabase Carts table
- * - Identity linking when user logs in
- * - No localStorage required - everything in Supabase
+ * Simplified Supabase anonymous auth utilities:
+ * - Pure Supabase operations only
+ * - No cookies, no localStorage fallbacks
+ * - Simple database-only cart management
  */
 
 import { supabase } from './supabaseClient';
 
 /**
+ * Improved anonymous user detection
+ * Anonymous users in Supabase have empty email and phone fields
+ */
+export function isAnonymousUser(session) {
+    if (!session || !session.user) {
+        return false;
+    }
+    
+    // Check for explicit anonymous flag
+    if (session.user.app_metadata?.is_anonymous === true) {
+        return true;
+    }
+    
+    // Check for empty email and phone (anonymous users typically have no email/phone)
+    const hasNoEmail = (!session.user.email) || (session.user.email.trim() === '');
+    const hasNoPhone = (!session.user.phone) || (session.user.phone.trim() === '');
+    
+    // User is anonymous if they have no email AND no phone
+    return hasNoEmail && hasNoPhone;
+}
+
+/**
  * Initialize anonymous authentication
- * Called on app load if no session exists
  */
 export const initializeAnonymousAuth = async () => {
     try {
-        console.log('[ANONYMOUS AUTH] Checking for existing session...');
-        
-        // Check if user already has a session
         const { data: { session } } = await supabase.auth.getSession();
         
         if (session) {
             console.log('[ANONYMOUS AUTH] Existing session found:', session.user.id);
             console.log('[ANONYMOUS AUTH] Session user details:', session.user);
-            return { session, isAnonymous: session.user.app_metadata?.is_anonymous || false };
+            
+            const isAnonymous = isAnonymousUser(session);
+            return {
+                session,
+                isAnonymous,
+                success: true
+            };
         }
         
-        // No session exists, sign in anonymously
-        console.log('[ANONYMOUS AUTH] No session found, signing in anonymously...');
+        console.log('[ANONYMOUS AUTH] No existing session, creating anonymous session...');
+        
         const { data, error } = await supabase.auth.signInAnonymously();
         
         if (error) {
             console.error('[ANONYMOUS AUTH] Anonymous sign-in failed:', error);
-            throw error;
+            return {
+                session: null,
+                isAnonymous: false,
+                success: false,
+                error: error.message
+            };
         }
         
         console.log('[ANONYMOUS AUTH] Anonymous sign-in successful:', data.user.id);
         console.log('[ANONYMOUS AUTH] Anonymous user details:', data.user);
-        return { session: data.session, isAnonymous: true };
+        
+        return {
+            session: data.session,
+            isAnonymous: true,
+            success: true
+        };
         
     } catch (error) {
-        console.error('[ANONYMOUS AUTH] Failed to initialize anonymous auth:', error);
-        throw error;
+        console.error('[ANONYMOUS AUTH] Error initializing anonymous auth:', error);
+        return {
+            session: null,
+            isAnonymous: false,
+            success: false,
+            error: error.message
+        };
     }
 };
 
 /**
- * Link anonymous user to permanent account (Google OAuth)
- * Called when anonymous user logs in with Google
- */
-export const linkAnonymousToGoogle = async () => {
-    try {
-        console.log('[ANONYMOUS AUTH] Linking anonymous user to Google...');
-        
-        // Get current session
-        const { data: { session } } = await supabase.auth.getSession();
-        
-        if (!session || !session.user.app_metadata?.is_anonymous) {
-            console.log('[ANONYMOUS AUTH] No anonymous session found');
-            return { success: false, error: 'No anonymous session found' };
-        }
-        
-        const anonymousUserId = session.user.id;
-        console.log('[ANONYMOUS AUTH] Anonymous user ID:', anonymousUserId);
-        
-        // Link identity to Google
-        const { data, error } = await supabase.auth.linkIdentity({
-            provider: 'google'
-        });
-        
-        if (error) {
-            console.error('[ANONYMOUS AUTH] Identity linking failed:', error);
-            return { success: false, error: error.message };
-        }
-        
-        console.log('[ANONYMOUS AUTH] Identity linked successfully');
-        
-        // Get the new session with permanent user
-        const { data: { session: newSession } } = await supabase.auth.getSession();
-        
-        if (newSession && !newSession.user.app_metadata?.is_anonymous) {
-            console.log('[ANONYMOUS AUTH] User converted to permanent:', newSession.user.id);
-            
-            // Cart data is automatically transferred by Supabase
-            // The anonymous cart becomes the permanent user's cart
-            
-            return { 
-                success: true, 
-                session: newSession,
-                anonymousUserId,
-                permanentUserId: newSession.user.id
-            };
-        }
-        
-        return { success: false, error: 'Failed to get new session' };
-        
-    } catch (error) {
-        console.error('[ANONYMOUS AUTH] Link to Google failed:', error);
-        return { success: false, error: error.message };
-    }
-};
-
-/**
- * Check if current user is anonymous
- * Anonymous users in Supabase have empty email and phone fields
- */
-export const isAnonymousUser = (session) => {
-    if (!session?.user) return false;
-    
-    // Anonymous users have empty email and phone
-    const hasEmail = session.user.email && session.user.email.trim() !== '';
-    const hasPhone = session.user.phone && session.user.phone.trim() !== '';
-    
-    // Also check for the app_metadata flag (though it's not always set)
-    const hasAnonymousFlag = session.user.app_metadata?.is_anonymous || false;
-    
-    // User is anonymous if they have no email, no phone, or have the anonymous flag
-    return !hasEmail && !hasPhone || hasAnonymousFlag;
-};
-
-/**
- * Get cart for current user (anonymous or permanent)
+ * Get cart items for current user
  */
 export const getCart = async () => {
     try {
         const { data: { session } } = await supabase.auth.getSession();
         
         if (!session) {
-            console.log('[ANONYMOUS AUTH] No session found for cart');
+            console.log('[ANONYMOUS AUTH] No session found, cannot fetch cart');
             return [];
         }
         
         console.log('[ANONYMOUS AUTH] Fetching cart for user:', session.user.id);
         
-        // Fetch cart from Supabase Carts table
         const { data: cart, error } = await supabase
             .from('Carts')
             .select('items')
@@ -148,85 +111,88 @@ export const getCart = async () => {
             return [];
         }
         
-        if (!cart) {
-            // No cart found - this is normal for new users
-            console.log('[ANONYMOUS AUTH] No cart found for user (normal for new users)');
-            return [];
-        }
-        
         const items = cart?.items || [];
         console.log('[ANONYMOUS AUTH] Cart items:', items);
+        
         return items;
         
     } catch (error) {
-        console.error('[ANONYMOUS AUTH] Failed to get cart:', error);
+        console.error('[ANONYMOUS AUTH] Error in getCart:', error);
         return [];
     }
 };
 
 /**
- * Add item to cart (anonymous or permanent)
+ * Add item to cart
  */
 export const addToCart = async (item) => {
     try {
+        console.log('[ANONYMOUS AUTH] 🚨 ADD TO CART CALLED with item:', item);
+        
         const { data: { session } } = await supabase.auth.getSession();
         
         if (!session) {
-            console.error('[ANONYMOUS AUTH] No session found for cart operation');
+            console.log('[ANONYMOUS AUTH] ❌ No session found, cannot add to cart');
             return { success: false, error: 'No session found' };
         }
         
-        console.log('[ANONYMOUS AUTH] Adding item to cart:', item);
+        console.log('[ANONYMOUS AUTH] ✅ Session found, adding item to cart:', item);
         console.log('[ANONYMOUS AUTH] Current session user ID:', session.user.id);
         console.log('[ANONYMOUS AUTH] Session user:', session.user);
+        console.log('[ANONYMOUS AUTH] Is anonymous user?', isAnonymousUser(session));
+        console.log('[ANONYMOUS AUTH] localStorage anonymousUserIdForMerge:', localStorage.getItem('anonymousUserIdForMerge'));
         
-        // Get current cart
-        const { data: existingCart, error: fetchError } = await supabase
-            .from('Carts')
-            .select('items')
-            .eq('supabase_user_id', session.user.id)
-            .maybeSingle();
+        // Get current cart items
+        const currentItems = await getCart();
+        console.log('[ANONYMOUS AUTH] Current cart items before adding:', currentItems);
         
-        let currentItems = [];
-        if (!fetchError && existingCart) {
-            currentItems = existingCart.items || [];
-        }
+        // Check if item already exists
+        const existingItemIndex = currentItems.findIndex(cartItem => cartItem.id === item.id);
         
-        // Add or update item
-        const existingIndex = currentItems.findIndex(i => i.id === item.id);
-        if (existingIndex !== -1) {
-            currentItems[existingIndex] = { 
-                ...currentItems[existingIndex], 
-                quantity: currentItems[existingIndex].quantity + item.quantity 
-            };
+        if (existingItemIndex !== -1) {
+            // Update quantity of existing item
+            currentItems[existingItemIndex].quantity += item.quantity;
+            console.log('[ANONYMOUS AUTH] Updated existing item quantity:', currentItems[existingItemIndex]);
         } else {
-            currentItems.push({ ...item });
+            // Add new item
+            currentItems.push(item);
+            console.log('[ANONYMOUS AUTH] Added new item to cart:', item);
         }
         
+        console.log('[ANONYMOUS AUTH] Cart items after adding:', currentItems);
         console.log('[ANONYMOUS AUTH] About to upsert cart with user ID:', session.user.id);
-        console.log('[ANONYMOUS AUTH] Cart items to save:', currentItems);
         
-        // Upsert cart with timestamps
+        // Upsert cart in database
         const now = new Date().toISOString();
-        const { error: upsertError } = await supabase
+        console.log('[ANONYMOUS AUTH] About to upsert cart with data:', {
+            supabase_user_id: session.user.id,
+            items: currentItems,
+            createdAt: now,
+            updatedAt: now
+        });
+        
+        const { data: upsertData, error: upsertError } = await supabase
             .from('Carts')
             .upsert({
                 supabase_user_id: session.user.id,
                 items: currentItems,
                 createdAt: now,
                 updatedAt: now
-            }, { onConflict: 'supabase_user_id' });
+            }, { onConflict: 'supabase_user_id' })
+            .select();
+        
+        console.log('[ANONYMOUS AUTH] Upsert result:', { upsertData, upsertError });
         
         if (upsertError) {
-            console.error('[ANONYMOUS AUTH] Failed to update cart:', upsertError);
+            console.error('[ANONYMOUS AUTH] ❌ Error upserting cart:', upsertError);
             return { success: false, error: upsertError.message };
         }
         
-        console.log('[ANONYMOUS AUTH] Cart updated successfully');
+        console.log('[ANONYMOUS AUTH] ✅ Cart updated successfully, upsert data:', upsertData);
         return { success: true, items: currentItems };
         
     } catch (error) {
-        console.error('[ANONYMOUS AUTH] Failed to add to cart:', error);
+        console.error('[ANONYMOUS AUTH] ❌ Error in addToCart:', error);
         return { success: false, error: error.message };
     }
 };
@@ -242,44 +208,38 @@ export const updateCartItemQuantity = async (itemId, quantity) => {
             return { success: false, error: 'No session found' };
         }
         
-        // Get current cart
-        const { data: cart, error: fetchError } = await supabase
-            .from('Carts')
-            .select('items')
-            .eq('supabase_user_id', session.user.id)
-            .maybeSingle();
+        const currentItems = await getCart();
+        const itemIndex = currentItems.findIndex(item => item.id === itemId);
         
-        if (fetchError) {
-            return { success: false, error: fetchError.message };
+        if (itemIndex === -1) {
+            return { success: false, error: 'Item not found in cart' };
         }
         
-        let items = cart?.items || [];
-        
-        // Update quantity
-        items = items.map(item => 
-            item.id === itemId ? { ...item, quantity } : item
-        );
-        
-        // Remove items with quantity 0
-        items = items.filter(item => item.quantity > 0);
-        
-        // Update cart with timestamp
-        const { error: updateError } = await supabase
-            .from('Carts')
-            .update({ 
-                items,
-                updatedAt: new Date().toISOString()
-            })
-            .eq('supabase_user_id', session.user.id);
-        
-        if (updateError) {
-            return { success: false, error: updateError.message };
+        if (quantity <= 0) {
+            // Remove item if quantity is 0 or negative
+            currentItems.splice(itemIndex, 1);
+        } else {
+            // Update quantity
+            currentItems[itemIndex].quantity = quantity;
         }
         
-        return { success: true, items };
+        const now = new Date().toISOString();
+        const { error: upsertError } = await supabase
+            .from('Carts')
+            .upsert({
+                supabase_user_id: session.user.id,
+                items: currentItems,
+                createdAt: now,
+                updatedAt: now
+            }, { onConflict: 'supabase_user_id' });
+        
+        if (upsertError) {
+            return { success: false, error: upsertError.message };
+        }
+        
+        return { success: true, items: currentItems };
         
     } catch (error) {
-        console.error('[ANONYMOUS AUTH] Failed to update quantity:', error);
         return { success: false, error: error.message };
     }
 };
@@ -288,11 +248,39 @@ export const updateCartItemQuantity = async (itemId, quantity) => {
  * Remove item from cart
  */
 export const removeFromCart = async (itemId) => {
-    return updateCartItemQuantity(itemId, 0);
+    try {
+        const { data: { session } } = await supabase.auth.getSession();
+        
+        if (!session) {
+            return { success: false, error: 'No session found' };
+        }
+        
+        const currentItems = await getCart();
+        const filteredItems = currentItems.filter(item => item.id !== itemId);
+        
+        const now = new Date().toISOString();
+        const { error: upsertError } = await supabase
+            .from('Carts')
+            .upsert({
+                supabase_user_id: session.user.id,
+                items: filteredItems,
+                createdAt: now,
+                updatedAt: now
+            }, { onConflict: 'supabase_user_id' });
+        
+        if (upsertError) {
+            return { success: false, error: upsertError.message };
+        }
+        
+        return { success: true, items: filteredItems };
+        
+    } catch (error) {
+        return { success: false, error: error.message };
+    }
 };
 
 /**
- * Clear entire cart
+ * Clear cart
  */
 export const clearCart = async () => {
     try {
@@ -302,28 +290,29 @@ export const clearCart = async () => {
             return { success: false, error: 'No session found' };
         }
         
-        const { error } = await supabase
+        const now = new Date().toISOString();
+        const { error: upsertError } = await supabase
             .from('Carts')
-            .update({ 
+            .upsert({
+                supabase_user_id: session.user.id,
                 items: [],
-                updatedAt: new Date().toISOString()
-            })
-            .eq('supabase_user_id', session.user.id);
+                createdAt: now,
+                updatedAt: now
+            }, { onConflict: 'supabase_user_id' });
         
-        if (error) {
-            return { success: false, error: error.message };
+        if (upsertError) {
+            return { success: false, error: upsertError.message };
         }
         
         return { success: true, items: [] };
         
     } catch (error) {
-        console.error('[ANONYMOUS AUTH] Failed to clear cart:', error);
         return { success: false, error: error.message };
     }
 };
 
 /**
- * Create order from cart (checkout)
+ * Create order from cart
  */
 export const createOrder = async (orderData) => {
     try {
@@ -333,152 +322,241 @@ export const createOrder = async (orderData) => {
             return { success: false, error: 'No session found' };
         }
         
-        // Get cart items
-        const { data: cart, error: cartError } = await supabase
-            .from('Carts')
-            .select('items')
-            .eq('supabase_user_id', session.user.id)
-            .maybeSingle();
+        const cartItems = await getCart();
         
-        if (cartError || !cart?.items?.length) {
+        if (cartItems.length === 0) {
             return { success: false, error: 'Cart is empty' };
         }
         
-        // Calculate total
-        const totalAmount = cart.items.reduce((sum, item) => 
-            sum + (item.price * item.quantity), 0
-        );
-        
-        // Create order with timestamps
         const now = new Date().toISOString();
         const { data: order, error: orderError } = await supabase
             .from('Orders')
             .insert({
                 supabase_user_id: session.user.id,
-                items: cart.items,
-                totalAmount,
+                items: cartItems,
+                totalAmount: cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0),
                 status: 'pending',
-                shippingAddress: orderData.shippingAddress || {
-                    street: '123 Main St',
-                    city: 'Anytown',
-                    state: 'CA',
-                    zipCode: '12345',
-                    country: 'USA'
-                },
-                paymentMethod: orderData.paymentMethod || 'credit_card',
                 createdAt: now,
-                updatedAt: now
+                updatedAt: now,
+                ...orderData
             })
             .select()
             .single();
         
         if (orderError) {
-            console.error('[ANONYMOUS AUTH] Failed to create order:', orderError);
             return { success: false, error: orderError.message };
         }
         
         // Clear cart after successful order
         await clearCart();
         
-        console.log('[ANONYMOUS AUTH] Order created successfully:', order.id);
         return { success: true, order };
         
     } catch (error) {
-        console.error('[ANONYMOUS AUTH] Failed to create order:', error);
         return { success: false, error: error.message };
     }
 };
 
 /**
- * Merge anonymous cart with authenticated cart using stored anonymous user ID
- * This is used when anonymous user logs in via OAuth
+ * Simple merge function - database only
  */
 export const mergeAnonymousCartWithStoredId = async (anonymousUserId, authenticatedUserId) => {
     try {
-        console.log('[ANON MERGE] Starting merge: anon:', anonymousUserId, 'auth:', authenticatedUserId);
+        console.log('[ANON MERGE] 🚀 Starting enhanced cart merge...');
+        console.log('[ANON MERGE] Anonymous user ID:', anonymousUserId);
+        console.log('[ANON MERGE] Authenticated user ID:', authenticatedUserId);
+        
+        // 🎯 INPUT VALIDATION
         if (!anonymousUserId || !authenticatedUserId) {
-            console.warn('[ANON MERGE] Missing user IDs, aborting merge.');
-            return;
+            console.error('[ANON MERGE] ❌ Invalid user IDs provided');
+            return { success: false, error: 'Invalid user IDs provided' };
         }
-        // Fetch anonymous cart
-        const { data: anonCart, error: anonErr } = await supabase
+        
+        if (anonymousUserId === authenticatedUserId) {
+            console.warn('[ANON MERGE] ⚠️  Anonymous and authenticated user IDs are the same');
+            return { success: false, error: 'Cannot merge cart with same user ID' };
+        }
+        
+        // 🎯 STEP 1: Verify anonymous cart exists in database
+        console.log('[ANON MERGE] 🔍 Step 1: Verifying anonymous cart exists in database...');
+        const { data: anonymousCart, error: anonymousError } = await supabase
             .from('Carts')
-            .select('items')
+            .select('items, updatedAt')
             .eq('supabase_user_id', anonymousUserId)
             .maybeSingle();
-        console.log('[ANON MERGE] Fetched anon cart:', anonCart, 'error:', anonErr);
-        if (anonErr || !anonCart || !anonCart.items || anonCart.items.length === 0) {
-            console.log('[ANON MERGE] No anon cart to merge.');
-            localStorage.removeItem('anonymousUserIdForMerge');
-            return;
+        
+        if (anonymousError) {
+            console.error('[ANON MERGE] ❌ Error fetching anonymous cart:', anonymousError);
+            return { success: false, error: 'Failed to fetch anonymous cart: ' + anonymousError.message };
         }
-        // Fetch authenticated cart
-        const { data: authCart, error: authErr } = await supabase
+        
+        if (!anonymousCart) {
+            console.log('[ANON MERGE] ℹ️  No anonymous cart found in database');
+            return { success: true, mergedItems: [], message: 'No anonymous cart found' };
+        }
+        
+        const anonymousItems = anonymousCart.items || [];
+        console.log('[ANON MERGE] ✅ Anonymous cart found with', anonymousItems.length, 'items');
+        console.log('[ANON MERGE] Anonymous cart items:', anonymousItems);
+        console.log('[ANON MERGE] Anonymous cart last updated:', anonymousCart.updatedAt);
+        
+        if (anonymousItems.length === 0) {
+            console.log('[ANON MERGE] ℹ️  Anonymous cart is empty, no merge needed');
+            return { success: true, mergedItems: [], message: 'Anonymous cart is empty' };
+        }
+        
+        // 🎯 STEP 2: Get authenticated user's cart from database
+        console.log('[ANON MERGE] 🔍 Step 2: Fetching authenticated user cart from database...');
+        const { data: authenticatedCart, error: authenticatedError } = await supabase
             .from('Carts')
-            .select('items')
+            .select('items, updatedAt')
             .eq('supabase_user_id', authenticatedUserId)
             .maybeSingle();
-        console.log('[ANON MERGE] Fetched auth cart:', authCart, 'error:', authErr);
-        let mergedItems = [...anonCart.items];
-        if (authCart && authCart.items && authCart.items.length > 0) {
-            // Merge logic: combine, dedupe by product ID (or whatever key you use)
-            const existingIds = new Set(anonCart.items.map(i => i.product_id));
-            mergedItems = [
-                ...anonCart.items,
-                ...authCart.items.filter(i => !existingIds.has(i.product_id))
-            ];
+        
+        if (authenticatedError) {
+            console.error('[ANON MERGE] ❌ Error fetching authenticated cart:', authenticatedError);
+            return { success: false, error: 'Failed to fetch authenticated cart: ' + authenticatedError.message };
         }
-        // Update authenticated cart
-        const { error: updateErr } = await supabase
+        
+        const authenticatedItems = authenticatedCart?.items || [];
+        console.log('[ANON MERGE] ✅ Authenticated cart found with', authenticatedItems.length, 'items');
+        console.log('[ANON MERGE] Authenticated cart items:', authenticatedItems);
+        
+        // 🎯 STEP 3: Merge carts using enhanced merge logic
+        console.log('[ANON MERGE] 🔄 Step 3: Merging carts with enhanced logic...');
+        const mergeResult = mergeCarts(anonymousItems, authenticatedItems);
+        console.log('[ANON MERGE] ✅ Merge completed:', mergeResult);
+        
+        // 🎯 STEP 4: Save merged cart to authenticated user
+        console.log('[ANON MERGE] 💾 Step 4: Saving merged cart to authenticated user...');
+        const now = new Date().toISOString();
+        const { data: savedCart, error: saveError } = await supabase
             .from('Carts')
-            .upsert({ supabase_user_id: authenticatedUserId, items: mergedItems }, { onConflict: ['supabase_user_id'] });
-        console.log('[ANON MERGE] Updated auth cart, error:', updateErr);
-        // Delete anonymous cart
-        const { error: delErr } = await supabase
+            .upsert({
+                supabase_user_id: authenticatedUserId,
+                items: mergeResult.mergedItems,
+                createdAt: now,
+                updatedAt: now
+            }, { onConflict: 'supabase_user_id' })
+            .select();
+        
+        if (saveError) {
+            console.error('[ANON MERGE] ❌ Error saving merged cart:', saveError);
+            return { success: false, error: 'Failed to save merged cart: ' + saveError.message };
+        }
+        
+        console.log('[ANON MERGE] ✅ Merged cart saved successfully');
+        console.log('[ANON MERGE] Final cart items count:', mergeResult.mergedItems.length);
+        
+        // 🎯 STEP 5: Clean up anonymous cart with error handling
+        console.log('[ANON MERGE] 🧹 Step 5: Cleaning up anonymous cart...');
+        const { error: deleteError } = await supabase
             .from('Carts')
             .delete()
             .eq('supabase_user_id', anonymousUserId);
-        console.log('[ANON MERGE] Deleted anon cart, error:', delErr);
-        // Remove localStorage key
-        localStorage.removeItem('anonymousUserIdForMerge');
-        console.log('[ANON MERGE] Merge complete.');
-    } catch (e) {
-        console.error('[ANON MERGE] Exception during merge:', e);
-        localStorage.removeItem('anonymousUserIdForMerge');
+        
+        if (deleteError) {
+            console.error('[ANON MERGE] ⚠️  Error deleting anonymous cart:', deleteError);
+            // Don't fail the merge if cleanup fails, but log it
+        } else {
+            console.log('[ANON MERGE] ✅ Anonymous cart deleted successfully');
+        }
+        
+        // 🎯 STEP 6: Return success with detailed information
+        console.log('[ANON MERGE] ✅ Cart merge completed successfully');
+        console.log('[ANON MERGE] Summary:', {
+            anonymousItemsCount: anonymousItems.length,
+            authenticatedItemsCount: authenticatedItems.length,
+            mergedItemsCount: mergeResult.mergedItems.length,
+            itemsAdded: mergeResult.itemsAdded,
+            quantitiesCombined: mergeResult.quantitiesCombined
+        });
+        
+        return { 
+            success: true, 
+            mergedItems: mergeResult.mergedItems,
+            summary: {
+                anonymousItemsCount: anonymousItems.length,
+                authenticatedItemsCount: authenticatedItems.length,
+                mergedItemsCount: mergeResult.mergedItems.length,
+                itemsAdded: mergeResult.itemsAdded,
+                quantitiesCombined: mergeResult.quantitiesCombined
+            }
+        };
+        
+    } catch (error) {
+        console.error('[ANON MERGE] ❌ Merge operation failed:', error);
+        return { success: false, error: 'Merge operation failed: ' + error.message };
     }
 };
 
-// Utility function to merge two cart arrays
-function mergeCarts(localItems, serverItems) {
-    const merged = [...serverItems];
+// 🎯 ENHANCED MERGE LOGIC WITH DETAILED LOGGING AND COUNTERS
+function mergeCarts(anonymousItems, authenticatedItems) {
+    console.log('[MERGE LOGIC] 🔄 Starting enhanced cart merge logic...');
+    console.log('[MERGE LOGIC] Anonymous items:', anonymousItems);
+    console.log('[MERGE LOGIC] Authenticated items:', authenticatedItems);
     
-    localItems.forEach(localItem => {
-        const existingIndex = merged.findIndex(item => item.id === localItem.id);
+    const mergedItems = [...authenticatedItems];
+    let itemsAdded = 0;
+    let quantitiesCombined = 0;
+    let itemsSkipped = 0;
+    
+    anonymousItems.forEach((anonymousItem, index) => {
+        console.log(`[MERGE LOGIC] Processing anonymous item ${index + 1}/${anonymousItems.length}:`, anonymousItem);
         
-        if (existingIndex >= 0) {
-            // Item exists, add quantities
-            merged[existingIndex] = {
-                ...merged[existingIndex],
-                quantity: merged[existingIndex].quantity + localItem.quantity
-            };
+        // Validate item structure
+        if (!anonymousItem.id) {
+            console.warn(`[MERGE LOGIC] ⚠️  Skipping item without ID:`, anonymousItem);
+            itemsSkipped++;
+            return;
+        }
+        
+        const existingIndex = mergedItems.findIndex(item => item.id === anonymousItem.id);
+        
+        if (existingIndex !== -1) {
+            // Item exists - combine quantities
+            const oldQuantity = mergedItems[existingIndex].quantity;
+            const addedQuantity = anonymousItem.quantity || 1;
+            mergedItems[existingIndex].quantity += addedQuantity;
+            quantitiesCombined++;
+            
+            console.log(`[MERGE LOGIC] ✅ Combined quantities for item ${anonymousItem.id}:`, {
+                oldQuantity,
+                addedQuantity,
+                newQuantity: mergedItems[existingIndex].quantity
+            });
         } else {
-            // New item, add to cart
-            merged.push(localItem);
+            // New item - add to cart
+            const itemToAdd = {
+                ...anonymousItem,
+                quantity: anonymousItem.quantity || 1
+            };
+            mergedItems.push(itemToAdd);
+            itemsAdded++;
+            
+            console.log(`[MERGE LOGIC] ✅ Added new item ${anonymousItem.id}:`, itemToAdd);
         }
     });
     
-    return merged;
+    const result = {
+        mergedItems,
+        itemsAdded,
+        quantitiesCombined,
+        itemsSkipped
+    };
+    
+    console.log('[MERGE LOGIC] ✅ Enhanced merge logic completed:', result);
+    return result;
 }
 
 export default {
     initializeAnonymousAuth,
-    linkAnonymousToGoogle,
-    isAnonymousUser,
     getCart,
     addToCart,
     updateCartItemQuantity,
     removeFromCart,
     clearCart,
     createOrder,
-    mergeAnonymousCartWithStoredId
+    mergeAnonymousCartWithStoredId,
+    isAnonymousUser
 }; 

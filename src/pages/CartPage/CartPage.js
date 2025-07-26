@@ -22,11 +22,11 @@ import {
     fetchCart,
     checkout,
     fetchOrders,
-    clearCartItems,
     selectIsAnonymous,
     initializeAuth
 } from '../../redux/anonymousCartSlice';
-import { selectIsAuthenticated } from '../../redux/authSlice';
+import { supabase } from '../../utils/supabaseClient';
+import { saveCartBeforeAuth } from '../../utils/cartSaveBeforeAuth';
 import './CartPage.css';
 
 const CartPage = () => {
@@ -94,34 +94,69 @@ const CartPage = () => {
     };
 
     const handleCheckout = async () => {
-        if (!isAuthenticated) {
-            // Not authenticated: redirect to login
-            console.log('[CHECKOUT] User not authenticated, redirecting to login');
-            // Store the current location for post-login redirect
-            localStorage.setItem('postLoginRedirect', '/cart');
+        console.log('[CHECKOUT] Starting checkout process...');
+        console.log('[CHECKOUT] Is authenticated:', isAuthenticated);
+        console.log('[CHECKOUT] Is anonymous:', isAnonymous);
+        console.log('[CHECKOUT] Cart items at checkout:', cartItems);
+
+        // Check if user has a session
+        const { data: { session } } = await supabase.auth.getSession();
+        
+        if (!session) {
+            console.log('[CHECKOUT] No session found, redirecting to login');
             navigate('/login');
             return;
         }
+
+        // Check if user is anonymous - save cart and redirect to login
+        if (isAnonymous) {
+            console.log('[CHECKOUT] Anonymous user attempting checkout, saving cart before redirect...');
+            
+            try {
+                // 🎯 UNIVERSAL CART SAVE: Use the universal cart save utility
+                const cartSaveResult = await saveCartBeforeAuth(cartItems, session.user.id, 'CHECKOUT');
+                
+                if (!cartSaveResult.success) {
+                    console.error('[CHECKOUT] ❌ Cart save failed, aborting login redirect');
+                    alert('Failed to save cart items: ' + cartSaveResult.error);
+                    return;
+                }
+                
+                console.log('[CHECKOUT] 🚀 Redirecting to login with cart saved...');
+                navigate('/login');
+                return;
+                
+            } catch (error) {
+                console.error('[CHECKOUT] ❌ Error saving cart before login:', error);
+                alert('Failed to save cart before login. Please try again.');
+                return;
+            }
+        }
+
+        // Only authenticated users can checkout
+        console.log('[CHECKOUT] Processing checkout for authenticated user');
         
-        console.log('[CHECKOUT] Cart items at checkout:', cartItems);
         try {
-            // Authenticated user: process checkout
             await dispatch(checkout({
+                items: cartItems,
+                totalAmount: cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+                status: 'pending',
                 shippingAddress: {
                     street: '123 Main St',
-                    city: 'Anytown',
+                    city: 'Anytown', 
                     state: 'CA',
                     zipCode: '12345',
                     country: 'USA'
                 },
                 paymentMethod: 'credit_card'
-            })).unwrap();
-            
+            }));
+
             // Refresh order history after successful checkout
             await dispatch(fetchOrders());
             
-            alert('Thank you for your purchase! You can view your order in your purchase history tab below.');
-            navigate('/cart');
+            console.log('[CHECKOUT] Checkout completed successfully');
+            alert('Order placed successfully!');
+            
         } catch (error) {
             console.error('[CHECKOUT] Checkout failed:', error);
             alert('Checkout failed: ' + error.message);

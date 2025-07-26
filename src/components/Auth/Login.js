@@ -13,12 +13,13 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setCredentials } from '../../redux/authSlice';
 import FormInput from '../FormInput';
 import './Auth.css';
 import { supabase } from '../../utils/supabaseClient';
 import { isAnonymousUser } from '../../utils/anonymousAuth';
+import { saveCartBeforeAuth } from '../../utils/cartSaveBeforeAuth';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -26,6 +27,9 @@ const Login = () => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    
+    // Get cart items from Redux state
+    const cartItems = useSelector(state => state.anonymousCart.items);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -103,47 +107,65 @@ const Login = () => {
 
     const handleGoogleLogin = async () => {
         try {
-            // First, ensure we have an anonymous session
+            setIsLoading(true);
+            console.log('[LOGIN] 🚀 Starting Google login process...');
+            
+            // Get current anonymous session
             const { data: { session } } = await supabase.auth.getSession();
             
-            let anonymousUserId = null;
-            
-            if (session && isAnonymousUser(session)) {
-                // Use existing anonymous session
-                anonymousUserId = session.user.id;
-                console.log('[LOGIN] Using existing anonymous session:', anonymousUserId);
-            } else {
-                // No session or not anonymous, create one
-                console.log('[LOGIN] No anonymous session found, creating one...');
-                const { data, error } = await supabase.auth.signInAnonymously();
-                
-                if (error) {
-                    console.error('[LOGIN] Failed to create anonymous session:', error);
-                    return;
-                }
-                
-                anonymousUserId = data.user.id;
-                console.log('[LOGIN] Created new anonymous session:', anonymousUserId);
+            if (!session) {
+                console.error('[LOGIN] ❌ No session found, cannot proceed with OAuth');
+                alert('Session not found. Please refresh the page and try again.');
+                setIsLoading(false);
+                return;
             }
             
-            // Store the current anonymous user ID for cart merging
-            console.log('[LOGIN] Storing anonymous user ID for cart merge:', anonymousUserId);
-            localStorage.setItem('anonymousUserIdForMerge', anonymousUserId);
-            console.log('[LOGIN] anonymousUserIdForMerge in localStorage:', localStorage.getItem('anonymousUserIdForMerge'));
+            if (!isAnonymousUser(session)) {
+                console.log('[LOGIN] User is already authenticated, proceeding with OAuth');
+                // Proceed with OAuth for already authenticated users
+                const { error } = await supabase.auth.signInWithOAuth({
+                    provider: 'google',
+                    options: { redirectTo: `${window.location.origin}/auth/callback` }
+                });
+                
+                if (error) {
+                    console.error('[LOGIN] Google OAuth error:', error);
+                    alert('OAuth error: ' + error.message);
+                }
+                setIsLoading(false);
+                return;
+            }
             
-            // Redirect to Google OAuth
+            const anonymousUserId = session.user.id;
+            console.log('[LOGIN] ✅ Found anonymous session:', anonymousUserId);
+            
+            // 🎯 UNIVERSAL CART SAVE: Use the universal cart save utility
+            const cartSaveResult = await saveCartBeforeAuth(cartItems, anonymousUserId, 'LOGIN_BUTTON');
+            
+            if (!cartSaveResult.success) {
+                console.error('[LOGIN] ❌ Cart save failed, aborting OAuth');
+                alert('Failed to save cart items: ' + cartSaveResult.error);
+                setIsLoading(false);
+                return;
+            }
+            
+            // Proceed with OAuth redirect
+            console.log('[LOGIN] 🚀 Proceeding with Google OAuth redirect...');
             const { error } = await supabase.auth.signInWithOAuth({
                 provider: 'google',
-                options: {
-                    redirectTo: `${window.location.origin}/auth/callback`
-                }
+                options: { redirectTo: `${window.location.origin}/auth/callback` }
             });
             
             if (error) {
-                console.error('[LOGIN] Google OAuth error:', error);
+                console.error('[LOGIN] ❌ Google OAuth error:', error);
+                alert('OAuth error: ' + error.message);
+                setIsLoading(false);
             }
+            
         } catch (error) {
-            console.error('[LOGIN] Error initiating Google login:', error);
+            console.error('[LOGIN] ❌ Login error:', error);
+            alert('Login error: ' + error.message);
+            setIsLoading(false);
         }
     };
 

@@ -76,32 +76,14 @@ CREATE POLICY "sellers_update_own_products" ON "IngredientCategorized"
         (seller_id::text = auth.uid()::text OR (auth.jwt() ->> 'role')::text = 'admin')
     );
 
--- 4. Cart Table Policies
--- Users can access their own cart (including anonymous users)
+-- 4. Cart Table Policies - SIMPLE UNIFIED APPROACH
+-- Single policy for both anonymous and authenticated users
+-- Use auth.uid() which works for both user types
+
+-- Users can only access their own cart (works for both anonymous and authenticated)
 CREATE POLICY "users_own_cart" ON "Carts"
     FOR ALL USING (
-        "userId"::text = auth.uid()::text OR
-        (auth.jwt() ->> 'role')::text = 'admin'
-    );
-
--- Anonymous users can have carts but limited functionality
-CREATE POLICY "anonymous_cart_access" ON "Carts"
-    FOR SELECT USING (
-        (auth.jwt() ->> 'is_anonymous')::boolean = true AND
-        "userId"::text = auth.uid()::text
-    );
-
--- Anonymous users can add/update cart items
-CREATE POLICY "anonymous_cart_modify" ON "Carts"
-    FOR INSERT WITH CHECK (
-        (auth.jwt() ->> 'is_anonymous')::boolean = true AND
-        "userId"::text = auth.uid()::text
-    );
-
-CREATE POLICY "anonymous_cart_update" ON "Carts"
-    FOR UPDATE USING (
-        (auth.jwt() ->> 'is_anonymous')::boolean = true AND
-        "userId"::text = auth.uid()::text
+        "supabase_user_id"::text = auth.uid()::text
     );
 
 -- 5. Order Table Policies

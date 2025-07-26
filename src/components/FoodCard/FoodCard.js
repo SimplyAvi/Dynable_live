@@ -39,11 +39,9 @@ const FoodCard = ({foodItem, id, showAddToCart = false, ingredientFlagged = fals
                 image: foodItem.image || '/default_img.png'
             };
 
-            if (isAuthenticated) {
-                await dispatch(addItemToCart(cartItem)).unwrap();
-            } else {
-                dispatch(addToCartAnonymous(cartItem));
-            }
+            // Use the same Redux action for both authenticated and anonymous users
+            // The addItemToCart thunk handles both cases through anonymousAuth.js
+            await dispatch(addItemToCart(cartItem)).unwrap();
             
             // Call the optional callback if provided
             if (onAddToCart) {

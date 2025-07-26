@@ -11,14 +11,13 @@
  */
 
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectIsAuthenticated, setCredentials, logout, clearCredentials } from './redux/authSlice';
+import { setCredentials, logout } from './redux/authSlice';
 import { initializeAuth, fetchCart, mergeAnonymousCartWithServer } from './redux/anonymousCartSlice';
 import { fetchAllergensPure } from './redux/allergiesSlice';
 import { supabase } from './utils/supabaseClient';
 import { isAnonymousUser } from './utils/anonymousAuth';
-import store from './redux/store';
 import Header from './components/Header/Header';
 import Homepage from './pages/Homepage';
 import ProductPage from './pages/ProductPage/ProductPage';
@@ -35,12 +34,6 @@ import './App.css';
 
 function App() {
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector(state => {
-    console.log('[APP] Current Redux state:', state);
-    console.log('[APP] Auth state:', state.auth);
-    console.log('[APP] AnonymousCart state:', state.anonymousCart);
-    return state.auth?.isAuthenticated || false;
-  });
 
   useEffect(() => {
     // Fetch allergens from Supabase database on app start
@@ -116,37 +109,25 @@ function App() {
           } else {
             console.log('[SUPABASE AUTH] Authenticated user signed in, setting credentials');
             
-            // Check if we have a stored anonymous user ID for cart merging
-            const anonymousUserId = localStorage.getItem('anonymousUserIdForMerge');
-            
-            if (anonymousUserId) {
-              console.log('[SUPABASE AUTH] Found stored anonymous user ID, merging carts');
-              try {
-                // Import the merge function
-                const { mergeAnonymousCartWithStoredId } = await import('./utils/anonymousAuth');
-                await mergeAnonymousCartWithStoredId(anonymousUserId, session.user.id);
-                console.log('[SUPABASE AUTH] Cart merge completed successfully');
-                // Clear the stored ID after successful merge
-                localStorage.removeItem('anonymousUserIdForMerge');
-              } catch (error) {
-                console.error('[SUPABASE AUTH] Cart merge failed:', error);
-              }
-            }
-            
-            // Set credentials in Redux for authenticated users
+            // Set credentials first
             dispatch(setCredentials({
               user: session.user,
               token: session.access_token,
               isAuthenticated: true
             }));
-            // Fetch cart after auth is initialized
+            
+            // Fetch cart for authenticated user
             dispatch(fetchCart());
+            
           }
         } else if (event === 'SIGNED_OUT') {
           console.log('[SUPABASE AUTH] User signed out');
           
           // Clear auth state completely
           dispatch(logout());
+          
+          // Clear cart state on logout
+          dispatch({ type: 'anonymousCart/clearCartState' });
           
           // Don't immediately reinitialize anonymous auth
           // Let the user stay logged out until they interact with the app

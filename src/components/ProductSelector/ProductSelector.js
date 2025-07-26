@@ -45,11 +45,10 @@ const ProductSelector = ({ products, selectedProductId, onProductSelect, ingredi
                 image: product.image || '/default_img.png'
             };
 
-            if (isAuthenticated) {
-                await dispatch(addItemToCart(cartItem)).unwrap();
-            } else {
-                dispatch(addToCartAnonymous(cartItem));
-            }
+            // Use the same Redux action for both authenticated and anonymous users
+            // The addItemToCart thunk handles both cases through anonymousAuth.js
+            await dispatch(addItemToCart(cartItem)).unwrap();
+            
         } catch (error) {
             console.error('Failed to add to cart:', error);
         } finally {
