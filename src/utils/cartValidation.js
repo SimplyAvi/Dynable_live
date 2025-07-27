@@ -277,55 +277,206 @@ export const validateCartData = (cartData) => {
 };
 
 /**
- * Sanitize cart item data
- * @param {Object} item - Cart item to sanitize
+ * Cart Data Validation and Sanitization
+ * Ensures cart items have proper data types before frontend processing
+ */
+
+/**
+ * Sanitize cart item to ensure proper data types
+ * @param {Object} item - Cart item object
  * @returns {Object} - Sanitized cart item
  */
 export const sanitizeCartItem = (item) => {
-    if (!item || typeof item !== 'object') {
-        return null;
+    if (!item) return null;
+    
+    return {
+        id: item.id || null,
+        name: item.name || '',
+        brand: item.brand || null,
+        brandName: item.brandName || null,
+        image: item.image || '/default_img.png',
+        price: ensureNumericPrice(item.price),
+        quantity: ensureIntegerQuantity(item.quantity)
+    };
+};
+
+/**
+ * Ensure price is a valid number
+ * @param {any} price - Price value (could be string, number, or null)
+ * @returns {number} - Valid numeric price
+ */
+export const ensureNumericPrice = (price) => {
+    if (price === null || price === undefined || price === '') {
+        return 0;
     }
     
-    const sanitized = {};
+    // Convert string to number
+    const numericPrice = typeof price === 'string' ? parseFloat(price) : Number(price);
     
-    // Sanitize ID
-    if (item.id !== undefined) {
-        sanitized.id = String(item.id).trim();
+    // Check if conversion was successful
+    if (isNaN(numericPrice)) {
+        console.warn('Invalid price value:', price, 'defaulting to 0');
+        return 0;
     }
     
-    // Sanitize name
-    if (item.name !== undefined) {
-        sanitized.name = String(item.name).trim();
+    // Ensure non-negative
+    return Math.max(0, numericPrice);
+};
+
+/**
+ * Ensure quantity is a valid integer
+ * @param {any} quantity - Quantity value (could be string, number, or null)
+ * @returns {number} - Valid integer quantity
+ */
+export const ensureIntegerQuantity = (quantity) => {
+    if (quantity === null || quantity === undefined || quantity === '') {
+        return 1;
     }
     
-    // Sanitize price
-    if (item.price !== undefined) {
-        const price = parseFloat(item.price);
-        sanitized.price = isNaN(price) ? 0 : Math.max(0, price);
+    // Convert string to integer
+    const integerQuantity = typeof quantity === 'string' ? parseInt(quantity, 10) : Math.floor(Number(quantity));
+    
+    // Check if conversion was successful
+    if (isNaN(integerQuantity)) {
+        console.warn('Invalid quantity value:', quantity, 'defaulting to 1');
+        return 1;
     }
     
-    // Sanitize quantity
-    if (item.quantity !== undefined) {
-        const quantity = parseInt(item.quantity);
-        sanitized.quantity = isNaN(quantity) ? 1 : Math.max(1, Math.min(1000, quantity));
+    // Ensure positive
+    return Math.max(1, integerQuantity);
+};
+
+/**
+ * Sanitize entire cart items array
+ * @param {Array} items - Array of cart items
+ * @returns {Array} - Array of sanitized cart items
+ */
+export const sanitizeCartItems = (items) => {
+    if (!Array.isArray(items)) {
+        console.warn('Cart items is not an array:', items);
+        return [];
     }
     
-    // Sanitize brand
-    if (item.brand !== undefined) {
-        sanitized.brand = String(item.brand).trim();
+    return items
+        .map(item => sanitizeCartItem(item))
+        .filter(item => item !== null);
+};
+
+/**
+ * Validate cart item before adding to cart (enhanced version)
+ * @param {Object} item - Item to validate
+ * @returns {Object} - Validation result with success/error
+ */
+export const validateCartItemEnhanced = (item) => {
+    const errors = [];
+    
+    if (!item) {
+        return { success: false, error: 'Item is required' };
     }
     
-    // Sanitize brandName
-    if (item.brandName !== undefined) {
-        sanitized.brandName = String(item.brandName).trim();
+    if (!item.id) {
+        errors.push('Item ID is required');
     }
     
-    // Sanitize image
-    if (item.image !== undefined) {
-        sanitized.image = String(item.image).trim();
+    if (!item.name) {
+        errors.push('Item name is required');
     }
     
-    return sanitized;
+    // Validate price
+    const price = ensureNumericPrice(item.price);
+    if (price < 0) {
+        errors.push('Price cannot be negative');
+    }
+    
+    // Validate quantity
+    const quantity = ensureIntegerQuantity(item.quantity);
+    if (quantity < 1) {
+        errors.push('Quantity must be at least 1');
+    }
+    
+    if (errors.length > 0) {
+        return { success: false, error: errors.join(', ') };
+    }
+    
+    return { 
+        success: true, 
+        item: sanitizeCartItem(item)
+    };
+};
+
+/**
+ * Format price for display with proper error handling
+ * @param {any} price - Price value
+ * @param {number} decimals - Number of decimal places (default: 2)
+ * @returns {string} - Formatted price string
+ */
+export const formatPrice = (price, decimals = 2) => {
+    try {
+        const numericPrice = ensureNumericPrice(price);
+        return numericPrice.toFixed(decimals);
+    } catch (error) {
+        console.error('Error formatting price:', price, error);
+        return '0.00';
+    }
+};
+
+/**
+ * Calculate cart total with proper error handling
+ * @param {Array} items - Cart items array
+ * @returns {number} - Total price
+ */
+export const calculateCartTotal = (items) => {
+    if (!Array.isArray(items)) {
+        console.warn('Invalid items array for total calculation:', items);
+        return 0;
+    }
+    
+    try {
+        return items.reduce((total, item) => {
+            const price = ensureNumericPrice(item.price);
+            const quantity = ensureIntegerQuantity(item.quantity);
+            return total + (price * quantity);
+        }, 0);
+    } catch (error) {
+        console.error('Error calculating cart total:', error);
+        return 0;
+    }
+};
+
+/**
+ * Check if cart item has valid data types
+ * @param {Object} item - Cart item to check
+ * @returns {boolean} - True if valid, false otherwise
+ */
+export const isCartItemValid = (item) => {
+    if (!item) return false;
+    
+    try {
+        // Check if price can be converted to number
+        const price = ensureNumericPrice(item.price);
+        if (isNaN(price)) return false;
+        
+        // Check if quantity can be converted to integer
+        const quantity = ensureIntegerQuantity(item.quantity);
+        if (isNaN(quantity)) return false;
+        
+        // Check required fields
+        return !!(item.id && item.name);
+    } catch (error) {
+        console.error('Error validating cart item:', error);
+        return false;
+    }
+};
+
+export default {
+    sanitizeCartItem,
+    sanitizeCartItems,
+    validateCartItem,
+    ensureNumericPrice,
+    ensureIntegerQuantity,
+    formatPrice,
+    calculateCartTotal,
+    isCartItemValid
 };
 
 /**

@@ -1,316 +1,140 @@
-# 🚀 Dynable - Complete Setup Guide
+# Documentation
 
 **Author:** Justin Linzan  
-**Date:** July 2025  
-**Version:** 2.0 (RBAC Enhanced)
+**Date:** January 2025  
+**Status:** ✅ ACTIVE
 
----
+## Overview
 
-## 📋 **Project Overview**
+This directory contains comprehensive documentation for the Dynable project, organized by category for easy navigation and maintenance.
 
-Dynable is a robust ingredient/product mapping and recipe platform with a comprehensive Role-Based Access Control (RBAC) system. The platform supports multiple user types with secure authentication and authorization.
-
-### **Key Features**
-- **Multi-role authentication** (Admin, Seller, End User, Anonymous)
-- **Supabase integration** with Row Level Security (RLS)
-- **Google OAuth** with role-based token generation
-- **Anonymous user support** with cart persistence
-- **Seller verification system** with admin oversight
-- **Product management** with inventory tracking
-
----
-
-## 🏗️ **System Architecture**
-
-### **User Roles & Permissions**
-
-| Role | Description | Key Features |
-|------|-------------|--------------|
-| **Admin** | System administrator | User management, system oversight, seller verification |
-| **Seller** | Product sellers | Product management, inventory, sales analytics |
-| **End User** | Regular customers | Browse products, place orders, manage profile |
-| **Anonymous** | Unauthenticated users | Browse products, add to cart (localStorage) |
-
-### **Technology Stack**
-
-- **Frontend:** React, Redux Toolkit, React Router
-- **Backend:** Express.js, Sequelize ORM
-- **Database:** PostgreSQL with Supabase
-- **Authentication:** JWT tokens, Google OAuth
-- **Security:** Supabase RLS policies, role-based middleware
-
----
-
-## 🛠️ **Quick Start**
-
-### **1. Clone and Install**
-```bash
-git clone <your-repo-url>
-cd dynable_new
-npm install
-cd server && npm install
-```
-
-### **2. Environment Setup**
-Create `.env` file in project root:
-
-```bash
-# =============================================================================
-# EXISTING CONFIGURATION
-# =============================================================================
-NODE_ENV=development
-SUPABASE_DB_URL=postgresql://postgres:JustinAndAvi123!@db.fdojimqdhuqhimgjpdai.supabase.co:6543/postgres
-
-# =============================================================================
-# RBAC SYSTEM VARIABLES
-# =============================================================================
-JWT_SECRET=your_very_secure_jwt_secret_key_here
-SUPABASE_JWT_SECRET=your_supabase_jwt_secret_here
-SUPABASE_URL=https://your-project.supabase.co
-SUPABASE_ANON_KEY=your_supabase_anon_key
-SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
-SUPABASE_IDENTITY_LINKING_ENABLED=true
-REACT_APP_GOOGLE_CLIENT_ID=your_google_client_id
-```
-
-### **3. Database Setup**
-```bash
-# Run RBAC migrations
-psql $SUPABASE_DB_URL -f database/migrations/phase1_database_migration.sql
-psql $SUPABASE_DB_URL -f database/migrations/phase2_supabase_rls_policies.sql
-```
-
-### **4. Start Application**
-```bash
-# Start backend
-cd server && npm run dev
-
-# Start frontend (new terminal)
-cd .. && npm start
-```
-
-### **5. Create Admin User**
-```bash
-node scripts/rbac/create_first_admin.js
-```
-
----
-
-## 🗄️ **Database Schema**
-
-### **Core Tables**
-
-| Table | Purpose | Key Features |
-|-------|---------|--------------|
-| **Users** | User accounts | Role-based authentication, seller info |
-| **IngredientCategorized** | Products | Seller ownership, inventory tracking |
-| **RecipeIngredients** | Recipe components | Ingredient mapping |
-| **Ingredients** | Canonical ingredients | Master ingredient list |
-| **Carts** | Shopping carts | User-specific cart management |
-| **Orders** | Purchase orders | Order tracking and history |
-
-### **RBAC Extensions**
-
-- **User roles** (`admin`, `seller`, `end_user`)
-- **Seller verification** (`is_verified_seller`)
-- **Anonymous user tracking** (`converted_from_anonymous`)
-- **Admin audit trail** (`admin_actions` table)
-
----
-
-## 🧩 **Key Scripts**
-
-### **RBAC Management**
-```bash
-# Test environment configuration
-node scripts/rbac/test_env_setup.js
-
-# Create admin user
-node scripts/rbac/create_first_admin.js
-
-# Verify RBAC setup
-node scripts/rbac/verify_rbac_setup.js
-```
-
-### **Data Processing**
-```bash
-# Ingredient analysis
-node server/scripts/analyzeIngredientProminence.js
-
-# Product mapping
-node server/scripts/batch_retag_products.js
-
-# Generate reports
-node server/scripts/generateProminenceReport.js
-```
-
----
-
-## 🧪 **API Endpoints**
-
-### **Authentication**
-- `POST /api/auth/login` - User login with role assignment
-- `POST /api/auth/signup` - User registration with anonymous cart transfer
-- `GET /api/auth/profile` - User profile with role information
-- `POST /api/auth/apply-seller` - Seller application
-
-### **Role-Based Endpoints**
-- `GET /api/admin/users` - Admin: View all users
-- `PUT /api/admin/users/:id/role` - Admin: Change user role
-- `GET /api/seller/dashboard` - Seller: Dashboard
-- `GET /api/seller/products` - Seller: Manage products
-
-### **Product Management**
-- `GET /api/product/search` - Search products
-- `POST /api/product/by-ingredient` - Find products by ingredient
-- `GET /api/recipe` - Recipe endpoints
-
----
-
-## 📁 **Project Structure**
+## Directory Structure
 
 ```
-dynable_new/
-├── 📁 docs/                    # Documentation
-│   ├── 📁 deployment/          # Deployment guides
-│   ├── 📁 guides/             # Implementation guides
-│   └── 📁 migrations/         # Database documentation
-├── 📁 database/               # Database files
-│   ├── 📁 migrations/         # SQL migrations
-│   ├── 📁 backups/           # Database backups
-│   └── 📁 scripts/           # Database utilities
-├── 📁 scripts/               # Utility scripts
-│   ├── 📁 rbac/             # RBAC-specific scripts
-│   ├── 📁 testing/          # Test scripts
-│   └── 📁 utilities/        # General utilities
-├── 📁 server/               # Backend
-│   ├── 📁 api/              # API routes
-│   ├── 📁 middleware/       # Express middleware
-│   ├── 📁 utils/            # Utility functions
-│   └── 📁 db/               # Database models
-├── 📁 src/                  # Frontend React app
-└── 📁 data/                 # Data exports and analysis
+docs/
+├── README.md                           # This file
+├── guides/                             # User guides and tutorials
+│   ├── ANONYMOUS_AUTH_DEPLOYMENT.md
+│   ├── ANONYMOUS_USER_FLOW_GUIDE.md
+│   ├── ANONYMOUS_USER_TRACKING.md
+│   ├── AUTHENTICATION_FLOW.md
+│   ├── CART_MANAGEMENT_FUNCTIONS.md
+│   ├── CART_MERGE_SYSTEM_FIXES.md
+│   ├── CART_SYSTEM_FIXES_SUMMARY.md
+│   ├── CART_SYSTEM_SCHEMA.md
+│   ├── DATABASE_PERSISTENCE.md
+│   ├── FRONTEND_TO_SUPABASE_CONNECTION_ANALYSIS.md
+│   ├── PURE_SUPABASE_TESTING_GUIDE.md
+│   ├── REDUX_STORE_STRUCTURE.md
+│   ├── RLS_POLICIES.md
+│   ├── SESSION_STATE_HANDLING.md
+│   ├── SUPABASE_AUTH_NEW_INTERFACE.md
+│   ├── SUPABASE_AUTH_SETUP_COMPLETE.md
+│   ├── SUPABASE_AUTH_SETUP_SPECIFIC.md
+│   ├── SUPABASE_CORS_SETUP.md
+│   ├── SUPABASE_MIGRATION_COMPLETE.md
+│   ├── SUPABASE_MIGRATION_TEST_PLAN.md
+│   └── SUPABASE_OAUTH_SETUP.md
+├── migrations/                         # Database migration files
+│   ├── anonymous_auth_setup.sql
+│   ├── check_cart_table_schema.sql
+│   ├── check_exact_table_name.sql
+│   ├── check_ingredient_columns.sql
+│   ├── check_ingredient_table_structure.sql
+│   ├── check_orders_required_columns.sql
+│   ├── check_orders_rls_policies.sql
+│   ├── check_orders_table_structure.sql
+│   ├── check_recipe_structure.sql
+│   ├── check_recipe_tables.sql
+│   ├── check_recipes_columns.sql
+│   ├── fix_carts_rls_policies.sql
+│   ├── fix_carts_table_constraints.sql
+│   ├── fix_orders_rls_policies.sql
+│   ├── fix_orders_rls_policies_uuid_only.sql
+│   ├── fix_orders_table_constraints.sql
+│   ├── fix_orders_table_uuid.sql
+│   ├── fix_orders_table_uuid_corrected.sql
+│   ├── fix_rls_policies_for_email_queries.sql
+│   ├── fix_rls_policies_v2.sql
+│   ├── fix_users_table_uuid.sql
+│   ├── fix_users_table_uuid_fixed.sql
+│   ├── optimize_ingredient_query.sql
+│   ├── optimize_ingredient_query_corrected.sql
+│   ├── optimize_ingredient_query_final.sql
+│   ├── optimize_ingredient_query_fixed.sql
+│   ├── prevent_duplicate_carts.sql
+│   ├── secure_rls_policies.sql
+│   └── secure_rls_policies_fixed.sql
+└── debug/                              # Debug documentation
+    └── [debug-specific docs]
 ```
 
----
+## Quick Navigation
 
-## 🔐 **Security Features**
+### 📚 User Guides
+- **[Authentication Flow](guides/AUTHENTICATION_FLOW.md)** - Complete auth system guide
+- **[Cart Management](guides/CART_MANAGEMENT_FUNCTIONS.md)** - Cart system documentation
+- **[Anonymous Auth](guides/ANONYMOUS_AUTH_DEPLOYMENT.md)** - Anonymous user setup
+- **[Supabase Setup](guides/SUPABASE_AUTH_SETUP_COMPLETE.md)** - Supabase configuration
 
-### **Authentication**
-- **JWT tokens** with role claims
-- **Google OAuth** integration
-- **Anonymous user support** with identity linking
-- **Token refresh** mechanism
+### 🔧 Database Migrations
+- **[Migration Files](migrations/)** - All SQL migration files
+- **[Schema Checks](migrations/check_*.sql)** - Database structure verification
+- **[RLS Policies](migrations/fix_rls_*.sql)** - Row Level Security fixes
+- **[Table Constraints](migrations/fix_*_constraints.sql)** - Table constraint fixes
 
-### **Authorization**
-- **Role-based middleware** for route protection
-- **Supabase RLS policies** for database security
-- **Permission-based access** control
-- **Admin audit trail** for sensitive operations
+### 🛠️ System Documentation
+- **[Redux Store](guides/REDUX_STORE_STRUCTURE.md)** - State management
+- **[Session Handling](guides/SESSION_STATE_HANDLING.md)** - Session management
+- **[Database Persistence](guides/DATABASE_PERSISTENCE.md)** - Data persistence
+- **[RLS Policies](guides/RLS_POLICIES.md)** - Security policies
 
-### **Data Protection**
-- **Row Level Security** on all tables
-- **Role-based data access** policies
-- **Anonymous user limitations** (browse only)
-- **Seller product ownership** enforcement
+## Documentation Categories
 
----
+### Authentication & Authorization
+- Anonymous user authentication
+- Google OAuth setup
+- Session management
+- RLS policy configuration
 
-## 🧪 **Testing**
+### Cart System
+- Cart management functions
+- Anonymous cart handling
+- Cart merge operations
+- Cart data persistence
 
-### **Environment Testing**
-```bash
-# Test environment configuration
-node scripts/rbac/test_env_setup.js
+### Database & Migrations
+- Table structure verification
+- RLS policy fixes
+- Constraint management
+- Query optimization
 
-# Verify RBAC setup
-node scripts/rbac/verify_rbac_setup.js
-```
+### Frontend Integration
+- Redux store structure
+- Supabase connection
+- State management
+- Component architecture
 
-### **Database Testing**
-```bash
-# Verify migrations
-psql $SUPABASE_DB_URL -f database/migrations/verify_migrations.sql
-```
+## Maintenance
 
-### **Frontend Testing**
-```bash
-# Run unit tests
-npm test
+### Adding New Documentation
+1. **Guides** → Place in `docs/guides/`
+2. **Migrations** → Place in `docs/migrations/`
+3. **Debug Docs** → Place in `docs/debug/`
 
-# Run E2E tests
-npm run cypress:run
-```
+### File Naming Convention
+- **Guides**: `DESCRIPTIVE_NAME.md`
+- **Migrations**: `action_table_name.sql`
+- **Debug**: `debug_purpose.md`
 
----
-
-## 📚 **Documentation**
-
-### **Deployment**
-- **[DEPLOYMENT_GUIDE.md](deployment/DEPLOYMENT_GUIDE.md)** - Complete deployment guide
-- **[ENVIRONMENT_SETUP.md](deployment/ENVIRONMENT_SETUP.md)** - Environment configuration
-
-### **Implementation**
-- **[RBAC_GUIDE.md](guides/RBAC_GUIDE.md)** - RBAC implementation guide
-- **[FRONTEND_INTEGRATION.md](guides/FRONTEND_INTEGRATION.md)** - Frontend integration
-- **[TESTING_PLAN.md](guides/RBAC_TESTING_PLAN.md)** - Testing strategy
-
-### **Database**
-- **[MIGRATION_GUIDE.md](migrations/MIGRATION_GUIDE.md)** - Database migration guide
+### Documentation Standards
+- Include author and date
+- Use clear headings
+- Include code examples
+- Provide usage instructions
 
 ---
 
-## 🚀 **Development Workflow**
-
-### **Adding New Features**
-1. **Database changes** → `database/migrations/`
-2. **Backend features** → `server/api/` and `server/middleware/`
-3. **Frontend components** → `src/components/`
-4. **Tests** → `scripts/testing/` or `server/tests/`
-5. **Documentation** → `docs/` by category
-
-### **RBAC Extensions**
-1. **New roles** → Update database schema and JWT utilities
-2. **New permissions** → Add RLS policies and middleware
-3. **New endpoints** → Add role-based route protection
-4. **New UI** → Add role-specific components
-
----
-
-## 🎯 **Production Checklist**
-
-### **Environment**
-- [ ] All environment variables configured
-- [ ] JWT secrets generated and secure
-- [ ] Supabase keys properly set
-- [ ] Google OAuth configured
-
-### **Database**
-- [ ] RBAC migrations completed
-- [ ] RLS policies active
-- [ ] Admin user created
-- [ ] Test data verified
-
-### **Security**
-- [ ] HTTPS enabled in production
-- [ ] Rate limiting configured
-- [ ] Error logging implemented
-- [ ] Admin audit trail active
-
-### **Performance**
-- [ ] Database indexes optimized
-- [ ] JWT token expiration set
-- [ ] Caching configured
-- [ ] Monitoring in place
-
----
-
-## 📞 **Support**
-
-For issues or questions:
-- Check the **[DEPLOYMENT_GUIDE.md](deployment/DEPLOYMENT_GUIDE.md)** for troubleshooting
-- Review server logs for error messages
-- Verify environment variables are correctly set
-- Test database connection separately
-
-**Dynable is production-ready with comprehensive RBAC security!** 🚀
+**Status:** ✅ **ACTIVE**  
+**Last Updated:** January 2025  
+**Maintainer:** Justin Linzan

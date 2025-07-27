@@ -111,13 +111,22 @@ const Login = () => {
             console.log('[LOGIN] 🚀 Starting Google login process...');
             
             // Get current anonymous session
-            const { data: { session } } = await supabase.auth.getSession();
+            let { data: { session } } = await supabase.auth.getSession();
             
+            // If no session exists, create an anonymous session first
             if (!session) {
-                console.error('[LOGIN] ❌ No session found, cannot proceed with OAuth');
-                alert('Session not found. Please refresh the page and try again.');
-                setIsLoading(false);
-                return;
+                console.log('[LOGIN] No session found, creating anonymous session...');
+                const { data: anonymousData, error: anonymousError } = await supabase.auth.signInAnonymously();
+                
+                if (anonymousError) {
+                    console.error('[LOGIN] ❌ Failed to create anonymous session:', anonymousError);
+                    alert('Failed to initialize session. Please try again.');
+                    setIsLoading(false);
+                    return;
+                }
+                
+                session = anonymousData.session;
+                console.log('[LOGIN] ✅ Anonymous session created:', session.user.id);
             }
             
             if (!isAnonymousUser(session)) {
@@ -135,6 +144,8 @@ const Login = () => {
                 setIsLoading(false);
                 return;
             }
+            
+            console.log('[LOGIN] ✅ User is anonymous, proceeding with cart save and OAuth');
             
             const anonymousUserId = session.user.id;
             console.log('[LOGIN] ✅ Found anonymous session:', anonymousUserId);

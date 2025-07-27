@@ -3,8 +3,9 @@ import FoodCard from './FoodCard/FoodCard'
 import RecipeCard from './RecipeCard/RecipeCard'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
 import { setProducts } from '../redux/productSlice'
+import { addRecipes } from '../redux/recipeSlice'
+import { searchProductsFromSupabasePure, searchRecipesFromSupabasePure } from '../utils/supabaseQueries'
 import './ShowResults.css'
 
 const ShowResults = () => {
@@ -17,6 +18,10 @@ const ShowResults = () => {
 
     const [productPage, setProductPage] = useState(1)
     const [recipePage, setRecipePage] = useState(1)
+    const [productLoading, setProductLoading] = useState(false)
+    const [recipeLoading, setRecipeLoading] = useState(false)
+    const [productError, setProductError] = useState(null)
+    const [recipeError, setRecipeError] = useState(null)
 
     useEffect(() => {
         setProductPage(1)
@@ -25,45 +30,83 @@ const ShowResults = () => {
 
     const handleProductPageChange = async (newPage) => {
         try {
+            setProductLoading(true)
+            setProductError(null)
+            
             const sendAllergens = Object.keys(allergies).filter(key => allergies[key]).map(key => key.toLowerCase())
-            const params = new URLSearchParams({
+            
+            // Use Supabase query with count support
+            const response = await searchProductsFromSupabasePure({
                 name: textbar || '',
                 page: newPage,
                 limit: 10,
-                allergens: sendAllergens.join(',')
-            });
-            // TEMPORARILY DISABLED FOR PURE SUPABASE TESTING
-            // Use GET request for product search
-            // const response = await axios.get(`http://localhost:5001/api/product/search?${params}`)
-            // dispatch(setProducts(response.data))
-            // setProductPage(newPage)
+                allergens: sendAllergens,
+                includeCount: true
+            })
             
-            console.log('[PURE SUPABASE TEST] ShowResults product search disabled');
+            // Handle the response format
+            if (response.products) {
+                // New format with count
+                dispatch(setProducts({
+                    products: response.products,
+                    totalCount: response.totalCount,
+                    page: response.page,
+                    totalPages: response.totalPages
+                }))
+            } else {
+                // Fallback to direct array
+                dispatch(setProducts(response))
+            }
+            
+            setProductPage(newPage)
+            console.log(`[ShowResults] Products page ${newPage} loaded successfully`)
+            
         } catch (error) {
-            console.error('Error fetching products:', error)
+            console.error('[ShowResults] Error fetching products:', error)
+            setProductError('Failed to load products')
+        } finally {
+            setProductLoading(false)
         }
     }
 
     const handleRecipePageChange = async (newPage) => {
         try {
+            setRecipeLoading(true)
+            setRecipeError(null)
+            
             const sendAllergens = Object.keys(allergies).filter(key => allergies[key]).map(key => key.toLowerCase())
-            const params = new URLSearchParams({
-                name: textbar || '',
+            
+            // Use Supabase query with count support
+            const response = await searchRecipesFromSupabasePure({
+                search: textbar || '',
                 page: newPage,
                 limit: 10,
-                allergens: sendAllergens.join(',')
-            });
-            // TEMPORARILY DISABLED FOR PURE SUPABASE TESTING
-            // const response = await axios.post(`http://localhost:5001/api/recipe/?page=${newPage}&limit=10`, {
-            //     search: textbar || '',
-            //     excludeIngredients: sendAllergens
-            // });
-            // dispatch(addRecipes(response.data))
-            // setRecipePage(newPage)
+                excludeIngredients: sendAllergens,
+                includeCount: true
+            })
             
-            console.log('[PURE SUPABASE TEST] ShowResults recipe search disabled');
+            // Handle the response format
+            if (response.recipes) {
+                // New format with count
+                dispatch(addRecipes({
+                    recipes: response.recipes,
+                    totalCount: response.totalCount,
+                    page: response.page,
+                    totalPages: response.totalPages
+                }))
+            } else {
+                // Fallback to direct array
+                dispatch(addRecipes(response))
+            }
+            
+            setRecipePage(newPage)
+            console.log(`[ShowResults] Recipes page ${newPage} loaded successfully`)
+            
         } catch (error) {
-            console.error('Error fetching recipes:', error)
+            console.error('[ShowResults] Error fetching recipes:', error)
+            setRecipeError('Failed to load recipes')
+        } finally {
+            setRecipeLoading(false)
         }
     }
 

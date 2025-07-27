@@ -27,6 +27,7 @@ import {
 } from '../../redux/anonymousCartSlice';
 import { supabase } from '../../utils/supabaseClient';
 import { saveCartBeforeAuth } from '../../utils/cartSaveBeforeAuth';
+import { formatPrice, sanitizeCartItems, calculateCartTotal } from '../../utils/cartValidation';
 import './CartPage.css';
 
 const CartPage = () => {
@@ -203,7 +204,7 @@ const CartPage = () => {
                                     <div className="cart-item-details">
                                         <h3>{item.name}</h3>
                                         <p className="item-brand">{item.brand}</p>
-                                        <p className="item-price">${item.price.toFixed(2)}</p>
+                                        <p className="item-price">${formatPrice(item.price)}</p>
                                         <div className="quantity-controls">
                                             <button 
                                                 onClick={() => handleQuantityChange(item.id, item.quantity - 1)}
@@ -234,7 +235,7 @@ const CartPage = () => {
                             <h3>Order Summary</h3>
                             <div className="summary-row">
                                 <span>Subtotal</span>
-                                <span>${total.toFixed(2)}</span>
+                                <span>${formatPrice(total)}</span>
                             </div>
                             <div className="summary-row">
                                 <span>Shipping</span>
@@ -242,7 +243,7 @@ const CartPage = () => {
                             </div>
                             <div className="summary-row total">
                                 <span>Total</span>
-                                <span>${total.toFixed(2)}</span>
+                                <span>${formatPrice(total)}</span>
                             </div>
                             <button 
                                 className="checkout-button"
@@ -266,7 +267,7 @@ const CartPage = () => {
                                 <div className="purchase-header">
                                     <span>Order Date: {formatDate(purchase.createdAt)}</span>
                                     <span className="purchase-total">
-                                        Total: ${Number(purchase.totalAmount).toFixed(2)}
+                                        Total: ${formatPrice(purchase.totalAmount)}
                                     </span>
                                 </div>
                                 <div className="purchase-items">

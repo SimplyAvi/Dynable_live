@@ -82,12 +82,12 @@ export const searchProductsFromSupabasePure = async (searchParams) => {
   console.log('[SUPABASE PURE] Searching products directly from Supabase (no fallback)...');
   
   try {
-    const { name = '', page = 1, limit = 10, allergens = [] } = searchParams;
+    const { name = '', page = 1, limit = 10, allergens = [], includeCount = false } = searchParams;
     
-    // Build the query
+    // Build the query with count support
     let query = supabase
       .from('IngredientCategorized')
-      .select('*')
+      .select('*', { count: includeCount ? 'exact' : null })
       .order('description');
     
     // Add search filter if name provided
@@ -107,7 +107,7 @@ export const searchProductsFromSupabasePure = async (searchParams) => {
     const to = from + limit - 1;
     query = query.range(from, to);
     
-    const { data, error } = await query;
+    const { data, error, count } = await query;
     
     if (error) {
       console.error('[SUPABASE PURE] Error searching products:', error);
@@ -115,6 +115,18 @@ export const searchProductsFromSupabasePure = async (searchParams) => {
     }
     
     console.log(`[SUPABASE PURE] Successfully loaded ${data.length} products from Supabase`);
+    
+    // Return with count if requested
+    if (includeCount) {
+      return {
+        products: data,
+        totalCount: count,
+        page,
+        limit,
+        totalPages: Math.ceil(count / limit)
+      };
+    }
+    
     return data;
     
   } catch (error) {
@@ -131,12 +143,12 @@ export const searchRecipesFromSupabasePure = async (searchParams) => {
   console.log('[SUPABASE PURE] Searching recipes directly from Supabase (no fallback)...');
   
   try {
-    const { search = '', page = 1, limit = 10 } = searchParams;
+    const { search = '', page = 1, limit = 10, includeCount = false } = searchParams;
     
     // Build the query - using 'Recipes' (capital R) which exists in the database
     let query = supabase
       .from('Recipes')
-      .select('*')
+      .select('*', { count: includeCount ? 'exact' : null })
       .order('title'); // We'll check if this column name is correct
     
     // Add search filter if provided
@@ -149,7 +161,7 @@ export const searchRecipesFromSupabasePure = async (searchParams) => {
     const to = from + limit - 1;
     query = query.range(from, to);
     
-    const { data, error } = await query;
+    const { data, error, count } = await query;
     
     if (error) {
       console.error('[SUPABASE PURE] Error searching recipes:', error);
@@ -157,6 +169,18 @@ export const searchRecipesFromSupabasePure = async (searchParams) => {
     }
     
     console.log(`[SUPABASE PURE] Successfully loaded ${data.length} recipes from Supabase`);
+    
+    // Return with count if requested
+    if (includeCount) {
+      return {
+        recipes: data,
+        totalCount: count,
+        page,
+        limit,
+        totalPages: Math.ceil(count / limit)
+      };
+    }
+    
     return data;
     
   } catch (error) {
