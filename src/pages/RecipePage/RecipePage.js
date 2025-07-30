@@ -93,6 +93,43 @@ const RecipePage = () =>{
         return cleaned;
     }
 
+    // Enhanced ingredient allergen checking with optimized performance
+    const checkIngredientForAllergens = async (ingredient, userAllergens) => {
+        if (!userAllergens || userAllergens.length === 0) {
+            return false;
+        }
+        
+        try {
+            console.log(`[RECIPE PAGE] 🛡️ Checking bulletproof allergen safety for: "${ingredient.canonical || ingredient.name}"`);
+            
+            // Use the bulletproof detection function instead of simple ILIKE
+            for (const allergen of userAllergens) {
+                const { data: detectionResult } = await supabase.rpc('detect_allergens_in_description', {
+                    product_description: ingredient.canonical || ingredient.name,
+                    target_allergen: allergen
+                });
+                
+                if (detectionResult) {
+                    const detection = typeof detectionResult === 'string' ? JSON.parse(detectionResult) : detectionResult;
+                    
+                    // Check if allergen is detected and not marked safe
+                    if (detection.detected_allergens && detection.detected_allergens.includes(allergen) && 
+                        (!detection.safe_allergens || !detection.safe_allergens.includes(allergen))) {
+                        console.log(`[RECIPE PAGE] ⚠️ Allergen "${allergen}" detected in ingredient "${ingredient.canonical || ingredient.name}"`);
+                        console.log(`[RECIPE PAGE] Detection details:`, detection);
+                        return true; // Allergen found in ingredient
+                    }
+                }
+            }
+            
+            console.log(`[RECIPE PAGE] ✅ No allergens detected in ingredient "${ingredient.canonical || ingredient.name}"`);
+            return false;
+        } catch (error) {
+            console.error('[RECIPE PAGE] Error checking ingredient allergens with bulletproof system:', error);
+            return false; // Fail safe - don't highlight if unsure
+        }
+    };
+
     // Fetch products for each ingredient or substitute
     const fetchProducts = useCallback(async (ingredients) => {
         console.log('Fetching products for ingredients:', ingredients.length);
@@ -142,7 +179,7 @@ const RecipePage = () =>{
                                 }
                             } catch (substituteError) {
                                 console.error('Error fetching substitute products:', substituteError);
-                                // Fall back to regular product fetch
+                                // Fall back to regular product fetch - don't let substitute errors break the page
                             }
                         }
                         

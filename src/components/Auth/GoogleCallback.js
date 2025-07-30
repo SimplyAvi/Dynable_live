@@ -16,6 +16,7 @@ import { useDispatch } from 'react-redux';
 import { setCredentials } from '../../redux/authSlice';
 import { supabase } from '../../utils/supabaseClient';
 import { setCartItems } from '../../redux/anonymousCartSlice'; // Import setCartItems action
+import { mergeSearchPreferencesAsync } from '../../redux/searchPreferencesSlice';
 
 const GoogleCallback = () => {
     const navigate = useNavigate();
@@ -46,7 +47,7 @@ const GoogleCallback = () => {
                 const anonymousUserId = localStorage.getItem('anonymousUserIdForMerge');
                 
                 if (anonymousUserId) {
-                    console.log('[CALLBACK] 🔍 Found anonymous user ID for cart merge:', anonymousUserId);
+                    console.log('[CALLBACK] 🔍 Found anonymous user ID for merge:', anonymousUserId);
                     console.log('[CALLBACK] Current authenticated user ID:', session.user.id);
                     
                     // Validate user IDs are different
@@ -54,8 +55,17 @@ const GoogleCallback = () => {
                         console.warn('[CALLBACK] ⚠️  Anonymous and authenticated user IDs are the same, skipping merge');
                         localStorage.removeItem('anonymousUserIdForMerge');
                     } else {
-                        // 🎯 PERFORM DATABASE-FIRST CART MERGE
+                        // 🎯 PERFORM DATABASE-FIRST SEARCH PREFERENCES MERGE FIRST
+                        console.log('[CALLBACK] 🔄 Starting search preferences merge...');
+                        await performSearchPreferencesMerge(anonymousUserId, session.user.id);
+                        console.log('[CALLBACK] ✅ Search preferences merge completed');
+                        
+                        // 🎯 PERFORM DATABASE-FIRST CART MERGE AFTER
                         await performCartMerge(anonymousUserId, session.user.id);
+                        
+                        // 🎯 CLEAN UP LOCALSTORAGE AFTER BOTH MERGES ARE COMPLETED
+                        console.log('[CALLBACK] 🧹 Cleaning up localStorage after successful merges...');
+                        localStorage.removeItem('anonymousUserIdForMerge');
                     }
                 } else {
                     console.log('[CALLBACK] ℹ️  No anonymous user ID found for merge');
@@ -75,6 +85,8 @@ const GoogleCallback = () => {
                 
             } catch (error) {
                 console.error('[CALLBACK] ❌ Error handling auth callback:', error);
+                // Clean up localStorage even if there's an error
+                localStorage.removeItem('anonymousUserIdForMerge');
                 alert('Authentication error: ' + error.message);
                 navigate('/login');
             }
@@ -87,7 +99,7 @@ const GoogleCallback = () => {
                 console.log('[MERGE] Anonymous user ID:', anonymousUserId);
                 console.log('[MERGE] Authenticated user ID:', authenticatedUserId);
                 
-                // 🎯 STEP 1: Use database function to perform complete merge (bypasses RLS)
+                // 🎯 STEP 1: Try database function first
                 console.log('[MERGE] 🔍 Step 1: Calling database merge function...');
                 const { data: mergeResult, error: mergeError } = await supabase
                     .rpc('merge_carts_safe', {
@@ -96,8 +108,20 @@ const GoogleCallback = () => {
                     });
                 
                 if (mergeError) {
-                    console.error('[MERGE] ❌ Error calling merge function:', mergeError);
-                    throw new Error('Failed to merge carts: ' + mergeError.message);
+                    console.error('[MERGE] ❌ Database function failed, trying fallback method:', mergeError);
+                    
+                    // 🚨 FALLBACK: Use the utility function if database function doesn't exist
+                    console.log('[MERGE] 🔄 Using fallback cart merge method...');
+                    const { mergeAnonymousCartWithStoredId } = await import('../../utils/anonymousAuth.js');
+                    const fallbackResult = await mergeAnonymousCartWithStoredId(anonymousUserId, authenticatedUserId);
+                    
+                    if (fallbackResult.success) {
+                        console.log('[MERGE] ✅ Fallback merge successful:', fallbackResult);
+                        dispatch(setCartItems(fallbackResult.mergedItems || []));
+                        return;
+                    } else {
+                        throw new Error('Fallback merge failed: ' + fallbackResult.error);
+                    }
                 }
                 
                 console.log('[MERGE] ✅ Database merge result:', mergeResult);
@@ -111,11 +135,12 @@ const GoogleCallback = () => {
                 // 🎯 STEP 2: Update Redux state with merged cart
                 console.log('[MERGE] 🔄 Step 2: Updating Redux state...');
                 const mergedItems = mergeResult.merged_items || [];
+                console.log('[MERGE] Merged items to set in Redux:', mergedItems);
+                
                 dispatch(setCartItems(mergedItems));
+                console.log('[MERGE] ✅ Redux state updated with', mergedItems.length, 'items');
                 
-                // 🎯 STEP 3: Clean up localStorage
-                localStorage.removeItem('anonymousUserIdForMerge');
-                
+                // 🎯 STEP 3: Don't clean up localStorage here - do it after both merges
                 console.log('[MERGE] ✅ Cart merge completed successfully');
                 console.log('[MERGE] Summary:', {
                     anonymousItemsCount: mergeResult.anonymous_items_count,
@@ -126,9 +151,59 @@ const GoogleCallback = () => {
                 
             } catch (error) {
                 console.error('[MERGE] ❌ Cart merge failed:', error);
-                // Clean up localStorage even if merge fails
-                localStorage.removeItem('anonymousUserIdForMerge');
+                // Don't clean up localStorage here - let the main function handle it
                 throw error;
+            }
+        };
+        
+        // 🎯 DATABASE-FIRST SEARCH PREFERENCES MERGE FUNCTION
+        const performSearchPreferencesMerge = async (anonymousUserId, authenticatedUserId) => {
+            try {
+                console.log('[SEARCH MERGE] 🚀 Starting database-first search preferences merge...');
+                console.log('[SEARCH MERGE] Anonymous user ID:', anonymousUserId);
+                console.log('[SEARCH MERGE] Authenticated user ID:', authenticatedUserId);
+                
+                // 🎯 STEP 1: Use database function to perform complete merge
+                console.log('[SEARCH MERGE] 🔍 Step 1: Calling database merge function...');
+                const { data: mergeResult, error: mergeError } = await supabase
+                    .rpc('merge_search_preferences_safe', {
+                        p_anonymous_user_id: anonymousUserId,
+                        p_authenticated_user_id: authenticatedUserId
+                    });
+                
+                if (mergeError) {
+                    console.error('[SEARCH MERGE] ❌ Error calling merge function:', mergeError);
+                    throw new Error('Failed to merge search preferences: ' + mergeError.message);
+                }
+                
+                console.log('[SEARCH MERGE] ✅ Database merge result:', mergeResult);
+                
+                // 🎯 STEP 2: Update Redux state with merged preferences
+                console.log('[SEARCH MERGE] 🔄 Step 2: Updating Redux state...');
+                console.log('[SEARCH MERGE] Merge result:', mergeResult);
+                if (mergeResult && Object.keys(mergeResult).length > 0) {
+                    console.log('[SEARCH MERGE] Dispatching merge to Redux...');
+                    await dispatch(mergeSearchPreferencesAsync({
+                        anonymousUserId,
+                        authenticatedUserId
+                    })).unwrap();
+                    console.log('[SEARCH MERGE] Redux state updated');
+                } else {
+                    console.log('[SEARCH MERGE] No merge result to update Redux with');
+                }
+                
+                // 🎯 STEP 3: Don't clean up localStorage here - do it after both merges
+                console.log('[SEARCH MERGE] ✅ Search preferences merge completed successfully');
+                console.log('[SEARCH MERGE] Summary:', {
+                    searchTerm: mergeResult?.search_term || '',
+                    allergenCount: mergeResult?.selected_allergens?.length || 0,
+                    timestamp: mergeResult?.updatedAt || new Date().toISOString()
+                });
+                
+            } catch (error) {
+                console.error('[SEARCH MERGE] ❌ Search preferences merge failed:', error);
+                // Don't clean up localStorage here - let the main function handle it
+                // Don't throw error - search preferences merge failure shouldn't break auth flow
             }
         };
         

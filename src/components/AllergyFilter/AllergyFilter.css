@@ -193,3 +193,55 @@
     transition: transform 0.1s ease;
   }
 }
+
+/* Safety status indicators */
+.safety-status {
+    margin-top: 12px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+}
+
+.status-message {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 4px;
+}
+
+.status-message.neutral {
+    color: #6c757d;
+}
+
+.status-message.loading {
+    color: #007bff;
+}
+
+.status-message.success {
+    color: #28a745;
+}
+
+.status-message.error {
+    color: #dc3545;
+}
+
+.safety-stats {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #e9ecef;
+}
+
+.safety-stats small {
+    color: #6c757d;
+    font-size: 12px;
+}
+
+.save-status {
+    margin-top: 8px;
+    padding: 6px 10px;
+    background: #d4edda;
+    color: #155724;
+    border-radius: 4px;
+    font-size: 12px;
+    text-align: center;
+}

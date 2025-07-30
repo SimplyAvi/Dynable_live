@@ -1,16 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItemToCart } from '../../redux/anonymousCartSlice';
+import ProductSafetyStatus from '../ProductSafetyStatus/ProductSafetyStatus';
 import './FoodCard.css'
 
 const FoodCard = ({foodItem, id, showAddToCart = false, ingredientFlagged = false, onAddToCart}) =>{
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [isAddingToCart, setIsAddingToCart] = useState(false);
+    const lastClickTime = useRef(0);
     
     // Check if user is authenticated
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+    
+    // Get user's selected allergens
+    const allergies = useSelector((state) => state.allergies.allergies);
+    const userAllergens = Object.keys(allergies).filter(key => allergies[key]);
 
     const { description, brandName, image = `${process.env.PUBLIC_URL}/default_img.png` } = foodItem
     
@@ -27,6 +33,23 @@ const FoodCard = ({foodItem, id, showAddToCart = false, ingredientFlagged = fals
         
         if (ingredientFlagged) return; // Don't add if ingredient is flagged
         
+        // Prevent double-clicks with debouncing
+        const now = Date.now();
+        if (now - lastClickTime.current < 1000) { // 1 second debounce
+            console.log('[FOODCARD] Add to cart debounced - too soon since last click');
+            return;
+        }
+        lastClickTime.current = now;
+        
+        // Prevent if already adding
+        if (isAddingToCart) {
+            console.log('[FOODCARD] Add to cart already in progress, ignoring click');
+            return;
+        }
+        
+        console.log('[FOODCARD] 🚨 Add to cart clicked for item:', foodItem.id);
+        console.log('[FOODCARD] Current isAddingToCart state:', isAddingToCart);
+        
         setIsAddingToCart(true);
         
         try {
@@ -39,18 +62,23 @@ const FoodCard = ({foodItem, id, showAddToCart = false, ingredientFlagged = fals
                 image: foodItem.image || '/default_img.png'
             };
 
+            console.log('[FOODCARD] About to dispatch addItemToCart with item:', cartItem);
+
             // Use the same Redux action for both authenticated and anonymous users
             // The addItemToCart thunk handles both cases through anonymousAuth.js
-            await dispatch(addItemToCart(cartItem)).unwrap();
+            const result = await dispatch(addItemToCart(cartItem)).unwrap();
+            
+            console.log('[FOODCARD] ✅ Add to cart successful, result:', result);
             
             // Call the optional callback if provided
             if (onAddToCart) {
                 onAddToCart(foodItem.id);
             }
         } catch (error) {
-            console.error('Failed to add to cart:', error);
+            console.error('[FOODCARD] ❌ Failed to add to cart:', error);
         } finally {
             setIsAddingToCart(false);
+            console.log('[FOODCARD] Add to cart completed, isAddingToCart set to false');
         }
     };
 
@@ -75,36 +103,35 @@ const FoodCard = ({foodItem, id, showAddToCart = false, ingredientFlagged = fals
             </div>
             <div className="food-info">
                 <div className="food-title">
-                    {description.length > 20 
-                        ? description.substring(0, 20) + '...' 
-                        : description
-                    }
+                    <h3>{description}</h3>
+                    <p className="brand-name">{brandName}</p>
                 </div>
-                {/* Add to Cart Button - show for homepage products as well */}
-                {showAddToCart && (
-                    <div className="food-card-cart-section">
-                        {!ingredientFlagged ? (
-                            <button
-                                onClick={handleAddToCart}
-                                disabled={isAddingToCart}
-                                className="food-card-add-to-cart-btn"
-                                title="Add to Cart"
-                            >
-                                {isAddingToCart ? 'Adding...' : 'Add to Cart'}
-                            </button>
-                        ) : (
-                            <div 
-                                className="food-card-add-to-cart-disabled"
-                                title="Please choose a substitute first"
-                            >
-                                Choose Substitute
-                            </div>
-                        )}
+                
+                {/* 🛡️ TEMPORARILY DISABLED: Product safety status */}
+                <ProductSafetyStatus 
+                    product={foodItem} 
+                    userAllergens={userAllergens}
+                />
+                
+                {/* Existing product details */}
+                {foodItem.canonicalTag && (
+                    <div className="canonical-tag">
+                        <span>{foodItem.canonicalTag}</span>
                     </div>
+                )}
+                
+                {showAddToCart && (
+                    <button 
+                        className={`add-to-cart-btn ${isAddingToCart ? 'adding' : ''}`}
+                        onClick={handleAddToCart}
+                        disabled={isAddingToCart || ingredientFlagged}
+                    >
+                        {isAddingToCart ? 'Adding...' : 'Add to Cart'}
+                    </button>
                 )}
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default React.memo(FoodCard);
+export default FoodCard;

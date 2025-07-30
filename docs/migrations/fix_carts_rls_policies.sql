@@ -68,14 +68,17 @@ BEGIN
             
             -- If same item ID, combine quantities
             IF (item->>'id')::INTEGER = (existing_item->>'id')::INTEGER THEN
-                -- Combine quantities using JSONB
+                -- Use the maximum quantity instead of adding to prevent doubling
                 merged_item := jsonb_build_object(
                     'id', existing_item->>'id',
                     'name', existing_item->>'name',
                     'brand', existing_item->>'brand',
                     'price', existing_item->>'price',
                     'image', existing_item->>'image',
-                    'quantity', COALESCE((existing_item->>'quantity')::INTEGER, 1) + COALESCE((item->>'quantity')::INTEGER, 1)
+                    'quantity', GREATEST(
+                        COALESCE((existing_item->>'quantity')::INTEGER, 1),
+                        COALESCE((item->>'quantity')::INTEGER, 1)
+                    )
                 );
                 
                 -- Update the item in merged_items using jsonb_set

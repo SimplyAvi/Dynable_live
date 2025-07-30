@@ -14,9 +14,12 @@
 
 import React from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../redux/authSlice'
-import { clearCartItems } from '../../redux/anonymousCartSlice'
+import { clearCartItems, selectCartItemCount, clearCartState } from '../../redux/anonymousCartSlice'
+import { clearSearchPreferencesLocal } from '../../redux/searchPreferencesSlice'
+import { clearAllergies } from '../../redux/allergiesSlice'
+import { clearSearchPreferencesOnLogout } from '../../utils/searchPreferencesManager'
 import { supabase } from '../../utils/supabaseClient'
 import './Header.css'
 
@@ -25,12 +28,23 @@ const Header = () => {
     const location = useLocation()
     const dispatch = useDispatch()
     const isAuthenticated = useSelector(state => state.auth?.isAuthenticated || false)
-    const cartItemCount = useSelector(state => state.anonymousCart?.items?.length || 0)
+    const cartItemCount = useSelector(selectCartItemCount)
+    const currentUser = useSelector(state => state.auth?.user)
 
     const handleLogout = async () => {
         try {
             console.log('[HEADER] Logging out user...');
             console.log('[HEADER] Current auth state before logout:', isAuthenticated);
+            
+            // Clear search preferences from database if user is authenticated
+            if (isAuthenticated && currentUser?.id) {
+                try {
+                    await clearSearchPreferencesOnLogout(currentUser.id);
+                    console.log('[HEADER] ✅ Search preferences cleared from database');
+                } catch (error) {
+                    console.error('[HEADER] ❌ Failed to clear search preferences from database:', error);
+                }
+            }
             
             // Sign out from Supabase first
             const { error } = await supabase.auth.signOut();
@@ -45,16 +59,27 @@ const Header = () => {
             localStorage.removeItem('anonymous_user_id')
             localStorage.removeItem('anonymous_cart')
             localStorage.removeItem('postLoginRedirect')
+            localStorage.removeItem('anonymousUserIdForMerge')
             console.log('[HEADER] localStorage cleared');
             
-            // Clear auth state from Redux
+            // Clear all Redux state
             console.log('[HEADER] Dispatching logout action...');
             dispatch(logout())
             console.log('[HEADER] Logout action dispatched');
             
-            // Clear cart from Redux
+            // Clear cart from Redux immediately for UI update
             dispatch(clearCartItems())
+            // Also directly clear the Redux state for immediate UI update
+            dispatch(clearCartState())
             console.log('[HEADER] Cart cleared from Redux');
+            
+            // Clear search preferences from Redux
+            dispatch(clearSearchPreferencesLocal())
+            console.log('[HEADER] Search preferences cleared from Redux');
+            
+            // Clear allergen toggles from Redux
+            dispatch(clearAllergies())
+            console.log('[HEADER] Allergen toggles cleared from Redux');
             
             // Navigate to home page
             navigate('/')
@@ -67,8 +92,12 @@ const Header = () => {
             localStorage.removeItem('anonymous_user_id')
             localStorage.removeItem('anonymous_cart')
             localStorage.removeItem('postLoginRedirect')
+            localStorage.removeItem('anonymousUserIdForMerge')
             dispatch(logout())
             dispatch(clearCartItems())
+            dispatch(clearCartState())
+            dispatch(clearSearchPreferencesLocal())
+            dispatch(clearAllergies())
             navigate('/')
         }
     }

@@ -6,6 +6,7 @@ import foodCategoryReducer from './foodCatagorySlice';
 import allergiesReducer from './allergiesSlice';
 import authReducer from './authSlice';
 import anonymousCartReducer from './anonymousCartSlice';
+import searchPreferencesReducer from './searchPreferencesSlice';
 
 console.log('[STORE] Creating Redux store...');
 
@@ -19,6 +20,7 @@ const store = configureStore({
     allergies: allergiesReducer,
     auth: authReducer,
     anonymousCart: anonymousCartReducer,
+    searchPreferences: searchPreferencesReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

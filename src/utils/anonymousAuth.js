@@ -58,6 +58,18 @@ export const initializeAnonymousAuth = async () => {
         
         if (error) {
             console.error('[ANONYMOUS AUTH] Anonymous sign-in failed:', error);
+            
+            // If rate limited, return a clear error message
+            if (error.message.includes('rate limit') || error.message.includes('429')) {
+                console.log('[ANONYMOUS AUTH] Rate limit reached, returning clear error');
+                return {
+                    session: null,
+                    isAnonymous: false,
+                    success: false,
+                    error: 'Rate limit reached. Please try again in a few minutes.'
+                };
+            }
+            
             return {
                 session: null,
                 isAnonymous: false,
@@ -150,9 +162,9 @@ export const addToCart = async (item) => {
         const existingItemIndex = currentItems.findIndex(cartItem => cartItem.id === item.id);
         
         if (existingItemIndex !== -1) {
-            // Update quantity of existing item
-            currentItems[existingItemIndex].quantity += item.quantity;
-            console.log('[ANONYMOUS AUTH] Updated existing item quantity:', currentItems[existingItemIndex]);
+            // Replace quantity of existing item (don't add to prevent doubling)
+            currentItems[existingItemIndex].quantity = item.quantity;
+            console.log('[ANONYMOUS AUTH] Replaced existing item quantity:', currentItems[existingItemIndex]);
         } else {
             // Add new item
             currentItems.push(item);
@@ -188,7 +200,9 @@ export const addToCart = async (item) => {
             return { success: false, error: upsertError.message };
         }
         
-        console.log('[ANONYMOUS AUTH] ✅ Cart updated successfully, upsert data:', upsertData);
+        console.log('[ANONYMOUS AUTH] ✅ Cart saved successfully to database');
+        console.log('[ANONYMOUS AUTH] Final cart items count:', currentItems.length);
+        
         return { success: true, items: currentItems };
         
     } catch (error) {

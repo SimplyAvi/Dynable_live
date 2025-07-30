@@ -6,7 +6,9 @@
  * Date: July 2025
  */
 
-import { signInAnonymously, getAnonymousUserId, isAnonymousUser, getCurrentSession } from './supabaseClient';
+import { getAnonymousUserId } from './supabaseClient';
+import { isAnonymousUser, initializeAnonymousAuth } from './anonymousAuth';
+import { getCurrentSession } from './supabaseClient';
 
 /**
  * Initialize anonymous user session (with fallback support)
@@ -43,7 +45,7 @@ export const initializeAnonymousUser = async () => {
     }
     
     // Create new anonymous session (with fallback support)
-    const result = await signInAnonymously();
+    const result = await initializeAnonymousAuth();
     
     if (!result.success) {
       console.error('[ANONYMOUS] Failed to create anonymous session:', result.error);

@@ -36,6 +36,7 @@ export const signInAnonymously = async () => {
       // Fallback: Create a local anonymous session
       const fallbackAnonymousId = `anon_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
       localStorage.setItem('anonymous_user_id', fallbackAnonymousId);
+      localStorage.setItem('anonymousUserIdForMerge', fallbackAnonymousId);
       
       console.log('[SUPABASE] Created fallback anonymous session:', fallbackAnonymousId);
       
@@ -51,6 +52,7 @@ export const signInAnonymously = async () => {
     
     // Store anonymous user ID for later identity linking
     localStorage.setItem('anonymous_user_id', data.user.id);
+    localStorage.setItem('anonymousUserIdForMerge', data.user.id);
     
     return { 
       success: true, 
@@ -64,6 +66,7 @@ export const signInAnonymously = async () => {
     // Fallback: Create a local anonymous session
     const fallbackAnonymousId = `anon_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     localStorage.setItem('anonymous_user_id', fallbackAnonymousId);
+    localStorage.setItem('anonymousUserIdForMerge', fallbackAnonymousId);
     
     console.log('[SUPABASE] Created fallback anonymous session after error:', fallbackAnonymousId);
     
@@ -128,17 +131,78 @@ export const linkIdentity = async (provider = 'google') => {
  * Get current anonymous user ID
  * @returns {string|null} Anonymous user ID or null
  */
-export const getAnonymousUserId = () => {
-  return localStorage.getItem('anonymous_user_id');
+export const getAnonymousUserId = async () => {
+  try {
+    // First check localStorage (for merge tracking)
+    const anonymousUserIdForMerge = localStorage.getItem('anonymousUserIdForMerge');
+    const anonymousUserId = localStorage.getItem('anonymous_user_id');
+    
+    console.log('[GET_ANONYMOUS_USER_ID] anonymousUserIdForMerge:', anonymousUserIdForMerge);
+    console.log('[GET_ANONYMOUS_USER_ID] anonymous_user_id:', anonymousUserId);
+    
+    if (anonymousUserIdForMerge) {
+      console.log('[GET_ANONYMOUS_USER_ID] Returning anonymousUserIdForMerge:', anonymousUserIdForMerge);
+      return anonymousUserIdForMerge;
+    }
+    
+    if (anonymousUserId) {
+      console.log('[GET_ANONYMOUS_USER_ID] Returning anonymous_user_id:', anonymousUserId);
+      return anonymousUserId;
+    }
+    
+    // If no localStorage, check current session for anonymous user
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session && session.user) {
+      // Check if current user is anonymous (no email/phone)
+      const hasNoEmail = (!session.user.email) || (session.user.email.trim() === '');
+      const hasNoPhone = (!session.user.phone) || (session.user.phone.trim() === '');
+      
+      if (hasNoEmail && hasNoPhone) {
+        console.log('[GET_ANONYMOUS_USER_ID] Found anonymous user in session:', session.user.id);
+        return session.user.id;
+      }
+    }
+    
+    console.log('[GET_ANONYMOUS_USER_ID] No anonymous user ID found');
+    return null;
+  } catch (error) {
+    console.error('[GET_ANONYMOUS_USER_ID] Error:', error);
+    return null;
+  }
 };
 
 /**
  * Check if user is anonymous
- * @returns {boolean} Whether current user is anonymous
+ * @returns {Promise<boolean>} Whether current user is anonymous
  */
-export const isAnonymousUser = () => {
-  const anonymousId = getAnonymousUserId();
-  return !!anonymousId;
+export const isAnonymousUser = async () => {
+  try {
+    // Get current session
+    const { data: { session } } = await supabase.auth.getSession();
+    
+    // If no session, user is anonymous
+    if (!session) {
+      console.log('[IS_ANONYMOUS_USER] No session found - user is anonymous');
+      return true;
+    }
+    
+    // If session exists but user has no email/phone, they are anonymous
+    // (This happens with Supabase anonymous auth)
+    const hasNoEmail = (!session.user.email) || (session.user.email.trim() === '');
+    const hasNoPhone = (!session.user.phone) || (session.user.phone.trim() === '');
+    
+    if (hasNoEmail && hasNoPhone) {
+      console.log('[IS_ANONYMOUS_USER] Session found but no email/phone - user is anonymous');
+      return true;
+    }
+    
+    // If session exists and user has email/phone, they are authenticated
+    console.log('[IS_ANONYMOUS_USER] Session found with email/phone - user is authenticated');
+    return false;
+  } catch (error) {
+    console.error('[IS_ANONYMOUS_USER] Error:', error);
+    return true; // Default to anonymous on error
+  }
 };
 
 /**
@@ -179,6 +243,7 @@ export const signOut = async () => {
     // Always clean up local storage
     localStorage.removeItem('anonymous_user_id');
     localStorage.removeItem('anonymous_cart');
+    localStorage.removeItem('anonymousUserIdForMerge');
     
     console.log('[SUPABASE] Sign out successful');
     return { success: true };
@@ -188,6 +253,7 @@ export const signOut = async () => {
     // Fallback: Clean up local storage
     localStorage.removeItem('anonymous_user_id');
     localStorage.removeItem('anonymous_cart');
+    localStorage.removeItem('anonymousUserIdForMerge');
     
     return { success: true, fallback: true };
   }
@@ -215,6 +281,9 @@ export const cleanupAnonymousData = () => {
     
     // Remove anonymous cart data
     localStorage.removeItem('anonymous_cart');
+    
+    // Remove anonymous user ID for merge tracking
+    localStorage.removeItem('anonymousUserIdForMerge');
     
     console.log('[SUPABASE] Anonymous user data cleaned up successfully');
     

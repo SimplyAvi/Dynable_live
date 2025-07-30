@@ -74,14 +74,16 @@ const ShowResults = () => {
             setRecipeLoading(true)
             setRecipeError(null)
             
-            const sendAllergens = Object.keys(allergies).filter(key => allergies[key]).map(key => key.toLowerCase())
+            // 🎯 RECIPES SHOULD NEVER BE FILTERED BY ALLERGENS
+            // Recipes should always show all recipes regardless of allergen toggles
+            // Only products should be filtered by allergens
             
             // Use Supabase query with count support
             const response = await searchRecipesFromSupabasePure({
                 search: textbar || '',
                 page: newPage,
                 limit: 10,
-                excludeIngredients: sendAllergens,
+                excludeIngredients: [], // Never exclude recipes based on allergens
                 includeCount: true
             })
             
@@ -115,13 +117,26 @@ const ShowResults = () => {
     }
 
     // Memoize recipeList and productList to avoid unnecessary recalculation
-    const recipeList = useMemo(() => Array.isArray(recipes) ? recipes : [], [recipes]);
+    const recipeList = useMemo(() => {
+        if (Array.isArray(recipes)) {
+            // Direct array format
+            return recipes;
+        } else if (recipes && Array.isArray(recipes.recipes)) {
+            // New format with count - recipes.recipes array
+            return recipes.recipes;
+        } else {
+            return [];
+        }
+    }, [recipes]);
     
-    // Fix for new Supabase format - products is now a direct array, not wrapped in foods property
+    // Fix for new Supabase format - products can be array or object with products array
     const productList = useMemo(() => {
         if (Array.isArray(products)) {
-            // New Supabase format - products is a direct array
+            // Direct array format
             return products;
+        } else if (products && Array.isArray(products.products)) {
+            // New format with count - products.products array
+            return products.products;
         } else if (products && Array.isArray(products.foods)) {
             // Old format - products.foods array
             return products.foods;
@@ -149,9 +164,20 @@ const ShowResults = () => {
     const recipeStartIdx = (recipePage - 1) * 10 + 1;
     const recipeEndIdx = recipeStartIdx + recipeList.length - 1;
 
-    // Fix pagination for new Supabase format
+    // Fix pagination for new Supabase format with count support
     const productTotalCount = Array.isArray(products) ? products.length : (products && products.totalCount ? products.totalCount : 0);
     const productTotalPages = products && products.totalPages ? products.totalPages : 1;
+    
+    // Debug logging for pagination values
+    console.log('[ShowResults] Pagination Debug:', {
+        productsType: typeof products,
+        productsIsArray: Array.isArray(products),
+        productsTotalCount: products?.totalCount,
+        calculatedProductTotalCount: productTotalCount,
+        calculatedProductTotalPages: productTotalPages,
+        recipeTotalCount: recipeTotalCount,
+        recipeTotalPages: recipeTotalPages
+    });
 
     if (!hasProducts && !hasRecipes) {
         return (
@@ -169,7 +195,7 @@ const ShowResults = () => {
                     <h3>Products</h3>
                     <div className="header-controls">
                         <span className="results-count">
-                            {productTotalCount ? `Showing ${startIdx}-${endIdx} of ${productTotalCount}` : ''}
+                            {productTotalCount ? `Showing ${startIdx}-${endIdx} of ${productTotalCount.toLocaleString()}` : ''}
                         </span>
                         <div className="pagination-controls">
                             <button 
@@ -179,7 +205,7 @@ const ShowResults = () => {
                             >
                                 Prev
                             </button>
-                            <span className="page-number">{productPage} / {productTotalPages}</span>
+                            <span className="page-number">{productPage} / {productTotalPages.toLocaleString()}</span>
                             <button 
                                 onClick={() => handleProductPageChange(productPage + 1)} 
                                 disabled={productPage >= productTotalPages}
@@ -209,7 +235,7 @@ const ShowResults = () => {
                     <h3>Recipes</h3>
                     <div className="header-controls">
                         <span className="results-count">
-                            {recipeTotalCount ? `Showing ${recipeStartIdx}-${recipeEndIdx} of ${recipeTotalCount}` : ''}
+                            {recipeTotalCount ? `Showing ${recipeStartIdx}-${recipeEndIdx} of ${recipeTotalCount.toLocaleString()}` : ''}
                         </span>
                         <div className="pagination-controls">
                             <button 
@@ -219,7 +245,7 @@ const ShowResults = () => {
                             >
                                 Prev
                             </button>
-                            <span className="page-number">{recipePage} / {recipeTotalPages}</span>
+                            <span className="page-number">{recipePage} / {recipeTotalPages.toLocaleString()}</span>
                             <button 
                                 onClick={() => handleRecipePageChange(recipePage + 1)} 
                                 disabled={recipePage >= recipeTotalPages}

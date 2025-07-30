@@ -59,10 +59,14 @@ const ProductPage = () =>{
         }
 
         if (!isAuthenticated) {
-            // Initialize anonymous auth first, then add to cart
-            console.log('[PRODUCT_PAGE] User not authenticated, initializing anonymous auth');
-            await dispatch(initializeAuth());
-            dispatch(addItemToCart(cartItem));
+            // The addItemToCart thunk will handle auth initialization
+            console.log('[PRODUCT_PAGE] User not authenticated, addItemToCart will handle auth');
+            try {
+                await dispatch(addItemToCart(cartItem)).unwrap();
+            } catch (error) {
+                console.error('[PRODUCT_PAGE] Failed to add to cart:', error);
+                alert('Failed to add item to cart. Please try again.');
+            }
             return;
         }
 

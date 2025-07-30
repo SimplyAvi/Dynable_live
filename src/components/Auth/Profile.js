@@ -13,10 +13,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../redux/authSlice';
+import { clearCartItems, clearCartState } from '../../redux/anonymousCartSlice';
+import { clearSearchPreferencesLocal } from '../../redux/searchPreferencesSlice';
+import { clearAllergies } from '../../redux/allergiesSlice';
+import { clearSearchPreferencesOnLogout } from '../../utils/searchPreferencesManager';
 import { supabase } from '../../utils/supabaseClient';
-import './Auth.css';
+import '../Profile/Profile.css';
 
 const Profile = () => {
     const navigate = useNavigate();
@@ -134,11 +138,51 @@ const Profile = () => {
 
     const handleLogout = async () => {
         try {
+            console.log('[PROFILE] Logging out user...');
+            
+            // Clear search preferences from database if user is authenticated
+            if (user?.id) {
+                try {
+                    await clearSearchPreferencesOnLogout(user.id);
+                    console.log('[PROFILE] ✅ Search preferences cleared from database');
+                } catch (error) {
+                    console.error('[PROFILE] ❌ Failed to clear search preferences from database:', error);
+                }
+            }
+            
+            // Sign out from Supabase
             await supabase.auth.signOut();
+            
+            // Clear localStorage
+            localStorage.removeItem('token')
+            localStorage.removeItem('anonymous_user_id')
+            localStorage.removeItem('anonymous_cart')
+            localStorage.removeItem('postLoginRedirect')
+            localStorage.removeItem('anonymousUserIdForMerge')
+            
+            // Clear all Redux state
             dispatch(logout());
+            dispatch(clearCartItems());
+            dispatch(clearCartState());
+            dispatch(clearSearchPreferencesLocal());
+            dispatch(clearAllergies());
+            
+            console.log('[PROFILE] Logout completed successfully');
             navigate('/');
         } catch (error) {
-            console.error('Logout error:', error);
+            console.error('[PROFILE] Logout error:', error);
+            // Still clear everything even if Supabase sign out fails
+            localStorage.removeItem('token')
+            localStorage.removeItem('anonymous_user_id')
+            localStorage.removeItem('anonymous_cart')
+            localStorage.removeItem('postLoginRedirect')
+            localStorage.removeItem('anonymousUserIdForMerge')
+            dispatch(logout());
+            dispatch(clearCartItems());
+            dispatch(clearCartState());
+            dispatch(clearSearchPreferencesLocal());
+            dispatch(clearAllergies());
+            navigate('/');
         }
     };
 

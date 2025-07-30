@@ -23,6 +23,13 @@ const allergiesSlice = createSlice({
                 console.warn(`[Allergies] Attempted to toggle unknown allergen: ${allergen}`)
             }
         },
+        clearAllergies: (state) => {
+            // Reset all allergen toggles to false
+            Object.keys(state.allergies).forEach(allergen => {
+                state.allergies[allergen] = false
+            })
+            console.log('[Allergies] All allergen toggles cleared')
+        },
         setLoading: (state, action) => {
             state.loading = action.payload
         },
@@ -86,5 +93,5 @@ export const fetchAllergens = () => async (dispatch) => {
     }
 }
 
-export const { setAllergies, toggleAllergy, setLoading, setError } = allergiesSlice.actions
+export const { setAllergies, toggleAllergy, clearAllergies, setLoading, setError } = allergiesSlice.actions
 export default allergiesSlice.reducer

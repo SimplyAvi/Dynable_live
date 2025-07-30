@@ -20,6 +20,7 @@ import './Auth.css';
 import { supabase } from '../../utils/supabaseClient';
 import { isAnonymousUser } from '../../utils/anonymousAuth';
 import { saveCartBeforeAuth } from '../../utils/cartSaveBeforeAuth';
+import { saveSearchPreferencesBeforeAuthAsync } from '../../redux/searchPreferencesSlice';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -28,14 +29,37 @@ const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     
-    // Get cart items from Redux state
+    // Get cart items and search preferences from Redux state
     const cartItems = useSelector(state => state.anonymousCart.items);
+    const searchTerm = useSelector(state => state.searchPreferences.searchTerm);
+    const selectedAllergens = useSelector(state => state.searchPreferences.selectedAllergens);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
 
         try {
+            // 🛡️ FIXED: Save allergens before login for email/password auth
+            console.log('[LOGIN] Saving allergens before email/password login...');
+            const { data: { session } } = await supabase.auth.getSession();
+            const anonymousUserId = session?.user?.id;
+            
+            if (anonymousUserId && await isAnonymousUser()) {
+                console.log('[LOGIN] Found anonymous session, saving allergens...');
+                const allergens = Object.keys(selectedAllergens).filter(key => selectedAllergens[key]);
+                
+                try {
+                    await dispatch(saveSearchPreferencesBeforeAuthAsync({
+                        searchTerm,
+                        allergens,
+                        anonymousUserId
+                    })).unwrap();
+                    console.log('[LOGIN] ✅ Allergens saved before login');
+                } catch (error) {
+                    console.warn('[LOGIN] ⚠️ Failed to save allergens before login:', error);
+                }
+            }
+
             const { data, error } = await supabase.auth.signInWithPassword({
                 email,
                 password
@@ -87,6 +111,12 @@ const Login = () => {
                     isAuthenticated: true
                 }));
 
+                // 🛡️ FIXED: Store anonymous user ID for allergen merge after login
+                if (anonymousUserId && anonymousUserId !== data.user.id) {
+                    console.log('[LOGIN] Storing anonymous user ID for allergen merge:', anonymousUserId);
+                    localStorage.setItem('anonymousUserIdForMerge', anonymousUserId);
+                }
+
                 // Check for post-login redirect (e.g., from checkout)
                 const postLoginRedirect = localStorage.getItem('postLoginRedirect');
                 if (postLoginRedirect) {
@@ -129,7 +159,7 @@ const Login = () => {
                 console.log('[LOGIN] ✅ Anonymous session created:', session.user.id);
             }
             
-            if (!isAnonymousUser(session)) {
+            if (!(await isAnonymousUser())) {
                 console.log('[LOGIN] User is already authenticated, proceeding with OAuth');
                 // Proceed with OAuth for already authenticated users
                 const { error } = await supabase.auth.signInWithOAuth({
@@ -159,6 +189,28 @@ const Login = () => {
                 setIsLoading(false);
                 return;
             }
+            
+            // 🎯 SEARCH PREFERENCES SAVE: Save search preferences before OAuth
+            console.log('[LOGIN] 💾 Saving search preferences before OAuth...');
+            const allergens = Object.keys(selectedAllergens).filter(key => selectedAllergens[key]);
+            console.log('[LOGIN] Current allergens to save:', allergens);
+            
+            const searchPrefsResult = await dispatch(saveSearchPreferencesBeforeAuthAsync({
+                searchTerm,
+                allergens,
+                anonymousUserId
+            })).unwrap();
+            
+            if (!searchPrefsResult.success) {
+                console.warn('[LOGIN] ⚠️  Search preferences save failed:', searchPrefsResult.error);
+                // Don't abort OAuth for search preferences failure
+            } else {
+                console.log('[LOGIN] ✅ Search preferences saved successfully');
+            }
+            
+            // 🛡️ FIXED: Store anonymous user ID for merge after OAuth
+            console.log('[LOGIN] Storing anonymous user ID for merge after OAuth:', anonymousUserId);
+            localStorage.setItem('anonymousUserIdForMerge', anonymousUserId);
             
             // Proceed with OAuth redirect
             console.log('[LOGIN] 🚀 Proceeding with Google OAuth redirect...');

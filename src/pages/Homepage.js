@@ -17,25 +17,29 @@ const Homepage = () => {
         const loadInitialData = async () => {
             try {
                 // ENABLED FOR SUPABASE PURE TESTING
-                // Load initial products
+                // Load initial products with count
                 const foodResponse = await searchProductsFromSupabasePure({
                     name: '',
                     page: 1,
                     limit: 10,
-                    allergens: []
+                    allergens: [],
+                    includeCount: true
                 });
                 
-                // Load initial recipes
+                // Load initial recipes with count
                 const recipeResponse = await searchRecipesFromSupabasePure({
                     search: '',
                     excludeIngredients: [],
                     page: 1,
-                    limit: 10
+                    limit: 10,
+                    includeCount: true
                 });
                 
                 console.log('[SUPABASE PURE] Initial data loaded:', { 
-                    products: foodResponse.length, 
-                    recipes: recipeResponse.length 
+                    products: foodResponse.products ? foodResponse.products.length : foodResponse.length,
+                    recipes: recipeResponse.recipes ? recipeResponse.recipes.length : recipeResponse.length,
+                    productTotalCount: foodResponse.totalCount,
+                    recipeTotalCount: recipeResponse.totalCount
                 });
                 
                 dispatch(setProducts(foodResponse))
@@ -47,6 +51,55 @@ const Homepage = () => {
 
         loadInitialData();
     }, [dispatch]);
+
+    // 🚨 FIXED: Trigger search when allergies change (for allergen restoration)
+    useEffect(() => {
+        const loadFilteredData = async () => {
+            try {
+                // Get selected allergens
+                const selectedAllergens = Object.keys(allergies).filter(key => allergies[key]).map(key => key.toLowerCase());
+                
+                if (selectedAllergens.length > 0) {
+                    console.log('[HOMEPAGE] Allergies changed, loading filtered data:', selectedAllergens);
+                    
+                    // Load filtered products
+                    const foodResponse = await searchProductsFromSupabasePure({
+                        name: '',
+                        page: 1,
+                        limit: 10,
+                        allergens: selectedAllergens,
+                        includeCount: true
+                    });
+                    
+                    // Load recipes (never filtered by allergens)
+                    const recipeResponse = await searchRecipesFromSupabasePure({
+                        search: '',
+                        excludeIngredients: [],
+                        page: 1,
+                        limit: 10,
+                        includeCount: true
+                    });
+                    
+                    console.log('[HOMEPAGE] Filtered data loaded:', { 
+                        products: foodResponse.products ? foodResponse.products.length : foodResponse.length,
+                        recipes: recipeResponse.recipes ? recipeResponse.recipes.length : recipeResponse.length,
+                        allergens: selectedAllergens
+                    });
+                    
+                    dispatch(setProducts(foodResponse))
+                    dispatch(addRecipes(recipeResponse))
+                }
+            } catch (error) {
+                console.error('Error loading filtered data:', error);
+            }
+        };
+
+        // Only trigger if we have allergies (not on initial load)
+        const hasAllergies = Object.values(allergies).some(value => value === true);
+        if (hasAllergies) {
+            loadFilteredData();
+        }
+    }, [allergies, dispatch]);
 
     return (
         <div className="homepage">
