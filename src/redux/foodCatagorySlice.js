@@ -7,7 +7,7 @@ export const getFoodCategories = createAsyncThunk(
     async () => {
       console.log('hello from foodcatagoryslice call before')
       // TEMPORARILY DISABLED FOR PURE SUPABASE TESTING
-      // const response = await axios.get('http://localhost:5001/api/foodCategories');
+      // const response = await axios.get('http://process.env.API_URL || 'localhost:5001'/api/foodCategories');
       // console.log('hello from foodcatagoryslice call after')
       // return response.data;
       
@@ -19,7 +19,7 @@ export const getFoodCategories = createAsyncThunk(
 export const fetchFoodCategories = () => async (dispatch) => {
     try {
         // TEMPORARILY DISABLED FOR PURE SUPABASE TESTING
-        // const response = await axios.get('http://localhost:5001/api/foodCategories');
+        // const response = await axios.get('http://process.env.API_URL || 'localhost:5001'/api/foodCategories');
         // dispatch(setFoodCategories(response.data));
         
         console.log('[PURE SUPABASE TEST] Food categories fetch disabled');

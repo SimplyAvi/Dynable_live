@@ -9,8 +9,8 @@
 import { createClient } from '@supabase/supabase-js';
 
 // Initialize Supabase client for frontend
-const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || 'https://fdojimqdhuqhimgjpdai.supabase.co';
-const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZkb2ppbXFkaHVxaGltZ2pwZGFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0NTgwNzksImV4cCI6MjA2NjAzNDA3OX0.thlmaThwEBFvRUsWjQGr9JnKa-X5cdZEVm_Luz_GsXc';
+const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || 'process.env.REACT_APP_SUPABASE_URL || process.env.SUPABASE_URL';
+const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY || 'process.env.REACT_APP_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY';
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {

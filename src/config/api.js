@@ -1,7 +1,7 @@
 // Supabase API Configuration for different environments
 const config = {
   development: {
-    baseURL: 'https://fdojimqdhuqhimgjpdai.supabase.co',
+    baseURL: 'process.env.REACT_APP_SUPABASE_URL || process.env.SUPABASE_URL',
     apiEndpoints: {
       // Supabase REST API endpoints
       allergens: '/rest/v1/AllergenDerivatives',
@@ -17,7 +17,7 @@ const config = {
     }
   },
   production: {
-    baseURL: process.env.REACT_APP_SUPABASE_URL || 'https://fdojimqdhuqhimgjpdai.supabase.co',
+    baseURL: process.env.REACT_APP_SUPABASE_URL || 'process.env.REACT_APP_SUPABASE_URL || process.env.SUPABASE_URL',
     apiEndpoints: {
       allergens: '/rest/v1/AllergenDerivatives',
       allergensDerivatives: '/rest/v1/AllergenDerivatives',
@@ -32,7 +32,7 @@ const config = {
     }
   },
   test: {
-    baseURL: 'https://fdojimqdhuqhimgjpdai.supabase.co',
+    baseURL: 'process.env.REACT_APP_SUPABASE_URL || process.env.SUPABASE_URL',
     apiEndpoints: {
       allergens: '/rest/v1/AllergenDerivatives',
       allergensDerivatives: '/rest/v1/AllergenDerivatives',
@@ -63,8 +63,8 @@ export const buildApiUrl = (endpoint) => {
 export const getSupabaseHeaders = (includeAuth = true) => {
   const headers = {
     'Content-Type': 'application/json',
-    'apikey': process.env.REACT_APP_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZkb2ppbXFkaHVxaGltZ2pwZGFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0NTgwNzksImV4cCI6MjA2NjAzNDA3OX0.thlmaThwEBFvRUsWjQGr9JnKa-X5cdZEVm_Luz_GsXc',
-    'Authorization': `Bearer ${process.env.REACT_APP_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZkb2ppbXFkaHVxaGltZ2pwZGFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0NTgwNzksImV4cCI6MjA2NjAzNDA3OX0.thlmaThwEBFvRUsWjQGr9JnKa-X5cdZEVm_Luz_GsXc'}`
+    'apikey': process.env.REACT_APP_SUPABASE_ANON_KEY || 'process.env.REACT_APP_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY',
+    'Authorization': `Bearer ${process.env.REACT_APP_SUPABASE_ANON_KEY || 'process.env.REACT_APP_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY'}`
   };
 
   // Add auth token if requested and available

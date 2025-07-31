@@ -23,7 +23,7 @@ const sellerRoutes = require('./api/sellerRoutes') // New seller routes
 const bodyParser = require('body-parser');
 
 const app = express();
-const PORT = 5001;
+const PORT = process.env.PORT || 5001;
 
 // Parse application/json
 app.use(bodyParser.json());

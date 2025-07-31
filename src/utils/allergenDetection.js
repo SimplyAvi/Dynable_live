@@ -101,7 +101,7 @@ export const analyzeProductAllergens = async (productDescription, userAllergens 
   
   try {
     // Check each potential allergen
-    const allAllergens = ['milk', 'eggs', 'fish', 'shellfish', 'treeNuts', 'peanuts', 'wheat', 'soy', 'sesame', 'gluten'];
+    const allAllergens = ['milk', 'eggs', 'fish', 'shellfish', 'treenuts', 'peanuts', 'wheat', 'soy', 'sesame', 'gluten'];
     
     for (const allergen of allAllergens) {
       const detection = await detectAllergensInProduct(productDescription, allergen);

@@ -56,8 +56,8 @@ const Homepage = () => {
     useEffect(() => {
         const loadFilteredData = async () => {
             try {
-                // Get selected allergens
-                const selectedAllergens = Object.keys(allergies).filter(key => allergies[key]).map(key => key.toLowerCase());
+                // Get selected allergens - keep camelCase format
+                const selectedAllergens = Object.keys(allergies).filter(key => allergies[key]);
                 
                 if (selectedAllergens.length > 0) {
                     console.log('[HOMEPAGE] Allergies changed, loading filtered data:', selectedAllergens);

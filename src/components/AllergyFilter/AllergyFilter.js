@@ -29,23 +29,22 @@ const AllergyFilter = () => {
     // Track active allergen count
     const activeAllergens = Object.keys(allergies).filter(key => allergies[key]);
 
-    // 🛡️ FIXED: Proper allergen name mapping
+    // 🛡️ FIXED: Proper allergen name mapping - use camelCase consistently
     const allergenNameMap = {
         'milk': 'milk',
         'eggs': 'eggs', 
         'fish': 'fish',
         'shellfish': 'shellfish',
-        'treenuts': 'treenuts', // 🚨 FIXED: Match actual state structure
+        'treeNuts': 'treeNuts', // ✅ Use camelCase consistently
         'peanuts': 'peanuts',
         'wheat': 'wheat',
         'soy': 'soy',
         'sesame': 'sesame',
         'gluten': 'gluten',
-        'treenut': 'treenuts', // Alternative spelling
-        'tree nuts': 'treenuts', // Space-separated
-        'tree-nuts': 'treenuts', // Hyphenated
-        'tree_nuts': 'treenuts', // Underscore
-        'treeNuts': 'treenuts' // 🚨 FIXED: Map treeNuts to treenuts
+        'treenuts': 'treeNuts', // Map lowercase to camelCase
+        'tree nuts': 'treeNuts', // Space-separated to camelCase
+        'tree-nuts': 'treeNuts', // Hyphenated to camelCase
+        'tree_nuts': 'treeNuts' // Underscore to camelCase
     };
 
     // Debug logging

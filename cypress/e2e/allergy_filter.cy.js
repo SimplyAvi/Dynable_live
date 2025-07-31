@@ -1,7 +1,7 @@
 describe('Allergy Filter Functionality', () => {
   it('should not render any products containing the excluded allergen', () => {
     // Visit your homepage
-    cy.visit('http://localhost:3000');
+    cy.visit('http://process.env.FRONTEND_URL || 'localhost:3000'');
 
     // Type a search term (e.g., "bread")
     cy.get('input[name="searchText"]').type('bread');

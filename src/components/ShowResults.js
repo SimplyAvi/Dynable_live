@@ -153,6 +153,12 @@ const ShowResults = () => {
     console.log('[ShowResults] ProductList:', productList);
     console.log('[ShowResults] Recipes:', recipes);
     console.log('[ShowResults] HasProducts:', hasProducts, 'HasRecipes:', hasRecipes);
+    console.log('[ShowResults] Redux state structure:', {
+        productsType: typeof products,
+        productsIsArray: Array.isArray(products),
+        productsKeys: products && typeof products === 'object' ? Object.keys(products) : 'N/A',
+        hasProductsProperty: products && products.products ? 'YES' : 'NO'
+    });
 
     // Calculate product range for display
     const startIdx = (productPage - 1) * 10 + 1;

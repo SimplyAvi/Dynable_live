@@ -34,7 +34,7 @@ const requiredVars = {
   'JWT_SECRET': 'your_existing_jwt_secret_here',
   'REACT_APP_GOOGLE_CLIENT_ID': 'your_google_client_id_here',
   'SUPABASE_JWT_SECRET': 'your_supabase_jwt_secret_here',
-  'SUPABASE_URL': 'https://fdojimqdhuqhimgjpdai.supabase.co',
+  'SUPABASE_URL': 'process.env.REACT_APP_SUPABASE_URL || process.env.SUPABASE_URL',
   'SUPABASE_ANON_KEY': 'your_supabase_anon_key_here',
   'SUPABASE_SERVICE_ROLE_KEY': 'your_supabase_service_role_key_here',
   'SUPABASE_IDENTITY_LINKING_ENABLED': 'true'

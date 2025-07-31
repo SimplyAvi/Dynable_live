@@ -1,0 +1,409 @@
+{
+  "connection": {
+    "status": "SUCCESS",
+    "url": "https://fdojimqdhuqhimgjpdai.supabase.co",
+    "message": "Successfully connected to Supabase database"
+  },
+  "tables": {
+    "Users": {
+      "columns": [],
+      "rowCount": 0,
+      "hasRLS": false,
+      "indexes": [],
+      "sampleData": []
+    },
+    "Carts": {
+      "columns": [],
+      "rowCount": 0,
+      "hasRLS": false,
+      "indexes": [],
+      "sampleData": []
+    },
+    "SearchPreferences": {
+      "columns": [],
+      "rowCount": 0,
+      "hasRLS": false,
+      "indexes": [],
+      "sampleData": []
+    },
+    "Orders": {
+      "columns": [],
+      "rowCount": 0,
+      "hasRLS": false,
+      "indexes": [],
+      "sampleData": []
+    }
+  },
+  "dataQuality": {
+    "IngredientCategorized": {
+      "totalRows": 1000,
+      "hasDescription": 1000,
+      "hasAllergens": 550,
+      "hasIngredients": 495,
+      "hasBrand": 999,
+      "hasCanonicalTag": 67,
+      "hasSellerId": 0,
+      "nullAllergens": 450,
+      "nullIngredients": 505,
+      "activeProducts": 1000,
+      "inactiveProducts": 0,
+      "uniqueAllergenVariations": [
+        "Apples",
+        "Bananas",
+        "Beef",
+        "Celery",
+        "Chicken",
+        "Chocolate",
+        "Corn",
+        "Eggs",
+        "Fish",
+        "Garlic",
+        "Gluten",
+        "Milk",
+        "Mustard",
+        "Onions",
+        "Peaches",
+        "Peanuts",
+        "Pork",
+        "Sesame",
+        "Shellfish",
+        "Soy",
+        "Strawberries",
+        "Tomatoes",
+        "Tree Nuts",
+        "Wheat",
+        "eggs",
+        "fish",
+        "gluten",
+        "milk",
+        "peanuts",
+        "shellfish",
+        "soy",
+        "tree nuts",
+        "wheat"
+      ],
+      "samples": [
+        {
+          "id": 89991,
+          "description": "WHITE ENRICHED ROUND TOP BREAD, WHITE",
+          "allergens": [
+            "Wheat",
+            "Soy",
+            "Gluten",
+            "Corn"
+          ],
+          "ingredients": "ENRICHED WHEAT FLOUR [FLOUR, MALTED BARLEY FLOUR, REDUCED IRON, NIACIN, THIAMIN MONONITRATE (VITAMIN B1), RIBOFLAVIN (VITAMIN B2), FOLIC ACID], WATER, HIGH FRUCTOSE CORN SYRUP, YEAST, SALT, SOYBEAN OIL, MONOGLYCERIDES, CALCIUM PROPIONATE (PRESERVATIVE), CALCIUM SULFATE, SOY LECITHIN, CITRIC ACID, DATEM, GRAIN VINEGAR, WHEAT GLUTEN, POTASSIUM IODATE.",
+          "brandName": "MARKET PANTRY",
+          "canonicalTag": "bread",
+          "seller_id": null,
+          "is_active": true
+        },
+        {
+          "id": 46682,
+          "description": "HAUNTED FRIENDS COOKIE KIT, HAUNTED FRIENDS",
+          "allergens": [
+            "Wheat",
+            "Corn",
+            "Gluten"
+          ],
+          "ingredients": "COOKIE: ENRICHED WHEAT FLOUR (WHEAT FLOUR, NIACIN, REDUCED IRON, ASCORBIC ACID ADDED AS A DOUGH CONDITIONER, THIAMINE MONONITRATE, RIBOFLAVIN, ENZYME, FOLIC ACID), SUGAR, VEGETABLE OIL SHORTENING (PALM OIL, FRACTIONATED PALM OIL), WATER, INVERT SUGAR, LEAVENING (SODIUM BICARBONATE), NATURAL AND ARTIFICIAL FLAVOR, SALT. ICINGS: SUGAR, WATER, PALM OIL, CORNSTARCH, HIGH FRUCTOSE CORN SYRUP, CORN SYRUP, MODIFIED CORNSTARCH, SALT, ACETYLATED MONOGLYCERIDES (EMULSIFIER), ARTIFICIAL FLAVOR, POLYSORBATE 60, POTASSIUM SORBATE (PRESERVATIVE), CITRIC ACID, TITANIUM DIOXIDE (COLOR), YELLOW 6, RED 3, BLUE 1, RED 40. HALLOWEEN CONFETTI SPRINKLES: ICING SUGAR (SUGAR, CORNSTARCH), CANOLA OIL, MODIFIED CORNSTARCH, CONFECTIONER'S GLAZE, SUNFLOWER LECITHIN, YELLOW 5, YELLOW 6, BLUE 1, RED 40, POLYSORBATE 60. BLACK SANDING SUGAR: SUGAR, RED 40, BLUE 1.",
+          "brandName": "FAVORITE DAY",
+          "canonicalTag": null,
+          "seller_id": null,
+          "is_active": true
+        },
+        {
+          "id": 20815,
+          "description": "PREMIUM CHERRY FRUIT FILLING OR TOPPING, CHERRY",
+          "allergens": [
+            "Corn"
+          ],
+          "ingredients": "CHERRIES, SUGAR, WATER, FOOD STARCH-MODIFIED (CORN), ASCORBIC ACID (VITAMIN C) TO MAINTAIN COLOR, ARTIFICIAL FLAVOR, CITRIC ACID, RED 40 COLOR ADDED",
+          "brandName": "LUCKY LEAF",
+          "canonicalTag": null,
+          "seller_id": null,
+          "is_active": true
+        },
+        {
+          "id": 46686,
+          "description": "CARAMEL APPLE COOKIES BAKING KIT, CARAMEL APPLE COOKIES",
+          "allergens": [
+            "Milk",
+            "Wheat",
+            "Soy",
+            "Corn",
+            "Apples",
+            "Eggs",
+            "Gluten"
+          ],
+          "ingredients": "COOKIE MIX (WHEAT FLOUR ENRICHED [WHEAT FLOUR, MALTED BARLEY FLOUR, NIACIN, REDUCED IRON, THIAMIN MONONITRATE, RIBOFLAVIN, FOLIC ACID], SUGAR, DRIED APPLES, APPLE POWDER [APPLES, CALCIUM STEARATE, SILICON DIOXIDE], DRIED EGG, NATURAL AND ARTIFICIAL FLAVORS, SALT, BAKING SODA, BAKING POWDER [SODIUM ACID PYROPHOSPHATE, BAKING SODA, CORN STARCH, MONOCALCIUM PHOSPHATE]), CARAMEL TOPPING (CORN SYRUP, SWEETENED CONDENSED MILK [CONDENSED MILK, SUGAR], HIGH FRUCTOSE CORN SYRUP, CORN SYRUP SOLIDS, BUTTER [CREAM, SALT], LESS THAN 2% OF: WATER, DISODIUM PHOSPHATE, SALT, PECTIN, ARTIFICIAL FLAVOR), SPRINKLES (SUGAR, CORN STARCH, VEGETABLE OIL [PALM KERNEL OIL, PALM OIL], COCOA POWDER PROCESSED WITH ALKALI, DEXTRIN, SOY LECITHIN, CONFECTIONER'S GLAZE, NATURAL AND ARTIFICIAL FLAVOR, CARNAUBA WAX, YELLOW 6 LAKE, YELLOW 5 LAKE).",
+          "brandName": "FAVORITE DAY",
+          "canonicalTag": null,
+          "seller_id": null,
+          "is_active": true
+        },
+        {
+          "id": 46696,
+          "description": "FRIGHT NIGHT COOKIE KIT, FRIGHT NIGHT",
+          "allergens": [
+            "Wheat",
+            "Soy",
+            "Corn",
+            "Gluten"
+          ],
+          "ingredients": "COOKIES (WHEAT FLOUR ENRICHED [WHEAT FLOUR, MALTED BARLEY FLOUR, NIACIN, REDUCED IRON, THIAMIN MONONITRATE, RIBOFLAVIN, FOLIC ACID], SUGAR, SHORTENING [PALM OIL, MONO- AND DIGLYCERIDES, POLYSORBATE 60], WATER, CORN SYRUP, MOLASSES, BAKING SODA, SALT, RED 3, BLUE 1, YELLOW 6, RED 40, YELLOW 5), BLACK, PURPLE & YELLOW ICING TUBES (SUGAR, WATER, CORN SYRUP, MALTODEXTRIN, CORNSTARCH, 2% OR LESS OF THE FOLLOWING INGREDIENTS: GLYCERIN, PALM OIL, NATURAL AND ARTIFICIAL FLAVOR, SODIUM ALGINATE, SALT, RED 40, POTASSIUM SORBATE [PRESERVATIVE], BLUE 1, YELLOW 6, YELLOW 5, RED 40, RED 3, CITRIC ACID, TITANIUM DIOXIDE [COLOR], CALCIUM SULFATE, MONOAND DIGLYCERIDES, POLYSORBATE 60), SPRINKLES (SUGAR, CORN STARCH, COCOA POWDER PROCESSED WITH ALKALI, DEXTRIN, PALM OIL, YELLOW 6, SOY LECITHIN, CONFECTIONER'S GLAZE, PALM KERNEL OIL, NATURAL AND ARTIFICIAL FLAVOR, CARNAUBA WAX), SANDING SUGAR (SUGAR, CONFECTIONER'S GLAZE, RED 40, BLUE 1, CARNAUBA WAX, YELLOW 6, YELLOW 5), GREEN ICING TUBE (SUGAR, SHORTENING [(PALM OIL, CANOLA OIL), MONO AND DIGLYCERIDES, POLYSORBATE 60], WATER, CORN SYRUP, MODIFIED CORN STARCH, SALT, POTASSIUM SORBATE [PRESERVATIVE], TITANIUM DIOXIDE [COLOR], ARTIFICIAL FLAVOR, YELLOW 5, PROPYLENE GLYCOL, CITRIC ACID, BLUE 1, SODIUM BENZOATE [PRESERVATIVE]).",
+          "brandName": "FAVORITE DAY",
+          "canonicalTag": null,
+          "seller_id": null,
+          "is_active": true
+        },
+        {
+          "id": 51882,
+          "description": "Bean & Cheese Burrito YFT 72/4.76z",
+          "allergens": [
+            "Milk",
+            "Wheat",
+            "Soy",
+            "Gluten",
+            "Corn",
+            "Garlic"
+          ],
+          "ingredients": "Ingredients: Filling: Water, Pinto Beans, Cheddar Cheese (Pasteurized Milk, Cheese Culture, Salt, Enzymes, Annatto Color), Textured Vegetable Protein Product [Soy Flour, Caramel Color, Zinc Oxide, Ferrous Sulfate, Niacinamide, Calcium Pantothenate, Pyridoxine Hydrochloride (B6), Riboflavin (B2),  Thiamine Mononitrate (B1),  Vitamin A Palmitate, and Vitamin B12], Contains 2% or Less of: Spices, Garlic Powder, Salt, and Modified Food Starch (Refined from Corn). Whole Wheat Flour Tortilla, Soy Flour Enriched  (Wheat Flours [Whole Wheat Flour, Enriched Bleached Flour (Wheat Flour, Niacin, Reduced Iron, Thiamine Mononitrate, Riboflavin, Folic Acid)], Water, Soy Flour, Soybean Oil, Potato Starch, Pea Fiber, Distilled Monoglyceride, Wheat Gluten, Glycerine, Salt, Baking Powder (Corn Starch, Sodium Bicarbonate, Sodium Aluminum Sulfate, Monocalcium Phosphate), Annatto & Turmeric.",
+          "brandName": "Los Cabos",
+          "canonicalTag": null,
+          "seller_id": null,
+          "is_active": true
+        },
+        {
+          "id": 46738,
+          "description": "S'MORES MINI BROWNIES WITH FROSTING, S'MORES",
+          "allergens": [
+            "Milk",
+            "Wheat",
+            "Soy",
+            "Corn",
+            "Chocolate",
+            "Eggs",
+            "Gluten"
+          ],
+          "ingredients": "BROWNIES (SUGAR, BLEACHED ENRICHED WHEAT FLOUR [WHEAT FLOUR, NIACIN, REDUCED IRON, THIAMINE MONONITRATE, RIBOFLAVIN, FOLIC ACID], SOYBEAN OIL AND/OR CANOLA OIL, WATER, EGG WHITES, CORN SYRUP, SEMI-SWEET CHOCOLATE [SUGAR, CHOCOLATE LIQUOR, COCOA BUTTER, SOY LECITHIN {EMULSIFIER}, VANILLA EXTRACT, MILK], COCOA POWDER PROCESSED WITH ALKALI, VEGETABLE OIL SHORTENING [PALM OIL, CANOLA OIL], ARTIFICIAL AND NATURAL FLAVOR, SALT, WHEY, MODIFIED CORNSTARCH, LEAVENING BLEND [SODIUM ACID PYROPHOSPHATE, SODIUM BICARBONATE, CORNSTARCH, MONOCALCIUM PHOSPHATE, CALCIUM SULFATE], SOY LECITHIN, MOLASSES), ICING (ICING SUGAR [SUGAR, CORNSTARCH], VEGETABLE OIL SHORTENING [CANOLA OIL, PALM OIL, PALM KERNEL OIL, MONOGLYCERIDES, POLYSORBATE 60], INVERT SUGAR, MARGARINE [SOYBEAN OIL, PALM OIL, WATER, SALT, WHEY, MONOGLYCERIDES, SOY LECITHIN, NATURAL FLAVOR, ANNATTO EXTRACT {COLOR}, TURMERIC EXTRACT {COLOR}, VITAMIN A PALMITATE, VITAMIN D3), CORN SYRUP, ARTIFICIAL AND NATURAL FLAVOR, WATER, MODIFIED CORNSTARCH, NONFAT DRY MILK, MONO- AND DIGLYCERIDES, SALT), TOPPING (ENRICHED WHEAT FLOUR [WHEAT FLOUR, NIACIN, REDUCED IRON, THIAMINE MONONITRATE, RIBOFLAVIN, FOLIC ACID], SUGAR, PALM OIL, GRAHAM FLOUR, CORN SYRUP, MOLASSES, SALT).",
+          "brandName": "FAVORITE DAY",
+          "canonicalTag": null,
+          "seller_id": null,
+          "is_active": true
+        },
+        {
+          "id": 90010,
+          "description": "CHERRIES & BERRIES RED TART PITTED CHERRIES, DARK SWEET PITTED CHERRIES, BLUEBERRIES & STRAWBERRY SLICES BLEND, CHERRIES & BERRIES",
+          "allergens": [
+            "Strawberries"
+          ],
+          "ingredients": "RED TART CHERRIES, DARK SWEET CHERRIES, BLUEBERRIES, STRAWBERRIES.",
+          "brandName": "MARKET PANTRY",
+          "canonicalTag": "strawberry",
+          "seller_id": null,
+          "is_active": true
+        },
+        {
+          "id": 46788,
+          "description": "NACHO CHEESE PIG OUT CRUNCHIES, NACHO CHEESE",
+          "allergens": [
+            "Garlic",
+            "Milk"
+          ],
+          "ingredients": "RICE, HIGH OLEIC EXPELLER PRESSED SUNFLOWER OIL, PEA PROTEIN, YELLOW PEA, NACHO SEASONING (PEA PROTEIN, SEA SALT, YEAST EXTRACT, NATURAL FLAVOR*, CANE SUGAR*, ONION POWDER, TOMATO POWDER, SPICES, VINEGAR POWDER [MALTODEXTRIN, WHITE DISTILLED VINEGAR], GARLIC POWDER, GREEN BELL PEPPER POWDER, PAPRIKA EXTRACT, LACTIC ACID*, CITRIC ACID, JALAPEO PEPPER], *DERIVED FROM VEGAN SOURCES",
+          "brandName": "OUTSTANDING",
+          "canonicalTag": null,
+          "seller_id": null,
+          "is_active": true
+        },
+        {
+          "id": 51902,
+          "description": "WG Deli Combo Sandwich",
+          "allergens": [
+            "Milk",
+            "Wheat",
+            "Soy",
+            "Gluten",
+            "Celery",
+            "Garlic",
+            "Pork"
+          ],
+          "ingredients": "Kaiser Roll (Whole Wheat Flour, Water, Unbleached Enriched Wheat Flour (WheatFlour, Enzyme, Niacin, Reduced Iron, Thiamine Mononitrate, Riboflavin, Folic Acid), Sugar, WheatGluten, Yeast, High Oleic Safflower Oil, Honey, Contains 2% or less of the following: Wheat Flour,Hydrolyzed Wheat Gluten, Enzymes, Ascorbic Acid, Salt, Vinegar, Calcium Sulfate), Low MoisturePart Skim Mozzarella Cheese (Pasteurized Skim Milk, Cheese Cultures, Salt, Sorbic Acid, Enzymes,Soy Lecithin), Turkey Salami (Turkey, Water, Seasoning (Sugar, Spices, Garlic Powder), Contains 2%Or Less Sea Salt, Vinegar, Cultured Celery Powder, Salt, Liquid Smoke), Turkey Ham (Turkey ThighMeat With A Portion Of Ground Turkey Thigh Trim Added, Vinegar, Sugar, Contains 2% Or Less SeaSalt, Cultured Celery Powder, Salt, Potassium Chloride, Baking Soda, Natural Smoke Favor)",
+          "brandName": "TASTY BRANDS",
+          "canonicalTag": null,
+          "seller_id": null,
+          "is_active": true
+        }
+      ]
+    },
+    "Users": {
+      "totalUsers": 0,
+      "adminUsers": 0,
+      "sellerUsers": 0,
+      "regularUsers": 0,
+      "usersWithoutEmail": 0,
+      "usersWithSupabaseId": 0
+    },
+    "Carts": {
+      "totalCarts": 0,
+      "uniqueUsers": 0,
+      "anonymousCarts": 0,
+      "avgItemsPerCart": null
+    },
+    "SearchPreferences": {
+      "totalPreferences": 0,
+      "uniqueUsers": 0,
+      "usersWithAllergens": 0,
+      "mostCommonAllergens": []
+    },
+    "inconsistencies": [
+      {
+        "type": "ALLERGEN_NAMING_INCONSISTENCIES",
+        "count": 33,
+        "examples": [
+          "Apples",
+          "Bananas",
+          "Beef",
+          "Celery",
+          "Chicken",
+          "Chocolate",
+          "Corn",
+          "Eggs",
+          "Fish",
+          "Garlic"
+        ],
+        "description": "Multiple variations of allergen names found"
+      },
+      {
+        "type": "POTENTIAL_DUPLICATES",
+        "count": 5,
+        "examples": [
+          {
+            "key": "SWISS CHEESE, SWISS-SHOPRITE",
+            "count": 2
+          },
+          {
+            "key": "CRANBERRY ALMOND CEREAL, CRANBERRY ALMOND-KIND",
+            "count": 2
+          },
+          {
+            "key": "BLUEBERRY BLENDED GREEK NONFAT YOGURT, BLUEBERRY-GOOD & GATHER",
+            "count": 2
+          },
+          {
+            "key": "ORGANIC 2% REDUCED FAT MILK-SIMPLY BALANCED",
+            "count": 2
+          },
+          {
+            "key": "COCONUT PINEAPPLE UNSWEETENED SPARKLING WATER, COCONUT PINEAPPLE-SIMPLY BALANCED",
+            "count": 2
+          }
+        ],
+        "description": "Products with identical description and brand"
+      }
+    ]
+  },
+  "rlsPolicies": {
+    "status": "ANALYZED_FROM_MIGRATIONS",
+    "policies": [
+      {
+        "table": "Carts",
+        "policies": [
+          "users_own_cart"
+        ],
+        "description": "Users can only access their own cart",
+        "security": "GOOD"
+      },
+      {
+        "table": "IngredientCategorized",
+        "policies": [
+          "products_public_read",
+          "sellers_own_products"
+        ],
+        "description": "Public read, seller-only write",
+        "security": "GOOD"
+      },
+      {
+        "table": "Users",
+        "policies": [
+          "admin_users_all",
+          "users_own_profile"
+        ],
+        "description": "Users see own profile, admins see all",
+        "security": "GOOD"
+      }
+    ]
+  },
+  "relationships": {
+    "status": "ANALYZED_FROM_CODE",
+    "relationships": [
+      {
+        "table": "IngredientCategorized",
+        "column": "seller_id",
+        "foreign_table": "Users",
+        "foreign_column": "id",
+        "description": "Product ownership by sellers",
+        "integrity": "GOOD"
+      },
+      {
+        "table": "Carts",
+        "column": "supabase_user_id",
+        "foreign_table": "Users",
+        "foreign_column": "id",
+        "description": "Cart ownership by users",
+        "integrity": "GOOD"
+      },
+      {
+        "table": "SearchPreferences",
+        "column": "supabase_user_id",
+        "foreign_table": "Users",
+        "foreign_column": "id",
+        "description": "User search preferences",
+        "integrity": "GOOD"
+      }
+    ]
+  },
+  "indexes": {
+    "status": "ANALYZED_FROM_PERFORMANCE_ISSUES",
+    "missingIndexes": [
+      {
+        "table": "IngredientCategorized",
+        "column": "allergens",
+        "type": "GIN",
+        "reason": "Allergen filtering performance",
+        "priority": "CRITICAL"
+      },
+      {
+        "table": "IngredientCategorized",
+        "column": "description",
+        "type": "GIN",
+        "reason": "Text search performance",
+        "priority": "HIGH"
+      },
+      {
+        "table": "IngredientCategorized",
+        "column": "brandName",
+        "type": "BTREE",
+        "reason": "Brand filtering performance",
+        "priority": "MEDIUM"
+      }
+    ]
+  },
+  "recommendations": [
+    {
+      "priority": "CRITICAL",
+      "type": "PERFORMANCE",
+      "title": "Create allergen filtering indexes",
+      "description": "Add GIN indexes for allergen filtering performance",
+      "sql": "-- Create indexes for allergen filtering\nCREATE INDEX IF NOT EXISTS idx_ingredientcategorized_allergens \nON \"IngredientCategorized\" USING GIN (allergens);\n\nCREATE INDEX IF NOT EXISTS idx_ingredientcategorized_description \nON \"IngredientCategorized\" USING gin(to_tsvector('english', description));"
+    },
+    {
+      "priority": "HIGH",
+      "type": "DATA_STANDARDIZATION",
+      "title": "Standardize allergen naming",
+      "description": "Create allergen standardization table",
+      "sql": "-- Create allergen standardization table\nCREATE TABLE IF NOT EXISTS allergen_standardization (\n    original_name TEXT PRIMARY KEY,\n    standardized_name TEXT NOT NULL,\n    confidence DECIMAL(3,2) DEFAULT 1.0\n);\n\n-- Insert common variations\nINSERT INTO allergen_standardization VALUES\n('Tree Nuts', 'tree_nuts', 1.0),\n('treeNuts', 'tree_nuts', 1.0),\n('tree-nuts', 'tree_nuts', 1.0),\n('tree_nuts', 'tree_nuts', 1.0)\nON CONFLICT (original_name) DO NOTHING;"
+    }
+  ]
+}

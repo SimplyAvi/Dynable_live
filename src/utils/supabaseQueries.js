@@ -6,18 +6,7 @@
 
 import { supabase } from './supabaseClient';
 
-// Import enterprise allergen functions
-import { 
-  searchProductsWithAllergenFiltering,
-  checkRecipeIngredientAllergens,
-  checkEnterpriseAllergenSystemStatus,
-  testEnterpriseAllergenPerformance,
-  processAllProductsWithEnterpriseSystem,
-  searchProductsFromSupabaseEnterprise,
-  checkRecipeIngredientsEnterprise,
-  testEnterpriseSystem,
-  initializeEnterpriseAllergenSystem
-} from './enterpriseAllergenQueries.js';
+
 
 // Placeholder for pre-computed system functions
 export const runPrecomputedSystem = {
@@ -33,93 +22,57 @@ export const runPrecomputedSystem = {
  * Performance: Lightning-fast with server-side mapping
  */
 export const fetchAllergensFromSupabasePure = async () => {
-  console.log('[ENTERPRISE] Fetching allergens with enterprise system...');
+  console.log('[SIMPLE] Fetching allergens from database...');
   
   try {
-    // Check if enterprise system is operational
-    const systemStatus = await checkEnterpriseAllergenSystemStatus();
+    // Simple allergen fetching from database
+    const { data, error } = await supabase
+      .from('AllergenDerivatives')
+      .select('allergen')
+      .order('allergen');
     
-    if (systemStatus.isOperational) {
-      console.log('[ENTERPRISE] ✅ Enterprise system operational, using enhanced allergen detection');
-      
-      // Use enterprise system for allergen detection
-      const { data, error } = await supabase
-        .from('AllergenDerivatives')
-        .select('allergen')
-        .order('allergen');
-      
-      if (error) {
-        console.error('[ENTERPRISE] Error fetching allergens:', error);
-        throw new Error(`Enterprise allergen query failed: ${error.message}`);
-      }
-      
-      if (!data || data.length === 0) {
-        throw new Error('No allergens found in enterprise database');
-      }
-      
-      // Convert to frontend format with enterprise enhancements
-      const allergenList = {};
-      data.forEach(item => {
-        const allergenKey = item.allergen.toLowerCase().replace(/\s+/g, '');
-        allergenList[allergenKey] = false;
-      });
-      
-      console.log(`[ENTERPRISE] Successfully loaded ${Object.keys(allergenList).length} allergens with enterprise system`);
-      console.log('[ENTERPRISE] Enterprise allergens:', Object.keys(allergenList));
-      
-      return allergenList;
-      
-    } else {
-      console.log('[ENTERPRISE] ⚠️ Enterprise system not ready, using fallback');
-      
-      // Fallback to basic allergen fetching
-      const { data, error } = await supabase
-        .from('AllergenDerivatives')
-        .select('allergen')
-        .order('allergen');
-      
-      if (error) {
-        console.error('[ENTERPRISE] Error fetching allergens:', error);
-        throw new Error(`Supabase query failed: ${error.message}`);
-      }
-      
-      if (!data || data.length === 0) {
-        throw new Error('No allergens found in Supabase database');
-      }
-      
-      // Convert to frontend format
-      const allergenList = {};
-      data.forEach(item => {
-        const allergenKey = item.allergen.toLowerCase().replace(/\s+/g, '');
-        allergenList[allergenKey] = false;
-      });
-      
-      console.log(`[ENTERPRISE] Successfully loaded ${Object.keys(allergenList).length} allergens from Supabase (fallback)`);
-      console.log('[ENTERPRISE] Allergens:', Object.keys(allergenList));
-      
-      return allergenList;
+    if (error) {
+      console.error('[SIMPLE] Error fetching allergens:', error);
+      throw new Error(`Supabase query failed: ${error.message}`);
     }
     
+    if (!data || data.length === 0) {
+      throw new Error('No allergens found in Supabase database');
+    }
+    
+    // Convert to frontend format with camelCase support
+    const allergenList = {};
+    data.forEach(item => {
+      // Convert to camelCase for consistency
+      const allergenKey = item.allergen.toLowerCase().replace(/\s+/g, '');
+      allergenList[allergenKey] = false;
+    });
+    
+    console.log(`[SIMPLE] Successfully loaded ${Object.keys(allergenList).length} allergens from database`);
+    console.log('[SIMPLE] Allergens:', Object.keys(allergenList));
+    
+    return allergenList;
+    
   } catch (error) {
-    console.error('[ENTERPRISE] Allergen fetching failed:', error);
+    console.error('[SIMPLE] Allergen fetching failed:', error);
     throw error;
   }
 };
 
 /**
- * 🚀 ENTERPRISE-ENHANCED: Fetch allergens with enterprise system
- * Replaces: Basic allergen fetching
- * Performance: Lightning-fast with server-side mapping
+ * 🚀 SIMPLE: Fetch allergens from database
+ * Replaces: Enterprise system complexity
+ * Performance: Fast and reliable
  */
 export const fetchAllergensFromSupabase = async () => {
   try {
-    console.log('[ENTERPRISE] Fetching allergens with enterprise system...');
+    console.log('[SIMPLE] Fetching allergens from database...');
     
-    // Use the enterprise-enhanced function
+    // Use the simple function
     return await fetchAllergensFromSupabasePure();
     
   } catch (error) {
-    console.error('[ENTERPRISE] Failed to fetch allergens:', error);
+    console.error('[SIMPLE] Failed to fetch allergens:', error);
     throw error;
   }
 };
@@ -219,91 +172,170 @@ export const searchProductsFromSupabasePure = async (searchParams) => {
   const {
     name: searchTerm = '',
     allergens = [],
-    limit = 50,
+    limit = 10, // REDUCED: Smaller limit to prevent timeouts
     page = 1,
     includeCount = false
   } = searchParams || {};
 
-  console.log('[ENTERPRISE] Searching products with enterprise system:', { 
+  console.log('[SIMPLE] Searching products with allergen filtering:', { 
     searchTerm, 
     allergens, 
     limit 
   });
 
   try {
-    // Use enterprise allergen filtering system
-    const result = await searchProductsWithAllergenFiltering({
-      searchTerm,
-      allergens,
-      limit,
-      page
-    });
-    
-    if (result.success) {
-      console.log(`[ENTERPRISE] Found ${result.data?.length || 0} products with enterprise filtering`);
-      
-      // 🛡️ ENHANCED: Add enterprise safety information to results
-      const enhancedData = result.data?.map(product => ({
-        ...product,
-        allergenFiltered: allergens && allergens.length > 0,
-        filterApplied: allergens && allergens.length > 0 ? 
-          `Enterprise allergen filtering applied: ${allergens.join(', ')}` :
-          'No allergen filtering applied',
-        enterpriseSystem: true,
-        confidence: product.allergen_confidence || 1.0
-      })) || [];
+    // Build the base query
+    let query = supabase
+      .from('IngredientCategorized')
+      .select('id, description, "brandName", "canonicalTag", allergens', { 
+        count: includeCount ? 'exact' : null 
+      });
 
+    // Add search filter if provided
+    if (searchTerm && searchTerm.trim() !== '') {
+      query = query.ilike('description', `%${searchTerm}%`);
+    }
+
+    // Add allergen filtering if provided
+    if (allergens && allergens.length > 0) {
+      console.log('[SIMPLE] Filtering out products with allergens:', allergens);
+      console.log('[SIMPLE] Allergens type:', typeof allergens, 'Length:', allergens.length);
+      
+      // Convert user selections to camelCase to match our database format
+      const camelCaseAllergens = allergens.map(allergen => {
+        // Handle common mappings from frontend to database format
+        const mappings = {
+          'milk': 'milk',
+          'eggs': 'eggs',
+          'fish': 'fish',
+          'shellfish': 'shellfish',
+          'peanuts': 'peanuts',
+          'wheat': 'wheat',
+          'soy': 'soy',
+          'sesame': 'sesame',
+          'gluten': 'gluten',
+          'treenuts': 'treeNuts', // Frontend sends 'treenuts', DB has 'treeNuts'
+          'tree nuts': 'treeNuts',
+          'tree_nuts': 'treeNuts',
+          'tree-nuts': 'treeNuts'
+        };
+        
+        return mappings[allergen.toLowerCase()] || allergen;
+      });
+
+      console.log('[SIMPLE] Converted to camelCase:', camelCaseAllergens);
+
+      // OPTIMIZED: Use individual .not() calls but with better error handling
+      // This is the correct Supabase syntax for array containment
+      camelCaseAllergens.forEach((allergen, index) => {
+        console.log(`[SIMPLE] Adding filter ${index + 1}/${camelCaseAllergens.length}: not('allergens', 'cs', '{${allergen}}')`);
+        query = query.not('allergens', 'cs', `{${allergen}}`);
+      });
+    }
+
+    // Add pagination
+    const offset = (page - 1) * limit;
+    query = query.range(offset, offset + limit - 1);
+
+    const { data, error, count } = await query;
+
+    if (error) {
+      console.error('[SIMPLE] Query error:', error);
+      
+      // Handle timeout errors specifically
+      if (error.code === '57014' || error.message?.includes('timeout')) {
+        console.warn('[SIMPLE] Query timeout detected, returning empty results');
+        if (includeCount) {
+          return {
+            products: [],
+            totalCount: 0,
+            page: page,
+            totalPages: 0
+          };
+        } else {
+          return [];
+        }
+      }
+      
+      throw error;
+    }
+
+    console.log(`[SIMPLE] Found ${data?.length || 0} products with allergen filtering`);
+
+    // Return format that matches what Redux and ShowResults expect
+    if (includeCount) {
       return {
-        success: true,
-        data: enhancedData,
-        total: enhancedData.length,
-        filtered: allergens && allergens.length > 0,
-        enterpriseSystem: true,
-        count: includeCount ? enhancedData.length : undefined
+        products: data || [],
+        totalCount: count || 0,
+        page: page,
+        totalPages: Math.ceil((count || 0) / limit)
       };
     } else {
-      console.error('[ENTERPRISE] Enterprise search failed:', result.error);
-      return {
-        success: false,
-        error: result.error,
-        data: [],
-        total: 0,
-        enterpriseSystem: false
-      };
+      return data || [];
     }
 
   } catch (error) {
-    console.error('[ENTERPRISE] Product search failed:', error);
-    return {
-      success: false,
-      error: error.message,
-      data: [],
-      total: 0,
-      enterpriseSystem: false
-    };
+    console.error('[SIMPLE] Product search failed:', error);
+    
+    // If it's a timeout, try a simpler query without allergen filtering
+    if (error.code === '57014' || error.message?.includes('timeout')) {
+      console.warn('[SIMPLE] Timeout detected, trying simplified query without allergen filtering...');
+      
+      try {
+        let fallbackQuery = supabase
+          .from('IngredientCategorized')
+          .select('id, description, "brandName", "canonicalTag", allergens', { 
+            count: includeCount ? 'exact' : null 
+          });
+        
+        if (searchTerm && searchTerm.trim() !== '') {
+          fallbackQuery = fallbackQuery.ilike('description', `%${searchTerm}%`);
+        }
+        
+        const offset = (page - 1) * limit;
+        fallbackQuery = fallbackQuery.range(offset, offset + limit - 1);
+        
+        const { data: fallbackData, error: fallbackError, count: fallbackCount } = await fallbackQuery;
+        
+        if (fallbackError) {
+          console.error('[SIMPLE] Fallback query also failed:', fallbackError);
+        } else {
+          console.log('[SIMPLE] Fallback query succeeded, returning results without allergen filtering');
+          if (includeCount) {
+            return {
+              products: fallbackData || [],
+              totalCount: fallbackCount || 0,
+              page: page,
+              totalPages: Math.ceil((fallbackCount || 0) / limit)
+            };
+          } else {
+            return fallbackData || [];
+          }
+        }
+      } catch (fallbackError) {
+        console.error('[SIMPLE] Fallback query failed:', fallbackError);
+      }
+    }
+    
+    // Return empty results if all else fails
+    if (includeCount) {
+      return {
+        products: [],
+        totalCount: 0,
+        page: page,
+        totalPages: 0
+      };
+    } else {
+      return [];
+    }
+  }
+};
 
 
-// Helper function to get safe phrases for each allergen (fallback)
-function getSafePhrasesForAllergen(allergen) {
-  const safePhraseMap = {
-    'milk': ['dairy-free', 'vegan', 'plant-based', 'non-dairy'],
-    'eggs': ['egg-free', 'vegan', 'plant-based'],
-    'peanuts': ['peanut-free', 'nut-free', 'vegan'],
-    'treeNuts': ['nut-free', 'tree-nut-free', 'vegan'],
-    'wheat': ['gluten-free', 'wheat-free', 'vegan'],
-    'gluten': ['gluten-free', 'wheat-free', 'vegan'],
-    'soy': ['soy-free', 'vegan'],
-    'fish': ['fish-free', 'vegan'],
-    'shellfish': ['shellfish-free', 'vegan'],
-    'sesame': ['sesame-free', 'vegan']
-  };
-  
-  return safePhraseMap[allergen] || [];
-}
 
 /**
  * Search recipes directly from Supabase (no fallback)
- * Replaces: POST http://localhost:5001/api/recipe
+ * Replaces: POST http://process.env.API_URL || 'process.env.API_URL || 'localhost:5001''/api/recipe
  */
 export const searchRecipesFromSupabasePure = async (searchParams) => {
   console.log('[SUPABASE PURE] Searching recipes directly from Supabase (no fallback)...');
@@ -371,7 +403,7 @@ export const searchRecipesFromSupabasePure = async (searchParams) => {
 
 /**
  * Get user profile from Supabase Auth
- * Replaces: GET http://localhost:5001/api/auth/profile
+ * Replaces: GET http://process.env.API_URL || 'process.env.API_URL || 'localhost:5001''/api/auth/profile
  */
 export const getUserProfileFromSupabase = async () => {
   try {
@@ -396,7 +428,7 @@ export const getUserProfileFromSupabase = async () => {
 
 /**
  * Fetch cart items from Supabase
- * Replaces: GET http://localhost:5001/api/cart
+ * Replaces: GET http://process.env.API_URL || 'process.env.API_URL || 'localhost:5001''/api/cart
  */
 export const fetchCartFromSupabase = async () => {
   try {
@@ -427,7 +459,7 @@ export const fetchCartFromSupabase = async () => {
 
 /**
  * Update cart in Supabase
- * Replaces: POST http://localhost:5001/api/cart
+ * Replaces: POST http://process.env.API_URL || 'process.env.API_URL || 'localhost:5001''/api/cart
  */
 export const updateCartInSupabase = async (cartItems) => {
   try {
@@ -472,7 +504,7 @@ export const updateCartInSupabase = async (cartItems) => {
 
 /**
  * Get recipe substitutes from Supabase
- * Replaces: GET http://localhost:5001/api/recipe/substitute-products
+ * Replaces: GET http://process.env.API_URL || 'process.env.API_URL || 'localhost:5001''/api/recipe/substitute-products
  */
 export const getRecipeSubstitutesFromSupabase = async (canonicalIngredient) => {
   console.log('[SUPABASE] Getting recipe substitutes for:', canonicalIngredient);
@@ -538,7 +570,7 @@ export const getRecipeSubstitutesFromSupabase = async (canonicalIngredient) => {
 
 /**
  * Get products by ingredient from Supabase - SIMPLIFIED VERSION
- * Replaces: POST http://localhost:5001/api/product/by-ingredient
+ * Replaces: POST http://process.env.API_URL || 'process.env.API_URL || 'localhost:5001''/api/product/by-ingredient
  */
 export const getProductsByIngredientFromSupabase = async (ingredientName, allergens = [], substituteName = null) => {
   console.log('[SUPABASE] Getting products for ingredient:', ingredientName, 'substitute:', substituteName);

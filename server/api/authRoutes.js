@@ -54,7 +54,7 @@ const {
 console.log('OAuth Configuration:', {
     clientId: process.env.GOOGLE_CLIENT_ID,
     hasClientSecret: !!process.env.GOOGLE_CLIENT_SECRET,
-    redirectUri: 'http://localhost:5001/api/auth/google/callback',
+    redirectUri: 'http://process.env.API_URL || 'process.env.API_URL || 'localhost:5001''/api/auth/google/callback',
     envKeys: Object.keys(process.env).filter(key => key.includes('GOOGLE'))
 });
 
@@ -62,7 +62,7 @@ console.log('OAuth Configuration:', {
 const client = new OAuth2Client(
     process.env.GOOGLE_CLIENT_ID,
     process.env.GOOGLE_CLIENT_SECRET,
-    'http://localhost:5001/api/auth/google/callback'
+    'http://process.env.API_URL || 'process.env.API_URL || 'localhost:5001''/api/auth/google/callback'
 );
 
 // Register new user with role assignment
@@ -266,7 +266,7 @@ router.get('/auth/google/callback', async (req, res) => {
 
             // Redirect to frontend with tokens
             console.log('Step 7: Redirecting to frontend with tokens');
-            const redirectUrl = `http://localhost:3000/auth/callback?token=${token}&supabaseToken=${supabaseToken}&role=${user.role}`;
+            const redirectUrl = `http://process.env.FRONTEND_URL || 'process.env.FRONTEND_URL || 'localhost:3000''/auth/callback?token=${token}&supabaseToken=${supabaseToken}&role=${user.role}`;
             res.redirect(redirectUrl);
         } catch (userInfoError) {
             console.error('User info fetch error:', userInfoError);
