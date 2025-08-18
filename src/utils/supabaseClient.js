@@ -12,11 +12,33 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || 'process.env.REACT_APP_SUPABASE_URL || process.env.SUPABASE_URL';
 const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY || 'process.env.REACT_APP_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY';
 
+// ✅ SIMPLE FIX: Add timeout configuration and error handling
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
     autoRefreshToken: true,
     persistSession: true,
     detectSessionInUrl: true
+  },
+  // ✅ ADDED: Request timeout configuration
+  global: {
+    headers: {
+      'X-Client-Info': 'dynable-frontend'
+    }
+  },
+  // ✅ SIMPLE FIX: Custom fetch with increased timeout
+  fetch: (url, options = {}) => {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => {
+      console.warn('[SUPABASE] Request timeout, aborting:', url);
+      controller.abort();
+    }, 20000); // Increased from 15s to 20s for complex queries
+    
+    return fetch(url, {
+      ...options,
+      signal: controller.signal
+    }).finally(() => {
+      clearTimeout(timeoutId);
+    });
   }
 });
 

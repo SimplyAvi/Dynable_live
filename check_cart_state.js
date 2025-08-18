@@ -1,0 +1,1 @@
+console.log('Current cart state:'); const cartState = window.store.getState().anonymousCart; console.log('Cart items:', cartState.items); console.log('Cart items count:', cartState.items.length); console.log('Is anonymous:', cartState.isAnonymous); console.log('Is logging out:', cartState.isLoggingOut); console.log('Session:', cartState.session);

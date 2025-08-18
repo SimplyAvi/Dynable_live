@@ -46,7 +46,7 @@ const Login = () => {
             
             if (anonymousUserId && await isAnonymousUser()) {
                 console.log('[LOGIN] Found anonymous session, saving allergens...');
-                const allergens = Object.keys(selectedAllergens).filter(key => selectedAllergens[key]);
+                const allergens = selectedAllergens; // selectedAllergens is already an array of strings
                 
                 try {
                     await dispatch(saveSearchPreferencesBeforeAuthAsync({
@@ -192,7 +192,7 @@ const Login = () => {
             
             // 🎯 SEARCH PREFERENCES SAVE: Save search preferences before OAuth
             console.log('[LOGIN] 💾 Saving search preferences before OAuth...');
-            const allergens = Object.keys(selectedAllergens).filter(key => selectedAllergens[key]);
+            const allergens = selectedAllergens; // selectedAllergens is already an array of strings
             console.log('[LOGIN] Current allergens to save:', allergens);
             
             const searchPrefsResult = await dispatch(saveSearchPreferencesBeforeAuthAsync({

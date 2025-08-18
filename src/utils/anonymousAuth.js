@@ -38,7 +38,22 @@ export function isAnonymousUser(session) {
  */
 export const initializeAnonymousAuth = async () => {
     try {
-        const { data: { session } } = await supabase.auth.getSession();
+        console.log('[ANONYMOUS AUTH] 🔍 Starting initializeAnonymousAuth...');
+        
+        // 🎯 DIAGNOSTIC: Test getSession with timeout
+        let session;
+        try {
+            console.log('[ANONYMOUS AUTH] 🔍 Testing getSession in initializeAnonymousAuth...');
+            const { data, error } = await Promise.race([
+                supabase.auth.getSession(),
+                new Promise((_, reject) => setTimeout(() => reject(new Error('getSession timeout')), 5000))
+            ]);
+            session = data.session;
+            console.log('[ANONYMOUS AUTH] ✅ getSession completed successfully');
+        } catch (timeoutError) {
+            console.error('[ANONYMOUS AUTH] ❌ getSession timed out in initializeAnonymousAuth:', timeoutError.message);
+            session = null;
+        }
         
         if (session) {
             console.log('[ANONYMOUS AUTH] Existing session found:', session.user.id);
@@ -54,7 +69,29 @@ export const initializeAnonymousAuth = async () => {
         
         console.log('[ANONYMOUS AUTH] No existing session, creating anonymous session...');
         
-        const { data, error } = await supabase.auth.signInAnonymously();
+        // 🎯 CRITICAL FIX: Add timeout to prevent hanging after logout
+        console.log('[ANONYMOUS AUTH] 🔄 Creating anonymous session with timeout protection...');
+        
+        let data, error;
+        try {
+            const signInPromise = supabase.auth.signInAnonymously();
+            const timeoutPromise = new Promise((_, reject) => 
+                setTimeout(() => reject(new Error('Anonymous sign-in timeout')), 10000)
+            );
+            
+            const result = await Promise.race([signInPromise, timeoutPromise]);
+            data = result.data;
+            error = result.error;
+            console.log('[ANONYMOUS AUTH] ✅ Anonymous sign-in completed');
+        } catch (timeoutError) {
+            console.error('[ANONYMOUS AUTH] ❌ Anonymous sign-in timed out:', timeoutError.message);
+            return {
+                session: null,
+                isAnonymous: false,
+                success: false,
+                error: 'Anonymous sign-in timed out. Please refresh the page and try again.'
+            };
+        }
         
         if (error) {
             console.error('[ANONYMOUS AUTH] Anonymous sign-in failed:', error);
@@ -89,6 +126,18 @@ export const initializeAnonymousAuth = async () => {
         
     } catch (error) {
         console.error('[ANONYMOUS AUTH] Error initializing anonymous auth:', error);
+        
+        // 🎯 NEW: Handle timeout errors specifically
+        if (error.message.includes('timeout')) {
+            console.log('[ANONYMOUS AUTH] Anonymous sign-in timed out, this may be due to recent logout');
+            return {
+                session: null,
+                isAnonymous: false,
+                success: false,
+                error: 'Anonymous sign-in timed out. Please refresh the page and try again.'
+            };
+        }
+        
         return {
             session: null,
             isAnonymous: false,
@@ -376,23 +425,23 @@ export const createOrder = async (orderData) => {
  */
 export const mergeAnonymousCartWithStoredId = async (anonymousUserId, authenticatedUserId) => {
     try {
-        console.log('[ANON MERGE] 🚀 Starting enhanced cart merge...');
-        console.log('[ANON MERGE] Anonymous user ID:', anonymousUserId);
-        console.log('[ANON MERGE] Authenticated user ID:', authenticatedUserId);
+        console.log('🔄 [ANON MERGE] mergeAnonymousCartWithStoredId started');
+        console.log('🔄 [ANON MERGE] Anonymous user ID:', anonymousUserId);
+        console.log('🔄 [ANON MERGE] Authenticated user ID:', authenticatedUserId);
         
         // 🎯 INPUT VALIDATION
         if (!anonymousUserId || !authenticatedUserId) {
-            console.error('[ANON MERGE] ❌ Invalid user IDs provided');
+            console.error('❌ [ANON MERGE] Invalid user IDs provided');
             return { success: false, error: 'Invalid user IDs provided' };
         }
         
         if (anonymousUserId === authenticatedUserId) {
-            console.warn('[ANON MERGE] ⚠️  Anonymous and authenticated user IDs are the same');
+            console.warn('⚠️ [ANON MERGE] Anonymous and authenticated user IDs are the same');
             return { success: false, error: 'Cannot merge cart with same user ID' };
         }
         
         // 🎯 STEP 1: Verify anonymous cart exists in database
-        console.log('[ANON MERGE] 🔍 Step 1: Verifying anonymous cart exists in database...');
+        console.log('🔄 [ANON MERGE] Step 1: Verifying anonymous cart exists in database...');
         const { data: anonymousCart, error: anonymousError } = await supabase
             .from('Carts')
             .select('items, updatedAt')
@@ -400,27 +449,27 @@ export const mergeAnonymousCartWithStoredId = async (anonymousUserId, authentica
             .maybeSingle();
         
         if (anonymousError) {
-            console.error('[ANON MERGE] ❌ Error fetching anonymous cart:', anonymousError);
+            console.error('❌ [ANON MERGE] Error fetching anonymous cart:', anonymousError);
             return { success: false, error: 'Failed to fetch anonymous cart: ' + anonymousError.message };
         }
         
         if (!anonymousCart) {
-            console.log('[ANON MERGE] ℹ️  No anonymous cart found in database');
+            console.log('ℹ️ [ANON MERGE] No anonymous cart found in database');
             return { success: true, mergedItems: [], message: 'No anonymous cart found' };
         }
         
         const anonymousItems = anonymousCart.items || [];
-        console.log('[ANON MERGE] ✅ Anonymous cart found with', anonymousItems.length, 'items');
-        console.log('[ANON MERGE] Anonymous cart items:', anonymousItems);
-        console.log('[ANON MERGE] Anonymous cart last updated:', anonymousCart.updatedAt);
+        console.log('✅ [ANON MERGE] Anonymous cart found with', anonymousItems.length, 'items');
+        console.log('🔍 [ANON MERGE] Anonymous cart items:', anonymousItems);
+        console.log('🔍 [ANON MERGE] Anonymous cart last updated:', anonymousCart.updatedAt);
         
         if (anonymousItems.length === 0) {
-            console.log('[ANON MERGE] ℹ️  Anonymous cart is empty, no merge needed');
+            console.log('ℹ️ [ANON MERGE] Anonymous cart is empty, no merge needed');
             return { success: true, mergedItems: [], message: 'Anonymous cart is empty' };
         }
         
         // 🎯 STEP 2: Get authenticated user's cart from database
-        console.log('[ANON MERGE] 🔍 Step 2: Fetching authenticated user cart from database...');
+        console.log('🔄 [ANON MERGE] Step 2: Fetching authenticated user cart from database...');
         const { data: authenticatedCart, error: authenticatedError } = await supabase
             .from('Carts')
             .select('items, updatedAt')
@@ -428,21 +477,21 @@ export const mergeAnonymousCartWithStoredId = async (anonymousUserId, authentica
             .maybeSingle();
         
         if (authenticatedError) {
-            console.error('[ANON MERGE] ❌ Error fetching authenticated cart:', authenticatedError);
+            console.error('❌ [ANON MERGE] Error fetching authenticated cart:', authenticatedError);
             return { success: false, error: 'Failed to fetch authenticated cart: ' + authenticatedError.message };
         }
         
         const authenticatedItems = authenticatedCart?.items || [];
-        console.log('[ANON MERGE] ✅ Authenticated cart found with', authenticatedItems.length, 'items');
-        console.log('[ANON MERGE] Authenticated cart items:', authenticatedItems);
+        console.log('✅ [ANON MERGE] Authenticated cart found with', authenticatedItems.length, 'items');
+        console.log('🔍 [ANON MERGE] Authenticated cart items:', authenticatedItems);
         
         // 🎯 STEP 3: Merge carts using enhanced merge logic
-        console.log('[ANON MERGE] 🔄 Step 3: Merging carts with enhanced logic...');
+        console.log('🔄 [ANON MERGE] Step 3: Merging carts with enhanced logic...');
         const mergeResult = mergeCarts(anonymousItems, authenticatedItems);
-        console.log('[ANON MERGE] ✅ Merge completed:', mergeResult);
+        console.log('✅ [ANON MERGE] Merge completed:', mergeResult);
         
         // 🎯 STEP 4: Save merged cart to authenticated user
-        console.log('[ANON MERGE] 💾 Step 4: Saving merged cart to authenticated user...');
+        console.log('🔄 [ANON MERGE] Step 4: Saving merged cart to authenticated user...');
         const now = new Date().toISOString();
         const { data: savedCart, error: saveError } = await supabase
             .from('Carts')
@@ -455,30 +504,31 @@ export const mergeAnonymousCartWithStoredId = async (anonymousUserId, authentica
             .select();
         
         if (saveError) {
-            console.error('[ANON MERGE] ❌ Error saving merged cart:', saveError);
+            console.error('❌ [ANON MERGE] Error saving merged cart:', saveError);
             return { success: false, error: 'Failed to save merged cart: ' + saveError.message };
         }
         
-        console.log('[ANON MERGE] ✅ Merged cart saved successfully');
-        console.log('[ANON MERGE] Final cart items count:', mergeResult.mergedItems.length);
+        console.log('✅ [ANON MERGE] Merged cart saved successfully');
+        console.log('🔍 [ANON MERGE] Saved cart data:', savedCart);
+        console.log('🔍 [ANON MERGE] Final cart items count:', mergeResult.mergedItems.length);
         
         // 🎯 STEP 5: Clean up anonymous cart with error handling
-        console.log('[ANON MERGE] 🧹 Step 5: Cleaning up anonymous cart...');
+        console.log('🔄 [ANON MERGE] Step 5: Cleaning up anonymous cart...');
         const { error: deleteError } = await supabase
             .from('Carts')
             .delete()
             .eq('supabase_user_id', anonymousUserId);
         
         if (deleteError) {
-            console.error('[ANON MERGE] ⚠️  Error deleting anonymous cart:', deleteError);
+            console.error('⚠️ [ANON MERGE] Error deleting anonymous cart:', deleteError);
             // Don't fail the merge if cleanup fails, but log it
         } else {
-            console.log('[ANON MERGE] ✅ Anonymous cart deleted successfully');
+            console.log('✅ [ANON MERGE] Anonymous cart deleted successfully');
         }
         
         // 🎯 STEP 6: Return success with detailed information
-        console.log('[ANON MERGE] ✅ Cart merge completed successfully');
-        console.log('[ANON MERGE] Summary:', {
+        console.log('✅ [ANON MERGE] Cart merge completed successfully');
+        console.log('📊 [ANON MERGE] Summary:', {
             anonymousItemsCount: anonymousItems.length,
             authenticatedItemsCount: authenticatedItems.length,
             mergedItemsCount: mergeResult.mergedItems.length,
@@ -499,7 +549,9 @@ export const mergeAnonymousCartWithStoredId = async (anonymousUserId, authentica
         };
         
     } catch (error) {
-        console.error('[ANON MERGE] ❌ Merge operation failed:', error);
+        console.error('❌ [ANON MERGE] Merge operation failed:', error);
+        console.error('❌ [ANON MERGE] Error details:', error.message);
+        console.error('❌ [ANON MERGE] Error stack:', error.stack);
         return { success: false, error: 'Merge operation failed: ' + error.message };
     }
 };

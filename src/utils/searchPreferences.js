@@ -75,26 +75,81 @@ export const getSearchPreferences = async (userId) => {
  */
 export const mergeSearchPreferences = async (anonymousUserId, authenticatedUserId) => {
     try {
-        console.log('[SEARCH PREFERENCES] Merging preferences:', { anonymousUserId, authenticatedUserId });
+        console.log('🔄 [SEARCH PREFERENCES] Starting merge...');
         
-        const { data, error } = await supabase.rpc('merge_search_preferences', {
-            p_anonymous_user_id: anonymousUserId,
-            p_authenticated_user_id: authenticatedUserId
-        });
+        // Get anonymous user preferences
+        const anonymousPreferences = await getSearchPreferences(anonymousUserId);
+        const anonymousAllergens = anonymousPreferences?.selectedallergens || [];
+        console.log('🔍 [SEARCH PREFERENCES] Anonymous allergens:', anonymousAllergens);
         
-        if (error) {
-            console.error('[SEARCH PREFERENCES] Error merging preferences:', error);
-            throw new Error(`Failed to merge search preferences: ${error.message}`);
+        // Get authenticated user preferences
+        const authenticatedPreferences = await getSearchPreferences(authenticatedUserId);
+        const authenticatedAllergens = authenticatedPreferences?.selectedallergens || [];
+        console.log('🔍 [SEARCH PREFERENCES] Authenticated allergens:', authenticatedAllergens);
+        
+        // Merge allergens using OR logic
+        const mergedAllergens = mergeAllergenArrays(anonymousAllergens, authenticatedAllergens);
+        console.log('✅ [SEARCH PREFERENCES] Merged allergens:', mergedAllergens);
+        
+        // Save merged preferences to authenticated user
+        const searchTerm = authenticatedPreferences?.search_term || anonymousPreferences?.search_term || '';
+        const result = await saveSearchPreferences(searchTerm, mergedAllergens, authenticatedUserId);
+        
+        // Clean up anonymous preferences
+        try {
+            await clearSearchPreferences(anonymousUserId);
+        } catch (cleanupError) {
+            console.warn('⚠️ [SEARCH PREFERENCES] Cleanup failed:', cleanupError);
         }
         
-        console.log('[SEARCH PREFERENCES] ✅ Preferences merged successfully:', data);
-        return data;
+        console.log('✅ [SEARCH PREFERENCES] Merge completed');
+        return result;
         
     } catch (error) {
-        console.error('[SEARCH PREFERENCES] ❌ Merge preferences failed:', error);
+        console.error('❌ [SEARCH PREFERENCES] Merge failed:', error.message);
         throw error;
     }
 };
+
+/**
+ * Merge allergen arrays using OR logic with anonymous priority
+ * @param {Array} anonymousAllergens - Anonymous user allergens
+ * @param {Array} authenticatedAllergens - Authenticated user allergens
+ * @returns {Array} - Merged allergens array with anonymous priority
+ */
+function mergeAllergenArrays(anonymousAllergens, authenticatedAllergens) {
+    console.log('[SEARCH PREFERENCES] Merging allergen arrays with anonymous priority...');
+    console.log('[SEARCH PREFERENCES] Anonymous allergens:', anonymousAllergens);
+    console.log('[SEARCH PREFERENCES] Authenticated allergens:', authenticatedAllergens);
+    
+    // 🎯 ANONYMOUS PRIORITY LOGIC: Anonymous selections take precedence
+    // If anonymous user has made selections, use those as the base
+    // Only fall back to authenticated allergens for items not selected by anonymous user
+    
+    const mergedSet = new Set();
+    
+    // 🎯 STEP 1: Add all anonymous allergens first (they take priority)
+    anonymousAllergens.forEach(allergen => {
+        mergedSet.add(allergen.toLowerCase());
+    });
+    
+    // 🎯 STEP 2: Add authenticated allergens only if not already selected by anonymous
+    // This ensures anonymous selections override authenticated selections
+    authenticatedAllergens.forEach(allergen => {
+        const normalizedAllergen = allergen.toLowerCase();
+        if (!mergedSet.has(normalizedAllergen)) {
+            // Only add if anonymous user hasn't already selected it
+            mergedSet.add(normalizedAllergen);
+        } else {
+            console.log('[SEARCH PREFERENCES] Skipping authenticated allergen (anonymous priority):', allergen);
+        }
+    });
+    
+    const mergedArray = Array.from(mergedSet);
+    console.log('[SEARCH PREFERENCES] Merged allergen array (anonymous priority):', mergedArray);
+    
+    return mergedArray;
+}
 
 /**
  * Clear search preferences (for logout)
@@ -165,7 +220,7 @@ export const loadSearchPreferencesAfterAuth = async (userId) => {
             return {
                 success: true,
                 searchTerm: preferences.search_term || '',
-                allergens: preferences.selected_allergens || []
+                allergens: preferences.selectedallergens || []
             };
         } else {
             console.log('[SEARCH PREFERENCES] ℹ️  No preferences found');
@@ -209,8 +264,8 @@ export const getSearchPreferencesSummary = async (userId) => {
         return {
             hasPreferences: preferences && Object.keys(preferences).length > 0,
             searchTerm: preferences?.search_term || '',
-            allergenCount: preferences?.selected_allergens?.length || 0,
-            allergens: preferences?.selected_allergens || [],
+            allergenCount: preferences?.selectedallergens?.length || 0,
+            allergens: preferences?.selectedallergens || [],
             lastUpdated: preferences?.updatedAt || null
         };
         
@@ -224,5 +279,34 @@ export const getSearchPreferencesSummary = async (userId) => {
             lastUpdated: null,
             error: error.message
         };
+    }
+}; 
+
+/**
+ * Preserve anonymous allergen state during logout
+ * @param {string} anonymousUserId - Anonymous user ID
+ * @param {Array} currentAllergens - Current allergen selections
+ * @returns {Promise<Object>} - Preservation result
+ */
+export const preserveAnonymousAllergens = async (anonymousUserId, currentAllergens) => {
+    try {
+        console.log('[SEARCH PREFERENCES] Preserving anonymous allergens during logout...');
+        console.log('[SEARCH PREFERENCES] Anonymous user ID:', anonymousUserId);
+        console.log('[SEARCH PREFERENCES] Current allergens to preserve:', currentAllergens);
+        
+        if (!anonymousUserId) {
+            console.warn('[SEARCH PREFERENCES] No anonymous user ID, cannot preserve allergens');
+            return { success: false, error: 'No anonymous user ID' };
+        }
+        
+        // Save current allergen state to anonymous user
+        const result = await saveSearchPreferences('', currentAllergens, anonymousUserId);
+        
+        console.log('[SEARCH PREFERENCES] ✅ Anonymous allergens preserved successfully');
+        return { success: true, data: result };
+        
+    } catch (error) {
+        console.error('[SEARCH PREFERENCES] ❌ Failed to preserve anonymous allergens:', error);
+        return { success: false, error: error.message };
     }
 }; 

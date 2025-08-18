@@ -14,66 +14,25 @@
  */
 
 const { createClient } = require('@supabase/supabase-js');
-const fs = require('fs');
-const path = require('path');
 require('dotenv').config();
 
-// Initialize Supabase client
 const supabase = createClient(
     process.env.SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE_KEY
+    process.env.SUPABASE_ANON_KEY
 );
 
-// Configuration
-const BATCH_SIZE = 500; // Smaller batch size for ingredients
-const CHECKPOINT_INTERVAL = 500;
-const LOG_INTERVAL = 50;
+const BATCH_SIZE = 500; // Smaller batch size to avoid timeouts
+const MAX_INGREDIENT_NAME_LENGTH = 255;
+const MAX_RETRIES = 3;
+const RETRY_DELAY = 2000; // 2 seconds
 
-// State tracking
-let processedCount = 0;
-let totalCount = 0;
-let startTime = Date.now();
-let isShuttingDown = false;
-
-// Action words to remove from ingredients
-const ACTION_WORDS = [
-    'diced', 'chopped', 'minced', 'sliced', 'grated', 'shredded',
-    'sautéed', 'roasted', 'grilled', 'baked', 'fried', 'steamed',
-    'fresh', 'frozen', 'canned', 'dried', 'cooked', 'raw', 'peeled',
-    'seeded', 'stemmed', 'trimmed', 'cleaned', 'washed', 'drained',
-    'crushed', 'mashed', 'pureed', 'blended', 'whipped', 'beaten',
-    'folded', 'kneaded', 'rolled', 'pressed', 'squeezed', 'strained',
-    'filtered', 'clarified', 'reduced', 'thickened', 'thinned', 'diluted'
-];
-
-// Measurements to remove
-const MEASUREMENTS = [
-    /\d+\s*(cups?|tbsp|tsp|oz|lbs?|grams?|kg|ml|liters?)/gi,
-    /\d+\/\d+/g, // fractions
-    /\ba\s+few\b/gi,
-    /\ba\s+pinch\b/gi,
-    /\bone\b/gi,
-    /\btwo\b/gi,
-    /\bthree\b/gi,
-    /\bfour\b/gi,
-    /\bfive\b/gi,
-    /\bhalf\b/gi,
-    /\bquarter\b/gi,
-    /\bthird\b/gi
-];
-
-/**
- * Universal camelCase conversion for ALL multi-word variables
- */
-function toCamelCase(text) {
-    if (!text || typeof text !== 'string') return '';
-    
-    return text
+// Utility function for camelCase conversion
+function toCamelCase(str) {
+    if (!str || typeof str !== 'string') return '';
+    return str
         .toLowerCase()
         .trim()
-        // Replace multiple spaces/underscores/hyphens with single space
         .replace(/[\s_-]+/g, ' ')
-        // Split by space and camelCase
         .split(' ')
         .map((word, index) => {
             if (index === 0) {
@@ -84,26 +43,46 @@ function toCamelCase(text) {
         .join('');
 }
 
-/**
- * Clean ingredient name by removing action words and measurements
- */
-function cleanIngredientName(ingredientName) {
-    if (!ingredientName) return '';
+// Clean ingredient name by removing action words and measurements
+function cleanIngredientName(ingredient) {
+    if (!ingredient) return '';
     
-    let cleaned = ingredientName.toLowerCase();
+    let cleaned = ingredient.toLowerCase();
     
     // Remove action words
-    ACTION_WORDS.forEach(actionWord => {
-        const regex = new RegExp(`\\b${actionWord}\\b`, 'gi');
+    const ACTION_WORDS = [
+        'diced', 'chopped', 'minced', 'sliced', 'grated', 'shredded',
+        'sautéed', 'roasted', 'grilled', 'baked', 'fried', 'steamed',
+        'fresh', 'frozen', 'canned', 'dried', 'cooked', 'raw',
+        'peeled', 'seeded', 'trimmed', 'washed', 'drained', 'crushed',
+        'crumbled', 'shaved', 'julienned', 'spiralized', 'matchstick',
+        'coarsely', 'finely', 'roughly', 'thinly', 'thickly'
+    ];
+    
+    // Remove measurements
+    const MEASUREMENTS = [
+        /\d+\s*(cups?|tbsp|tsp|oz|lbs?|grams?|kg|ml|liters?)/gi,
+        /\d+\/\d+/g, // fractions
+        /\ba\s+few\b/gi,
+        /\ba\s+pinch\b/gi,
+        /\bto\s+taste\b/gi,
+        /\bor\s+to\s+taste\b/gi,
+        /\babout\s+\d+/gi,
+        /\bapproximately\s+\d+/gi
+    ];
+    
+    // Remove action words
+    ACTION_WORDS.forEach(word => {
+        const regex = new RegExp(`\\b${word}\\b`, 'gi');
         cleaned = cleaned.replace(regex, '');
     });
     
     // Remove measurements
-    MEASUREMENTS.forEach(measurement => {
-        cleaned = cleaned.replace(measurement, '');
+    MEASUREMENTS.forEach(pattern => {
+        cleaned = cleaned.replace(pattern, '');
     });
     
-    // Clean up extra spaces
+    // Clean up extra spaces and trim
     cleaned = cleaned.replace(/\s+/g, ' ').trim();
     
     // Convert to camelCase if multi-word
@@ -111,335 +90,373 @@ function cleanIngredientName(ingredientName) {
         cleaned = toCamelCase(cleaned);
     }
     
+    // Truncate if too long
+    if (cleaned.length > MAX_INGREDIENT_NAME_LENGTH) {
+        cleaned = cleaned.substring(0, MAX_INGREDIENT_NAME_LENGTH);
+    }
+    
     return cleaned;
 }
 
-/**
- * Get total ingredient count
- */
-async function getTotalIngredientCount() {
+// Check if database tables exist
+async function checkDatabaseTables() {
+    console.log('🔍 Checking database tables...');
+    
     try {
-        const { count, error } = await supabase
-            .from('RecipeIngredients')
-            .select('*', { count: 'exact', head: true });
-        
-        if (error) throw error;
-        return count || 0;
-    } catch (error) {
-        console.error('❌ Error getting total ingredient count:', error);
-        return 0;
-    }
-}
-
-/**
- * Get last checkpoint for resume capability
- */
-async function getLastCheckpoint() {
-    try {
-        const checkpointFile = path.join(__dirname, 'logs', 'ingredient_mapping_checkpoint.json');
-        
-        if (fs.existsSync(checkpointFile)) {
-            const data = JSON.parse(fs.readFileSync(checkpointFile, 'utf8'));
-            return data.lastProcessedId || 0;
-        }
-        
-        return 0;
-    } catch (error) {
-        console.log('⚠️ No checkpoint found, starting from beginning');
-        return 0;
-    }
-}
-
-/**
- * Save checkpoint for resume capability
- */
-async function saveCheckpoint(lastProcessedId) {
-    try {
-        const logsDir = path.join(__dirname, 'logs');
-        if (!fs.existsSync(logsDir)) {
-            fs.mkdirSync(logsDir, { recursive: true });
-        }
-        
-        const checkpointFile = path.join(logsDir, 'ingredient_mapping_checkpoint.json');
-        const checkpoint = {
-            lastProcessedId,
-            timestamp: new Date().toISOString(),
-            processedCount,
-            totalCount
-        };
-        
-        fs.writeFileSync(checkpointFile, JSON.stringify(checkpoint, null, 2));
-    } catch (error) {
-        console.error('⚠️ Error saving checkpoint:', error);
-    }
-}
-
-/**
- * Check if ingredient already processed
- */
-async function isIngredientProcessed(ingredientId) {
-    try {
-        const { data, error } = await supabase
+        const { data: ingredientTable, error: ingredientError } = await supabase
             .from('IngredientCanonical')
             .select('id')
-            .eq('id', ingredientId)
             .limit(1);
         
-        if (error) throw error;
-        return data && data.length > 0;
+        if (ingredientError) {
+            console.error('❌ IngredientCanonical table not found or not accessible');
+            console.error('Error:', ingredientError);
+            console.log('\n📋 Please run the SQL migration first:');
+            console.log('1. Go to your Supabase SQL editor');
+            console.log('2. Run the SQL from database/migrations/create_simple_mapping_tables.sql');
+            console.log('3. Then run this script again');
+            process.exit(1);
+        }
+        
+        console.log('✅ Database tables are accessible');
+        return true;
     } catch (error) {
-        console.error('⚠️ Error checking if ingredient processed:', error);
+        console.error('❌ Error checking database tables:', error);
         return false;
     }
 }
 
-/**
- * Find matching products for an ingredient
- */
+// Get total ingredient count from recipes
+async function getTotalIngredientCount() {
+    try {
+        console.log('🔍 Getting total ingredient count...');
+        
+        // Use max ID as approximation
+        const { data: maxIdData, error: maxIdError } = await supabase
+            .from('RecipeIngredient')
+            .select('id')
+            .order('id', { ascending: false })
+            .limit(1);
+        
+        if (!maxIdError && maxIdData && maxIdData.length > 0) {
+            const approximateCount = maxIdData[0].id;
+            console.log(`📊 Approximate total ingredients (based on max ID): ${approximateCount}`);
+            return approximateCount;
+        }
+        
+        // Fallback to known value
+        console.log('🔄 Using fallback count: 50000');
+        return 50000;
+        
+    } catch (error) {
+        console.error('❌ Error getting ingredient count:', error);
+        console.log('🔄 Using fallback count: 50000');
+        return 50000;
+    }
+}
+
+// Check if ingredient already processed
+async function isIngredientProcessed(ingredientId) {
+    try {
+        const { data, error } = await supabase
+            .from('IngredientCanonical')
+            .select('matching_products')
+            .contains('matching_products', [ingredientId]);
+        
+        if (error) {
+            console.error('❌ Error checking if ingredient processed:', error);
+            return false;
+        }
+        
+        return data && data.length > 0;
+    } catch (error) {
+        console.error('❌ Error checking if ingredient processed:', error);
+        return false;
+    }
+}
+
+// Find matching products for an ingredient
 async function findMatchingProducts(canonicalIngredient) {
     try {
-        // First try to find exact match in ProductCanonical
-        const { data: exactMatches, error: exactError } = await supabase
-            .from('ProductCanonical')
-            .select('product_ids')
-            .eq('canonical_product_name', canonicalIngredient);
-        
-        if (!exactError && exactMatches && exactMatches.length > 0) {
-            return exactMatches[0].product_ids || [];
-        }
-        
-        // If no exact match, try partial match
-        const { data: partialMatches, error: partialError } = await supabase
+        // Search in ProductCanonical table for matching products
+        const { data: products, error } = await supabase
             .from('ProductCanonical')
             .select('product_ids, canonical_product_name')
-            .ilike('canonical_product_name', `%${canonicalIngredient}%`)
-            .limit(5);
+            .ilike('canonical_product_name', `%${canonicalIngredient}%`);
         
-        if (!partialError && partialMatches && partialMatches.length > 0) {
-            // Combine all matching product IDs
-            const allProductIds = [];
-            partialMatches.forEach(match => {
-                if (match.product_ids) {
-                    allProductIds.push(...match.product_ids);
-                }
-            });
-            return [...new Set(allProductIds)]; // Remove duplicates
+        if (error) {
+            console.error('❌ Error finding matching products:', error);
+            return [];
         }
         
-        return [];
+        const matchingProductIds = [];
+        products.forEach(product => {
+            if (product.product_ids) {
+                matchingProductIds.push(...product.product_ids);
+            }
+        });
         
+        return [...new Set(matchingProductIds)]; // Remove duplicates
     } catch (error) {
-        console.error(`⚠️ Error finding matching products for "${canonicalIngredient}":`, error);
+        console.error('❌ Error finding matching products:', error);
         return [];
     }
 }
 
-/**
- * Find substitute products (simplified version)
- */
-async function findSubstituteProducts(canonicalIngredient, originalProductIds) {
+// Insert or update ingredient canonical mapping
+async function insertOrUpdateIngredientCanonical(canonicalName, originalName, matchingProductIds) {
     try {
-        // For now, return empty array - can be enhanced later
-        // This would look for allergen-safe alternatives
-        return [];
+        // First, try to find existing record
+        const { data: existing, error: selectError } = await supabase
+            .from('IngredientCanonical')
+            .select('id, matching_products')
+            .eq('canonical_ingredient', canonicalName)
+            .single();
         
+        if (selectError && selectError.code !== 'PGRST116') { // PGRST116 = no rows returned
+            console.error(`❌ Error checking existing mapping for "${canonicalName}":`, selectError);
+            return false;
+        }
+        
+        if (existing) {
+            // Update existing record
+            const updatedProductIds = [...new Set([...existing.matching_products, ...matchingProductIds])];
+            
+            const { error: updateError } = await supabase
+                .from('IngredientCanonical')
+                .update({ matching_products: updatedProductIds })
+                .eq('id', existing.id);
+            
+            if (updateError) {
+                console.error(`❌ Error updating mapping for "${canonicalName}":`, updateError);
+                return false;
+            }
+            
+            console.log(`🔄 Updated existing mapping for "${canonicalName}" (${updatedProductIds.length} products)`);
+            return true;
+        } else {
+            // Insert new record
+            const { error: insertError } = await supabase
+                .from('IngredientCanonical')
+                .insert({
+                    original_ingredient: originalName,
+                    canonical_ingredient: canonicalName,
+                    matching_products: matchingProductIds
+                });
+            
+            if (insertError) {
+                console.error(`❌ Error inserting mapping for "${canonicalName}":`, insertError);
+                return false;
+            }
+            
+            console.log(`✅ Created new mapping for "${originalName}" → "${canonicalName}" (${matchingProductIds.length} products)`);
+            return true;
+        }
     } catch (error) {
-        console.error(`⚠️ Error finding substitute products for "${canonicalIngredient}":`, error);
-        return [];
+        console.error(`❌ Error processing mapping for "${canonicalName}":`, error);
+        return false;
     }
 }
 
-/**
- * Process a batch of ingredients
- */
-async function processIngredientBatch(offset, batchSize) {
+// Fetch ingredients with retry logic
+async function fetchIngredientsWithRetry(offset, retries = 0) {
     try {
-        // Get batch of ingredients
+        console.log(`📦 Fetching ingredients starting at offset ${offset}...`);
+        
         const { data: ingredients, error } = await supabase
-            .from('RecipeIngredients')
-            .select('id, ingredient_name, recipe_id')
-            .range(offset, offset + batchSize - 1)
+            .from('RecipeIngredient')
+            .select('id, ingredient_name')
+            .range(offset, offset + BATCH_SIZE - 1)
             .order('id');
         
-        if (error) throw error;
-        if (!ingredients || ingredients.length === 0) return 0;
+        if (error) {
+            if (error.code === '57014' && retries < MAX_RETRIES) {
+                console.log(`⏳ Timeout error, retrying in ${RETRY_DELAY/1000}s... (attempt ${retries + 1}/${MAX_RETRIES})`);
+                await new Promise(resolve => setTimeout(resolve, RETRY_DELAY));
+                return await fetchIngredientsWithRetry(offset, retries + 1);
+            }
+            console.error('❌ Error fetching ingredients:', error);
+            return null;
+        }
         
-        let processedInBatch = 0;
+        return ingredients;
+    } catch (error) {
+        if (retries < MAX_RETRIES) {
+            console.log(`⏳ Network error, retrying in ${RETRY_DELAY/1000}s... (attempt ${retries + 1}/${MAX_RETRIES})`);
+            await new Promise(resolve => setTimeout(resolve, RETRY_DELAY));
+            return await fetchIngredientsWithRetry(offset, retries + 1);
+        }
+        console.error('❌ Error fetching ingredients after retries:', error);
+        return null;
+    }
+}
+
+// Process ingredients in batches
+async function processIngredientBatch(offset) {
+    try {
+        const ingredients = await fetchIngredientsWithRetry(offset);
+        
+        if (!ingredients) {
+            console.log('❌ Failed to fetch ingredients after retries');
+            return false;
+        }
+        
+        if (ingredients.length === 0) {
+            console.log('📭 No more ingredients to process');
+            return false;
+        }
+        
+        console.log(`📊 Processing ${ingredients.length} ingredients...`);
+        
+        // Group ingredients by canonical name
+        const canonicalGroups = {};
         
         for (const ingredient of ingredients) {
             // Skip if already processed
             if (await isIngredientProcessed(ingredient.id)) {
-                console.log(`⏭️ Skipping already processed ingredient: ${ingredient.id}`);
+                console.log(`⏭️ Skipping already processed ingredient ${ingredient.id}`);
                 continue;
             }
             
-            const cleanedName = cleanIngredientName(ingredient.ingredient_name);
+            const canonicalName = cleanIngredientName(ingredient.ingredient_name);
             
-            if (!cleanedName) {
-                console.log(`⚠️ Skipping ingredient with empty cleaned name: ${ingredient.id}`);
+            if (!canonicalName) {
+                console.log(`⚠️ Skipping ingredient with empty canonical name: ${ingredient.ingredient_name}`);
                 continue;
             }
             
-            // Find matching products
-            const matchingProducts = await findMatchingProducts(cleanedName);
-            const substituteProducts = await findSubstituteProducts(cleanedName, matchingProducts);
-            
-            // Insert ingredient canonical mapping
-            try {
-                const { error: insertError } = await supabase
-                    .from('IngredientCanonical')
-                    .insert({
-                        original_ingredient: ingredient.ingredient_name,
-                        canonical_ingredient: cleanedName,
-                        matching_products: matchingProducts,
-                        substitute_product_ids: substituteProducts
-                    });
-                
-                if (insertError) {
-                    console.error(`❌ Error inserting ingredient mapping for "${cleanedName}":`, insertError);
-                } else {
-                    console.log(`✅ Processed "${ingredient.ingredient_name}" → "${cleanedName}" (${matchingProducts.length} products)`);
-                    processedInBatch++;
-                }
-            } catch (error) {
-                console.error(`❌ Error processing ingredient mapping for "${cleanedName}":`, error);
+            if (!canonicalGroups[canonicalName]) {
+                canonicalGroups[canonicalName] = {
+                    original_ingredient: ingredient.ingredient_name,
+                    canonical_ingredient: canonicalName,
+                    matching_products: []
+                };
             }
         }
         
-        return processedInBatch;
+        // Find matching products for each canonical ingredient
+        let successCount = 0;
+        let errorCount = 0;
+        
+        for (const [canonicalName, mapping] of Object.entries(canonicalGroups)) {
+            const matchingProductIds = await findMatchingProducts(canonicalName);
+            
+            const success = await insertOrUpdateIngredientCanonical(
+                mapping.canonical_ingredient,
+                mapping.original_ingredient,
+                matchingProductIds
+            );
+            
+            if (success) {
+                successCount++;
+            } else {
+                errorCount++;
+            }
+        }
+        
+        console.log(`✅ Batch complete: ${successCount} successful, ${errorCount} errors`);
+        return true;
         
     } catch (error) {
-        console.error('❌ Error processing ingredient batch:', error);
-        return 0;
+        console.error('❌ Error processing batch:', error);
+        return false;
     }
 }
 
-/**
- * Track progress with ETA
- */
-function trackProgress(current, total) {
-    const elapsed = Date.now() - startTime;
-    const rate = current / (elapsed / 1000); // records per second
-    const remaining = (total - current) / rate; // seconds remaining
-    const eta = new Date(Date.now() + remaining * 1000);
-    
-    const progressPercent = ((current / total) * 100).toFixed(2);
-    const elapsedHours = Math.floor(elapsed / 3600000);
-    const elapsedMinutes = Math.floor((elapsed % 3600000) / 60000);
-    const remainingHours = Math.floor(remaining / 3600);
-    const remainingMinutes = Math.floor((remaining % 3600) / 60);
-    
-    console.log(`📊 Progress: ${current}/${total} (${progressPercent}%)`);
-    console.log(`⏱️ Rate: ${rate.toFixed(1)} records/sec`);
-    console.log(`⏰ Elapsed: ${elapsedHours}h ${elapsedMinutes}m`);
-    console.log(`🕐 ETA: ${eta.toLocaleString()}`);
-    console.log(`⏳ Remaining: ${remainingHours}h ${remainingMinutes}m`);
-    console.log('---');
-}
-
-/**
- * Graceful shutdown handler
- */
-function setupGracefulShutdown() {
-    const gracefulShutdown = async () => {
-        console.log('\n🛑 Shutdown signal received. Finishing current batch...');
-        isShuttingDown = true;
-        
-        // Save final checkpoint
-        await saveCheckpoint(processedCount);
-        
-        console.log('✅ Shutdown complete. Safe to restart.');
-        process.exit(0);
-    };
-    
-    process.on('SIGTERM', gracefulShutdown);
-    process.on('SIGINT', gracefulShutdown);
-}
-
-/**
- * Main processing function
- */
-async function runIngredientCanonicalMapping() {
-    console.log('🚀 Starting Ingredient Canonical Mapping - Phase 2');
-    console.log('==================================================\n');
-    
-    // Setup graceful shutdown
-    setupGracefulShutdown();
-    
+// Save checkpoint
+async function saveCheckpoint(offset, processedCount, totalCount) {
     try {
-        // Get total count
-        totalCount = await getTotalIngredientCount();
-        console.log(`📊 Total ingredients to process: ${totalCount.toLocaleString()}`);
+        const checkpoint = {
+            lastProcessedOffset: offset,
+            timestamp: new Date().toISOString(),
+            processedCount: processedCount,
+            totalCount: totalCount
+        };
         
-        // Get last checkpoint for resume
-        const lastProcessedId = await getLastCheckpoint();
-        if (lastProcessedId > 0) {
-            console.log(`📂 Resuming from checkpoint: ${lastProcessedId.toLocaleString()}`);
-            processedCount = lastProcessedId;
-        }
-        
-        console.log(`🔄 Processing in batches of ${BATCH_SIZE}...\n`);
-        
-        // Process all ingredients
-        for (let offset = processedCount; offset < totalCount; offset += BATCH_SIZE) {
-            if (isShuttingDown) break;
-            
-            const batchStart = Date.now();
-            const processedInBatch = await processIngredientBatch(offset, BATCH_SIZE);
-            
-            processedCount += processedInBatch;
-            
-            // Track progress
-            if (processedCount % LOG_INTERVAL === 0 || processedCount === totalCount) {
-                trackProgress(processedCount, totalCount);
-            }
-            
-            // Save checkpoint
-            if (processedCount % CHECKPOINT_INTERVAL === 0) {
-                await saveCheckpoint(processedCount);
-            }
-            
-            // Add small delay to avoid overwhelming database
-            await new Promise(resolve => setTimeout(resolve, 100));
-        }
-        
-        console.log('\n🎉 Ingredient Canonical Mapping Complete!');
-        console.log('==========================================');
-        console.log(`✅ Processed ${processedCount.toLocaleString()} ingredients`);
-        console.log(`⏱️ Total time: ${Math.floor((Date.now() - startTime) / 1000)} seconds`);
-        
-        // Generate summary
-        const { data: canonicalCount, error } = await supabase
-            .from('IngredientCanonical')
-            .select('*', { count: 'exact', head: true });
-        
-        if (!error) {
-            console.log(`📊 Created ${canonicalCount} canonical ingredient mappings`);
-        }
-        
+        const fs = require('fs');
+        fs.writeFileSync('scripts/logs/ingredient_mapping_checkpoint.json', JSON.stringify(checkpoint, null, 2));
+        console.log(`💾 Checkpoint saved: offset ${offset}, processed ${processedCount}/${totalCount}`);
     } catch (error) {
-        console.error('\n❌ Ingredient Canonical Mapping Failed');
-        console.error('========================================');
-        console.error('Error:', error);
-        
-        // Save checkpoint on error
-        await saveCheckpoint(processedCount);
-        
-        process.exit(1);
+        console.error('❌ Error saving checkpoint:', error);
     }
 }
 
-// Run if called directly
-if (require.main === module) {
-    runIngredientCanonicalMapping().catch(error => {
-        console.error('❌ Script crashed:', error);
-        process.exit(1);
-    });
+// Main processing function
+async function startIngredientMapping() {
+    console.log('🚀 Starting Ingredient Canonical Mapping (Phase 2)...');
+    console.log(`📋 Processing in batches of ${BATCH_SIZE}`);
+    console.log(`📋 Max retries: ${MAX_RETRIES}, Retry delay: ${RETRY_DELAY}ms`);
+    
+    // Check database tables first
+    const tablesOk = await checkDatabaseTables();
+    if (!tablesOk) {
+        return;
+    }
+    
+    // Get total count
+    const totalCount = await getTotalIngredientCount();
+    console.log(`📊 Total ingredients to process: ${totalCount}`);
+    
+    if (totalCount === 0) {
+        console.log('❌ No ingredients found to process');
+        return;
+    }
+    
+    const startTime = Date.now();
+    let processedCount = 0;
+    let batchCount = 0;
+    
+    // Process in batches
+    for (let offset = 0; offset < totalCount; offset += BATCH_SIZE) {
+        batchCount++;
+        console.log(`\n🔄 Processing batch ${batchCount}/${Math.ceil(totalCount / BATCH_SIZE)}`);
+        
+        const success = await processIngredientBatch(offset);
+        
+        if (!success) {
+            console.log('❌ Batch failed, saving checkpoint and stopping');
+            await saveCheckpoint(offset, processedCount, totalCount);
+            break;
+        }
+        
+        processedCount += BATCH_SIZE;
+        
+        // Save checkpoint every 5 batches
+        if (batchCount % 5 === 0) {
+            await saveCheckpoint(offset + BATCH_SIZE, processedCount, totalCount);
+        }
+        
+        // Progress tracking
+        const elapsed = Date.now() - startTime;
+        const rate = processedCount / (elapsed / 1000);
+        const remaining = (totalCount - processedCount) / rate;
+        const eta = new Date(Date.now() + remaining * 1000);
+        
+        console.log(`📊 Progress: ${processedCount}/${totalCount} (${((processedCount/totalCount)*100).toFixed(2)}%)`);
+        console.log(`⏱️ Rate: ${rate.toFixed(1)} records/sec`);
+        console.log(`🕐 ETA: ${eta.toLocaleString()}`);
+        
+        // Small delay between batches
+        await new Promise(resolve => setTimeout(resolve, 200));
+    }
+    
+    const totalElapsed = Date.now() - startTime;
+    console.log(`\n🎉 Processing complete!`);
+    console.log(`⏱️ Total time: ${Math.floor(totalElapsed/1000)}s`);
+    console.log(`📊 Processed: ${processedCount} ingredients`);
+    console.log(`📈 Average rate: ${(processedCount/(totalElapsed/1000)).toFixed(1)} records/sec`);
 }
 
-module.exports = {
-    cleanIngredientName,
-    toCamelCase,
-    findMatchingProducts,
-    runIngredientCanonicalMapping
-}; 
+// Handle graceful shutdown
+process.on('SIGINT', () => {
+    console.log('\n🛑 Shutdown signal received. Finishing current batch...');
+    process.exit(0);
+});
+
+process.on('SIGTERM', () => {
+    console.log('\n🛑 Shutdown signal received. Finishing current batch...');
+    process.exit(0);
+});
+
+// Run the mapping
+startIngredientMapping().catch(console.error); 

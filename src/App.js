@@ -16,9 +16,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setCredentials, logout } from './redux/authSlice';
 import { initializeAuth, fetchCart, mergeAnonymousCartWithServer } from './redux/anonymousCartSlice';
 import { fetchAllergensPure } from './redux/allergiesSlice';
-import { loadSearchPreferencesAsync } from './redux/searchPreferencesSlice';
+import { loadSearchPreferencesAsync, mergeSearchPreferencesAsync } from './redux/searchPreferencesSlice';
 import { supabase } from './utils/supabaseClient';
 import { isAnonymousUser } from './utils/anonymousAuth';
+import { initializeAuthService } from './utils/authService';
+import { setupPerformanceMonitoring } from './utils/performanceMonitor';
 import Header from './components/Header/Header';
 import Homepage from './pages/Homepage';
 import ProductPage from './pages/ProductPage/ProductPage';
@@ -36,12 +38,21 @@ import './App.css';
 import { clearCartItems } from './redux/anonymousCartSlice';
 import { clearSearchPreferencesLocal } from './redux/searchPreferencesSlice';
 import { clearAllergies } from './redux/allergiesSlice';
+import { clearProducts } from './redux/productSlice'; // 🎯 NEW: Import product clearing
 import { runDatabaseTests } from './utils/supabaseQueries.js';
+import store from './redux/store'; // Fix: use default import
+import { logAuthEvent, logMergeAttempt, logMergeResult } from './utils/debugLogger';
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // ✅ ADDED: Initialize performance monitoring
+    setupPerformanceMonitoring();
+    
+    // 🎯 NEW: Initialize centralized auth service with store access
+    initializeAuthService(store);
+    
     // Fetch allergens from Supabase database on app start
     dispatch(fetchAllergensPure());
   }, [dispatch]);
@@ -100,80 +111,11 @@ function App() {
 
     checkExistingSession();
 
-    // Set up Supabase auth state change listener
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
-        console.log('[SUPABASE AUTH] Auth state changed:', event, session);
-        
-        if (event === 'SIGNED_IN' && session) {
-          console.log('[SUPABASE AUTH] User signed in:', session.user);
-          
-          // Check if this is an anonymous session using improved detection
-          const isAnonymous = await isAnonymousUser(session);
-          
-          if (isAnonymous) {
-            console.log('[SUPABASE AUTH] Anonymous session signed in, not setting authenticated state');
-            // For anonymous sessions, just fetch cart
-            dispatch(fetchCart());
-          } else {
-            console.log('[SUPABASE AUTH] Authenticated user signed in, setting credentials');
-            
-            // Set credentials first
-            dispatch(setCredentials({
-              user: session.user,
-              token: session.access_token,
-              isAuthenticated: true
-            }));
-            
-            // Fetch cart for authenticated user
-            dispatch(fetchCart());
-            
-            // Load search preferences for authenticated user
-            dispatch(loadSearchPreferencesAsync({ userId: session.user.id }));
-            
-          }
-        } else if (event === 'SIGNED_OUT') {
-          console.log('[SUPABASE AUTH] User signed out');
-          
-          // Clear auth state completely
-          dispatch(logout());
-          
-          // Clear cart state on logout
-          dispatch(clearCartItems());
-          
-          // Clear search preferences on logout
-          dispatch(clearSearchPreferencesLocal());
-          
-          // Clear allergen toggles on logout
-          dispatch(clearAllergies());
-          
-          // Create new anonymous session after logout
-          console.log('[SUPABASE AUTH] Creating new anonymous session after logout...');
-          setTimeout(async () => {
-            try {
-              const result = await dispatch(initializeAuth()).unwrap();
-              console.log('[SUPABASE AUTH] Anonymous session creation result:', result);
-              if (result.success) {
-                console.log('[SUPABASE AUTH] ✅ Anonymous session created successfully after logout');
-              } else {
-                console.error('[SUPABASE AUTH] ❌ Failed to create anonymous session after logout:', result.error);
-              }
-            } catch (error) {
-              console.error('[SUPABASE AUTH] ❌ Error creating anonymous session after logout:', error);
-            }
-          }, 100); // Small delay to ensure cleanup is complete
-        } else if (event === 'TOKEN_REFRESHED' && session) {
-          console.log('[SUPABASE AUTH] Token refreshed');
-          
-          // Only update token if user is still authenticated
-          // Don't automatically set isAuthenticated to true
-          // This prevents interference with logout state
-        }
-      }
-    );
+    // 🎯 OPTIMIZED: Removed duplicate auth state change listener
+    // The centralized auth service now handles all auth state changes
+    // This eliminates duplicate events and improves performance
 
-    // Cleanup subscription on unmount
-    return () => subscription.unsubscribe();
+    // 🎯 OPTIMIZED: No cleanup needed - auth service handles its own cleanup
   }, [dispatch]);
 
   // 🧪 Make database tests available globally for console access
@@ -186,113 +128,61 @@ function App() {
   useEffect(() => {
     const loadDebugFunctions = async () => {
       try {
+        // 🎯 REMOVED: Database warmup logic - causing infinite loops
+        // The warmup was causing 404 errors and infinite retries
+        // Let the main queries handle their own connection establishment
         const { 
           testCurrentCartMerge, 
           testCurrentAllergenPersistence, 
           analyzePostLoginFlow, 
           testCompleteLoginFlow, 
-          checkCommonIssues, 
-          runAllDiagnostics 
-        } = await import('./utils/debugCartMerge.js');
+          testAnonymousCartMerge,
+          testAllergenMerge,
+          testCompleteMergeFlow
+        } = await import('./utils/debugFunctions.js');
         
+        // Make debug functions available globally
         window.testCurrentCartMerge = testCurrentCartMerge;
         window.testCurrentAllergenPersistence = testCurrentAllergenPersistence;
         window.analyzePostLoginFlow = analyzePostLoginFlow;
         window.testCompleteLoginFlow = testCompleteLoginFlow;
-        window.checkCommonIssues = checkCommonIssues;
-        window.runAllDiagnostics = runAllDiagnostics;
+        window.testAnonymousCartMerge = testAnonymousCartMerge;
+        window.testAllergenMerge = testAllergenMerge;
+        window.testCompleteMergeFlow = testCompleteMergeFlow;
         
-        console.log('🔍 Debug functions available globally:');
-        console.log('- window.testCurrentCartMerge()');
-        console.log('- window.testCurrentAllergenPersistence()');
-        console.log('- window.analyzePostLoginFlow()');
-        console.log('- window.testCompleteLoginFlow()');
-        console.log('- window.checkCommonIssues()');
-        console.log('- window.runAllDiagnostics()');
+        console.log('🔍 Debug functions loaded and available globally');
+        console.log('🔍 Available functions:');
+        console.log('  - window.testCurrentCartMerge()');
+        console.log('  - window.testCurrentAllergenPersistence()');
+        console.log('  - window.analyzePostLoginFlow()');
+        console.log('  - window.testCompleteLoginFlow()');
+        console.log('  - window.testAnonymousCartMerge()');
+        console.log('  - window.testAllergenMerge()');
+        console.log('  - window.testCompleteMergeFlow()');
+        
       } catch (error) {
         console.error('❌ Failed to load debug functions:', error);
       }
     };
     
+    // Load debug functions
     loadDebugFunctions();
+    
+    // Load merge debug test
+    const loadMergeDebugTest = async () => {
+      try {
+        await import('./test_merge_debug.js');
+        console.log('🧪 Merge debug test loaded');
+      } catch (error) {
+        console.error('❌ Failed to load merge debug test:', error);
+      }
+    };
+    
+    loadMergeDebugTest();
   }, []);
 
-  useEffect(() => {
-    // Set up Supabase auth state change listener
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
-        console.log('[SUPABASE AUTH] Auth state changed:', event, session);
-        
-        if (event === 'SIGNED_IN' && session) {
-          console.log('[SUPABASE AUTH] User signed in:', session.user);
-          
-          // Check if this is an anonymous session using improved detection
-          const isAnonymous = await isAnonymousUser(session);
-          
-          if (isAnonymous) {
-            console.log('[SUPABASE AUTH] Anonymous session signed in, not setting authenticated state');
-            // For anonymous sessions, just fetch cart
-            dispatch(fetchCart());
-          } else {
-            console.log('[SUPABASE AUTH] Authenticated user signed in, setting credentials');
-            
-            // Set credentials first
-            dispatch(setCredentials({
-              user: session.user,
-              token: session.access_token,
-              isAuthenticated: true
-            }));
-            
-            // Fetch cart for authenticated user
-            dispatch(fetchCart());
-            
-            // Load search preferences for authenticated user
-            dispatch(loadSearchPreferencesAsync({ userId: session.user.id }));
-            
-          }
-        } else if (event === 'SIGNED_OUT') {
-          console.log('[SUPABASE AUTH] User signed out');
-          
-          // Clear auth state completely
-          dispatch(logout());
-          
-          // Clear cart state on logout
-          dispatch(clearCartItems());
-          
-          // Clear search preferences on logout
-          dispatch(clearSearchPreferencesLocal());
-          
-          // Clear allergen toggles on logout
-          dispatch(clearAllergies());
-          
-          // Create new anonymous session after logout
-          console.log('[SUPABASE AUTH] Creating new anonymous session after logout...');
-          setTimeout(async () => {
-            try {
-              const result = await dispatch(initializeAuth()).unwrap();
-              console.log('[SUPABASE AUTH] Anonymous session creation result:', result);
-              if (result.success) {
-                console.log('[SUPABASE AUTH] ✅ Anonymous session created successfully after logout');
-              } else {
-                console.error('[SUPABASE AUTH] ❌ Failed to create anonymous session after logout:', result.error);
-              }
-            } catch (error) {
-              console.error('[SUPABASE AUTH] ❌ Error creating anonymous session after logout:', error);
-            }
-          }, 100); // Small delay to ensure cleanup is complete
-        } else if (event === 'TOKEN_REFRESHED' && session) {
-          console.log('[SUPABASE AUTH] Token refreshed');
-          
-          // Only update token if user is still authenticated
-          // Don't automatically set isAuthenticated to true
-          // This prevents interference with logout state
-        }
-      }
-    );
-
-    // Cleanup subscription on unmount
-    return () => subscription.unsubscribe();
-  }, [dispatch]);
+  // 🛡️ FIXED: Removed duplicate auth state change listener
+  // This was causing conflicting logout behavior and query timeouts
 
   // Make pre-computed allergen system available globally
   useEffect(() => {

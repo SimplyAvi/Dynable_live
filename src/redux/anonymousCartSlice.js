@@ -23,6 +23,7 @@ import {
     mergeAnonymousCartWithStoredId,
     isAnonymousUser
 } from '../utils/anonymousAuth';
+import { getAuthState, createAnonymousSession, AuthState } from '../utils/authService';
 
 console.log('[ANONYMOUS CART] anonymousCartSlice.js loaded');
 
@@ -32,11 +33,12 @@ export const initializeAuth = createAsyncThunk(
     async (force = false, { getState }) => {
         console.log('[ANONYMOUS CART] 🔍 initializeAuth called with force:', force);
         
+        // 🎯 NEW: Use centralized auth service instead of getSession() calls
+        const authState = getAuthState();
+        console.log('[ANONYMOUS CART] Current auth state:', authState);
+        
         // Check if auth is already initialized to prevent multiple calls (unless forced)
         const state = getState();
-        console.log('[ANONYMOUS CART] Current state session:', state.anonymousCart.session);
-        console.log('[ANONYMOUS CART] Current state isAnonymous:', state.anonymousCart.isAnonymous);
-        
         if (state.anonymousCart.session && !force) {
             console.log('[ANONYMOUS CART] Auth already initialized, skipping...');
             return {
@@ -46,56 +48,49 @@ export const initializeAuth = createAsyncThunk(
             };
         }
         
-        // Check for existing Supabase session first (session reuse)
-        const { data: { session } } = await supabase.auth.getSession();
-        console.log('[ANONYMOUS CART] Supabase session check:', session ? 'found' : 'not found');
+        // 🎯 SIMPLIFIED: Use auth service to create anonymous session
+        console.log('[ANONYMOUS CART] Creating anonymous session via auth service...');
+        const result = await createAnonymousSession();
         
-        if (session) {
-            console.log('[ANONYMOUS CART] Existing Supabase session found, using it...');
-            const isAnonymous = await isAnonymousUser(session);
-            return {
-                session,
-                isAnonymous,
-                success: true
-            };
-        }
+        console.log('[ANONYMOUS CART] 🔍 Anonymous session creation result:', result);
+        console.log('[ANONYMOUS CART] 🔍 Result structure:', {
+            hasSession: !!result.session,
+            sessionType: typeof result.session,
+            isAnonymous: result.isAnonymous,
+            success: result.success
+        });
         
-        // Rate limiting protection: if we recently failed due to rate limit, wait
-        const lastRateLimitError = state.anonymousCart.lastRateLimitError;
-        if (lastRateLimitError && Date.now() - lastRateLimitError < 30000) { // 30 seconds
-            console.log('[ANONYMOUS CART] Rate limit protection: skipping auth attempt for 30 seconds');
-            // Temporarily disable rate limit protection for testing
-            console.log('[ANONYMOUS CART] Rate limit protection disabled for testing');
-            // return {
-            //     session: null,
-            //     isAnonymous: false,
-            //     success: false,
-            //     error: 'Rate limit protection active. Please try again in 30 seconds.'
-            // };
-        }
-        
-        // Only create new session if forced or no existing session
-        if (force || !session) {
-            console.log('[ANONYMOUS CART] Creating new anonymous session...');
-            const result = await initializeAnonymousAuth();
-            console.log('[ANONYMOUS CART] Auth result:', result);
-            return result;
-        }
-        
-        // Fallback: return existing session
-        return {
-            session: null,
-            isAnonymous: false,
-            success: false,
-            error: 'No session available'
-        };
+        return result;
     }
 );
 
 export const fetchCart = createAsyncThunk(
     'anonymousCart/fetchCart',
-    async () => {
+    async (_, { getState, signal }) => {
         try {
+            // 🎯 CRITICAL: Check if we're in logout state
+            const state = getState();
+            const isLogoutState = state.anonymousCart.items.length === 0 && !state.anonymousCart.isAnonymous;
+            const isLoggingOut = state.anonymousCart.isLoggingOut;
+            
+            // 🎯 ENHANCED: Also check if we just logged out (no session but cart might exist)
+            const { data: { session } } = await supabase.auth.getSession();
+            const hasNoSession = !session;
+            const hasCartItems = state.anonymousCart.items && state.anonymousCart.items.length > 0;
+            const isPostLogoutState = hasNoSession && hasCartItems;
+            
+            if (isLogoutState || isLoggingOut || isPostLogoutState) {
+                console.log('[ANONYMOUS CART] 🛡️ Skipping fetchCart - logout state detected (items:', state.anonymousCart.items.length, 'isLoggingOut:', isLoggingOut, 'isPostLogout:', isPostLogoutState, ')');
+                console.log('[ANONYMOUS CART] 🔍 Debug - isLogoutState:', isLogoutState, 'isLoggingOut:', isLoggingOut, 'isPostLogout:', isPostLogoutState);
+                return [];
+            }
+            
+            // 🎯 CRITICAL: Check if abort signal is triggered (logout in progress)
+            if (signal?.aborted) {
+                console.log('[ANONYMOUS CART] 🛡️ fetchCart aborted - logout in progress');
+                return [];
+            }
+            
             const items = await getCart();
             return items || [];
         } catch (error) {
@@ -110,10 +105,31 @@ export const addItemToCart = createAsyncThunk(
     async (item, { dispatch, getState }) => {
         console.log('[ANONYMOUS CART] 🚨 addItemToCart thunk called with item:', item);
         
-        // Ensure auth is initialized before adding to cart
+        // Check if user is authenticated or has a valid session
         const state = getState();
-        if (!state.anonymousCart.session) {
-            console.log('[ANONYMOUS CART] No session found, initializing auth first...');
+        const isAuthenticated = state.auth.isAuthenticated;
+        const hasAnonymousSession = state.anonymousCart.session;
+        
+        console.log('[ANONYMOUS CART] 🔍 Auth state check - isAuthenticated:', isAuthenticated, 'hasAnonymousSession:', !!hasAnonymousSession);
+        
+        // If user is authenticated, they should have a valid session from Supabase
+        if (isAuthenticated) {
+            console.log('[ANONYMOUS CART] ✅ User is authenticated, proceeding with addToCart');
+            const result = await addToCart(item);
+            console.log('[ANONYMOUS CART] addToCart result:', result);
+            
+            if (!result.success) {
+                console.error('[ANONYMOUS CART] ❌ addToCart failed:', result.error);
+                throw new Error(result.error);
+            }
+            
+            console.log('[ANONYMOUS CART] ✅ addToCart successful, returning items:', result.items);
+            return result.items;
+        }
+        
+        // If user is not authenticated, ensure anonymous auth is initialized
+        if (!hasAnonymousSession) {
+            console.log('[ANONYMOUS CART] No anonymous session found, initializing auth first...');
             
             // Retry logic with exponential backoff
             let retryCount = 0;
@@ -150,13 +166,6 @@ export const addItemToCart = createAsyncThunk(
             if (!authResult || !authResult.success) {
                 throw new Error('Failed to initialize auth after all retries');
             }
-        }
-        
-        // Double-check session exists after auth initialization
-        const updatedState = getState();
-        if (!updatedState.anonymousCart.session) {
-            console.error('[ANONYMOUS CART] ❌ Session still not available after auth initialization');
-            throw new Error('Session not available after auth initialization');
         }
         
         console.log('[ANONYMOUS CART] 🚀 Proceeding with addToCart, session available');
@@ -202,13 +211,14 @@ export const clearCartItems = createAsyncThunk(
             // Try to clear cart in database if session exists
             const result = await clearCart();
             if (result.success) {
-                return result.items;
+                console.log('[ANONYMOUS CART] ✅ Cart cleared in database successfully');
+                return [];
             }
             // If no session, just return empty array (logout scenario)
-            console.log('[ANONYMOUS CART] No session for cart clear, returning empty array');
+            console.log('[ANONYMOUS CART] ⚠️ No session for cart clear, returning empty array');
             return [];
         } catch (error) {
-            console.log('[ANONYMOUS CART] Cart clear failed, returning empty array:', error);
+            console.log('[ANONYMOUS CART] ⚠️ Cart clear failed, returning empty array:', error);
             return [];
         }
     }
@@ -228,42 +238,34 @@ export const checkout = createAsyncThunk(
 // 🎯 ENHANCED MERGE FUNCTION - DATABASE-FIRST APPROACH
 export const mergeAnonymousCartWithServer = createAsyncThunk(
     'anonymousCart/mergeAnonymousCartWithServer',
-    async ({ anonymousUserId, authenticatedUserId }) => {
+    async ({ anonymousUserId, authenticatedUserId }, { getState, dispatch }) => {
+        console.log('🔄 [CART] mergeAnonymousCartWithServer started');
+        console.log('🔄 [CART] Anonymous user ID:', anonymousUserId);
+        console.log('🔄 [CART] Authenticated user ID:', authenticatedUserId);
+        
         try {
-            console.log('[ANONYMOUS CART] 🚀 Starting enhanced merge thunk...');
-            console.log('[ANONYMOUS CART] Anonymous user ID:', anonymousUserId);
-            console.log('[ANONYMOUS CART] Authenticated user ID:', authenticatedUserId);
+            // Log current state before merge
+            const currentAnonymousCart = getState().anonymousCart;
+            console.log('🔍 [CART] Anonymous cart state before merge:', currentAnonymousCart);
             
-            // 🎯 INPUT VALIDATION
-            if (!anonymousUserId || !authenticatedUserId) {
-                console.error('[ANONYMOUS CART] ❌ Invalid user IDs provided to merge thunk');
-                throw new Error('Invalid user IDs provided');
-            }
+            // Import the merge function
+            const { mergeAnonymousCartWithStoredId } = await import('../utils/anonymousAuth');
             
-            if (anonymousUserId === authenticatedUserId) {
-                console.warn('[ANONYMOUS CART] ⚠️  Cannot merge cart with same user ID');
-                throw new Error('Cannot merge cart with same user ID');
-            }
+            // Perform merge logic
+            console.log('🔄 [CART] Calling mergeAnonymousCartWithStoredId function...');
+            const result = await mergeAnonymousCartWithStoredId(anonymousUserId, authenticatedUserId);
+            console.log('✅ [CART] mergeAnonymousCartWithStoredId function completed:', result);
             
-            // 🎯 USE THE ENHANCED MERGE FUNCTION FROM anonymousAuth.js
-            const mergeResult = await mergeAnonymousCartWithStoredId(anonymousUserId, authenticatedUserId);
+            // Log state after merge
+            const stateAfterMerge = getState().anonymousCart;
+            console.log('🔍 [CART] Anonymous cart state after merge:', stateAfterMerge);
             
-            console.log('[ANONYMOUS CART] Merge result:', mergeResult);
-            
-            if (!mergeResult.success) {
-                console.error('[ANONYMOUS CART] ❌ Merge failed:', mergeResult.error);
-                throw new Error(mergeResult.error || 'Merge operation failed');
-            }
-            
-            console.log('[ANONYMOUS CART] ✅ Merge completed successfully');
-            console.log('[ANONYMOUS CART] Merged items count:', mergeResult.mergedItems?.length || 0);
-            
-            // Return the merged items for Redux state update
-            return mergeResult.mergedItems || [];
-            
+            return result.mergedItems || [];
         } catch (error) {
-            console.error('[ANONYMOUS CART] ❌ Merge thunk failed:', error);
-            throw error; // Re-throw to trigger rejected action
+            console.error('❌ [CART] mergeAnonymousCartWithServer failed:', error);
+            console.error('❌ [CART] Error details:', error.message);
+            console.error('❌ [CART] Error stack:', error.stack);
+            throw error;
         }
     }
 );
@@ -306,7 +308,8 @@ const initialState = {
     session: null,
     lastRateLimitError: null,
     sessionCache: null, // Cache for existing sessions
-    lastSessionCheck: null // Timestamp of last session check
+    lastSessionCheck: null, // Timestamp of last session check
+    isLoggingOut: false // 🎯 NEW: Flag to prevent cart operations during logout
 };
 
 // Slice
@@ -340,6 +343,44 @@ const anonymousCartSlice = createSlice({
             state.sessionCache = null;
             state.lastSessionCheck = null;
             console.log('[ANONYMOUS CART] Session cache cleared');
+        },
+        
+        // 🎯 NEW: Logout action to clear anonymous cart state
+        logout: (state) => {
+            console.log('[ANONYMOUS CART] Logout action called, clearing anonymous cart state');
+            console.log('[ANONYMOUS CART] 🔍 Cart items before clearing:', state.items.length);
+            
+            // 🎯 AGGRESSIVE CLEARING: Force clear all cart state
+            state.items = [];
+            state.history = [];
+            state.session = null;
+            state.isAnonymous = false;
+            state.loading = false;
+            state.error = null;
+            state.lastRateLimitError = null;
+            state.sessionCache = null;
+            state.lastSessionCheck = null;
+            state.isLoggingOut = true; // 🎯 NEW: Set logout flag
+            
+            console.log('[ANONYMOUS CART] ✅ Anonymous cart state cleared on logout');
+            console.log('[ANONYMOUS CART] 🔍 Cart items after clearing:', state.items.length);
+            console.log('[ANONYMOUS CART] 🔍 Full state after clearing:', state);
+        },
+        
+        // 🎯 NEW: Force clear action for immediate clearing
+        forceClear: (state) => {
+            console.log('[ANONYMOUS CART] Force clear action called');
+            state.items = [];
+            state.history = [];
+            state.session = null;
+            state.isAnonymous = false;
+            state.loading = false;
+            state.error = null;
+            state.lastRateLimitError = null;
+            state.sessionCache = null;
+            state.lastSessionCheck = null;
+            state.isLoggingOut = true; // 🎯 NEW: Set logout flag
+            console.log('[ANONYMOUS CART] ✅ Force clear completed');
         }
     },
     extraReducers: (builder) => {
@@ -350,16 +391,29 @@ const anonymousCartSlice = createSlice({
                 state.error = null;
             })
             .addCase(initializeAuth.fulfilled, (state, action) => {
+                console.log('[ANONYMOUS CART] 🔍 initializeAuth.fulfilled reducer called with payload:', action.payload);
+                console.log('[ANONYMOUS CART] 🔍 Payload structure:', {
+                    hasSession: !!action.payload.session,
+                    sessionType: typeof action.payload.session,
+                    isAnonymous: action.payload.isAnonymous,
+                    success: action.payload.success
+                });
+                
                 state.loading = false;
                 state.session = action.payload.session;
                 state.isAnonymous = action.payload.isAnonymous;
+                state.isLoggingOut = false; // 🎯 NEW: Reset logout flag on successful auth
                 
                 // Clear rate limit error if auth was successful
                 if (action.payload.success) {
                     state.lastRateLimitError = null;
                 }
                 
-                console.log('[ANONYMOUS CART] Auth initialized:', action.payload);
+                console.log('[ANONYMOUS CART] ✅ Auth initialized, new state:', {
+                    session: !!state.session,
+                    isAnonymous: state.isAnonymous,
+                    success: action.payload.success
+                });
             })
             .addCase(initializeAuth.rejected, (state, action) => {
                 state.loading = false;
@@ -446,6 +500,10 @@ const anonymousCartSlice = createSlice({
             .addCase(clearCartItems.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message;
+                // 🎯 FIXED: Force clear cart state even if database clear fails
+                // This ensures logout always creates clean anonymous state
+                state.items = [];
+                console.log('[ANONYMOUS CART] 🛡️ Cart state force-cleared after failed database clear');
             })
             
             // Checkout
@@ -498,7 +556,7 @@ const anonymousCartSlice = createSlice({
     }
 });
 
-export const { clearError, setSession, setCartItems, clearCartState, setSessionCache, clearSessionCache } = anonymousCartSlice.actions;
+export const { clearError, setSession, setCartItems, clearCartState, setSessionCache, clearSessionCache, logout, forceClear } = anonymousCartSlice.actions;
 
 // Selectors
 export const selectCartItems = (state) => state.anonymousCart.items;

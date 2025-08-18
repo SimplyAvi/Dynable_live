@@ -41,23 +41,47 @@ const CartPage = () => {
     const [activeTab, setActiveTab] = useState('cart');
 
     useEffect(() => {
-        // Always fetch cart from Supabase (works for both anonymous and authenticated users)
-        console.log('[CART_PAGE] Fetching cart from Supabase');
-        
-        // If not authenticated, initialize anonymous auth first
-        if (!isAuthenticated) {
-            console.log('[CART_PAGE] User not authenticated, initializing anonymous auth');
-            dispatch(initializeAuth()).then(() => {
+        const checkAndFetchCart = async () => {
+            // 🎯 FIXED: Don't fetch cart during logout/auth transitions
+            // Check if we're in a logout state (cart should be empty)
+            const currentCartState = window.store?.getState()?.anonymousCart;
+            const isLogoutState = currentCartState && currentCartState.items.length === 0 && !currentCartState.isAnonymous;
+            
+            if (isLogoutState) {
+                console.log('[CART_PAGE] 🛡️ Skipping cart fetch - logout state detected');
+                return;
+            }
+            
+            // 🎯 ENHANCED: Check if we just logged out (no session but cart exists)
+            const { data: { session } } = await supabase.auth.getSession();
+            const hasNoSession = !session;
+            const hasCartItems = cartItems && cartItems.length > 0;
+            
+            if (hasNoSession && hasCartItems) {
+                console.log('[CART_PAGE] 🛡️ Skipping cart fetch - post-logout state detected');
+                return;
+            }
+            
+            // Always fetch cart from Supabase (works for both anonymous and authenticated users)
+            console.log('[CART_PAGE] Fetching cart from Supabase');
+            
+            // If not authenticated, initialize anonymous auth first
+            if (!isAuthenticated) {
+                console.log('[CART_PAGE] User not authenticated, initializing anonymous auth');
+                dispatch(initializeAuth()).then(() => {
+                    dispatch(fetchCart());
+                });
+            } else {
                 dispatch(fetchCart());
-            });
-        } else {
-            dispatch(fetchCart());
-        }
+            }
+            
+            if (isAuthenticated) {
+                // Also fetch purchase history for authenticated users
+                dispatch(fetchOrders());
+            }
+        };
         
-        if (isAuthenticated) {
-            // Also fetch purchase history for authenticated users
-            dispatch(fetchOrders());
-        }
+        checkAndFetchCart();
     }, [dispatch, isAuthenticated]);
 
     useEffect(() => {
@@ -76,7 +100,6 @@ const CartPage = () => {
 
     const handleQuantityChange = async (itemId, newQuantity) => {
         if (newQuantity < 1) return;
-        
         try {
             await dispatch(updateQuantity({ itemId, quantity: newQuantity })).unwrap();
             console.log('[CART_PAGE] Quantity updated successfully');

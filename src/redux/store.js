@@ -31,4 +31,10 @@ const store = configureStore({
 console.log('[STORE] Redux store created successfully');
 console.log('[STORE] Initial state:', store.getState());
 
+// 🎯 DEBUG: Make store globally accessible for debugging
+if (typeof window !== 'undefined') {
+    window.store = store;
+    console.log('[STORE] ✅ Store made globally accessible as window.store');
+}
+
 export default store;

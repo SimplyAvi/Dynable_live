@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import SearchAndFilter from '../components/SearchAndFilter/SearchAndFilter'
 import ShowResults from '../components/ShowResults'
@@ -6,100 +6,180 @@ import { setProducts } from '../redux/productSlice'
 import { addRecipes } from '../redux/recipeSlice'
 import './Homepage.css'
 import { useNavigate } from 'react-router-dom';
-import { searchProductsFromSupabasePure, searchRecipesFromSupabasePure } from '../utils/supabaseQueries'
+import { 
+  searchProductsUnified, // 🎯 NEW: Unified filtering function
+  searchProductsSimpleForAnonymous, // 🎯 NEW: Simple filtering for anonymous users
+  searchRecipesFromSupabasePure,
+  resilientSupabaseQuery 
+} from '../utils/supabaseQueries'
 
 const Homepage = () => {
     const dispatch = useDispatch()
-    const allergies = useSelector((state) => state.allergies?.allergies || [])
+    // 🛡️ FIXED: Use the correct allergen state source - searchPreferences.selectedAllergens
+    // This ensures synchronization with AllergyFilter component
+    const selectedAllergens = useSelector((state) => state.searchPreferences?.selectedAllergens || [])
+    const allergies = useSelector((state) => state.allergies?.allergies || {})
+    const isAuthenticated = useSelector((state) => state.auth?.isAuthenticated || false)
+    const anonymousSession = useSelector((state) => state.anonymousCart?.session)
     const navigate = useNavigate();
 
+    // 🎯 NEW: Query cancellation and transition state management
+    const queryControllerRef = useRef(null);
+    const [isTransitioning, setIsTransitioning] = useState(false);
+    const previousAuthStateRef = useRef(isAuthenticated);
+
+    // 🎯 NEW: Detect auth transitions
     useEffect(() => {
-        const loadInitialData = async () => {
-            try {
-                // ENABLED FOR SUPABASE PURE TESTING
-                // Load initial products with count
-                const foodResponse = await searchProductsFromSupabasePure({
-                    name: '',
-                    page: 1,
-                    limit: 10,
-                    allergens: [],
-                    includeCount: true
-                });
-                
-                // Load initial recipes with count
-                const recipeResponse = await searchRecipesFromSupabasePure({
-                    search: '',
-                    excludeIngredients: [],
-                    page: 1,
-                    limit: 10,
-                    includeCount: true
-                });
-                
-                console.log('[SUPABASE PURE] Initial data loaded:', { 
-                    products: foodResponse.products ? foodResponse.products.length : foodResponse.length,
-                    recipes: recipeResponse.recipes ? recipeResponse.recipes.length : recipeResponse.length,
-                    productTotalCount: foodResponse.totalCount,
-                    recipeTotalCount: recipeResponse.totalCount
-                });
-                
-                dispatch(setProducts(foodResponse))
-                dispatch(addRecipes(recipeResponse))
-            } catch (error) {
-                console.error('Error loading initial data:', error);
+        const authStateChanged = previousAuthStateRef.current !== isAuthenticated;
+        if (authStateChanged) {
+            console.log('[HOMEPAGE] Auth state transition detected:', {
+                from: previousAuthStateRef.current,
+                to: isAuthenticated
+            });
+            
+            // Set transition flag to prevent competing queries
+            setIsTransitioning(true);
+            
+            // Cancel any ongoing queries
+            if (queryControllerRef.current) {
+                console.log('[HOMEPAGE] Cancelling ongoing queries during auth transition');
+                queryControllerRef.current.abort();
             }
-        };
+            
+            // Clear transition flag after a longer delay to ensure anonymous session is ready
+            setTimeout(() => {
+                setIsTransitioning(false);
+                console.log('[HOMEPAGE] Auth transition completed, queries can resume');
+            }, 5000); // 5 second delay to ensure anonymous session is fully established
+            
+            previousAuthStateRef.current = isAuthenticated;
+        }
+    }, [isAuthenticated]);
 
-        loadInitialData();
-    }, [dispatch]);
-
-    // 🚨 FIXED: Trigger search when allergies change (for allergen restoration)
+    // 🎯 UNIFIED: Single useEffect with unified filtering logic and query cancellation
     useEffect(() => {
-        const loadFilteredData = async () => {
+        console.log('[HOMEPAGE] 🔍 useEffect triggered with dependencies:', {
+            selectedAllergens: selectedAllergens.length,
+            isAuthenticated,
+            isTransitioning,
+            hasAnonymousSession: !!anonymousSession
+        });
+        
+        // 🎯 NEW: Skip queries during auth transitions
+        if (isTransitioning) {
+            console.log('[HOMEPAGE] Skipping query - auth transition in progress');
+            return;
+        }
+
+        // 🎯 NEW: Skip queries if anonymous user but no session is ready
+        console.log('[HOMEPAGE] 🔍 Query trigger check:', {
+            isAuthenticated,
+            hasAnonymousSession: !!anonymousSession,
+            anonymousSessionType: typeof anonymousSession,
+            isTransitioning,
+            selectedAllergens: selectedAllergens,
+            allergensCount: selectedAllergens.length
+        });
+        
+        if (!isAuthenticated && !anonymousSession) {
+            console.log('[HOMEPAGE] Skipping query - anonymous user but no session ready yet');
+            return;
+        }
+
+        // 🎯 NEW: Cancel any previous queries
+        if (queryControllerRef.current) {
+            console.log('[HOMEPAGE] Cancelling previous query');
+            queryControllerRef.current.abort();
+        }
+
+        // Create new abort controller for this query
+        queryControllerRef.current = new AbortController();
+
+        const loadData = async () => {
             try {
-                // Get selected allergens - keep camelCase format
-                const selectedAllergens = Object.keys(allergies).filter(key => allergies[key]);
+                console.log('[HOMEPAGE] 🚀 Loading data with unified filtering:', {
+                    selectedAllergens: selectedAllergens,
+                    allergensCount: selectedAllergens.length,
+                    isAuthenticated,
+                    hasAllergens: selectedAllergens.length > 0,
+                    isTransitioning,
+                    userType: isAuthenticated ? 'authenticated' : 'anonymous'
+                });
                 
-                if (selectedAllergens.length > 0) {
-                    console.log('[HOMEPAGE] Allergies changed, loading filtered data:', selectedAllergens);
-                    
-                    // Load filtered products
-                    const foodResponse = await searchProductsFromSupabasePure({
-                        name: '',
+                // 🎯 UNIFIED: Single filtering function for ALL users
+                const foodResponse = await resilientSupabaseQuery(
+                    () => searchProductsUnified({
                         page: 1,
-                        limit: 10,
+                        limit: 20,
+                        searchTerm: '',
                         allergens: selectedAllergens,
+                        userType: isAuthenticated ? 'authenticated' : 'anonymous',
                         includeCount: true
-                    });
-                    
-                    // Load recipes (never filtered by allergens)
-                    const recipeResponse = await searchRecipesFromSupabasePure({
+                    }),
+                    {
+                        operationName: 'unified_product_search',
+                        timeout: 30000, // 🎯 INCREASED: Longer timeout for post-logout queries
+                        maxRetries: 3, // 🎯 INCREASED: More retries for post-logout queries
+                        abortController: queryControllerRef.current // 🎯 NEW: Pass abort controller
+                    }
+                );
+                
+                // Load recipes (never filtered by allergens)
+                const recipeResponse = await resilientSupabaseQuery(
+                    () => searchRecipesFromSupabasePure({
                         search: '',
                         excludeIngredients: [],
                         page: 1,
                         limit: 10,
                         includeCount: true
-                    });
-                    
-                    console.log('[HOMEPAGE] Filtered data loaded:', { 
-                        products: foodResponse.products ? foodResponse.products.length : foodResponse.length,
-                        recipes: recipeResponse.recipes ? recipeResponse.recipes.length : recipeResponse.length,
-                        allergens: selectedAllergens
-                    });
-                    
-                    dispatch(setProducts(foodResponse))
-                    dispatch(addRecipes(recipeResponse))
-                }
+                    }),
+                    {
+                        operationName: 'recipes_load',
+                        timeout: 10000,
+                        maxRetries: 2,
+                        abortController: queryControllerRef.current // 🎯 NEW: Pass abort controller
+                    }
+                );
+                
+                console.log('[HOMEPAGE] ✅ Unified data loaded successfully:', { 
+                    userType: isAuthenticated ? 'authenticated' : 'anonymous',
+                    products: foodResponse.products ? foodResponse.products.length : foodResponse.length,
+                    recipes: recipeResponse.recipes ? recipeResponse.recipes.length : recipeResponse.length,
+                    allergens: selectedAllergens,
+                    hasAllergens: selectedAllergens.length > 0
+                });
+                
+                dispatch(setProducts(foodResponse))
+                dispatch(addRecipes(recipeResponse))
             } catch (error) {
-                console.error('Error loading filtered data:', error);
+                // 🎯 NEW: Don't log errors for cancelled queries
+                if (error.name === 'AbortError') {
+                    console.log('[HOMEPAGE] Query cancelled (auth transition)');
+                    return;
+                }
+                
+                // 🎯 NEW: Handle timeout errors gracefully
+                if (error.message && error.message.includes('timeout')) {
+                    console.warn('[HOMEPAGE] ⚠️ Query timeout - will retry on next auth transition completion');
+                    return;
+                }
+                
+                console.error('[HOMEPAGE] ❌ Error loading unified data:', error);
+                // Don't throw - let the app continue with current state
             }
         };
 
-        // Only trigger if we have allergies (not on initial load)
-        const hasAllergies = Object.values(allergies).some(value => value === true);
-        if (hasAllergies) {
-            loadFilteredData();
-        }
-    }, [allergies, dispatch]);
+        // 🎯 UNIFIED: Single data loading function prevents competing queries
+        loadData();
+
+        // 🎯 NEW: Cleanup function to cancel queries when component unmounts or dependencies change
+        return () => {
+            if (queryControllerRef.current) {
+                console.log('[HOMEPAGE] Cleaning up - cancelling ongoing queries');
+                queryControllerRef.current.abort();
+            }
+        };
+    }, [selectedAllergens, isAuthenticated, dispatch, isTransitioning, anonymousSession]); // 🎯 FIXED: Added anonymousSession dependency back to trigger queries when session is ready
 
     return (
         <div className="homepage">

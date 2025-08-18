@@ -126,11 +126,16 @@ const Searchbar = ({ curAllergen }) => {
         }, [dispatch, textbar, allergies]);
 
     // Auto-search when allergens change, using the Redux/global search value
+    // 🛡️ FIXED: Remove this useEffect to prevent filter reset
+    // Homepage component already handles allergen-based filtering
+    // This useEffect was causing conflicts by triggering searches with empty textbar
+    /*
     useEffect(() => {
         console.log('[SEARCHBAR] Allergies changed, triggering search:', allergies);
         getResponse(textbar);
         // eslint-disable-next-line
     }, [allergies]);
+    */
     
     // Auto-search when search term changes (from preferences)
     useEffect(() => {

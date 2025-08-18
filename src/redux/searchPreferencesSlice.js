@@ -7,10 +7,11 @@
  */
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { supabase } from '../utils/supabaseClient';
+import { mapArrayToDatabaseFormat, mapArrayToFrontendFormat } from '../utils/allergenMappings';
 import { 
     saveSearchPreferences, 
     getSearchPreferences, 
-    mergeSearchPreferences, 
     clearSearchPreferences,
     saveSearchPreferencesBeforeAuth,
     loadSearchPreferencesAfterAuth
@@ -52,13 +53,35 @@ export const loadSearchPreferencesAsync = createAsyncThunk(
  * Merge search preferences (for login flow)
  */
 export const mergeSearchPreferencesAsync = createAsyncThunk(
-    'searchPreferences/merge',
-    async ({ anonymousUserId, authenticatedUserId }, { rejectWithValue }) => {
+    'searchPreferences/mergeSearchPreferencesAsync',
+    async ({ anonymousUserId, authenticatedUserId }, { getState, dispatch }) => {
+        console.log('🔄 [MERGE] mergeSearchPreferencesAsync started');
+        console.log('🔄 [MERGE] Anonymous user ID:', anonymousUserId);
+        console.log('🔄 [MERGE] Authenticated user ID:', authenticatedUserId);
+        
         try {
+            // Log current state before merge
+            const currentState = getState().searchPreferences;
+            console.log('🔍 [MERGE] Current allergen state before merge:', currentState);
+            
+            // Import the merge function
+            const { mergeSearchPreferences } = await import('../utils/searchPreferences');
+            
+            // Perform merge logic
+            console.log('🔄 [MERGE] Calling mergeSearchPreferences function...');
             const result = await mergeSearchPreferences(anonymousUserId, authenticatedUserId);
+            console.log('✅ [MERGE] mergeSearchPreferences function completed:', result);
+            
+            // Log state after merge
+            const stateAfterMerge = getState().searchPreferences;
+            console.log('🔍 [MERGE] Allergen state after merge:', stateAfterMerge);
+            
             return result;
         } catch (error) {
-            return rejectWithValue(error.message);
+            console.error('❌ [MERGE] mergeSearchPreferencesAsync failed:', error);
+            console.error('❌ [MERGE] Error details:', error.message);
+            console.error('❌ [MERGE] Error stack:', error.stack);
+            throw error;
         }
     }
 );
@@ -108,24 +131,8 @@ export const loadSearchPreferencesAfterAuthAsync = createAsyncThunk(
     }
 );
 
-// 🛡️ FIXED: Proper allergen name mapping for consistency
-const allergenNameMap = {
-    'milk': 'milk',
-    'eggs': 'eggs', 
-    'fish': 'fish',
-    'shellfish': 'shellfish',
-    'treenuts': 'treenuts', // 🚨 FIXED: Match actual state structure
-    'peanuts': 'peanuts',
-    'wheat': 'wheat',
-    'soy': 'soy',
-    'sesame': 'sesame',
-    'gluten': 'gluten',
-    'treenut': 'treenuts', // Alternative spelling
-    'tree nuts': 'treenuts', // Space-separated
-    'tree-nuts': 'treenuts', // Hyphenated
-    'tree_nuts': 'treenuts', // Underscore
-    'treeNuts': 'treenuts' // 🚨 FIXED: Map treeNuts to treenuts
-};
+// 🎯 REMOVED: Redundant allergenNameMap (now using single source of truth)
+// const allergenNameMap = { ... } - REMOVED
 
 // Initial state
 const initialState = {
@@ -149,19 +156,18 @@ const searchPreferencesSlice = createSlice({
         },
         
         setSelectedAllergens: (state, action) => {
-            // 🛡️ FIXED: Proper allergen name mapping when setting allergens
-            const mappedAllergens = action.payload.map(allergen => {
-                const normalizedAllergen = allergen.toLowerCase().replace(/[\s\-_]+/g, '');
-                return allergenNameMap[normalizedAllergen] || normalizedAllergen;
-            });
+            console.log(`[SEARCH PREFERENCES] 📥 setSelectedAllergens called with payload:`, action.payload);
+            // 🎯 UPDATED: Use single source of truth for allergen mapping
+            const mappedAllergens = mapArrayToDatabaseFormat(action.payload);
+            console.log(`[SEARCH PREFERENCES] 🔄 Mapped allergens:`, mappedAllergens);
             state.selectedAllergens = mappedAllergens;
             state.error = null;
+            console.log(`[SEARCH PREFERENCES] ✅ Updated state.selectedAllergens:`, state.selectedAllergens);
         },
         
         toggleAllergen: (state, action) => {
             const allergen = action.payload;
-            const normalizedAllergen = allergen.toLowerCase().replace(/[\s\-_]+/g, '');
-            const mappedAllergen = allergenNameMap[normalizedAllergen] || normalizedAllergen;
+            const mappedAllergen = mapArrayToDatabaseFormat([allergen])[0];
             
             const index = state.selectedAllergens.indexOf(mappedAllergen);
             
@@ -217,29 +223,19 @@ const searchPreferencesSlice = createSlice({
             })
             .addCase(loadSearchPreferencesAsync.fulfilled, (state, action) => {
                 state.isLoading = false;
-                if (action.payload && Object.keys(action.payload).length > 0) {
-                    state.searchTerm = action.payload.search_term || '';
-                    
-                    // 🛡️ FIXED: Proper allergen mapping when loading from database
-                    const rawAllergens = action.payload.selected_allergens || [];
-                    const mappedAllergens = rawAllergens.map(allergen => {
-                        const normalizedAllergen = allergen.toLowerCase().replace(/[\s\-_]+/g, '');
-                        return allergenNameMap[normalizedAllergen] || normalizedAllergen;
-                    });
-                    
-                    state.selectedAllergens = mappedAllergens;
-                    state.hasPreferences = true;
-                    console.log('[SEARCH PREFERENCES] ✅ Loaded to Redux:', {
-                        searchTerm: state.searchTerm,
-                        selectedAllergens: state.selectedAllergens,
-                        originalAllergens: rawAllergens
-                    });
-                } else {
-                    state.searchTerm = '';
-                    state.selectedAllergens = [];
-                    state.hasPreferences = false;
-                    console.log('[SEARCH PREFERENCES] ℹ️  No preferences found');
-                }
+                state.error = null;
+                
+                // 🎯 UPDATED: Use single source of truth for allergen mapping when loading from database
+                const rawAllergens = action.payload.selectedallergens || [];
+                const mappedAllergens = mapArrayToDatabaseFormat(rawAllergens);
+                state.selectedAllergens = mappedAllergens;
+                
+                state.searchTerm = action.payload.search_term || '';
+                state.hasPreferences = true;
+                console.log('[SEARCH PREFERENCES] ✅ Loaded from database:', {
+                    selectedAllergens: state.selectedAllergens,
+                    searchTerm: state.searchTerm
+                });
             })
             .addCase(loadSearchPreferencesAsync.rejected, (state, action) => {
                 state.isLoading = false;
@@ -255,24 +251,19 @@ const searchPreferencesSlice = createSlice({
             })
             .addCase(mergeSearchPreferencesAsync.fulfilled, (state, action) => {
                 state.isLoading = false;
-                if (action.payload && Object.keys(action.payload).length > 0) {
-                    state.searchTerm = action.payload.search_term || '';
-                    
-                    // 🛡️ FIXED: Proper allergen mapping when merging
-                    const rawAllergens = action.payload.selected_allergens || [];
-                    const mappedAllergens = rawAllergens.map(allergen => {
-                        const normalizedAllergen = allergen.toLowerCase().replace(/[\s\-_]+/g, '');
-                        return allergenNameMap[normalizedAllergen] || normalizedAllergen;
-                    });
-                    
-                    state.selectedAllergens = mappedAllergens;
-                    state.hasPreferences = true;
-                    console.log('[SEARCH PREFERENCES] ✅ Merged to Redux:', {
-                        searchTerm: state.searchTerm,
-                        selectedAllergens: state.selectedAllergens,
-                        originalAllergens: rawAllergens
-                    });
-                }
+                state.error = null;
+                
+                // 🎯 UPDATED: Use single source of truth for allergen mapping when merging
+                const rawAllergens = action.payload.selectedallergens || [];
+                const mappedAllergens = mapArrayToDatabaseFormat(rawAllergens);
+                state.selectedAllergens = mappedAllergens;
+                
+                state.searchTerm = action.payload.search_term || '';
+                state.hasPreferences = true;
+                console.log('[SEARCH PREFERENCES] ✅ Merged preferences:', {
+                    selectedAllergens: state.selectedAllergens,
+                    searchTerm: state.searchTerm
+                });
             })
             .addCase(mergeSearchPreferencesAsync.rejected, (state, action) => {
                 state.isLoading = false;
@@ -327,26 +318,19 @@ const searchPreferencesSlice = createSlice({
             })
             .addCase(loadSearchPreferencesAfterAuthAsync.fulfilled, (state, action) => {
                 state.isLoading = false;
-                if (action.payload.success) {
-                    state.searchTerm = action.payload.searchTerm || '';
-                    
-                    // 🛡️ FIXED: Proper allergen mapping when loading after auth
-                    const rawAllergens = action.payload.allergens || [];
-                    const mappedAllergens = rawAllergens.map(allergen => {
-                        const normalizedAllergen = allergen.toLowerCase().replace(/[\s\-_]+/g, '');
-                        return allergenNameMap[normalizedAllergen] || normalizedAllergen;
-                    });
-                    
-                    state.selectedAllergens = mappedAllergens;
-                    state.hasPreferences = action.payload.searchTerm || mappedAllergens.length > 0;
-                    console.log('[SEARCH PREFERENCES] ✅ Loaded after auth:', {
-                        searchTerm: state.searchTerm,
-                        selectedAllergens: state.selectedAllergens,
-                        originalAllergens: rawAllergens
-                    });
-                } else {
-                    console.warn('[SEARCH PREFERENCES] ⚠️  Load after auth failed:', action.payload.error);
-                }
+                state.error = null;
+                
+                // 🎯 UPDATED: Use single source of truth for allergen mapping when loading after auth
+                const rawAllergens = action.payload.selectedallergens || [];
+                const mappedAllergens = mapArrayToDatabaseFormat(rawAllergens);
+                state.selectedAllergens = mappedAllergens;
+                
+                state.searchTerm = action.payload.search_term || '';
+                state.hasPreferences = true;
+                console.log('[SEARCH PREFERENCES] ✅ Loaded after auth:', {
+                    selectedAllergens: state.selectedAllergens,
+                    searchTerm: state.searchTerm
+                });
             })
             .addCase(loadSearchPreferencesAfterAuthAsync.rejected, (state, action) => {
                 state.isLoading = false;
