@@ -491,7 +491,7 @@ async function saveLocalCart(items) {
 
 // Note: clearLocalCart function removed as it's not used in the current implementation
 
-// Helper to merge two carts (by item id, summing quantities)
+// Helper to merge two carts (by item id, replacing quantities with local items as source of truth)
 export function mergeCarts(localItems, serverItems) {
     const map = new Map();
     serverItems.forEach(item => map.set(item.id, { ...item }));
@@ -501,7 +501,7 @@ export function mergeCarts(localItems, serverItems) {
             const existingItem = map.get(item.id);
             map.set(item.id, {
                 ...existingItem,
-                quantity: existingItem.quantity + item.quantity
+                quantity: item.quantity // Use local item quantity as source of truth
             });
         } else {
             map.set(item.id, { ...item });

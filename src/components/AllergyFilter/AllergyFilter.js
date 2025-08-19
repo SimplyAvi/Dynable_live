@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleAllergy, clearAllergies, setAllergies } from '../../redux/allergiesSlice';
+import { toggleAllergy, clearAllergies, setAllergies, fetchAllergensPure } from '../../redux/allergiesSlice';
 import { setSelectedAllergens, loadSearchPreferencesAsync, mergeSearchPreferencesAsync, saveSearchPreferencesAsync } from '../../redux/searchPreferencesSlice';
 import { saveAllergensToCookies } from '../../utils/cookieUtils';
 import { mapToDatabaseFormat } from '../../utils/allergenMappings'; // 🎯 ADDED: Single source of truth
@@ -86,6 +86,13 @@ const AllergyFilter = () => {
                     console.log('[AllergyFilter] Loading authenticated user preferences...');
                     await dispatch(loadSearchPreferencesAsync({ userId: currentUser.id })).unwrap();
                     console.log('[AllergyFilter] ✅ Authenticated user preferences loaded');
+                    
+                    // 🛡️ FIXED: Ensure all available allergens are loaded when user logs in
+                    // This prevents the issue where only toggled allergens are shown
+                    if (!Object.keys(allergies).length || Object.keys(allergies).length < 10) {
+                        console.log('[AllergyFilter] Re-fetching all available allergens for authenticated user...');
+                        await dispatch(fetchAllergensPure());
+                    }
                 } catch (error) {
                     console.warn('[AllergyFilter] ⚠️ Failed to load authenticated preferences:', error);
                 }
@@ -104,11 +111,7 @@ const AllergyFilter = () => {
             if (isAuthenticated && currentUser?.id) {
                 console.log('[AllergyFilter] Authenticated user found, loading preferences...');
                 try {
-                    // This part of the logic needs to be updated to use the new mapToDatabaseFormat
-                    // For now, we'll keep it as is, but it will likely cause an error
-                    // because mapToDatabaseFormat is no longer imported.
-                    // This is a consequence of the user's request to remove the redundant map.
-                    // await dispatch(loadSearchPreferencesAsync({ userId: currentUser.id })).unwrap();
+                    await dispatch(loadSearchPreferencesAsync({ userId: currentUser.id })).unwrap();
                     console.log('[AllergyFilter] ✅ Loaded authenticated user preferences');
                     return;
                 } catch (error) {

@@ -20,7 +20,7 @@ import './SearchAndFilter.css'
 import Searchbar from '../Searchbar/Searchbar'
 import AllergyFilter from '../AllergyFilter/AllergyFilter'
 import { useNavigate } from 'react-router-dom'
-import Homepage from '../../pages/Homepage'
+import Homepage from '../../pages/Homepage/Homepage'
 
 const SearchAndFilter = () => {
 

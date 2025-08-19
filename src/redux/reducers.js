@@ -2,7 +2,7 @@ import { combineReducers } from '@reduxjs/toolkit';
 import productReducer from './productSlice';
 import recipeReducer from './recipeSlice'
 import searchbarSlice from './searchbarSlice'
-import foodCategoryReducer from './foodCatagorySlice';
+import foodCategoryReducer from './foodCategorySlice';
 import allergiesReducer from './allergiesSlice'
 import authReducer from './authSlice';
 // Removed cartReducer since we're using anonymousCartSlice now

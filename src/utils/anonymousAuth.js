@@ -580,16 +580,16 @@ function mergeCarts(anonymousItems, authenticatedItems) {
         const existingIndex = mergedItems.findIndex(item => item.id === anonymousItem.id);
         
         if (existingIndex !== -1) {
-            // Item exists - combine quantities
+            // Item exists - replace with anonymous user's quantity (source of truth)
             const oldQuantity = mergedItems[existingIndex].quantity;
-            const addedQuantity = anonymousItem.quantity || 1;
-            mergedItems[existingIndex].quantity += addedQuantity;
+            const newQuantity = anonymousItem.quantity || 1;
+            mergedItems[existingIndex].quantity = newQuantity;
             quantitiesCombined++;
             
-            console.log(`[MERGE LOGIC] ✅ Combined quantities for item ${anonymousItem.id}:`, {
+            console.log(`[MERGE LOGIC] ✅ Replaced quantity for item ${anonymousItem.id}:`, {
                 oldQuantity,
-                addedQuantity,
-                newQuantity: mergedItems[existingIndex].quantity
+                newQuantity,
+                reason: 'Anonymous user quantity taken as source of truth'
             });
         } else {
             // New item - add to cart

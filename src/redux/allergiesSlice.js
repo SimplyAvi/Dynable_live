@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { fetchAllergensFromDatabase, fetchAllergensFromDatabasePure } from '../allergensList'
+import { fetchAllergensFromDatabase, fetchAllergensFromDatabasePure } from '../utils/allergensList'
 
 const initialState = {
     allergies: {},

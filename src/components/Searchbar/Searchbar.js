@@ -26,7 +26,7 @@ import './Searchbar.css'
 import { searchProductsFromSupabasePure, searchRecipesFromSupabasePure } from '../../utils/supabaseQueries'
 import { supabase } from '../../utils/supabaseClient'
 import { getAnonymousUserId } from '../../utils/supabaseClient'
-import FormInput from '../FormInput'
+import FormInput from '../FormInput/FormInput'
 
 const Searchbar = ({ curAllergen }) => {
     const textbar = useSelector((state) => state.searchbar?.searchbar || '');

@@ -2,13 +2,13 @@ import { configureStore } from '@reduxjs/toolkit'
 import productReducer from './productSlice';
 import recipeReducer from './recipeSlice';
 import searchbarSlice from './searchbarSlice';
-import foodCategoryReducer from './foodCatagorySlice';
+import foodCategoryReducer from './foodCategorySlice';
 import allergiesReducer from './allergiesSlice';
 import authReducer from './authSlice';
 import anonymousCartReducer from './anonymousCartSlice';
 import searchPreferencesReducer from './searchPreferencesSlice';
 
-console.log('[STORE] Creating Redux store...');
+
 
 // Remove redux-persist since we're using Supabase for persistence
 const store = configureStore({
@@ -28,13 +28,12 @@ const store = configureStore({
     }),
 });
 
-console.log('[STORE] Redux store created successfully');
-console.log('[STORE] Initial state:', store.getState());
+
 
 // 🎯 DEBUG: Make store globally accessible for debugging
 if (typeof window !== 'undefined') {
     window.store = store;
-    console.log('[STORE] ✅ Store made globally accessible as window.store');
+    
 }
 
 export default store;

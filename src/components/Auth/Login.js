@@ -15,7 +15,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCredentials } from '../../redux/authSlice';
-import FormInput from '../FormInput';
+import FormInput from '../FormInput/FormInput';
 import './Auth.css';
 import { supabase } from '../../utils/supabaseClient';
 import { isAnonymousUser } from '../../utils/anonymousAuth';

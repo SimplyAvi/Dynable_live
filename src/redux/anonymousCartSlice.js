@@ -25,7 +25,7 @@ import {
 } from '../utils/anonymousAuth';
 import { getAuthState, createAnonymousSession, AuthState } from '../utils/authService';
 
-console.log('[ANONYMOUS CART] anonymousCartSlice.js loaded');
+
 
 // Async thunks
 export const initializeAuth = createAsyncThunk(

@@ -13,7 +13,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setCredentials } from '../../redux/authSlice';
-import FormInput from '../FormInput';
+import FormInput from '../FormInput/FormInput';
 import './Auth.css';
 import { supabase } from '../../utils/supabaseClient';
 

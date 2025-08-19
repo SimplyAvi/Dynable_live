@@ -9,13 +9,7 @@ import { mapArrayToDatabaseFormat } from './allergenMappings'; // 🎯 ADDED: Si
 
 
 
-// Placeholder for pre-computed system functions
-export const runPrecomputedSystem = {
-  batchProcess: () => console.log('⚠️ SQL migration needed for batch processing'),
-  verify: () => console.log('⚠️ SQL migration needed for verification'),
-  stats: () => console.log('⚠️ SQL migration needed for stats'),
-  testProduct: () => console.log('⚠️ SQL migration needed for testing')
-};
+
 
 /**
  * 🚀 ENTERPRISE-ENHANCED: Fetch allergens with enterprise system
@@ -23,7 +17,7 @@ export const runPrecomputedSystem = {
  * Performance: Lightning-fast with server-side mapping
  */
 export const fetchAllergensFromSupabasePure = async () => {
-  console.log('[SIMPLE] Fetching allergens from database...');
+
   
   try {
     // Simple allergen fetching from database
@@ -49,8 +43,7 @@ export const fetchAllergensFromSupabasePure = async () => {
       allergenList[allergenKey] = false;
     });
     
-    console.log(`[SIMPLE] Successfully loaded ${Object.keys(allergenList).length} allergens from database`);
-    console.log('[SIMPLE] Allergens:', Object.keys(allergenList));
+
     
     return allergenList;
     
@@ -67,7 +60,7 @@ export const fetchAllergensFromSupabasePure = async () => {
  */
 export const fetchAllergensFromSupabase = async () => {
   try {
-    console.log('[SIMPLE] Fetching allergens from database...');
+
     
     // Use the simple function
     return await fetchAllergensFromSupabasePure();
@@ -78,91 +71,7 @@ export const fetchAllergensFromSupabase = async () => {
   }
 };
 
-// 🛡️ DATABASE PERFORMANCE DIAGNOSIS FUNCTIONS
-export const testBasicDatabaseConnection = async () => {
-  console.log('[DB TEST] Testing basic database connection...');
-  
-  try {
-    // Test 1: Count total rows (should be fast)
-    const { count, error: countError } = await supabase
-      .from('IngredientCategorized')
-      .select('*', { count: 'exact', head: true });
-    
-    if (countError) {
-      console.error('[DB TEST] Count query failed:', countError);
-      return { success: false, error: countError };
-    }
-    
-    console.log(`[DB TEST] Total rows: ${count}`);
-    
-    // Test 2: Get 1 row (should be instant)
-    const { data, error } = await supabase
-      .from('IngredientCategorized')
-      .select('id, description, brandName')
-      .limit(1);
-    
-    if (error) {
-      console.error('[DB TEST] Single row query failed:', error);
-      return { success: false, error };
-    }
-    
-    console.log('[DB TEST] Sample row:', data[0]);
-    
-    // Test 3: Simple filter (should be fast with indexes)
-    const { data: filteredData, error: filterError } = await supabase
-      .from('IngredientCategorized')
-      .select('id, description')
-      .eq('brandName', 'generic')
-      .limit(1);
-    
-    if (filterError) {
-      console.error('[DB TEST] Filter query failed:', filterError);
-      return { success: false, error: filterError };
-    }
-    
-    console.log('[DB TEST] ✅ All basic tests passed');
-    return { success: true, totalRows: count };
-    
-  } catch (error) {
-    console.error('[DB TEST] ❌ Database connection test failed:', error);
-    return { success: false, error };
-  }
-};
 
-export const testIndexPerformance = async () => {
-  console.log('[INDEX TEST] Testing index performance...');
-  
-  try {
-    // Test indexed query (should be fast)
-    const startTime = Date.now();
-    
-    const { data, error } = await supabase
-      .from('IngredientCategorized')
-      .select('id, description, brandName')
-      .neq('brandName', 'generic')
-      .limit(10);
-    
-    const duration = Date.now() - startTime;
-    console.log(`[INDEX TEST] Query completed in ${duration}ms`);
-    
-    if (error) {
-      console.error('[INDEX TEST] Query failed:', error);
-      return { success: false, error };
-    }
-    
-    if (duration > 1000) {
-      console.warn(`[INDEX TEST] ⚠️ Slow query: ${duration}ms (should be <500ms)`);
-      return { success: false, issue: 'slow_query', duration };
-    }
-    
-    console.log('[INDEX TEST] ✅ Index performance acceptable');
-    return { success: true, duration, rowCount: data.length };
-    
-  } catch (error) {
-    console.error('[INDEX TEST] ❌ Index test failed:', error);
-    return { success: false, error };
-  }
-};
 
 /**
  * 🚀 ENTERPRISE-ENHANCED: Search products with enterprise allergen filtering
@@ -178,11 +87,7 @@ export const searchProductsFromSupabasePure = async (searchParams) => {
     includeCount = false
   } = searchParams || {};
 
-  console.log('[SIMPLE] Searching products with allergen filtering:', { 
-    searchTerm, 
-    allergens, 
-    limit 
-  });
+
 
   try {
     // Build the base query
@@ -882,356 +787,20 @@ export const getProductsByIngredientFromSupabase = async (ingredientName, allerg
  * Test allergen query performance after database optimization
  * Use this to verify that indexes are working correctly
  */
-export const testAllergenQueryPerformance = async () => {
-  console.log('[PERFORMANCE TEST] Starting allergen query performance test...');
-  const startTime = Date.now();
-  
-  try {
-    // Test 1: Single allergen filtering
-    console.log('[PERFORMANCE TEST] Testing single allergen (milk) filtering...');
-    const { data: singleData, error: singleError } = await supabase
-      .from('IngredientCategorized')
-      .select('id, description, brandName')
-      .not('description', 'ilike', '%milk%')
-      .neq('brandName', 'generic')
-      .limit(100);
-    
-    if (singleError) {
-      console.error('[PERFORMANCE TEST] Single allergen query failed:', singleError);
-      return { success: false, error: singleError };
-    }
-    
-    console.log('[PERFORMANCE TEST] Single allergen query successful, found:', singleData?.length || 0, 'products');
-    
-    // Test 2: Multiple allergen filtering
-    console.log('[PERFORMANCE TEST] Testing multiple allergen filtering...');
-    const { data: multiData, error: multiError } = await supabase
-      .from('IngredientCategorized')
-      .select('id, description, brandName')
-      .not('description', 'ilike', '%milk%')
-      .not('description', 'ilike', '%peanuts%')
-      .not('description', 'ilike', '%gluten%')
-      .neq('brandName', 'generic')
-      .limit(100);
-    
-    if (multiError) {
-      console.error('[PERFORMANCE TEST] Multiple allergen query failed:', multiError);
-      return { success: false, error: multiError };
-    }
-    
-    console.log('[PERFORMANCE TEST] Multiple allergen query successful, found:', multiData?.length || 0, 'products');
-    
-    const duration = Date.now() - startTime;
-    console.log(`[PERFORMANCE TEST] ✅ All tests completed in ${duration}ms`);
-    
-    // Alert if query takes >2 seconds
-    if (duration > 2000) {
-      console.warn(`[PERFORMANCE WARNING] Allergen queries took ${duration}ms (target: <2000ms)`);
-    } else {
-      console.log(`[PERFORMANCE SUCCESS] Allergen queries completed in ${duration}ms (under 2 second target)`);
-    }
-    
-    return { 
-      success: true, 
-      duration,
-      singleAllergenCount: singleData?.length || 0,
-      multipleAllergenCount: multiData?.length || 0
-    };
-    
-  } catch (error) {
-    const duration = Date.now() - startTime;
-    console.error(`[PERFORMANCE TEST] ❌ Test failed after ${duration}ms:`, error);
-    return { success: false, error, duration };
-  }
-};
 
 // 🔍 DATABASE ANALYSIS & SCALING STRATEGY
-export const analyzeDatabaseComposition = async () => {
-  console.log('[DB ANALYSIS] Starting comprehensive database analysis...');
-  
-  try {
-    // 1. Total products breakdown
-    const { count: totalProducts } = await supabase
-      .from('IngredientCategorized')
-      .select('*', { count: 'exact', head: true });
-    
-    console.log(`[DB ANALYSIS] Total products: ${totalProducts}`);
-    
-    // 2. Generic vs Real brands
-    const { count: genericCount } = await supabase
-      .from('IngredientCategorized')
-      .select('*', { count: 'exact', head: true })
-      .eq('brandName', 'generic');
-    
-    const realBrandCount = totalProducts - genericCount;
-    console.log(`[DB ANALYSIS] Generic products: ${genericCount} (${((genericCount/totalProducts)*100).toFixed(1)}%)`);
-    console.log(`[DB ANALYSIS] Real brand products: ${realBrandCount} (${((realBrandCount/totalProducts)*100).toFixed(1)}%)`);
-    
-    // 3. Top brands analysis
-    const { data: topBrands } = await supabase
-      .from('IngredientCategorized')
-      .select('brandName')
-      .neq('brandName', 'generic')
-      .limit(1000);
-    
-    // Count brand frequency
-    const brandCounts = {};
-    topBrands?.forEach(item => {
-      const brand = item.brandName;
-      brandCounts[brand] = (brandCounts[brand] || 0) + 1;
-    });
-    
-    // Sort by product count
-    const sortedBrands = Object.entries(brandCounts)
-      .sort(([,a], [,b]) => b - a)
-      .slice(0, 50); // Top 50 brands
-    
-    console.log('[DB ANALYSIS] Top 20 brands by product count:');
-    sortedBrands.slice(0, 20).forEach(([brand, count], index) => {
-      console.log(`${index + 1}. ${brand}: ${count} products`);
-    });
-    
-    // 4. Performance test without generic
-    const startTime = Date.now();
-    const { data: nonGenericSample } = await supabase
-      .from('IngredientCategorized')
-      .select('id, description, brandName')
-      .neq('brandName', 'generic')
-      .limit(100);
-    
-    const queryTime = Date.now() - startTime;
-    console.log(`[DB ANALYSIS] Non-generic query performance: ${queryTime}ms for 100 products`);
-    
-    return {
-      totalProducts,
-      genericCount,
-      realBrandCount,
-      topBrands: sortedBrands,
-      queryPerformance: queryTime,
-      recommendedBrands: sortedBrands.slice(0, 30).map(([brand]) => brand)
-    };
-    
-  } catch (error) {
-    console.error('[DB ANALYSIS] Analysis failed:', error);
-    return { error: error.message };
-  }
-};
 
 // 🧪 TEST THE SCALABLE APPROACH
-export const testScalableApproach = async () => {
-  console.log('🧪 TESTING ALL-BRANDS APPROACH');
-  console.log('================================');
-  
-  // Run analysis first
-  const analysis = await analyzeDatabaseComposition();
-  console.log('Analysis results:', analysis);
-  
-  // Test different scenarios
-  const tests = [
-    { name: 'Empty search', searchParams: {} },
-    { name: 'Simple search', searchParams: { name: 'protein' } },
-    { name: 'Search + allergen', searchParams: { name: 'bread', allergens: ['gluten'] } },
-    { name: 'Complex filtering', searchParams: { name: 'snack', allergens: ['milk', 'nuts'] } }
-  ];
-  
-  for (const test of tests) {
-    console.log(`\n🔍 Testing: ${test.name}`);
-    const startTime = Date.now();
-    const result = await searchProductsFromSupabasePure(test.searchParams);
-    const duration = Date.now() - startTime;
-    
-    console.log(`⏱️ Duration: ${duration}ms`);
-    console.log(`📊 Results: ${result.products?.length || 0} products`);
-    console.log(`🏷️ Strategy: ${result.strategy}`);
-    console.log(`📝 Message: ${result.message}`);
-  }
-};
 
 // 🧪 TEST 1: How many non-generic products exist?
-export const testNonGenericProducts = async () => {
-  console.log('🔍 TESTING NON-GENERIC PRODUCTS');
-  console.log('================================');
-  
-  try {
-    // Count total products
-    const { count: totalCount } = await supabase
-      .from('IngredientCategorized')
-      .select('*', { count: 'exact', head: true });
-    
-    // Count generic products  
-    const { count: genericCount } = await supabase
-      .from('IngredientCategorized')
-      .select('*', { count: 'exact', head: true })
-      .eq('brandName', 'generic');
-    
-    // Count non-generic products
-    const { count: nonGenericCount } = await supabase
-      .from('IngredientCategorized')
-      .select('*', { count: 'exact', head: true })
-      .neq('brandName', 'generic');
-    
-    console.log(`📊 Database composition:`);
-    console.log(`   Total products: ${totalCount}`);
-    console.log(`   Generic products: ${genericCount} (${((genericCount/totalCount)*100).toFixed(1)}%)`);
-    console.log(`   Real brand products: ${nonGenericCount} (${((nonGenericCount/totalCount)*100).toFixed(1)}%)`);
-    
-    return { totalCount, genericCount, nonGenericCount };
-    
-  } catch (error) {
-    console.error('❌ Test failed:', error);
-    return { error: error.message };
-  }
-};
 
 // 🧪 TEST 2: Simple search without any filtering
-export const testBasicSearch = async (searchTerm = 'bread') => {
-  console.log(`🔍 TESTING BASIC SEARCH: "${searchTerm}"`);
-  console.log('=====================================');
-  
-  try {
-    // Test 1: Search ALL products (including generic)
-    const { data: allResults, count: allCount } = await supabase
-      .from('IngredientCategorized')
-      .select('*', { count: 'exact' })
-      .ilike('description', `%${searchTerm}%`)
-      .limit(5);
-    
-    console.log(`📊 "${searchTerm}" in ALL products: ${allCount} total`);
-    console.log('   Sample results:', allResults?.slice(0, 3).map(p => p.description));
-    
-    // Test 2: Search only non-generic products  
-    const { data: nonGenericResults, count: nonGenericCount } = await supabase
-      .from('IngredientCategorized')
-      .select('*', { count: 'exact' })
-      .neq('brandName', 'generic')
-      .ilike('description', `%${searchTerm}%`)
-      .limit(5);
-    
-    console.log(`📊 "${searchTerm}" in NON-GENERIC: ${nonGenericCount} total`);
-    console.log('   Sample results:', nonGenericResults?.slice(0, 3).map(p => p.description));
-    
-    return { 
-      allCount, 
-      nonGenericCount, 
-      hasResults: nonGenericCount > 0,
-      sampleProducts: nonGenericResults?.slice(0, 3)
-    };
-    
-  } catch (error) {
-    console.error('❌ Basic search failed:', error);
-    return { error: error.message };
-  }
-};
 
 // 🧪 TEST 3: Check for gluten-free products specifically
-export const testGlutenFreeProducts = async () => {
-  console.log('🔍 TESTING GLUTEN-FREE PRODUCTS');
-  console.log('================================');
-  
-  try {
-    // Look for explicitly gluten-free products
-    const { data: glutenFreeResults, count } = await supabase
-      .from('IngredientCategorized')
-      .select('*', { count: 'exact' })
-      .neq('brandName', 'generic')
-      .or('description.ilike.%gluten-free%,description.ilike.%gluten free%')
-      .limit(10);
-    
-    console.log(`📊 Explicitly gluten-free products: ${count} found`);
-    
-    if (glutenFreeResults && glutenFreeResults.length > 0) {
-      console.log('✅ Sample gluten-free products:');
-      glutenFreeResults.slice(0, 5).forEach((product, index) => {
-        console.log(`   ${index + 1}. ${product.description} (${product.brandName})`);
-      });
-    } else {
-      console.log('❌ No gluten-free products found in database');
-    }
-    
-    return { count, hasGlutenFree: count > 0, samples: glutenFreeResults };
-    
-  } catch (error) {
-    console.error('❌ Gluten-free test failed:', error);
-    return { error: error.message };
-  }
-};
 
 // 🧪 TEST 4: Test brands that exist
-export const testAvailableBrands = async () => {
-  console.log('🔍 TESTING AVAILABLE BRANDS');
-  console.log('============================');
-  
-  try {
-    // Get top brands by product count
-    const { data: brandData } = await supabase
-      .from('IngredientCategorized')
-      .select('brandName')
-      .neq('brandName', 'generic')
-      .limit(1000);
-    
-    // Count products per brand
-    const brandCounts = {};
-    brandData?.forEach(item => {
-      const brand = item.brandName;
-      brandCounts[brand] = (brandCounts[brand] || 0) + 1;
-    });
-    
-    // Sort by count
-    const topBrands = Object.entries(brandCounts)
-      .sort(([,a], [,b]) => b - a)
-      .slice(0, 20);
-    
-    console.log('📊 Top 20 brands by product count:');
-    topBrands.forEach(([brand, count], index) => {
-      console.log(`   ${index + 1}. ${brand}: ${count} products`);
-    });
-    
-    return { totalBrands: Object.keys(brandCounts).length, topBrands };
-    
-  } catch (error) {
-    console.error('❌ Brand test failed:', error);
-    return { error: error.message };
-  }
-};
 
 // 🧪 RUN ALL TESTS
-export const runDatabaseTests = async () => {
-  console.log('🧪 RUNNING COMPLETE DATABASE ANALYSIS');
-  console.log('=====================================\n');
-  
-  const results = {};
-  
-  results.products = await testNonGenericProducts();
-  console.log('\n');
-  
-  results.basicSearch = await testBasicSearch('bread');
-  console.log('\n');
-  
-  results.glutenFree = await testGlutenFreeProducts();
-  console.log('\n');
-  
-  results.brands = await testAvailableBrands();
-  console.log('\n');
-  
-  console.log('🎯 ANALYSIS SUMMARY:');
-  console.log('====================');
-  console.log(`✅ Non-generic products: ${results.products.nonGenericCount || 'Unknown'}`);
-  console.log(`✅ "Bread" search results: ${results.basicSearch.nonGenericCount || 0}`);
-  console.log(`✅ Gluten-free products: ${results.glutenFree.count || 0}`);
-  console.log(`✅ Total brands: ${results.brands.totalBrands || 'Unknown'}`);
-  
-  if (results.basicSearch.nonGenericCount === 0) {
-    console.log('\n❌ PROBLEM: No non-generic products found for basic search');
-    console.log('   This explains why filtering returns 0 results');
-  }
-  
-  if (results.glutenFree.count === 0) {
-    console.log('\n❌ PROBLEM: No gluten-free products in database');
-    console.log('   Gluten filtering will always return 0 results');
-  }
-  
-  return results;
-};
 
 // ✅ OPTIMAL PAGINATION IMPLEMENTATION - ADVISOR'S RECOMMENDATIONS (FIXED)
 export const searchProductsWithOptimalPagination = async (searchParams) => {
@@ -1330,48 +899,6 @@ export const searchProductsWithAllergenOptimization = async (searchParams) => {
 };
 
 // ✅ TESTING FUNCTION FOR ALLERGEN FILTERING
-export const testAllergenFilteringSyntax = async () => {
-  console.log('[TEST] Testing allergen filtering syntax...');
-  
-  try {
-    // Test 1: Using 'ov' operator (array overlap)
-    const test1 = await supabase
-      .from('IngredientCategorized')
-      .select('id, description, allergens')
-      .not('allergens', 'ov', ['milk', 'peanuts'])
-      .limit(5);
-    
-    console.log('[TEST] Test 1 (ov operator):', test1.data?.length || 0, 'results');
-    
-    // Test 2: Using 'cs' operator (array contains)
-    const test2 = await supabase
-      .from('IngredientCategorized')
-      .select('id, description, allergens')
-      .not('allergens', 'cs', ['milk', 'peanuts'])
-      .limit(5);
-    
-    console.log('[TEST] Test 2 (cs operator):', test2.data?.length || 0, 'results');
-    
-    // Test 3: Using '&&' operator (array overlap)
-    const test3 = await supabase
-      .from('IngredientCategorized')
-      .select('id, description, allergens')
-      .not('allergens', '&&', ['milk', 'peanuts'])
-      .limit(5);
-    
-    console.log('[TEST] Test 3 (&& operator):', test3.data?.length || 0, 'results');
-    
-    return {
-      test1: test1.data?.length || 0,
-      test2: test2.data?.length || 0,
-      test3: test3.data?.length || 0
-    };
-    
-  } catch (error) {
-    console.error('[TEST] Allergen filtering test failed:', error);
-    throw error;
-  }
-};
 
 // 🛡️ FIXED: Simple filtering for anonymous users (prevents query timeouts)
 export const searchProductsSimpleForAnonymous = async (searchParams) => {
