@@ -80,21 +80,12 @@ Copy and paste this SQL:
 -- 🎯 ingredient_categorized table policies (main products table)
 -- Public read access for all active products
 CREATE POLICY "ingredient_categorized_public_read" ON "ingredient_categorized"
-    FOR SELECT USING (
-        is_active = true
-    );
+    FOR SELECT USING (true);
 
 -- Admin full access
 CREATE POLICY "ingredient_categorized_admin_all" ON "ingredient_categorized"
     FOR ALL USING (
         (auth.jwt() ->> 'role')::text = 'admin'
-    );
-
--- Seller access to their own products (if seller_id exists)
-CREATE POLICY "ingredient_categorized_seller_access" ON "ingredient_categorized"
-    FOR ALL USING (
-        (auth.jwt() ->> 'role')::text IN ('seller', 'admin') AND
-        (seller_id::text = auth.uid()::text OR (auth.jwt() ->> 'role')::text = 'admin')
     );
 
 -- 🎯 ProductAllergens table policies
@@ -198,49 +189,13 @@ CREATE POLICY "backup_allergenderivatives_20241219_admin_only" ON "backup_allerg
 
 **Click "Run" to execute**
 
-### Step 5: Create Performance Optimization Functions
-
-Copy and paste this SQL:
-
-```sql
--- =============================================================================
--- STEP 4: OPTIMIZED PERFORMANCE PATTERNS
--- =============================================================================
-
--- Create optimized function for role checking (better performance than direct JWT calls)
-CREATE OR REPLACE FUNCTION auth.is_admin()
-RETURNS BOOLEAN AS $$
-BEGIN
-    RETURN (auth.jwt() ->> 'role')::text = 'admin';
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
-
--- Create optimized function for seller checking
-CREATE OR REPLACE FUNCTION auth.is_seller()
-RETURNS BOOLEAN AS $$
-BEGIN
-    RETURN (auth.jwt() ->> 'role')::text IN ('seller', 'admin');
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
-
--- Create optimized function for authenticated user checking
-CREATE OR REPLACE FUNCTION auth.is_authenticated()
-RETURNS BOOLEAN AS $$
-BEGIN
-    RETURN auth.uid() IS NOT NULL;
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
-```
-
-**Click "Run" to execute**
-
-### Step 6: Verify the Fix
+### Step 5: Verify the Fix
 
 Copy and paste this SQL to verify everything worked:
 
 ```sql
 -- =============================================================================
--- STEP 5: VERIFICATION QUERIES
+-- STEP 4: VERIFICATION QUERIES
 -- =============================================================================
 
 -- Verify RLS is enabled on all tables
@@ -294,9 +249,14 @@ ORDER BY tablename, policyname;
 -- Test public read access on production tables
 SELECT 
     'Public read test - ingredient_categorized' as test_name,
-    COUNT(*) as total_products,
-    COUNT(CASE WHEN is_active = true THEN 1 END) as active_products
+    COUNT(*) as total_products
 FROM "ingredient_categorized";
+
+-- Test public read access on SafeProductIndicators
+SELECT 
+    'Public read test - SafeProductIndicators' as test_name,
+    COUNT(*) as total_indicators
+FROM "SafeProductIndicators";
 
 -- Count total policies created
 SELECT 
@@ -323,6 +283,37 @@ AND tablename IN (
 
 ---
 
+## 🚨 TROUBLESHOOTING
+
+### Permission Error: `42501: permission denied for schema auth`
+
+**Problem:** The migration tries to create functions in the `auth` schema, which requires special permissions.
+
+**Solution:** Use the **SIMPLE VERSION** migration file:
+- File: `database/migrations/fix_critical_rls_security_issues_simple.sql`
+- This version focuses only on essential RLS security fixes
+- No performance optimization functions (not essential for security)
+
+**Alternative Solution:** If you want the performance functions, use the corrected version:
+- File: `database/migrations/fix_critical_rls_security_issues_corrected.sql`
+- Functions are created in the `public` schema instead of `auth` schema
+
+### If Frontend Breaks:
+
+1. **Check RLS policies** - Ensure public read policies exist
+2. **Verify table names** - Check for typos in table names
+3. **Test with admin user** - Verify admin access works
+4. **Check error logs** - Look for permission denied errors
+
+### If Migration Fails:
+
+1. **Check table existence** - Verify all tables exist
+2. **Check permissions** - Ensure you have admin access
+3. **Run statements individually** - Execute each step separately
+4. **Use simple version** - Skip performance functions if needed
+
+---
+
 ## ✅ EXPECTED RESULTS
 
 After running all steps, you should see:
@@ -337,7 +328,7 @@ After running all steps, you should see:
 - ✅ **All 12 critical security vulnerabilities fixed**
 - ✅ **Public data remains accessible** for frontend
 - ✅ **Backup tables restricted** to admin access only
-- ✅ **Performance optimized** with auth functions
+- ✅ **Essential security implemented**
 
 ---
 
@@ -347,7 +338,7 @@ After implementing RLS, test your frontend:
 
 1. **Run the compatibility test:**
    ```bash
-   node scripts/test_rls_frontend_compatibility.js
+   node scripts/test_rls_frontend_compatibility_corrected.js
    ```
 
 2. **Test the app manually:**
@@ -364,33 +355,14 @@ After implementing RLS, test your frontend:
 
 ---
 
-## 🚨 TROUBLESHOOTING
-
-### If Frontend Breaks:
-
-1. **Check RLS policies** - Ensure public read policies exist
-2. **Verify table names** - Check for typos in table names
-3. **Test with admin user** - Verify admin access works
-4. **Check error logs** - Look for permission denied errors
-
-### If Migration Fails:
-
-1. **Check table existence** - Verify all tables exist
-2. **Check permissions** - Ensure you have admin access
-3. **Run statements individually** - Execute each step separately
-4. **Contact support** - If issues persist
-
----
-
 ## 📋 CHECKLIST
 
 - [ ] Step 1: Enable RLS on all 12 tables
 - [ ] Step 2: Create production table policies
 - [ ] Step 3: Create backup table policies  
-- [ ] Step 4: Create performance functions
-- [ ] Step 5: Verify all policies created
-- [ ] Step 6: Test frontend compatibility
-- [ ] Step 7: Monitor for any issues
+- [ ] Step 4: Verify all policies created
+- [ ] Step 5: Test frontend compatibility
+- [ ] Step 6: Monitor for any issues
 
 ---
 
@@ -400,7 +372,7 @@ After implementing RLS, test your frontend:
 ✅ **Frontend continues to work normally**  
 ✅ **Public data remains accessible**  
 ✅ **Backup data properly secured**  
-✅ **Performance optimized**  
+✅ **Essential security implemented**  
 
 ---
 

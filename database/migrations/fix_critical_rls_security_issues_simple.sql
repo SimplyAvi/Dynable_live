@@ -1,8 +1,8 @@
--- 🚨 CRITICAL SECURITY FIX: Enable RLS on All Exposed Tables (CORRECTED)
+-- 🚨 CRITICAL SECURITY FIX: Enable RLS on All Exposed Tables (SIMPLE VERSION)
 -- Author: Justin Linzan
 -- Date: January 2025
 -- Purpose: Fix 12 critical security vulnerabilities by enabling RLS on all public tables
--- CORRECTED: Based on actual table structure analysis
+-- SIMPLE VERSION: Focuses only on essential security fixes
 
 -- =============================================================================
 -- STEP 1: ENABLE RLS ON ALL EXPOSED TABLES
@@ -130,36 +130,7 @@ CREATE POLICY "backup_allergenderivatives_20241219_admin_only" ON "backup_allerg
     );
 
 -- =============================================================================
--- STEP 4: OPTIMIZED PERFORMANCE PATTERNS (FIXED FOR SUPABASE PERMISSIONS)
--- =============================================================================
-
--- Create optimized function for role checking (better performance than direct JWT calls)
--- FIXED: Using public schema instead of auth schema to avoid permission issues
-CREATE OR REPLACE FUNCTION public.is_admin()
-RETURNS BOOLEAN AS $$
-BEGIN
-    RETURN (auth.jwt() ->> 'role')::text = 'admin';
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
-
--- Create optimized function for seller checking
-CREATE OR REPLACE FUNCTION public.is_seller()
-RETURNS BOOLEAN AS $$
-BEGIN
-    RETURN (auth.jwt() ->> 'role')::text IN ('seller', 'admin');
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
-
--- Create optimized function for authenticated user checking
-CREATE OR REPLACE FUNCTION public.is_authenticated()
-RETURNS BOOLEAN AS $$
-BEGIN
-    RETURN auth.uid() IS NOT NULL;
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
-
--- =============================================================================
--- STEP 5: VERIFICATION QUERIES
+-- STEP 4: VERIFICATION QUERIES
 -- =============================================================================
 
 -- Verify RLS is enabled on all tables
@@ -211,7 +182,7 @@ AND tablename IN (
 ORDER BY tablename, policyname;
 
 -- =============================================================================
--- STEP 6: TEST QUERIES TO VERIFY FUNCTIONALITY
+-- STEP 5: TEST QUERIES TO VERIFY FUNCTIONALITY
 -- =============================================================================
 
 -- Test public read access on production tables
@@ -227,7 +198,7 @@ SELECT
 FROM "SafeProductIndicators";
 
 -- =============================================================================
--- STEP 7: SECURITY SUMMARY
+-- STEP 6: SECURITY SUMMARY
 -- =============================================================================
 
 -- Display security status
@@ -236,8 +207,7 @@ SELECT
     '✅ RLS enabled on all 12 exposed tables' as status_1,
     '✅ Public read access for production data' as status_2,
     '✅ Admin-only access for backup tables' as status_3,
-    '✅ Optimized performance patterns implemented' as status_4,
-    '✅ All critical security vulnerabilities fixed' as status_5;
+    '✅ All critical security vulnerabilities fixed' as status_4;
 
 -- Count total policies created
 SELECT 
