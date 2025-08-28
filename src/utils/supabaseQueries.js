@@ -1001,11 +1001,14 @@ export const searchProductsUnified = async (searchParams) => {
   });
 
   try {
+    // 🛡️ ADDED: Performance optimization - limit count query for large datasets
+    const shouldIncludeCount = includeCount && (searchTerm || allergens.length > 0);
+    
     // 🎯 OPTIMAL QUERY: Single SQL operation for all users
     let query = supabase
       .from('IngredientCategorized')
       .select('id, description, "brandName", allergens, "canonicalTag"', { 
-        count: includeCount ? 'exact' : null 
+        count: shouldIncludeCount ? 'exact' : null 
       });
 
     // 🎯 OPTIMIZED: Skip is_active filter since all products are active (243K records)
@@ -1039,8 +1042,44 @@ export const searchProductsUnified = async (searchParams) => {
       console.log('[UNIFIED] No allergens to filter, showing all products');
     }
 
-    // Unified pagination (OFFSET + LIMIT)
+    // 🛡️ ADDED: Performance optimization - apply pagination before count for large datasets
     const offset = (page - 1) * limit;
+    
+    // For homepage (no search, no filters), skip count to prevent timeout
+    if (!searchTerm && allergens.length === 0) {
+      console.log('[UNIFIED] Homepage query - skipping count to prevent timeout');
+      query = query.range(offset, offset + limit - 1);
+      
+      const { data, error } = await query;
+      
+      if (error) {
+        console.error('[UNIFIED] Query error:', error);
+        throw error;
+      }
+      
+      console.log(`[UNIFIED] ✅ Found ${data?.length || 0} products for ${userType} user (homepage)`);
+      
+      // Return with estimated count for homepage
+      return {
+        products: data || [],
+        totalCount: data?.length === limit ? 243114 : (data?.length || 0), // Estimate for homepage
+        page: page,
+        limit: limit,
+        totalPages: Math.ceil(243114 / limit), // Estimate for homepage
+        hasNextPage: data?.length === limit,
+        hasPrevPage: page > 1,
+        pageInfo: {
+          currentPage: page,
+          totalPages: Math.ceil(243114 / limit),
+          itemsPerPage: limit,
+          totalItems: 243114, // Estimate for homepage
+          startItem: offset + 1,
+          endItem: offset + (data?.length || 0)
+        }
+      };
+    }
+    
+    // For search/filter queries, include count but with timeout protection
     query = query.range(offset, offset + limit - 1);
     console.log('[UNIFIED] Applied pagination:', { offset, limit, page });
 
@@ -1048,6 +1087,29 @@ export const searchProductsUnified = async (searchParams) => {
 
     if (error) {
       console.error('[UNIFIED] Query error:', error);
+      
+      // 🛡️ ADDED: Graceful fallback for timeout errors
+      if (error.code === '57014' && error.message.includes('timeout')) {
+        console.warn('[UNIFIED] ⚠️ Query timeout - returning partial results without count');
+        return {
+          products: data || [],
+          totalCount: data?.length || 0,
+          page: page,
+          limit: limit,
+          totalPages: 1,
+          hasNextPage: false,
+          hasPrevPage: page > 1,
+          pageInfo: {
+            currentPage: page,
+            totalPages: 1,
+            itemsPerPage: limit,
+            totalItems: data?.length || 0,
+            startItem: offset + 1,
+            endItem: offset + (data?.length || 0)
+          }
+        };
+      }
+      
       throw error;
     }
 

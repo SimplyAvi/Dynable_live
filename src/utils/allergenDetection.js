@@ -3,6 +3,12 @@
 
 import { supabase } from './supabaseClient';
 
+// 🛡️ ADDED: Cache and rate limiting to prevent API spam
+const allergenCache = new Map();
+const pendingRequests = new Map();
+const API_COOLDOWN = 5000; // 5 seconds between failed requests
+let lastApiError = 0;
+
 /**
  * Detect allergens in a product description using the database function
  */
@@ -14,51 +20,90 @@ export const detectAllergensInProduct = async (productDescription, targetAllerge
     confidence: 0.5
   };
 
-  try {
-    const { data, error } = await supabase.rpc('detect_allergens_in_description', {
-      product_description: productDescription,
-      target_allergen: targetAllergen
-    });
-    
-    if (error) {
-      console.error('Error in allergen detection:', error);
-      return defaultResponse;
-    }
-    
-    // Handle both object and string responses from the database function
-    let result;
-    if (typeof data === 'string') {
-      try {
-        result = JSON.parse(data);
-      } catch (parseError) {
-        console.error('JSON parse error:', parseError);
-        console.error('Raw data:', data);
-        return defaultResponse;
-      }
-    } else if (typeof data === 'object' && data !== null) {
-      result = data;
-    } else {
-      console.error('Unexpected data type from allergen detection:', typeof data, data);
-      return defaultResponse;
-    }
-    
-    // Validate the result structure
-    if (!result || typeof result !== 'object') {
-      console.error('Invalid result structure:', result);
-      return defaultResponse;
-    }
-    
-    // Ensure all required fields exist
-    return {
-      detected_allergens: Array.isArray(result.detected_allergens) ? result.detected_allergens : [],
-      safe_allergens: Array.isArray(result.safe_allergens) ? result.safe_allergens : [],
-      has_cross_contamination: Boolean(result.has_cross_contamination),
-      confidence: typeof result.confidence === 'number' ? result.confidence : 0.5
-    };
-  } catch (error) {
-    console.error('Failed to detect allergens:', error);
+  // 🛡️ ADDED: Check if API is in cooldown after recent failures
+  const now = Date.now();
+  if (now - lastApiError < API_COOLDOWN) {
+    console.warn('Allergen detection API in cooldown, returning default response');
     return defaultResponse;
   }
+
+  // 🛡️ ADDED: Create cache key
+  const cacheKey = `${productDescription.slice(0, 100)}_${targetAllergen}`;
+  
+  // 🛡️ ADDED: Check cache first
+  if (allergenCache.has(cacheKey)) {
+    return allergenCache.get(cacheKey);
+  }
+
+  // 🛡️ ADDED: Check if request is already pending
+  if (pendingRequests.has(cacheKey)) {
+    return pendingRequests.get(cacheKey);
+  }
+
+  // 🛡️ ADDED: Create pending promise
+  const pendingPromise = (async () => {
+    try {
+      const { data, error } = await supabase.rpc('detect_allergens_in_description', {
+        product_description: productDescription,
+        target_allergen: targetAllergen
+      });
+      
+      if (error) {
+        console.error('Error in allergen detection:', error);
+        lastApiError = now;
+        return defaultResponse;
+      }
+      
+      // Handle both object and string responses from the database function
+      let result;
+      if (typeof data === 'string') {
+        try {
+          result = JSON.parse(data);
+        } catch (parseError) {
+          console.error('JSON parse error:', parseError);
+          console.error('Raw data:', data);
+          lastApiError = now;
+          return defaultResponse;
+        }
+      } else if (typeof data === 'object' && data !== null) {
+        result = data;
+      } else {
+        console.error('Unexpected data type from allergen detection:', typeof data, data);
+        lastApiError = now;
+        return defaultResponse;
+      }
+      
+      // Validate the result structure
+      if (!result || typeof result !== 'object') {
+        console.error('Invalid result structure:', result);
+        lastApiError = now;
+        return defaultResponse;
+      }
+      
+      // Ensure all required fields exist
+      const finalResult = {
+        detected_allergens: Array.isArray(result.detected_allergens) ? result.detected_allergens : [],
+        safe_allergens: Array.isArray(result.safe_allergens) ? result.safe_allergens : [],
+        has_cross_contamination: Boolean(result.has_cross_contamination),
+        confidence: typeof result.confidence === 'number' ? result.confidence : 0.5
+      };
+
+      // 🛡️ ADDED: Cache successful result
+      allergenCache.set(cacheKey, finalResult);
+      return finalResult;
+    } catch (error) {
+      console.error('Failed to detect allergens:', error);
+      lastApiError = now;
+      return defaultResponse;
+    } finally {
+      // 🛡️ ADDED: Clean up pending request
+      pendingRequests.delete(cacheKey);
+    }
+  })();
+
+  // 🛡️ ADDED: Store pending request
+  pendingRequests.set(cacheKey, pendingPromise);
+  return pendingPromise;
 };
 
 /**
@@ -100,10 +145,11 @@ export const analyzeProductAllergens = async (productDescription, userAllergens 
   };
   
   try {
-    // Check each potential allergen
-    const allAllergens = ['milk', 'eggs', 'fish', 'shellfish', 'treenuts', 'peanuts', 'wheat', 'soy', 'sesame', 'gluten'];
+    // 🛡️ ADDED: Only check user's allergens to reduce API calls
+    const allergensToCheck = userAllergens.length > 0 ? userAllergens : 
+      ['milk', 'eggs', 'fish', 'shellfish', 'treenuts', 'peanuts', 'wheat', 'soy', 'sesame', 'gluten'];
     
-    for (const allergen of allAllergens) {
+    for (const allergen of allergensToCheck) {
       const detection = await detectAllergensInProduct(productDescription, allergen);
       
       // Track detected allergens
@@ -127,7 +173,7 @@ export const analyzeProductAllergens = async (productDescription, userAllergens 
       }
     }
     
-    analysis.overallConfidence /= allAllergens.length;
+    analysis.overallConfidence /= allergensToCheck.length;
     
     // Convert sets to arrays for easier use
     analysis.detectedAllergens = Array.from(analysis.detectedAllergens);
@@ -179,4 +225,11 @@ export const batchCheckProductSafety = async (products, userAllergens) => {
   }
   
   return results;
+};
+
+// 🛡️ ADDED: Clear cache function for testing
+export const clearAllergenCache = () => {
+  allergenCache.clear();
+  pendingRequests.clear();
+  lastApiError = 0;
 }; 

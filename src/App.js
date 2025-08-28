@@ -10,36 +10,37 @@
  * - No localStorage required
  */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { setCredentials, logout } from './redux/authSlice';
-import { initializeAuth, fetchCart, mergeAnonymousCartWithServer } from './redux/anonymousCartSlice';
-import { fetchAllergensPure } from './redux/allergiesSlice';
-import { loadSearchPreferencesAsync, mergeSearchPreferencesAsync } from './redux/searchPreferencesSlice';
-import { supabase } from './utils/supabaseClient';
-import { isAnonymousUser } from './utils/anonymousAuth';
-import { initializeAuthService } from './utils/authService';
-import { setupPerformanceMonitoring } from './utils/performanceMonitor';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Header from './components/Header/Header';
 import Homepage from './pages/Homepage/Homepage';
+import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
 import ProductPage from './pages/ProductPage/ProductPage';
 import RecipePage from './pages/RecipePage/RecipePage';
 import CategoryPage from './pages/Catagory_Testing/CatagoryPage';
+import CartPage from './pages/CartPage/CartPage';
 import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
 import Profile from './components/Auth/Profile';
 import GoogleCallback from './components/Auth/GoogleCallback';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
-import CartPage from './pages/CartPage/CartPage';
-import AboutUsPage from './pages/AboutUsPage/AboutUsPage';
-import './App.css';
-import { clearCartItems } from './redux/anonymousCartSlice';
-import { clearSearchPreferencesLocal } from './redux/searchPreferencesSlice';
+import { fetchAllergensPure } from './redux/allergiesSlice';
+import { initializeAuth, fetchCart } from './redux/anonymousCartSlice';
+import { setCredentials } from './redux/authSlice';
+import { loadSearchPreferencesAsync } from './redux/searchPreferencesSlice';
+import { clearSearchPreferencesLocal, setSearchTerm, setSelectedAllergens } from './redux/searchPreferencesSlice';
+import { setSearchbarValue } from './redux/searchbarSlice';
 import { clearAllergies } from './redux/allergiesSlice';
+import { supabase } from './utils/supabaseClient';
+import { isAnonymousUser } from './utils/anonymousAuth';
+import { initializeAuthService } from './utils/authService';
+import { setupPerformanceMonitoring } from './utils/performanceMonitor';
 import { clearProducts } from './redux/productSlice'; // 🎯 NEW: Import product clearing
 import store from './redux/store'; // Fix: use default import
 import { logAuthEvent, logMergeAttempt, logMergeResult } from './utils/debugLogger';
+import './App.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -53,6 +54,45 @@ function App() {
     
     // Fetch allergens from Supabase database on app start
     dispatch(fetchAllergensPure());
+  }, [dispatch]);
+
+  // 🛡️ ADDED: Page refresh handler to reset search state
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      // Store a flag indicating this is a page refresh
+      sessionStorage.setItem('isPageRefresh', 'true');
+    };
+
+    const handleLoad = () => {
+      // Check if this is a page refresh
+      const isRefresh = sessionStorage.getItem('isPageRefresh');
+      
+      if (isRefresh === 'true') {
+        console.log('[APP] Page refresh detected - resetting search state');
+        
+        // Clear search state (both searchTerm and searchbarValue)
+        dispatch(setSearchTerm(''));
+        dispatch(setSearchbarValue(''));
+        dispatch(setSelectedAllergens([]));
+        dispatch(clearAllergies());
+        dispatch(clearProducts());
+        
+        // Clear the flag
+        sessionStorage.removeItem('isPageRefresh');
+        
+        console.log('[APP] ✅ Search state reset after page refresh');
+      }
+    };
+
+    // Add event listeners
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    window.addEventListener('load', handleLoad);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+      window.removeEventListener('load', handleLoad);
+    };
   }, [dispatch]);
 
   useEffect(() => {
@@ -97,17 +137,7 @@ function App() {
 
     // 🎯 OPTIMIZED: Removed duplicate auth state change listener
     // The centralized auth service now handles all auth state changes
-    // This eliminates duplicate events and improves performance
-
-    // 🎯 OPTIMIZED: No cleanup needed - auth service handles its own cleanup
   }, [dispatch]);
-
-
-
-  // 🛡️ FIXED: Removed duplicate auth state change listener
-  // This was causing conflicting logout behavior and query timeouts
-
-
 
   return (
     <Router>
@@ -115,10 +145,10 @@ function App() {
         <Header />
         <main className="App-main">
           <Routes>
+            <Route path="/" element={<Homepage />} />
             <Route path="/about" element={<AboutUsPage />} />
             <Route path="/about/team" element={<AboutUsPage />} />
             <Route path="/about/experience" element={<AboutUsPage />} />
-            <Route path="/" element={<Homepage />} />
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/recipe/:id" element={<RecipePage />} />
             <Route path="/category/:id" element={<CategoryPage />} />
@@ -145,7 +175,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-
           </Routes>
         </main>
       </div>

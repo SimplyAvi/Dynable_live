@@ -15,7 +15,7 @@
  * - Error handling
  */
 
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useState, useCallback, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { setProducts } from '../../redux/productSlice'
@@ -23,40 +23,70 @@ import { addRecipes } from '../../redux/recipeSlice'
 import { setSearchbarValue } from '../../redux/searchbarSlice'
 import { setSearchTerm, saveSearchPreferencesAsync } from '../../redux/searchPreferencesSlice'
 import './Searchbar.css'
-import { searchProductsFromSupabasePure, searchRecipesFromSupabasePure } from '../../utils/supabaseQueries'
+import { searchProductsUnified, searchRecipesFromSupabasePure } from '../../utils/supabaseQueries' // 🛡️ UPDATED: Use unified search
 import { supabase } from '../../utils/supabaseClient'
 import { getAnonymousUserId } from '../../utils/supabaseClient'
 import FormInput from '../FormInput/FormInput'
 
-const Searchbar = ({ curAllergen }) => {
+const Searchbar = ({ curAllergen }) => { // curAllergen prop is now unused but kept for original signature
     const textbar = useSelector((state) => state.searchbar?.searchbar || '');
     const allergies = useSelector((state) => state.allergies?.allergies || {});
     const searchTerm = useSelector((state) => state.searchPreferences?.searchTerm || '');
-    const selectedAllergens = useSelector((state) => state.searchPreferences?.selectedAllergens || []);
+    const selectedAllergens = useSelector((state) => state.searchPreferences?.selectedAllergens || []); // 🛡️ ADDED: Use unified allergen state
     const dispatch = useDispatch();
     const navigate = useNavigate();
     
-    // Local state for input
     const [inputValue, setInputValue] = useState(textbar || searchTerm || '');
+    const prevReduxStateRef = useRef(textbar || searchTerm || '');
     
-    // Sync input value with Redux search term (only on initial load or when Redux changes externally)
+    // 🛡️ FIXED: Sync input value with Redux state changes (without infinite loop)
     useEffect(() => {
         const currentSearchTerm = textbar || searchTerm || '';
-        // Only sync if the input is empty (initial load) or if Redux changed from external source
-        if (currentSearchTerm && inputValue === '') {
-            console.log('[SEARCHBAR] Syncing input value with Redux search term:', currentSearchTerm);
+        const prevReduxState = prevReduxStateRef.current;
+        
+        console.log('[SEARCHBAR] Redux state changed:', { 
+            textbar, 
+            searchTerm, 
+            currentSearchTerm, 
+            prevReduxState,
+            inputValue,
+            timestamp: new Date().toISOString()
+        });
+        
+        // Only sync if Redux state actually changed (not due to user typing)
+        if (currentSearchTerm !== prevReduxState) {
+            console.log('[SEARCHBAR] Redux state changed from external source, syncing input value:', currentSearchTerm);
             setInputValue(currentSearchTerm);
+            prevReduxStateRef.current = currentSearchTerm;
+            
+            // 🎯 PHASE 1 FIX: Additional logging for search term persistence
+            if (currentSearchTerm && currentSearchTerm.trim() !== '') {
+                console.log('[SEARCHBAR] ✅ Search term persisted in UI:', currentSearchTerm);
+            }
         }
-    }, [textbar, searchTerm]); // Don't include inputValue in dependencies
+    }, [textbar, searchTerm]); // 🛡️ REMOVED: inputValue from dependencies to prevent infinite loop
     
-    // Auto-save search term when input changes (debounced)
     useEffect(() => {
         const saveSearchTerm = async () => {
+            console.log('[SEARCHBAR] 🔍 Auto-save check:', {
+                inputValue: inputValue,
+                trimmedValue: inputValue.trim(),
+                hasValue: !!inputValue.trim(),
+                timestamp: new Date().toISOString()
+            });
+            
             if (inputValue.trim()) {
                 try {
                     const { data: { user } } = await supabase.auth.getUser();
                     const anonymousId = await getAnonymousUserId();
                     const userId = user ? user.id : anonymousId;
+                    
+                    console.log('[SEARCHBAR] 💾 Saving search preferences:', {
+                        searchTerm: inputValue,
+                        userId: userId,
+                        isAnonymous: !user,
+                        anonymousId: anonymousId
+                    });
                     
                     if (userId) {
                         const sendAllergens = Object.keys(allergies).filter(key => allergies[key]).map(key => key.toLowerCase());
@@ -66,8 +96,6 @@ const Searchbar = ({ curAllergen }) => {
                             userId: userId
                         })).unwrap();
                         console.log('[SEARCHBAR] ✅ Auto-saved search term:', inputValue);
-                        
-                        // Store anonymous user ID for merge if this is an anonymous user
                         if (!user && anonymousId) {
                             console.log('[SEARCHBAR] 💾 Storing anonymous user ID for merge:', anonymousId);
                             localStorage.setItem('anonymousUserIdForMerge', anonymousId);
@@ -76,29 +104,31 @@ const Searchbar = ({ curAllergen }) => {
                 } catch (error) {
                     console.warn('[SEARCHBAR] ⚠️  Failed to auto-save search term:', error);
                 }
+            } else {
+                console.log('[SEARCHBAR] ⏭️ Skipping auto-save - no search term to save');
             }
         };
-        
-        // Debounce the save to avoid too many API calls
         const timeoutId = setTimeout(saveSearchTerm, 1000);
         return () => clearTimeout(timeoutId);
     }, [inputValue, allergies, dispatch]);
 
-    // Search function
+    // 🛡️ UPDATED: Use unified search function
     const getResponse = useCallback(
         async (searchInput = textbar) => {
             try {
-                const sendAllergens = Object.keys(allergies).filter(key => allergies[key]).map(key => key.toLowerCase())
+                // 🛡️ UPDATED: Use selectedAllergens from searchPreferences instead of allergies object
+                const sendAllergens = selectedAllergens || Object.keys(allergies).filter(key => allergies[key]).map(key => key.toLowerCase());
                 console.log('[SEARCHBAR] Allergies object:', allergies);
-                console.log('[SEARCHBAR] Selected allergens:', Object.keys(allergies).filter(key => allergies[key]));
+                console.log('[SEARCHBAR] Selected allergens:', selectedAllergens);
                 console.log('[SEARCHBAR] Sending allergens:', sendAllergens);
                 
-                // ENABLED FOR SUPABASE PURE TESTING
-                const foodResponse = await searchProductsFromSupabasePure({
-                    name: searchInput,
+                // 🛡️ UPDATED: Use unified search function
+                const foodResponse = await searchProductsUnified({
+                    searchTerm: searchInput,
                     page: 1,
                     limit: 10,
                     allergens: sendAllergens,
+                    userType: 'anonymous', // Will be determined by the function
                     includeCount: true
                 });
                 
@@ -110,7 +140,7 @@ const Searchbar = ({ curAllergen }) => {
                     includeCount: true
                 });
                 
-                console.log('[SUPABASE PURE] Search results:', { 
+                console.log('[SEARCHBAR] Unified search results:', { 
                     products: foodResponse.products ? foodResponse.products.length : foodResponse.length,
                     recipes: recipeResponse.recipes ? recipeResponse.recipes.length : recipeResponse.length,
                     productTotalCount: foodResponse.totalCount,
@@ -123,20 +153,8 @@ const Searchbar = ({ curAllergen }) => {
             } catch (error) {
                 console.error('Search error:', error);
             }
-        }, [dispatch, textbar, allergies]);
+        }, [dispatch, textbar, selectedAllergens, allergies]); // 🛡️ UPDATED: Use selectedAllergens
 
-    // Auto-search when allergens change, using the Redux/global search value
-    // 🛡️ FIXED: Remove this useEffect to prevent filter reset
-    // Homepage component already handles allergen-based filtering
-    // This useEffect was causing conflicts by triggering searches with empty textbar
-    /*
-    useEffect(() => {
-        console.log('[SEARCHBAR] Allergies changed, triggering search:', allergies);
-        getResponse(textbar);
-        // eslint-disable-next-line
-    }, [allergies]);
-    */
-    
     // Auto-search when search term changes (from preferences)
     useEffect(() => {
         const currentSearchTerm = textbar || searchTerm || '';
@@ -146,45 +164,28 @@ const Searchbar = ({ curAllergen }) => {
         }
     }, [textbar, searchTerm, getResponse]);
 
-    // Handle input change (local state only)
     const handleTextChange = (input) => {
         console.log('[SEARCHBAR] Input change detected:', input.target.value);
         setInputValue(input.target.value);
     }
     
-    // On submit, update Redux/global state and trigger search
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log('Search form submitted:', inputValue);
         if (inputValue) {
             dispatch(setSearchbarValue(inputValue));
             dispatch(setSearchTerm(inputValue));
-            
-            // Save search preferences to database
             try {
                 const { data: { user } } = await supabase.auth.getUser();
                 const anonymousId = await getAnonymousUserId();
                 let userId = user ? user.id : anonymousId;
-                
-                // If no user ID available, try to create anonymous session
                 if (!userId) {
-                    console.log('[SEARCHBAR] No user ID available, attempting to create anonymous session...');
-                    try {
-                        // Import initializeAuth dynamically to avoid circular imports
-                        const { initializeAuth } = await import('../../redux/anonymousCartSlice');
-                        const authResult = await dispatch(initializeAuth()).unwrap();
-                        
-                        if (authResult.success && authResult.session) {
-                            userId = authResult.session.user.id;
-                            console.log('[SEARCHBAR] ✅ Anonymous session created, user ID:', userId);
-                        } else {
-                            console.warn('[SEARCHBAR] ⚠️ Failed to create anonymous session:', authResult.error);
-                        }
-                    } catch (authError) {
-                        console.warn('[SEARCHBAR] ⚠️ Error creating anonymous session:', authError);
+                    const { initializeAuth } = await import('../../redux/anonymousCartSlice');
+                    const authResult = await dispatch(initializeAuth()).unwrap();
+                    if (authResult.success && authResult.session) {
+                        userId = authResult.session.user.id;
                     }
                 }
-                
                 if (userId) {
                     const sendAllergens = Object.keys(allergies).filter(key => allergies[key]).map(key => key.toLowerCase());
                     await dispatch(saveSearchPreferencesAsync({
@@ -192,20 +193,13 @@ const Searchbar = ({ curAllergen }) => {
                         allergens: sendAllergens,
                         userId: userId
                     })).unwrap();
-                    console.log('[SEARCHBAR] ✅ Search preferences saved for user:', userId);
-                    
-                    // Store anonymous user ID for merge if this is an anonymous user
                     if (!user && userId) {
-                        console.log('[SEARCHBAR] 💾 Storing anonymous user ID for merge:', userId);
                         localStorage.setItem('anonymousUserIdForMerge', userId);
                     }
-                } else {
-                    console.warn('[SEARCHBAR] ⚠️ No user ID available for saving preferences');
                 }
             } catch (error) {
                 console.warn('[SEARCHBAR] ⚠️  Failed to save search preferences:', error);
             }
-            
             await getResponse(inputValue);
             navigate('/')
         }
@@ -226,5 +220,4 @@ const Searchbar = ({ curAllergen }) => {
         </div>
     )
 }
-
 export default Searchbar

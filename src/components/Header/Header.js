@@ -17,8 +17,11 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../redux/authSlice'
 import { clearCartItems, selectCartItemCount, clearCartState, selectCartItems, logout as logoutAnonymousCart } from '../../redux/anonymousCartSlice'
-import { clearSearchPreferencesLocal, selectSelectedAllergens } from '../../redux/searchPreferencesSlice'
+import { clearSearchPreferencesLocal, selectSelectedAllergens, setSearchTerm, setSelectedAllergens } from '../../redux/searchPreferencesSlice'
+import { setSearchbarValue } from '../../redux/searchbarSlice'
 import { clearAllergies } from '../../redux/allergiesSlice'
+import { clearProducts } from '../../redux/productSlice'
+import { clearRecipes } from '../../redux/recipeSlice'
 import { clearSearchPreferencesOnLogout } from '../../utils/searchPreferencesManager'
 import { saveCartBeforeAuth } from '../../utils/cartSaveBeforeAuth'
 import { saveSearchPreferencesBeforeAuthAsync } from '../../redux/searchPreferencesSlice'
@@ -35,10 +38,37 @@ const Header = () => {
     const cartItems = useSelector(selectCartItems)
     const selectedAllergens = useSelector(selectSelectedAllergens)
 
+    // 🛡️ FIXED: Logo click handler to reset search state (both searchbar states)
+    const handleLogoClick = () => {
+        console.log('[HEADER] Logo clicked - resetting search state');
+        
+        // Clear search term from searchPreferences
+        dispatch(setSearchTerm(''));
+        
+        // Clear searchbar value from searchbarSlice
+        dispatch(setSearchbarValue(''));
+        
+        // Clear selected allergens
+        dispatch(setSelectedAllergens([]));
+        
+        // Clear allergies toggles
+        dispatch(clearAllergies());
+        
+        // Navigate to home
+        navigate('/');
+        
+        console.log('[HEADER] ✅ Search state reset, navigating to home');
+    };
+
     const handleLogout = async () => {
         try {
             console.log('[HEADER] Logging out user...');
             console.log('[HEADER] Current auth state before logout:', isAuthenticated);
+            
+            // 🎯 PHASE 1: IMMEDIATE DATA CLEARING for better UX
+            console.log('[HEADER] 🚫 Immediately clearing products and recipes for instant feedback');
+            dispatch(clearProducts());
+            dispatch(clearRecipes());
             
             // Clear search preferences from database if user is authenticated
             if (isAuthenticated && currentUser?.id) {
@@ -65,78 +95,33 @@ const Header = () => {
             // Sign out from Supabase
             const { error } = await supabase.auth.signOut();
             if (error) {
-                console.error('[HEADER] Supabase sign out error:', error);
+                console.error('[HEADER] ❌ Supabase sign out failed:', error);
             } else {
-                console.log('[HEADER] Supabase sign out successful');
+                console.log('[HEADER] ✅ Supabase sign out successful');
             }
             
-            // 🎯 CRITICAL: Force session refresh to clear any cached session
-            try {
-                await supabase.auth.refreshSession();
-                console.log('[HEADER] ✅ Session refresh completed');
-            } catch (refreshError) {
-                console.warn('[HEADER] Session refresh failed:', refreshError);
-            }
-            
-            // 🎯 CRITICAL: Verify session is cleared
-            const { data: { session } } = await supabase.auth.getSession();
-            if (session) {
-                console.warn('[HEADER] ⚠️ Session still exists after signOut, forcing additional cleanup...');
-                // Force another sign out
-                await supabase.auth.signOut();
-            } else {
-                console.log('[HEADER] ✅ Session successfully cleared');
-            }
-            
-            // Clear token from localStorage
+            // Clear localStorage
             localStorage.removeItem('token')
             localStorage.removeItem('anonymous_user_id')
             localStorage.removeItem('anonymous_cart')
             localStorage.removeItem('postLoginRedirect')
             localStorage.removeItem('anonymousUserIdForMerge')
-            console.log('[HEADER] localStorage cleared');
             
-                    // 🎯 CRITICAL: Also clear cart from database to prevent re-fetching
-        try {
-            // Use the auth service instead of direct import
-            const { getCurrentSession } = await import('../utils/authService');
-            const session = getCurrentSession();
-            
-            if (session) {
-                const { clearCart } = await import('../utils/anonymousAuth');
-                const clearResult = await clearCart();
-                console.log('[HEADER] Database cart clear result:', clearResult);
-            } else {
-                console.log('[HEADER] No session to clear cart for');
-            }
-        } catch (error) {
-            console.warn('[HEADER] Failed to clear database cart:', error);
-        }
-        
-        // 🎯 CRITICAL: Abort any ongoing cart fetches
-        try {
-            const state = store.getState();
-            const ongoingFetches = state.anonymousCart.loading;
-            
-            if (ongoingFetches) {
-                console.log('[HEADER] Aborting ongoing cart fetches...');
-                // Cancel any pending fetchCart operations
-                store.dispatch({ type: 'anonymousCart/fetchCart/pending' });
-            }
-        } catch (error) {
-            console.warn('[HEADER] Failed to abort cart fetches:', error);
-        }
-            
-            // Clear all Redux state
-            console.log('[HEADER] Dispatching logout action...');
+            // Clear Redux state
             dispatch(logout())
-            console.log('[HEADER] Logout action dispatched');
+            dispatch(clearCartItems())
+            dispatch(clearCartState())
+            dispatch(logoutAnonymousCart())
             
-            // 🎯 VERIFY: Check cart state after clearing
+            // 🛡️ ADDED: Clear search states on logout
+            dispatch(setSearchTerm(''));
+            dispatch(setSearchbarValue(''));
+            dispatch(setSelectedAllergens([]));
+            
+            // Clear cart from Redux with delay to ensure state is updated
             setTimeout(() => {
-                const currentCartState = window.store.getState().anonymousCart;
-                console.log('[HEADER] 🔍 Cart state after clearing:', currentCartState);
-                console.log('[HEADER] 🔍 Cart items count after clearing:', currentCartState.items.length);
+                dispatch(clearCartItems());
+                dispatch(clearCartState());
             }, 100);
             
             console.log('[HEADER] Cart cleared from Redux');
@@ -167,6 +152,10 @@ const Header = () => {
             dispatch(clearCartItems())
             dispatch(clearCartState())
             dispatch(logoutAnonymousCart())
+            // 🛡️ ADDED: Clear search states even on error
+            dispatch(setSearchTerm(''));
+            dispatch(setSearchbarValue(''));
+            dispatch(setSelectedAllergens([]));
             // 🎯 CRITICAL: Clear allergens even on error for fresh anonymous session
             dispatch(clearAllergies());
             navigate('/')
@@ -174,29 +163,15 @@ const Header = () => {
     }
 
     const handleLoginClick = async () => {
-        console.log('[HEADER LOGIN] 🔍 Starting header login process...');
-        
         try {
-            // Check if user has a session
+            console.log('[HEADER LOGIN] Starting login process...');
+            
+            // Check if user is anonymous and has cart items to save
             const { data: { session } } = await supabase.auth.getSession();
             
-            if (!session) {
-                console.log('[HEADER LOGIN] No session found, redirecting to login');
-                // If user is on cart page, redirect back to cart after login
-                if (location.pathname === '/cart') {
-                    localStorage.setItem('postLoginRedirect', '/cart');
-                }
-                navigate('/login');
-                return;
-            }
-
-            // Check if user is anonymous - save cart and allergens before redirect
-            const isAnonymous = !session.user.email;
-            
-            if (isAnonymous) {
-                console.log('[HEADER LOGIN] Anonymous user attempting login, saving cart and allergens before redirect...');
+            if (session && (cartItems.length > 0 || selectedAllergens.length > 0)) {
+                console.log('[HEADER LOGIN] ✅ User is anonymous, saving state before login...');
                 
-                // Get current cart and allergen state from component state
                 const allergens = selectedAllergens; // selectedAllergens is already an array of strings
                 
                 console.log('[HEADER LOGIN] Current cart items:', cartItems);
@@ -265,7 +240,7 @@ const Header = () => {
         <header className="header">
           <div className="header-inner">
             <div className="header-left">
-                <div className="dynable-logo" onClick={() => navigate('/')}>
+                <div className="dynable-logo" onClick={handleLogoClick}>
                     <span className="logo-text">Dynable</span>
                 </div>
             </div>
@@ -300,11 +275,9 @@ const Header = () => {
                         </button>
                     </>
                 ) : (
-                    <>
-                        <button className="nav-button" onClick={handleLoginClick}>
-                            Login/Signup
-                        </button>
-                    </>
+                    <button className="nav-button" onClick={handleLoginClick}>
+                        Login
+                    </button>
                 )}
             </div>
           </div>

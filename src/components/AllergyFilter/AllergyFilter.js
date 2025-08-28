@@ -7,7 +7,7 @@ import { mapToDatabaseFormat } from '../../utils/allergenMappings'; // 🎯 ADDE
 import { getAnonymousUserId, supabase } from '../../utils/supabaseClient';
 import './AllergyFilter.css';
 
-const AllergyFilter = () => {
+const AllergyFilter = ({ isSearching = false }) => {
     const dispatch = useDispatch();
     const allergies = useSelector((state) => state.allergies?.allergies || {});
     const searchPreferences = useSelector((state) => state.searchPreferences);
@@ -81,26 +81,21 @@ const AllergyFilter = () => {
                     }
                 }
                 
-                // Load authenticated user preferences
-                try {
-                    console.log('[AllergyFilter] Loading authenticated user preferences...');
-                    await dispatch(loadSearchPreferencesAsync({ userId: currentUser.id })).unwrap();
-                    console.log('[AllergyFilter] ✅ Authenticated user preferences loaded');
-                    
-                    // 🛡️ FIXED: Ensure all available allergens are loaded when user logs in
-                    // This prevents the issue where only toggled allergens are shown
-                    if (!Object.keys(allergies).length || Object.keys(allergies).length < 10) {
-                        console.log('[AllergyFilter] Re-fetching all available allergens for authenticated user...');
-                        await dispatch(fetchAllergensPure());
-                    }
-                } catch (error) {
-                    console.warn('[AllergyFilter] ⚠️ Failed to load authenticated preferences:', error);
+                // 🛡️ FIXED: Don't load preferences here - let GoogleCallback handle the merge
+                // This prevents conflicts with the merge process
+                console.log('[AllergyFilter] Skipping preference load - letting GoogleCallback handle merge');
+                
+                // 🛡️ FIXED: Ensure all available allergens are loaded when user logs in
+                // This prevents the issue where only toggled allergens are shown
+                if (!Object.keys(allergies).length || Object.keys(allergies).length < 10) {
+                    console.log('[AllergyFilter] Re-fetching all available allergens for authenticated user...');
+                    await dispatch(fetchAllergensPure());
                 }
             }
         };
 
         handleAuthStateChange();
-    }, [isAuthenticated, currentUser, dispatch]);
+    }, [isAuthenticated, currentUser, dispatch, allergies]);
 
     // 🛡️ FIXED: Initialize allergies from multiple sources with priority
     useEffect(() => {
@@ -109,7 +104,16 @@ const AllergyFilter = () => {
             
             // Priority 1: Check if we have authenticated user preferences
             if (isAuthenticated && currentUser?.id) {
-                console.log('[AllergyFilter] Authenticated user found, loading preferences...');
+                console.log('[AllergyFilter] Authenticated user found, checking for merge process...');
+                
+                // Check if we're in the middle of a merge process
+                const isMerging = localStorage.getItem('anonymousUserIdForMerge');
+                if (isMerging) {
+                    console.log('[AllergyFilter] Merge process detected, skipping initialization');
+                    return;
+                }
+                
+                console.log('[AllergyFilter] No merge process, loading authenticated user preferences...');
                 try {
                     await dispatch(loadSearchPreferencesAsync({ userId: currentUser.id })).unwrap();
                     console.log('[AllergyFilter] ✅ Loaded authenticated user preferences');
@@ -376,6 +380,10 @@ const AllergyFilter = () => {
                             key={key}
                             className={`allergy-scroll-item ${value ? 'selected' : ''}`}
                             onClick={(e) => handleAllergyClick(key, e)}
+                            style={{
+                                opacity: isSearching ? 0.6 : 1,
+                                cursor: isSearching ? 'not-allowed' : 'pointer'
+                            }}
                         >
                             {key.charAt(0).toUpperCase() + key.slice(1)}
                             {value && <span className="check">✓</span>}

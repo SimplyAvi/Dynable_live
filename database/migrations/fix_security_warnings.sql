@@ -329,7 +329,7 @@ SELECT
     proname as function_name,
     prosrc as source_code,
     CASE 
-        WHEN proconfig LIKE '%search_path%' THEN 'Fixed'
+        WHEN proconfig IS NOT NULL AND array_to_string(proconfig, ',') LIKE '%search_path%' THEN 'Fixed'
         ELSE 'Needs attention'
     END as search_path_status
 FROM pg_proc 
@@ -408,4 +408,4 @@ SELECT
     COUNT(*) as functions_with_fixed_search_paths
 FROM pg_proc 
 WHERE pronamespace = (SELECT oid FROM pg_namespace WHERE nspname = 'public')
-AND proconfig LIKE '%search_path%';
+AND proconfig IS NOT NULL AND array_to_string(proconfig, ',') LIKE '%search_path%';

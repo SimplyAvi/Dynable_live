@@ -16,9 +16,13 @@ const recipeSlice = createSlice({
     },
     appendRecipes: (state, action) => {
         state.recipesResults.push(...action.payload);
+    },
+    // 🎯 PHASE 1: Added clearRecipes action for immediate data clearing
+    clearRecipes: (state) => {
+        state.recipesResults = {};
     }
   },
 });
 
-export const { addRecipes, appendRecipes } = recipeSlice.actions;
+export const { addRecipes, appendRecipes, clearRecipes } = recipeSlice.actions;
 export default recipeSlice.reducer;

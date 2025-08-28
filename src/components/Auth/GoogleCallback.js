@@ -16,7 +16,8 @@ import { useDispatch } from 'react-redux';
 import { setCredentials } from '../../redux/authSlice';
 import { supabase } from '../../utils/supabaseClient';
 import { setCartItems } from '../../redux/anonymousCartSlice'; // Import setCartItems action
-import { mergeSearchPreferencesAsync, setSelectedAllergens } from '../../redux/searchPreferencesSlice';
+import { mergeSearchPreferencesAsync, setSelectedAllergens, setSearchTerm } from '../../redux/searchPreferencesSlice';
+import { setSearchbarValue } from '../../redux/searchbarSlice';
 
 const GoogleCallback = () => {
     const navigate = useNavigate();
@@ -163,8 +164,31 @@ const GoogleCallback = () => {
                 console.log('[SEARCH MERGE] Anonymous user ID:', anonymousUserId);
                 console.log('[SEARCH MERGE] Authenticated user ID:', authenticatedUserId);
                 
+                // 🎯 PHASE 1 DEBUG: Check what's in localStorage for anonymous user
+                const storedAnonymousId = localStorage.getItem('anonymousUserIdForMerge');
+                console.log('[SEARCH MERGE] 🔍 Debug - localStorage anonymous ID:', storedAnonymousId);
+                console.log('[SEARCH MERGE] 🔍 Debug - Expected anonymous ID:', anonymousUserId);
+                console.log('[SEARCH MERGE] 🔍 Debug - IDs match:', storedAnonymousId === anonymousUserId);
+                
                 // 🎯 STEP 1: Use database function to perform complete merge
                 console.log('[SEARCH MERGE] 🔍 Step 1: Calling database merge function...');
+                
+                // 🎯 PHASE 1 DEBUG: Check what search preferences exist for anonymous user
+                try {
+                    const { data: anonymousPrefs, error: anonymousPrefsError } = await supabase
+                        .from('SearchPreferences')
+                        .select('*')
+                        .eq('supabase_user_id', anonymousUserId);
+                    
+                    console.log('[SEARCH MERGE] 🔍 Debug - Anonymous user search preferences:', {
+                        data: anonymousPrefs,
+                        error: anonymousPrefsError,
+                        count: anonymousPrefs?.length || 0
+                    });
+                } catch (debugError) {
+                    console.log('[SEARCH MERGE] 🔍 Debug - Failed to check anonymous preferences:', debugError);
+                }
+                
                 const { data: mergeResult, error: mergeError } = await supabase
                     .rpc('merge_search_preferences', {
                         p_anonymous_user_id: anonymousUserId,
@@ -182,14 +206,36 @@ const GoogleCallback = () => {
                 console.log('[SEARCH MERGE] 🔄 Step 2: Updating Redux state...');
                 console.log('[SEARCH MERGE] Merge result:', mergeResult);
                 if (mergeResult && Object.keys(mergeResult).length > 0) {
-                    // 🎯 FIXED: Update Redux state with merged allergens so Homepage can filter properly
-                    const mergedAllergens = mergeResult.selectedallergens || [];
-                    console.log('[SEARCH MERGE] Updating Redux with merged allergens:', mergedAllergens);
+                    // 🛡️ FIXED: Update both search term and allergens in Redux state
+                    const mergedSearchTerm = mergeResult.search_term || '';
+                    const rawMergedAllergens = mergeResult.selectedallergens || [];
+                    
+                    // 🛡️ FIXED: Properly map allergens to camelCase format
+                    const { mapArrayToCamelCase } = await import('../../utils/allergenMappings');
+                    const mergedAllergens = mapArrayToCamelCase(rawMergedAllergens);
+                    
+                    console.log('[SEARCH MERGE] Raw merged allergens:', rawMergedAllergens);
+                    console.log('[SEARCH MERGE] Mapped merged allergens:', mergedAllergens);
+                    console.log('[SEARCH MERGE] Updating Redux with merged search term:', mergedSearchTerm);
+                    
+                    // Update search term in Redux
+                    dispatch(setSearchTerm(mergedSearchTerm));
+                    
+                    // Update searchbar value in Redux (for UI consistency)
+                    dispatch(setSearchbarValue(mergedSearchTerm));
+                    
+                    // 🎯 PHASE 1 FIX: Force immediate UI sync after Redux update
+                    console.log('[SEARCH MERGE] 🔄 Forcing immediate UI sync for search term:', mergedSearchTerm);
+                    
+                    // Add a small delay to ensure Redux state is updated before continuing
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    
+                    console.log('[SEARCH MERGE] ✅ Redux state updated, UI should sync shortly');
                     
                     // Update search preferences in Redux
                     dispatch(setSelectedAllergens(mergedAllergens));
                     
-                    // Update allergies state to match
+                    // 🛡️ FIXED: Update allergies state to match (proper format)
                     const { setAllergies } = await import('../../redux/allergiesSlice');
                     const newAllergies = {};
                     mergedAllergens.forEach(allergen => {
@@ -197,7 +243,54 @@ const GoogleCallback = () => {
                     });
                     dispatch(setAllergies(newAllergies));
                     
-                    console.log('[SEARCH MERGE] ✅ Redux state updated with merged allergens');
+                    console.log('[SEARCH MERGE] Updated allergies state:', newAllergies);
+                    
+                    // 🛡️ ADDED: Trigger search after merge to load products
+                    if (mergedSearchTerm && mergedSearchTerm.trim() !== '') {
+                        console.log('[SEARCH MERGE] Triggering search after merge for term:', mergedSearchTerm);
+                        try {
+                            const { searchProductsUnified } = await import('../../utils/supabaseQueries');
+                            const { setProducts } = await import('../../redux/productSlice');
+                            const { addRecipes } = await import('../../redux/recipeSlice');
+                            const { searchRecipesFromSupabasePure } = await import('../../utils/supabaseQueries');
+                            
+                            // Search for products with merged term and allergens
+                            const productResponse = await searchProductsUnified({
+                                searchTerm: mergedSearchTerm,
+                                allergens: mergedAllergens,
+                                page: 1,
+                                limit: 20,
+                                userType: 'authenticated',
+                                includeCount: true
+                            });
+                            
+                            // Search for recipes with merged term
+                            const recipeResponse = await searchRecipesFromSupabasePure({
+                                search: mergedSearchTerm,
+                                excludeIngredients: [],
+                                page: 1,
+                                limit: 10,
+                                includeCount: true
+                            });
+                            
+                            // Update Redux with search results
+                            dispatch(setProducts(productResponse));
+                            dispatch(addRecipes(recipeResponse));
+                            
+                            console.log('[SEARCH MERGE] ✅ Search triggered after merge:', {
+                                products: productResponse.products ? productResponse.products.length : productResponse.length,
+                                recipes: recipeResponse.recipes ? recipeResponse.recipes.length : recipeResponse.length,
+                                searchTerm: mergedSearchTerm,
+                                allergens: mergedAllergens
+                            });
+                        } catch (error) {
+                            console.warn('[SEARCH MERGE] ⚠️ Failed to trigger search after merge:', error);
+                        }
+                    } else {
+                        console.log('[SEARCH MERGE] No search term to trigger search for');
+                    }
+                    
+                    console.log('[SEARCH MERGE] ✅ Redux state updated with merged search term and allergens');
                 } else {
                     console.log('[SEARCH MERGE] No merge result to update Redux with');
                 }

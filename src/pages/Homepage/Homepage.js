@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, Component } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import SearchAndFilter from '../../components/SearchAndFilter/SearchAndFilter'
 import ShowResults from '../../components/ShowResults/ShowResults'
@@ -13,57 +13,112 @@ import {
   resilientSupabaseQuery 
 } from '../../utils/supabaseQueries'
 
+// 🎯 PHASE 1: Error Boundary for safety
+class HomepageErrorBoundary extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { hasError: false, error: null };
+    }
+
+    static getDerivedStateFromError(error) {
+        return { hasError: true, error };
+    }
+
+    componentDidCatch(error, errorInfo) {
+        console.error('[HOMEPAGE] Error Boundary caught error:', error, errorInfo);
+    }
+
+    render() {
+        if (this.state.hasError) {
+            return (
+                <div style={{
+                    padding: '20px',
+                    textAlign: 'center',
+                    color: '#666'
+                }}>
+                    <h3>Something went wrong with the homepage.</h3>
+                    <p>Please refresh the page to try again.</p>
+                    <button 
+                        onClick={() => window.location.reload()}
+                        style={{
+                            padding: '10px 20px',
+                            backgroundColor: '#3a7bd5',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '5px',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        Refresh Page
+                    </button>
+                </div>
+            );
+        }
+
+        return this.props.children;
+    }
+}
+
 const Homepage = () => {
     const dispatch = useDispatch()
-    // 🛡️ FIXED: Use the correct allergen state source - searchPreferences.selectedAllergens
-    // This ensures synchronization with AllergyFilter component
     const selectedAllergens = useSelector((state) => state.searchPreferences?.selectedAllergens || [])
     const allergies = useSelector((state) => state.allergies?.allergies || {})
     const isAuthenticated = useSelector((state) => state.auth?.isAuthenticated || false)
     const anonymousSession = useSelector((state) => state.anonymousCart?.session)
+    const searchTerm = useSelector((state) => state.searchPreferences?.searchTerm || '') // 🛡️ ADDED: Get current search term
     const navigate = useNavigate();
 
-    // 🎯 NEW: Query cancellation and transition state management
     const queryControllerRef = useRef(null);
     const [isTransitioning, setIsTransitioning] = useState(false);
     const previousAuthStateRef = useRef(isAuthenticated);
 
-    // 🎯 NEW: Detect auth transitions
     useEffect(() => {
         const authStateChanged = previousAuthStateRef.current !== isAuthenticated;
         if (authStateChanged) {
-            console.log('[HOMEPAGE] Auth state transition detected:', {
+            const transitionStartTime = performance.now();
+            console.log('[HOMEPAGE] 🔄 Auth state changed, starting transition:', {
                 from: previousAuthStateRef.current,
-                to: isAuthenticated
+                to: isAuthenticated,
+                transitionTime: '2000ms',
+                timestamp: new Date().toISOString()
             });
             
-            // Set transition flag to prevent competing queries
             setIsTransitioning(true);
-            
-            // Cancel any ongoing queries
             if (queryControllerRef.current) {
-                console.log('[HOMEPAGE] Cancelling ongoing queries during auth transition');
+                console.log('[HOMEPAGE] 🚫 Aborting previous queries');
                 queryControllerRef.current.abort();
             }
             
-            // Clear transition flag after a longer delay to ensure anonymous session is ready
+            // 🎯 PHASE 1: Reduced transition time from 5000ms to 2000ms
             setTimeout(() => {
+                const transitionEndTime = performance.now();
+                const actualTransitionTime = transitionEndTime - transitionStartTime;
+                console.log('[HOMEPAGE] ✅ Transition completed, resuming queries:', {
+                    actualTransitionTime: `${actualTransitionTime.toFixed(2)}ms`,
+                    expectedTransitionTime: '2000ms',
+                    performance: actualTransitionTime <= 2100 ? '✅ GOOD' : '⚠️ SLOW'
+                });
                 setIsTransitioning(false);
-                console.log('[HOMEPAGE] Auth transition completed, queries can resume');
-            }, 5000); // 5 second delay to ensure anonymous session is fully established
+            }, 2000); // 🛡️ REDUCED: From 5000ms to 2000ms (60% faster)
             
             previousAuthStateRef.current = isAuthenticated;
         }
     }, [isAuthenticated]);
 
-    // 🎯 UNIFIED: Single useEffect with unified filtering logic and query cancellation
     useEffect(() => {
         console.log('[HOMEPAGE] 🔍 useEffect triggered with dependencies:', {
             selectedAllergens: selectedAllergens.length,
+            searchTerm: searchTerm, // 🛡️ ADDED: Log search term
             isAuthenticated,
             isTransitioning,
             hasAnonymousSession: !!anonymousSession
         });
+        
+        // 🛡️ FIXED: Only skip if there's an active search with actual content
+        if (searchTerm && searchTerm.trim() !== '') {
+            console.log('[HOMEPAGE] Skipping query - active search in progress, letting SearchAndFilter handle it');
+            return;
+        }
         
         // 🎯 NEW: Skip queries during auth transitions
         if (isTransitioning) {
@@ -78,7 +133,8 @@ const Homepage = () => {
             anonymousSessionType: typeof anonymousSession,
             isTransitioning,
             selectedAllergens: selectedAllergens,
-            allergensCount: selectedAllergens.length
+            allergensCount: selectedAllergens.length,
+            searchTerm: searchTerm // 🛡️ ADDED: Log search term
         });
         
         if (!isAuthenticated && !anonymousSession) {
@@ -100,6 +156,7 @@ const Homepage = () => {
                 console.log('[HOMEPAGE] 🚀 Loading data with unified filtering:', {
                     selectedAllergens: selectedAllergens,
                     allergensCount: selectedAllergens.length,
+                    searchTerm: searchTerm, // 🛡️ ADDED: Log search term
                     isAuthenticated,
                     hasAllergens: selectedAllergens.length > 0,
                     isTransitioning,
@@ -111,7 +168,7 @@ const Homepage = () => {
                     () => searchProductsUnified({
                         page: 1,
                         limit: 20,
-                        searchTerm: '',
+                        searchTerm: '', // 🛡️ FIXED: Only load homepage content (no search)
                         allergens: selectedAllergens,
                         userType: isAuthenticated ? 'authenticated' : 'anonymous',
                         includeCount: true
@@ -146,43 +203,79 @@ const Homepage = () => {
                     products: foodResponse.products ? foodResponse.products.length : foodResponse.length,
                     recipes: recipeResponse.recipes ? recipeResponse.recipes.length : recipeResponse.length,
                     allergens: selectedAllergens,
-                    hasAllergens: selectedAllergens.length > 0
+                    hasAllergens: selectedAllergens.length > 0,
+                    searchTerm: searchTerm // 🛡️ ADDED: Log search term
                 });
                 
                 dispatch(setProducts(foodResponse))
                 dispatch(addRecipes(recipeResponse))
+                
             } catch (error) {
                 // 🎯 NEW: Don't log errors for cancelled queries
                 if (error.name === 'AbortError') {
                     console.log('[HOMEPAGE] Query cancelled (auth transition)');
                     return;
                 }
-                
-                // 🎯 NEW: Handle timeout errors gracefully
                 if (error.message && error.message.includes('timeout')) {
                     console.warn('[HOMEPAGE] ⚠️ Query timeout - will retry on next auth transition completion');
                     return;
                 }
-                
                 console.error('[HOMEPAGE] ❌ Error loading unified data:', error);
-                // Don't throw - let the app continue with current state
             }
         };
 
-        // 🎯 UNIFIED: Single data loading function prevents competing queries
         loadData();
 
-        // 🎯 NEW: Cleanup function to cancel queries when component unmounts or dependencies change
         return () => {
             if (queryControllerRef.current) {
                 console.log('[HOMEPAGE] Cleaning up - cancelling ongoing queries');
                 queryControllerRef.current.abort();
             }
         };
-    }, [selectedAllergens, isAuthenticated, dispatch, isTransitioning, anonymousSession]); // 🎯 FIXED: Added anonymousSession dependency back to trigger queries when session is ready
+    }, [selectedAllergens, searchTerm, isAuthenticated, dispatch, isTransitioning, anonymousSession]); // 🛡️ ADDED: searchTerm to dependencies
 
     return (
         <div className="homepage">
+            {/* 🎯 PHASE 1: Loading state during auth transitions */}
+            {isTransitioning && (
+                <div style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    zIndex: 1000,
+                    flexDirection: 'column'
+                }}>
+                    <div style={{
+                        width: '50px',
+                        height: '50px',
+                        border: '4px solid #f3f3f3',
+                        borderTop: '4px solid #3a7bd5',
+                        borderRadius: '50%',
+                        animation: 'spin 1s linear infinite'
+                    }}></div>
+                    <div style={{
+                        marginTop: '20px',
+                        fontSize: '16px',
+                        color: '#666',
+                        fontWeight: '500'
+                    }}>
+                        Updating your session...
+                    </div>
+                    <style>{`
+                        @keyframes spin {
+                            0% { transform: rotate(0deg); }
+                            100% { transform: rotate(360deg); }
+                        }
+                    `}</style>
+                </div>
+            )}
+            
             <div className="content-wrapper">
                 <SearchAndFilter />
                 <ShowResults />
@@ -215,4 +308,11 @@ const Homepage = () => {
     )
 }
 
-export default Homepage
+// 🎯 PHASE 1: Wrap with Error Boundary for safety
+const HomepageWithErrorBoundary = () => (
+    <HomepageErrorBoundary>
+        <Homepage />
+    </HomepageErrorBoundary>
+);
+
+export default HomepageWithErrorBoundary
