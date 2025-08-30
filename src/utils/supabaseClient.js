@@ -181,6 +181,8 @@ export const getAnonymousUserId = async () => {
       
       if (hasNoEmail && hasNoPhone) {
         console.log('[GET_ANONYMOUS_USER_ID] Found anonymous user in session:', session.user.id);
+        // 🎯 FIX: Store the anonymous user ID in localStorage for future use
+        localStorage.setItem('anonymous_user_id', session.user.id);
         return session.user.id;
       }
     }

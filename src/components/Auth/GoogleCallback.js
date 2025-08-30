@@ -28,67 +28,168 @@ const GoogleCallback = () => {
             try {
                 console.log('[CALLBACK] 🚀 Starting OAuth callback processing...');
                 
-                // Get the current session
+                // 🎯 DEBUG: Check OAuth entry point
+                const referrer = document.referrer;
+                const currentUrl = window.location.href;
+                console.log('[CALLBACK] 🔍 OAuth Entry Point Debug:', {
+                    referrer,
+                    currentUrl,
+                    hasReferrer: !!referrer,
+                    isFromLogin: referrer.includes('/login'),
+                    isFromSignup: referrer.includes('/signup'),
+                    isDirectOAuth: !referrer || referrer === currentUrl
+                });
+
                 const { data: { session } } = await supabase.auth.getSession();
                 
                 if (!session) {
                     console.error('[CALLBACK] ❌ No session found after OAuth');
-                    alert('Authentication failed. Please try again.');
                     navigate('/login');
                     return;
                 }
-                
+
                 console.log('[CALLBACK] ✅ Session found:', {
                     userId: session.user.id,
                     email: session.user.email,
-                    isAuthenticated: !!session.user.email
+                    isAuthenticated: true
                 });
-                
-                // 🎯 DATABASE-FIRST APPROACH: Check for anonymous user ID for cart merge
+
+                // 🎯 FALLBACK: Check if search preferences need to be saved
                 const anonymousUserId = localStorage.getItem('anonymousUserIdForMerge');
-                
                 if (anonymousUserId) {
                     console.log('[CALLBACK] 🔍 Found anonymous user ID for merge:', anonymousUserId);
                     console.log('[CALLBACK] Current authenticated user ID:', session.user.id);
                     
-                    // Validate user IDs are different
-                    if (anonymousUserId === session.user.id) {
-                        console.warn('[CALLBACK] ⚠️  Anonymous and authenticated user IDs are the same, skipping merge');
-                        localStorage.removeItem('anonymousUserIdForMerge');
-                    } else {
-                        // 🎯 PERFORM DATABASE-FIRST SEARCH PREFERENCES MERGE FIRST
-                        console.log('[CALLBACK] 🔄 Starting search preferences merge...');
-                        await performSearchPreferencesMerge(anonymousUserId, session.user.id);
-                        console.log('[CALLBACK] ✅ Search preferences merge completed');
+                    // 🎯 FALLBACK SAVE: If no search preferences exist for anonymous user, try to save current state
+                    try {
+                        const { data: existingPrefs, error: checkError } = await supabase
+                            .from('SearchPreferences')
+                            .select('*')
+                            .eq('supabase_user_id', anonymousUserId);
                         
-                        // 🎯 PERFORM DATABASE-FIRST CART MERGE AFTER
-                        await performCartMerge(anonymousUserId, session.user.id);
-                        
-                        // 🎯 CLEAN UP LOCALSTORAGE AFTER BOTH MERGES ARE COMPLETED
-                        console.log('[CALLBACK] 🧹 Cleaning up localStorage after successful merges...');
-                        localStorage.removeItem('anonymousUserIdForMerge');
+                        if (checkError) {
+                            console.warn('[CALLBACK] ⚠️ Could not check existing preferences:', checkError);
+                        } else if (!existingPrefs || existingPrefs.length === 0) {
+                            console.log('[CALLBACK] 🔍 No existing search preferences found for anonymous user');
+                            console.log('[CALLBACK] 🎯 This suggests the save logic was bypassed - attempting fallback save');
+                            
+                            // 🎯 FALLBACK: Try multiple sources for search term and allergens
+                            let fallbackSearchTerm = '';
+                            let fallbackAllergens = [];
+                            
+                            // Method 1: Try to get from localStorage (if user had search in session)
+                            const storedSearchTerm = localStorage.getItem('anonymousSearchTerm');
+                            const storedAllergens = localStorage.getItem('anonymousAllergens');
+                            
+                            if (storedSearchTerm) {
+                                fallbackSearchTerm = storedSearchTerm;
+                                console.log('[CALLBACK] 🎯 Found search term in localStorage:', fallbackSearchTerm);
+                            }
+                            
+                            if (storedAllergens) {
+                                try {
+                                    fallbackAllergens = JSON.parse(storedAllergens);
+                                    console.log('[CALLBACK] 🎯 Found allergens in localStorage:', fallbackAllergens);
+                                } catch (parseError) {
+                                    console.warn('[CALLBACK] ⚠️ Failed to parse stored allergens:', parseError);
+                                }
+                            }
+                            
+                            // Method 2: Try to get from Redux store (if available)
+                            if (!fallbackSearchTerm || fallbackAllergens.length === 0) {
+                                try {
+                                    const currentState = window.__REDUX_STORE__?.getState();
+                                    if (currentState) {
+                                        if (!fallbackSearchTerm) {
+                                            fallbackSearchTerm = currentState.searchPreferences?.searchTerm || '';
+                                        }
+                                        if (fallbackAllergens.length === 0) {
+                                            fallbackAllergens = currentState.searchPreferences?.selectedAllergens || [];
+                                        }
+                                        console.log('[CALLBACK] 🎯 Found state in Redux store:', {
+                                            searchTerm: fallbackSearchTerm,
+                                            allergens: fallbackAllergens
+                                        });
+                                    }
+                                } catch (reduxError) {
+                                    console.warn('[CALLBACK] ⚠️ Failed to access Redux store:', reduxError);
+                                }
+                            }
+                            
+                            // Method 3: Try to get from URL parameters (if search was in URL)
+                            if (!fallbackSearchTerm) {
+                                const urlParams = new URLSearchParams(window.location.search);
+                                const urlSearchTerm = urlParams.get('search') || urlParams.get('q');
+                                if (urlSearchTerm) {
+                                    fallbackSearchTerm = urlSearchTerm;
+                                    console.log('[CALLBACK] 🎯 Found search term in URL params:', fallbackSearchTerm);
+                                }
+                            }
+                            
+                            console.log('[CALLBACK] 🎯 Final fallback save attempt:', {
+                                searchTerm: fallbackSearchTerm,
+                                allergens: fallbackAllergens,
+                                hasSearchTerm: !!fallbackSearchTerm,
+                                hasAllergens: fallbackAllergens.length > 0
+                            });
+                            
+                            if (fallbackSearchTerm || fallbackAllergens.length > 0) {
+                                try {
+                                    const fallbackResult = await supabase.rpc('save_search_preferences', {
+                                        p_user_id: anonymousUserId,
+                                        p_search_term: fallbackSearchTerm,
+                                        p_allergens: fallbackAllergens
+                                    });
+                                    
+                                    if (fallbackResult.error) {
+                                        console.warn('[CALLBACK] ⚠️ Fallback save failed:', fallbackResult.error);
+                                    } else {
+                                        console.log('[CALLBACK] ✅ Fallback save successful:', fallbackResult.data);
+                                    }
+                                } catch (fallbackError) {
+                                    console.warn('[CALLBACK] ⚠️ Fallback save error:', fallbackError);
+                                }
+                            } else {
+                                console.log('[CALLBACK] ℹ️ No search term or allergens found for fallback save');
+                            }
+                        } else {
+                            console.log('[CALLBACK] ✅ Existing search preferences found for anonymous user');
+                        }
+                    } catch (fallbackCheckError) {
+                        console.warn('[CALLBACK] ⚠️ Fallback check failed:', fallbackCheckError);
                     }
-                } else {
-                    console.log('[CALLBACK] ℹ️  No anonymous user ID found for merge');
                 }
-                
-                // Set user credentials in Redux
+
+                // 🎯 SEARCH PREFERENCES MERGE
+                console.log('[CALLBACK] 🔄 Starting search preferences merge...');
+                if (anonymousUserId) {
+                    await performSearchPreferencesMerge(anonymousUserId, session.user.id);
+                }
+
+                // 🎯 CART MERGE
+                console.log('[CALLBACK] 🔄 Starting cart merge...');
+                if (anonymousUserId) {
+                    await performCartMerge(anonymousUserId, session.user.id);
+                }
+
+                // 🧹 Clean up localStorage after successful merges
+                console.log('[CALLBACK] 🧹 Cleaning up localStorage after successful merges...');
+                localStorage.removeItem('anonymousUserIdForMerge');
+                localStorage.removeItem('anonymous_user_id');
+
+                // 💾 Set user credentials in Redux
                 console.log('[CALLBACK] 💾 Setting user credentials in Redux...');
                 dispatch(setCredentials({
                     user: session.user,
-                    token: session.access_token,
-                    isAuthenticated: true
+                    token: session.access_token
                 }));
-                
-                // Navigate to home page
+
+                // 🏠 Navigate to home page
                 console.log('[CALLBACK] 🏠 Navigating to home page...');
                 navigate('/');
-                
+
             } catch (error) {
-                console.error('[CALLBACK] ❌ Error handling auth callback:', error);
-                // Clean up localStorage even if there's an error
-                localStorage.removeItem('anonymousUserIdForMerge');
-                alert('Authentication error: ' + error.message);
+                console.error('[CALLBACK] ❌ Error during OAuth callback:', error);
                 navigate('/login');
             }
         };
@@ -311,7 +412,7 @@ const GoogleCallback = () => {
         };
         
         handleAuthCallback();
-    }, [dispatch, navigate]);
+    }, [navigate, dispatch]);
 
     return (
         <div style={{ 

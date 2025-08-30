@@ -354,6 +354,10 @@ export const createAnonymousSession = async () => {
         
         console.log('[AUTH SERVICE] Anonymous session created successfully:', data.user.id);
         
+        // 🎯 FIX: Store anonymous user ID in localStorage for search preferences
+        localStorage.setItem('anonymous_user_id', data.user.id);
+        console.log('[AUTH SERVICE] ✅ Anonymous user ID stored in localStorage:', data.user.id);
+        
         return {
             session: data.session,
             isAnonymous: true,

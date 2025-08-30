@@ -164,6 +164,73 @@ const Searchbar = ({ curAllergen }) => { // curAllergen prop is now unused but k
         }
     }, [textbar, searchTerm, getResponse]);
 
+    // Auto-save search preferences when search term changes
+    useEffect(() => {
+        const trimmedValue = inputValue.trim();
+        const hasValue = trimmedValue.length > 0;
+        
+        console.log('[SEARCHBAR] 🔍 Auto-save check:', {
+            inputValue,
+            trimmedValue,
+            hasValue,
+            timestamp: new Date().toISOString()
+        });
+
+        // 🎯 FALLBACK: Save to localStorage for direct OAuth scenarios
+        if (hasValue) {
+            localStorage.setItem('anonymousSearchTerm', trimmedValue);
+            console.log('[SEARCHBAR] 💾 Saved search term to localStorage for fallback:', trimmedValue);
+        } else {
+            localStorage.removeItem('anonymousSearchTerm');
+            console.log('[SEARCHBAR] 🧹 Removed search term from localStorage');
+        }
+
+        if (hasValue) {
+            const saveSearchPreferences = async () => {
+                try {
+                    const userId = await getAnonymousUserId();
+                    if (!userId) {
+                        console.log('[SEARCHBAR] ⏭️ Skipping auto-save - no user ID');
+                        return;
+                    }
+
+                    console.log('[SEARCHBAR] 💾 Saving search preferences:', {
+                        searchTerm: trimmedValue,
+                        userId,
+                        isAnonymous: true,
+                        anonymousId: userId
+                    });
+
+                    const allergens = selectedAllergens;
+                    console.log('[SEARCHBAR] Allergies object:', allergies);
+                    console.log('[SEARCHBAR] Selected allergens:', allergens);
+                    console.log('[SEARCHBAR] Sending allergens:', allergens);
+
+                    // 🎯 FALLBACK: Save allergens to localStorage as well
+                    if (allergens && allergens.length > 0) {
+                        localStorage.setItem('anonymousAllergens', JSON.stringify(allergens));
+                        console.log('[SEARCHBAR] 💾 Saved allergens to localStorage for fallback:', allergens);
+                    } else {
+                        localStorage.removeItem('anonymousAllergens');
+                        console.log('[SEARCHBAR] 🧹 Removed allergens from localStorage');
+                    }
+
+                    await dispatch(saveSearchPreferencesAsync({
+                        searchTerm: trimmedValue,
+                        allergens,
+                        userId
+                    })).unwrap();
+                } catch (error) {
+                    console.error('[SEARCHBAR] ❌ Auto-save failed:', error);
+                }
+            };
+
+            saveSearchPreferences();
+        } else {
+            console.log('[SEARCHBAR] ⏭️ Skipping auto-save - no search term to save');
+        }
+    }, [inputValue, selectedAllergens, dispatch]);
+
     const handleTextChange = (input) => {
         console.log('[SEARCHBAR] Input change detected:', input.target.value);
         setInputValue(input.target.value);

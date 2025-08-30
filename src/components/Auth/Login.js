@@ -32,7 +32,11 @@ const Login = () => {
     // Get cart items and search preferences from Redux state
     const cartItems = useSelector(state => state.anonymousCart.items);
     const searchTerm = useSelector(state => state.searchPreferences.searchTerm);
+    const searchbarValue = useSelector(state => state.searchbar.searchbar);
     const selectedAllergens = useSelector(state => state.searchPreferences.selectedAllergens);
+    
+    // 🎯 FIX: Use the most current search term (searchbar value or searchTerm)
+    const currentSearchTerm = searchbarValue || searchTerm || '';
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -45,18 +49,27 @@ const Login = () => {
             const anonymousUserId = session?.user?.id;
             
             if (anonymousUserId && await isAnonymousUser()) {
-                console.log('[LOGIN] Found anonymous session, saving allergens...');
+                console.log('[LOGIN] Found anonymous session, saving search preferences...');
+                console.log('[LOGIN] Current search term to save:', currentSearchTerm);
                 const allergens = selectedAllergens; // selectedAllergens is already an array of strings
                 
                 try {
+                    console.log('[LOGIN] 🔍 About to save search preferences (email/password):', {
+                        searchTerm: currentSearchTerm,
+                        allergens: allergens,
+                        anonymousUserId: anonymousUserId,
+                        hasSearchTerm: !!currentSearchTerm,
+                        hasAllergens: allergens.length > 0
+                    });
+                    
                     await dispatch(saveSearchPreferencesBeforeAuthAsync({
-                        searchTerm,
+                        searchTerm: currentSearchTerm,
                         allergens,
                         anonymousUserId
                     })).unwrap();
-                    console.log('[LOGIN] ✅ Allergens saved before login');
+                    console.log('[LOGIN] ✅ Search preferences saved before login');
                 } catch (error) {
-                    console.warn('[LOGIN] ⚠️ Failed to save allergens before login:', error);
+                    console.warn('[LOGIN] ⚠️ Failed to save search preferences before login:', error);
                 }
             }
 
@@ -136,6 +149,14 @@ const Login = () => {
     };
 
     const handleGoogleLogin = async () => {
+        console.log('[LOGIN] 🚨 handleGoogleLogin called - entry point detected');
+        console.log('[LOGIN] 🔍 Current Redux state:', {
+            searchTerm: currentSearchTerm,
+            searchbarValue,
+            selectedAllergens,
+            cartItems: cartItems.length
+        });
+        
         try {
             setIsLoading(true);
             console.log('[LOGIN] 🚀 Starting Google login process...');
@@ -192,11 +213,20 @@ const Login = () => {
             
             // 🎯 SEARCH PREFERENCES SAVE: Save search preferences before OAuth
             console.log('[LOGIN] 💾 Saving search preferences before OAuth...');
+            console.log('[LOGIN] Current search term to save:', currentSearchTerm);
             const allergens = selectedAllergens; // selectedAllergens is already an array of strings
             console.log('[LOGIN] Current allergens to save:', allergens);
             
+            console.log('[LOGIN] 🔍 About to save search preferences:', {
+                searchTerm: currentSearchTerm,
+                allergens: allergens,
+                anonymousUserId: anonymousUserId,
+                hasSearchTerm: !!currentSearchTerm,
+                hasAllergens: allergens.length > 0
+            });
+            
             const searchPrefsResult = await dispatch(saveSearchPreferencesBeforeAuthAsync({
-                searchTerm,
+                searchTerm: currentSearchTerm,
                 allergens,
                 anonymousUserId
             })).unwrap();

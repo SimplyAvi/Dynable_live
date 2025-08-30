@@ -71,15 +71,19 @@ const Homepage = () => {
     const queryControllerRef = useRef(null);
     const [isTransitioning, setIsTransitioning] = useState(false);
     const previousAuthStateRef = useRef(isAuthenticated);
+    const isQueryingRef = useRef(false); // 🎯 FIX: Prevent multiple simultaneous queries
 
     useEffect(() => {
         const authStateChanged = previousAuthStateRef.current !== isAuthenticated;
         if (authStateChanged) {
             const transitionStartTime = performance.now();
+            const isLogout = previousAuthStateRef.current === true && isAuthenticated === false;
+            
             console.log('[HOMEPAGE] 🔄 Auth state changed, starting transition:', {
                 from: previousAuthStateRef.current,
                 to: isAuthenticated,
-                transitionTime: '2000ms',
+                isLogout: isLogout,
+                transitionTime: isLogout ? 'IMMEDIATE' : '2000ms',
                 timestamp: new Date().toISOString()
             });
             
@@ -89,17 +93,20 @@ const Homepage = () => {
                 queryControllerRef.current.abort();
             }
             
-            // 🎯 PHASE 1: Reduced transition time from 5000ms to 2000ms
+            // 🎯 LOGOUT FIX: Immediate transition for logout, delayed for login
+            const transitionDelay = isLogout ? 0 : 2000;
+            
             setTimeout(() => {
                 const transitionEndTime = performance.now();
                 const actualTransitionTime = transitionEndTime - transitionStartTime;
                 console.log('[HOMEPAGE] ✅ Transition completed, resuming queries:', {
                     actualTransitionTime: `${actualTransitionTime.toFixed(2)}ms`,
-                    expectedTransitionTime: '2000ms',
-                    performance: actualTransitionTime <= 2100 ? '✅ GOOD' : '⚠️ SLOW'
+                    expectedTransitionTime: isLogout ? 'IMMEDIATE' : '2000ms',
+                    isLogout: isLogout,
+                    performance: actualTransitionTime <= (isLogout ? 100 : 2100) ? '✅ GOOD' : '⚠️ SLOW'
                 });
                 setIsTransitioning(false);
-            }, 2000); // 🛡️ REDUCED: From 5000ms to 2000ms (60% faster)
+            }, transitionDelay);
             
             previousAuthStateRef.current = isAuthenticated;
         }
@@ -126,7 +133,7 @@ const Homepage = () => {
             return;
         }
 
-        // 🎯 NEW: Skip queries if anonymous user but no session is ready
+        // 🎯 NEW: Skip queries if anonymous user but no session is ready (except after logout)
         console.log('[HOMEPAGE] 🔍 Query trigger check:', {
             isAuthenticated,
             hasAnonymousSession: !!anonymousSession,
@@ -137,8 +144,18 @@ const Homepage = () => {
             searchTerm: searchTerm // 🛡️ ADDED: Log search term
         });
         
-        if (!isAuthenticated && !anonymousSession) {
+        // 🎯 LOGOUT FIX: Don't skip query if we just logged out (isTransitioning just completed)
+        const justLoggedOut = !isAuthenticated && !anonymousSession && !isTransitioning;
+        if (justLoggedOut) {
+            console.log('[HOMEPAGE] 🚀 Post-logout: Loading fresh data immediately');
+        } else if (!isAuthenticated && !anonymousSession) {
             console.log('[HOMEPAGE] Skipping query - anonymous user but no session ready yet');
+            return;
+        }
+
+        // 🎯 FIX: Prevent multiple simultaneous queries
+        if (isQueryingRef.current) {
+            console.log('[HOMEPAGE] Skipping query - another query is already in progress');
             return;
         }
 
@@ -150,6 +167,7 @@ const Homepage = () => {
 
         // Create new abort controller for this query
         queryControllerRef.current = new AbortController();
+        isQueryingRef.current = true; // 🎯 FIX: Mark as querying
 
         const loadData = async () => {
             try {
@@ -221,6 +239,9 @@ const Homepage = () => {
                     return;
                 }
                 console.error('[HOMEPAGE] ❌ Error loading unified data:', error);
+            } finally {
+                // 🎯 FIX: Reset querying flag when query completes
+                isQueryingRef.current = false;
             }
         };
 
@@ -231,6 +252,8 @@ const Homepage = () => {
                 console.log('[HOMEPAGE] Cleaning up - cancelling ongoing queries');
                 queryControllerRef.current.abort();
             }
+            // 🎯 FIX: Reset querying flag when useEffect cleanup runs
+            isQueryingRef.current = false;
         };
     }, [selectedAllergens, searchTerm, isAuthenticated, dispatch, isTransitioning, anonymousSession]); // 🛡️ ADDED: searchTerm to dependencies
 

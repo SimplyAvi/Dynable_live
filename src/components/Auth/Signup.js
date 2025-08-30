@@ -11,11 +11,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setCredentials } from '../../redux/authSlice';
 import FormInput from '../FormInput/FormInput';
 import './Auth.css';
 import { supabase } from '../../utils/supabaseClient';
+import { isAnonymousUser } from '../../utils/anonymousAuth';
+import { saveCartBeforeAuth } from '../../utils/cartSaveBeforeAuth';
+import { saveSearchPreferencesBeforeAuthAsync } from '../../redux/searchPreferencesSlice';
 
 const Signup = () => {
     const [email, setEmail] = useState('');
@@ -26,6 +29,15 @@ const Signup = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const location = useLocation();
+    
+    // Get cart items and search preferences from Redux state
+    const cartItems = useSelector(state => state.anonymousCart.items);
+    const searchTerm = useSelector(state => state.searchPreferences.searchTerm);
+    const searchbarValue = useSelector(state => state.searchbar.searchbar);
+    const selectedAllergens = useSelector(state => state.searchPreferences.selectedAllergens);
+    
+    // 🎯 FIX: Use the most current search term (searchbar value or searchTerm)
+    const currentSearchTerm = searchbarValue || searchTerm || '';
 
     // Handle pre-filled email from login redirect
     useEffect(() => {
@@ -92,9 +104,58 @@ const Signup = () => {
     };
 
     const handleGoogleSignup = async () => {
+        console.log('[SIGNUP] 🚨 handleGoogleSignup called - entry point detected');
+        console.log('[SIGNUP] 🔍 Current Redux state:', {
+            searchTerm: currentSearchTerm,
+            searchbarValue,
+            selectedAllergens,
+            cartItems: cartItems.length
+        });
+        
         setIsLoading(true);
         
         try {
+            // 🎯 SAVE CART AND SEARCH PREFERENCES BEFORE OAUTH
+            const { data: { session } } = await supabase.auth.getSession();
+            const anonymousUserId = session?.user?.id;
+            
+            if (anonymousUserId && await isAnonymousUser()) {
+                console.log('[GOOGLE SIGNUP] Found anonymous session, saving state before OAuth...');
+                
+                // 🎯 SAVE CART BEFORE OAUTH
+                const cartSaveResult = await saveCartBeforeAuth(cartItems, anonymousUserId, 'SIGNUP_BUTTON');
+                
+                if (!cartSaveResult.success) {
+                    console.error('[GOOGLE SIGNUP] ❌ Cart save failed, proceeding anyway');
+                } else {
+                    console.log('[GOOGLE SIGNUP] ✅ Cart saved successfully');
+                }
+                
+                // 🎯 SAVE SEARCH PREFERENCES BEFORE OAUTH
+                console.log('[GOOGLE SIGNUP] 💾 Saving search preferences before OAuth...');
+                console.log('[GOOGLE SIGNUP] Current search term to save:', currentSearchTerm);
+                const allergens = selectedAllergens;
+                console.log('[GOOGLE SIGNUP] Current allergens to save:', allergens);
+                
+                const searchPrefsResult = await dispatch(saveSearchPreferencesBeforeAuthAsync({
+                    searchTerm: currentSearchTerm,
+                    allergens,
+                    anonymousUserId
+                })).unwrap();
+                
+                if (!searchPrefsResult.success) {
+                    console.warn('[GOOGLE SIGNUP] ⚠️ Search preferences save failed:', searchPrefsResult.error);
+                } else {
+                    console.log('[GOOGLE SIGNUP] ✅ Search preferences saved successfully');
+                }
+                
+                // 🛡️ STORE ANONYMOUS USER ID FOR MERGE
+                console.log('[GOOGLE SIGNUP] Storing anonymous user ID for merge:', anonymousUserId);
+                localStorage.setItem('anonymousUserIdForMerge', anonymousUserId);
+            }
+            
+            // Proceed with OAuth redirect
+            console.log('[GOOGLE SIGNUP] 🚀 Proceeding with Google OAuth redirect...');
             const { data, error } = await supabase.auth.signInWithOAuth({
                 provider: 'google',
                 options: {
@@ -103,14 +164,14 @@ const Signup = () => {
             });
 
             if (error) {
-                console.error('[GOOGLE SIGNUP] Error:', error);
+                console.error('[GOOGLE SIGNUP] ❌ OAuth error:', error);
                 alert('Google signup failed. Please try again.');
             } else {
-                console.log('[GOOGLE SIGNUP] Redirecting to Google...');
+                console.log('[GOOGLE SIGNUP] ✅ OAuth redirect initiated');
                 // The redirect will happen automatically
             }
         } catch (error) {
-            console.error('[GOOGLE SIGNUP] Error:', error);
+            console.error('[GOOGLE SIGNUP] ❌ Error:', error);
             alert('An error occurred during Google signup. Please try again.');
         } finally {
             setIsLoading(false);
