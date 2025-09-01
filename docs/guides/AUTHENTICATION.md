@@ -1,19 +1,20 @@
 # 🔐 AUTHENTICATION SYSTEM GUIDE
 
-**Last Updated:** January 2025  
+**Last Updated:** August 29, 2025  
 **Status:** ✅ CURRENT - Production Ready
 
 ---
 
 ## 📋 OVERVIEW
 
-Dynable uses **Supabase Auth** with a centralized authentication service that manages both **authenticated users** and **anonymous users**. This system provides seamless cart persistence, allergen preferences, and user data management with a single source of truth for auth state.
+Dynable uses **Supabase Auth** with a centralized authentication service that manages both **authenticated users** and **anonymous users**. This system provides seamless cart persistence, search persistence, allergen preferences, and user data management with a single source of truth for auth state.
 
 ### **Key Features:**
 - ✅ Centralized auth service with single source of truth
 - ✅ Google OAuth integration
-- ✅ Anonymous user support with cart persistence
-- ✅ Automatic cart merging on login
+- ✅ Anonymous user support with cart and search persistence
+- ✅ Automatic cart and search merging on login
+- ✅ Fallback save mechanism for direct OAuth scenarios
 - ✅ Row Level Security (RLS) policies
 - ✅ Session state management
 - ✅ Allergen preferences persistence

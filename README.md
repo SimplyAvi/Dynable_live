@@ -1,12 +1,12 @@
 # 🚀 Dynable - Clean & Organized
 
 **Author:** Justin Linzan  
-**Date:** January 2025  
+**Date:** August 29, 2025  
 **Status:** ✅ PRODUCTION READY
 
 ## 📋 Project Overview
 
-Dynable is a robust ingredient/product mapping and recipe platform with comprehensive authentication, cart management, and allergen filtering systems. The project is now **cleanly organized** with proper documentation and production-ready features.
+Dynable is a robust ingredient/product mapping and recipe platform with comprehensive authentication, cart management, allergen filtering, and search persistence systems. The project is now **cleanly organized** with proper documentation and production-ready features.
 
 ## 🏗️ Clean Project Structure
 
@@ -36,8 +36,8 @@ dynable_new/
 ### 🔐 **Security & Authentication**
 - **Centralized auth service** with single source of truth
 - **Google OAuth** integration with role-based access
-- **Anonymous user support** with cart persistence
-- **Automatic cart merging** on login/logout
+- **Anonymous user support** with cart and search persistence
+- **Automatic cart and search merging** on login/logout
 - **Row Level Security (RLS)** policies
 
 ### 🛒 **Cart System**
@@ -46,7 +46,9 @@ dynable_new/
 - **Real-time updates** with Redux state management
 - **Cross-device persistence** via Supabase
 
-### 🔍 **Allergen System**
+### 🔍 **Search & Allergen System**
+- **Anonymous search persistence** across login sessions
+- **Fallback save mechanism** for direct OAuth scenarios
 - **Real-time allergen filtering** with database queries
 - **User preference persistence** across sessions
 - **Optimized performance** with unified filtering

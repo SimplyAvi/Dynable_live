@@ -739,7 +739,7 @@ export const getRecipeSubstitutesFromSupabase = async (canonicalIngredient) => {
  * Get products by ingredient from Supabase - SIMPLIFIED VERSION
  * Replaces: POST http://process.env.API_URL || 'process.env.API_URL || 'localhost:5001''/api/product/by-ingredient
  */
-export const getProductsByIngredientFromSupabase = async (ingredientName, allergens = [], substituteName = null) => {
+export const getProductsByIngredientFromSupabase = async (ingredientName, allergens = [], substituteName = null, productLimit = 20) => {
   console.log('[SUPABASE] Getting products for ingredient:', ingredientName, 'substitute:', substituteName);
   
   try {
@@ -761,7 +761,7 @@ export const getProductsByIngredientFromSupabase = async (ingredientName, allerg
       .from('IngredientCategorized')
       .select('*')
       .ilike('description', `%${primaryWord}%`)
-      .limit(10);
+      .limit(productLimit); // Configurable limit for better variety
     
     if (error) {
       console.error('[SUPABASE] Error fetching products by ingredient:', error);

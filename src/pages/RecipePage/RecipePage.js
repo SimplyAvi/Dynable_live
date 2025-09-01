@@ -310,7 +310,7 @@ const RecipePage = () =>{
                     <h3>Source: {source}</h3>
                     Directions:
                     {directions.map((text,key)=>{
-                         <h4 key={key}>Step {key+1}: {text}</h4>
+                         return <h4 key={key}>Step {key+1}: {text}</h4>
                     })}
                 </div>
                 <div>
