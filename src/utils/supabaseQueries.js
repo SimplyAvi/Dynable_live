@@ -736,6 +736,29 @@ export const getRecipeSubstitutesFromSupabase = async (canonicalIngredient) => {
 };
 
 /**
+ * Clean ingredient name for better product matching
+ * Uses the same logic as RecipePage for consistency
+ */
+function cleanIngredientName(raw) {
+    if (!raw) return '';
+    let cleaned = raw.toLowerCase();
+    cleaned = cleaned.replace(/\([^)]*\)/g, ''); // remove parentheticals
+    cleaned = cleaned.replace(/optional|such as.*?\(.*?\)/g, ''); // remove optional text
+    cleaned = cleaned.replace(/(^|\s)(\d+[\/\d]*\s*)/g, ' '); // remove numbers/fractions at start or after space
+    cleaned = cleaned.replace(/(?<=\s|^)(cups?|tablespoons?|tbsp|teaspoons?|tsp|ounces?|oz|pounds?|lb|grams?|kilograms?|kg|liters?|l|milliliters?|ml|package|can|container|envelope|slice|loaf|pinch|dash|quart|qt|pint|pt|gallon|gal|stick|clove|head|bunch|sprig|piece|sheet|bag|bottle|jar|box|packet|drop|ear|stalk|strip|cube|block|bar)(?=\s|$)/g, '');
+    cleaned = cleaned.replace(/\b(sliced|chopped|fresh|dried|mild|to taste|and|drained|rinsed|peeled|seeded|halved|quartered|shredded|grated|zested|minced|mashed|crushed|diced|cubed|julienned|optional|with juice|with syrup|with liquid|in juice|in syrup|in liquid|powdered|sweetened|unsweetened|raw|cooked|baked|roasted|steamed|boiled|fried|blanched|toasted|softened|melted|room temperature|cold|warm|hot|refrigerated|frozen|thawed|defrosted|prepared|beaten|whipped|stiff|soft|firm|fine|coarse|crumbled|broken|pieces|chunks|strips|sticks|spears|tips|ends|whole|large|small|medium|extra large|extra small|thin|thick|lean|fatty|boneless|skinless|bone-in|with skin|without skin|with bone|without bone|center cut|end cut|trimmed|untrimmed|pitted|unpitted|seedless|with seeds|without seeds|cored|uncored|stemmed|destemmed|deveined|unveined|cleaned|uncleaned|split|unsplit|shelled|unshelled|hulled|unhulled|deveined|unveined|deveined|unveined|deveined|unveined)\b/g, '');
+    cleaned = cleaned.replace(/\b(leaves?|slices?|pieces?|chunks?|strips?|sticks?|spears?|tips|ends?)\b/g, '');
+    cleaned = cleaned.replace(/\b(yellow|white|black|red|green|orange|purple|brown|golden|pink|blue|rainbow)\b/g, '');
+    cleaned = cleaned.replace(/,\s*$/, ''); // remove trailing commas
+    cleaned = cleaned.replace(/^\s*,\s*/, ''); // remove leading commas
+    cleaned = cleaned.replace(/\s{2,}/g, ' '); // collapse spaces
+    cleaned = cleaned.replace(/,\s*,/g, ' '); // remove double commas
+    cleaned = cleaned.replace(/,\s*/g, ' '); // replace remaining commas with spaces
+    cleaned = cleaned.trim();
+    return cleaned;
+}
+
+/**
  * Get products by ingredient from Supabase - SIMPLIFIED VERSION
  * Replaces: POST http://process.env.API_URL || 'process.env.API_URL || 'localhost:5001''/api/product/by-ingredient
  */
@@ -746,35 +769,108 @@ export const getProductsByIngredientFromSupabase = async (ingredientName, allerg
     // Use substitute name if provided
     const searchTerm = substituteName || ingredientName;
     
-    // Clean and extract the most important word for searching
-    const cleanTerm = searchTerm
-      .toLowerCase()
-      .replace(/[^\w\s]/g, '') // Remove special characters
-      .trim();
+    // Clean ingredient name using the same logic as RecipePage
+    const cleanTerm = cleanIngredientName(searchTerm);
     
     // Extract the most significant word (usually the main ingredient)
     const words = cleanTerm.split(/\s+/).filter(word => word.length > 2);
-    const primaryWord = words[0] || cleanTerm;
     
-    // Use a simple, fast query with just the primary word
+    // Enhanced primary word selection
+    let primaryWord = words[0] || cleanTerm;
+    
+    // If we have multiple words, try to find the most important ingredient
+    if (words.length > 1) {
+        // Priority list of common ingredient words (most important first)
+        const priorityIngredients = [
+            'salmon', 'beef', 'chicken', 'pork', 'lamb', 'turkey', 'fish', 'shrimp', 'crab', 'lobster',
+            'tomatoes', 'onions', 'garlic', 'pepper', 'salt', 'flour', 'sugar', 'butter', 'oil', 'eggs',
+            'milk', 'cheese', 'cream', 'yogurt', 'bread', 'rice', 'pasta', 'noodles', 'potatoes', 'carrots',
+            'lettuce', 'spinach', 'kale', 'basil', 'parsley', 'oregano', 'thyme', 'rosemary', 'cilantro',
+            'lemon', 'lime', 'orange', 'apple', 'banana', 'strawberry', 'blueberry', 'raspberry',
+            'almonds', 'walnuts', 'pecans', 'cashews', 'peanuts', 'sunflower', 'pumpkin', 'sesame'
+        ];
+        
+        // Find the highest priority word
+        for (const priority of priorityIngredients) {
+            if (words.includes(priority)) {
+                primaryWord = priority;
+                break;
+            }
+        }
+        
+        // If no priority word found, use the last word (often the main ingredient)
+        // But avoid words that are clearly not ingredients
+        if (primaryWord === words[0]) {
+            const lastWord = words[words.length - 1];
+            const nonIngredientWords = ['removed', 'drained', 'flaked', 'chopped', 'diced', 'minced', 'grated', 'shredded', 'broth', 'juice', 'sauce'];
+            
+            if (!nonIngredientWords.includes(lastWord)) {
+                primaryWord = lastWord;
+            } else if (words.length > 2) {
+                // Try the second-to-last word
+                primaryWord = words[words.length - 2];
+            }
+        }
+    }
+    
+    console.log('[SUPABASE] Cleaned ingredient:', { original: ingredientName, cleaned: cleanTerm, primaryWord });
+    
+    // 🎯 ENHANCED: Try IngredientCanonical table first (if available)
+    try {
+        const { data: canonicalData, error: canonicalError } = await supabase
+            .from('IngredientCanonical')
+            .select('matching_products, canonical_ingredient')
+            .ilike('canonical_ingredient', `%${primaryWord}%`)
+            .limit(1);
+        
+        if (!canonicalError && canonicalData && canonicalData.length > 0) {
+            console.log('[SUPABASE] Found canonical mapping for:', primaryWord);
+            
+            // If we have pre-computed product IDs, fetch them directly
+            if (canonicalData[0].matching_products && canonicalData[0].matching_products.length > 0) {
+                const productIds = canonicalData[0].matching_products.slice(0, productLimit);
+                
+                const { data: products, error: productsError } = await supabase
+                    .from('IngredientCategorized')
+                    .select('*')
+                    .in('id', productIds);
+                
+                if (!productsError && products) {
+                    console.log(`[SUPABASE] Found ${products.length} products via canonical mapping for ${ingredientName}`);
+                    return { 
+                        products: products,
+                        mappingStatus: 'canonical',
+                        coverageStats: { total: products.length },
+                        brandPriority: 'mixed',
+                        canonicalIngredient: canonicalData[0].canonical_ingredient
+                    };
+                }
+            }
+        }
+    } catch (canonicalError) {
+        console.log('[SUPABASE] Canonical lookup failed, falling back to direct search:', canonicalError);
+    }
+    
+    // Fallback: Use direct search (current approach)
+    console.log('[SUPABASE] Using direct search for:', primaryWord);
     const { data, error } = await supabase
-      .from('IngredientCategorized')
-      .select('*')
-      .ilike('description', `%${primaryWord}%`)
-      .limit(productLimit); // Configurable limit for better variety
+        .from('IngredientCategorized')
+        .select('*')
+        .ilike('description', `%${primaryWord}%`)
+        .limit(productLimit);
     
     if (error) {
-      console.error('[SUPABASE] Error fetching products by ingredient:', error);
-      return { products: [] };
+        console.error('[SUPABASE] Error fetching products by ingredient:', error);
+        return { products: [] };
     }
     
     console.log(`[SUPABASE] Found ${data.length} products for ${ingredientName}`);
     return { 
-      products: data,
-      mappingStatus: 'success',
-      coverageStats: { total: data.length },
-      brandPriority: 'mixed',
-      canonicalIngredient: ingredientName
+        products: data,
+        mappingStatus: 'direct',
+        coverageStats: { total: data.length },
+        brandPriority: 'mixed',
+        canonicalIngredient: ingredientName
     };
     
   } catch (error) {
