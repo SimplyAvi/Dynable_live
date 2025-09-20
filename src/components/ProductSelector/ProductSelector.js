@@ -4,7 +4,7 @@ import { addItemToCart } from '../../redux/anonymousCartSlice';
 import FoodCard from '../FoodCard/FoodCard';
 import './ProductSelector.css';
 
-const ProductSelector = ({ products, selectedProductId, onProductSelect, ingredientName, ingredientFlagged, expanded, onToggleExpand }) => {
+const ProductSelector = ({ products, selectedProductId, onProductSelect, ingredientName, ingredientFlagged, expanded, onToggleExpand, hideAllergenAnalysis = false }) => {
     const dispatch = useDispatch();
     const [addingToCart, setAddingToCart] = useState({});
     
@@ -79,6 +79,7 @@ const ProductSelector = ({ products, selectedProductId, onProductSelect, ingredi
                                         showAddToCart={true}
                                         ingredientFlagged={ingredientFlagged}
                                         onAddToCart={() => handleAddToCart(product)}
+                                        hideAllergenAnalysis={hideAllergenAnalysis}
                                     />
                                     {isSubstituteProducts && product.substituteName && (
                                         <div className="substitute-info">

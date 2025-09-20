@@ -37,11 +37,6 @@
   padding: 1rem 2rem 1rem 0.5rem;
 }
 
-/* Add top padding to App-main to prevent content from hiding behind header */
-.App-main {
-  padding-top: 72px;
-}
-
 .header-left {
     display: flex;
     align-items: center;

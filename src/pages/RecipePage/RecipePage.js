@@ -1,392 +1,384 @@
-import React, {useEffect, useState, useCallback} from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import './RecipePage.css'
-import SearchAndFilter from '../../components/SearchAndFilter/SearchAndFilter';
-import ProductSelector from '../../components/ProductSelector/ProductSelector';
 import { useSelector } from 'react-redux';
-import { searchRecipesFromSupabasePure, searchProductsFromSupabasePure, getRecipeSubstitutesFromSupabase, getProductsByIngredientFromSupabase } from '../../utils/supabaseQueries';
+import ProductSelector from '../../components/ProductSelector/ProductSelector';
+import AllergyFilter from '../../components/AllergyFilter/AllergyFilter';
 import { supabase } from '../../utils/supabaseClient';
+import './RecipePage.css';
 
-const RecipePage = () =>{
+const RecipePage = () => {
     const { id } = useParams();
-    const [item, setItem] = useState({})
-    const allergies = useSelector((state) => state.allergies.allergies);
+    
+    // Get allergens from Redux - SIMPLIFIED
+    const userAllergens = useSelector(state => state.searchPreferences.selectedAllergens || []);
+    
+    // Remove complex memoization that was causing issues
+    // const userAllergens = useMemo(() => selectedAllergens, [selectedAllergens]);
+    
+    // Add ref to prevent multiple simultaneous calls
+    const isProcessingRef = useRef(false);
+    
+    // Add render counter for debugging
+    const renderCount = useRef(0);
+    renderCount.current += 1;
+    
+    console.log(`[RECIPE PAGE] 🔄 Render #${renderCount.current} - id: ${id}, userAllergens:`, userAllergens);
+    
+    const [item, setItem] = useState(null);
     const [ingredients, setIngredients] = useState([]);
-    const [activeIngredient, setActiveIngredient] = useState(null);
-    const userAllergens = Object.keys(allergies).filter(key => allergies[key]).map(a => a.toLowerCase());
     const [productOptions, setProductOptions] = useState({});
     const [selectedProducts, setSelectedProducts] = useState({});
+    const [processingStats, setProcessingStats] = useState(null);
     const [expandedIngredients, setExpandedIngredients] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    useEffect(()=>{
-        getProduct()
-    },[id, allergies])
-
-    const getProduct = async () =>{
-        try{
-            // Use Supabase to get recipe by ID
-            const { data, error } = await supabase
-                .from('Recipes')
-                .select('*')
-                .eq('id', id)
-                .single();
-            
-            if (error) {
-                console.error('Error fetching recipe:', error);
+    // Main data loading function using Edge Function
+    const loadRecipeData = useCallback(async () => {
+        // Prevent multiple simultaneous calls
+        if (isProcessingRef.current) {
+            console.log('[RECIPE PAGE] 🚫 Already processing, skipping duplicate call');
                 return;
             }
             
-            setItem(data);
-            
-            // Now fetch the recipe ingredients
-            const { data: ingredientsData, error: ingredientsError } = await supabase
-                .from('RecipeIngredients')
-                .select('*')
-                .eq('RecipeId', id);
-            
-            if (ingredientsError) {
-                console.error('Error fetching recipe ingredients:', ingredientsError);
-                setIngredients([]);
-            } else {
-                console.log('Fetched ingredients:', ingredientsData);
-                setIngredients(ingredientsData || []);
-            }
-        } catch(err){
-            console.log(err)
-        }
-    }
-
-    // Helper to clean ingredient names for substitute-products endpoint
-    function cleanIngredientNameFrontend(raw) {
-        if (!raw) return '';
-        let cleaned = raw.toLowerCase();
-        cleaned = cleaned.replace(/\([^)]*\)/g, ''); // remove parentheticals
-        cleaned = cleaned.replace(/optional|such as.*?\(.*?\)/g, ''); // remove optional text
-        cleaned = cleaned.replace(/(^|\s)(\d+[\/\d]*\s*)/g, ' '); // remove numbers/fractions at start or after space
-        cleaned = cleaned.replace(/(?<=\s|^)(cups?|tablespoons?|tbsp|teaspoons?|tsp|ounces?|oz|pounds?|lb|grams?|kilograms?|kg|liters?|l|milliliters?|ml|package|can|container|envelope|slice|loaf|pinch|dash|quart|qt|pint|pt|gallon|gal|stick|clove|head|bunch|sprig|piece|sheet|bag|bottle|jar|box|packet|drop|ear|stalk|strip|cube|block|bar)(?=\s|$)/g, '');
-        cleaned = cleaned.replace(/\b(sliced|chopped|fresh|dried|mild|to taste|and|drained|rinsed|peeled|seeded|halved|quartered|shredded|grated|zested|minced|mashed|crushed|diced|cubed|julienned|optional|with juice|with syrup|with liquid|in juice|in syrup|in liquid|powdered|sweetened|unsweetened|raw|cooked|baked|roasted|steamed|boiled|fried|blanched|toasted|softened|melted|room temperature|cold|warm|hot|refrigerated|frozen|thawed|defrosted|prepared|beaten|whipped|stiff|soft|firm|fine|coarse|crumbled|broken|pieces|chunks|strips|sticks|spears|tips|ends|whole|large|small|medium|extra large|extra small|thin|thick|lean|fatty|boneless|skinless|bone-in|with skin|without skin|with bone|without bone|center cut|end cut|trimmed|untrimmed|pitted|unpitted|seedless|with seeds|without seeds|cored|uncored|stemmed|destemmed|deveined|unveined|cleaned|uncleaned|split|unsplit|shelled|unshelled|hulled|unhulled|deveined|unveined|deveined|unveined|deveined|unveined)\b/g, '');
-        cleaned = cleaned.replace(/\b(leaves?|slices?|pieces?|chunks?|strips?|sticks?|spears?|tips?|ends?)\b/g, '');
-        cleaned = cleaned.replace(/\b(yellow|white|black|red|green|orange|purple|brown|golden|pink|blue|rainbow)\b/g, '');
-        cleaned = cleaned.replace(/,\s*$/, ''); // remove trailing commas
-        cleaned = cleaned.replace(/^\s*,\s*/, ''); // remove leading commas
-        cleaned = cleaned.replace(/\s{2,}/g, ' '); // collapse spaces
-        cleaned = cleaned.trim();
-        return cleaned;
-    }
-
-    // Helper to map cleaned ingredient names to canonical names for substitute-products endpoint
-    function mapToCanonicalName(cleaned) {
-        const flourNames = [
-            'all-purpose flour',
-            'bread flour',
-            'wheat flour',
-            'whole wheat flour',
-            'white flour',
-            'unbleached flour',
-            'bleached flour',
-            'self-rising flour',
-            'pastry flour',
-            'cake flour',
-            'flour'
-        ];
-        if (flourNames.includes(cleaned)) return 'flour, wheat';
-        return cleaned;
-    }
-
-    // Enhanced ingredient allergen checking with optimized performance
-    const checkIngredientForAllergens = async (ingredient, userAllergens) => {
-        if (!userAllergens || userAllergens.length === 0) {
-            return false;
-        }
+        isProcessingRef.current = true;
+        setLoading(true);
+        setError(null);
         
         try {
-            console.log(`[RECIPE PAGE] 🛡️ Checking bulletproof allergen safety for: "${ingredient.canonical || ingredient.name}"`);
+            console.log(`[RECIPE PAGE] 🚀 Calling Edge Function for recipe ${id} with allergens:`, userAllergens);
+            console.log(`[RECIPE PAGE] 🔍 Debug - selectedAllergens:`, userAllergens);
+            console.log(`[RECIPE PAGE] 🔍 Debug - userAllergens:`, userAllergens);
             
-            // Use the bulletproof detection function instead of simple ILIKE
-            for (const allergen of userAllergens) {
-                const { data: detectionResult } = await supabase.rpc('detect_allergens_in_description', {
-                    product_description: ingredient.canonical || ingredient.name,
-                    target_allergen: allergen
-                });
-                
-                if (detectionResult) {
-                    const detection = typeof detectionResult === 'string' ? JSON.parse(detectionResult) : detectionResult;
-                    
-                    // Check if allergen is detected and not marked safe
-                    if (detection.detected_allergens && detection.detected_allergens.includes(allergen) && 
-                        (!detection.safe_allergens || !detection.safe_allergens.includes(allergen))) {
-                        console.log(`[RECIPE PAGE] ⚠️ Allergen "${allergen}" detected in ingredient "${ingredient.canonical || ingredient.name}"`);
-                        console.log(`[RECIPE PAGE] Detection details:`, detection);
-                        return true; // Allergen found in ingredient
-                    }
-                }
-            }
+            // Call the Edge Function
+            const requestBody = {
+                recipeId: parseInt(id),
+                userAllergens: userAllergens
+            };
             
-            console.log(`[RECIPE PAGE] ✅ No allergens detected in ingredient "${ingredient.canonical || ingredient.name}"`);
-            return false;
-        } catch (error) {
-            console.error('[RECIPE PAGE] Error checking ingredient allergens with bulletproof system:', error);
-            return false; // Fail safe - don't highlight if unsure
-        }
-    };
+            console.log(`[RECIPE PAGE] 📤 Sending request to Edge Function:`, {
+                url: `${process.env.REACT_APP_SUPABASE_URL}/functions/v1/recipe-processor`,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${process.env.REACT_APP_SUPABASE_ANON_KEY}`,
+                },
+                body: requestBody
+            });
+            
+            const response = await fetch(`${process.env.REACT_APP_SUPABASE_URL}/functions/v1/recipe-processor`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${process.env.REACT_APP_SUPABASE_ANON_KEY}`,
+                },
+                body: JSON.stringify(requestBody)
+            });
 
-    // Fetch products for each ingredient or substitute
-    const fetchProducts = useCallback(async (ingredients) => {
-        console.log('Fetching products for ingredients:', ingredients.length);
-        const userAllergensArr = Object.keys(allergies).filter(key => allergies[key]);
-        const newOptions = {};
-        
-        // Process ingredients in batches to avoid overwhelming the database
-        const batchSize = 2; // Process 2 ingredients at a time
-        for (let i = 0; i < ingredients.length; i += batchSize) {
-            const batch = ingredients.slice(i, i + batchSize);
-            
-            // Process batch in parallel with timeout
-            const batchPromises = batch.map(async (ing) => {
-                const name = ing.name;
-                console.log('Fetching products for:', name);
-                
+            if (!response.ok) {
+                // Get the error response body for debugging
+                let errorBody = '';
                 try {
-                    // Add timeout to individual queries
-                    const timeoutPromise = new Promise((_, reject) => 
-                        setTimeout(() => reject(new Error('Query timeout')), 5000)
-                    );
-                    
-                    const queryPromise = (async () => {
-                        // Check for substitutes if user has allergens
-                        if (userAllergensArr.length > 0) {
-                            try {
-                                const substituteRes = await getRecipeSubstitutesFromSupabase(ing.canonical || ing.name);
-                                const { substitutes = [] } = substituteRes;
-                                
-                                if (substitutes.length > 0) {
-                                    console.log(`Found ${substitutes.length} substitutes for ${ing.canonical || ing.name}`);
-                                    // For now, just use the first substitute
-                                    const substituteName = substitutes[0].substituteName;
-                                    
-                                    const res = await getProductsByIngredientFromSupabase(ing.name, userAllergensArr, substituteName);
-                                    const { products = [], mappingStatus, coverageStats, brandPriority, canonicalIngredient } = res;
-                                    
-                                    return {
-                                        id: ing.id,
-                                        products,
-                                        displayName: ing.canonical || ing.name,
-                                        mappingStatus,
-                                        coverageStats,
-                                        brandPriority,
-                                        canonicalIngredient
-                                    };
-                                }
-                            } catch (substituteError) {
-                                console.error('Error fetching substitute products:', substituteError);
-                                // Fall back to regular product fetch - don't let substitute errors break the page
-                            }
-                        }
-                        
-                        // Regular product fetch
-                        const res = await getProductsByIngredientFromSupabase(ing.name, userAllergensArr);
-                        const { products = [], mappingStatus, coverageStats, brandPriority, canonicalIngredient } = res;
-                        
-                        return {
-                            id: ing.id,
-                            products,
-                            displayName: ing.canonical || ing.name,
-                            mappingStatus,
-                            coverageStats,
-                            brandPriority,
-                            canonicalIngredient
-                        };
-                    })();
-                    
-                    const result = await Promise.race([queryPromise, timeoutPromise]);
-                    return result;
-                    
+                    errorBody = await response.text();
+                    console.error('[RECIPE PAGE] ❌ Edge Function error response body:', errorBody);
                 } catch (e) {
-                    console.error('Error fetching products for', name, ':', e);
-                    return {
+                    console.error('[RECIPE PAGE] ❌ Could not read error response body:', e);
+                }
+                
+                throw new Error(`Edge Function failed: ${response.status} ${response.statusText}${errorBody ? ` - ${errorBody}` : ''}`);
+            }
+
+            const result = await response.json();
+            
+            if (!result.success) {
+                throw new Error(result.error || 'Unknown error from Edge Function');
+            }
+
+            const recipeData = result.data;
+            console.log(`[RECIPE PAGE] ✅ Edge Function processed recipe in ${recipeData.processingTime.toFixed(2)}ms with ${recipeData.totalProducts} total products`);
+
+            // Set recipe data
+            setItem({
+                id: recipeData.id,
+                title: recipeData.title,
+                directions: recipeData.directions,
+                source: recipeData.source,
+                tags: recipeData.tags,
+                url: recipeData.url
+            });
+
+            // Process ingredients from Edge Function response
+            const processedIngredients = recipeData.ingredients.map(ing => ({
+                            id: ing.id,
+                name: ing.name,
+                quantity: ing.quantity,
+                hasAllergens: ing.hasAllergens
+            }));
+
+            // Create product options from Edge Function response
+            const newProductOptions = {};
+            recipeData.ingredients.forEach(ing => {
+                newProductOptions[ing.id] = {
                         id: ing.id,
-                        products: [],
-                        displayName: ing.canonical || ing.name
-                    };
-                }
+                    products: ing.products,
+                    displayName: ing.canonical,
+                    substitutes: ing.substitutes,
+                    hasAllergens: ing.hasAllergens,
+                    allergenNotes: ing.allergenNotes
+                };
             });
-            
-            // Wait for batch to complete before processing next batch
-            const batchResults = await Promise.all(batchPromises);
-            
-            // Add results to newOptions
-            batchResults.forEach(result => {
-                newOptions[result.id] = result;
+
+            setIngredients(processedIngredients);
+            setProductOptions(newProductOptions);
+            setProcessingStats({
+                processingTime: recipeData.processingTime,
+                totalProducts: recipeData.totalProducts,
+                totalIngredients: recipeData.ingredients.length
             });
-            
-            // Small delay between batches to avoid overwhelming the database
-            if (i + batchSize < ingredients.length) {
-                await new Promise(resolve => setTimeout(resolve, 1000));
-            }
+
+            console.log(`[RECIPE PAGE] ✅ Successfully loaded recipe with ${recipeData.ingredients.length} ingredients`);
+
+        } catch (error) {
+            console.error('[RECIPE PAGE] ❌ Error loading recipe data:', error);
+            setError(error.message);
+        } finally {
+            setLoading(false);
+            isProcessingRef.current = false;
         }
-        
-        console.log('Final product options:', newOptions);
-        setProductOptions(newOptions);
-    }, [allergies]);
+    }, [id]); // Removed userAllergens dependency to prevent infinite loops
 
+    // FIXED: Only run when id changes, not on every render
     useEffect(() => {
-        if (ingredients.length > 0) fetchProducts(ingredients);
-    }, [ingredients, fetchProducts]);
+        console.log(`[RECIPE PAGE] 🔄 useEffect triggered - id: ${id}, userAllergens:`, userAllergens);
+        if (id) {
+            loadRecipeData();
+        }
+    }, [id]); // Removed loadRecipeData to prevent infinite loop
 
-    const handleProductSelect = (ingredientId, productId) => {
-        setSelectedProducts(prev => {
-            // If clicking the same product, deselect it
-            if (prev[ingredientId] === productId) {
-                const newState = { ...prev };
-                delete newState[ingredientId];
-                return newState;
-            }
-            // Otherwise, select the new product
-            return { ...prev, [ingredientId]: productId };
-        });
-    };
-
-    // Handle substitute selection
-    const handleSubstitute = (ingredientId, newName) => {
-        setIngredients(ings =>
-            ings.map(ing =>
-                ing.id === ingredientId ? { 
-                    ...ing, 
-                    displayName: newName,
-                    flagged: false, // Remove the red flag when substitute is selected
-                    // Keep substitutions available for future changes
-                } : ing
-            )
-        );
-        setActiveIngredient(null);
-        
-        // Fetch products for the new substitute immediately
-        const updatedIngredients = ingredients.map(ing =>
-            ing.id === ingredientId ? { ...ing, displayName: newName } : ing
-        );
-        fetchProducts(updatedIngredients);
-    };
-
-    const {directions, source, title } = item
-
-    // Helper to group ingredients by section if needed
-    function groupIngredientsBySection(ingredients) {
-        const groups = [];
-        let currentSection = null;
-        ingredients.forEach(ing => {
-            // If the ingredient name ends with ':' treat as section header
-            if (ing.name && ing.name.trim().endsWith(':')) {
-                currentSection = { header: ing.name.trim(), items: [] };
-                groups.push(currentSection);
-            } else {
-                if (!currentSection) {
-                    currentSection = { header: null, items: [] };
-                    groups.push(currentSection);
-                }
-                currentSection.items.push(ing);
-            }
-        });
-        return groups;
-    }
-
-    // Add a toggle function for expand/collapse
-    const toggleExpand = (ingredientId) => {
+    // Handle ingredient expansion
+    const handleToggleExpand = useCallback((ingredientId) => {
         setExpandedIngredients(prev => ({
             ...prev,
             [ingredientId]: !prev[ingredientId]
         }));
-    };
+    }, []);
 
-    if (!directions) return (<div></div>)
-    else {
-        return(
-            <div className="recipe-page">
-                <SearchAndFilter />
-                <div className='img-wrapper'>
-                    <img className='img' src={`${process.env.PUBLIC_URL}/default_img.png`}/>
-                </div>
-                <div>
-                    <h1>{title}</h1>
-                    <h3>Source: {source}</h3>
-                    Directions:
-                    {directions.map((text,key)=>{
-                         return <h4 key={key}>Step {key+1}: {text}</h4>
-                    })}
-                </div>
-                <div>
-                    <p>Ingredients:</p>
-                    {groupIngredientsBySection(ingredients).map((group, idx) => (
-                        <div key={idx} style={{marginBottom: '1em'}}>
-                            {group.header && <div className="section-header" style={{fontWeight: 'bold', margin: '0.5em 0 0.2em 0'}}>{group.header}</div>}
-                            <ul className="ingredient-list">
-                            {group.items.filter(ingredient => !(ingredient.name && ingredient.name.trim().endsWith(':'))).map(ingredient => {
-                                const flaggedAllergen = ingredient.flagged && ingredient.allergen;
-                                return (
-                                <li key={ingredient.id} className={ingredient.flagged ? 'flagged' : ''} style={{marginBottom: '1.5em', position: 'relative', listStyleType: 'disc'}}>
-                                    <div style={{display: 'flex', alignItems: 'center'}}>
-                                        <span
-                                            onClick={() => (ingredient.flagged || ingredient.substitutions?.length > 0) && setActiveIngredient(ingredient.id)}
-                                            style={{ 
-                                                cursor: (ingredient.flagged || ingredient.substitutions?.length > 0) ? 'pointer' : 'default', 
-                                                color: ingredient.flagged ? '#c0392b' : 'inherit', 
-                                                fontWeight: ingredient.flagged ? 'bold' : 'normal', 
-                                                marginRight: 4 
-                                            }}
-                                        >
-                                            {ingredient.quantity ? `${ingredient.quantity} ` : ''}{ingredient.displayName || ingredient.canonical || ingredient.name}
-                                            {flaggedAllergen && <span className="warning-icon" title={`Contains: ${flaggedAllergen}`}>⚠️</span>}
-                                        </span>
-                                    </div>
-                                    {flaggedAllergen && (
-                                        <div className="allergen-note">Contains: {flaggedAllergen}</div>
-                                    )}
-                                    {activeIngredient === ingredient.id && ingredient.substitutions && ingredient.substitutions.length > 0 && (
-                                        <select
-                                            value={ingredient.displayName || ''}
-                                            onChange={e => handleSubstitute(ingredient.id, e.target.value)}
-                                            style={{ marginLeft: '1em' }}
-                                        >
-                                            <option value="">Choose a substitute</option>
-                                            {ingredient.substitutions
-                                                .filter(sub => !userAllergens.some(all => (typeof sub === 'string' ? (sub.substituteName || sub) : sub.substituteName).toLowerCase().includes(all)))
-                                                .map((sub, idx) => (
-                                                    <option key={idx} value={typeof sub === 'string' ? sub : sub.substituteName}>
-                                                        {typeof sub === 'string'
-                                                            ? sub
-                                                            : `${sub.substituteName}${sub.notes ? ' (' + sub.notes + ')' : ''}`}
-                                                    </option>
-                                                ))}
-                                        </select>
-                                    )}
-                                    {/* Expand/Collapse Products Available header */}
-                                    {(() => {
-                                        const name = ingredient.displayName || ingredient.name;
-                                        const isHeader = name?.trim().endsWith(':');
-                                        const isEmpty = !name || name.trim() === '';
-                                        if (!isEmpty && !isHeader) {
-                                            return (
-                                                <ProductSelector
-                                                    products={(productOptions[ingredient.id] && productOptions[ingredient.id].products) || []}
-                                                    selectedProductId={selectedProducts[ingredient.id]}
-                                                    onProductSelect={(productId) => handleProductSelect(ingredient.id, productId)}
-                                                    ingredientName={(productOptions[ingredient.id] && productOptions[ingredient.id].displayName) || (ingredient.displayName || ingredient.canonical || ingredient.name)}
-                                                    ingredientFlagged={ingredient.flagged}
-                                                    expanded={!!expandedIngredients[ingredient.id]}
-                                                    onToggleExpand={() => toggleExpand(ingredient.id)}
-                                                />
-                                            );
-                                        }
-                                        return null;
-                                    })()}
-                                </li>
-                            )})}
-                            </ul>
-                        </div>
-                    ))}
+    // Handle product selection
+    const handleProductSelect = useCallback((ingredientId, productId) => {
+        setSelectedProducts(prev => ({
+            ...prev,
+            [ingredientId]: productId
+        }));
+    }, []);
+
+    // Handle substitute selection
+    const handleSubstitute = useCallback((ingredientId, substituteName) => {
+        // For now, just log - substitute functionality can be enhanced later
+        console.log(`[RECIPE PAGE] Substitute selected for ingredient ${ingredientId}:`, substituteName);
+    }, []);
+
+    // Group ingredients by section
+    const groupIngredientsBySection = useCallback((ingredients) => {
+        return [{
+            title: 'Ingredients',
+            ingredients: ingredients
+        }];
+    }, []);
+
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center min-h-screen">
+                <div className="text-center">
+                    <div className="text-lg mb-2">Processing recipe...</div>
+                    <div className="text-sm text-gray-600">This may take a few seconds for complex recipes</div>
                 </div>
             </div>
-    )
-}
-}
+        );
+    }
 
-export default RecipePage
+    if (error) {
+        return (
+            <div className="flex justify-center items-center min-h-screen">
+                <div className="text-center">
+                    <div className="text-lg text-red-600 mb-2">Error loading recipe</div>
+                    <div className="text-sm text-gray-600 mb-4">{error}</div>
+                    <button 
+                        onClick={loadRecipeData}
+                        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    >
+                        Try Again
+                    </button>
+                </div>
+            </div>
+        );
+    }
+
+    if (!item) {
+        return (
+            <div className="flex justify-center items-center min-h-screen">
+                <div className="text-lg text-red-600">Recipe not found</div>
+            </div>
+        );
+    }
+
+                                return (
+        <div className="recipe-page-container" style={{ paddingTop: '80px', marginTop: '0' }}>
+            <div className="container mx-auto px-4 py-4">
+                {/* Recipe Header */}
+                <div className="mb-6">
+                    <h1 className="text-3xl font-bold mb-4 text-gray-900">{item.title}</h1>
+                    {item.source && (
+                        <p className="text-gray-600 mb-2">Source: {item.source}</p>
+                    )}
+                    {item.url && (
+                        <a 
+                            href={item.url} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-blue-600 hover:text-blue-800 underline"
+                        >
+                            View Original Recipe
+                        </a>
+                    )}
+                    
+                    {/* Processing Stats */}
+                    {processingStats && (
+                        <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg">
+                            <div className="text-sm text-green-800">
+                                <span className="font-semibold">Processing completed in {processingStats.processingTime.toFixed(2)}ms</span>
+                                <br />
+                                Found {processingStats.totalProducts} products across {processingStats.totalIngredients} ingredients
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                {/* 🚀 ADDED: Allergy Filter for Recipe Page */}
+                <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                    <h3 className="text-lg font-semibold text-blue-800 mb-3">
+                        🛡️ Filter ingredients by your allergies
+                    </h3>
+                    <AllergyFilter />
+                </div>
+
+                {/* Recipe Content */}
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8">
+                    {/* Directions Section - Moved to LEFT side */}
+                    <div className="order-2 xl:order-1">
+                        <h2 className="text-2xl font-semibold mb-4 text-gray-900">Directions</h2>
+                        <div className="space-y-4">
+                            {item.directions && item.directions.map((direction, index) => (
+                                <div key={index} className="flex">
+                                    <span className="font-semibold mr-3 text-gray-600 min-w-[2rem]">{index + 1}.</span>
+                                    <p className="text-gray-800 leading-relaxed">{direction}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Ingredients Section - Moved to RIGHT side */}
+                    <div className="order-1 xl:order-2">
+                        <h2 className="text-2xl font-semibold mb-4 text-gray-900">Ingredients</h2>
+                        {groupIngredientsBySection(ingredients).map((section, sectionIndex) => (
+                            <div key={sectionIndex} className="mb-6">
+                                {/* Remove duplicate "Ingredients" heading - only show section title if it's different */}
+                                {section.title !== 'Ingredients' && (
+                                    <h3 className="text-lg font-medium mb-3">{section.title}</h3>
+                                )}
+                                <div className="space-y-4">
+                                    {section.ingredients.map((ingredient) => (
+                                        <div key={ingredient.id} className="ingredient-item mb-4 p-3 border border-gray-200 rounded-lg bg-gray-50">
+                                            {/* Ingredient Header */}
+                                            <div className="ingredient-header mb-3">
+                                                {/* 🚨 ADDED: Allergen Warning for Ingredient */}
+                                                {ingredient.hasAllergens && (
+                                                    <div className="mb-2 p-2 bg-red-50 border border-red-200 rounded text-sm">
+                                                        <span className="text-red-600 mr-1">⚠️</span>
+                                                        <span className="text-red-800 font-medium">
+                                                            This ingredient contains allergens: {productOptions[ingredient.id]?.allergenNotes && productOptions[ingredient.id].allergenNotes.length > 0 
+                                                                ? productOptions[ingredient.id].allergenNotes.join(', ')
+                                                                : 'Unknown allergens'
+                                                            }
+                                        </span>
+                                    </div>
+                                                )}
+                                                
+                                                <h4 className="text-lg font-medium text-gray-800">
+                                                    {ingredient.quantity} {ingredient.name}
+                                                </h4>
+                                                {productOptions[ingredient.id]?.hasAllergens && (
+                                                    <div className="text-sm text-red-600 mt-1 flex items-center">
+                                                        <span className="mr-1">⚠️</span>
+                                                        {productOptions[ingredient.id]?.allergenNotes && productOptions[ingredient.id].allergenNotes.length > 0 
+                                                            ? productOptions[ingredient.id].allergenNotes.join(', ')
+                                                            : 'Contains allergens'
+                                                        }
+                                                    </div>
+                                                )}
+                                            </div>
+                                            
+                                            {/* Product Selector */}
+                                                <ProductSelector
+                                                products={productOptions[ingredient.id]?.products || []}
+                                                    selectedProductId={selectedProducts[ingredient.id]}
+                                                    onProductSelect={(productId) => handleProductSelect(ingredient.id, productId)}
+                                                ingredientName={productOptions[ingredient.id]?.displayName || ingredient.name}
+                                                ingredientFlagged={productOptions[ingredient.id]?.hasAllergens || false}
+                                                expanded={expandedIngredients[ingredient.id] || false}
+                                                onToggleExpand={() => handleToggleExpand(ingredient.id)}
+                                                hideAllergenAnalysis={true}
+                                            />
+                                            
+                                            {/* 🚀 ADDED: Substitution Options Display */}
+                                            {ingredient.substitutes && ingredient.substitutes.length > 0 && (
+                                                <div className="mt-3 p-2 bg-blue-50 border border-blue-200 rounded text-sm">
+                                                    <div className="text-blue-800 font-medium mb-1">
+                                                        🔄 Substitution options available:
+                                                    </div>
+                                                    <div className="space-y-1">
+                                                        {ingredient.substitutes.slice(0, 3).map((substitute, subIndex) => (
+                                                            <div key={subIndex} className="text-blue-700">
+                                                                • {substitute.substituteName}
+                                                                {substitute.notes && (
+                                                                    <span className="text-blue-600 ml-1">({substitute.notes})</span>
+                                                                )}
+                                                            </div>
+                                                        ))}
+                                                        {ingredient.substitutes.length > 3 && (
+                                                            <div className="text-blue-600 text-xs">
+                                                                +{ingredient.substitutes.length - 3} more options
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                        </div>
+                    ))}
+                    </div>
+                </div>
+
+                {/* Tags Section */}
+                {item.tags && item.tags.length > 0 && (
+                    <div className="mt-8">
+                        <h3 className="text-lg font-semibold mb-3">Tags</h3>
+                        <div className="flex flex-wrap gap-2">
+                            {item.tags.map((tag, index) => (
+                                <span 
+                                    key={index}
+                                    className="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm"
+                                >
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+};
+
+export default RecipePage;

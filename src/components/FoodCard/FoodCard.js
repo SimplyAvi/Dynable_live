@@ -5,7 +5,7 @@ import { addItemToCart } from '../../redux/anonymousCartSlice';
 import ProductSafetyStatus from '../ProductSafetyStatus/ProductSafetyStatus';
 import './FoodCard.css'
 
-const FoodCard = ({foodItem, id, showAddToCart = false, ingredientFlagged = false, onAddToCart}) =>{
+const FoodCard = ({foodItem, id, showAddToCart = false, ingredientFlagged = false, onAddToCart, hideAllergenAnalysis = false}) =>{
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [isAddingToCart, setIsAddingToCart] = useState(false);
@@ -107,11 +107,13 @@ const FoodCard = ({foodItem, id, showAddToCart = false, ingredientFlagged = fals
                     <p className="brand-name">{brandName}</p>
                 </div>
                 
-                {/* 🛡️ TEMPORARILY DISABLED: Product safety status */}
-                <ProductSafetyStatus 
-                    product={foodItem} 
-                    userAllergens={userAllergens}
-                />
+                {/* 🛡️ Product safety status - disabled on recipe pages */}
+                {!hideAllergenAnalysis && (
+                    <ProductSafetyStatus 
+                        product={foodItem} 
+                        userAllergens={userAllergens}
+                    />
+                )}
                 
                 {/* Existing product details */}
                 {foodItem.canonicalTag && (
