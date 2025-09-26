@@ -375,20 +375,44 @@ const AllergyFilter = ({ isSearching = false }) => {
             {/* Existing allergy toggles */}
             <div className="horizontal-scroll-container allergen-scroll-container">
                 <div className="horizontal-scroll">
-                    {Object.entries(allergies).map(([key, value]) => (
-                        <button
-                            key={key}
-                            className={`allergy-scroll-item ${value ? 'selected' : ''}`}
-                            onClick={(e) => handleAllergyClick(key, e)}
-                            style={{
-                                opacity: isSearching ? 0.6 : 1,
-                                cursor: isSearching ? 'not-allowed' : 'pointer'
-                            }}
-                        >
-                            {key.charAt(0).toUpperCase() + key.slice(1)}
-                            {value && <span className="check">✓</span>}
-                        </button>
-                    ))}
+                    {(() => {
+                        // 🚀 NEW: Sort allergens with toggled ones at front, rest alphabetically
+                        const allergenEntries = Object.entries(allergies);
+                        
+                        // Separate toggled and non-toggled allergens
+                        const toggledAllergens = allergenEntries.filter(([key, value]) => value);
+                        const nonToggledAllergens = allergenEntries.filter(([key, value]) => !value);
+                        
+                        // Sort toggled allergens alphabetically
+                        toggledAllergens.sort(([a], [b]) => a.localeCompare(b));
+                        
+                        // Sort non-toggled allergens alphabetically
+                        nonToggledAllergens.sort(([a], [b]) => a.localeCompare(b));
+                        
+                        // Combine: toggled first, then non-toggled
+                        const sortedAllergens = [...toggledAllergens, ...nonToggledAllergens];
+                        
+                        console.log('[AllergyFilter] Sorted allergens:', {
+                            toggled: toggledAllergens.map(([key]) => key),
+                            nonToggled: nonToggledAllergens.map(([key]) => key),
+                            total: sortedAllergens.length
+                        });
+                        
+                        return sortedAllergens.map(([key, value]) => (
+                            <button
+                                key={key}
+                                className={`allergy-scroll-item ${value ? 'selected' : ''}`}
+                                onClick={(e) => handleAllergyClick(key, e)}
+                                style={{
+                                    opacity: isSearching ? 0.6 : 1,
+                                    cursor: isSearching ? 'not-allowed' : 'pointer'
+                                }}
+                            >
+                                {key.charAt(0).toUpperCase() + key.slice(1)}
+                                {value && <span className="check">✓</span>}
+                            </button>
+                        ));
+                    })()}
                 </div>
             </div>
             
