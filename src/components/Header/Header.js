@@ -38,26 +38,15 @@ const Header = () => {
     const cartItems = useSelector(selectCartItems)
     const selectedAllergens = useSelector(selectSelectedAllergens)
 
-    // 🛡️ FIXED: Logo click handler to reset search state (both searchbar states)
+    // 🛡️ FIXED: Logo click handler to act like back button (preserve state)
     const handleLogoClick = () => {
-        console.log('[HEADER] Logo clicked - resetting search state');
+        console.log('[HEADER] Logo clicked - navigating to home (preserving state)');
         
-        // Clear search term from searchPreferences
-        dispatch(setSearchTerm(''));
-        
-        // Clear searchbar value from searchbarSlice
-        dispatch(setSearchbarValue(''));
-        
-        // Clear selected allergens
-        dispatch(setSelectedAllergens([]));
-        
-        // Clear allergies toggles
-        dispatch(clearAllergies());
-        
-        // Navigate to home
+        // 🚀 NEW BEHAVIOR: Just navigate to home, don't clear anything
+        // This acts like a "back" button that preserves user's current search and allergens
         navigate('/');
         
-        console.log('[HEADER] ✅ Search state reset, navigating to home');
+        console.log('[HEADER] ✅ Navigated to home, state preserved');
     };
 
     const handleLogout = async () => {

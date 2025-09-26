@@ -141,7 +141,15 @@ const initialState = {
     isLoading: false,
     error: null,
     lastSaved: null,
-    hasPreferences: false
+    hasPreferences: false,
+    // 🚀 NEW: Pagination state for consistent product ordering
+    pagination: {
+        currentPage: 1,
+        itemsPerPage: 20,
+        totalItems: 0,
+        totalPages: 0,
+        isAlphabetical: true // Always use alphabetical ordering for consistency
+    }
 };
 
 // Create the slice
@@ -193,6 +201,35 @@ const searchPreferencesSlice = createSlice({
         
         clearError: (state) => {
             state.error = null;
+        },
+        
+        // 🚀 NEW: Pagination actions
+        setCurrentPage: (state, action) => {
+            state.pagination.currentPage = action.payload;
+            console.log('[SEARCH PREFERENCES] 📄 Current page set to:', action.payload);
+        },
+        
+        setPaginationInfo: (state, action) => {
+            const { totalItems, totalPages, currentPage } = action.payload;
+            state.pagination.totalItems = totalItems;
+            state.pagination.totalPages = totalPages;
+            if (currentPage !== undefined) {
+                state.pagination.currentPage = currentPage;
+            }
+            console.log('[SEARCH PREFERENCES] 📊 Pagination info updated:', state.pagination);
+        },
+        
+        setItemsPerPage: (state, action) => {
+            state.pagination.itemsPerPage = action.payload;
+            state.pagination.currentPage = 1; // Reset to first page when changing items per page
+            console.log('[SEARCH PREFERENCES] 📏 Items per page set to:', action.payload);
+        },
+        
+        resetPagination: (state) => {
+            state.pagination.currentPage = 1;
+            state.pagination.totalItems = 0;
+            state.pagination.totalPages = 0;
+            console.log('[SEARCH PREFERENCES] 🔄 Pagination reset to page 1');
         }
     },
     
@@ -347,7 +384,12 @@ export const {
     toggleAllergen,
     clearSearchPreferencesLocal,
     setError,
-    clearError
+    clearError,
+    // 🚀 NEW: Pagination actions
+    setCurrentPage,
+    setPaginationInfo,
+    setItemsPerPage,
+    resetPagination
 } = searchPreferencesSlice.actions;
 
 // Export selectors
@@ -357,6 +399,12 @@ export const selectSelectedAllergens = (state) => state.searchPreferences.select
 export const selectSearchPreferencesLoading = (state) => state.searchPreferences.isLoading;
 export const selectSearchPreferencesError = (state) => state.searchPreferences.error;
 export const selectHasSearchPreferences = (state) => state.searchPreferences.hasPreferences;
+// 🚀 NEW: Pagination selectors
+export const selectPagination = (state) => state.searchPreferences.pagination;
+export const selectCurrentPage = (state) => state.searchPreferences.pagination.currentPage;
+export const selectItemsPerPage = (state) => state.searchPreferences.pagination.itemsPerPage;
+export const selectTotalItems = (state) => state.searchPreferences.pagination.totalItems;
+export const selectTotalPages = (state) => state.searchPreferences.pagination.totalPages;
 
 // Export reducer
 export default searchPreferencesSlice.reducer; 

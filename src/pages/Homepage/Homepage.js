@@ -12,6 +12,14 @@ import {
   searchRecipesFromSupabasePure,
   resilientSupabaseQuery 
 } from '../../utils/supabaseQueries'
+// 🚀 NEW: Import pagination actions and selectors
+import { 
+  setCurrentPage, 
+  setPaginationInfo, 
+  resetPagination,
+  selectCurrentPage,
+  selectItemsPerPage 
+} from '../../redux/searchPreferencesSlice'
 
 // 🎯 PHASE 1: Error Boundary for safety
 class HomepageErrorBoundary extends Component {
@@ -66,6 +74,9 @@ const Homepage = () => {
     const isAuthenticated = useSelector((state) => state.auth?.isAuthenticated || false)
     const anonymousSession = useSelector((state) => state.anonymousCart?.session)
     const searchTerm = useSelector((state) => state.searchPreferences?.searchTerm || '') // 🛡️ ADDED: Get current search term
+    // 🚀 NEW: Get pagination state from Redux
+    const currentPage = useSelector(selectCurrentPage)
+    const itemsPerPage = useSelector(selectItemsPerPage)
     const navigate = useNavigate();
 
     const queryControllerRef = useRef(null);
@@ -181,11 +192,11 @@ const Homepage = () => {
                     userType: isAuthenticated ? 'authenticated' : 'anonymous'
                 });
                 
-                // 🎯 UNIFIED: Single filtering function for ALL users
+                // 🎯 UNIFIED: Single filtering function for ALL users (Homepage loads default content)
                 const foodResponse = await resilientSupabaseQuery(
                     () => searchProductsUnified({
-                        page: 1,
-                        limit: 20,
+                        page: 1, // 🚀 FIXED: Homepage always loads page 1
+                        limit: 20, // 🚀 FIXED: Use fixed limit for homepage, not Redux state
                         searchTerm: '', // 🛡️ FIXED: Only load homepage content (no search)
                         allergens: selectedAllergens,
                         userType: isAuthenticated ? 'authenticated' : 'anonymous',
@@ -222,8 +233,19 @@ const Homepage = () => {
                     recipes: recipeResponse.recipes ? recipeResponse.recipes.length : recipeResponse.length,
                     allergens: selectedAllergens,
                     hasAllergens: selectedAllergens.length > 0,
-                    searchTerm: searchTerm // 🛡️ ADDED: Log search term
+                    searchTerm: searchTerm, // 🛡️ ADDED: Log search term
+                    currentPage: currentPage, // 🚀 NEW: Log current page
+                    itemsPerPage: itemsPerPage // 🚀 NEW: Log items per page
                 });
+                
+                // 🚀 NEW: Update pagination info in Redux (Homepage always loads page 1)
+                if (foodResponse.pageInfo) {
+                    dispatch(setPaginationInfo({
+                        totalItems: foodResponse.pageInfo.totalItems,
+                        totalPages: foodResponse.pageInfo.totalPages,
+                        currentPage: 1 // 🚀 FIXED: Homepage always resets to page 1
+                    }));
+                }
                 
                 dispatch(setProducts(foodResponse))
                 dispatch(addRecipes(recipeResponse))
@@ -255,7 +277,7 @@ const Homepage = () => {
             // 🎯 FIX: Reset querying flag when useEffect cleanup runs
             isQueryingRef.current = false;
         };
-    }, [selectedAllergens, searchTerm, isAuthenticated, dispatch, isTransitioning, anonymousSession]); // 🛡️ ADDED: searchTerm to dependencies
+    }, [selectedAllergens, searchTerm, isAuthenticated, dispatch, isTransitioning, anonymousSession]); // 🚀 FIXED: Removed pagination dependencies to prevent infinite loop
 
     return (
         <div className="homepage">

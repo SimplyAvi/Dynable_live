@@ -6,6 +6,15 @@ import { useNavigate } from 'react-router-dom'
 import { setProducts } from '../../redux/productSlice'
 import { addRecipes } from '../../redux/recipeSlice'
 import { searchProductsFromSupabasePure, searchRecipesFromSupabasePure } from '../../utils/supabaseQueries'
+// 🚀 NEW: Import pagination actions and selectors
+import { 
+    setCurrentPage, 
+    setPaginationInfo,
+    selectCurrentPage,
+    selectItemsPerPage,
+    selectTotalItems,
+    selectTotalPages
+} from '../../redux/searchPreferencesSlice'
 import './ShowResults.css'
 
 const ShowResults = () => {
@@ -13,19 +22,24 @@ const ShowResults = () => {
     const recipes = useSelector((state) => state.recipes?.recipesResults || [])
     const textbar = useSelector((state) => state.searchbar?.searchbar || '')
     const allergies = useSelector((state) => state.allergies?.allergies || {})
+    // 🚀 NEW: Get pagination state from Redux
+    const currentPage = useSelector(selectCurrentPage)
+    const itemsPerPage = useSelector(selectItemsPerPage)
+    const totalItems = useSelector(selectTotalItems)
+    const totalPages = useSelector(selectTotalPages)
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const [productPage, setProductPage] = useState(1)
-    const [recipePage, setRecipePage] = useState(1)
+    const [recipePage, setRecipePage] = useState(1) // Keep recipe pagination local
     const [productLoading, setProductLoading] = useState(false)
     const [recipeLoading, setRecipeLoading] = useState(false)
     const [productError, setProductError] = useState(null)
     const [recipeError, setRecipeError] = useState(null)
+    // 🚀 FIXED: Removed productPage local state - use only Redux state for products
+    // Recipes still use local state since they don't conflict
 
     useEffect(() => {
-        setProductPage(1)
-        setRecipePage(1)
+        setRecipePage(1) // Reset recipe pagination when search/filters change
     }, [textbar, allergies])
 
     const handleProductPageChange = async (newPage) => {
@@ -33,18 +47,36 @@ const ShowResults = () => {
             setProductLoading(true)
             setProductError(null)
             
+            // 🚀 NEW: Update Redux pagination state
+            dispatch(setCurrentPage(newPage))
+            
             const sendAllergens = Object.keys(allergies).filter(key => allergies[key]).map(key => key.toLowerCase())
+            
+            console.log('[ShowResults] 🔄 Pagination request:', {
+                searchTerm: textbar,
+                page: newPage,
+                allergens: sendAllergens,
+                itemsPerPage: itemsPerPage
+            });
             
             // Use Supabase query with count support
             const response = await searchProductsFromSupabasePure({
                 name: textbar || '',
                 page: newPage,
-                limit: 10,
+                limit: itemsPerPage, // 🚀 NEW: Use items per page from Redux
                 allergens: sendAllergens,
                 includeCount: true
             })
             
-            // Handle the response format
+            console.log('[ShowResults] 📊 Pagination response:', {
+                hasProducts: !!response.products,
+                productCount: response.products?.length || 0,
+                totalCount: response.totalCount,
+                totalPages: response.totalPages,
+                page: response.page
+            });
+            
+            // 🚀 FIXED: Handle response format and ensure pagination state is valid
             if (response.products) {
                 // New format with count
                 dispatch(setProducts({
@@ -53,17 +85,36 @@ const ShowResults = () => {
                     page: response.page,
                     totalPages: response.totalPages
                 }))
+                
+                // 🚀 FIXED: Ensure pagination info is valid (prevent "1 / 0")
+                const validTotalPages = Math.max(1, response.totalPages || 1);
+                const validTotalCount = Math.max(0, response.totalCount || 0);
+                
+                dispatch(setPaginationInfo({
+                    totalItems: validTotalCount,
+                    totalPages: validTotalPages,
+                    currentPage: newPage
+                }))
+                
+                console.log(`[ShowResults] ✅ Products page ${newPage} loaded successfully: ${response.products.length} products, ${validTotalCount} total, ${validTotalPages} pages`);
             } else {
                 // Fallback to direct array
                 dispatch(setProducts(response))
+                
+                // 🚀 FIXED: Set default pagination for fallback
+                dispatch(setPaginationInfo({
+                    totalItems: response.length || 0,
+                    totalPages: Math.max(1, Math.ceil((response.length || 0) / itemsPerPage)),
+                    currentPage: newPage
+                }))
             }
-            
-            setProductPage(newPage)
-            console.log(`[ShowResults] Products page ${newPage} loaded successfully`)
             
         } catch (error) {
             console.error('[ShowResults] Error fetching products:', error)
             setProductError('Failed to load products')
+            
+            // 🚀 FIXED: Don't update pagination state on error to prevent corruption
+            console.log('[ShowResults] ⚠️ Error occurred, keeping current pagination state');
         } finally {
             setProductLoading(false)
         }
@@ -160,9 +211,9 @@ const ShowResults = () => {
         hasProductsProperty: products && products.products ? 'YES' : 'NO'
     });
 
-    // Calculate product range for display
-    const startIdx = (productPage - 1) * 10 + 1;
-    const endIdx = startIdx + productList.length - 1;
+    // 🚀 NEW: Calculate product range using Redux pagination state
+    const startIdx = (currentPage - 1) * itemsPerPage + 1;
+    const endIdx = Math.min(startIdx + productList.length - 1, totalItems);
 
     // Calculate recipe range for display
     const recipeTotalCount = recipes && recipes.totalCount ? recipes.totalCount : (Array.isArray(recipes) ? recipes.length : 0);
@@ -201,20 +252,20 @@ const ShowResults = () => {
                     <h3>Products</h3>
                     <div className="header-controls">
                         <span className="results-count">
-                            {productTotalCount ? `Showing ${startIdx}-${endIdx} of ${productTotalCount.toLocaleString()}` : ''}
+                            {totalItems ? `Showing ${startIdx}-${endIdx} of ${totalItems.toLocaleString()}` : ''}
                         </span>
                         <div className="pagination-controls">
                             <button 
-                                onClick={() => handleProductPageChange(productPage - 1)} 
-                                disabled={productPage <= 1}
+                                onClick={() => handleProductPageChange(currentPage - 1)} 
+                                disabled={currentPage <= 1}
                                 className="pagination-button"
                             >
                                 Prev
                             </button>
-                            <span className="page-number">{productPage} / {productTotalPages.toLocaleString()}</span>
+                            <span className="page-number">{currentPage} / {totalPages.toLocaleString()}</span>
                             <button 
-                                onClick={() => handleProductPageChange(productPage + 1)} 
-                                disabled={productPage >= productTotalPages}
+                                onClick={() => handleProductPageChange(currentPage + 1)} 
+                                disabled={currentPage >= totalPages}
                                 className="pagination-button"
                             >
                                 Next

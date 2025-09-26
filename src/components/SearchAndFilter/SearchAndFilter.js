@@ -21,7 +21,15 @@ import './SearchAndFilter.css'
 
 import Searchbar from '../Searchbar/Searchbar'
 import AllergyFilter from '../AllergyFilter/AllergyFilter'
-import { setSearchTerm, saveSearchPreferencesAsync } from '../../redux/searchPreferencesSlice'
+import { 
+    setSearchTerm, 
+    saveSearchPreferencesAsync,
+    setCurrentPage,
+    setPaginationInfo,
+    resetPagination,
+    selectCurrentPage,
+    selectItemsPerPage
+} from '../../redux/searchPreferencesSlice'
 import { setProducts } from '../../redux/productSlice'
 import { addRecipes } from '../../redux/recipeSlice'
 import { searchProductsUnified, searchRecipesFromSupabasePure } from '../../utils/supabaseQueries'
@@ -36,6 +44,9 @@ const SearchAndFilter = () => {
     const selectedAllergens = useSelector((state) => state.searchPreferences?.selectedAllergens || []);
     const isAuthenticated = useSelector((state) => state.auth?.isAuthenticated || false);
     const currentUser = useSelector((state) => state.auth?.user || null);
+    // 🚀 NEW: Get pagination state from Redux
+    const currentPage = useSelector(selectCurrentPage);
+    const itemsPerPage = useSelector(selectItemsPerPage);
     
     // Local state for immediate UI updates
     const [localSearchTerm, setLocalSearchTerm] = useState(searchTerm);
@@ -43,17 +54,23 @@ const SearchAndFilter = () => {
     const [searchError, setSearchError] = useState(null);
 
     // 🎯 UNIFIED SEARCH FUNCTION: Handles all search + filter combinations
-    const performUnifiedSearch = useCallback(async (searchInput = localSearchTerm, allergens = selectedAllergens) => {
+    const performUnifiedSearch = async (searchInput = localSearchTerm, allergens = selectedAllergens) => {
         console.log('[SEARCH_AND_FILTER] 🚀 Performing unified search:', {
             searchTerm: searchInput,
             allergens: allergens,
             allergensCount: allergens.length,
             hasSearch: !!searchInput.trim(),
-            hasFilters: allergens.length > 0
+            hasFilters: allergens.length > 0,
+            currentPage: currentPage,
+            itemsPerPage: itemsPerPage
         });
 
         setIsSearching(true);
         setSearchError(null);
+
+        // 🚀 FIXED: Only reset pagination for new searches, not for filter changes
+        // This prevents pagination corruption when toggling allergens
+        dispatch(resetPagination());
 
         try {
             // 🎯 SEARCH + FILTER COMBINATION LOGIC:
@@ -75,8 +92,8 @@ const SearchAndFilter = () => {
                 productResponse = await searchProductsUnified({
                     searchTerm: searchInput,
                     allergens: allergens,
-                    page: 1,
-                    limit: 20,
+                    page: 1, // 🚀 NEW: Always start from page 1 for new searches
+                    limit: itemsPerPage, // 🚀 NEW: Use items per page from Redux
                     userType: isAuthenticated ? 'authenticated' : 'anonymous',
                     includeCount: true
                 });
@@ -99,8 +116,8 @@ const SearchAndFilter = () => {
                 productResponse = await searchProductsUnified({
                     searchTerm: '',
                     allergens: allergens,
-                    page: 1,
-                    limit: 20,
+                    page: 1, // 🚀 NEW: Always start from page 1 for new searches
+                    limit: itemsPerPage, // 🚀 NEW: Use items per page from Redux
                     userType: isAuthenticated ? 'authenticated' : 'anonymous',
                     includeCount: true
                 });
@@ -121,8 +138,8 @@ const SearchAndFilter = () => {
                 productResponse = await searchProductsUnified({
                     searchTerm: '',
                     allergens: [],
-                    page: 1,
-                    limit: 20,
+                    page: 1, // 🚀 NEW: Always start from page 1 for new searches
+                    limit: itemsPerPage, // 🚀 NEW: Use items per page from Redux
                     userType: isAuthenticated ? 'authenticated' : 'anonymous',
                     includeCount: true
                 });
@@ -140,20 +157,49 @@ const SearchAndFilter = () => {
             dispatch(setProducts(productResponse));
             dispatch(addRecipes(recipeResponse));
 
+            // 🚀 FIXED: Update pagination info in Redux with validation
+            if (productResponse.pageInfo) {
+                const validTotalPages = Math.max(1, productResponse.pageInfo.totalPages || 1);
+                const validTotalItems = Math.max(0, productResponse.pageInfo.totalItems || 0);
+                
+                dispatch(setPaginationInfo({
+                    totalItems: validTotalItems,
+                    totalPages: validTotalPages,
+                    currentPage: 1 // Always page 1 for new searches
+                }));
+                
+                console.log('[SEARCH_AND_FILTER] 📊 Pagination updated:', {
+                    totalItems: validTotalItems,
+                    totalPages: validTotalPages,
+                    currentPage: 1
+                });
+            } else {
+                // 🚀 FIXED: Set default pagination if no pageInfo
+                dispatch(setPaginationInfo({
+                    totalItems: productResponse.products ? productResponse.products.length : productResponse.length || 0,
+                    totalPages: 1,
+                    currentPage: 1
+                }));
+            }
+
             console.log('[SEARCH_AND_FILTER] ✅ Search completed:', {
                 products: productResponse.products ? productResponse.products.length : productResponse.length,
                 recipes: recipeResponse.recipes ? recipeResponse.recipes.length : recipeResponse.length,
                 searchTerm: searchInput,
-                allergens: allergens
+                allergens: allergens,
+                pagination: productResponse.pageInfo ? productResponse.pageInfo : 'No pagination info'
             });
 
         } catch (error) {
             console.error('[SEARCH_AND_FILTER] ❌ Search error:', error);
             setSearchError('Search failed. Please try again.');
+            
+            // 🚀 FIXED: Don't reset pagination state on error to prevent corruption
+            console.log('[SEARCH_AND_FILTER] ⚠️ Search error occurred, keeping current pagination state');
         } finally {
             setIsSearching(false);
         }
-    }, [localSearchTerm, selectedAllergens, isAuthenticated, dispatch]);
+    }; // 🚀 FIXED: Removed useCallback to prevent circular dependency
 
     // 🎯 SYNC LOCAL STATE WITH REDUX
     useEffect(() => {
@@ -193,7 +239,7 @@ const SearchAndFilter = () => {
         if (localSearchTerm && localSearchTerm.trim() !== '') {
             performUnifiedSearch(localSearchTerm, selectedAllergens);
         }
-    }, [selectedAllergens, performUnifiedSearch, localSearchTerm, searchTerm, dispatch]);
+    }, [selectedAllergens, localSearchTerm, searchTerm, dispatch]); // 🚀 FIXED: Removed performUnifiedSearch from dependencies to break circular dependency
 
     // 🎯 HANDLE SEARCH SUBMISSION
     const handleSearchSubmit = async (searchInput) => {
