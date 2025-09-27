@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './AboutUsPage.css';
 
@@ -59,11 +59,6 @@ const dynableExperienceSteps = [
 const AboutUsPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  
-  // Interactive Dynable Experience step state
-  const [experienceStep, setExperienceStep] = useState(0);
-  const isFirstStep = experienceStep === 0;
-  const isLastStep = experienceStep === dynableExperienceSteps.length - 1;
 
   // Determine which page to show based on URL
   const getPageContent = () => {
@@ -170,47 +165,16 @@ const AboutUsPage = () => {
             </div>
           </div>
           <section className="aboutus-section aboutus-section-row">
-            <div className="aboutus-experience-steps" style={{width: '100%', alignItems: 'center', position: 'relative'}}>
-              <div className="aboutus-experience-stepper-row">
-                <button
-                  className="aboutus-experience-arrow-btn"
-                  onClick={() => setExperienceStep(experienceStep - 1)}
-                  disabled={isFirstStep}
-                  aria-label="Previous Step"
-                >
-                  &#8592;
-                </button>
-                <div className="aboutus-experience-step" style={{maxWidth: 600, width: '100%'}}>
-                  <div className="aboutus-step-icon">{dynableExperienceSteps[experienceStep].icon}</div>
+            <div className="aboutus-experience-all-steps" style={{width: '100%', maxWidth: '800px'}}>
+              {dynableExperienceSteps.map((step, index) => (
+                <div key={index} className="aboutus-experience-step">
+                  <div className="aboutus-step-icon">{step.icon}</div>
                   <div>
-                    <h4>{dynableExperienceSteps[experienceStep].title}</h4>
-                    {dynableExperienceSteps[experienceStep].content}
+                    <h4>{step.title}</h4>
+                    {step.content}
                   </div>
                 </div>
-                <button
-                  className="aboutus-experience-arrow-btn"
-                  onClick={() => setExperienceStep(experienceStep + 1)}
-                  disabled={isLastStep}
-                  aria-label="Next Step"
-                >
-                  &#8594;
-                </button>
-              </div>
-              <div className="aboutus-experience-dots" style={{display: 'flex', gap: 8, marginTop: 12, justifyContent: 'center'}}>
-                {dynableExperienceSteps.map((_, idx) => (
-                  <span
-                    key={idx}
-                    style={{
-                      width: 12,
-                      height: 12,
-                      borderRadius: '50%',
-                      background: idx === experienceStep ? '#3a7bd5' : '#b3d1f7',
-                      display: 'inline-block',
-                      transition: 'background 0.2s',
-                    }}
-                  />
-                ))}
-              </div>
+              ))}
             </div>
           </section>
         </main>
