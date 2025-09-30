@@ -96,34 +96,21 @@ const Header = () => {
             localStorage.removeItem('postLoginRedirect')
             localStorage.removeItem('anonymousUserIdForMerge')
             
-            // Clear Redux state
+            // 🎯 FIXED: Batch all logout clears together to prevent flickering
+            console.log('[HEADER] Clearing all Redux state in batch...');
+            
+            // Clear all Redux state in one batch
             dispatch(logout())
             dispatch(clearCartItems())
             dispatch(clearCartState())
             dispatch(logoutAnonymousCart())
+            dispatch(setSearchTerm(''))
+            dispatch(setSearchbarValue(''))
+            dispatch(setSelectedAllergens([]))
+            dispatch(clearSearchPreferencesLocal())
+            dispatch(clearAllergies())
             
-            // 🛡️ ADDED: Clear search states on logout
-            dispatch(setSearchTerm(''));
-            dispatch(setSearchbarValue(''));
-            dispatch(setSelectedAllergens([]));
-            
-            // Clear cart from Redux with delay to ensure state is updated
-            setTimeout(() => {
-                dispatch(clearCartItems());
-                dispatch(clearCartState());
-            }, 100);
-            
-            console.log('[HEADER] Cart cleared from Redux');
-            
-            // 🎯 CRITICAL: Clear search preferences for fresh anonymous session
-            // Anonymous sessions should start with no search preferences
-            dispatch(clearSearchPreferencesLocal());
-            console.log('[HEADER] Search preferences cleared for fresh anonymous session');
-            
-            // 🎯 CRITICAL: Clear allergen toggles for fresh anonymous session
-            // Anonymous sessions should start with no allergens selected
-            dispatch(clearAllergies());
-            console.log('[HEADER] Allergen toggles cleared for fresh anonymous session');
+            console.log('[HEADER] ✅ All Redux state cleared in batch');
             
             // Navigate to home page
             navigate('/')

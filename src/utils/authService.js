@@ -429,9 +429,20 @@ export const createAnonymousSession = async () => {
     try {
         console.log('[AUTH SERVICE] Creating anonymous session...');
         
-        // If we already have an anonymous session, return it
+        // 🚀 PREVENT DUPLICATE: Check if we already have an anonymous session
         if (currentAuthState === AuthState.ANONYMOUS && currentSession) {
             console.log('[AUTH SERVICE] Anonymous session already exists, reusing');
+            return {
+                session: currentSession,
+                isAnonymous: true,
+                success: true
+            };
+        }
+        
+        // 🚀 PREVENT DUPLICATE: Check localStorage for existing anonymous session
+        const existingAnonymousId = localStorage.getItem('anonymous_user_id');
+        if (existingAnonymousId && currentAuthState === AuthState.ANONYMOUS) {
+            console.log('[AUTH SERVICE] Anonymous session already exists in localStorage, reusing');
             return {
                 session: currentSession,
                 isAnonymous: true,

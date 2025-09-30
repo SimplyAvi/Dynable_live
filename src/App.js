@@ -104,8 +104,14 @@ function App() {
         // Only initialize anonymous auth if no session exists
         dispatch(initializeAuth()).then((result) => {
           if (result.meta.requestStatus === 'fulfilled') {
-            // Fetch cart after auth is initialized
-            dispatch(fetchCart());
+            // 🚀 OPTIMIZATION: Only fetch cart if not already fetched
+            const currentCartState = window.store?.getState()?.anonymousCart;
+            if (!currentCartState?.items || currentCartState.items.length === 0) {
+              console.log('[APP] Fetching cart after auth initialization');
+              dispatch(fetchCart());
+            } else {
+              console.log('[APP] Cart already loaded, skipping fetch');
+            }
           } else {
             console.error('[APP] Failed to initialize anonymous auth:', result.error);
           }
@@ -116,8 +122,14 @@ function App() {
         
         if (isAnonymous) {
           // For anonymous sessions, don't set isAuthenticated to true
-          // Just fetch cart
-          dispatch(fetchCart());
+          // 🚀 OPTIMIZATION: Only fetch cart if not already fetched
+          const currentCartState = window.store?.getState()?.anonymousCart;
+          if (!currentCartState?.items || currentCartState.items.length === 0) {
+            console.log('[APP] Fetching cart for anonymous session');
+            dispatch(fetchCart());
+          } else {
+            console.log('[APP] Cart already loaded, skipping fetch');
+          }
         } else {
           // Set credentials for authenticated session
           dispatch(setCredentials({
@@ -125,8 +137,14 @@ function App() {
             token: session.access_token,
             supabaseToken: session.access_token
           }));
-          // Fetch cart for existing session
-          dispatch(fetchCart());
+          // 🚀 OPTIMIZATION: Only fetch cart if not already fetched
+          const currentCartState = window.store?.getState()?.anonymousCart;
+          if (!currentCartState?.items || currentCartState.items.length === 0) {
+            console.log('[APP] Fetching cart for authenticated session');
+            dispatch(fetchCart());
+          } else {
+            console.log('[APP] Cart already loaded, skipping fetch');
+          }
           // Load search preferences for authenticated session
           dispatch(loadSearchPreferencesAsync({ userId: session.user.id }));
         }

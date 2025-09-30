@@ -106,8 +106,8 @@ export const searchProductsFromSupabasePure = async (searchParams) => {
       if (allergens && allergens.length > 0) {
         // 🚀 FIXED: Use same allergen mapping as searchProductsUnified
         const mappedAllergens = mapArrayToDatabaseFormat(allergens);
-        const arrayString = `{${mappedAllergens.map(a => `"${a}"`).join(',')}}`;
-        countQuery = countQuery.filter('allergens', 'not.ov', arrayString);
+      const arrayString = `{${mappedAllergens.map(a => `"${a}"`).join(',')}}`;
+      countQuery = countQuery.filter('allergens', 'not.ov', arrayString);
       }
     }
 
@@ -528,7 +528,7 @@ export const searchRecipesFromSupabasePure = async (searchParams) => {
     let query = supabase
       .from('Recipes')
       .select('*', { count: includeCount ? 'exact' : null })
-      .order('title'); // We'll check if this column name is correct
+      .order('title');
     
     // Add search filter if provided
     if (search && search.trim()) {
@@ -554,10 +554,30 @@ export const searchRecipesFromSupabasePure = async (searchParams) => {
     const to = from + limit - 1;
     query = query.range(from, to);
     
-    const { data, error, count } = await query;
+    // 🚀 TIMEOUT PROTECTION: Add timeout to prevent hanging
+    const timeoutPromise = new Promise((_, reject) => 
+      setTimeout(() => reject(new Error('Recipe query timeout')), 15000) // 15 second timeout
+    );
+    
+    const { data, error, count } = await Promise.race([
+      query,
+      timeoutPromise
+    ]);
     
     if (error) {
       console.error('[SUPABASE PURE] Error searching recipes:', error);
+      
+      // Handle timeout errors gracefully
+      if (error.message?.includes('timeout') || error.code === '57014') {
+        console.warn('[SUPABASE PURE] Recipe query timeout, returning empty results');
+        return includeCount ? {
+          recipes: [],
+          totalCount: 0,
+          page: page,
+          totalPages: 0
+        } : [];
+      }
+      
       throw new Error(`Supabase query failed: ${error.message}`);
     }
     
