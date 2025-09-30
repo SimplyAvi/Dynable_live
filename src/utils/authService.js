@@ -93,13 +93,63 @@ const handleAuthStateChange = async (event, session, store) => {
                         }
                         } else {
                             // Update authenticated user state
-                            const { setCredentials } = await import('../redux/authSlice');
+                            const { setCredentials, updateUser } = await import('../redux/authSlice');
+                            const { loadUserRoleFromDatabase } = await import('./loadUserRoleFromDatabase');
+                            
+                            // 🎯 CRITICAL FIX: Load role from database FIRST with timeout protection
+                            let userDataWithRole = {
+                                ...session.user,
+                                role: session.user.role || 'authenticated' // Temporary fallback
+                            };
+                            
+                            // Try to load role from database BEFORE setting credentials (with timeout)
+                            if (session.user.email) {
+                                console.log('[AUTH SERVICE] 🔄 Loading user role from database BEFORE setting credentials...');
+                                try {
+                                    const userDataPromise = supabase
+                                        .from('Users')
+                                        .select('role, custom_allergens')
+                                        .eq('email', session.user.email)
+                                        .single();
+                                    
+                                    // Add 2 second timeout to prevent blocking
+                                    const timeoutPromise = new Promise((_, reject) => 
+                                        setTimeout(() => reject(new Error('Role fetch timeout')), 2000)
+                                    );
+                                    
+                                    const userData = await Promise.race([userDataPromise, timeoutPromise]);
+                                    
+                                    if (userData.data && userData.data.role) {
+                                        userDataWithRole.role = userData.data.role;
+                                        userDataWithRole.custom_allergens = userData.data.custom_allergens;
+                                        console.log('[AUTH SERVICE] ✅ Loaded role from database:', userData.data.role);
+                                    }
+                                } catch (error) {
+                                    console.warn('[AUTH SERVICE] ⚠️ Could not load role quickly, will refresh async:', error.message);
+                                    // Set credentials now, refresh role async after
+                                    store.dispatch(setCredentials({
+                                        user: userDataWithRole,
+                                        token: session.access_token,
+                                        supabaseToken: session.access_token,
+                                        isAuthenticated: true
+                                    }));
+                                    
+                                    // Refresh role async without blocking
+                                    loadUserRoleFromDatabase(session.user.email, store.dispatch, updateUser).catch(e => 
+                                        console.warn('[AUTH SERVICE] Async role refresh failed:', e)
+                                    );
+                                    return;
+                                }
+                            }
+                            
+                            // Now set credentials with the correct role
                             store.dispatch(setCredentials({
-                                user: session.user,
+                                user: userDataWithRole,
                                 token: session.access_token,
+                                supabaseToken: session.access_token,
                                 isAuthenticated: true
                             }));
-                            console.log('[AUTH SERVICE] Redux state updated for authenticated user');
+                            console.log('[AUTH SERVICE] Redux state updated for authenticated user with role:', userDataWithRole.role);
                         }
                     }
                     
@@ -224,13 +274,63 @@ const checkInitialAuthState = async (store) => {
                     console.log('[AUTH SERVICE] Redux state updated for initial anonymous session');
                 } else {
                     // Update authenticated user state
-                    const { setCredentials } = await import('../redux/authSlice');
+                    const { setCredentials, updateUser } = await import('../redux/authSlice');
+                    const { loadUserRoleFromDatabase } = await import('./loadUserRoleFromDatabase');
+                    
+                    // 🎯 CRITICAL FIX: Load role from database FIRST with timeout protection
+                    let userDataWithRole = {
+                        ...data.session.user,
+                        role: data.session.user.role || 'authenticated' // Temporary fallback
+                    };
+                    
+                    // Try to load role from database BEFORE setting credentials (with timeout)
+                    if (data.session.user.email) {
+                        console.log('[AUTH SERVICE] 🔄 Loading user role from database BEFORE setting credentials (initial load)...');
+                        try {
+                            const userDataPromise = supabase
+                                .from('Users')
+                                .select('role, custom_allergens')
+                                .eq('email', data.session.user.email)
+                                .single();
+                            
+                            // Add 2 second timeout to prevent blocking
+                            const timeoutPromise = new Promise((_, reject) => 
+                                setTimeout(() => reject(new Error('Role fetch timeout')), 2000)
+                            );
+                            
+                            const userData = await Promise.race([userDataPromise, timeoutPromise]);
+                            
+                            if (userData.data && userData.data.role) {
+                                userDataWithRole.role = userData.data.role;
+                                userDataWithRole.custom_allergens = userData.data.custom_allergens;
+                                console.log('[AUTH SERVICE] ✅ Loaded role from database (initial):', userData.data.role);
+                            }
+                        } catch (error) {
+                            console.warn('[AUTH SERVICE] ⚠️ Could not load role quickly on initial load, will refresh async:', error.message);
+                            // Set credentials now, refresh role async after
+                            store.dispatch(setCredentials({
+                                user: userDataWithRole,
+                                token: data.session.access_token,
+                                supabaseToken: data.session.access_token,
+                                isAuthenticated: true
+                            }));
+                            
+                            // Refresh role async without blocking
+                            loadUserRoleFromDatabase(data.session.user.email, store.dispatch, updateUser).catch(e => 
+                                console.warn('[AUTH SERVICE] Async role refresh failed:', e)
+                            );
+                            return;
+                        }
+                    }
+                    
+                    // Now set credentials with the correct role
                     store.dispatch(setCredentials({
-                        user: data.session.user,
+                        user: userDataWithRole,
                         token: data.session.access_token,
+                        supabaseToken: data.session.access_token,
                         isAuthenticated: true
                     }));
-                    console.log('[AUTH SERVICE] Redux state updated for initial authenticated user');
+                    console.log('[AUTH SERVICE] Redux state updated for initial authenticated user with role:', userDataWithRole.role);
                 }
             }
         } else {

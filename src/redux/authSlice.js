@@ -44,7 +44,7 @@ const authSlice = createSlice({
                 name: user.name,
                 picture: user.picture,
                 // New role-based fields (with fallbacks for old tokens)
-                role: user.role || 'end_user',
+                role: user.role || (state.user?.role || 'end_user'), // Preserve existing role if available
                 is_verified_seller: user.is_verified_seller || false,
                 converted_from_anonymous: user.converted_from_anonymous || false,
                 // Seller-specific fields
@@ -160,7 +160,7 @@ const authSlice = createSlice({
                 name: user.name,
                 picture: user.picture,
                 // Set default values for missing role fields
-                role: 'end_user', // Default role for legacy users
+                role: state.user?.role || 'end_user', // Preserve existing role if available
                 is_verified_seller: false,
                 converted_from_anonymous: false,
                 store_name: null,

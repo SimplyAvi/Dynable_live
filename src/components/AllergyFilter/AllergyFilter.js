@@ -5,6 +5,17 @@ import { setSelectedAllergens, loadSearchPreferencesAsync, mergeSearchPreference
 import { saveAllergensToCookies } from '../../utils/cookieUtils';
 import { mapToDatabaseFormat } from '../../utils/allergenMappings'; // 🎯 ADDED: Single source of truth
 import { getAnonymousUserId, supabase } from '../../utils/supabaseClient';
+import { saveCustomAllergen, loadCustomAllergens, removeCustomAllergen, isUserAuthenticated } from '../../utils/customAllergenAPI';
+import { 
+    getUserTier, 
+    canAddCustomAllergen, 
+    validateAllergenToggle,
+    getTierDisplayName,
+    logTierAction 
+} from '../../utils/userTierUtils';
+import { loadUserRoleFromDatabase, shouldRefreshUserRole } from '../../utils/loadUserRoleFromDatabase';
+import { updateUser } from '../../redux/authSlice';
+import CustomAllergenModal from '../CustomAllergenModal/CustomAllergenModal';
 import './AllergyFilter.css';
 
 const AllergyFilter = ({ isSearching = false }) => {
@@ -19,12 +30,56 @@ const AllergyFilter = ({ isSearching = false }) => {
     const [filteringStatus, setFilteringStatus] = useState('ready');
     const [safetyStats, setSafetyStats] = useState(null);
     const [justSaved, setJustSaved] = useState(false);
-
+    
+    // 🚀 NEW: Custom allergen functionality
+    const [customAllergens, setCustomAllergens] = useState({});
+    const [showCustomModal, setShowCustomModal] = useState(false);
+    const [userAuthenticated, setUserAuthenticated] = useState(false);
+    
     // Track active allergen count
     const activeAllergens = Object.keys(allergies).filter(key => allergies[key]);
 
     // 🎯 REMOVED: Redundant allergenNameMap (now using single source of truth)
     // const allergenNameMap = { ... } - REMOVED
+
+    // 🚀 NEW: Load user role from database and custom allergens
+    useEffect(() => {
+        const loadUserData = async () => {
+            const authenticated = await isUserAuthenticated();
+            setUserAuthenticated(authenticated);
+            
+            if (authenticated && currentUser?.email) {
+                try {
+                    // First, refresh user role from database if needed
+                    console.log('[AllergyFilter] Checking if user role needs refresh for:', currentUser);
+                    if (shouldRefreshUserRole(currentUser)) {
+                        console.log('[AllergyFilter] ✅ Refreshing user role from database...');
+                        await loadUserRoleFromDatabase(currentUser.email, dispatch, updateUser);
+                    } else {
+                        console.log('[AllergyFilter] ⏭️ User role is up to date, skipping refresh');
+                    }
+                    
+                    // Then load custom allergens
+                    console.log('[AllergyFilter] Loading custom allergens for authenticated user');
+                    const customAllergensData = await loadCustomAllergens();
+                    
+                    // Convert custom allergens array to object format for consistency
+                    const customAllergensObj = {};
+                    customAllergensData.forEach(allergen => {
+                        customAllergensObj[allergen.name] = true; // Start as toggled on
+                    });
+                    
+                    setCustomAllergens(customAllergensObj);
+                    console.log('[AllergyFilter] Loaded custom allergens:', customAllergensObj);
+                } catch (error) {
+                    console.error('[AllergyFilter] Error loading user data:', error);
+                    setCustomAllergens({});
+                }
+            }
+        };
+        
+        loadUserData();
+    }, [isAuthenticated, currentUser?.email, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
     // Debug logging
     useEffect(() => {
@@ -35,9 +90,10 @@ const AllergyFilter = ({ isSearching = false }) => {
             loading,
             error,
             isAuthenticated,
-            currentUserId: currentUser?.id
+            currentUserId: currentUser?.id,
+            customAllergensCount: Object.keys(customAllergens).length
         });
-    }, [allergies, loading, error, isAuthenticated, currentUser]);
+    }, [allergies, loading, error, isAuthenticated, currentUser, customAllergens]);
 
     // Update filtering status when allergens change
     useEffect(() => {
@@ -49,7 +105,7 @@ const AllergyFilter = ({ isSearching = false }) => {
             setFilteringStatus('ready');
             setSafetyStats(null);
         }
-    }, [allergies]);
+    }, [allergies]); // eslint-disable-line react-hooks/exhaustive-deps
 
     // 🛡️ FIXED: Handle auth state changes and allergen restoration
     useEffect(() => {
@@ -236,13 +292,40 @@ const AllergyFilter = ({ isSearching = false }) => {
             console.log('[AllergyFilter] Allergens restored, search will be triggered by Homepage');
         }
         
-    }, [searchPreferences.selectedAllergens, searchPreferences.isLoading, allergies, dispatch]);
+    }, [searchPreferences.selectedAllergens, searchPreferences.isLoading, allergies, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
-    // 🛡️ FIXED: Simplified allergy click handler with perfect synchronization
+    // 🛡️ FIXED: Simplified allergy click handler with tier validation
     const handleAllergyClick = async (allergyKey, event) => {
         event.preventDefault();
         console.log(`[ALLERGEN FLOW] 🎯 Allergy clicked: ${allergyKey}`);
         console.log(`[ALLERGEN FLOW] 📊 Current allergies state:`, allergies);
+        
+        // 🚀 NEW: Tier-based validation
+        const authState = { user: currentUser, isAuthenticated };
+        const currentAllergenCount = Object.values(allergies).filter(Boolean).length;
+        const isTogglingOn = !allergies[allergyKey];
+        
+        // Validate allergen toggle based on user tier
+        const validation = validateAllergenToggle(authState, currentAllergenCount, isTogglingOn);
+        
+        if (!validation.allowed) {
+            console.log(`[TIER_VALIDATION] ❌ Allergen toggle blocked:`, validation.reason);
+            logTierAction('allergen_toggle_blocked', getUserTier(authState), {
+                allergyKey,
+                currentCount: currentAllergenCount,
+                reason: validation.reason
+            });
+            
+            // Don't show alert - button will be visually disabled instead
+            return;
+        }
+        
+        // Log successful toggle
+        logTierAction('allergen_toggled', getUserTier(authState), {
+            allergyKey,
+            isTogglingOn,
+            newCount: currentAllergenCount + (isTogglingOn ? 1 : -1)
+        });
         
         // 🚨 FIXED: Prevent race conditions by using local state first
         const updatedAllergies = { ...allergies, [allergyKey]: !allergies[allergyKey] };
@@ -328,6 +411,102 @@ const AllergyFilter = ({ isSearching = false }) => {
             }
         }
     };
+    
+    // 🚀 NEW: Handle custom allergen save
+    const handleSaveCustomAllergen = async (customAllergen) => {
+        try {
+            console.log('[AllergyFilter] Saving custom allergen:', customAllergen);
+            
+            const result = await saveCustomAllergen(customAllergen);
+            
+            if (result.success) {
+                // Add to custom allergens state only (don't add to main allergies state)
+                const updatedCustomAllergens = { ...customAllergens, [customAllergen.name]: true };
+                setCustomAllergens(updatedCustomAllergens);
+                
+                console.log('[AllergyFilter] Successfully saved custom allergen');
+                return { success: true };
+            } else {
+                throw new Error(result.error);
+            }
+        } catch (error) {
+            console.error('[AllergyFilter] Error saving custom allergen:', error);
+            throw error;
+        }
+    };
+
+    // 🚀 NEW: Handle custom allergen clear
+    const handleClearCustomAllergen = async (allergenName) => {
+        try {
+            console.log('[AllergyFilter] Clearing custom allergen:', allergenName);
+            console.log('[AllergyFilter] Current auth state before clear:', { 
+                isAuthenticated, 
+                currentUser: currentUser?.role,
+                userId: currentUser?.id 
+            });
+            
+            // Remove from database first
+            const result = await removeCustomAllergen(allergenName);
+            
+            if (result.success) {
+                // Remove from custom allergens state only (don't touch main allergies state)
+                const updatedCustomAllergens = { ...customAllergens };
+                delete updatedCustomAllergens[allergenName];
+                setCustomAllergens(updatedCustomAllergens);
+                
+                console.log('[AllergyFilter] Custom allergen cleared from database and local state');
+                console.log('[AllergyFilter] Auth state after clear:', { 
+                    isAuthenticated, 
+                    currentUser: currentUser?.role,
+                    userId: currentUser?.id 
+                });
+            } else {
+                throw new Error(result.error);
+            }
+        } catch (error) {
+            console.error('[AllergyFilter] Error clearing custom allergen:', error);
+            console.log('[AllergyFilter] Auth state after error:', { 
+                isAuthenticated, 
+                currentUser: currentUser?.role,
+                userId: currentUser?.id 
+            });
+            alert('Failed to clear custom allergen: ' + error.message);
+        }
+    };
+    
+    // 🚀 NEW: Check if allergen button should be disabled
+    const isAllergenButtonDisabled = (allergyKey, isTogglingOn) => {
+        const authState = { user: currentUser, isAuthenticated };
+        const currentAllergenCount = Object.values(allergies).filter(Boolean).length;
+        
+        // If toggling off, never disable
+        if (!isTogglingOn) return false;
+        
+        // Check tier validation
+        const validation = validateAllergenToggle(authState, currentAllergenCount, isTogglingOn);
+        return !validation.allowed;
+    };
+
+    // 🚀 NEW: Handle custom allergen modal open with tier validation
+    const handleOpenCustomModal = () => {
+        const authState = { user: currentUser, isAuthenticated };
+        
+        if (!userAuthenticated) {
+            alert('Please log in to add custom allergens');
+            return;
+        }
+        
+        // Check if user can add custom allergens based on tier
+        if (!canAddCustomAllergen(authState)) {
+            const tier = getUserTier(authState);
+            alert(`Custom allergens are available for Standard+ users. You are currently on ${getTierDisplayName(tier)} tier.`);
+            logTierAction('custom_allergen_blocked', tier, { reason: 'insufficient_tier' });
+            return;
+        }
+        
+        logTierAction('custom_allergen_modal_opened', getUserTier(authState));
+        setShowCustomModal(true);
+    };
 
     // Show loading state
     if (loading) {
@@ -351,16 +530,25 @@ const AllergyFilter = ({ isSearching = false }) => {
                     <h4>Fallback Allergen Filters:</h4>
                     <div className="horizontal-scroll-container allergen-scroll-container">
                         <div className="horizontal-scroll">
-                            {Object.entries(allergies).map(([key, value]) => (
+                            {Object.entries(allergies).map(([key, value]) => {
+                                const isDisabled = isAllergenButtonDisabled(key, !value);
+                                return (
                                 <button
                                     key={key}
-                                    className={`allergy-scroll-item ${value ? 'selected' : ''}`}
-                                    onClick={(e) => handleAllergyClick(key, e)}
+                                        className={`allergy-scroll-item ${value ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}`}
+                                        onClick={(e) => !isDisabled && handleAllergyClick(key, e)}
+                                        disabled={isDisabled}
+                                        style={{
+                                            opacity: isDisabled ? 0.4 : 1,
+                                            cursor: isDisabled ? 'not-allowed' : 'pointer'
+                                        }}
+                                        title={isDisabled ? 'Upgrade to Standard tier for unlimited allergens' : ''}
                                 >
                                     {key.charAt(0).toUpperCase() + key.slice(1)}
                                     {value && <span className="check">✓</span>}
                                 </button>
-                            ))}
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
@@ -376,12 +564,12 @@ const AllergyFilter = ({ isSearching = false }) => {
             <div className="horizontal-scroll-container allergen-scroll-container">
                 <div className="horizontal-scroll">
                     {(() => {
-                        // 🚀 NEW: Sort allergens with toggled ones at front, rest alphabetically
-                        const allergenEntries = Object.entries(allergies);
+                        // Only use regular allergens for filtering (custom allergens are separate)
+                        const regularAllergenEntries = Object.entries(allergies);
                         
                         // Separate toggled and non-toggled allergens
-                        const toggledAllergens = allergenEntries.filter(([key, value]) => value);
-                        const nonToggledAllergens = allergenEntries.filter(([key, value]) => !value);
+                        const toggledAllergens = regularAllergenEntries.filter(([key, value]) => value);
+                        const nonToggledAllergens = regularAllergenEntries.filter(([key, value]) => !value);
                         
                         // Sort toggled allergens alphabetically
                         toggledAllergens.sort(([a], [b]) => a.localeCompare(b));
@@ -392,29 +580,83 @@ const AllergyFilter = ({ isSearching = false }) => {
                         // Combine: toggled first, then non-toggled
                         const sortedAllergens = [...toggledAllergens, ...nonToggledAllergens];
                         
-                        console.log('[AllergyFilter] Sorted allergens:', {
+                        console.log('[AllergyFilter] Sorted regular allergens (custom allergens separate):', {
+                            regular: regularAllergenEntries.length,
+                            custom: Object.keys(customAllergens).length,
                             toggled: toggledAllergens.map(([key]) => key),
                             nonToggled: nonToggledAllergens.map(([key]) => key),
                             total: sortedAllergens.length
                         });
                         
-                        return sortedAllergens.map(([key, value]) => (
-                            <button
-                                key={key}
-                                className={`allergy-scroll-item ${value ? 'selected' : ''}`}
-                                onClick={(e) => handleAllergyClick(key, e)}
-                                style={{
-                                    opacity: isSearching ? 0.6 : 1,
-                                    cursor: isSearching ? 'not-allowed' : 'pointer'
-                                }}
-                            >
-                                {key.charAt(0).toUpperCase() + key.slice(1)}
-                                {value && <span className="check">✓</span>}
-                            </button>
-                        ));
+                        return (
+                            <>
+                                {sortedAllergens.map(([key, value]) => {
+                                    const isDisabled = isAllergenButtonDisabled(key, !value);
+                                    const isSearchingDisabled = isSearching;
+                                    const isFullyDisabled = isDisabled || isSearchingDisabled;
+                                    
+                                    return (
+                        <button
+                            key={key}
+                                            className={`allergy-scroll-item ${value ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}`}
+                                            onClick={(e) => !isFullyDisabled && handleAllergyClick(key, e)}
+                                            disabled={isFullyDisabled}
+                                            style={{
+                                                opacity: isFullyDisabled ? (isDisabled ? 0.4 : 0.6) : 1,
+                                                cursor: isFullyDisabled ? 'not-allowed' : 'pointer'
+                                            }}
+                                            title={isDisabled ? 'Upgrade to Standard tier for unlimited allergens' : 
+                                                   isSearchingDisabled ? 'Searching...' : ''}
+                        >
+                            {key.charAt(0).toUpperCase() + key.slice(1)}
+                            {value && <span className="check">✓</span>}
+                                        </button>
+                                    );
+                                })}
+                                
+                                {/* 🚀 NEW: Blue plus button for adding custom allergens - Standard+ only */}
+                                {userAuthenticated && canAddCustomAllergen({ user: currentUser, isAuthenticated }) && (
+                                    <button
+                                        className="allergy-scroll-item add-custom-allergen-btn"
+                                        onClick={handleOpenCustomModal}
+                                        style={{
+                                            opacity: isSearching ? 0.6 : 1,
+                                            cursor: isSearching ? 'not-allowed' : 'pointer'
+                                        }}
+                                        disabled={isSearching}
+                                        title="Add custom allergen (Standard+ tier)"
+                                    >
+                                        <span className="plus-icon">+</span>
+                                        <span className="add-text">Add</span>
+                        </button>
+                                )}
+                            </>
+                        );
                     })()}
                 </div>
             </div>
+            
+            {/* 🎯 NEW: Custom Allergens Display Section (Separate from filtering) */}
+            {Object.keys(customAllergens).length > 0 && (
+                <div className="custom-allergens-section">
+                    <h4>Your Custom Allergens</h4>
+                    <div className="horizontal-scroll-container allergen-scroll-container">
+                        <div className="horizontal-scroll">
+                            {Object.entries(customAllergens).map(([allergenName, isActive]) => (
+                                <button
+                                    key={allergenName}
+                                    className="allergy-scroll-item custom-allergen-item selected"
+                                    onClick={() => handleClearCustomAllergen(allergenName)}
+                                    title="Click to remove this custom allergen"
+                                >
+                                    {allergenName.charAt(0).toUpperCase() + allergenName.slice(1)}
+                                    <span className="check">×</span>
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
             
             {/* 🛡️ NEW: Safety status indicator */}
             <div className="safety-status">
@@ -431,12 +673,20 @@ const AllergyFilter = ({ isSearching = false }) => {
                 )}
                 
                 {filteringStatus === 'complete' && activeAllergens.length > 0 && (
-                    <div className="status-message success">
-                        ✅ Safe filtering active for: {activeAllergens.join(', ')}
-                        <br />
-                        <small>🛡️ Zero dangerous products will be shown</small>
-                    </div>
+                    <>
+                        {Object.keys(customAllergens).length > 0 && ( // Only show if user has custom allergens
+                            <div className="status-message warning">
+                                ⚠️ Deleting an allergen will permanently remove it from your profile
+                            </div>
+                        )}
+                        <div className="status-message success">
+                            ✅ Safe filtering active for: {activeAllergens.join(', ')}
+                            <br />
+                            <small>🛡️ Zero dangerous products will be shown</small>
+                        </div>
+                    </>
                 )}
+                
                 
                 {filteringStatus === 'error' && (
                     <div className="status-message error">
@@ -462,6 +712,13 @@ const AllergyFilter = ({ isSearching = false }) => {
                     ✅ Allergen preferences saved
                 </div>
             )}
+            
+            {/* 🚀 NEW: Custom Allergen Modal */}
+            <CustomAllergenModal
+                isOpen={showCustomModal}
+                onClose={() => setShowCustomModal(false)}
+                onSave={handleSaveCustomAllergen}
+            />
         </div>
     );
 };

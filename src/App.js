@@ -123,7 +123,7 @@ function App() {
           dispatch(setCredentials({
             user: session.user,
             token: session.access_token,
-            isAuthenticated: true
+            supabaseToken: session.access_token
           }));
           // Fetch cart for existing session
           dispatch(fetchCart());

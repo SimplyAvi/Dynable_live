@@ -121,6 +121,7 @@ const Login = () => {
                 dispatch(setCredentials({
                     user: data.user,
                     token: data.session?.access_token,
+                    supabaseToken: data.session?.access_token,
                     isAuthenticated: true
                 }));
 

@@ -102,6 +102,26 @@
   border: 1.5px solid #3a7bd5;
 }
 
+/* Disabled state for tier-limited users */
+.allergy-scroll-item.disabled {
+  background-color: #f5f5f5;
+  color: #999;
+  border: 1.5px solid #ddd;
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.allergy-scroll-item.disabled:hover {
+  background-color: #f5f5f5;
+  color: #999;
+  border: 1.5px solid #ddd;
+  transform: none;
+}
+
+.allergy-scroll-item.disabled:active {
+  transform: none;
+}
+
 /* Tablet-specific improvements */
 @media (min-width: 768px) and (max-width: 1024px) {
   .allergy-scroll-item {
@@ -225,6 +245,15 @@
     color: #dc3545;
 }
 
+.status-message.warning {
+    color: #dc3545;
+    background: rgba(220, 53, 69, 0.1);
+    border-left: 3px solid #dc3545;
+    padding: 6px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
 .safety-stats {
     margin-top: 8px;
     padding-top: 8px;
@@ -244,4 +273,195 @@
     border-radius: 4px;
     font-size: 12px;
     text-align: center;
+}
+
+/* 🚀 NEW: Custom allergen styling - YELLOW UNDER REVIEW THEME */
+.custom-allergen {
+    background: linear-gradient(135deg, #fef3c7, #fde68a) !important;
+    border: 2px solid #f59e0b !important;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+}
+
+.custom-allergen:hover {
+    background: linear-gradient(135deg, #fde68a, #fcd34d) !important;
+    border-color: #d97706 !important;
+    box-shadow: 0 4px 8px rgba(245, 158, 11, 0.3);
+}
+
+.custom-allergen.selected {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b) !important;
+    border-color: #d97706 !important;
+    color: white !important;
+    box-shadow: 0 4px 8px rgba(245, 158, 11, 0.4);
+}
+
+.custom-indicator {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background: #f59e0b;
+    color: white;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* 🚀 NEW: Add custom allergen button styling - BLUE THEME */
+.add-custom-allergen-btn {
+    background: linear-gradient(135deg, #3a7bd5, #2563eb) !important;
+    border: 2px solid #1d4ed8 !important;
+    color: white !important;
+    font-weight: 600;
+    min-width: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.add-custom-allergen-btn:hover {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+    border-color: #1e40af !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(58, 123, 213, 0.3);
+}
+
+.add-custom-allergen-btn:active {
+    transform: translateY(0);
+}
+
+.add-custom-allergen-btn .plus-icon {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-right: 4px;
+}
+
+.add-custom-allergen-btn .add-text {
+    font-size: 0.8rem;
+}
+
+/* Mobile responsive for custom allergen button */
+@media (max-width: 768px) {
+    .add-custom-allergen-btn {
+        min-width: 60px;
+        padding: 6px 8px;
+    }
+    
+    .add-custom-allergen-btn .add-text {
+        font-size: 0.7rem;
+    }
+    
+    .add-custom-allergen-btn .plus-icon {
+        font-size: 1rem;
+        margin-right: 2px;
+    }
+    
+    .custom-indicator {
+        width: 14px;
+        height: 14px;
+        font-size: 9px;
+    }
+}
+
+/* Clear Custom Allergen Button */
+.custom-allergen-actions {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.clear-custom-allergen-btn {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(255, 107, 107, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 140px;
+    justify-content: center;
+}
+
+.clear-custom-allergen-btn:hover {
+    background: linear-gradient(135deg, #ff5252, #e53935);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(255, 107, 107, 0.4);
+}
+
+.clear-custom-allergen-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(255, 107, 107, 0.3);
+}
+
+/* Mobile responsiveness for clear button */
+@media (max-width: 768px) {
+    .clear-custom-allergen-btn {
+        width: 100%;
+        max-width: 200px;
+        font-size: 13px;
+        padding: 10px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .clear-custom-allergen-btn {
+        font-size: 12px;
+        padding: 8px 12px;
+        min-width: 120px;
+    }
+}
+
+/* 🎯 Custom Allergens Display Section */
+.custom-allergens-section {
+    margin: 15px 0;
+}
+
+.custom-allergens-section h4 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #495057;
+    text-align: center;
+}
+
+
+/* Custom allergen items styling */
+.custom-allergen-item {
+    background: linear-gradient(135deg, #ffeb3b, #fbc02d) !important; /* Pure yellow gradient */
+    color: #212529 !important; /* Dark text for better contrast on yellow */
+    border: 1px solid #ffeb3b !important;
+}
+
+.custom-allergen-item:hover {
+    background: linear-gradient(135deg, #fdd835, #f57f17) !important; /* Darker yellow on hover */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(255, 235, 59, 0.3);
+}
+
+.custom-allergen-item .check {
+    color: #dc3545 !important; /* Red X instead of green checkmark */
+    font-weight: bold;
+}
+
+/* Mobile responsiveness for custom allergens */
+@media (max-width: 768px) {
+    .custom-allergens-section {
+        margin: 12px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .custom-allergens-section h4 {
+        font-size: 13px;
+    }
 }

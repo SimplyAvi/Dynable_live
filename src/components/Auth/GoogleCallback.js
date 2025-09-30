@@ -181,7 +181,8 @@ const GoogleCallback = () => {
                 console.log('[CALLBACK] 💾 Setting user credentials in Redux...');
                 dispatch(setCredentials({
                     user: session.user,
-                    token: session.access_token
+                    token: session.access_token,
+                    supabaseToken: session.access_token
                 }));
 
                 // 🏠 Navigate to home page
