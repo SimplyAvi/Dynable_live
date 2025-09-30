@@ -68,30 +68,20 @@ export const fetchCart = createAsyncThunk(
     'anonymousCart/fetchCart',
     async (_, { getState, signal }) => {
         try {
-            // 🎯 CRITICAL: Check if we're in logout state
+            // 🎯 CRITICAL: Only skip if actively logging out
             const state = getState();
-            const isLogoutState = state.anonymousCart.items.length === 0 && !state.anonymousCart.isAnonymous;
             const isLoggingOut = state.anonymousCart.isLoggingOut;
             
-            // 🎯 ENHANCED: Also check if we just logged out (no session but cart might exist)
-            const { data: { session } } = await supabase.auth.getSession();
-            const hasNoSession = !session;
-            const hasCartItems = state.anonymousCart.items && state.anonymousCart.items.length > 0;
-            const isPostLogoutState = hasNoSession && hasCartItems;
-            
-            if (isLogoutState || isLoggingOut || isPostLogoutState) {
-                console.log('[ANONYMOUS CART] 🛡️ Skipping fetchCart - logout state detected (items:', state.anonymousCart.items.length, 'isLoggingOut:', isLoggingOut, 'isPostLogout:', isPostLogoutState, ')');
-                console.log('[ANONYMOUS CART] 🔍 Debug - isLogoutState:', isLogoutState, 'isLoggingOut:', isLoggingOut, 'isPostLogout:', isPostLogoutState);
-                return [];
-            }
-            
             // 🎯 CRITICAL: Check if abort signal is triggered (logout in progress)
-            if (signal?.aborted) {
-                console.log('[ANONYMOUS CART] 🛡️ fetchCart aborted - logout in progress');
+            if (signal?.aborted || isLoggingOut) {
+                console.log('[ANONYMOUS CART] 🛡️ Skipping fetchCart - logout in progress:', { aborted: signal?.aborted, isLoggingOut });
                 return [];
             }
             
+            // Fetch cart from database
+            console.log('[ANONYMOUS CART] Fetching cart from database...');
             const items = await getCart();
+            console.log('[ANONYMOUS CART] ✅ Cart fetched successfully:', items?.length || 0, 'items');
             return items || [];
         } catch (error) {
             console.error('[ANONYMOUS CART] Error fetching cart:', error);
@@ -434,6 +424,7 @@ const anonymousCartSlice = createSlice({
             .addCase(fetchCart.fulfilled, (state, action) => {
                 state.loading = false;
                 state.items = action.payload;
+                state.isLoggingOut = false; // 🎯 CRITICAL: Reset logout flag when cart is fetched
                 console.log('[ANONYMOUS CART] Cart fetched:', action.payload);
             })
             .addCase(fetchCart.rejected, (state, action) => {

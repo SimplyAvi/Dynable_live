@@ -42,23 +42,12 @@ const CartPage = () => {
 
     useEffect(() => {
         const checkAndFetchCart = async () => {
-            // 🎯 FIXED: Don't fetch cart during logout/auth transitions
-            // Check if we're in a logout state (cart should be empty)
+            // 🎯 FIXED: Only skip if actively logging out
             const currentCartState = window.store?.getState()?.anonymousCart;
-            const isLogoutState = currentCartState && currentCartState.items.length === 0 && !currentCartState.isAnonymous;
+            const isLoggingOut = currentCartState?.isLoggingOut;
             
-            if (isLogoutState) {
-                console.log('[CART_PAGE] 🛡️ Skipping cart fetch - logout state detected');
-                return;
-            }
-            
-            // 🎯 ENHANCED: Check if we just logged out (no session but cart exists)
-            const { data: { session } } = await supabase.auth.getSession();
-            const hasNoSession = !session;
-            const hasCartItems = cartItems && cartItems.length > 0;
-            
-            if (hasNoSession && hasCartItems) {
-                console.log('[CART_PAGE] 🛡️ Skipping cart fetch - post-logout state detected');
+            if (isLoggingOut) {
+                console.log('[CART_PAGE] 🛡️ Skipping cart fetch - logout in progress');
                 return;
             }
             

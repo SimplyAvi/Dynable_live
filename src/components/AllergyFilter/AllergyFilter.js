@@ -112,6 +112,14 @@ const AllergyFilter = ({ isSearching = false }) => {
         const handleAuthStateChange = async () => {
             console.log('[AllergyFilter] Auth state changed:', { isAuthenticated, currentUserId: currentUser?.id });
             
+            // 🎯 NEW: Clear custom allergens on logout
+            if (!isAuthenticated) {
+                console.log('[AllergyFilter] User logged out, clearing custom allergens');
+                setCustomAllergens({});
+                setUserAuthenticated(false);
+                return;
+            }
+            
             if (isAuthenticated && currentUser?.id) {
                 console.log('[AllergyFilter] User authenticated, checking for allergen merge...');
                 
@@ -343,6 +351,15 @@ const AllergyFilter = ({ isSearching = false }) => {
         
         // Dispatch to searchPreferences to ensure Homepage.js gets the update immediately
         dispatch(setSelectedAllergens(selectedAllergens));
+        
+        // 🎯 DEBUG: Verify Redux state after dispatch
+        setTimeout(() => {
+            const state = window.store?.getState();
+            console.log('[ALLERGEN FLOW] 🔍 Verified Redux state after dispatch:', {
+                selectedAllergensInRedux: state?.searchPreferences?.selectedAllergens,
+                match: JSON.stringify(selectedAllergens) === JSON.stringify(state?.searchPreferences?.selectedAllergens)
+            });
+        }, 100);
         
         // Save to cookies immediately
         saveAllergensToCookies(updatedAllergies);
