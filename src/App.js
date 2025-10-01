@@ -21,6 +21,8 @@ import ProductPage from './pages/ProductPage/ProductPage';
 import RecipePage from './pages/RecipePage/RecipePage';
 import CategoryPage from './pages/Catagory_Testing/CatagoryPage';
 import CartPage from './pages/CartPage/CartPage';
+import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService/TermsOfService';
 import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
 import Profile from './components/Auth/Profile';
@@ -193,6 +195,8 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
           </Routes>
         </main>
       </div>

@@ -148,6 +148,16 @@ const Homepage = () => {
                         <span id="footer-text-feedback" className="homepage-footer-nav-text">Give Feedback</span>
                     </button>
                 </div>
+                <div className="homepage-footer-nav-container homepage-footer-nav-container-second-row">
+                    <button id="footer-btn-privacy" className="homepage-footer-nav-button" onClick={() => navigate('/privacy-policy')}>
+                        <span id="footer-icon-privacy" className="homepage-footer-nav-icon">🔒</span>
+                        <span id="footer-text-privacy" className="homepage-footer-nav-text">Privacy Policy</span>
+                    </button>
+                    <button id="footer-btn-terms" className="homepage-footer-nav-button" onClick={() => navigate('/terms-of-service')}>
+                        <span id="footer-icon-terms" className="homepage-footer-nav-icon">📋</span>
+                        <span id="footer-text-terms" className="homepage-footer-nav-text">Terms of Service</span>
+                    </button>
+                </div>
             </div>
             <footer className="homepage-footer">
                 <span className="copyright">© 2025 Dynable. All rights reserved.</span>
