@@ -12,7 +12,14 @@
 
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectCurrentUser } from '../../redux/authSlice';
+import { selectCurrentUser, logout } from '../../redux/authSlice';
+import { clearCartItems, clearCartState, logout as logoutAnonymousCart } from '../../redux/anonymousCartSlice';
+import { clearSearchPreferencesLocal, setSearchTerm, setSelectedAllergens } from '../../redux/searchPreferencesSlice';
+import { setSearchbarValue } from '../../redux/searchbarSlice';
+import { clearAllergies } from '../../redux/allergiesSlice';
+import { clearProducts } from '../../redux/productSlice';
+import { clearRecipes } from '../../redux/recipeSlice';
+import { clearSearchPreferencesOnLogout } from '../../utils/searchPreferencesManager';
 import { supabase } from '../../utils/supabaseClient';
 import { getUserProfileFromSupabase } from '../../utils/supabaseQueries';
 import './Profile.css';
@@ -73,24 +80,71 @@ const Profile = () => {
         fetchProfile();
     }, []);
 
-    const handleSignOut = async () => {
+    const handleLogout = async () => {
         try {
+            console.log('[PROFILE] Logging out user...');
             setIsUpdating(true);
-            const { error } = await supabase.auth.signOut();
             
-            if (error) {
-                throw error;
+            // 🎯 PHASE 1: IMMEDIATE DATA CLEARING for better UX
+            console.log('[PROFILE] 🚫 Immediately clearing products and recipes for instant feedback');
+            dispatch(clearProducts());
+            dispatch(clearRecipes());
+            
+            // Clear search preferences from database if user is authenticated
+            if (user?.id) {
+                try {
+                    await clearSearchPreferencesOnLogout(user.id);
+                    console.log('[PROFILE] ✅ Search preferences cleared from database');
+                } catch (error) {
+                    console.error('[PROFILE] ❌ Failed to clear search preferences from database:', error);
+                }
             }
             
-            // Clear local storage
-            localStorage.removeItem('token');
-            localStorage.removeItem('anonymousUserIdForMerge');
+            // 🎯 CRITICAL FIX: Force complete session reset
+            console.log('[PROFILE] 🔄 Starting complete session reset...');
+            
+            // First, clear Redux state immediately to prevent cart operations
+            dispatch({ type: 'anonymousCart/forceClear' });
+            dispatch({ type: 'anonymousCart/logout' });
+            
+            // Force immediate state update with store
+            const store = window.store;
+            store.dispatch({ type: 'anonymousCart/forceClear' });
+            store.dispatch({ type: 'anonymousCart/logout' });
+            
+            // Sign out from Supabase
+            const { error } = await supabase.auth.signOut();
+            if (error) {
+                console.error('[PROFILE] ❌ Supabase sign out failed:', error);
+            } else {
+                console.log('[PROFILE] ✅ Supabase sign out successful');
+            }
+            
+            // Clear localStorage
+            localStorage.removeItem('token')
+            localStorage.removeItem('anonymous_user_id')
+            localStorage.removeItem('anonymousUserIdForMerge')
+            localStorage.removeItem('searchPreferences')
+            
+            // 🎯 PHASE 2: BATCHED REDUX STATE CLEARING
+            console.log('[PROFILE] Clearing all Redux state in batch...');
+            dispatch(logout())
+            dispatch(clearCartItems())
+            dispatch(clearCartState())
+            dispatch(logoutAnonymousCart())
+            dispatch(setSearchTerm(''))
+            dispatch(setSearchbarValue(''))
+            dispatch(setSelectedAllergens([]))
+            dispatch(clearSearchPreferencesLocal())
+            dispatch(clearAllergies())
+            console.log('[PROFILE] ✅ All Redux state cleared in batch');
             
             // Redirect to home page
             window.location.href = '/';
+            console.log('[PROFILE] Logout completed successfully');
             
         } catch (err) {
-            console.error('[PROFILE] Error signing out:', err);
+            console.error('[PROFILE] Logout error:', err);
             setError('Failed to sign out');
         } finally {
             setIsUpdating(false);
@@ -193,11 +247,11 @@ const Profile = () => {
                 
                 <div className="profile-actions">
                     <button 
-                        onClick={handleSignOut}
+                        onClick={handleLogout}
                         disabled={isUpdating}
                         className="sign-out-button"
                     >
-                        {isUpdating ? 'Signing out...' : 'Sign Out'}
+                        {isUpdating ? 'Logging out...' : 'Logout'}
                     </button>
                 </div>
             </div>
