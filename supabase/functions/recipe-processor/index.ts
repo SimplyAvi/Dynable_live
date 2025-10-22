@@ -6,6 +6,9 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
+// 🚀 PHASE 5: Feature flag for semantic matching
+const USE_SEMANTIC_MATCHING = Deno.env.get('USE_SEMANTIC_MATCHING') === 'true';
+
 interface RecipeIngredient {
   id: number;
   name: string;
@@ -359,8 +362,88 @@ function generateSearchTerms(canonical: string): string[] {
   return terms
 }
 
-// Find matching products for an ingredient
+// 🚀 PHASE 5: Main function with feature flag
 async function findMatchingProducts(supabase: any, ingredientCanonical: string, options: { userAllergens: string[], limit: number }) {
+  if (USE_SEMANTIC_MATCHING) {
+    console.log(`[MATCHING] Using SEMANTIC matching for: ${ingredientCanonical}`);
+    return findMatchingProductsSemantic(supabase, ingredientCanonical, options);
+  } else {
+    console.log(`[MATCHING] Using LEGACY text-based matching for: ${ingredientCanonical}`);
+    return findMatchingProductsLegacy(supabase, ingredientCanonical, options);
+  }
+}
+
+// 🚀 PHASE 5: New semantic matching function
+async function findMatchingProductsSemantic(supabase: any, ingredientName: string, options: { userAllergens: string[], limit: number }) {
+  const { userAllergens, limit } = options;
+  
+  try {
+    // Step 1: Resolve ingredient to semantic entity
+    const ingredientPromise = supabase
+      .from('ingredients')
+      .select('id, canonical_name, category, subcategory, aliases')
+      .eq('canonical_name', ingredientName.toLowerCase())
+      .limit(1);
+    
+    const { data: ingredientData, error: ingredientError } = await ingredientPromise;
+    
+    if (ingredientError || !ingredientData || ingredientData.length === 0) {
+      console.log(`[SEMANTIC] No ingredient entity found for: ${ingredientName}, using legacy`);
+      return findMatchingProductsLegacy(supabase, ingredientName, options);
+    }
+    
+    const ingredient = ingredientData[0];
+    console.log(`[SEMANTIC] ✅ Resolved "${ingredientName}" → ID ${ingredient.id} (${ingredient.category}/${ingredient.subcategory || 'N/A'})`);
+    
+    // Step 2: Get products via semantic mappings
+    const mappingsPromise = supabase
+      .from('ingredient_product_mapping')
+      .select(`
+        product_id,
+        confidence_score,
+        match_type
+      `)
+      .eq('ingredient_id', ingredient.id)
+      .gte('confidence_score', 0.80)
+      .order('confidence_score', { ascending: false })
+      .limit(limit);
+    
+    const { data: mappings, error: mappingsError } = await mappingsPromise;
+    
+    if (mappingsError || !mappings || mappings.length === 0) {
+      console.log(`[SEMANTIC] No mappings found for ${ingredient.canonical_name}, using legacy`);
+      return findMatchingProductsLegacy(supabase, ingredientName, options);
+    }
+    
+    // Step 3: Fetch product details
+    const productIds = mappings.map(m => m.product_id);
+    const productsPromise = supabase
+      .from('products')
+      .select('id, name, brand_name, allergens, description, is_active')
+      .in('id', productIds)
+      .eq('is_active', true);
+    
+    const { data: products, error: productsError } = await productsPromise;
+    
+    if (productsError || !products) {
+      console.error('[SEMANTIC] Error fetching products:', productsError);
+      return findMatchingProductsLegacy(supabase, ingredientName, options);
+    }
+    
+    // Step 4: Filter by allergens
+    const filteredProducts = filterProductsByAllergens(products, userAllergens);
+    
+    console.log(`[SEMANTIC] ✅ Found ${filteredProducts.length} products for "${ingredient.canonical_name}" via semantic mapping`);
+    return filteredProducts;
+    
+  } catch (error) {
+    console.error('[SEMANTIC] Error in semantic matching:', error);
+    return findMatchingProductsLegacy(supabase, ingredientName, options);
+  }
+}
+
+// 🔄 PHASE 5: Legacy text-based matching (fallback)
+async function findMatchingProductsLegacy(supabase: any, ingredientCanonical: string, options: { userAllergens: string[], limit: number }) {
   const { userAllergens, limit } = options
   
   try {
