@@ -187,7 +187,7 @@ BEGIN
         );
         
         -- Log progress
-        RAISE NOTICE 'Batch %: Migrated % products (% / % total, %% complete)', 
+        RAISE NOTICE 'Batch %: Migrated % products (% / % total, % percent complete)', 
                      batch_number,
                      processed_count, 
                      LEAST(offset_val, total_count),
