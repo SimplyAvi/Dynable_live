@@ -177,11 +177,14 @@ BEGIN
         SET records_processed = offset_val,
             total_records = total_count,
             updated_at = NOW()
-        WHERE phase = 'Phase 2' 
-          AND step = 'Product Migration' 
-          AND status = 'in_progress'
-        ORDER BY started_at DESC 
-        LIMIT 1;
+        WHERE id = (
+            SELECT id FROM migration_status
+            WHERE phase = 'Phase 2' 
+              AND step = 'Product Migration' 
+              AND status = 'in_progress'
+            ORDER BY started_at DESC 
+            LIMIT 1
+        );
         
         -- Log progress
         RAISE NOTICE 'Batch %: Migrated % products (% / % total, %% complete)', 
@@ -201,10 +204,13 @@ BEGIN
         completed_at = NOW(),
         records_processed = total_count,
         total_records = total_count
-    WHERE phase = 'Phase 2' 
-      AND step = 'Product Migration'
-    ORDER BY started_at DESC 
-    LIMIT 1;
+    WHERE id = (
+        SELECT id FROM migration_status
+        WHERE phase = 'Phase 2' 
+          AND step = 'Product Migration'
+        ORDER BY started_at DESC 
+        LIMIT 1
+    );
     
     RAISE NOTICE '';
     RAISE NOTICE '============================================';
