@@ -175,8 +175,7 @@ BEGIN
         -- Update migration status
         UPDATE migration_status 
         SET records_processed = offset_val,
-            total_records = total_count,
-            updated_at = NOW()
+            total_records = total_count
         WHERE id = (
             SELECT id FROM migration_status
             WHERE phase = 'Phase 2' 
