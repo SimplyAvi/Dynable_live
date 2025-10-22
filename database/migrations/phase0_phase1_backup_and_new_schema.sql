@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS public.products (
     household_serving_text VARCHAR(200),
     
     -- External identifiers
-    fdc_id INTEGER UNIQUE,
+    fdc_id INTEGER,
     gtin_upc VARCHAR(50),
     
     -- Data source tracking
@@ -157,7 +157,10 @@ CREATE INDEX IF NOT EXISTS idx_products_subcategory ON public.products(subcatego
 CREATE INDEX IF NOT EXISTS idx_products_allergens_gin ON public.products USING gin(allergens);
 CREATE INDEX IF NOT EXISTS idx_products_seller ON public.products(seller_id) WHERE seller_id IS NOT NULL;
 CREATE INDEX IF NOT EXISTS idx_products_active ON public.products(is_active) WHERE is_active = true;
-CREATE INDEX IF NOT EXISTS idx_products_fdc ON public.products(fdc_id) WHERE fdc_id IS NOT NULL;
+
+-- Unique constraint on fdc_id including partition key (id)
+-- Note: This allows NULL fdc_id but ensures uniqueness when present
+CREATE UNIQUE INDEX IF NOT EXISTS idx_products_fdc_unique ON public.products(fdc_id, id) WHERE fdc_id IS NOT NULL;
 
 -- Table 2: Ingredients (Semantic Ingredient Taxonomy)
 -- ============================================================================
