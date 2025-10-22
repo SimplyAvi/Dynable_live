@@ -79,14 +79,17 @@ BEGIN
                 ),
                 100
             ) as canonical_name
-        FROM "RecipeIngredients"
-        WHERE 
-            LENGTH(TRIM(name)) > 2
-            AND name NOT ILIKE '%cup%'
-            AND name NOT ILIKE '%tablespoon%'
-            AND name NOT ILIKE '%teaspoon%'
-        ORDER BY id  -- Order by id instead of name
-        LIMIT batch_size OFFSET offset_val
+        FROM (
+            SELECT name 
+            FROM "RecipeIngredients"
+            WHERE 
+                LENGTH(TRIM(name)) > 2
+                AND name NOT ILIKE '%cup%'
+                AND name NOT ILIKE '%tablespoon%'
+                AND name NOT ILIKE '%teaspoon%'
+            ORDER BY id
+            LIMIT batch_size OFFSET offset_val
+        ) AS batch
         ON CONFLICT (canonical_name) DO NOTHING;
         
         offset_val := offset_val + batch_size;
