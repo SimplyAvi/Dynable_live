@@ -106,14 +106,14 @@ BEGIN
             -- Identity
             ic.id,
             
-            -- Product names (CORRECTED: no duplication)
-            ic.description as name,
+            -- Product names (CORRECTED: no duplication, truncate to fit)
+            LEFT(ic.description, 255) as name,  -- Truncate to 255 chars max
             NULL as description,  -- Leave NULL for now, can populate later
-            ic."shortDescription" as short_description,
+            LEFT(ic."shortDescription", 500) as short_description,  -- Truncate to 500 chars max
             
             -- Brand info
-            ic."brandName" as brand_name,
-            ic."brandOwner" as brand_owner,
+            LEFT(ic."brandName", 100) as brand_name,  -- Truncate to 100 chars max
+            LEFT(ic."brandOwner", 100) as brand_owner,  -- Truncate to 100 chars max
             
             -- Categorization (CORRECTED: proper lookup)
             ic."SubcategoryID" as subcategory_id,
@@ -133,17 +133,17 @@ BEGIN
             
             -- Nutritional info
             ic."servingSize" as serving_size,
-            ic."servingSizeUnit" as serving_size_unit,
-            ic."householdServingFullText" as household_serving_text,
+            LEFT(ic."servingSizeUnit", 20) as serving_size_unit,  -- Truncate to 20 chars max
+            LEFT(ic."householdServingFullText", 200) as household_serving_text,  -- Truncate to 200 chars max
             
             -- External identifiers
             ic."fdcId" as fdc_id,
-            ic."gtinUpc" as gtin_upc,
+            LEFT(ic."gtinUpc", 50) as gtin_upc,  -- Truncate to 50 chars max
             
             -- Data source
-            ic."dataSource" as data_source,
-            ic."foodClass" as food_class,
-            ic."dataType" as data_type,
+            LEFT(ic."dataSource", 50) as data_source,  -- Truncate to 50 chars max
+            LEFT(ic."foodClass", 50) as food_class,  -- Truncate to 50 chars max
+            LEFT(ic."dataType", 50) as data_type,  -- Truncate to 50 chars max
             
             -- E-commerce
             ic.seller_id,
@@ -152,8 +152,8 @@ BEGIN
             NULL as price,  -- Not in old table, default to NULL
             
             -- Packaging
-            ic."packageWeight" as package_weight,
-            ic.ingredients as ingredients_text,
+            LEFT(ic."packageWeight", 50) as package_weight,  -- Truncate to 50 chars max
+            ic.ingredients as ingredients_text,  -- TEXT type, no truncation needed
             
             -- Timestamps (cast to proper type)
             ic."createdAt"::timestamp as created_at,
