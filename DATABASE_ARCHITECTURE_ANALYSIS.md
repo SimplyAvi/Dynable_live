@@ -1616,3 +1616,631 @@ SELECT * FROM migration_status WHERE status = 'failed';
 ---
 
 This migration strategy ensures **zero data loss**, **zero downtime**, and **easy rollback** if issues arise.
+
+---
+
+## ⚠️ ANTICIPATED CHALLENGES & MITIGATION STRATEGIES
+
+### **Challenge 1: Mapping Accuracy During Product Ingestion**
+
+**The Issue**:
+- Initial ingredient-product mapping relies on keyword matching algorithms
+- New products added to database need automatic mapping
+- Ambiguous product names may result in low-confidence or incorrect mappings
+- Example: "Egg-Free Mayo" could incorrectly map to "egg" ingredient
+
+**Impact**: Medium-High (affects accuracy of product recommendations)
+
+**Mitigation Strategy**:
+
+#### **A. Human-in-the-Loop Review System**
+
+```sql
+-- Add review queue table
+CREATE TABLE mapping_review_queue (
+    id SERIAL PRIMARY KEY,
+    mapping_id BIGINT REFERENCES ingredient_product_mapping(id),
+    product_id BIGINT REFERENCES products(id),
+    ingredient_id INTEGER REFERENCES ingredients(id),
+    suggested_confidence DECIMAL(3,2),
+    review_priority VARCHAR(20),  -- 'critical', 'high', 'medium', 'low'
+    flagged_reason VARCHAR(200),
+    reviewer_notes TEXT,
+    reviewed_by INTEGER REFERENCES users(id),
+    review_decision VARCHAR(20),  -- 'approve', 'reject', 'modify'
+    created_at TIMESTAMP DEFAULT NOW(),
+    reviewed_at TIMESTAMP
+);
+
+-- Automatically flag low-confidence mappings for review
+CREATE OR REPLACE FUNCTION flag_low_confidence_mappings()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF NEW.confidence_score < 0.75 THEN
+        INSERT INTO mapping_review_queue 
+            (mapping_id, product_id, ingredient_id, suggested_confidence, review_priority, flagged_reason)
+        VALUES 
+            (NEW.id, NEW.product_id, NEW.ingredient_id, NEW.confidence_score, 
+             CASE 
+                WHEN NEW.confidence_score < 0.60 THEN 'critical'
+                WHEN NEW.confidence_score < 0.70 THEN 'high'
+                ELSE 'medium'
+             END,
+             'Low confidence score: ' || NEW.confidence_score);
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_flag_mappings
+AFTER INSERT ON ingredient_product_mapping
+FOR EACH ROW EXECUTE FUNCTION flag_low_confidence_mappings();
+```
+
+#### **B. Background Job Queue for Async Processing**
+
+```typescript
+// Using Node.js with Bull (Redis-based queue)
+import Queue from 'bull';
+
+const mappingReviewQueue = new Queue('mapping-review', {
+  redis: { port: 6379, host: '127.0.0.1' }
+});
+
+// When new product is added
+async function addNewProduct(productData) {
+  // 1. Insert product
+  const product = await insertProduct(productData);
+  
+  // 2. Queue mapping job (non-blocking)
+  await mappingReviewQueue.add('create-mappings', {
+    productId: product.id,
+    productName: product.name,
+    productDescription: product.description
+  });
+  
+  return product;
+}
+
+// Worker processes mappings in background
+mappingReviewQueue.process('create-mappings', async (job) => {
+  const { productId, productName } = job.data;
+  
+  // Run mapping algorithm
+  const mappings = await generateIngredientMappings(productId);
+  
+  // Flag suspicious patterns
+  const suspiciousPatterns = [
+    'egg-free', 'dairy-free', 'nut-free', 'gluten-free',
+    'substitute', 'alternative', 'imitation'
+  ];
+  
+  for (const mapping of mappings) {
+    const isSuspicious = suspiciousPatterns.some(pattern => 
+      productName.toLowerCase().includes(pattern)
+    );
+    
+    if (isSuspicious && mapping.confidence > 0.50) {
+      // Force human review
+      await flagMappingForReview(mapping.id, 'critical', 
+        `Product contains "${pattern}" but mapped to actual ingredient`);
+    }
+  }
+});
+```
+
+#### **C. Admin Dashboard for Reviews**
+
+Create a simple admin interface where team members can:
+- See pending mappings sorted by priority
+- Approve/reject/modify mappings
+- See product context (image, description, ingredients list)
+- Update confidence scores based on domain knowledge
+
+**Priority**: Implement in Phase 4 (Week 4-5) during mapping creation
+
+---
+
+### **Challenge 2: Complexity of Canonical Ingredient Hierarchies**
+
+**The Issue**:
+- Building ingredient taxonomy from scratch is time-consuming
+- Maintaining consistency across hundreds/thousands of ingredients
+- Deciding on category boundaries (is "almond milk" dairy or nut?)
+- Keeping taxonomy updated as food trends evolve
+
+**Impact**: Medium (affects long-term maintainability)
+
+**Mitigation Strategy**:
+
+#### **A. Use USDA FoodData Central as Base**
+
+Instead of building from scratch, import USDA's existing food taxonomy:
+
+```javascript
+// Script: scripts/import_usda_taxonomy.js
+const axios = require('axios');
+const { supabase } = require('../src/utils/supabaseClient');
+
+async function importUSDAFoodCategories() {
+  // USDA FoodData Central API
+  const API_KEY = process.env.USDA_API_KEY;
+  
+  // Fetch food categories from USDA
+  const response = await axios.get(
+    `https://api.nal.usda.gov/fdc/v1/foods/search`,
+    { params: { api_key: API_KEY, pageSize: 200 } }
+  );
+  
+  const categories = new Map();
+  
+  for (const food of response.data.foods) {
+    const category = food.foodCategory || 'uncategorized';
+    const foodDescription = food.description.toLowerCase();
+    
+    // Extract canonical name
+    const canonicalName = extractCanonicalName(foodDescription);
+    
+    // Determine category from USDA classification
+    const semanticCategory = mapUSDAtoSemanticCategory(category);
+    
+    // Insert into ingredients table
+    await supabase.from('ingredients').upsert({
+      canonical_name: canonicalName,
+      display_name: food.description,
+      category: semanticCategory.primary,
+      subcategory: semanticCategory.secondary,
+      description: `USDA Food: ${food.description}`,
+      is_basic_ingredient: true
+    }, { onConflict: 'canonical_name' });
+    
+    categories.set(canonicalName, semanticCategory);
+  }
+  
+  console.log(`Imported ${categories.size} ingredients from USDA`);
+}
+
+function mapUSDAtoSemanticCategory(usdaCategory) {
+  const mapping = {
+    'Dairy and Egg Products': { primary: 'protein', secondary: 'dairy' },
+    'Poultry Products': { primary: 'protein', secondary: 'poultry' },
+    'Vegetables and Vegetable Products': { primary: 'vegetable', secondary: null },
+    'Fruits and Fruit Juices': { primary: 'fruit', secondary: null },
+    'Cereal Grains and Pasta': { primary: 'grain', secondary: 'refined' },
+    // ... add more mappings
+  };
+  
+  return mapping[usdaCategory] || { primary: 'unknown', secondary: null };
+}
+```
+
+#### **B. Governance & Version Control**
+
+Treat ingredient taxonomy like code:
+
+```sql
+-- Add versioning to ingredients table
+ALTER TABLE ingredients ADD COLUMN version INTEGER DEFAULT 1;
+ALTER TABLE ingredients ADD COLUMN last_modified_by INTEGER REFERENCES users(id);
+ALTER TABLE ingredients ADD COLUMN change_notes TEXT;
+
+-- Create ingredient history table
+CREATE TABLE ingredient_history (
+    id BIGSERIAL PRIMARY KEY,
+    ingredient_id INTEGER REFERENCES ingredients(id),
+    version INTEGER NOT NULL,
+    canonical_name VARCHAR(100),
+    category VARCHAR(50),
+    subcategory VARCHAR(50),
+    aliases TEXT[],
+    changed_by INTEGER REFERENCES users(id),
+    change_reason TEXT,
+    changed_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Trigger to track changes
+CREATE OR REPLACE FUNCTION track_ingredient_changes()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF (OLD.canonical_name != NEW.canonical_name 
+        OR OLD.category != NEW.category 
+        OR OLD.aliases != NEW.aliases) THEN
+        
+        -- Archive old version
+        INSERT INTO ingredient_history 
+            (ingredient_id, version, canonical_name, category, subcategory, aliases, changed_by, changed_at)
+        VALUES 
+            (OLD.id, OLD.version, OLD.canonical_name, OLD.category, OLD.subcategory, 
+             OLD.aliases, NEW.last_modified_by, NOW());
+        
+        -- Increment version
+        NEW.version := OLD.version + 1;
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_track_ingredient_changes
+BEFORE UPDATE ON ingredients
+FOR EACH ROW EXECUTE FUNCTION track_ingredient_changes();
+```
+
+#### **C. Community-Driven Taxonomy**
+
+Allow trusted users (nutritionists, chefs, food scientists) to suggest improvements:
+
+```sql
+CREATE TABLE ingredient_suggestions (
+    id SERIAL PRIMARY KEY,
+    suggested_by INTEGER REFERENCES users(id),
+    action_type VARCHAR(20),  -- 'add', 'modify', 'merge', 'delete'
+    current_ingredient_id INTEGER REFERENCES ingredients(id),
+    suggested_canonical_name VARCHAR(100),
+    suggested_category VARCHAR(50),
+    suggested_aliases TEXT[],
+    justification TEXT NOT NULL,
+    status VARCHAR(20) DEFAULT 'pending',  -- 'pending', 'approved', 'rejected'
+    reviewed_by INTEGER REFERENCES users(id),
+    reviewed_at TIMESTAMP,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+```
+
+**Priority**: Implement USDA import in Phase 3 (Week 3), versioning in Phase 5 (Week 6)
+
+---
+
+### **Challenge 3: Materialized View Refresh Strategy**
+
+**The Issue**:
+- Materialized views improve read performance but can become stale
+- Manual `REFRESH MATERIALIZED VIEW` locks the view during refresh
+- Fast-moving product catalogs need near-real-time stats
+- Balance between performance and data freshness
+
+**Impact**: Low-Medium (mostly affects analytics, not core functionality)
+
+**Mitigation Strategy**:
+
+#### **A. Use CONCURRENTLY for Non-Blocking Refreshes**
+
+```sql
+-- Original materialized view
+CREATE MATERIALIZED VIEW ingredient_product_stats AS
+SELECT 
+    i.id,
+    i.canonical_name,
+    i.category,
+    COUNT(DISTINCT ipm.product_id) as product_count,
+    AVG(ipm.confidence_score) as avg_confidence,
+    COUNT(DISTINCT CASE WHEN ipm.confidence_score >= 0.90 THEN ipm.product_id END) as high_confidence_count,
+    COUNT(DISTINCT CASE WHEN ipm.confidence_score < 0.75 THEN ipm.product_id END) as needs_review_count,
+    MAX(ipm.updated_at) as last_mapping_update
+FROM ingredients i
+LEFT JOIN ingredient_product_mapping ipm ON i.id = ipm.ingredient_id
+GROUP BY i.id, i.canonical_name, i.category;
+
+-- Add unique index to enable CONCURRENTLY
+CREATE UNIQUE INDEX idx_ingredient_stats_id ON ingredient_product_stats(id);
+
+-- Refresh function with CONCURRENTLY (non-blocking)
+CREATE OR REPLACE FUNCTION refresh_ingredient_stats_concurrent()
+RETURNS void AS $$
+BEGIN
+    REFRESH MATERIALIZED VIEW CONCURRENTLY ingredient_product_stats;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+#### **B. Incremental Updates via Triggers**
+
+Instead of full refresh, update specific rows when data changes:
+
+```sql
+-- Create regular table for stats instead of materialized view
+CREATE TABLE ingredient_product_stats_live (
+    id INTEGER PRIMARY KEY REFERENCES ingredients(id),
+    canonical_name VARCHAR(100),
+    category VARCHAR(50),
+    product_count INTEGER DEFAULT 0,
+    avg_confidence DECIMAL(4,3),
+    high_confidence_count INTEGER DEFAULT 0,
+    needs_review_count INTEGER DEFAULT 0,
+    last_mapping_update TIMESTAMP,
+    last_calculated TIMESTAMP DEFAULT NOW()
+);
+
+-- Trigger to update stats when mapping changes
+CREATE OR REPLACE FUNCTION update_ingredient_stats()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Recalculate stats for affected ingredient only
+    INSERT INTO ingredient_product_stats_live (
+        id, canonical_name, category, product_count, avg_confidence, 
+        high_confidence_count, needs_review_count, last_mapping_update, last_calculated
+    )
+    SELECT 
+        i.id, i.canonical_name, i.category,
+        COUNT(DISTINCT ipm.product_id),
+        AVG(ipm.confidence_score),
+        COUNT(DISTINCT CASE WHEN ipm.confidence_score >= 0.90 THEN ipm.product_id END),
+        COUNT(DISTINCT CASE WHEN ipm.confidence_score < 0.75 THEN ipm.product_id END),
+        MAX(ipm.updated_at),
+        NOW()
+    FROM ingredients i
+    LEFT JOIN ingredient_product_mapping ipm ON i.id = ipm.ingredient_id
+    WHERE i.id = COALESCE(NEW.ingredient_id, OLD.ingredient_id)
+    GROUP BY i.id, i.canonical_name, i.category
+    ON CONFLICT (id) DO UPDATE SET
+        product_count = EXCLUDED.product_count,
+        avg_confidence = EXCLUDED.avg_confidence,
+        high_confidence_count = EXCLUDED.high_confidence_count,
+        needs_review_count = EXCLUDED.needs_review_count,
+        last_mapping_update = EXCLUDED.last_mapping_update,
+        last_calculated = NOW();
+    
+    RETURN COALESCE(NEW, OLD);
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_update_ingredient_stats
+AFTER INSERT OR UPDATE OR DELETE ON ingredient_product_mapping
+FOR EACH ROW EXECUTE FUNCTION update_ingredient_stats();
+```
+
+#### **C. Scheduled Background Job for Reconciliation**
+
+```typescript
+// Using node-cron for scheduled jobs
+import cron from 'node-cron';
+import { supabase } from './utils/supabaseClient';
+
+// Run full reconciliation daily at 3 AM (low traffic time)
+cron.schedule('0 3 * * *', async () => {
+  console.log('[CRON] Starting daily ingredient stats reconciliation');
+  
+  try {
+    // Option 1: Full refresh with CONCURRENTLY (5-10 minutes)
+    await supabase.rpc('refresh_ingredient_stats_concurrent');
+    
+    console.log('[CRON] ✅ Stats refreshed successfully');
+  } catch (error) {
+    console.error('[CRON] ❌ Stats refresh failed:', error);
+    // Send alert to admin
+  }
+});
+```
+
+**Priority**: Start with simple scheduled refresh in Phase 6 (Week 7), upgrade to incremental in Phase 9+ (post-launch optimization)
+
+---
+
+## 💡 ADVANCED ENHANCEMENTS (Post-Launch)
+
+### **Enhancement 1: Ingredient Disambiguation with Embeddings**
+
+**When to Implement**: 6-12 months post-launch, after core system is stable
+
+**Use Case**: Handle complex cases like:
+- "Turkey" (the meat) vs "Turkey" (the country)
+- "Apple juice" vs "Apple laptop" (if catalog expands)
+- Context-aware matching: "chicken breast" should match "chicken" but not "breast milk"
+
+**Implementation**:
+
+```python
+# Script: scripts/generate_ingredient_embeddings.py
+import torch
+from transformers import BertTokenizer, BertModel
+import psycopg2
+import numpy as np
+
+# Load pre-trained BERT model
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+model = BertModel.from_pretrained('bert-base-uncased')
+
+def generate_embedding(text):
+    """Generate BERT embedding for ingredient/product text"""
+    inputs = tokenizer(text, return_tensors='pt', padding=True, truncation=True, max_length=128)
+    with torch.no_grad():
+        outputs = model(**inputs)
+    # Use [CLS] token embedding
+    return outputs.last_hidden_state[:, 0, :].numpy().flatten()
+
+# Update database schema to store embeddings
+conn = psycopg2.connect("postgresql://...")
+cur = conn.cursor()
+
+# Add embedding column (768-dimensional vector for BERT)
+cur.execute("""
+    ALTER TABLE ingredients ADD COLUMN embedding vector(768);
+    ALTER TABLE products ADD COLUMN embedding vector(768);
+    
+    -- Install pgvector extension for efficient similarity search
+    CREATE EXTENSION IF NOT EXISTS vector;
+    
+    -- Create index for fast similarity search
+    CREATE INDEX idx_ingredients_embedding ON ingredients USING ivfflat (embedding vector_cosine_ops);
+    CREATE INDEX idx_products_embedding ON products USING ivfflat (embedding vector_cosine_ops);
+""")
+
+# Generate embeddings for all ingredients
+cur.execute("SELECT id, canonical_name, category, subcategory FROM ingredients")
+for row in cur.fetchall():
+    ingredient_id, name, category, subcategory = row
+    
+    # Create context-rich text for embedding
+    context_text = f"{name} is a {category}"
+    if subcategory:
+        context_text += f" specifically a {subcategory}"
+    
+    embedding = generate_embedding(context_text)
+    
+    # Store embedding
+    cur.execute(
+        "UPDATE ingredients SET embedding = %s WHERE id = %s",
+        (embedding.tolist(), ingredient_id)
+    )
+
+conn.commit()
+```
+
+**Query with Semantic Similarity**:
+
+```sql
+-- Find products semantically similar to an ingredient
+SELECT 
+    p.id,
+    p.name,
+    p.category_id,
+    (p.embedding <=> i.embedding) as semantic_distance
+FROM products p
+CROSS JOIN (
+    SELECT embedding FROM ingredients WHERE canonical_name = 'egg'
+) i
+WHERE (p.embedding <=> i.embedding) < 0.5  -- Similarity threshold
+ORDER BY semantic_distance ASC
+LIMIT 20;
+```
+
+**Priority**: Phase 10+ (post-launch optimization, requires ML expertise)
+
+---
+
+### **Enhancement 2: Data Versioning & A/B Testing**
+
+**When to Implement**: After initial rollout is stable (Month 3-4)
+
+**Use Case**:
+- Test new matching algorithms without breaking production
+- Roll back to previous mapping version if new algorithm performs worse
+- Compare accuracy metrics between versions
+
+**Implementation**:
+
+```sql
+-- Add versioning to mapping algorithm
+CREATE TABLE mapping_algorithm_versions (
+    id SERIAL PRIMARY KEY,
+    algorithm_name VARCHAR(100) NOT NULL,
+    version VARCHAR(20) NOT NULL,
+    description TEXT,
+    configuration JSONB,
+    is_active BOOLEAN DEFAULT false,
+    created_by INTEGER REFERENCES users(id),
+    created_at TIMESTAMP DEFAULT NOW(),
+    UNIQUE(algorithm_name, version)
+);
+
+-- Link mappings to specific algorithm version
+ALTER TABLE ingredient_product_mapping 
+ADD COLUMN algorithm_version_id INTEGER REFERENCES mapping_algorithm_versions(id);
+
+-- A/B testing assignment table
+CREATE TABLE user_experiment_assignments (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id),
+    experiment_name VARCHAR(100),
+    variant VARCHAR(50),  -- 'control', 'treatment_a', 'treatment_b'
+    assigned_at TIMESTAMP DEFAULT NOW(),
+    UNIQUE(user_id, experiment_name)
+);
+
+-- Track experiment metrics
+CREATE TABLE experiment_metrics (
+    id BIGSERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id),
+    experiment_name VARCHAR(100),
+    variant VARCHAR(50),
+    metric_name VARCHAR(100),
+    metric_value DECIMAL(10,4),
+    recorded_at TIMESTAMP DEFAULT NOW()
+);
+```
+
+**Application Layer A/B Testing**:
+
+```typescript
+async function getProductsForIngredient(ingredientName: string, userId: number) {
+  // Check which experiment variant user is assigned to
+  const { data: assignment } = await supabase
+    .from('user_experiment_assignments')
+    .select('variant')
+    .eq('user_id', userId)
+    .eq('experiment_name', 'matching_algorithm_v2')
+    .single();
+  
+  const useNewAlgorithm = assignment?.variant === 'treatment_a';
+  
+  if (useNewAlgorithm) {
+    // Use new semantic matching with embeddings
+    return findProductsSemanticV2(ingredientName);
+  } else {
+    // Use current semantic matching
+    return findProductsSemanticV1(ingredientName);
+  }
+}
+
+// Track which version performed better
+async function trackProductClick(userId: number, productId: number, ingredientName: string) {
+  const { data: assignment } = await supabase
+    .from('user_experiment_assignments')
+    .select('variant')
+    .eq('user_id', userId)
+    .eq('experiment_name', 'matching_algorithm_v2')
+    .single();
+  
+  // Log click as positive signal
+  await supabase.from('experiment_metrics').insert({
+    user_id: userId,
+    experiment_name: 'matching_algorithm_v2',
+    variant: assignment.variant,
+    metric_name: 'product_click_rate',
+    metric_value: 1.0
+  });
+}
+```
+
+**Priority**: Phase 11+ (after 3-6 months of production use)
+
+---
+
+## 📊 PRIORITY SUMMARY
+
+| Challenge/Enhancement | Priority | Timeline | Complexity |
+|----------------------|----------|----------|------------|
+| Human review queue | **HIGH** | Phase 4-5 (Week 4-5) | Medium |
+| USDA taxonomy import | **HIGH** | Phase 3 (Week 3) | Low |
+| Concurrent view refresh | **MEDIUM** | Phase 6 (Week 7) | Low |
+| Ingredient versioning | **MEDIUM** | Phase 5 (Week 6) | Medium |
+| Background job queue | **MEDIUM** | Phase 4 (Week 4) | Medium |
+| Admin review dashboard | **MEDIUM** | Phase 5 (Week 6) | High |
+| Incremental stats updates | **LOW** | Phase 9+ (Post-launch) | Medium |
+| BERT embeddings | **LOW** | Phase 10+ (6+ months) | High |
+| A/B testing framework | **LOW** | Phase 11+ (3-6 months) | High |
+
+---
+
+## ✅ YOUR ASSESSMENT IS SPOT-ON
+
+Your concerns are all **valid and well-reasoned**. Here's my honest evaluation:
+
+### **What You Got Right:**
+
+1. ✅ **Mapping accuracy is the biggest risk** - This is why human review + confidence scoring is essential
+2. ✅ **Taxonomy complexity grows over time** - Using USDA as a base solves 80% of this
+3. ✅ **Materialized views can cause staleness** - CONCURRENTLY + scheduled refresh is the pragmatic solution
+4. ✅ **Embeddings are powerful but complex** - Correctly identified as post-launch enhancement
+
+### **My Recommendation:**
+
+**Start simple, iterate intelligently:**
+
+1. **Phase 1-5**: Focus on core semantic matching with confidence scores
+2. **Phase 4-5**: Add human review queue for low-confidence mappings (critical)
+3. **Phase 3**: Import USDA taxonomy as foundation (saves months of work)
+4. **Phase 6-8**: Get to production with simple scheduled view refreshes
+5. **Phase 9+**: Optimize based on real-world usage patterns
+6. **Phase 10+**: Add advanced features (embeddings, A/B testing) only if needed
+
+The plan is **solid and practical**. Your concerns show excellent foresight, and the mitigations above ensure you're ready for them without over-engineering upfront. 🎯
