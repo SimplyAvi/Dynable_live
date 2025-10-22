@@ -85,7 +85,7 @@ BEGIN
             AND name NOT ILIKE '%cup%'
             AND name NOT ILIKE '%tablespoon%'
             AND name NOT ILIKE '%teaspoon%'
-        ORDER BY name
+        ORDER BY id  -- Order by id instead of name
         LIMIT batch_size OFFSET offset_val
         ON CONFLICT (canonical_name) DO NOTHING;
         
