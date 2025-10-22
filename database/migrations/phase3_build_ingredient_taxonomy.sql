@@ -35,10 +35,10 @@ BEGIN
     -- This will create ~10,000-20,000 unique canonical ingredients
     INSERT INTO ingredients (canonical_name, category, subcategory, is_basic_ingredient, description)
     SELECT DISTINCT
-        -- Clean the ingredient name
-        LOWER(
-            TRIM(
-                REGEXP_REPLACE(
+        -- Clean the ingredient name and truncate to 100 chars
+        LEFT(
+            LOWER(
+                TRIM(
                     REGEXP_REPLACE(
                         REGEXP_REPLACE(
                             REGEXP_REPLACE(
@@ -46,40 +46,43 @@ BEGIN
                                     REGEXP_REPLACE(
                                         REGEXP_REPLACE(
                                             REGEXP_REPLACE(
-                                                name,
-                                                '^\d+(/\d+)?\s*(cup|cups|tablespoon|tablespoons|teaspoon|teaspoons|pound|pounds|ounce|ounces|oz|lb|tsp|tbsp|c\.)\s*', 
-                                                '', 
+                                                REGEXP_REPLACE(
+                                                    name,
+                                                    '^\d+(/\d+)?\s*(cup|cups|tablespoon|tablespoons|teaspoon|teaspoons|pound|pounds|ounce|ounces|oz|lb|tsp|tbsp|c\.)\s*', 
+                                                    '', 
+                                                    'i'
+                                                ),  -- Remove leading measurements
+                                                '\s*-\s*(peeled|chopped|diced|minced|sliced|cubed|crushed|ground|shredded|grated|julienned|halved|quartered).*$',
+                                                '',
                                                 'i'
-                                            ),  -- Remove leading measurements
-                                            '\s*-\s*(peeled|chopped|diced|minced|sliced|cubed|crushed|ground|shredded|grated|julienned|halved|quartered).*$',
+                                            ),  -- Remove preparation instructions
+                                            '\s*,\s*(or as needed|to taste|optional|if desired|plus more).*$',
                                             '',
                                             'i'
-                                        ),  -- Remove preparation instructions
-                                        '\s*,\s*(or as needed|to taste|optional|if desired|plus more).*$',
+                                        ),  -- Remove optional phrases
+                                        '\s*\(.*?\)',
                                         '',
-                                        'i'
-                                    ),  -- Remove optional phrases
-                                    '\s*\(.*?\)',
+                                        'g'
+                                    ),  -- Remove parenthetical notes
+                                    '[*\[\]()]',
                                     '',
                                     'g'
-                                ),  -- Remove parenthetical notes
-                                '[*\[\]()]',
-                                '',
+                                ),  -- Remove special characters
+                                '\s+',
+                                ' ',
                                 'g'
-                            ),  -- Remove special characters
-                            '\s+',
-                            ' ',
-                            'g'
-                        ),  -- Normalize whitespace
-                        '^\s*(fresh|dried|frozen|canned|raw|cooked|organic)\s+',
+                            ),  -- Normalize whitespace
+                            '^\s*(fresh|dried|frozen|canned|raw|cooked|organic)\s+',
+                            '',
+                            'i'
+                        ),  -- Remove common modifiers
+                        '^\s*(Pure|100%)\s+',
                         '',
                         'i'
-                    ),  -- Remove common modifiers
-                    '^\s*(Pure|100%)\s+',
-                    '',
-                    'i'
-                )  -- Remove brand-like prefixes
-            )
+                    )  -- Remove brand-like prefixes
+                )
+            ),
+            100  -- Truncate to max 100 characters
         ) as canonical_name,
         
         'unknown' as category,  -- Will be categorized in next step
