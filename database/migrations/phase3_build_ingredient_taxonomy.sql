@@ -481,8 +481,8 @@ BEGIN
     RAISE NOTICE '✅ PHASE 3 COMPLETE';
     RAISE NOTICE '============================================';
     RAISE NOTICE 'Total ingredients created: %', total_ingredients;
-    RAISE NOTICE 'Categorized: % (%% of total)', categorized, ROUND((categorized::NUMERIC / total_ingredients * 100)::NUMERIC, 1);
-    RAISE NOTICE 'Still unknown: % (%% of total)', unknown, ROUND((unknown::NUMERIC / total_ingredients * 100)::NUMERIC, 1);
+    RAISE NOTICE 'Categorized: % (% percent of total)', categorized, ROUND((categorized::NUMERIC / total_ingredients * 100)::NUMERIC, 1);
+    RAISE NOTICE 'Still unknown: % (% percent of total)', unknown, ROUND((unknown::NUMERIC / total_ingredients * 100)::NUMERIC, 1);
     RAISE NOTICE 'With allergen info: %', with_allergens;
     RAISE NOTICE 'With aliases: %', with_aliases;
     RAISE NOTICE '============================================';
