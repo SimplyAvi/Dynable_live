@@ -38,7 +38,7 @@ const ProductSelector = ({ products, selectedProductId, onProductSelect, ingredi
         try {
             const cartItem = {
                 id: product.id,
-                name: product.description,
+                name: product.description || product.name,
                 brandName: product.brandName,
                 price: product.price || 0,
                 quantity: 1,

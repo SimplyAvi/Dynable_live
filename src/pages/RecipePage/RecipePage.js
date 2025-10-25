@@ -118,6 +118,13 @@ const RecipePage = () => {
             // Create product options from Edge Function response
             const newProductOptions = {};
             recipeData.ingredients.forEach(ing => {
+                console.log(`[RECIPE PAGE] Processing ingredient ${ing.name}:`, {
+                    id: ing.id,
+                    products: ing.products,
+                    productsLength: ing.products?.length || 0,
+                    canonical: ing.canonical
+                });
+                
                 newProductOptions[ing.id] = {
                         id: ing.id,
                     products: ing.products,

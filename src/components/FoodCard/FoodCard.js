@@ -18,7 +18,7 @@ const FoodCard = ({foodItem, id, showAddToCart = false, ingredientFlagged = fals
     const allergies = useSelector((state) => state.allergies.allergies);
     const userAllergens = Object.keys(allergies).filter(key => allergies[key]);
 
-    const { description, brandName, image = `${process.env.PUBLIC_URL}/default_img.png` } = foodItem
+    const { description, name, brandName, image = `${process.env.PUBLIC_URL}/default_img.png` } = foodItem
     
     const handleClick = (e) => {
         // Don't navigate if clicking on the Add to Cart button (original logic)
@@ -55,7 +55,7 @@ const FoodCard = ({foodItem, id, showAddToCart = false, ingredientFlagged = fals
         try {
             const cartItem = {
                 id: foodItem.id,
-                name: foodItem.description,
+                name: foodItem.description || foodItem.name,
                 brandName: foodItem.brandName,
                 price: foodItem.price || 0,
                 quantity: 1,
@@ -103,7 +103,7 @@ const FoodCard = ({foodItem, id, showAddToCart = false, ingredientFlagged = fals
             </div>
             <div className="food-info">
                 <div className="food-title">
-                    <h3>{description}</h3>
+                    <h3>{description || name}</h3>
                     <p className="brand-name">{brandName}</p>
                 </div>
                 

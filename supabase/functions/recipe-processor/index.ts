@@ -1,13 +1,19 @@
+// @deno-types="https://deno.land/std@0.168.0/http/server.ts"
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+// @deno-types="https://esm.sh/@supabase/supabase-js@2"
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+
+// TypeScript configuration for Deno Edge Functions
+// These imports and Deno globals are available at runtime in Supabase Edge Functions
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
 
-// 🚀 PHASE 5: Feature flag for semantic matching
-const USE_SEMANTIC_MATCHING = Deno.env.get('USE_SEMANTIC_MATCHING') === 'true';
+// 🚀 PHASE 5: Feature flag for semantic matching - DEFAULT TO TRUE
+// @ts-ignore - Deno global is available in Edge Functions
+const USE_SEMANTIC_MATCHING = Deno.env.get('USE_SEMANTIC_MATCHING') !== 'false';
 
 interface RecipeIngredient {
   id: number;
@@ -47,8 +53,11 @@ serve(async (req) => {
   const startTime = performance.now();
 
   try {
+    // @ts-ignore - Deno global is available in Edge Functions
     const supabase = createClient(
+      // @ts-ignore - Deno.env is available in Edge Functions
       Deno.env.get('SUPABASE_URL') ?? '',
+      // @ts-ignore - Deno.env is available in Edge Functions
       Deno.env.get('SUPABASE_ANON_KEY') ?? ''
     )
 
@@ -74,7 +83,7 @@ serve(async (req) => {
       .eq('id', recipeId)
       .single();
 
-    const recipeResult = await withTimeout(recipePromise, QUERY_TIMEOUT);
+    const recipeResult = await withTimeout(recipePromise, QUERY_TIMEOUT) as any;
     if (recipeResult.error || !recipeResult.data) {
       throw new Error(`Recipe not found: ${recipeResult.error?.message || 'Unknown error'}`)
     }
@@ -87,7 +96,7 @@ serve(async (req) => {
       .eq('RecipeId', recipeId)
       .limit(50); // 🛡️ ADDED: Limit to prevent massive queries
 
-    const ingredientsResult = await withTimeout(ingredientsPromise, QUERY_TIMEOUT);
+    const ingredientsResult = await withTimeout(ingredientsPromise, QUERY_TIMEOUT) as any;
     if (ingredientsResult.error) {
       throw new Error(`Failed to fetch ingredients: ${ingredientsResult.error.message}`)
     }

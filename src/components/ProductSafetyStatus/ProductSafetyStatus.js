@@ -1,6 +1,6 @@
 // New component for showing product allergen safety status
 import React, { useState, useEffect, useRef } from 'react';
-import { analyzeProductAllergens } from '../../utils/allergenDetection';
+import { analyzeProductAllergensSemantic } from '../../utils/semanticAllergenDetection';
 import './ProductSafetyStatus.css';
 
 const ProductSafetyStatus = ({ product, userAllergens = [] }) => {
@@ -40,7 +40,7 @@ const ProductSafetyStatus = ({ product, userAllergens = [] }) => {
         setError(null);
         
         try {
-          const result = await analyzeProductAllergens(product.description, userAllergens);
+          const result = await analyzeProductAllergensSemantic(product.description, userAllergens);
           setAnalysis(result);
           lastAnalysisRef.current = analysisKey;
         } catch (error) {

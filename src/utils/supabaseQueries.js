@@ -94,13 +94,13 @@ export const searchProductsFromSupabasePure = async (searchParams) => {
     let countQuery = null;
     if (includeCount) {
       countQuery = supabase
-        .from('IngredientCategorized')
+        .from('products')
         .select('*', { count: 'exact', head: true })
-        .order('description', { ascending: true });
+        .order('name', { ascending: true });
 
       // Apply same filters to count query
       if (searchTerm && searchTerm.trim() !== '') {
-        countQuery = countQuery.ilike('description', `%${searchTerm}%`);
+        countQuery = countQuery.ilike('name', `%${searchTerm}%`);
       }
 
       if (allergens && allergens.length > 0) {
@@ -113,13 +113,13 @@ export const searchProductsFromSupabasePure = async (searchParams) => {
 
     // 🚀 FIXED: Build data query with proper filtering
     let query = supabase
-      .from('IngredientCategorized')
-      .select('id, description, "brandName", "canonicalTag", allergens')
-      .order('description', { ascending: true });
+      .from('products')
+      .select('id, name, brand_name, description, allergens')
+      .order('name', { ascending: true });
 
     // Add search filter if provided
     if (searchTerm && searchTerm.trim() !== '') {
-      query = query.ilike('description', `%${searchTerm}%`);
+      query = query.ilike('name', `%${searchTerm}%`);
     }
 
     // Add allergen filtering if provided
@@ -205,14 +205,14 @@ export const searchProductsFromSupabasePure = async (searchParams) => {
       
       try {
         let fallbackQuery = supabase
-          .from('IngredientCategorized')
-          .select('id, description, "brandName", "canonicalTag", allergens', { 
+          .from('products')
+          .select('id, name, brand_name, description, allergens', { 
             count: includeCount ? 'exact' : null 
           })
-          .order('description', { ascending: true }); // 🚀 NEW: Always use alphabetical ordering
+          .order('name', { ascending: true }); // 🚀 NEW: Always use alphabetical ordering
         
         if (searchTerm && searchTerm.trim() !== '') {
-          fallbackQuery = fallbackQuery.ilike('description', `%${searchTerm}%`);
+          fallbackQuery = fallbackQuery.ilike('name', `%${searchTerm}%`);
         }
         
         const offset = (page - 1) * limit;
@@ -270,15 +270,15 @@ export const searchProductsFromSupabaseOptimized = async (searchParams) => {
 
   try {
     let query = supabase
-      .from('IngredientCategorized')
-      .select('id, description, "brandName", "canonicalTag", allergens', { 
+      .from('products')
+      .select('id, name, brand_name, description, allergens', { 
         count: includeCount ? 'exact' : null 
       })
-      .order('description', { ascending: true }); // 🚀 NEW: Always use alphabetical ordering
+      .order('name', { ascending: true }); // 🚀 NEW: Always use alphabetical ordering
 
     // Add search filter
     if (searchTerm && searchTerm.trim() !== '') {
-      query = query.ilike('description', `%${searchTerm}%`);
+      query = query.ilike('name', `%${searchTerm}%`);
     }
 
     // ✅ OPTIMIZED: Single allergen filter using GIN index
@@ -359,14 +359,14 @@ export const searchProductsFromSupabaseFallback = async (searchParams) => {
 
   try {
     let query = supabase
-      .from('IngredientCategorized')
-      .select('id, description, "brandName", "canonicalTag", allergens', { 
+      .from('products')
+      .select('id, name, brand_name, description, allergens', { 
         count: includeCount ? 'exact' : null 
       })
-      .order('description', { ascending: true }); // 🚀 NEW: Always use alphabetical ordering
+      .order('name', { ascending: true }); // 🚀 NEW: Always use alphabetical ordering
 
     if (searchTerm && searchTerm.trim() !== '') {
-      query = query.ilike('description', `%${searchTerm}%`);
+      query = query.ilike('name', `%${searchTerm}%`);
     }
 
     const offset = (page - 1) * limit;
@@ -865,10 +865,10 @@ export const getProductsByIngredientFromSupabase = async (ingredientName, allerg
                 const productIds = canonicalData[0].matching_products.slice(0, productLimit);
                 
                 const { data: products, error: productsError } = await supabase
-                    .from('IngredientCategorized')
+                    .from('products')
                     .select('*')
                     .in('id', productIds)
-                    .order('description', { ascending: true }); // 🚀 NEW: Always use alphabetical ordering
+                    .order('name', { ascending: true }); // 🚀 NEW: Always use alphabetical ordering
                 
                 if (!productsError && products) {
                     console.log(`[SUPABASE] Found ${products.length} products via canonical mapping for ${ingredientName}`);
@@ -889,24 +889,24 @@ export const getProductsByIngredientFromSupabase = async (ingredientName, allerg
     // Fallback: Use direct search (current approach)
     console.log('[SUPABASE] Using direct search for:', primaryWord);
     const { data, error } = await supabase
-        .from('IngredientCategorized')
-        .select('*')
-        .ilike('description', `%${primaryWord}%`)
-        .order('description', { ascending: true }) // 🚀 NEW: Always use alphabetical ordering
+      .from('products')
+      .select('*')
+      .ilike('name', `%${primaryWord}%`)
+        .order('name', { ascending: true }) // 🚀 NEW: Always use alphabetical ordering
         .limit(productLimit);
     
     if (error) {
-        console.error('[SUPABASE] Error fetching products by ingredient:', error);
-        return { products: [] };
+      console.error('[SUPABASE] Error fetching products by ingredient:', error);
+      return { products: [] };
     }
     
     console.log(`[SUPABASE] Found ${data.length} products for ${ingredientName}`);
     return { 
-        products: data,
+      products: data,
         mappingStatus: 'direct',
-        coverageStats: { total: data.length },
-        brandPriority: 'mixed',
-        canonicalIngredient: ingredientName
+      coverageStats: { total: data.length },
+      brandPriority: 'mixed',
+      canonicalIngredient: ingredientName
     };
     
   } catch (error) {
@@ -950,15 +950,15 @@ export const searchProductsWithOptimalPagination = async (searchParams) => {
 
   try {
     let query = supabase
-      .from('IngredientCategorized')
-      .select('id, description, "brandName", allergens, "canonicalTag"', { 
+      .from('products')
+      .select('id, name, brand_name, allergens, description', { 
         count: includeCount ? 'exact' : null 
       })
-      .order('description', { ascending: true }); // 🚀 NEW: Always use alphabetical ordering
+      .order('name', { ascending: true }); // 🚀 NEW: Always use alphabetical ordering
 
     // 1. Search filter (uses trigram index)
     if (searchTerm && searchTerm.trim() !== '') {
-      query = query.ilike('description', `%${searchTerm}%`);
+      query = query.ilike('name', `%${searchTerm}%`);
     }
 
     // 2. Allergen filtering (if allergens provided)
@@ -992,7 +992,7 @@ export const searchProductsWithOptimalPagination = async (searchParams) => {
     console.log(`[OPTIMAL] Found ${data?.length || 0} products in ${page}ms`);
 
     // Return with page navigation info
-    return {
+    return { 
       products: data || [],
       totalCount: count || 0,
       page: page,
@@ -1010,7 +1010,7 @@ export const searchProductsWithOptimalPagination = async (searchParams) => {
         endItem: Math.min(offset + limit, count || 0)
       }
     };
-
+    
   } catch (error) {
     console.error('[OPTIMAL] Product search failed:', error);
     throw error;
@@ -1049,11 +1049,11 @@ export const searchProductsSimpleForAnonymous = async (searchParams) => {
 
   try {
     let query = supabase
-      .from('IngredientCategorized')
-      .select('id, description, "brandName", allergens, "canonicalTag"', { 
+      .from('products')
+      .select('id, name, brand_name, allergens, description', { 
         count: includeCount ? 'exact' : null 
       })
-      .order('description', { ascending: true }); // 🚀 NEW: Always use alphabetical ordering
+      .order('name', { ascending: true }); // 🚀 NEW: Always use alphabetical ordering
 
     // 🎯 OPTIMIZED: Skip is_active filter since all products are active (243K records)
     // This improves performance by removing unnecessary filtering
@@ -1061,7 +1061,7 @@ export const searchProductsSimpleForAnonymous = async (searchParams) => {
 
     // 1. Search filter (simple LIKE query)
     if (searchTerm && searchTerm.trim() !== '') {
-      query = query.ilike('description', `%${searchTerm}%`);
+      query = query.ilike('name', `%${searchTerm}%`);
     }
 
     // 2. Simple allergen filter for anonymous users (no complex SQL)
@@ -1139,12 +1139,13 @@ export const searchProductsUnified = async (searchParams) => {
     const shouldIncludeCount = includeCount && (searchTerm || allergens.length > 0);
     
     // 🎯 OPTIMAL QUERY: Single SQL operation for all users with alphabetical ordering
+    // 🚀 UPDATED: Use new 'products' table instead of old 'IngredientCategorized'
     let query = supabase
-      .from('IngredientCategorized')
-      .select('id, description, "brandName", allergens, "canonicalTag"', { 
+      .from('products')
+      .select('id, name, brand_name, allergens, description', { 
         count: shouldIncludeCount ? 'exact' : null 
       })
-      .order('description', { ascending: true }); // 🚀 NEW: Always use alphabetical ordering for consistency
+      .order('name', { ascending: true }); // 🚀 NEW: Always use alphabetical ordering for consistency
 
     // 🎯 OPTIMIZED: Skip is_active filter since all products are active (243K records)
     // This improves performance by removing unnecessary filtering
@@ -1152,7 +1153,7 @@ export const searchProductsUnified = async (searchParams) => {
 
     // Search filter (uses existing trigram index)
     if (searchTerm && searchTerm.trim() !== '') {
-      query = query.ilike('description', `%${searchTerm}%`);
+      query = query.ilike('name', `%${searchTerm}%`);
       console.log('[UNIFIED] Applied search filter:', searchTerm);
     }
 
@@ -1226,7 +1227,7 @@ export const searchProductsUnified = async (searchParams) => {
       // 🛡️ ADDED: Graceful fallback for timeout errors
       if (error.code === '57014' && error.message.includes('timeout')) {
         console.warn('[UNIFIED] ⚠️ Query timeout - returning partial results without count');
-        return {
+    return {
           products: data || [],
           totalCount: data?.length || 0,
           page: page,
@@ -1268,7 +1269,7 @@ export const searchProductsUnified = async (searchParams) => {
         endItem: Math.min(offset + limit, count || 0)
       }
     };
-
+    
   } catch (error) {
     console.error('[UNIFIED] ❌ Unified product search failed:', error);
     throw error;
